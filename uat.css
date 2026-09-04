@@ -1,0 +1,44 @@
+/* UAT-001 · Draw → come forward → flip → settle */
+.draw-cta { margin-top: 22px; min-height: 46px; border: 1px solid rgba(201,169,106,.38); border-radius: 999px; padding: 11px 17px; background: linear-gradient(180deg,#dfc48b,#bd9858); color:#15120d; font-weight:800; cursor:pointer; display:inline-flex; align-items:center; gap:8px; }
+.draw-page { max-width: 900px; }
+.draw-stage { min-height: 650px; padding: 48px 0 24px; text-align:center; position:relative; overflow:visible; }
+.draw-stage h1 { font-family: Georgia,serif; font-weight:400; font-size:clamp(38px,7vw,64px); margin:12px 0 8px; }
+.draw-instruction { color:#9e988f; margin:0 auto 26px; }
+.spread-slot { width:min(210px,58vw); aspect-ratio:2/3; border:1px dashed rgba(201,169,106,.26); border-radius:20px; margin:18px auto 0; display:flex; align-items:flex-end; justify-content:center; padding:15px; color:#6f6a62; background:rgba(255,255,255,.01); }
+.slot-label { font-size:10px; letter-spacing:.16em; }
+.dealing-card { position:absolute; width:min(180px,52vw); aspect-ratio:2/3; left:50%; top:205px; transform:translate(-50%,70px) scale(.58); perspective:1200px; z-index:5; opacity:.92; transition:transform .62s cubic-bezier(.2,.78,.25,1), opacity .35s ease, top .72s cubic-bezier(.2,.78,.25,1); }
+.dealing-inner { position:relative; width:100%; height:100%; transform-style:preserve-3d; transition:transform .72s cubic-bezier(.2,.75,.25,1); }
+.dealing-face { position:absolute; inset:0; border-radius:19px; backface-visibility:hidden; border:1px solid rgba(201,169,106,.36); box-shadow:0 24px 70px rgba(0,0,0,.5); }
+.dealing-back { background:radial-gradient(circle at 50% 38%,rgba(201,169,106,.13),transparent 36%),linear-gradient(145deg,#181719,#0a0a0c); display:grid; place-items:center; align-content:center; gap:12px; }
+.dealing-back::before,.dealing-back::after { content:''; position:absolute; inset:14px; border:1px solid rgba(201,169,106,.22); border-radius:14px; }
+.dealing-back::after { inset:25px; border-radius:50%; }
+.back-mark { width:62px; height:62px; border:1px solid rgba(201,169,106,.5); border-radius:50%; display:grid; place-items:center; font-family:Georgia,serif; color:var(--gold-bright); font-size:24px; z-index:1; }
+.dealing-back span { color:#81796d; font-size:9px; letter-spacing:.28em; z-index:1; }
+.dealing-front,.settled-card { background:radial-gradient(circle at 50% 35%,rgba(201,169,106,.11),transparent 40%),linear-gradient(145deg,#1a191b,#0c0c0e); }
+.dealing-front { transform:rotateY(180deg); padding:19px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
+.front-roman { font-family:Georgia,serif; color:var(--gold-bright); font-size:25px; }
+.front-symbol { color:var(--gold); margin:9px 0; }
+.dealing-front strong,.settled-card strong { font-family:Georgia,serif; font-weight:400; font-size:22px; }
+.dealing-front span,.settled-card span { color:#8e887f; font-size:11px; text-align:center; line-height:1.45; }
+.dealing-card.come-forward { transform:translate(-50%,-25px) scale(1.08); opacity:1; }
+.dealing-card.flip .dealing-inner { transform:rotateY(180deg); }
+.dealing-card.settle { top:315px; transform:translate(-50%,0) scale(.84); }
+.settled-card-wrap { margin-top:-305px; position:relative; z-index:6; opacity:0; transform:translateY(-8px); }
+.settled-card-wrap.settled-in { animation:settledIn .42s ease forwards; }
+@keyframes settledIn { to { opacity:1; transform:translateY(0); } }
+.settled-card { width:min(176px,50vw); aspect-ratio:2/3; border:1px solid rgba(201,169,106,.42); border-radius:19px; color:var(--text); padding:18px; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:9px; margin:0 auto; box-shadow:0 18px 55px rgba(0,0,0,.38); }
+.settled-card:hover { border-color:rgba(201,169,106,.7); transform:translateY(-2px); }
+.settled-caption { margin:17px auto 0; display:grid; gap:5px; max-width:420px; }
+.settled-caption strong { color:#e7dfd2; font-size:14px; }
+.settled-caption span { color:#817b73; font-size:12px; }
+.draw-actions { margin:27px auto 0; display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
+.ghost-button { min-height:42px; border:1px solid var(--line); border-radius:999px; padding:9px 14px; background:#111113; color:#aaa49b; cursor:pointer; display:inline-flex; align-items:center; gap:7px; }
+@media (max-width:680px) {
+  .draw-stage { min-height:590px; padding-top:38px; }
+  .dealing-card { top:190px; }
+  .dealing-card.settle { top:300px; }
+  .settled-card-wrap { margin-top:-285px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .dealing-card,.dealing-inner,.settled-card-wrap { transition:none!important; animation:none!important; }
+}
