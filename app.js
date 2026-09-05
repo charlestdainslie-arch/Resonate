@@ -11,6 +11,7 @@ const spreadLabels = {
   3: ['Past','Present','Future'],
   7: ['Foundation','Past influence','Present','Hidden influence','Challenge','Guidance','Likely direction']
 };
+let drawTimers = [];
 
 function readJSON(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch { return fallback; } }
 function save() { localStorage.setItem('resonate-bookmarks', JSON.stringify(state.bookmarks)); localStorage.setItem('resonate-notes', JSON.stringify(state.notes)); }
@@ -39,7 +40,8 @@ function bindGlobal() {
   const overlay=document.getElementById('menuOverlay'); if(overlay) overlay.onclick=e=>{if(e.target===overlay) closeMenu();};
 }
 function closeMenu(){ state.menuOpen=false; const el=document.getElementById('menuOverlay'); if(el){el.classList.remove('open');el.setAttribute('aria-hidden','true');} }
-function go(view){ state.view=view; state.orientation='upright'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+function clearDrawTimers(){ drawTimers.forEach(clearTimeout); drawTimers=[]; }
+function go(view){ clearDrawTimers(); state.view=view; state.orientation='upright'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
 function backButton(label='Back', target='home'){ return `<button class="back-link" data-back="${target}">${icon('back',16)} ${label}</button>`; }
 function bindBack(){ document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>go(b.dataset.back)); }
 
@@ -84,7 +86,16 @@ function renderReadingHub(){
   document.getElementById('drawCardsBtn').onclick=startDraw;
 }
 function pickUnique(n){ const pool=[...cards]; const chosen=[]; while(pool.length&&chosen.length<n){const i=Math.floor(Math.random()*pool.length);chosen.push(pool.splice(i,1)[0].id);} return chosen; }
-function startDraw(){ state.drawnCardIds=pickUnique(state.spreadSize);state.view='draw';state.drawPhase='dealing';renderDraw(); }
+function startDraw(){
+  clearDrawTimers();
+  const previous=state.drawnCardIds.join(',');
+  let next=pickUnique(state.spreadSize);
+  if(cards.length>1){
+    for(let attempt=0;attempt<4&&next.join(',')===previous;attempt++) next=pickUnique(state.spreadSize);
+  }
+  state.drawnCardIds=next;state.view='draw';state.drawPhase='dealing';renderDraw();
+  requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'smooth'}));
+}
 function readingMeaning(card,label){
   const focus=label||'this position';
   return `<article class="reading-meaning"><div class="reading-meaning-head"><span>${focus}</span><strong>${card.name}</strong></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p>${card.upright}</p><button data-reading-detail="${card.id}">Explore ${card.name} ${icon('arrow',14)}</button></article>`;
@@ -101,11 +112,11 @@ function goldenThread(chosen){
 function renderDraw(){
   const labels=spreadLabels[state.spreadSize]||spreadLabels[1];
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${state.spreadSize}-CARD READING</div><h1>Let the cards come to you.</h1><p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-board spread-${state.spreadSize}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="Card ${i+1}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i])).join('')}</div><div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2><p>${goldenThread(chosen)}</p></div></section><div class="draw-actions" id="drawActions"><button class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${state.spreadSize}-CARD READING</div><h1>Let the cards come to you.</h1><p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-board spread-${state.spreadSize}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="Card ${i+1}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i])).join('')}</div><div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2><p>${goldenThread(chosen)}</p></div></section><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation'); if(interpretation) interpretation.classList.add('waiting');
-  cardsEls.forEach((el,i)=>setTimeout(()=>{el.classList.remove('is-facedown');el.classList.add('revealed'); if(i===cardsEls.length-1){document.getElementById('drawStatus').textContent='Your spread is ready. Follow the reading below, or tap a card to go deeper.'; if(interpretation) interpretation.classList.remove('waiting');}}, reduced?0:420+i*430));
+  cardsEls.forEach((el,i)=>drawTimers.push(setTimeout(()=>{el.classList.remove('is-facedown');el.classList.add('revealed'); if(i===cardsEls.length-1){const status=document.getElementById('drawStatus');if(status)status.textContent='Your spread is ready. Follow the reading below, or tap a card to go deeper.'; if(interpretation&&document.body.contains(interpretation)) interpretation.classList.remove('waiting');}}, reduced?0:420+i*430)));
   cardsEls.forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingCard),'draw'));
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw'));
   document.getElementById('drawAgain').onclick=startDraw;
