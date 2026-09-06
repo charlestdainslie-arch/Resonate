@@ -110,7 +110,8 @@ function currentSky(card){
   try{
     if(!window.Astronomy) throw new Error('Astronomy unavailable');
     const when=new Date(state.drawnAt||Date.now());
-    const longitude=window.Astronomy.EclipticLongitude(window.Astronomy.Body[planet],when);
+    const vector=window.Astronomy.GeoVector(window.Astronomy.Body[planet],when,true);
+    const longitude=window.Astronomy.Ecliptic(vector).elon;
     const sign=zodiacSigns[Math.floor(longitude/30)%12];
     const within=longitude%30;
     const degrees=Math.floor(within);
