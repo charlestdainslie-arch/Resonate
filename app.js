@@ -3,7 +3,7 @@ const state = {
   view: 'home', cardId: null, query: '', element: 'All', orientation: 'upright',
   bookmarks: readJSON('resonate-bookmarks', []), notes: readJSON('resonate-notes', {}),
   drawnCardIds: [], spreadSize: 1, drawPhase: 'idle', menuOpen: false,
-  returnView: 'learn', drawSettled: false
+  returnView: 'learn', drawSettled: false, drawnAt: null
 };
 const elements = ['All','Air','Water','Earth','Fire'];
 const spreadLabels = {
@@ -97,12 +97,31 @@ function startDraw(){
   if(cards.length>1){
     for(let attempt=0;attempt<4&&next.join(',')===previous;attempt++) next=pickUnique(state.spreadSize);
   }
-  state.drawnCardIds=next;state.view='draw';state.drawPhase='dealing';state.drawSettled=false;renderDraw();
+  state.drawnCardIds=next;state.drawnAt=new Date().toISOString();state.view='draw';state.drawPhase='dealing';state.drawSettled=false;renderDraw();
   requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'smooth'}));
+}
+const zodiacSigns=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
+function astrologyPlanet(card){
+  return ['Sun','Moon','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto'].find(name=>card.astrology.includes(name))||null;
+}
+function currentSky(card){
+  const planet=astrologyPlanet(card);
+  if(!planet) return {planet:null,text:'No planetary placement assigned'};
+  try{
+    if(!window.Astronomy) throw new Error('Astronomy unavailable');
+    const when=new Date(state.drawnAt||Date.now());
+    const longitude=window.Astronomy.EclipticLongitude(window.Astronomy.Body[planet],when);
+    const sign=zodiacSigns[Math.floor(longitude/30)%12];
+    const within=longitude%30;
+    const degrees=Math.floor(within);
+    const minutes=Math.floor((within-degrees)*60);
+    return {planet,text:`${planet} is at ${degrees}° ${String(minutes).padStart(2,'0')}′ ${sign}`};
+  }catch{return {planet,text:`${planet} placement temporarily unavailable`};}
 }
 function readingMeaning(card,label){
   const focus=label||'this position';
-  return `<article class="reading-meaning"><div class="reading-meaning-head"><span>${focus}</span><strong>${card.name}</strong></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p>${card.upright}</p><button data-reading-detail="${card.id}">Explore ${card.name} ${icon('arrow',14)}</button></article>`;
+  const sky=currentSky(card);
+  return `<article class="reading-meaning"><div class="reading-meaning-head"><span>${focus}</span><strong>${card.name}</strong></div><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p>${card.upright}</p><button data-reading-detail="${card.id}">Explore ${card.name} ${icon('arrow',14)}</button></article>`;
 }
 function goldenThread(chosen){
   if(!chosen.length) return '';
@@ -116,7 +135,7 @@ function goldenThread(chosen){
 function renderDraw(){
   const labels=spreadLabels[state.spreadSize]||spreadLabels[1];
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${state.spreadSize}-CARD READING</div><h1>Let the cards come to you.</h1><p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-board spread-${state.spreadSize}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="Card ${i+1}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i])).join('')}</div><div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2><p>${goldenThread(chosen)}</p></div></section><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${state.spreadSize}-CARD READING</div><h1>Let the cards come to you.</h1><p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-board spread-${state.spreadSize}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="Card ${i+1}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i])).join('')}</div><div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2><p>${goldenThread(chosen)}</p></div></section><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
