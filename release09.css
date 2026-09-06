@@ -29,3 +29,6 @@
 
 /* Brighter Whisper box artwork */
 .home-paths button::before,.spread-picker button::before{opacity:.92;filter:brightness(1.34) saturate(1.12) contrast(1.03)}.home-paths button::after{background:linear-gradient(0deg,rgba(7,7,9,.84) 0%,rgba(7,7,9,.52) 38%,rgba(7,7,9,.08) 82%),linear-gradient(90deg,rgba(7,7,9,.58),transparent 64%)}.spread-picker button::after{background:linear-gradient(0deg,rgba(7,7,9,.86) 0%,rgba(7,7,9,.48) 42%,rgba(7,7,9,.06) 84%)}.home-paths button:hover::before,.home-paths button:focus-visible::before,.spread-picker button:hover::before,.spread-picker button:focus-visible::before{opacity:1;filter:brightness(1.48) saturate(1.16) contrast(1.04)}
+
+/* Reading-time astrology */
+.reading-time{margin:-10px 0 18px;color:#777169;font-size:12px}.reading-astrology{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}.reading-astrology>div{display:grid;gap:5px;padding:12px 14px;border:1px solid rgba(218,180,103,.22);border-radius:13px;background:rgba(201,169,106,.045)}.reading-astrology span{color:#81796e;font-size:9px;letter-spacing:.13em}.reading-astrology strong{color:var(--gold-bright);font-family:Georgia,serif;font-size:15px;font-weight:400;line-height:1.35}@media(max-width:520px){.reading-astrology{grid-template-columns:1fr}}
