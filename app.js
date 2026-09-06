@@ -24,6 +24,9 @@ function icon(name, size=18) {
   if (name==='menu') return `<svg ${attrs}><path d="M4 7h16M4 12h16M4 17h16"/></svg>`;
   if (name==='close') return `<svg ${attrs}><path d="m6 6 12 12M18 6 6 18"/></svg>`;
   if (name==='download') return `<svg ${attrs}><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14"/></svg>`;
+  if (name==='reading') return `<svg ${attrs}><rect x="4" y="6" width="10" height="14" rx="2"/><rect x="10" y="3" width="10" height="14" rx="2"/><path d="m13 8 2-2 2 2-2 2Z"/></svg>`;
+  if (name==='learn') return `<svg ${attrs}><path d="M4 5.5A3.5 3.5 0 0 1 7.5 2H11v17H7.5A3.5 3.5 0 0 0 4 22Z"/><path d="M20 5.5A3.5 3.5 0 0 0 16.5 2H13v17h3.5A3.5 3.5 0 0 1 20 22Z"/></svg>`;
+  if (name==='saved') return `<svg ${attrs}><path d="M6 4.8A1.8 1.8 0 0 1 7.8 3h8.4A1.8 1.8 0 0 1 18 4.8V21l-6-3.8L6 21Z"/><path d="m9.5 9 1.6 1.6L15 7"/></svg>`;
   return `<svg ${attrs}><path d="m12 3 1.1 4.4L17 9l-3.9 1.6L12 15l-1.1-4.4L7 9l3.9-1.6Z"/><path d="m18.5 14 .6 2.4 2.4.6-2.4.6-.6 2.4-.6-2.4-2.4-.6 2.4-.6-.6 2.4-.6Z"/></svg>`;
 }
 function escapeHtml(v='') { return String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
@@ -47,7 +50,7 @@ function backButton(label='Back', target='home'){ return `<button class="back-li
 function bindBack(){ document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>go(b.dataset.back)); }
 
 function renderHome() {
-  shell(`<section class="intro home-intro">${handGraphic()}<div class="eyebrow">${icon('spark',15)} RESONATE TAROT</div><h1>Read the symbol.<br>Hear what resonates.</h1><p>Learn the cards, draw a reading, then follow the meaning deeper. No dead ends.</p><div class="home-actions"><button class="draw-cta" data-go="reading">${icon('spark',16)} Get a Reading</button><button class="ghost-button" data-go="learn">Learn the Cards ${icon('arrow',16)}</button></div></section><section class="home-paths"><button data-go="reading"><span>01</span><strong>Get a Reading</strong><small>Choose a spread and draw</small></button><button data-go="learn"><span>02</span><strong>Learn the Cards</strong><small>Study meanings, symbols and connections</small></button><button data-go="saved"><span>03</span><strong>Saved</strong><small>Return to bookmarks and reflections</small></button></section><footer class="home-footer">RESONATE · a deeper way into the cards</footer>`, 'page-home');
+  shell(`<section class="intro home-intro">${handGraphic()}<div class="eyebrow">${icon('spark',15)} RESONATE TAROT</div><h1>Read the symbol.<br>Hear what resonates.</h1><p>Learn the cards, draw a reading, then follow the meaning deeper. No dead ends.</p><div class="home-actions"><button class="draw-cta" data-go="reading">${icon('spark',16)} Get a Reading</button><button class="ghost-button" data-go="learn">Learn the Cards ${icon('arrow',16)}</button></div></section><section class="home-paths"><button data-go="reading"><span>01</span><div class="path-graphic">${icon('reading',34)}</div><strong>Get a Reading</strong><small>Choose a spread and draw</small></button><button data-go="learn"><span>02</span><div class="path-graphic">${icon('learn',34)}</div><strong>Learn the Cards</strong><small>Study meanings, symbols and connections</small></button><button data-go="saved"><span>03</span><div class="path-graphic">${icon('saved',34)}</div><strong>Saved</strong><small>Return to bookmarks and reflections</small></button></section><footer class="home-footer">RESONATE · a deeper way into the cards</footer>`, 'page-home');
 }
 
 function normalise(v=''){return String(v).toLowerCase().replace(/^the\s+/,'').replace(/[^a-z0-9]/g,'');}
