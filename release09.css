@@ -32,3 +32,15 @@
 
 /* Reading-time astrology */
 .reading-time{margin:-10px 0 18px;color:#777169;font-size:12px}.reading-astrology{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:15px 0}.reading-astrology>div{display:grid;gap:5px;padding:12px 14px;border:1px solid rgba(218,180,103,.22);border-radius:13px;background:rgba(201,169,106,.045)}.reading-astrology span{color:#81796e;font-size:9px;letter-spacing:.13em}.reading-astrology strong{color:var(--gold-bright);font-family:Georgia,serif;font-size:15px;font-weight:400;line-height:1.35}@media(max-width:520px){.reading-astrology{grid-template-columns:1fr}}
+
+/* Whisper reading artwork and scannable paired interpretation layout */
+.reading-meanings{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.reading-meanings>.reading-meaning:last-child:nth-child(odd){grid-column:1/-1}
+.reading-meaning{padding:0;overflow:hidden;display:flex;flex-direction:column}
+.reading-art{min-height:178px;background-size:cover;background-position:center 38%;border-bottom:1px solid rgba(201,169,106,.2);position:relative}
+.reading-art::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(10,10,12,.74));pointer-events:none}
+.reading-meaning-body{padding:20px;display:flex;flex:1;flex-direction:column}
+.reading-meaning-body>button{margin-top:auto;align-self:flex-start}
+.detail-insight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:14px 0}
+.detail-insight-grid .info-card{margin:0;height:100%}
+@media(max-width:680px){.reading-meanings,.detail-insight-grid{grid-template-columns:1fr}.reading-meanings>.reading-meaning:last-child:nth-child(odd){grid-column:auto}.reading-art{min-height:150px}.reading-meaning-body{padding:17px}}
