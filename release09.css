@@ -26,3 +26,6 @@
 
 /* Warmer box-art visibility */
 .home-paths button::before,.spread-picker button::before{opacity:.76;filter:saturate(1.03) brightness(1.12) contrast(1.02)}.home-paths button::after,.spread-picker button::after{background:linear-gradient(90deg,rgba(8,8,10,.88) 0%,rgba(8,8,10,.52) 50%,rgba(8,8,10,.16) 100%),linear-gradient(0deg,rgba(8,8,10,.72),transparent 58%)}.home-paths button:nth-child(1)::before,.home-paths button:nth-child(2)::before,.home-paths button:nth-child(3)::before{background-position:68% center}.spread-picker button::after{background:linear-gradient(0deg,rgba(8,8,10,.8) 0%,rgba(8,8,10,.28) 72%,rgba(8,8,10,.1) 100%)}
+
+/* Brighter Whisper box artwork */
+.home-paths button::before,.spread-picker button::before{opacity:.92;filter:brightness(1.34) saturate(1.12) contrast(1.03)}.home-paths button::after{background:linear-gradient(0deg,rgba(7,7,9,.84) 0%,rgba(7,7,9,.52) 38%,rgba(7,7,9,.08) 82%),linear-gradient(90deg,rgba(7,7,9,.58),transparent 64%)}.spread-picker button::after{background:linear-gradient(0deg,rgba(7,7,9,.86) 0%,rgba(7,7,9,.48) 42%,rgba(7,7,9,.06) 84%)}.home-paths button:hover::before,.home-paths button:focus-visible::before,.spread-picker button:hover::before,.spread-picker button:focus-visible::before{opacity:1;filter:brightness(1.48) saturate(1.16) contrast(1.04)}
