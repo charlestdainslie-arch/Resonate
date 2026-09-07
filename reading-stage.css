@@ -1,0 +1,47 @@
+/* RESONATE 0.9.1 — dedicated reading table */
+.reading-table{min-height:calc(100vh - 92px);display:flex;flex-direction:column;justify-content:center;gap:18px;padding:18px 0 28px}
+.stage-heading{text-align:center;max-width:720px;margin:0 auto}
+.stage-heading h1{margin:.3rem 0 .45rem}
+.stage-heading p{margin:0;color:var(--muted,#aaa)}
+.stage-board{width:100%;margin:2px auto 4px;align-items:center}
+.stage-position{min-width:0}
+.stage-card{position:relative;width:min(132px,22vw);aspect-ratio:2/3;margin:0 auto;border-radius:10px;perspective:900px;filter:drop-shadow(0 12px 20px rgba(0,0,0,.35));transform-origin:center;will-change:transform,opacity}
+.stage-card .reading-card-back{position:absolute;inset:0;border-radius:10px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.stage-actions{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:4px}
+.stage-actions button{min-width:170px}
+.shuffle-button:disabled{opacity:.72;cursor:wait}
+
+/* A restrained poker-table shuffle: alternate cards split left/right, cross through centre, then settle. */
+.stage-board.is-shuffling .stage-card{animation:tarot-shuffle-left .86s cubic-bezier(.22,.75,.25,1)}
+.stage-board.is-shuffling .stage-position:nth-child(even) .stage-card{animation-name:tarot-shuffle-right}
+.stage-board.is-shuffling .stage-position:nth-child(3n) .stage-card{animation-delay:.055s}
+.stage-board.is-shuffling .stage-position:nth-child(4n) .stage-card{animation-delay:.095s}
+@keyframes tarot-shuffle-left{
+  0%{transform:translate3d(0,0,0) rotate(0)}
+  24%{transform:translate3d(-46px,-12px,0) rotate(-7deg)}
+  48%{transform:translate3d(28px,-22px,0) rotate(5deg) scale(1.035)}
+  72%{transform:translate3d(-12px,-5px,0) rotate(-2deg)}
+  100%{transform:translate3d(0,0,0) rotate(0)}
+}
+@keyframes tarot-shuffle-right{
+  0%{transform:translate3d(0,0,0) rotate(0)}
+  24%{transform:translate3d(46px,-12px,0) rotate(7deg)}
+  48%{transform:translate3d(-28px,-22px,0) rotate(-5deg) scale(1.035)}
+  72%{transform:translate3d(12px,-5px,0) rotate(2deg)}
+  100%{transform:translate3d(0,0,0) rotate(0)}
+}
+@media (max-width:700px){
+  .reading-table{min-height:calc(100svh - 78px);justify-content:flex-start;padding-top:10px;gap:14px}
+  .stage-card{width:min(104px,25vw)}
+  .stage-actions{display:grid;grid-template-columns:1fr 1fr;width:100%;gap:9px}
+  .stage-actions button{min-width:0;width:100%}
+}
+@media (max-height:760px) and (min-width:701px){
+  .reading-table{justify-content:flex-start;gap:10px;padding-top:8px}
+  .stage-heading p{font-size:.92rem}
+  .stage-card{width:min(104px,14vh)}
+  .stage-actions{margin-top:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .stage-board.is-shuffling .stage-card{animation:none}
+}
