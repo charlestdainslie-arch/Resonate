@@ -19,11 +19,13 @@ function faceDownSlot(label,index){
 }
 
 renderReadingHub = function(){
-  shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>Select a spread to enter the reading table. Your cards will be waiting face down.</p></section><section class="spread-picker"><button data-spread="1"><span>1 CARD</span><strong>Present</strong><small>A clear single focus</small></button><button data-spread="3"><span>3 CARDS</span><strong>Past · Present · Future</strong><small>A simple line through time</small></button><button data-spread="7"><span>7 CARDS</span><strong>V Reading</strong><small>A fuller RESONATE reading</small></button></section><div class="reading-note">Choose a spread to continue.</div>`, 'reading-page');
+  shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>Select a spread to enter the reading table. Your cards will be waiting face down.</p></section><section class="spread-picker">${Object.entries(spreads).map(([id,spread])=>`<button data-spread="${id}"><span>${spread.positions.length} CARD${spread.positions.length===1?'':'S'}</span><strong>${spread.name}</strong><small>${spread.description}</small></button>`).join('')}</section><div class="reading-note">Choose a spread to continue.</div>`, 'reading-page');
   bindBack();
   document.querySelectorAll('[data-spread]').forEach(button=>{
     button.onclick=()=>{
-      state.spreadSize=Number(button.dataset.spread);
+      state.spreadId=button.dataset.spread;
+      state.spreadSize=currentSpread().positions.length;
+      state.readingIndex=null;
       state.shuffledDeck=[];
       state.shuffleCount=0;
       state.view='stage';
@@ -34,8 +36,8 @@ renderReadingHub = function(){
 };
 
 function renderReadingStage(){
-  const labels=spreadLabels[state.spreadSize]||spreadLabels[1];
-  shell(`${backButton('Back to spreads','reading')}<section class="reading-table"><div class="stage-heading"><div class="eyebrow">${icon('spark',15)} ${state.spreadSize}-CARD READING</div><h1>Hold your question.</h1><p id="shuffleStatus">Shuffle if it feels right, then draw when you are ready.</p></div><div class="spread-board stage-board spread-${state.spreadSize}">${labels.map(faceDownSlot).join('')}</div><div class="stage-actions"><button type="button" class="ghost-button shuffle-button" id="shuffleCardsBtn">Shuffle Cards</button><button type="button" class="draw-cta" id="stageDrawBtn">${icon('spark',16)} Draw Cards</button></div></section>`, 'draw-page reading-stage-page');
+  const labels=positionLabels();
+  shell(`${backButton('Back to spreads','reading')}<section class="reading-table"><div class="stage-heading"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Hold your question.</h1><p id="shuffleStatus">Shuffle if it feels right, then draw when you are ready.</p></div>${sampleDeckNotice()}<div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board stage-board spread-${state.spreadSize} layout-${state.spreadId}">${labels.map(faceDownSlot).join('')}</div></div><div class="stage-actions"><button type="button" class="ghost-button shuffle-button" id="shuffleCardsBtn">Shuffle Cards</button><button type="button" class="draw-cta" id="stageDrawBtn">${icon('spark',16)} Draw Cards</button></div></section>`, 'draw-page reading-stage-page');
   bindBack();
   document.getElementById('shuffleCardsBtn').onclick=shuffleCards;
   document.getElementById('stageDrawBtn').onclick=startDraw;
@@ -52,15 +54,16 @@ function shuffleCards(){
   void board.offsetWidth;
   board.classList.add('is-shuffling');
   if(status) status.textContent='Shuffling the deck…';
-  window.setTimeout(()=>{
+  drawTimers.push(window.setTimeout(()=>{
     board.classList.remove('is-shuffling');
     button.disabled=false;
     if(status) status.textContent=`Deck shuffled${state.shuffleCount>1?` ${state.shuffleCount} times`:''}. Draw when you are ready.`;
-  },900);
+  },900));
 }
 
 startDraw = function(){
   clearDrawTimers();
+  state.spreadSize=currentSpread().positions.length;
   if(!state.shuffledDeck.length) prepareDeck();
   const previous=state.drawnCardIds.join(',');
   let next=state.shuffledDeck.slice(0,state.spreadSize);
@@ -68,6 +71,12 @@ startDraw = function(){
     prepareDeck();
     next=state.shuffledDeck.slice(0,state.spreadSize);
   }
+  // Fill every test position from shuffled passes through the existing sample deck.
+  while(next.length<state.spreadSize && cards.length){
+    prepareDeck();
+    next.push(...state.shuffledDeck.slice(0,state.spreadSize-next.length));
+  }
+  state.readingIndex=null;
   state.drawnCardIds=next;
   state.drawnAt=new Date().toISOString();
   state.view='draw';

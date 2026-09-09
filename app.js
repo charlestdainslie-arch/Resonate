@@ -6,11 +6,76 @@ const state = {
   returnView: 'learn', drawSettled: false, drawnAt: null
 };
 const elements = ['All','Air','Water','Earth','Fire'];
-const spreadLabels = {
-  1: ['Present'],
-  3: ['Past','Present','Future'],
-  7: ['Foundation','Past influence','Present','Hidden influence','Challenge','Guidance','Likely direction']
+const spreads = {
+  guidance: {name:'One-card Guidance',description:'A clear focus and invitation',positions:[
+    ['Guidance','the guidance you can put into practice today']
+  ]},
+  three: {name:'Past · Present · Future',description:'A simple line through time',positions:[
+    ['Past','the experiences and patterns that brought you here'],
+    ['Present','what is active now and how you can respond'],
+    ['Future','a possible direction if current patterns continue, rather than a fixed prediction']
+  ]},
+  seven: {name:'V Reading',description:'A fuller RESONATE reading',positions:[
+    ['Foundation','the underlying basis of your question'],
+    ['Past influence','a past influence still shaping your choices'],
+    ['Present','what needs your attention now'],
+    ['Hidden influence','an overlooked feeling, assumption or influence'],
+    ['Challenge','the obstacle that invites a different response'],
+    ['Guidance','a constructive approach you can choose'],
+    ['Likely direction','the direction your current choices may lead, with room for change']
+  ]},
+  relationship: {name:'Relationship',description:'Two perspectives and the connection between them',positions:[
+    ['You','your own feelings, needs and contribution to the relationship'],
+    ['The other person','your perception of the other person; use this for reflection, not as proof of their private thoughts'],
+    ['The connection','the dynamic created between you'],
+    ['Relationship challenge','a tension or unmet need to explore together'],
+    ['Shared guidance','a constructive next step for mutual understanding']
+  ]},
+  celtic: {name:'Celtic Cross',description:'Ten perspectives on a deeper question',positions:[
+    ['Present situation','the central situation as you experience it now'],
+    ['Crossing challenge','the tension or obstacle crossing that situation'],
+    ['Foundation','the deeper roots beneath the situation'],
+    ['Recent past','an influence receding into the past'],
+    ['Conscious focus','your hopes, intentions or conscious priorities'],
+    ['Near future','a possible next development, not a fixed prediction'],
+    ['Your approach','the stance you bring and the choices within your control'],
+    ['Surrounding influences','the environment and outside influences around you'],
+    ['Hopes and fears','the desires and worries colouring your view'],
+    ['Potential outcome','a possible outcome if the present pattern continues, with room for your choices']
+  ]}
 };
+state.spreadId = 'guidance';
+state.readingIndex = null;
+function currentSpread(){ return spreads[state.spreadId] || spreads.guidance; }
+function positionLabels(){ return currentSpread().positions.map(position=>position[0]); }
+function positionContext(card,index,upright=true){
+  const position=currentSpread().positions[index];
+  if(!position) return '';
+  const themes={
+    0:['a willingness to begin before every answer is known','hesitation or an impulsive leap without enough preparation'],
+    1:['focused use of the skills and resources already available','scattered effort, unused ability or attempts to control the result'],
+    2:['patient listening to intuition while allowing missing information to emerge','inner noise or assumptions that need checking against what is actually known'],
+    3:['steady care that gives a relationship, project or part of yourself room to grow','overgiving or depletion that calls for rest and renewed care'],
+    4:['clear boundaries and dependable structure that protect what matters','rigid control or unreliable boundaries that need to become more supportive']
+  };
+  const theme=themes[card.id]?.[upright?0:1]||(upright?card.uprightKeywords:card.reversedKeywords).join(', ').toLowerCase();
+  const role=position[0];
+  let lens;
+  if(/Past|past/.test(role)) lens=`This may describe how ${theme} shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.`;
+  else if(/Future|future|direction|outcome/.test(role)) lens=`This suggests a possible development involving ${theme}. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.`;
+  else if(/challenge|Challenge/.test(role)) lens=`The tension to explore is ${theme}. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.`;
+  else if(/Guidance|guidance|approach/.test(role)) lens=`Your next step is to work consciously with ${theme}. Choose one practical response you can try, then notice whether it helps.`;
+  else if(role==='The other person') lens=`Consider whether your perception of the other person is coloured by ${theme}. Check that impression through conversation rather than treating the card as access to their thoughts.`;
+  else if(role==='The connection') lens=`Between you, ${theme} may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.`;
+  else lens=`Here, ${theme} is a lens for ${position[1]}. Identify one concrete example in your situation and consider how it shapes your response.`;
+  return `Position: ${role} — ${card.name}${upright?'':' reversed'}. ${lens}`;
+}
+function readingTitle(){ return currentSpread().name; }
+function sampleDeckNotice(){
+  return currentSpread().positions.length>cards.length
+    ? `<p class="reading-note sample-deck-note">Sample-deck reading: this test version has ${cards.length} cards, so cards repeat to fill all ${currentSpread().positions.length} positions.</p>` : '';
+}
+
 let drawTimers = [];
 
 function readJSON(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch { return fallback; } }
@@ -34,7 +99,7 @@ function cardImage(card) { return `https://commons.wikimedia.org/wiki/Special:Re
 function imageFallback(img){ img.hidden=true; const wrap=img.parentElement; if(wrap){wrap.classList.add('image-unavailable');wrap.setAttribute('aria-label',`${img.alt} image unavailable`);} }
 function handGraphic() { return `<div class="hand-hero"><img src="assets/mystic-hand-whisper.png" alt="A mystical jeweled hand rising through smoke and golden celestial light"></div>`; }
 function brandHeader() { return `<header class="brand-header"><button class="menu-button" id="menuBtn" aria-label="Main menu">${icon('menu',20)}</button><div class="brand-mark">R</div><div><div class="brand-name">RESONATE</div><div class="brand-sub">TAROT EXPLORER</div></div><button class="brand-orbit" id="centerBtn" aria-label="Re-centre this page" title="Re-centre"><span></span></button></header>`; }
-function menuOverlay() { return `<div class="menu-overlay ${state.menuOpen?'open':''}" id="menuOverlay" aria-hidden="${state.menuOpen?'false':'true'}"><div class="menu-panel"><div class="menu-head"><div><span>RESONATE</span><small>Main Menu</small></div><button id="closeMenu" aria-label="Close menu">${icon('close',22)}</button></div><nav><button data-go="home"><strong>Home</strong><span>Start here</span></button><button data-go="reading"><strong>Tarot Reading</strong><span>Draw 1, 3 or 7 cards</span></button><button data-go="learn"><strong>Learn the Cards</strong><span>Explore meanings and symbolism</span></button><button data-go="saved"><strong>Saved</strong><span>Bookmarks and reflections</span></button></nav><p>Every path has a clear way home.</p></div></div>`; }
+function menuOverlay() { return `<div class="menu-overlay ${state.menuOpen?'open':''}" id="menuOverlay" aria-hidden="${state.menuOpen?'false':'true'}"><div class="menu-panel"><div class="menu-head"><div><span>RESONATE</span><small>Main Menu</small></div><button id="closeMenu" aria-label="Close menu">${icon('close',22)}</button></div><nav><button data-go="home"><strong>Home</strong><span>Start here</span></button><button data-go="reading"><strong>Tarot Reading</strong><span>Choose a spread</span></button><button data-go="learn"><strong>Learn the Cards</strong><span>Explore meanings and symbolism</span></button><button data-go="saved"><strong>Saved</strong><span>Bookmarks and reflections</span></button></nav><p>Every path has a clear way home.</p></div></div>`; }
 function shell(content, cls='') { app.innerHTML = `<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="page ${cls}">${brandHeader()}${content}</div>${menuOverlay()}`; bindGlobal(); }
 function bindGlobal() {
   const menuBtn=document.getElementById('menuBtn'); if(menuBtn) menuBtn.onclick=()=>{state.menuOpen=true; document.getElementById('menuOverlay').classList.add('open');document.getElementById('menuOverlay').setAttribute('aria-hidden','false');};
@@ -80,7 +145,7 @@ function renderLearn() {
   const reset=document.getElementById('resetFilters'); if(reset) reset.onclick=()=>{state.query='';state.element='All';renderLearn();};
 }
 function cardTile(card) { return `<button class="tarot-card element-${card.element.toLowerCase()}" data-card="${card.id}"><div class="card-image-wrap"><img src="${cardImage(card)}" alt="${card.name}" loading="lazy" referrerpolicy="no-referrer" onerror="imageFallback(this)"></div><div class="card-top"><div class="roman-badge">${card.roman}</div><div class="element-pill">${card.element}</div></div><div class="tile-body"><h2>${card.roman} · ${card.name}</h2><p class="subtitle">${card.subtitle}</p><div class="keyword-row">${card.uprightKeywords.slice(0,2).map(k=>`<span>${k}</span>`).join('')}</div></div><div class="tile-foot"><span>${icon('spark',14)} ${card.astrology}</span>${icon('arrow',17)}</div></button>`; }
-function openCard(id, returnView='learn'){state.view='detail';state.cardId=id;state.returnView=returnView;state.orientation='upright';renderDetail();window.scrollTo(0,0);}
+function openCard(id, returnView='learn', positionIndex=null){clearDrawTimers();state.readingIndex=returnView==='draw'?positionIndex:null;if(returnView==='draw'){state.drawSettled=true;state.drawPhase='settled';}state.view='detail';state.cardId=id;state.returnView=returnView;state.orientation='upright';renderDetail();window.scrollTo(0,0);}
 
 function renderReadingHub(){
   shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>The cards stay face down until you draw. Then each card comes forward, turns, and settles into its place.</p></section><section class="spread-picker"><button data-spread="1"><span>1 CARD</span><strong>Present</strong><small>A clear single focus</small></button><button data-spread="3"><span>3 CARDS</span><strong>Past · Present · Future</strong><small>A simple line through time</small></button><button data-spread="7"><span>7 CARDS</span><strong>V Reading</strong><small>A fuller RESONATE reading</small></button></section><div class="reading-note">Choose a spread, hold your question, then press <strong>Draw Cards</strong>.</div><button class="draw-cta reading-draw" id="drawCardsBtn">${icon('spark',16)} Draw Cards</button>`, 'reading-page');
@@ -123,24 +188,24 @@ function whisperCardArt(card){
   const names=['fool','magician','high-priestess','empress','emperor'];
   return `assets/whisper-${names[card.id]||'fool'}.jpg`;
 }
-function readingMeaning(card,label){
+function readingMeaning(card,label,index){
   const focus=label||'this position';
   const sky=currentSky(card);
-  return `<article class="reading-meaning"><div class="reading-art" style="background-image:url('${whisperCardArt(card)}')" role="img" aria-label="Whisper-style artwork inspired by ${card.name}"></div><div class="reading-meaning-body"><div class="reading-meaning-head"><span>${focus}</span><strong>${card.name}</strong></div><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p>${card.upright}</p><button data-reading-detail="${card.id}">Explore ${card.name} ${icon('arrow',14)}</button></div></article>`;
+  return `<article class="reading-meaning"><div class="reading-art" style="background-image:url('${whisperCardArt(card)}')" role="img" aria-label="Whisper-style artwork inspired by ${card.name}"></div><div class="reading-meaning-body"><div class="reading-meaning-head"><span>${focus}</span><strong>${card.name}</strong></div><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p class="position-context">${positionContext(card,index)}</p><p>${card.upright}</p><button data-reading-detail="${card.id}" data-index="${index}">Explore ${card.name} ${icon('arrow',14)}</button></div></article>`;
 }
 function goldenThread(chosen){
   if(!chosen.length) return '';
   const themes=chosen.flatMap(c=>c.uprightKeywords||[]).filter(Boolean);
   const unique=[...new Set(themes)].slice(0,5);
-  const opening=chosen.length===1?`${chosen[0].name} asks you to stay with what is present rather than rush past it.`:`Across these cards, the movement is from ${chosen[0].name} toward ${chosen[chosen.length-1].name}.`;
+  const opening=chosen.length===1?`${chosen[0].name} asks you to stay with what is present rather than rush past it.`:`In your ${readingTitle()} spread, ${chosen[0].name} opens the reading as ${positionLabels()[0]}, and ${chosen[chosen.length-1].name} closes it as ${positionLabels()[chosen.length-1]}.`;
   const middle=unique.length?`The strongest shared themes are ${unique.join(', ')}.`:'';
   const close=`Read the spread as one conversation: notice what repeats, what changes position, and where your own reaction becomes strongest. That is often where the reading is pointing.`;
   return `${opening} ${middle} ${close}`;
 }
 function renderDraw(){
-  const labels=spreadLabels[state.spreadSize]||spreadLabels[1];
+  const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${state.spreadSize}-CARD READING</div><h1>Let the cards come to you.</h1><p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-board spread-${state.spreadSize}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="Card ${i+1}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i])).join('')}</div><div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2><p>${goldenThread(chosen)}</p></div></section><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div><div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2><p>${goldenThread(chosen)}</p></div></section><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
@@ -151,28 +216,38 @@ function renderDraw(){
     if(interpretation) interpretation.classList.add('waiting');
     cardsEls.forEach((el,i)=>drawTimers.push(setTimeout(()=>{el.classList.remove('is-facedown');el.classList.add('revealed'); if(i===cardsEls.length-1){state.drawSettled=true;state.drawPhase='settled';const status=document.getElementById('drawStatus');if(status)status.textContent='Your spread is ready. Follow the reading below, or tap a card to go deeper.'; if(interpretation&&document.body.contains(interpretation)) interpretation.classList.remove('waiting');}}, reduced?0:420+i*430)));
   }
-  cardsEls.forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingCard),'draw'));
-  document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw'));
+  cardsEls.forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingCard),'draw',Number(el.dataset.index)));
+  document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
   document.getElementById('drawAgain').onclick=startDraw;
   document.getElementById('downloadReading').onclick=downloadReading;
 }
 function downloadReading(){
-  const labels=spreadLabels[state.spreadSize]||[];
+  const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(x=>x.id===id)).filter(Boolean);
-  const lines=['RESONATE Tarot Reading','',...chosen.map((c,i)=>`${i+1}. ${labels[i]||'Position'} — ${c.name}\n   ${c.upright}`),'','THE GOLDEN THREAD',goldenThread(chosen),'','For reflection only.'];
+  const lines=['RESONATE Tarot Reading',readingTitle(),currentSpread().positions.length>cards.length?'Sample deck: cards repeat to fill every position.':'','',...chosen.map((c,i)=>`${i+1}. ${labels[i]||'Position'} — ${c.name}\n   ${positionContext(c,i)}\n   ${c.upright}`),'','THE GOLDEN THREAD',goldenThread(chosen),'','For reflection only.'];
   const blob=new Blob([lines.join('\n')],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob);a.download='resonate-tarot-reading.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);
 }
 
 function infoCard(label,title,body) { return `<section class="info-card"><div class="eyebrow">${label}</div><h2>${title}</h2>${body}</section>`; }
 function renderDetail() {
-  const card=cards.find(c=>c.id===state.cardId)||cards[0]; const upright=state.orientation==='upright'; const keywords=upright?card.uprightKeywords:card.reversedKeywords; const meaning=upright?card.upright:card.reversed; const bookmarked=state.bookmarks.includes(card.id); const fromReading=state.returnView==='draw'&&state.drawnAt; const sky=currentSky(card,fromReading?state.drawnAt:Date.now()); const skyLabel=fromReading?'SKY AT THIS READING':'CURRENT SKY';
-  shell(`<div class="detail-topbar"><button class="icon-button" id="backBtn" aria-label="Return">${icon('back')}</button><div class="detail-brand">RESONATE <span>·</span> ${card.roman}</div><button class="icon-button ${bookmarked?'bookmarked':''}" id="bookmarkBtn" aria-label="Bookmark ${card.name}">${icon('bookmark')}</button></div><section class="detail-hero"><div class="detail-card-image"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"></div><div class="detail-title"><div class="eyebrow">MAJOR ARCANA · ${card.id}</div><h1>${card.name}</h1><p>${card.subtitle}</p><div class="correspondence-row"><span>${card.astrology}</span><span>Number ${card.id}</span><span>${card.element}</span></div></div></section><section class="content-grid three top-correspondences">${infoCard('ASTROLOGY',card.astrology,`<p>${card.astrology} shapes the card's symbolic rhythm and mode of expression.</p>`)}${infoCard('NUMBER',String(card.id),`<p>${card.numerology}</p>`)}${infoCard('ELEMENT',card.element,`<p>${card.element} describes the elemental field through which this card most naturally operates.</p>`)}</section><section class="reading-astrology detail-astrology" aria-label="Card astrology and planetary position"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>${skyLabel}</span><strong>${sky.text}</strong></div></section><section class="meaning-panel"><div class="orientation-tabs"><button id="uprightTab" class="${upright?'active':''}">UPRIGHT MEANING</button><button id="reversedTab" class="${!upright?'active':''}">REVERSED MEANING</button></div><div class="keyword-row large">${keywords.map(k=>`<span>${k}</span>`).join('')}</div><p class="meaning-copy">${meaning}</p></section><section class="detail-insight-grid">${infoCard('VISUAL SYMBOLISM','What the image is saying',`<p>${card.symbolism}</p>`)}${infoCard('SPIRITUAL INTERPRETATION','The deeper invitation',`<p>${card.spiritual}</p>`)}</section><section class="connections-card"><div class="eyebrow">${icon('spark',14)} CONNECTIONS</div><h2>How this card changes in relationship</h2><div class="connection-list">${card.connections.map(c=>`<div class="connection"><div><span>WITH</span><strong>${c.card}</strong></div><section><h3>${c.title}</h3><p>${c.meaning}</p></section></div>`).join('')}</div></section><section class="reflection-card"><div class="eyebrow">YOUR REFLECTION</div><h2>What resonates?</h2><p class="journal-prompt">${card.journalPrompt}</p><textarea id="noteField" placeholder="Write without editing yourself…">${escapeHtml(state.notes[card.id]||'')}</textarea><div class="reflection-note">Saved privately in this browser</div></section><section class="golden-thread">${infoCard('THE GOLDEN THREAD · JUNGIAN / PSYCHOLOGICAL','Jungian Arc',`<p>${card.psychological}</p><small>This is the final interpretive lens: not a replacement for the traditional card meaning, but the thread connecting symbol, psyche and lived experience.</small>`)}</section><nav class="deck-nav"><button id="prevBtn">${icon('back')} Previous card</button><div><span>${card.id+1}</span> / ${cards.length}</div><button id="nextBtn">Next card ${icon('arrow')}</button></nav>`, 'detail-page');
+  const card=cards.find(c=>c.id===state.cardId)||cards[0]; const upright=state.orientation==='upright'; const keywords=upright?card.uprightKeywords:card.reversedKeywords; const meaning=upright?card.upright:card.reversed; const bookmarked=state.bookmarks.includes(card.id); const fromReading=state.returnView==='draw'&&Number.isInteger(state.readingIndex)&&state.drawnCardIds[state.readingIndex]===card.id; const role=fromReading?positionLabels()[state.readingIndex]:null; const sky=currentSky(card,fromReading?state.drawnAt:Date.now()); const skyLabel=fromReading?'SKY AT THIS READING':'CURRENT SKY';
+  shell(`<div class="detail-topbar"><button class="icon-button" id="backBtn" aria-label="Return">${icon('back')}</button><div class="detail-brand">RESONATE <span>·</span> ${card.roman}</div><button class="icon-button ${bookmarked?'bookmarked':''}" id="bookmarkBtn" aria-label="Bookmark ${card.name}">${icon('bookmark')}</button></div><section class="detail-hero"><div class="detail-card-image"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"></div><div class="detail-title"><div class="eyebrow">MAJOR ARCANA · ${card.id}</div>${fromReading?`<div class="eyebrow reading-role">${readingTitle()} · Position ${state.readingIndex+1} of ${state.drawnCardIds.length}</div>`:''}<h1>${role?`${role} — `:''}${card.name}</h1><p>${card.subtitle}</p><div class="correspondence-row"><span>${card.astrology}</span><span>Number ${card.id}</span><span>${card.element}</span></div></div></section><section class="content-grid three top-correspondences">${infoCard('ASTROLOGY',card.astrology,`<p>${card.astrology} shapes the card's symbolic rhythm and mode of expression.</p>`)}${infoCard('NUMBER',String(card.id),`<p>${card.numerology}</p>`)}${infoCard('ELEMENT',card.element,`<p>${card.element} describes the elemental field through which this card most naturally operates.</p>`)}</section><section class="reading-astrology detail-astrology" aria-label="Card astrology and planetary position"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>${skyLabel}</span><strong>${sky.text}</strong></div></section><section class="meaning-panel"><div class="orientation-tabs"><button id="uprightTab" class="${upright?'active':''}">UPRIGHT MEANING</button><button id="reversedTab" class="${!upright?'active':''}">REVERSED MEANING</button></div><div class="keyword-row large">${keywords.map(k=>`<span>${k}</span>`).join('')}</div>${fromReading?`<h2 class="reading-role">${role}</h2><p class="position-context">${positionContext(card,state.readingIndex,upright)}</p>`:''}<p class="meaning-copy">${meaning}</p></section><section class="detail-insight-grid">${infoCard('VISUAL SYMBOLISM','What the image is saying',`<p>${card.symbolism}</p>`)}${infoCard('SPIRITUAL INTERPRETATION','The deeper invitation',`<p>${card.spiritual}</p>`)}</section><section class="connections-card"><div class="eyebrow">${icon('spark',14)} CONNECTIONS</div><h2>How this card changes in relationship</h2><div class="connection-list">${card.connections.map(c=>`<div class="connection"><div><span>WITH</span><strong>${c.card}</strong></div><section><h3>${c.title}</h3><p>${c.meaning}</p></section></div>`).join('')}</div></section><section class="reflection-card"><div class="eyebrow">YOUR REFLECTION</div><h2>What resonates?</h2><p class="journal-prompt">${card.journalPrompt}</p><textarea id="noteField" placeholder="Write without editing yourself…">${escapeHtml(state.notes[card.id]||'')}</textarea><div class="reflection-note">Saved privately in this browser</div></section><section class="golden-thread">${infoCard('THE GOLDEN THREAD · JUNGIAN / PSYCHOLOGICAL','Jungian Arc',`<p>${card.psychological}</p><small>This is the final interpretive lens: not a replacement for the traditional card meaning, but the thread connecting symbol, psyche and lived experience.</small>`)}</section><nav class="deck-nav"><button id="prevBtn">${icon('back')} Previous card</button><div><span>${fromReading?state.readingIndex+1:card.id+1}</span> / ${fromReading?state.drawnCardIds.length:cards.length}</div><button id="nextBtn">Next card ${icon('arrow')}</button></nav>`, 'detail-page');
+  if(fromReading){
+    document.getElementById('backBtn').setAttribute('aria-label','Return to reading');
+    if(state.readingIndex===0) document.getElementById('prevBtn').innerHTML=icon('back')+' Return to reading';
+    if(state.readingIndex===state.drawnCardIds.length-1) document.getElementById('nextBtn').innerHTML='Return to reading '+icon('arrow');
+  }
   document.getElementById('backBtn').onclick=()=>go(state.returnView||'learn');
   document.getElementById('bookmarkBtn').onclick=()=>{state.bookmarks=bookmarked?state.bookmarks.filter(id=>id!==card.id):[...state.bookmarks,card.id];save();renderDetail();};
   document.getElementById('uprightTab').onclick=()=>{state.orientation='upright';renderDetail();}; document.getElementById('reversedTab').onclick=()=>{state.orientation='reversed';renderDetail();};
   document.getElementById('noteField').oninput=e=>{state.notes[card.id]=e.target.value;save();}; document.getElementById('prevBtn').onclick=()=>navigate(card,-1);document.getElementById('nextBtn').onclick=()=>navigate(card,1);
 }
-function navigate(card,delta){const i=cards.findIndex(c=>c.id===card.id);const n=(i+delta+cards.length)%cards.length;state.cardId=cards[n].id;state.orientation='upright';renderDetail();window.scrollTo({top:0,behavior:'smooth'});}
+function navigate(card,delta){
+  if(state.returnView==='draw'&&Number.isInteger(state.readingIndex)){
+    const next=state.readingIndex+delta;
+    if(next<0||next>=state.drawnCardIds.length){go('draw');return;}
+    openCard(state.drawnCardIds[next],'draw',next);return;
+  }const i=cards.findIndex(c=>c.id===card.id);const n=(i+delta+cards.length)%cards.length;state.cardId=cards[n].id;state.orientation='upright';renderDetail();window.scrollTo({top:0,behavior:'smooth'});}
 function renderSaved(){
   const saved=cards.filter(c=>state.bookmarks.includes(c.id)||state.notes[c.id]);
   shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">SAVED</div><h1>Your bookmarks & reflections.</h1><p>Stored privately in this browser.</p></section>${saved.length?`<section class="card-grid">${saved.map(cardTile).join('')}</section>`:`<section class="empty"><h3>Nothing saved yet</h3><p>Bookmark a card or write a reflection and it will appear here.</p><button class="gold-button" data-go="learn">Learn the Cards</button></section>`}`, 'page-home');
