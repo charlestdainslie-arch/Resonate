@@ -25,3 +25,8 @@ Passed in the local app using the actual UI:
 ## Existing limitation
 
 The test deck contains five sample cards. Seven- and ten-position test readings fill positions using additional shuffled passes, with a visible sample-repeat notice before and after drawing. This is a test experience, not a complete 78-card deck.
+
+## Card-frame follow-up — 10 September 2026
+
+The image and caption now use separate grid rows inside the card frame. The caption reserves two lines and can grow for longer names; the complete image scales into the remaining space without cropping. Checked all five sample cards in all 26 spread positions (130 combinations) at widths 390, 700, 768, 1024 and 1280: no caption/image overlap or frame overflow. Also checked all five detail images and study image frames. Visually confirmed The High Priestess's printed bottom title, upper numeral and wrapped caption in the seven-card reading.
+
