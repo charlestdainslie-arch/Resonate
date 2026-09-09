@@ -47,6 +47,9 @@
 }
 
 /* Spread roles remain readable on both the face-down table and drawn cards. */
+/* Keep the complete printed card, including its top numeral, inside its frame. */
+.reading-card-front img,.detail-card-image img,.card-image-wrap img{object-fit:contain;object-position:center;box-sizing:border-box;padding:4px}
+.reading-card-front img{flex-shrink:0}
 .spread-scroll{max-width:100%;overflow-x:auto;padding:8px 0 20px}
 .spread-scroll:focus-visible{outline:1px solid var(--gold,#c9a96a);outline-offset:3px}
 .slot-label{display:block;min-height:2.8em;line-height:1.35;color:var(--gold,#c9a96a);font-size:13px;font-weight:600;letter-spacing:.02em;text-align:center;white-space:normal;overflow-wrap:anywhere}
