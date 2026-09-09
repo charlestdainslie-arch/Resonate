@@ -1,0 +1,9 @@
+.reading-journal label,.journal-entry label{display:block;font-size:16px;line-height:1.5;margin:18px 0 8px;color:#eee6da}
+.journal-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.journal-time{color:var(--gold,#c9a96a);font-size:16px;line-height:1.6}
+.journal-updated,.journal-card-list small{color:#aaa39a;font-size:14px;line-height:1.6}
+.journal-entry{margin:0 0 24px}.journal-entries{min-width:0}
+.journal-card-list{padding-left:24px;line-height:1.7}.journal-card-list li{padding:6px 0}
+.journal-reflection{white-space:pre-wrap;overflow-wrap:anywhere;margin:6px 0}
+.journal-entry textarea,.reading-journal textarea{min-height:130px;width:100%;box-sizing:border-box;font-size:16px}
+.journal-entry h2{font-family:Georgia,serif;font-weight:400}.journal-entry .gold-button{margin-top:12px}
