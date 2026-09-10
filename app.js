@@ -16,32 +16,32 @@ const spreads = {
     ['Future','a possible direction if current patterns continue, rather than a fixed prediction']
   ]},
   seven: {name:'Seven-card V Reading',description:'A general reading or answer to a question',positions:[
-    ['Past · 18–24 months','the client’s experiences and influences from approximately the previous 18 to 24 months'],
-    ['Present time','the client’s present circumstances, including the period immediately surrounding today'],
-    ['Near future · 3 months','what may develop over approximately the next three months if the present course continues'],
+    ['Past · 18–24 Months','the client’s experiences and influences from approximately the previous 18 to 24 months'],
+    ['Present Time','the client’s present circumstances, including the period immediately surrounding today'],
+    ['Near Future · 3 Months','what may develop over approximately the next three months if the present course continues'],
     ['Client / Answer','the client’s current state in a general reading; for a specific question, this card gives the answer and is interpreted last'],
-    ['Surrounding energies','the people, home, work and other circumstances influencing the client or the question at present'],
-    ['Hopes, fears & attitude','the hopes, fears and attitude the client brings to the situation or specific question'],
-    ['Outcome · next 18–24 months','the longer-term outcome of present circumstances over approximately the next 18 to 24 months; in a question reading, the likely outcome of that question']
+    ['Surrounding Energies','the people, home, work and other circumstances influencing the client or the question at present'],
+    ['Hopes, Fears & Attitude','the hopes, fears and attitude the client brings to the situation or specific question'],
+    ['Outcome · Next 18–24 Months','the longer-term outcome of present circumstances over approximately the next 18 to 24 months; in a question reading, the likely outcome of that question']
   ]},
   relationship: {name:'Relationship',description:'Two perspectives and the connection between them',positions:[
     ['You','your own feelings, needs and contribution to the relationship'],
-    ['The other person','your perception of the other person; use this for reflection, not as proof of their private thoughts'],
-    ['The connection','the dynamic created between you'],
-    ['Relationship challenge','a tension or unmet need to explore together'],
-    ['Shared guidance','a constructive next step for mutual understanding']
+    ['The Other Person','your perception of the other person; use this for reflection, not as proof of their private thoughts'],
+    ['The Connection','the dynamic created between you'],
+    ['Relationship Challenge','a tension or unmet need to explore together'],
+    ['Shared Guidance','a constructive next step for mutual understanding']
   ]},
   celtic: {name:'Celtic Cross',description:'Ten perspectives on a deeper question',positions:[
-    ['Present situation','the central situation as you experience it now'],
-    ['Crossing challenge','the tension or obstacle crossing that situation'],
+    ['Present Situation','the central situation as you experience it now'],
+    ['Crossing Challenge','the tension or obstacle crossing that situation'],
     ['Foundation','the deeper roots beneath the situation'],
-    ['Recent past','an influence receding into the past'],
-    ['Conscious focus','your hopes, intentions or conscious priorities'],
-    ['Near future','a possible next development, not a fixed prediction'],
-    ['Your approach','the stance you bring and the choices within your control'],
-    ['Surrounding influences','the environment and outside influences around you'],
-    ['Hopes and fears','the desires and worries colouring your view'],
-    ['Potential outcome','a possible outcome if the present pattern continues, with room for your choices']
+    ['Recent Past','an influence receding into the past'],
+    ['Conscious Focus','your hopes, intentions or conscious priorities'],
+    ['Near Future','a possible next development, not a fixed prediction'],
+    ['Your Approach','the stance you bring and the choices within your control'],
+    ['Surrounding Influences','the environment and outside influences around you'],
+    ['Hopes and Fears','the desires and worries colouring your view'],
+    ['Potential Outcome','a possible outcome if the present pattern continues, with room for your choices']
   ]}
 };
 state.spreadId = 'guidance';
@@ -77,8 +77,8 @@ function positionContext(card,index,upright=true){
   else if(/Future|future|direction|outcome/.test(role)) lens=`This suggests a possible development involving ${theme}. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.`;
   else if(/challenge|Challenge/.test(role)) lens=`The tension to explore is ${theme}. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.`;
   else if(/Guidance|guidance|approach/.test(role)) lens=`Your next step is to work consciously with ${theme}. Choose one practical response you can try, then notice whether it helps.`;
-  else if(role==='The other person') lens=`Consider whether your perception of the other person is coloured by ${theme}. Check that impression through conversation rather than treating the card as access to their thoughts.`;
-  else if(role==='The connection') lens=`Between you, ${theme} may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.`;
+  else if(/^The Other Person$/i.test(role)) lens=`Consider whether your perception of the other person is coloured by ${theme}. Check that impression through conversation rather than treating the card as access to their thoughts.`;
+  else if(/^The Connection$/i.test(role)) lens=`Between you, ${theme} may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.`;
   else lens=`Here, ${theme} is a lens for ${position[1]}. Identify one concrete example in your situation and consider how it shapes your response.`;
   return `Position: ${role} — ${card.name}${upright?'':' reversed'}. ${lens}`;
 }
