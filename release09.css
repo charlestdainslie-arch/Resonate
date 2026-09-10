@@ -46,5 +46,5 @@
 @media(max-width:680px){.reading-meanings,.detail-insight-grid{grid-template-columns:1fr}.reading-meanings>.reading-meaning:last-child:nth-child(odd){grid-column:auto}.reading-art{min-height:150px}.reading-meaning-body{padding:17px}}
 
 /* Artwork for the expanded reading choices */
-.spread-picker button:nth-child(4)::before{background-image:url('assets/whisper-empress.jpg');background-position:center 32%}
-.spread-picker button:nth-child(5)::before{background-image:url('assets/whisper-emperor.jpg');background-position:center 30%}
+.spread-picker button:nth-child(4)::before{background-image:url('assets/spread-relationship-v2.jpg');background-position:center 32%}
+.spread-picker button:nth-child(5)::before{background-image:url('assets/spread-celtic-v2.jpg');background-position:center 30%}
