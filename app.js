@@ -61,7 +61,19 @@ function positionContext(card,index,upright=true){
   const theme=themes[card.id]?.[upright?0:1]||(upright?card.uprightKeywords:card.reversedKeywords).join(', ').toLowerCase();
   const role=position[0];
   let lens;
-  if(/Past|past/.test(role)) lens=`This may describe how ${theme} shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.`;
+  if(state.spreadId==='seven'){
+    const sevenLenses=[
+      `Looking across the previous 18 to 24 months, ${theme} may show an experience or influence that helped shape the present situation.`,
+      `In the period immediately surrounding today, ${theme} may describe what is active for the client now.`,
+      `Over approximately the next three months, ${theme} may show what develops if the present course continues; it is a direction, not a fixed prediction.`,
+      `In a general reading, ${theme} may describe the client’s current state. For a specific question, interpret this card last as the answer to that question.`,
+      `In the client’s surroundings, ${theme} may be expressed through people, home, work or other circumstances influencing the situation now.`,
+      `${theme.charAt(0).toUpperCase()+theme.slice(1)} may colour the client’s hopes, fears and attitude toward the situation or question.`,
+      `Across approximately the next 18 to 24 months, ${theme} may describe the likely outcome if present circumstances continue, while leaving room for choice and change.`
+    ];
+    lens=sevenLenses[index];
+  }
+  else if(/Past|past/.test(role)) lens=`This may describe how ${theme} shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.`;
   else if(/Future|future|direction|outcome/.test(role)) lens=`This suggests a possible development involving ${theme}. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.`;
   else if(/challenge|Challenge/.test(role)) lens=`The tension to explore is ${theme}. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.`;
   else if(/Guidance|guidance|approach/.test(role)) lens=`Your next step is to work consciously with ${theme}. Choose one practical response you can try, then notice whether it helps.`;
