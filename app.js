@@ -19,10 +19,10 @@ const spreads = {
     ['Past · 18–24 months','the longer-term experiences and patterns that shaped the path to this question'],
     ['Present time','what is active now and needs your attention'],
     ['Near future · 3 months','the direction taking shape over approximately the next three months, rather than a fixed prediction'],
-    ['Question','the heart of the question you brought to this reading'],
-    ['Challenge','the obstacle that invites a different response'],
-    ['Guidance','a constructive approach you can choose'],
-    ['Likely direction','the direction your current choices may lead, with room for change']
+    ['Client question','the heart of the question the client has brought to this reading'],
+    ['Surrounding energies','the people, circumstances and influences surrounding the question now'],
+    ['Hopes, fears & attitude','the client’s hopes and fears, and the attitude shaping how they meet the situation'],
+    ['Outcome · next 18–24 months','the longer-term direction current choices may lead toward over approximately the next 18 to 24 months, with room for change']
   ]},
   relationship: {name:'Relationship',description:'Two perspectives and the connection between them',positions:[
     ['You','your own feelings, needs and contribution to the relationship'],
