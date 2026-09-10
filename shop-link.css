@@ -1,5 +1,5 @@
 .shop-entry {
-  width: 64px;
+  width: 96px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -14,11 +14,11 @@
 .shop-entry::before {
   content: '';
   position: absolute;
+  inset: auto;
   left: 7px;
   top: 7px;
   width: 16px;
   height: 16px;
-  inset: auto;
   border-radius: 50%;
   border: 1px solid rgba(201,169,106,.34);
 }
@@ -26,11 +26,11 @@
 .shop-entry::after {
   content: '';
   position: absolute;
+  inset: auto;
   left: 13px;
   top: 13px;
   width: 4px;
   height: 4px;
-  inset: auto;
   border-radius: 50%;
   background: var(--gold);
   border: 0;
@@ -38,7 +38,7 @@
 
 .shop-entry .shop-label {
   color: var(--gold-bright);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .08em;
   line-height: 1;
@@ -53,12 +53,12 @@
 
 @media (max-width: 520px) {
   .shop-entry {
-    width: 60px;
+    width: 88px;
     padding-right: 8px;
     padding-left: 25px;
   }
 
   .shop-entry .shop-label {
-    font-size: 9px;
+    font-size: 14px;
   }
 }
