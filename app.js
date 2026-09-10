@@ -15,14 +15,14 @@ const spreads = {
     ['Present','what is active now and how you can respond'],
     ['Future','a possible direction if current patterns continue, rather than a fixed prediction']
   ]},
-  seven: {name:'V Reading',description:'A fuller RESONATE reading',positions:[
-    ['Past · 18–24 months','the longer-term experiences and patterns that shaped the path to this question'],
-    ['Present time','what is active now and needs your attention'],
-    ['Near future · 3 months','the direction taking shape over approximately the next three months, rather than a fixed prediction'],
-    ['Client question','the heart of the question the client has brought to this reading'],
-    ['Surrounding energies','the people, circumstances and influences surrounding the question now'],
-    ['Hopes, fears & attitude','the client’s hopes and fears, and the attitude shaping how they meet the situation'],
-    ['Outcome · next 18–24 months','the longer-term direction current choices may lead toward over approximately the next 18 to 24 months, with room for change']
+  seven: {name:'Seven-card V Reading',description:'A general reading or answer to a question',positions:[
+    ['Past · 18–24 months','the client’s experiences and influences from approximately the previous 18 to 24 months'],
+    ['Present time','the client’s present circumstances, including the period immediately surrounding today'],
+    ['Near future · 3 months','what may develop over approximately the next three months if the present course continues'],
+    ['Client / Answer','the client’s current state in a general reading; for a specific question, this card gives the answer and is interpreted last'],
+    ['Surrounding energies','the people, home, work and other circumstances influencing the client or the question at present'],
+    ['Hopes, fears & attitude','the hopes, fears and attitude the client brings to the situation or specific question'],
+    ['Outcome · next 18–24 months','the longer-term outcome of present circumstances over approximately the next 18 to 24 months; in a question reading, the likely outcome of that question']
   ]},
   relationship: {name:'Relationship',description:'Two perspectives and the connection between them',positions:[
     ['You','your own feelings, needs and contribution to the relationship'],
