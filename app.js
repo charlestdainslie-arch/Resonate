@@ -16,10 +16,10 @@ const spreads = {
     ['Future','a possible direction if current patterns continue, rather than a fixed prediction']
   ]},
   seven: {name:'V Reading',description:'A fuller RESONATE reading',positions:[
-    ['Foundation','the underlying basis of your question'],
-    ['Past influence','a past influence still shaping your choices'],
-    ['Present','what needs your attention now'],
-    ['Hidden influence','an overlooked feeling, assumption or influence'],
+    ['Past · 18–24 months','the longer-term experiences and patterns that shaped the path to this question'],
+    ['Present time','what is active now and needs your attention'],
+    ['Near future · 3 months','the direction taking shape over approximately the next three months, rather than a fixed prediction'],
+    ['Question','the heart of the question you brought to this reading'],
     ['Challenge','the obstacle that invites a different response'],
     ['Guidance','a constructive approach you can choose'],
     ['Likely direction','the direction your current choices may lead, with room for change']
