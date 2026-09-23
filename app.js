@@ -212,10 +212,27 @@ function goldenThread(chosen){
   if(!chosen.length) return '';
   const themes=chosen.flatMap(c=>c.uprightKeywords||[]).filter(Boolean);
   const unique=[...new Set(themes)].slice(0,5);
-  const opening=chosen.length===1?`${chosen[0].name} asks you to stay with what is present rather than rush past it.`:`In your ${readingTitle()} spread, ${chosen[0].name} opens the reading as ${positionLabels()[0]}, and ${chosen[chosen.length-1].name} closes it as ${positionLabels()[chosen.length-1]}.`;
+  const opening=chosen.length===1
+    ? `${chosen[0].name} asks you to stay with what is present rather than rush past it.`
+    : `In your ${readingTitle()} spread, ${chosen[0].name} opens the reading as ${positionLabels()[0]}, and ${chosen[chosen.length-1].name} closes it as ${positionLabels()[chosen.length-1]}.`;
+  const pairReadings=[];
+  for(let i=0;i<chosen.length;i++){
+    for(let j=i+1;j<chosen.length;j++){
+      const first=chosen[i], second=chosen[j];
+      const direct=(first.connections||[]).find(connection=>normalise(connection.card)===normalise(second.name));
+      const reverse=(second.connections||[]).find(connection=>normalise(connection.card)===normalise(first.name));
+      if(direct) pairReadings.push(`${first.name} with ${second.name}: ${direct.meaning}`);
+      else if(reverse) pairReadings.push(`${second.name} with ${first.name}: ${reverse.meaning}`);
+      else {
+        const firstTheme=(first.uprightKeywords||[])[0], secondTheme=(second.uprightKeywords||[])[0];
+        if(firstTheme&&secondTheme) pairReadings.push(`${first.name} with ${second.name}: ${firstTheme.toLowerCase()} meets ${secondTheme.toLowerCase()}; notice where those two forces support or challenge each other.`);
+      }
+    }
+  }
+  const connections=pairReadings.slice(0,3).map((reading,index)=>`Connection ${index+1}: ${reading}`).join(' ');
   const middle=unique.length?`The strongest shared themes are ${unique.join(', ')}.`:'';
-  const close=`Read the spread as one conversation: notice what repeats, what changes position, and where your own reaction becomes strongest. That is often where the reading is pointing.`;
-  return `${opening} ${middle} ${close}`;
+  const close=`Taken together, the cards suggest a lived pattern rather than one fixed event. Let the image, phrase or relationship that catches you most strongly guide the emphasis: keep what resonates, and test it against the actual meaning of each card and your circumstances.`;
+  return [opening,connections,middle,close].filter(Boolean).join(' ');
 }
 function renderDraw(){
   const labels=positionLabels();
