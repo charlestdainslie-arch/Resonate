@@ -48,3 +48,8 @@
 /* Artwork for the expanded reading choices */
 .spread-picker button:nth-child(4)::before{background-image:url('assets/spread-relationship-v2.jpg');background-position:center 32%}
 .spread-picker button:nth-child(5)::before{background-image:url('assets/spread-celtic-v2.jpg');background-position:center 30%}
+
+/* Atmospheric pauses between the interpretation sections. Preserve complete artwork. */
+.atmospheric-art{margin:26px 0;border:1px solid rgba(218,180,103,.3);border-radius:16px;background:#09090b;overflow:hidden}
+.atmospheric-art img{display:block;width:100%;height:clamp(180px,30vw,320px);object-fit:contain;object-position:center}
+@media(max-width:680px){.atmospheric-art{margin:20px 0;border-radius:12px}.atmospheric-art img{height:auto;max-height:320px;aspect-ratio:3/2;object-fit:contain}}
