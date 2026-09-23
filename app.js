@@ -210,29 +210,33 @@ function readingMeaning(card,label,index){
 }
 function goldenThread(chosen){
   if(!chosen.length) return '';
-  const themes=chosen.flatMap(c=>c.uprightKeywords||[]).filter(Boolean);
-  const unique=[...new Set(themes)].slice(0,5);
+  const labels=positionLabels();
+  const first=chosen[0], last=chosen[chosen.length-1];
+  const themes=[...new Set(chosen.flatMap(c=>c.uprightKeywords||[]).filter(Boolean))].slice(0,5);
   const opening=chosen.length===1
-    ? `${chosen[0].name} asks you to stay with what is present rather than rush past it.`
-    : `In your ${readingTitle()} spread, ${chosen[0].name} opens the reading as ${positionLabels()[0]}, and ${chosen[chosen.length-1].name} closes it as ${positionLabels()[chosen.length-1]}.`;
-  const pairReadings=[];
-  for(let i=0;i<chosen.length;i++){
-    for(let j=i+1;j<chosen.length;j++){
-      const first=chosen[i], second=chosen[j];
-      const direct=(first.connections||[]).find(connection=>normalise(connection.card)===normalise(second.name));
-      const reverse=(second.connections||[]).find(connection=>normalise(connection.card)===normalise(first.name));
-      if(direct) pairReadings.push(`${first.name} with ${second.name}: ${direct.meaning}`);
-      else if(reverse) pairReadings.push(`${second.name} with ${first.name}: ${reverse.meaning}`);
-      else {
-        const firstTheme=(first.uprightKeywords||[])[0], secondTheme=(second.uprightKeywords||[])[0];
-        if(firstTheme&&secondTheme) pairReadings.push(`${first.name} with ${second.name}: ${firstTheme.toLowerCase()} meets ${secondTheme.toLowerCase()}; notice where those two forces support or challenge each other.`);
-      }
+    ? `The reading centres on ${first.name} in ${labels[0]||'this position'}.`
+    : `The reading begins with ${first.name} in ${labels[0]||'the opening position'} and moves toward ${last.name} in ${labels[chosen.length-1]||'the final position'}.`;
+  const story=chosen.map((card,index)=>{
+    const label=labels[index]||'this position';
+    const sky=currentSky(card);
+    const focus=positionContext(card,index);
+    const numberLine=`Its number ${card.id} carries this numerological field: ${card.numerology}`;
+    const astrologyLine=sky.planet?`Its ${card.astrology} correspondence, with ${sky.text.toLowerCase()} at this reading, adds another layer to the symbol.`:`Its ${card.astrology} correspondence adds another layer to the symbol.`;
+    let bridge='';
+    if(index>0){
+      const previous=chosen[index-1];
+      const direct=(previous.connections||[]).find(connection=>normalise(connection.card)===normalise(card.name));
+      const reverse=(card.connections||[]).find(connection=>normalise(connection.card)===normalise(previous.name));
+      if(direct) bridge=`Read after ${previous.name}, this develops the thread: ${direct.meaning}`;
+      else if(reverse) bridge=`Read after ${previous.name}, this develops the thread: ${reverse.meaning}`;
+      else if(previous.id+1===card.id) bridge=`As the next step in the Major Arcana sequence after ${previous.name}, ${card.name} turns that earlier impulse toward ${card.uprightKeywords[0].toLowerCase()}.`;
+      else bridge=`Following ${previous.name}, ${card.name} shifts the emphasis toward ${card.uprightKeywords[0].toLowerCase()}.`;
     }
-  }
-  const connections=pairReadings.slice(0,3).map((reading,index)=>`Connection ${index+1}: ${reading}`).join(' ');
-  const middle=unique.length?`The strongest shared themes are ${unique.join(', ')}.`:'';
-  const close=`Taken together, the cards suggest a lived pattern rather than one fixed event. Let the image, phrase or relationship that catches you most strongly guide the emphasis: keep what resonates, and test it against the actual meaning of each card and your circumstances.`;
-  return [opening,connections,middle,close].filter(Boolean).join(' ');
+    return `${label}: ${card.name} brings ${card.uprightKeywords.slice(0,3).join(', ').toLowerCase()} into focus. ${focus} ${numberLine} ${astrologyLine} ${bridge}`;
+  }).join(' ');
+  const connections=chosen.length>1?`The card-to-card movement is the heart of this reading: ${first.name} opens the question, and ${last.name} shows where that pattern may be heading if the present choices continue.`:'';
+  const summary=themes.length?`In summary, the reading gathers around ${themes.join(', ')}. Taken together, it suggests a developing pattern rather than one fixed event. Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.`:`In summary, let the card meanings and your own response show you what deserves attention now.`;
+  return [opening,story,connections,summary].filter(Boolean).join(' ');
 }
 function renderDraw(){
   const labels=positionLabels();
