@@ -221,7 +221,7 @@ function goldenThread(chosen){
     const sky=currentSky(card);
     const focus=positionContext(card,index);
     const numberLine=`Its number ${card.id} carries this numerological field: ${card.numerology}`;
-    const astrologyLine=sky.planet?`Its ${card.astrology} correspondence, with ${sky.text.toLowerCase()} at this reading, adds another layer to the symbol.`:`Its ${card.astrology} correspondence adds another layer to the symbol.`;
+    const astrologyLine=sky.planet?`Its astrology correspondence (${card.astrology}) is echoed by the current placement: ${sky.text}.`:`Its astrology correspondence (${card.astrology}) adds another layer to the symbol.`;
     let bridge='';
     if(index>0){
       const previous=chosen[index-1];
