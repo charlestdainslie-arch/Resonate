@@ -232,7 +232,7 @@ function goldenThread(chosen){
       else if(previous.id+1===card.id) bridge=`As the next step in the Major Arcana sequence after ${previous.name}, ${card.name} turns that earlier impulse toward ${card.uprightKeywords[0].toLowerCase()}.`;
       else bridge=`Following ${previous.name}, ${card.name} shifts the emphasis toward ${card.uprightKeywords[0].toLowerCase()}.`;
     }
-    return `${label}: ${card.name} brings ${card.uprightKeywords.slice(0,3).join(', ').toLowerCase()} into focus. ${focus} ${numberLine} ${astrologyLine} ${bridge}`;
+    return `${label}: ${card.name} highlights ${card.uprightKeywords.slice(0,3).join(', ').toLowerCase()}. ${focus} ${numberLine} ${astrologyLine} ${bridge}`;
   }).join(' ');
   const connections=chosen.length>1?`The card-to-card movement is the heart of this reading: ${first.name} opens the question, and ${last.name} shows where that pattern may be heading if the present choices continue.`:'';
   const summary=themes.length?`In summary, the reading gathers around ${themes.join(', ')}. Taken together, it suggests a developing pattern rather than one fixed event. Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.`:`In summary, let the card meanings and your own response show you what deserves attention now.`;
