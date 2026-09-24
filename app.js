@@ -263,7 +263,10 @@ function renderDraw(){
 function downloadReading(){
   const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(x=>x.id===id)).filter(Boolean);
-  const lines=['RESONATE Tarot Reading',readingTitle(),currentSpread().positions.length>cards.length?'Sample deck: cards repeat to fill every position.':'','',...chosen.map((c,i)=>`${i+1}. ${labels[i]||'Position'} — ${c.name}\n   ${positionContext(c,i)}\n   ${c.upright}`),'','THE GOLDEN THREAD',goldenThread(chosen),'','For reflection only.'];
+  const thread=document.createElement('div');
+  thread.innerHTML=goldenThread(chosen);
+  const threadText=thread.innerText.trim();
+  const lines=['RESONATE Tarot Reading',readingTitle(),currentSpread().positions.length>cards.length?'Sample deck: cards repeat to fill every position.':'','',...chosen.map((c,i)=>`${i+1}. ${labels[i]||'Position'} — ${c.name}\n   ${positionContext(c,i)}\n   ${c.upright}`),'','THE GOLDEN THREAD',threadText,'','For reflection only.'];
   const blob=new Blob([lines.join('\n')],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob);a.download='resonate-tarot-reading.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);
 }
 
