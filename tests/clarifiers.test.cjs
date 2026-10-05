@@ -1,0 +1,13 @@
+const fs=require('fs');
+const assert=require('assert');
+const source=fs.readFileSync('clarifiers.js','utf8');
+assert(source.includes('function isMajorArcana'));
+assert(source.includes('buildMajorClarifiers'));
+assert(source.includes('filter(id=>!spreadIds.includes(id))'),'clarifiers must exclude spread cards');
+assert(source.includes('majorIndex:major.index'),'clarifier must stay linked to its Major position');
+assert(source.includes("available.shift()"),'each Major consumes a unique clarifier');
+assert(source.includes('object-fit:contain')===false,'render sizing belongs in CSS');
+const css=fs.readFileSync('clarifiers.css','utf8');
+assert(css.includes('object-fit:contain'),'full card image must remain uncropped');
+assert(css.includes('rotate(180deg)'),'reversed clarifiers must render reversed');
+console.log('clarifier contract checks passed');
