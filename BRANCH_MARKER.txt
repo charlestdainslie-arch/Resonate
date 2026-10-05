@@ -1,2 +1,2 @@
 RESONATE development branch: dev/golden-thread-clarifiers
-Clarifier engine checkpoint.
+Clarifier engine checkpoint ready for branch ref.
