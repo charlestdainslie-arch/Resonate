@@ -1,6 +1,6 @@
 # RESONATE 0.10.1 — Clarifier layers UAT
 
-This is a development prototype, not the finished 78-card/oracle experience.
+This originally described the five-card sample in v0.10.1. On v0.10.2 this remains a clarifier/oracle prototype, but both tarot decks now contain all 78 cards.
 
 - Draw a 1-card reading. Confirm "+ Clarify" is disabled until the original card has flipped and settled.
 - Add a clarifier. Confirm the original card is unchanged and the added card is shown under the same position.
@@ -12,4 +12,4 @@ This is a development prototype, not the finished 78-card/oracle experience.
 - Begin a new reading; confirm no clarifier layers carry over.
 - Test on narrow phone sizes, with keyboard navigation and reduced motion.
 
-Known limitations: five Major Arcana sample cards per deck, at most two clarifiers per position, no oracle decks or clarifier reversals, no hand-shuffle animation, template-based rather than AI-generated cross-card meaning.
+Known limitations (v0.10.2): two clarifiers per position, no oracle decks or clarifier reversals, no hand-shuffle animation, template-based rather than AI-generated cross-card meaning.
