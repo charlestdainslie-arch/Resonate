@@ -1,0 +1,19 @@
+/* RESONATE 0.10.1 — separate-deck clarifier overlay, no baseline style edits */
+.clarifier-layer{display:grid;gap:6px;justify-items:center;max-width:160px;margin:10px auto 0}
+.clarifier-stack{display:grid;gap:4px;width:100%}
+.clarifier-mini{display:flex;align-items:center;gap:5px;width:100%;padding:5px;text-align:left;background:#171519;border:1px solid rgba(201,169,106,.35);border-radius:8px}
+.clarifier-mini img{width:29px;height:44px;flex:none;object-fit:contain;background:#0b0a0d}
+.clarifier-mini span{min-width:0}
+.clarifier-mini small{display:block;color:#c9a96a;font-size:8px;letter-spacing:.06em}
+.clarifier-mini strong{display:block;color:#eee9e0;font-size:10px;font-weight:500;overflow-wrap:anywhere}
+.clarifier-add,.clarifier-undo{font:inherit;font-size:11px;color:#dfc48b;border:1px solid rgba(201,169,106,.35);border-radius:999px;background:transparent;padding:6px 8px;cursor:pointer}
+.clarifier-add:disabled{opacity:.45;cursor:not-allowed}
+.clarifier-undo{color:#aaa49b;border-color:rgba(255,255,255,.12)}
+.clarifier-add:focus-visible,.clarifier-undo:focus-visible{outline:2px solid #dfc48b;outline-offset:2px}
+.clarifier-golden{border-top:1px solid rgba(201,169,106,.25);margin-top:25px;padding-top:22px;text-align:left}
+.clarifier-golden h3{font:400 clamp(24px,3vw,32px) Georgia,serif;margin:10px 0}
+.clarifier-note{color:#aaa49b;line-height:1.65;font-size:13px}
+.clarifier-pair{margin:16px 0;padding:3px 0 3px 15px;border-left:2px solid #c9a96a}
+.clarifier-pair h4{color:#dfc48b;font-size:14px;margin:0 0 8px}
+.clarifier-pair p{color:#e4ded5;line-height:1.65;font-size:14px;margin:0}
+@media(max-width:700px){.clarifier-mini{display:grid;justify-items:center;text-align:center}.clarifier-mini strong{font-size:9px}.clarifier-add,.clarifier-undo{font-size:10px;padding:5px}}
