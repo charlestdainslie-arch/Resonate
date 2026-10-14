@@ -1,0 +1,6 @@
+/* RESONATE 0.10.2 — browsing 78 cards by Major Arcana and four suits */
+.deck-group-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}
+.deck-group-chip{min-height:36px;font-size:12px;color:#beb7aa;border:1px solid rgba(201,169,106,.19);background:#131316;border-radius:999px;padding:7px 14px;cursor:pointer}
+.deck-group-chip.active{background:#c9a96a;color:#15120e;border-color:transparent;font-weight:700}
+.deck-group-chip:focus-visible{outline:2px solid #dfc48b;outline-offset:3px}
+@media(max-width:560px){.deck-group-chips{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:thin}.deck-group-chip{white-space:nowrap;flex:none}}
