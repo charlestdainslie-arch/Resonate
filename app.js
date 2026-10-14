@@ -6,6 +6,8 @@ const state = {
   returnView: 'learn', drawSettled: false, drawnAt: null
 };
 const elements = ['All','Air','Water','Earth','Fire'];
+const cardGroups = ['All','Major Arcana','Wands','Cups','Swords','Pentacles'];
+state.group = 'All';
 const spreads = {
   guidance: {name:'One-card Guidance',description:'A clear focus and invitation',positions:[
     ['Guidance','the guidance you can put into practice today']
@@ -145,18 +147,20 @@ function getFiltered() {
   const q = state.query.trim();
   return cards.filter(card => {
     const elementMatch = state.element === 'All' || card.element === state.element;
-    return elementMatch && fuzzyMatch(q,card);
+    const groupMatch = state.group === 'All' || (state.group === 'Major Arcana' ? card.arcana === 'Major Arcana' : card.suit === state.group);
+    return elementMatch && groupMatch && fuzzyMatch(q,card);
   });
 }
 function renderLearn() {
   const visible=getFiltered();
-  shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">LEARN THE CARDS</div><h1>Learn the cards before memorising them.</h1><p>Start with image, traditional meaning and symbolism. Astrology and numerology sit near the top; the Jungian interpretation closes each card as the deeper golden thread.</p></section><section class="search-panel"><label class="search-box">${icon('search')}<input id="searchInput" value="${escapeHtml(state.query)}" placeholder="Search cards, elements, astrology…"><button id="clearSearch" aria-label="Clear search">${state.query ? '×' : ''}</button></label><div class="chips">${elements.map(x=>`<button class="chip ${state.element===x?'active':''}" data-element="${x}">${x}</button>`).join('')}</div></section><div class="section-label"><span>Tarot Deck</span><small>${visible.length} card${visible.length===1?'':'s'}</small></div>${visible.length?`<section class="card-grid">${visible.map(cardTile).join('')}</section>`:`<section class="empty"><h3>No cards found</h3><p>Try a shorter word or a close spelling.</p><button class="gold-button" id="resetFilters">Reset filters</button></section>`}`, 'page-home');
+  shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">LEARN THE CARDS</div><h1>Learn the cards before memorising them.</h1><p>Start with image, traditional meaning and symbolism. Astrology and numerology sit near the top; the Jungian interpretation closes each card as the deeper golden thread.</p></section><section class="search-panel"><label class="search-box">${icon('search')}<input id="searchInput" value="${escapeHtml(state.query)}" placeholder="Search cards, elements, astrology…"><button id="clearSearch" aria-label="Clear search">${state.query ? '×' : ''}</button></label><div class="chips">${elements.map(x=>`<button class="chip ${state.element===x?'active':''}" data-element="${x}">${x}</button>`).join('')}</div><div class="deck-group-chips" role="group" aria-label="Browse by arcana or suit">${cardGroups.map(group=>`<button type="button" class="deck-group-chip ${state.group===group?'active':''}" data-card-group="${group}">${group==='Major Arcana'?'Majors':group}</button>`).join('')}</div></section><div class="section-label"><span>Tarot Deck</span><small>${visible.length} card${visible.length===1?'':'s'}</small></div>${visible.length?`<section class="card-grid">${visible.map(cardTile).join('')}</section>`:`<section class="empty"><h3>No cards found</h3><p>Try a shorter word or a close spelling.</p><button class="gold-button" id="resetFilters">Reset filters</button></section>`}`, 'page-home');
   bindBack();
   document.getElementById('searchInput').oninput=e=>{state.query=e.target.value;renderLearn();const el=document.getElementById('searchInput');el.focus();el.setSelectionRange(el.value.length,el.value.length);};
   document.getElementById('clearSearch').onclick=()=>{state.query='';renderLearn();};
   document.querySelectorAll('[data-element]').forEach(btn=>btn.onclick=()=>{state.element=btn.dataset.element;renderLearn();});
+  document.querySelectorAll('[data-card-group]').forEach(btn=>btn.onclick=()=>{state.group=btn.dataset.cardGroup;renderLearn();});
   document.querySelectorAll('[data-card]').forEach(btn=>btn.onclick=()=>openCard(Number(btn.dataset.card),'learn'));
-  const reset=document.getElementById('resetFilters'); if(reset) reset.onclick=()=>{state.query='';state.element='All';renderLearn();};
+  const reset=document.getElementById('resetFilters'); if(reset) reset.onclick=()=>{state.query='';state.element='All';state.group='All';renderLearn();};
 }
 function cardTile(card) { return `<button class="tarot-card element-${card.element.toLowerCase()}" data-card="${card.id}"><div class="card-image-wrap"><img src="${cardImage(card)}" alt="${card.name}" loading="lazy" referrerpolicy="no-referrer" onerror="imageFallback(this)"></div><div class="card-top"><div class="roman-badge">${card.roman}</div><div class="element-pill">${card.element}</div></div><div class="tile-body"><h2>${card.roman} · ${card.name}</h2><p class="subtitle">${card.subtitle}</p><div class="keyword-row">${card.uprightKeywords.slice(0,2).map(k=>`<span>${k}</span>`).join('')}</div></div><div class="tile-foot"><span>${icon('spark',14)} ${card.astrology}</span>${icon('arrow',17)}</div></button>`; }
 function openCard(id, returnView='learn', positionIndex=null){clearDrawTimers();state.readingIndex=returnView==='draw'?positionIndex:null;if(returnView==='draw'){state.drawSettled=true;state.drawPhase='settled';}state.view='detail';state.cardId=id;state.returnView=returnView;state.orientation='upright';renderDetail();window.scrollTo(0,0);}
