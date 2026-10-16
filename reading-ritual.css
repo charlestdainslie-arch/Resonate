@@ -13,3 +13,78 @@
 .reading-position{scroll-margin-top:82px}.reading-position:focus-within{outline:1px solid var(--ritual-gold-soft)}
 @media(max-width:700px){.shuffle-ritual{height:126px;transform:scale(.9);margin-top:0}.ritual-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.spread-scroll{scroll-snap-type:x proximity;overscroll-behavior-inline:contain}.stage-position{scroll-snap-align:center}.draw-page .reading-position{scroll-margin-top:68px}}
 @media(prefers-reduced-motion:reduce){.shuffle-ritual.is-active .half-left,.shuffle-ritual.is-active .half-right,.shuffle-ritual.is-active .ritual-hand{animation:none!important}.shuffle-ritual.is-active{animation:ritualPulse 1.4s ease-in-out}@keyframes ritualPulse{50%{opacity:1}}}
+
+/* RESONATE v0.10.5 — a gentle cut, interleave and square, built from our own card backs.
+   This is the shuffle only; spread positions and reading logic remain untouched. */
+.shuffle-ritual .ritual-half{isolation:isolate;overflow:visible}
+.shuffle-ritual .ritual-half b{position:relative;z-index:5}
+.shuffle-ritual .riffle-card{
+  position:absolute;inset:0;border-radius:7px;pointer-events:none;
+  border:1px solid rgba(203,169,98,.62);
+  background:linear-gradient(145deg,#242018,#090908);
+  box-shadow:0 6px 12px rgba(0,0,0,.3);
+}
+.shuffle-ritual .riffle-one{opacity:.53;transform:translate(-5px,3px)}
+.shuffle-ritual .riffle-two{opacity:.68;transform:translate(-3px,2px)}
+.shuffle-ritual .riffle-three{opacity:.84;transform:translate(-1px,1px)}
+.shuffle-ritual .half-right .riffle-one{transform:translate(5px,3px)}
+.shuffle-ritual .half-right .riffle-two{transform:translate(3px,2px)}
+.shuffle-ritual .half-right .riffle-three{transform:translate(1px,1px)}
+.shuffle-ritual .half-right{z-index:2}
+.shuffle-ritual.is-active .half-left{animation:resonateCutLeft 3s cubic-bezier(.3,.06,.21,1) both}
+.shuffle-ritual.is-active .half-right{animation:resonateCutRight 3s cubic-bezier(.3,.06,.21,1) both}
+.shuffle-ritual.is-active .half-left .riffle-card{animation:resonateInterleaveLeft 3s ease-in-out both}
+.shuffle-ritual.is-active .half-right .riffle-card{animation:resonateInterleaveRight 3s ease-in-out both}
+.shuffle-ritual.is-active .riffle-two{animation-delay:45ms!important}
+.shuffle-ritual.is-active .riffle-three{animation-delay:85ms!important}
+.shuffle-ritual.is-active .ritual-hand-left{animation:resonateGuideLeft 3s ease-in-out both}
+.shuffle-ritual.is-active .ritual-hand-right{animation:resonateGuideRight 3s ease-in-out both}
+.shuffle-ritual.is-ready .half-left{transform:translateX(29px) rotate(-1deg)}
+.shuffle-ritual.is-ready .half-right{transform:translateX(-29px) rotate(1deg)}
+.shuffle-ritual.is-ready .ritual-hand{opacity:.24}
+@keyframes resonateCutLeft{
+  0%{transform:translateX(0) rotate(-3deg)}
+  22%{transform:translate(-40px,3px) rotate(-8deg)}
+  38%{transform:translate(-31px,1px) rotate(-4deg)}
+  62%{transform:translateX(12px) rotate(3deg)}
+  83%,100%{transform:translateX(29px) rotate(-1deg)}
+}
+@keyframes resonateCutRight{
+  0%{transform:translateX(0) rotate(3deg)}
+  22%{transform:translate(40px,3px) rotate(8deg)}
+  38%{transform:translate(31px,1px) rotate(4deg)}
+  62%{transform:translateX(-12px) rotate(-3deg)}
+  83%,100%{transform:translateX(-29px) rotate(1deg)}
+}
+@keyframes resonateInterleaveLeft{
+  0%,28%{transform:translate(-5px,3px)}
+  45%{transform:translate(-8px,-4px) rotate(-3deg)}
+  58%{transform:translate(12px,-9px) rotate(4deg)}
+  73%{transform:translate(5px,2px) rotate(1deg)}
+  100%{transform:translate(0,0)}
+}
+@keyframes resonateInterleaveRight{
+  0%,28%{transform:translate(5px,3px)}
+  45%{transform:translate(8px,-4px) rotate(3deg)}
+  58%{transform:translate(-12px,-8px) rotate(-4deg)}
+  73%{transform:translate(-5px,2px) rotate(-1deg)}
+  100%{transform:translate(0,0)}
+}
+@keyframes resonateGuideLeft{
+  0%,100%{transform:translateX(0);opacity:.45}
+  22%{transform:translateX(-25px);opacity:.8}
+  55%{transform:translateX(15px);opacity:.85}
+  83%{transform:translateX(7px);opacity:.55}
+}
+@keyframes resonateGuideRight{
+  0%,100%{transform:scaleX(-1) translateX(0);opacity:.45}
+  22%{transform:scaleX(-1) translateX(-25px);opacity:.8}
+  55%{transform:scaleX(-1) translateX(15px);opacity:.85}
+  83%{transform:scaleX(-1) translateX(7px);opacity:.55}
+}
+@media(prefers-reduced-motion:reduce){
+  .shuffle-ritual.is-active .ritual-half,
+  .shuffle-ritual.is-active .riffle-card,
+  .shuffle-ritual.is-active .ritual-hand{animation:none!important}
+  .stage-board.is-shuffling .stage-card{animation:none!important}
+}
