@@ -12,7 +12,7 @@ function prepareDeck(){
   state.shuffledDeck=deck; state.shuffleCount+=1;
 }
 function faceDownSlot(label,index){ return `<div class="reading-position stage-position"><span class="slot-label">${index+1} · ${label||'Position'}</span><div class="stage-card" data-stage-card="${index}" aria-label="Face-down tarot card for ${label||'position'}"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div></div></div>`; }
-function shuffleRitual(){ return `<div class="shuffle-ritual" id="shuffleRitual" aria-hidden="true"><div class="ritual-hand ritual-hand-left"><span></span><span></span><span></span></div><div class="ritual-deck"><div class="ritual-half half-left"><b>R</b></div><div class="ritual-half half-right"><b>R</b></div></div><div class="ritual-hand ritual-hand-right"><span></span><span></span><span></span></div></div>`; }
+function shuffleRitual(){ return `<div class="shuffle-ritual" id="shuffleRitual" aria-hidden="true"><div class="ritual-hand ritual-hand-left"><span></span><span></span><span></span></div><div class="ritual-deck"><div class="ritual-half half-left"><span class="riffle-card riffle-one"></span><span class="riffle-card riffle-two"></span><span class="riffle-card riffle-three"></span><b>R</b></div><div class="ritual-half half-right"><span class="riffle-card riffle-one"></span><span class="riffle-card riffle-two"></span><span class="riffle-card riffle-three"></span><b>R</b></div></div><div class="ritual-hand ritual-hand-right"><span></span><span></span><span></span></div></div>`; }
 renderReadingHub=function(){
   shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>Select a spread to enter the reading table. Your cards will be waiting face down.</p></section><section class="spread-picker">${Object.entries(spreads).map(([id,spread])=>`<button data-spread="${id}"><span>${spread.positions.length} CARD${spread.positions.length===1?'':'S'}</span><strong>${spread.name}</strong><small>${spread.description}</small></button>`).join('')}</section><div class="reading-note">Every reading begins with the shuffle.</div>`,'reading-page'); bindBack();
   document.querySelectorAll('[data-spread]').forEach(button=>{ button.onclick=()=>{ state.spreadId=button.dataset.spread; state.spreadSize=currentSpread().positions.length; state.readingIndex=null; state.shuffledDeck=[]; state.shuffleCount=0; state.shuffleReady=false; state.shuffleInProgress=false; state.view='stage'; render(); window.scrollTo({top:0,behavior:'smooth'}); }; });
@@ -23,11 +23,29 @@ function renderReadingStage(){
 }
 function setDrawReady(ready){ state.shuffleReady=ready; const draw=document.getElementById('stageDrawBtn'), shuffle=document.getElementById('shuffleCardsBtn'); if(draw){draw.disabled=!ready;draw.setAttribute('aria-disabled',String(!ready));} if(shuffle) shuffle.classList.toggle('is-secondary',ready); }
 function shuffleCards(){
-  if(state.shuffleInProgress) return; state.shuffleInProgress=true; setDrawReady(false); prepareDeck();
+  if(state.shuffleInProgress || state.view!=='stage') return;
+  state.shuffleInProgress=true; setDrawReady(false); prepareDeck();
   const board=document.querySelector('.stage-board'), ritual=document.getElementById('shuffleRitual'), status=document.getElementById('shuffleStatus'), button=document.getElementById('shuffleCardsBtn');
-  if(button) button.disabled=true; if(board){board.classList.remove('is-shuffling');void board.offsetWidth;board.classList.add('is-shuffling');} if(ritual){ritual.classList.remove('is-active');void ritual.offsetWidth;ritual.classList.add('is-active');} if(status) status.textContent='Shuffling the deck…';
-  drawTimers.push(window.setTimeout(()=>{ if(board) board.classList.remove('is-shuffling'); if(ritual) ritual.classList.remove('is-active'); if(button) button.disabled=false; state.shuffleInProgress=false; setDrawReady(true); if(status) status.textContent=`The deck is ready${state.shuffleCount>1?` · shuffle ${state.shuffleCount}`:''}. Draw when you are ready.`; },2200));
+  const reducedMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(button) button.disabled=true;
+  if(board){board.classList.remove('is-shuffling');void board.offsetWidth;board.classList.add('is-shuffling');}
+  if(ritual){ritual.classList.remove('is-ready','is-active');void ritual.offsetWidth;ritual.classList.add('is-active');}
+  if(status) status.textContent='Cutting the deck…';
+  const updateStatus=(message)=>{ if(state.view==='stage' && state.shuffleInProgress && status) status.textContent=message; };
+  if(!reducedMotion){
+    drawTimers.push(window.setTimeout(()=>updateStatus('Interleaving the cards…'),900));
+    drawTimers.push(window.setTimeout(()=>updateStatus('Squaring the deck…'),2050));
+  }
+  drawTimers.push(window.setTimeout(()=>{
+    if(state.view!=='stage') return;
+    if(board) board.classList.remove('is-shuffling');
+    if(ritual){ritual.classList.remove('is-active');ritual.classList.add('is-ready');}
+    if(button){button.disabled=false;button.textContent='Shuffle Again';}
+    state.shuffleInProgress=false; setDrawReady(true);
+    if(status) status.textContent=`The deck is ready${state.shuffleCount>1?` · shuffle ${state.shuffleCount}`:''}. Draw when you are ready.`;
+  },reducedMotion?260:3000));
 }
+
 startDraw=function(){
   if(!state.shuffleReady || state.shuffleInProgress || !state.shuffledDeck.length) return;
   clearDrawTimers(); state.spreadSize=currentSpread().positions.length; const previous=state.drawnCardIds.join(','); let next=state.shuffledDeck.slice(0,state.spreadSize);
