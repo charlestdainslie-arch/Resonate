@@ -160,3 +160,25 @@
 @media (max-width:760px){
   .home-intro{padding-inline:clamp(8px,3vw,20px)}
 }
+
+/* Explicit three-zone desktop composition: TEXT | HAND | FOOL.
+   The hand's visual centre occupies the midpoint of the free space. */
+@media (min-width:1100px){
+ .home-intro{padding-left:clamp(22px,3vw,46px);padding-right:59%}
+ .home-intro h1{font-size:clamp(45px,4.45vw,66px);max-width:460px}
+ .home-intro .hand-hero{
+   right:13.5%;width:clamp(240px,29%,350px);
+   top:50%;height:clamp(350px,37vw,450px);
+   transform:translateY(-50%);
+ }
+ .home-intro .hero-card-preview{
+   right:1.5%;top:50%;transform:translateY(-50%);
+   width:clamp(110px,11%,140px);
+ }
+ .home-intro .hero-card-preview:hover,.home-intro .hero-card-preview:focus-visible{transform:translateY(calc(-50% - 5px)) scale(1.035)}
+}
+@media (min-width:761px) and (max-width:1099px){
+ .home-intro{padding-right:60%}
+ .home-intro .hand-hero{right:12%;width:30%;top:50%;height:340px;transform:translateY(-50%)}
+ .home-intro .hero-card-preview{right:1%;top:50%;transform:translateY(-50%);width:clamp(78px,10%,110px)}
+}
