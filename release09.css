@@ -224,3 +224,21 @@
  .page-home .home-intro .hand-hero{order:0;position:relative;inset:auto;transform:none;margin:0 auto 16px}
  .page-home .home-intro .hero-card-preview{display:none}
 }
+
+/* v0.91 symmetrical optical spacing: dedicated matching gutters.
+   Desktop grid: COPY | GAP | HAND | GAP | FOOL. */
+@media (min-width:1000px){
+ .page-home .home-intro{
+   grid-template-columns:minmax(0,2.7fr) minmax(36px,.7fr) minmax(0,2fr) minmax(36px,.7fr) minmax(110px,1.15fr);
+   column-gap:0;
+   padding-inline:clamp(16px,2.5vw,34px);
+ }
+ .page-home .home-intro .home-hero-copy{grid-column:1;max-width:none}
+ .page-home .home-intro .hand-hero{
+   grid-column:3;width:100%;max-width:350px;
+   justify-self:center;
+ }
+ .page-home .home-intro .hero-card-preview{
+   grid-column:5;width:min(100%,145px);justify-self:start;
+ }
+}
