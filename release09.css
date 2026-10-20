@@ -182,3 +182,45 @@
  .home-intro .hand-hero{right:12%;width:30%;top:50%;height:340px;transform:translateY(-50%)}
  .home-intro .hero-card-preview{right:1%;top:50%;transform:translateY(-50%);width:clamp(78px,10%,110px)}
 }
+
+/* v0.91 canonical layout. Stop absolutely positioning the hand and card;
+   each visual owns an actual CSS grid column. */
+@media(min-width:1000px){
+ .page-home .home-intro{
+   display:grid;
+   grid-template-columns:minmax(0, 1.18fr) minmax(0, 1fr) minmax(105px,.37fr);
+   align-items:center;column-gap:clamp(12px,2vw,30px);
+   width:100%;max-width:none;min-height:540px;
+   padding:30px clamp(10px,2vw,26px);
+   box-sizing:border-box;
+ }
+ .page-home .home-intro .home-hero-copy{grid-column:1;grid-row:1;min-width:0;align-self:center}
+ .page-home .home-intro .hand-hero{
+   grid-column:2;grid-row:1;position:relative;inset:auto;
+   top:auto;right:auto;left:auto;bottom:auto;
+   transform:none;width:100%;max-width:390px;height:440px;
+   margin:0 auto;justify-self:center;align-self:center;
+ }
+ .page-home .home-intro .hero-card-preview{
+   grid-column:3;grid-row:1;position:relative;inset:auto;
+   top:auto;right:auto;left:auto;bottom:auto;
+   display:grid;transform:none;width:100%;max-width:145px;
+   margin:0;justify-self:center;align-self:center;
+ }
+ .page-home .home-intro .hero-card-preview:hover,
+ .page-home .home-intro .hero-card-preview:focus-visible{transform:translateY(-5px) scale(1.035)}
+ .page-home .home-intro h1{font-size:clamp(43px,4.5vw,67px);line-height:1.04;max-width:460px}
+}
+@media(min-width:761px) and (max-width:999px){
+ .page-home .home-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center;max-width:none;padding:30px 12px;min-height:440px}
+ .page-home .home-intro .home-hero-copy{grid-column:1;grid-row:1}
+ .page-home .home-intro .hand-hero{grid-column:2;grid-row:1;position:relative;inset:auto;transform:none;width:100%;height:350px;margin:0 auto}
+ .page-home .home-intro .hero-card-preview{display:none}
+ .page-home .home-intro h1{font-size:clamp(38px,5vw,54px)}
+}
+@media(max-width:760px){
+ .page-home .home-intro{display:flex;flex-direction:column;max-width:none;width:100%;padding-inline:clamp(8px,3vw,20px)}
+ .page-home .home-intro .home-hero-copy{order:1;width:100%}
+ .page-home .home-intro .hand-hero{order:0;position:relative;inset:auto;transform:none;margin:0 auto 16px}
+ .page-home .home-intro .hero-card-preview{display:none}
+}
