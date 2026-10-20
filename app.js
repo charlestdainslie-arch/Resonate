@@ -16,12 +16,12 @@ const spreads = {
     ['Future','a possible direction if current patterns continue, rather than a fixed prediction']
   ]},
   seven: {name:'Seven-card V Reading',description:'A general reading or answer to a question',positions:[
-    ['Past · 18–24 Months','the client’s experiences and influences from approximately the previous 18 to 24 months'],
-    ['Present Time','the client’s present circumstances, including the period immediately surrounding today'],
+    ['Past · 18–24 Months','your experiences and influences from approximately the previous 18 to 24 months'],
+    ['Present Time','your present circumstances, including the period immediately surrounding today'],
     ['Near Future · 3 Months','what may develop over approximately the next three months if the present course continues'],
-    ['Client / Answer','the client’s current state in a general reading; for a specific question, this card gives the answer and is interpreted last'],
-    ['Surrounding Energies','the people, home, work and other circumstances influencing the client or the question at present'],
-    ['Hopes, Fears & Attitude','the hopes, fears and attitude the client brings to the situation or specific question'],
+    ['You / Answer','your current state in a general reading; for a specific question, this card gives the answer and is interpreted last'],
+    ['Surrounding Energies','the people, home, work and other circumstances influencing you or the question at present'],
+    ['Hopes, Fears & Attitude','the hopes, fears and attitude you bring to the situation or specific question'],
     ['Outcome · Next 18–24 Months','the longer-term outcome of present circumstances over approximately the next 18 to 24 months; in a question reading, the likely outcome of that question']
   ]},
   relationship: {name:'Relationship',description:'Two perspectives and the connection between them',positions:[
@@ -64,11 +64,11 @@ function positionContext(card,index,upright=true){
   if(state.spreadId==='seven'){
     const sevenLenses=[
       `Looking across the previous 18 to 24 months, ${theme} may show an experience or influence that helped shape the present situation.`,
-      `In the period immediately surrounding today, ${theme} may describe what is active for the client now.`,
+      `In the period immediately surrounding today, ${theme} may describe what is active for you now.`,
       `Over approximately the next three months, ${theme} may show what develops if the present course continues; it is a direction, not a fixed prediction.`,
-      `In a general reading, ${theme} may describe the client’s current state. For a specific question, interpret this card last as the answer to that question.`,
-      `In the client’s surroundings, ${theme} may be expressed through people, home, work or other circumstances influencing the situation now.`,
-      `${theme.charAt(0).toUpperCase()+theme.slice(1)} may colour the client’s hopes, fears and attitude toward the situation or question.`,
+      `In a general reading, ${theme} may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.`,
+      `In your surroundings, ${theme} may be expressed through people, home, work or other circumstances influencing the situation now.`,
+      `${theme.charAt(0).toUpperCase()+theme.slice(1)} may colour your hopes, fears and attitude toward the situation or question.`,
       `Across approximately the next 18 to 24 months, ${theme} may describe the likely outcome if present circumstances continue, while leaving room for choice and change.`
     ];
     lens=sevenLenses[index];
@@ -244,7 +244,7 @@ function goldenThread(chosen){
 function renderDraw(){
   const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation">${atmosphericArt("assets/landing-reading.jpg","Whisper atmosphere — entering the reading")}<div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${i+1} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.name}</strong></div></div></button></div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation">${atmosphericArt("assets/landing-reading.jpg","Whisper atmosphere — entering the reading")}<div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="draw-actions" id="drawActions"><button type="button" class="gold-button" id="backToReadingTop">↑ Back to reading · Next step</button><button type="button" class="ghost-button" data-go="reading">${icon('back',16)} Change spread</button><button type="button" class="gold-button" id="drawAgain">${icon('spark',15)} Draw again</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download reading</button></div><p class="reading-help">Tap a card or its interpretation for the full meaning, then return to this reading.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
@@ -259,6 +259,8 @@ function renderDraw(){
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
   document.getElementById('drawAgain').onclick=startDraw;
   document.getElementById('downloadReading').onclick=downloadReading;
+  const backToReading=document.getElementById('backToReadingTop');
+  if(backToReading)backToReading.onclick=()=>document.querySelector('.draw-stage.multi')?.scrollIntoView({behavior:'smooth',block:'start'});
 }
 function downloadReading(){
   const labels=positionLabels();
