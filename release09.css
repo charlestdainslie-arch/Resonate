@@ -85,3 +85,15 @@
   .hero-card-label small{font-size:7px;letter-spacing:.15em;color:#bd9d61}
   .hero-card-label strong{font:400 12px/1.2 Georgia,serif}
 }
+
+/* v0.91 card-display consistency: full portrait art, no edge clipping. */
+@media (min-width:761px){
+  .home-intro .hand-hero{right:19%;width:37%}
+  .home-intro .hero-card-preview{right:3.5%;top:118px;width:clamp(106px,11vw,144px);transform:rotate(0deg);box-sizing:border-box}
+  .home-intro .hero-card-preview img{width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;object-position:center}
+}
+.hero-card-preview img,.reading-card-front img,.detail-card-image img,.card-image-wrap img{
+  object-fit:contain;
+  object-position:center;
+}
+.hero-card-preview{overflow:visible}
