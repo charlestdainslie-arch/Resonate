@@ -97,3 +97,46 @@
   object-position:center;
 }
 .hero-card-preview{overflow:visible}
+
+/* v0.91 responsive landing composition: use full page width rather than
+   the old 790px hero constraint that pulled everything to the left. */
+@media (min-width: 1100px) {
+  .home-intro{
+    position:relative;
+    width:100%;
+    max-width:none;
+    box-sizing:border-box;
+    min-height:clamp(500px,48vw,620px);
+    padding:58px 57% 58px 0;
+  }
+  .home-intro h1{max-width:500px;font-size:clamp(48px,5vw,72px)}
+  .home-intro>p{max-width:430px}
+  .home-intro .hand-hero{
+    top:48px;right:15%;width:clamp(280px,29%,390px);height:clamp(340px,36vw,460px);
+  }
+  .home-intro .hero-card-preview{
+    top:clamp(132px,14vw,190px);right:2.8%;
+    width:clamp(114px,11.5%,148px);transform:none;
+  }
+}
+@media (min-width: 761px) and (max-width:1099px){
+  .home-intro{position:relative;width:100%;max-width:none;min-height:480px;padding:45px 53% 40px 0;box-sizing:border-box}
+  .home-intro h1{font-size:clamp(40px,5.8vw,62px);max-width:440px}
+  .home-intro .hand-hero{top:65px;right:14%;width:33%;height:345px}
+  .home-intro .hero-card-preview{right:1%;top:160px;width:clamp(88px,11vw,114px);transform:none}
+}
+@media (min-width: 521px) and (max-width:760px){
+  .home-intro{max-width:none;width:100%;padding:30px 0 32px;box-sizing:border-box}
+  .home-intro .hand-hero{width:min(390px,72vw);height:310px;margin:4px auto 20px}
+  .home-intro h1{font-size:clamp(40px,7vw,56px)}
+  .home-intro .hero-card-preview{display:none}
+}
+@media (max-width:520px){
+  .home-intro{width:100%;max-width:none;padding:28px 0 30px;box-sizing:border-box}
+  .home-intro .hand-hero{width:min(330px,84vw);height:260px;margin:0 auto 16px}
+  .home-intro .hero-card-preview{display:none}
+  .home-intro h1{font-size:clamp(36px,10vw,48px);overflow-wrap:normal}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-card-preview{transition:none}
+}
