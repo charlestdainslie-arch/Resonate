@@ -21,3 +21,17 @@
 .evolving-reading{padding:clamp(18px,3vw,32px);margin:28px auto;border:1px solid rgba(218,180,103,.3);border-radius:14px;max-width:850px}
 .evolving-reading p{line-height:1.75}
 @media(max-width:600px){.position-clarifiers{gap:7px}.position-clarifier{width:68px}.clarifier-layer-label{font-size:9px}}
+
+/* UAT-004: physical overlay — clarifiers fan over the bottom-right of their parent. */
+.reading-position{position:relative}
+.reading-position .position-clarifiers{position:relative;z-index:3;display:flex;justify-content:center;flex-wrap:nowrap;gap:0;margin:-50px 0 0 56px;pointer-events:none}
+.reading-position .position-clarifier{width:clamp(65px,8vw,92px);flex:0 0 auto;margin-left:-23px;transform:rotate(5deg);filter:drop-shadow(0 7px 9px #000);pointer-events:auto}
+.reading-position .position-clarifier:nth-child(2){transform:rotate(-7deg) translateY(9px)}
+.reading-position .position-clarifier:nth-child(3){transform:rotate(8deg) translateY(18px)}
+.reading-position .position-clarifier img{aspect-ratio:2/3;object-fit:cover;border:2px solid #c8a763;border-radius:5px}
+.reading-position .position-clarifier strong{font-size:10px;line-height:1.2}
+.reading-meaning .integrated-clarifier{margin:20px 0 0;padding:16px 20px;border-left:2px solid #c8a763;background:rgba(210,168,92,.05)}
+.reading-meaning .combined-meaning{margin:20px 0;padding:18px 20px;border:1px solid rgba(210,168,92,.4);border-radius:10px;background:rgba(210,168,92,.08)}
+.reading-meaning .integrated-clarifier h3,.reading-meaning .combined-meaning h3{font-size:clamp(17px,2vw,23px);margin:0 0 10px}
+.reading-meaning .integrated-clarifier p,.reading-meaning .combined-meaning p{line-height:1.7}
+@media(max-width:600px){.reading-position .position-clarifiers{margin-top:-35px;margin-left:36px}.reading-position .position-clarifier{width:62px;margin-left:-16px}}
