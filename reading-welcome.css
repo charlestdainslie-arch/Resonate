@@ -58,3 +58,38 @@
 .draw-page .draw-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
 .draw-page .draw-actions>button{min-height:44px;max-width:100%;white-space:normal}
 @media(max-width:520px){.draw-page .draw-actions{flex-direction:column}.draw-page .draw-actions>button{width:100%}}
+
+/* One-card acceptance baseline: a full-size, unclipped, layered tarot card stack.
+   Other spread geometries stay unchanged until this reference is visually approved. */
+.draw-page .spread-board.spread-1{padding:10px clamp(30px,8vw,78px) 55px;overflow:visible}
+.draw-page .spread-board.spread-1 .reading-position{position:relative;overflow:visible;isolation:isolate}
+.draw-page .spread-board.spread-1 .reading-position .reading-card{width:100%;z-index:1}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers{
+ position:absolute;top:clamp(80px,12vw,112px);left:0;width:100%;height:auto;
+ display:block;margin:0;padding:0;overflow:visible;pointer-events:none;z-index:3;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier{
+ position:absolute;top:0;left:0;width:100%;height:auto;aspect-ratio:2/3;
+ margin:0;transform:translate(25%,10%) rotate(5deg);filter:drop-shadow(0 12px 15px #000);
+ pointer-events:none;overflow:visible;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(2){
+ transform:translate(31%,17%) rotate(-5deg);z-index:4
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(3){
+ transform:translate(36%,24%) rotate(6deg);z-index:5
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier img{
+ display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;
+ box-sizing:border-box;border:2px solid #d5ad61;border-radius:10px;background:#0b0b0d;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{
+ position:absolute;top:auto;bottom:-31px;left:0;right:0;text-align:center;
+ background:#0b0b0dec;padding:4px;color:#e6d4b1;white-space:normal;pointer-events:none;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{display:none}
+@media(max-width:520px){
+ .draw-page .spread-board.spread-1{padding-inline:48px}
+ .draw-page .spread-board.spread-1 .reading-position .position-clarifiers{top:92px}
+}
