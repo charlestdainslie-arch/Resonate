@@ -203,3 +203,27 @@
   .reading-page .stage-board.spread-1 .stage-position,
   .draw-page .spread-board.spread-1 .reading-position{column-gap:6px}
 }
+
+/* v0.91 UAT position + identity contract. */
+.reading-page .stage-board .slot-label,
+.draw-page .spread-board .slot-label{
+ color:#edc979;font-size:clamp(17px,2vw,24px);font-weight:800;
+ line-height:1.3;letter-spacing:.055em;text-transform:uppercase;text-align:center;
+}
+.draw-page .reading-meaning .reading-meaning-head span{
+ font-size:clamp(19px,2.2vw,27px);color:#edc979;font-weight:800;
+}
+.draw-page .reading-card-front strong,
+.draw-page .position-clarifier strong{
+ color:#f2ece2;font-size:clamp(12px,1.4vw,16px);font-weight:650;
+ line-height:1.3;text-align:center;
+}
+.opening-dice-values{min-height:1.45em;transition:transform .12s ease,filter .12s ease}
+.opening-dice-values.is-rolling{animation:resonate-dice-jostle .28s ease-in-out infinite alternate}
+@keyframes resonate-dice-jostle{
+ from{transform:translateY(-3px) rotate(-2deg);filter:brightness(.9)}
+ to{transform:translateY(3px) rotate(2deg);filter:brightness(1.25)}
+}
+@media(prefers-reduced-motion:reduce){
+ .opening-dice-values.is-rolling{animation:none}
+}
