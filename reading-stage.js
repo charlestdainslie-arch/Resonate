@@ -4,7 +4,6 @@
 state.shuffledDeck = [];
 state.shuffleCount = 0;
 state.openingDice = null;
-state.openingDice = null;
 
 function prepareDeck(){
   const cardIds = cards.map(card => card.id);
@@ -35,9 +34,29 @@ renderReadingHub = function(){
     diceButton.onclick=()=>{
       const numbers=ResonateDice.roll();
       state.openingDice=[...numbers];
-      state.openingDice=[...numbers];
-      document.getElementById('openingDiceValues').textContent=numbers.join(' · ');
-      document.getElementById('openingDiceMeaning').textContent=ResonateDice.interpret(numbers);
+      const display=document.getElementById('openingDiceValues');
+      const meaning=document.getElementById('openingDiceMeaning');
+      diceButton.disabled=true;
+      diceButton.textContent='Rolling…';
+      display.classList.add('is-rolling');
+      meaning.textContent='The dice are rolling…';
+      let frame=0;
+      const showFrame=()=>{
+        if(!document.body.contains(display))return;
+        if(frame<9){
+          const interim=ResonateDice.roll();
+          display.textContent=interim.join(' · ');
+          frame++;
+          window.setTimeout(showFrame,75+frame*22);
+        }else{
+          display.textContent=numbers.join(' · ');
+          display.classList.remove('is-rolling');
+          meaning.textContent=ResonateDice.interpret(numbers);
+          diceButton.disabled=false;
+          diceButton.textContent='Roll again';
+        }
+      };
+      showFrame();
     };
   }
   document.querySelectorAll('[data-spread]').forEach(button=>{
