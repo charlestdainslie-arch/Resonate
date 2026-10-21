@@ -248,10 +248,20 @@ function drawFirstLayerClarifiers(){
     state.clarifierReadingAt=state.drawnAt;
   }
   if(!state.firstLayerClarifiers.length){
-    const available=cards.map(card=>card.id).filter(id=>!state.drawnCardIds.includes(id));
-    const pool=available.length?available:cards.map(card=>card.id);
-    for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-    state.firstLayerClarifiers=state.drawnCardIds.map((_,i)=>pool[i%pool.length]);
+    const cardIds=cards.map(card=>card.id);
+    // An independently shuffled full tarot deck supplies the clarifier layer.
+    // Until all 78 authored cards are available, retain the original sample behaviour.
+    if(cardIds.length===78 && typeof ResonateDeck!=='undefined'){
+      const clarifiers=ResonateDeck.newLayer(cardIds,{
+        readingId:state.drawnAt,layer:1,slotCount:state.drawnCardIds.length
+      });
+      state.firstLayerClarifiers=clarifiers.cards;
+    }else{
+      const available=cardIds.filter(id=>!state.drawnCardIds.includes(id));
+      const pool=available.length?available:cardIds;
+      for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+      state.firstLayerClarifiers=state.drawnCardIds.map((_,i)=>pool[i%pool.length]);
+    }
   }
   renderDraw();
   document.getElementById('firstLayerClarifiers')?.scrollIntoView({behavior:'smooth',block:'start'});
