@@ -1,0 +1,5 @@
+/* Reading welcome: calm, legible, accessible at every width. */
+.reading-welcome{box-sizing:border-box;width:min(100%,900px);margin:16px auto 28px;padding:clamp(20px,4vw,36px);border:1px solid rgba(218,180,103,.28);border-radius:18px;background:linear-gradient(135deg,rgba(218,180,103,.08),rgba(12,12,16,.4));text-align:center}
+.reading-welcome h2{max-width:680px;margin:12px auto 16px;font-size:clamp(24px,3.2vw,37px);line-height:1.2}
+.reading-welcome p{max-width:660px;margin:12px auto;line-height:1.7}
+@media(max-width:520px){.reading-welcome{margin:12px auto 20px;padding:20px 16px}}
