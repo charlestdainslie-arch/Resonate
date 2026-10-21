@@ -272,7 +272,7 @@ function drawFirstLayerClarifiers(){
     }
   }
   renderDraw();
-  document.querySelector('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});
+  document.querySelector?.('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});
 }
 function firstLayerClarifierView(labels){
   const ids=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
@@ -300,7 +300,7 @@ function drawNextClarifierLayer(){
   state.additionalClarifierLayers=[...layers,{number,cards:selected}];
   state.drawSettled=true;
   renderDraw();
-  document.querySelector('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});
+  document.querySelector?.('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});
 }
 function additionalClarifierView(labels){
   if(state.additionalClarifierReadingAt!==state.drawnAt)return '';
@@ -347,7 +347,7 @@ function renderDraw(){
   cardsEls.forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingCard),'draw',Number(el.dataset.index)));
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
   document.getElementById('downloadReading').onclick=downloadReading;
-  document.getElementById('clarifyFirstLayer').onclick=()=>{if(state.clarifierReadingAt===state.drawnAt&&state.firstLayerClarifiers?.length){document.querySelector('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});}else drawFirstLayerClarifiers();};
+  document.getElementById('clarifyFirstLayer').onclick=()=>{if(state.clarifierReadingAt===state.drawnAt&&state.firstLayerClarifiers?.length){document.querySelector?.('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});}else drawFirstLayerClarifiers();};
   const nextClarifier=document.getElementById('nextClarifierLayer');
   if(nextClarifier)nextClarifier.onclick=drawNextClarifierLayer;
   const backToReading=document.getElementById('backToReadingTop');
