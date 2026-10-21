@@ -11,3 +11,13 @@
 .opening-dice-values{font-size:clamp(30px,5vw,48px);font-variant-numeric:tabular-nums;letter-spacing:.2em;margin:14px auto;color:#e5c47a}
 .opening-dice button{min-height:44px}
 @media(max-width:520px){.opening-dice{padding:18px 14px}}
+
+/* UAT-003: card clarifiers belong to their original spread position. */
+.position-clarifiers{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:12px;margin-top:16px;max-width:100%}
+.position-clarifier{display:flex;flex-direction:column;align-items:center;gap:6px;width:clamp(72px,9vw,100px);min-width:0}
+.position-clarifier img{display:block;width:100%;aspect-ratio:2/3;object-fit:contain;border:1px solid rgba(218,180,103,.5);border-radius:6px;background:#0c0b0b}
+.position-clarifier strong{font-size:11px;font-weight:600;line-height:1.3;text-align:center;overflow-wrap:anywhere}
+.clarifier-layer-label{color:#d9b979;font-size:10px;letter-spacing:.08em;text-align:center}
+.evolving-reading{padding:clamp(18px,3vw,32px);margin:28px auto;border:1px solid rgba(218,180,103,.3);border-radius:14px;max-width:850px}
+.evolving-reading p{line-height:1.75}
+@media(max-width:600px){.position-clarifiers{gap:7px}.position-clarifier{width:68px}.clarifier-layer-label{font-size:9px}}
