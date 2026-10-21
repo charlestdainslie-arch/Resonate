@@ -11,7 +11,8 @@ test('reading synthesis includes base cards and drawn clarifiers',()=>{
  assert.match(app,/function evolvingReading\(chosen,labels\)/);
  assert.match(app,/state\.firstLayerClarifiers\[i\]/);
  assert.match(app,/layer\.cards\[i\]/);
- assert.match(app,/\$\{evolvingReading\(chosen,labels\)\}/);
+ assert.match(app,/\$\{chosen\.map\(\(card,i\)=>readingMeaning\(card,labels\[i\],i\)\)/);
+ assert.match(app,/What these cards mean together/);
 });
 test('return navigation points to original spread without redraw',()=>{
  assert.match(app,/Back to the spread &amp; clarifiers/);
