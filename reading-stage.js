@@ -4,6 +4,7 @@
 state.shuffledDeck = [];
 state.shuffleCount = 0;
 state.openingDice = null;
+state.openingDice = null;
 
 function prepareDeck(){
   const cardIds = cards.map(card => card.id);
@@ -33,6 +34,7 @@ renderReadingHub = function(){
   if(diceButton&&typeof ResonateDice!=='undefined'){
     diceButton.onclick=()=>{
       const numbers=ResonateDice.roll();
+      state.openingDice=[...numbers];
       state.openingDice=[...numbers];
       document.getElementById('openingDiceValues').textContent=numbers.join(' · ');
       document.getElementById('openingDiceMeaning').textContent=ResonateDice.interpret(numbers);
