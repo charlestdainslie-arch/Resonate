@@ -314,7 +314,7 @@ function clarifierCardsForPosition(index){
   if(state.additionalClarifierReadingAt===state.drawnAt)
     (state.additionalClarifierLayers||[]).forEach(layer=>layers.push({number:layer.number,id:layer.cards[index]}));
   if(!layers.length)return '';
-  return `<div class="position-clarifiers clarifier-count-${layers.length}" aria-label="Clarifiers for position ${index+1}">${layers.map(layer=>{
+  return `<div class="position-clarifiers" data-clarifier-count="${layers.length}" aria-label="Clarifiers for position ${index+1}">${layers.map(layer=>{
     const card=cards.find(c=>c.id===layer.id);
     return card?`<div class="position-clarifier"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${card.name}, clarifier layer ${layer.number}" loading="lazy" referrerpolicy="no-referrer"><strong>${card.name}</strong></div>`:'';
   }).join('')}</div>`;
