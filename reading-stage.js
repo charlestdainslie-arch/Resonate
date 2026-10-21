@@ -5,10 +5,17 @@ state.shuffledDeck = [];
 state.shuffleCount = 0;
 
 function prepareDeck(){
-  const deck = cards.map(card => card.id);
-  for(let i=deck.length-1;i>0;i--){
-    const j=Math.floor(Math.random()*(i+1));
-    [deck[i],deck[j]]=[deck[j],deck[i]];
+  const cardIds = cards.map(card => card.id);
+  // Use the validated, non-mutating full-deck shuffle when all 78 authored cards
+  // are integrated; preserve the five-card prototype until then.
+  const fullDeckReady = cardIds.length===78 && typeof ResonateDeck!=='undefined';
+  if(fullDeckReady) ResonateDeck.validateDeck(cardIds);
+  const deck = fullDeckReady ? ResonateDeck.shuffle(cardIds) : [...cardIds];
+  if(!fullDeckReady){
+    for(let i=deck.length-1;i>0;i--){
+      const j=Math.floor(Math.random()*(i+1));
+      [deck[i],deck[j]]=[deck[j],deck[i]];
+    }
   }
   state.shuffledDeck=deck;
   state.shuffleCount += 1;
