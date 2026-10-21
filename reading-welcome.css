@@ -127,7 +127,7 @@
 .draw-page .spread-board.spread-1 .position-clarifier:nth-child(3){
  transform:translate(0,98%) rotate(0deg);z-index:5;
 }
-.draw-page .spread-board.spread-1 .position-clarifiers.clarifier-count-1 .position-clarifier:nth-child(1){
+.draw-page .spread-board.spread-1 .position-clarifiers[data-clarifier-count="1"] .position-clarifier:nth-child(1){
  transform:translate(48%,36%) rotate(6deg);
 }
 .draw-page .spread-board.spread-1 .position-clarifier strong{font-size:11px}
