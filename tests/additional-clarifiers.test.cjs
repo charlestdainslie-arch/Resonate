@@ -14,13 +14,13 @@ function fixture(){
  vm.runInContext(code,ctx);
  return {ctx,state,draw:()=>vm.runInContext('drawNextClarifierLayer()',ctx),renders:()=>renders};
 }
-test('second and third layers are unique within layer and original spread stays intact',()=>{
+test('second layer is unique within layer and original spread stays intact',()=>{
  const f=fixture();f.draw();f.draw();f.draw();
- assert.equal(f.state.additionalClarifierLayers.length,2);
- assert.deepEqual(Array.from(f.state.additionalClarifierLayers,x=>x.number),[2,3]);
+ assert.equal(f.state.additionalClarifierLayers.length,1);
+ assert.deepEqual(Array.from(f.state.additionalClarifierLayers,x=>x.number),[2]);
  for(const layer of f.state.additionalClarifierLayers)assert.equal(new Set(layer.cards).size,3);
  assert.deepEqual(Array.from(f.state.drawnCardIds),[1,2,3]);
- assert.equal(f.renders(),2);
+ assert.equal(f.renders(),1);
 });
 test('additional layers are not drawn until first layer exists',()=>{
  const f=fixture();f.state.firstLayerClarifiers=[];f.draw();
