@@ -30,3 +30,19 @@ Repository inspection confirms:
 
 ## Phase 2 integration decision record
 At each sprint, report: proposal; reason now; effort/risk; avoided rework; recommendation; explicit decision. Oracle reading UI remains deferred.
+
+## Reading welcome — approved product copy and acceptance criteria
+
+Display at the start of every reading, including free and subscribed readings, before the optional dice and draw experience:
+
+**Welcome to Your Personal Reading**
+
+As you begin, you're welcome to invite whichever guides, guardian angels, ancestors or spiritual connections you personally believe in.
+
+Take a moment to settle, open your mind and follow your intuition.
+
+**Take what resonates with you, and leave the rest.**
+
+This is your personal reading. The cards offer possibilities and perspectives, but the choices and meaning remain yours.
+
+Acceptance: inclusive and optional belief invitation; no claims of direct spirit communication; readable and screen-reader accessible; graceful Skip/Continue control; reduced-motion mode; golden filament quietly begins glowing then leads to optional dice and cards. Must not block the reading. Product owner to UAT wording and interaction.
