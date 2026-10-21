@@ -46,3 +46,27 @@ Take a moment to settle, open your mind and follow your intuition.
 This is your personal reading. The cards offer possibilities and perspectives, but the choices and meaning remain yours.
 
 Acceptance: inclusive and optional belief invitation; no claims of direct spirit communication; readable and screen-reader accessible; graceful Skip/Continue control; reduced-motion mode; golden filament quietly begins glowing then leads to optional dice and cards. Must not block the reading. Product owner to UAT wording and interaction.
+
+## Sprint 1 expanded QA and clarifier design checkpoint — 21 Oct 2026
+
+Product-owner requested QA:
+- Verify visual placements (hand, Fool, copy, all spread-card slots) across desktop/tablet/mobile and varied viewport heights.
+- Verify text/wording alignment, button dimensions/labels and keyboard focus; inspect back-navigation labels and targets.
+- Explicitly test return from first card/detail/bottom of interpretation to the TOP of the same reading without a fresh shuffle, lost notes, or changing cards.
+- Verify second and third clarifier layers, potentially drawing from separate deck instances so the full 78-card pool is available for each layer.
+
+Observed in current source (not yet end-to-end UAT):
+- app.js renderDraw bottom control #backToReadingTop scrolls to .draw-stage.multi.
+- Detail navigation at first/last card calls go('draw'), rebuilding the reading; state must be preserved and top-scroll verified.
+- drawFirstLayerClarifiers selects from the current 5-card sample pool, excluding original card IDs where possible, and uses modulo reuse when insufficient; no complete 78-card multi-layer clarifier mechanism established.
+- Layer-specific full-deck draws require explicit definition: a *freshly shuffled full 78-card deck per layer* is distinct from a different tarot/oracle deck. Do not add unrelated oracle artwork/meaning to Phase 1 by assumption.
+
+Proposed clarification for product owner before implementation:
+1. Primary spread draws without replacement from a standard 78-card tarot deck.
+2. Each clarifier layer may start a NEW independently shuffled 78-card tarot deck instance; no repeats within a layer, while repeats across different layers are permissible and explained.
+3. Layer 2 and 3 trigger conditions and whether they use a genuinely different deck design must be agreed before developing their UI/interpretation.
+4. Every layer and deck instance must persist in the reading journal with stable card/position/deck references.
+5. Golden filament follows main → first → second → third layers only when present, and points to corresponding interpretation.
+6. Add automated tests for 78-card uniqueness per deck instance; card/position association; nested clarifier limits; repeat rules; return-to-reading scroll; and reduced-motion behavior.
+
+No implementation or UAT success claimed by this documentation.
