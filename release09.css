@@ -247,3 +247,21 @@
 .page-home .home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:430px}
 .page-home .home-actions>button{box-sizing:border-box;width:100%;min-width:0;min-height:52px;padding:12px 14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;line-height:1.2}
 @media(max-width:390px){.page-home .home-actions{grid-template-columns:1fr;max-width:none}}
+
+/* UAT-001: force precisely matched action dimensions despite legacy button styles. */
+.page-home .home-intro .home-actions > button.draw-cta,
+.page-home .home-intro .home-actions > button.ghost-button {
+  box-sizing:border-box;
+  inline-size:100%;
+  block-size:56px;
+  min-block-size:56px;
+  max-block-size:56px;
+  padding:0 12px;
+  margin:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  align-self:center;
+  line-height:1.2;
+  border-radius:999px;
+}
