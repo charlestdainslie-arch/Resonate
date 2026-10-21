@@ -145,3 +145,61 @@
 .draw-page .reading-number-thread{border-top:1px solid rgba(210,168,92,.3);margin-top:22px;padding-top:20px}
 .draw-page .reading-number-thread h3{font-size:clamp(21px,2.4vw,28px);color:#eee6d8}
 .draw-page .reading-number-thread p{line-height:1.7}
+
+/* One-card acceptance geometry: the pre-draw and revealed card have the same dimensions.
+   Clarifiers join the same row rather than masking previously drawn artwork. */
+.reading-page .stage-board.spread-1,
+.draw-page .spread-board.spread-1{
+  box-sizing:border-box;width:min(100%,640px);max-width:640px;
+  grid-template-columns:minmax(0,1fr);padding:8px 0 18px;margin:12px auto 24px;
+  overflow:visible;
+}
+.reading-page .stage-board.spread-1 .stage-position,
+.draw-page .spread-board.spread-1 .reading-position{
+  box-sizing:border-box;width:100%;max-width:100%;min-width:0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:clamp(7px,2vw,22px);row-gap:10px;
+  align-items:start;justify-items:center;overflow:visible;isolation:isolate;
+}
+.reading-page .stage-board.spread-1 .slot-label,
+.draw-page .spread-board.spread-1 .slot-label{grid-column:1/-1;grid-row:1;width:100%;margin:0 0 5px}
+.reading-page .stage-board.spread-1 .stage-card,
+.draw-page .spread-board.spread-1 .reading-card{
+  grid-column:2;grid-row:2;box-sizing:border-box;width:100%;max-width:190px;
+  aspect-ratio:2/3;height:auto;margin:0;min-width:0;z-index:1;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers{
+  display:contents;position:static;width:auto;height:auto;margin:0;padding:0;overflow:visible;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(1),
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(2),
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(3),
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers[data-clarifier-count="1"] .position-clarifier:nth-child(1){
+  position:relative;inset:auto;top:auto;left:auto;width:100%;height:auto;min-width:0;
+  margin:0;transform:none;filter:none;pointer-events:auto;overflow:visible;
+  display:flex;flex-direction:column;align-items:center;gap:7px;aspect-ratio:auto;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(1){grid-column:1;grid-row:2;z-index:2}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(2){grid-column:3;grid-row:2;z-index:2}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier img{
+  display:block;box-sizing:border-box;width:100%;height:auto;aspect-ratio:2/3;
+  object-fit:contain;border:2px solid #d5ad61;border-radius:10px;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{
+  position:static;inset:auto;display:block;width:100%;padding:5px 4px;
+  text-align:center;font-size:clamp(10px,1.5vw,14px);line-height:1.3;
+  background:transparent;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{
+  position:static;inset:auto;display:block;order:-1;min-height:1.6em;padding:0;
+  font-size:clamp(9px,1.3vw,12px);background:transparent;color:#d9b979;
+}
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="1"]),
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="2"]),
+.draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:18px}
+@media(max-width:520px){
+  .reading-page .stage-board.spread-1,.draw-page .spread-board.spread-1{padding:8px 0 12px}
+  .reading-page .stage-board.spread-1 .stage-position,
+  .draw-page .spread-board.spread-1 .reading-position{column-gap:6px}
+}
