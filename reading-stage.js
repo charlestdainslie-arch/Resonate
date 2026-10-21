@@ -26,8 +26,16 @@ function faceDownSlot(label,index){
 }
 
 renderReadingHub = function(){
-  shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>Select a spread to enter the reading table. Your cards will be waiting face down.</p></section><section class="reading-welcome" aria-labelledby="readingWelcomeTitle"><div class="eyebrow">YOUR PERSONAL READING</div><h2 id="readingWelcomeTitle">Take what resonates, and leave the rest.</h2><p>You are welcome to invite whichever guides, guardian angels, ancestors or spiritual connections you personally believe in. Take a moment to settle and follow your intuition.</p><p>The cards offer possibilities and perspectives; the meaning and choices remain yours.</p></section><section class="spread-picker">${Object.entries(spreads).map(([id,spread])=>`<button data-spread="${id}"><span>${spread.positions.length} CARD${spread.positions.length===1?'':'S'}</span><strong>${spread.name}</strong><small>${spread.description}</small></button>`).join('')}</section><div class="reading-note">Choose a spread to continue.</div>`, 'reading-page');
+  shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>Select a spread to enter the reading table. Your cards will be waiting face down.</p></section><section class="reading-welcome" aria-labelledby="readingWelcomeTitle"><div class="eyebrow">YOUR PERSONAL READING</div><h2 id="readingWelcomeTitle">Take what resonates, and leave the rest.</h2><p>You are welcome to invite whichever guides, guardian angels, ancestors or spiritual connections you personally believe in. Take a moment to settle and follow your intuition.</p><p>The cards offer possibilities and perspectives; the meaning and choices remain yours.</p></section><section class="opening-dice" aria-labelledby="openingDiceTitle"><h2 id="openingDiceTitle">Your opening numbers</h2><p>An optional moment of reflection before your cards.</p><div class="opening-dice-values" id="openingDiceValues" aria-live="polite">– &nbsp; –</div><button type="button" class="ghost-button" id="rollOpeningDice">Roll two dice (0–9)</button><p id="openingDiceMeaning" aria-live="polite">You can roll, or simply choose your spread below.</p></section><section class="spread-picker">${Object.entries(spreads).map(([id,spread])=>`<button data-spread="${id}"><span>${spread.positions.length} CARD${spread.positions.length===1?'':'S'}</span><strong>${spread.name}</strong><small>${spread.description}</small></button>`).join('')}</section><div class="reading-note">Choose a spread to continue.</div>`, 'reading-page');
   bindBack();
+  const diceButton=document.getElementById('rollOpeningDice');
+  if(diceButton&&typeof ResonateDice!=='undefined'){
+    diceButton.onclick=()=>{
+      const numbers=ResonateDice.roll();
+      document.getElementById('openingDiceValues').textContent=numbers.join(' · ');
+      document.getElementById('openingDiceMeaning').textContent=ResonateDice.interpret(numbers);
+    };
+  }
   document.querySelectorAll('[data-spread]').forEach(button=>{
     button.onclick=()=>{
       state.spreadId=button.dataset.spread;
