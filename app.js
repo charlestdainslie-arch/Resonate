@@ -205,6 +205,25 @@ function whisperCardArt(card){
 function atmosphericArt(src, label) {
   return `<figure class="atmospheric-art"><img src="${src}" alt="${label}" loading="lazy" decoding="async" width="1536" height="1024"></figure>`;
 }
+// Original RESONATE interpretive observations inspired by traditional RWS visual study.
+const resonateImagery={
+  0:{image:"the white rose and the bright sky",reading:"The rose invites sincerity of intention while the bright sky suggests room to think clearly before stepping ahead.",colours:["white","yellow"],stage:"beginning a journey"},
+  1:{image:"the red outer garment, white clothing and tools on the table",reading:"Passion and deliberate effort meet a question of honest purpose: what resources can be used well?",colours:["red","white"],stage:"discovering personal agency"},
+  2:{image:"the blue garment and contrasting pillars",reading:"Reflection and deeper understanding sit between opposing possibilities, inviting patience with uncertainty.",colours:["blue"],stage:"learning to listen inwardly"},
+  3:{image:"the warm yellow landscape and the green growth around the seated figure",reading:"Creativity is supported by attention and balance; growth needs both space and care.",colours:["yellow","green"],stage:"nurturing what can grow"},
+  4:{image:"the red robes and the firm stone throne",reading:"Determination is given form through limits, responsibility and practical structure.",colours:["red"],stage:"learning structure and stewardship"}
+};
+function imageryInsight(card){
+  const profile=resonateImagery[card.id];
+  return profile?`<p class="symbolism-insight"><strong>Looking closer:</strong> Notice ${profile.image}. ${profile.reading}</p>`:'';
+}
+function storyConnection(base,clarifier){
+  const a=resonateImagery[base.id],b=resonateImagery[clarifier.id];
+  const common=a&&b?a.colours.filter(colour=>b.colours.includes(colour)):[];
+  const palette=common.length?` Both images echo ${common.join(' and ')}, linking their visual language.`:'';
+  const development=a&&b?` As a story, this moves from ${a.stage} towards ${b.stage}.`:'';
+  return `<p class="symbolism-insight"><strong>The conversation between them:</strong> ${base.name} asks about ${base.uprightKeywords.slice(0,2).join(' and ').toLowerCase()}, while ${clarifier.name} brings ${clarifier.uprightKeywords.slice(0,2).join(' and ').toLowerCase()} into the same question.${palette}${development} Read this as a possible shift in emphasis, not a certainty.</p>`;
+}
 function readingMeaning(card,label,index){
   const focus=label||'this position';
   const sky=currentSky(card);
@@ -212,10 +231,10 @@ function readingMeaning(card,label,index){
   if(state.clarifierReadingAt===state.drawnAt&&state.firstLayerClarifiers?.length)layers.push({number:1,id:state.firstLayerClarifiers[index]});
   if(state.additionalClarifierReadingAt===state.drawnAt)(state.additionalClarifierLayers||[]).filter(layer=>layer.number===2).forEach(layer=>layers.push({number:layer.number,id:layer.cards[index]}));
   const actual=layers.map(layer=>({...layer,card:cards.find(c=>c.id===layer.id)})).filter(x=>x.card);
-  const connected=actual.map(({number,card:clarifier})=>`<div class="integrated-clarifier"><h3>Clarifier ${number} · ${clarifier.name}</h3><p>${clarifier.upright}</p></div>`).join('');
+  const connected=actual.map(({number,card:clarifier})=>`<div class="integrated-clarifier"><h3>Clarifier ${number} · ${clarifier.name}</h3><p>${clarifier.upright}</p>${imageryInsight(clarifier)}${storyConnection(card,clarifier)}</div>`).join('');
   const themes=[card,...actual.map(x=>x.card)].map(c=>c.uprightKeywords.slice(0,2).join(' and ').toLowerCase());
   const synthesis=actual.length?`<div class="combined-meaning"><h3>What these cards mean together</h3><p><strong>${card.name}</strong> provides the foundation of ${themes[0]}. ${actual.map(({card:c})=>`${c.name} brings ${c.uprightKeywords.slice(0,2).join(' and ').toLowerCase()} into the picture`).join('; ')}. In the <strong>${focus}</strong> position, consider how these themes interact: what might become possible when they are held together, and which practical response resonates with your situation? This is a perspective for reflection, not a fixed prediction.</p></div>`:'';
-  return `<article class="reading-meaning"><div class="reading-art" style="background-image:url('${whisperCardArt(card)}')" role="img" aria-label="Whisper-style artwork inspired by ${card.name}"></div><div class="reading-meaning-body"><div class="reading-meaning-head"><span>${focus}</span></div><div class="original-card-explanation"><h3>Original Card · ${card.name}</h3><p class="original-position-label">${focus}</p><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p class="position-context">${positionContext(card,index)}</p><p>${card.upright}</p></div>${connected}${synthesis}<button data-reading-detail="${card.id}" data-index="${index}">Explore ${card.name} ${icon('arrow',14)}</button></div></article>`;
+  return `<article class="reading-meaning"><div class="reading-art" style="background-image:url('${whisperCardArt(card)}')" role="img" aria-label="Whisper-style artwork inspired by ${card.name}"></div><div class="reading-meaning-body"><div class="reading-meaning-head"><span>${focus}</span></div><div class="original-card-explanation"><h3>Original Card · ${card.name}</h3><p class="original-position-label">${focus}</p><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div><div class="keyword-row">${card.uprightKeywords.slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p class="position-context">${positionContext(card,index)}</p><p>${card.upright}</p>${imageryInsight(card)}</div>${connected}${synthesis}<button data-reading-detail="${card.id}" data-index="${index}">Explore ${card.name} ${icon('arrow',14)}</button></div></article>`;
 }
 
 function readingLayerCards(index){
