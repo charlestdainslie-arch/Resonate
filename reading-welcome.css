@@ -93,3 +93,47 @@
  .draw-page .spread-board.spread-1{padding-inline:48px}
  .draw-page .spread-board.spread-1 .reading-position .position-clarifiers{top:92px}
 }
+
+/* UAT: original and all clarifier interpretations have identical framing. */
+.draw-page .reading-meaning .original-card-explanation,
+.draw-page .reading-meaning .integrated-clarifier{
+ margin:20px 0 0;padding:16px 20px;border-left:3px solid #c8a763;
+ background:rgba(210,168,92,.05);
+}
+.draw-page .reading-meaning .original-card-explanation h3,
+.draw-page .reading-meaning .integrated-clarifier h3{
+ color:#f4f0e9;font-family:inherit;font-size:clamp(20px,2.2vw,26px);
+ font-weight:700;line-height:1.3;margin:0 0 12px;text-align:left;
+}
+.draw-page .reading-meaning .original-position-label{
+ color:#dfbd79;font-weight:700;letter-spacing:.05em;margin:8px 0 14px;
+}
+.draw-page .reading-meaning .original-card-explanation>p,
+.draw-page .reading-meaning .integrated-clarifier>p{
+ line-height:1.7;text-align:left;
+}
+.journal-reflection-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:14px 0 20px}
+.journal-reflection-actions .reflection-note{margin:0;font-size:13px;line-height:1.5}
+.journal-reflection-actions button{min-height:44px}
+/* Keep each full-size clarifier visible instead of stacking them in the same spot. */
+.draw-page .spread-board.spread-1{padding:10px clamp(100px,16vw,185px) 205px}
+.draw-page .spread-board.spread-1 .position-clarifiers{top:clamp(80px,12vw,112px)}
+.draw-page .spread-board.spread-1 .position-clarifier:nth-child(1){
+ transform:translate(-68%,36%) rotate(-7deg);z-index:3;
+}
+.draw-page .spread-board.spread-1 .position-clarifier:nth-child(2){
+ transform:translate(68%,36%) rotate(7deg);z-index:4;
+}
+.draw-page .spread-board.spread-1 .position-clarifier:nth-child(3){
+ transform:translate(0,98%) rotate(0deg);z-index:5;
+}
+.draw-page .spread-board.spread-1 .position-clarifiers.clarifier-count-1 .position-clarifier:nth-child(1){
+ transform:translate(48%,36%) rotate(6deg);
+}
+.draw-page .spread-board.spread-1 .position-clarifier strong{font-size:11px}
+@media(max-width:520px){
+ .draw-page .spread-board.spread-1{padding:10px 70px 180px}
+ .draw-page .spread-board.spread-1 .position-clarifiers{top:92px}
+ .journal-reflection-actions{flex-direction:column;align-items:stretch}
+ .journal-reflection-actions button{width:100%}
+}
