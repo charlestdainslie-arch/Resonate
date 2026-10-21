@@ -210,8 +210,7 @@ function readingMeaning(card,label,index){
   const sky=currentSky(card);
   const layers=[];
   if(state.clarifierReadingAt===state.drawnAt&&state.firstLayerClarifiers?.length)layers.push({number:1,id:state.firstLayerClarifiers[index]});
-  if(state.additionalClarifierReadingAt===state.drawnAt)(state.additionalClarifierLayers||[]).forEach(layer=>layers.push({number:layer.number,id:layer.cards[index]});
-  );
+  if(state.additionalClarifierReadingAt===state.drawnAt)(state.additionalClarifierLayers||[]).forEach(layer=>layers.push({number:layer.number,id:layer.cards[index]}));
   const actual=layers.map(layer=>({...layer,card:cards.find(c=>c.id===layer.id)})).filter(x=>x.card);
   const connected=actual.map(({number,card:clarifier})=>`<div class="integrated-clarifier"><h3>Clarifier ${number} · ${clarifier.name}</h3><p>${clarifier.upright}</p></div>`).join('');
   const themes=[card,...actual.map(x=>x.card)].map(c=>c.uprightKeywords.slice(0,2).join(' and ').toLowerCase());
