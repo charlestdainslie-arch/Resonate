@@ -14,7 +14,7 @@ test('every reading presents only one active clarifier next action',()=>{
  assert.doesNotMatch(source,/id="nextClarifierLayer"/);
  assert.match(source,/Draw First Clarifier/);
  assert.match(source,/Draw Second Clarifier/);
- assert.match(source,/Draw Third Clarifier/);
+ assert.doesNotMatch(source,/Draw Third Clarifier/);
  assert.match(source,/clarifyAction.onclick/);
 });
 test('primary action is gold and return, journal and download are secondary',()=>{
