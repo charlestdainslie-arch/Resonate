@@ -137,3 +137,11 @@
  .journal-reflection-actions{flex-direction:column;align-items:stretch}
  .journal-reflection-actions button{width:100%}
 }
+
+/* One-card UAT: let the table grow only when clarifiers are present. */
+.draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:10px}
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="1"]){padding-bottom:125px}
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="2"]){padding-bottom:135px}
+.draw-page .reading-number-thread{border-top:1px solid rgba(210,168,92,.3);margin-top:22px;padding-top:20px}
+.draw-page .reading-number-thread h3{font-size:clamp(21px,2.4vw,28px);color:#eee6d8}
+.draw-page .reading-number-thread p{line-height:1.7}
