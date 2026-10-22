@@ -37,3 +37,18 @@ test('legacy journal entries without dice do not borrow a later reading roll',()
  const f=fixture();f.run("saveReadingReflection('Legacy',null)");f.ctx.clearDrawTimers=()=>{};f.ctx.go=()=>{};
  f.run("state.openingDice=[3,4];openJournalReading('reading-id')");assert.equal(f.ctx.state.openingDice,null);
 });
+
+function feedbackFixture(){
+ const f=fixture();const elements=Object.fromEntries(['primaryClarifierAction','saveReadingJournal','primaryJournalSaveStatus'].map(id=>[id,{textContent:'Save Reading to Journal',classList:{toggle(){}}}]));
+ f.ctx.document={getElementById:id=>elements[id]||null};
+ f.run('state.additionalClarifierReadingAt=state.drawnAt;state.additionalClarifierLayers=[{number:2,cards:[8,9,10]}]');
+ return {...f,elements};
+}
+test('successful save without notes gives a tick on both save buttons and beside the primary action',()=>{
+ const f=feedbackFixture();assert.equal(f.run("saveReadingReflection('',null)"),true);
+ assert.equal(f.elements.primaryClarifierAction.textContent,'✓ Saved to Journal');assert.equal(f.elements.saveReadingJournal.textContent,'✓ Saved to Journal');assert.match(f.elements.primaryJournalSaveStatus.textContent,/✓ Reading saved/);
+});
+test('failed save removes success ticks and shows the error beside the clicked primary action',()=>{
+ const f=feedbackFixture();f.run("saveReadingReflection('',null)");f.block();assert.equal(f.run("saveReadingReflection('Changed',null)"),false);
+ assert.doesNotMatch(f.elements.primaryClarifierAction.textContent,/✓/);assert.match(f.elements.primaryJournalSaveStatus.textContent,/Could not save/);
+});

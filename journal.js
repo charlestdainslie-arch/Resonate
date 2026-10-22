@@ -9,15 +9,26 @@ function journalDate(value,zone){
   return new Intl.DateTimeFormat('en-AU',{weekday:'long',day:'numeric',month:'long',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short',...(zone?{timeZone:zone}:{})}).format(new Date(value));
 }
 function activeJournal(){return journalEntries.find(entry=>entry.id===state.journalId)||journalEntries.find(entry=>entry.readingAt===state.drawnAt&&entry.spreadId===state.spreadId);}
+function journalSaveFeedback(saved,message){
+  if(typeof document==='undefined')return;
+  const primary=document.getElementById('primaryClarifierAction');
+  const complete=state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1;
+  const buttons=[document.getElementById('saveReadingJournal'),complete?primary:null].filter(Boolean);
+  for(const button of buttons){button.textContent=saved?'✓ Saved to Journal':'Save Reading to Journal';button.classList.toggle('gold-button',!saved);button.classList.toggle('ghost-button',saved);}
+  const visibleStatus=document.getElementById('primaryJournalSaveStatus');
+  if(visibleStatus)visibleStatus.textContent=message||'';
+}
 function writeJournal(entry,status){
   const next=[entry,...journalEntries.filter(item=>item.id!==entry.id)];
   try{
     localStorage.setItem(journalKey,JSON.stringify(next));
     journalEntries=next;state.journalId=entry.id;
     if(status)status.textContent='✓ Reading saved to Your Personal Journal on this browser.';
+    journalSaveFeedback(true,'✓ Reading saved to Your Personal Journal on this browser.');
     return true;
   }catch{
     if(status)status.textContent='Could not save in this browser. Keep this page open and copy your reflection before leaving.';
+    journalSaveFeedback(false,'Could not save in this browser. Please try again; keep your reflection before leaving.');
     return false;
   }
 }
@@ -54,6 +65,10 @@ renderDraw=function(){
   const timeEntry=entry||{readingAt:state.drawnAt,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone};
   document.getElementById('drawActions').insertAdjacentHTML('beforebegin',`<section class="reflection-card reading-journal"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h2>Keep this reading and what it brought up.</h2>${journalTime(timeEntry)}<label for="readingReflection">Your comments or reflections on this reading</label><textarea id="readingReflection" placeholder="What stands out? What would you like to return to?">${escapeHtml(entry?.reflection||'')}</textarea><div class="journal-actions"><button class="gold-button" id="saveReadingJournal">${entry?'Save reflection':'Save reading to journal'}</button><button class="ghost-button" id="openJournal">Your Personal Journal</button></div><p class="reflection-note" id="journalSaveStatus" role="status">${entry?'Reading saved. Reflections save as you write.':'Save this reading, or start writing to save it with your reflection.'}</p><p class="reflection-note">Stored on this browser only. Clearing browser data removes these entries.</p></section>`);
   const field=document.getElementById('readingReflection'),status=document.getElementById('journalSaveStatus');
+  document.getElementById('primaryClarifierAction').insertAdjacentHTML('afterend','<p class="reflection-note" id="primaryJournalSaveStatus" role="status" aria-live="polite"></p>');
+  const saved=!!entry&&JSON.stringify(entry.clarifierLayers||[])===JSON.stringify(captureClarifierLayers());
+  journalSaveFeedback(saved,saved?'✓ Reading saved to Your Personal Journal on this browser.':'');
+  if(entry&&!saved)status.textContent='Your new clarifiers are not saved yet. Save this updated reading to your journal.';
   field.oninput=()=>saveReadingReflection(field.value,status);
   document.getElementById('saveReadingJournal').onclick=()=>{if(saveReadingReflection(field.value,status)){const button=document.getElementById('saveReadingJournal');button.textContent='✓ Saved to Journal';button.classList.remove('gold-button');button.classList.add('ghost-button');}};
   document.getElementById('openJournal').onclick=()=>go('saved');

@@ -22,6 +22,26 @@
 .draw-page .spread-board.spread-1 .reading-card-front strong{position:absolute;top:calc(100% + 28px);left:0;width:100%;padding:0 3px;box-sizing:border-box}
 .draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:70px}
 .draw-page .spread-board.spread-1:has(.position-clarifiers){padding-bottom:18px}
+/* The original and clarifiers share the same physical frame and typography. */
+.reading-stage-page .stage-board.spread-1 .stage-card,
+.draw-page .spread-board.spread-1 .reading-card{max-width:none;padding:0}
+.draw-page .spread-board.spread-1 .reading-card-front{box-sizing:border-box;border:2px solid #d5ad61;border-radius:10px}
+.draw-page .spread-board.spread-1 .reading-card-front img{padding:0}
+.draw-page .spread-board.spread-1 .reading-position{--reading-label-size:clamp(9px,1.3vw,12px)}
+.draw-page .spread-board.spread-1 .reading-card-front::after{
+  top:calc(100% + 7px);font-family:Arial,sans-serif;font-size:var(--reading-label-size);line-height:1.6;
+}
+.draw-page .spread-board.spread-1 .reading-card-front strong{
+  top:calc(100% + 14px + 1.6 * var(--reading-label-size));
+}
+.draw-page .spread-board.spread-1 .reading-card-front strong,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{
+  font-family:Arial,sans-serif;font-size:clamp(12px,1.4vw,16px);font-weight:650;line-height:1.3;padding:0 3px;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{
+  font-family:Arial,sans-serif;font-size:var(--reading-label-size);line-height:1.6;
+}
+#primaryJournalSaveStatus{min-height:1.5em;text-align:center;color:#edc979}
 @media(max-width:520px){
   .reading-stage-page .stage-board.spread-1{padding:8px 0 12px}
   .reading-stage-page .stage-board.spread-1 .stage-position{column-gap:6px}

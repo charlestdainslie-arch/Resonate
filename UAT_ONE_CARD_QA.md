@@ -16,7 +16,13 @@ Browser checks require Playwright 1.62.1, pdf-lib 1.17.1 and installed Google Ch
     node tests/browser-uat.cjs 2
     node tests/browser-uat.cjs 3
 
-Set UAT_OUTPUT_DIR to an evidence directory; the default is ignored test-results/. Each pass checks eight widths (320, 375, 390, 768, 1024, 1280, 1440, 1920), normal and reduced motion, ten browser acceptance groups per configuration. It creates JSON results, screenshots and actual downloaded PDFs. A failed group stops that configuration; unexecuted checks are not passes.
+Set UAT_OUTPUT_DIR to an evidence directory; the default is ignored test-results/. Each pass checks eight widths (320, 375, 390, 768, 1024, 1280, 1440, 1920), normal and reduced motion, eleven browser acceptance groups per configuration. It creates JSON results, screenshots and actual downloaded PDFs. A failed group stops that configuration; unexecuted checks are not passes.
+
+## Screenshot follow-up
+
+The original and clarifier frames must match in width, height and top alignment within one CSS pixel, and titles must share font family, size, weight and line height. Saving without notes must change the clicked primary action and the journal save button to “✓ Saved to Journal”, with adjacent live confirmation. Failed storage must not display a success tick. After two clarifiers, help text must offer saving rather than another card.
+
+Interpretation content is explicitly deferred to the next sub-branch after this development/UAT work. This follow-up changes layout, action guidance and persistence feedback only.
 
 ## Evidence boundaries
 
