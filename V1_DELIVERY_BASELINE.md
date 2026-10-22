@@ -19,26 +19,30 @@ No critical/high defects open at release; security, payments, journal privacy, r
 - Existing tests/journal.test.cjs and historical JOURNAL_UAT.md, READING_STAGE_UAT.md, SPREAD_POSITIONS_UAT.md.
 - Current deployment READY does not establish feature completion, functional acceptance or UAT sign-off.
 
+## Approved change control — 23 October 2026
+
+**Precedence:** [BACKLOG_V1_READING_EXPERIENCE.md](BACKLOG_V1_READING_EXPERIENCE.md) is the authoritative ordered backlog for the fully integrated reading. Complete the full engine, Western/Vedic/Chinese astrology, opening and closing Oracle, numerology/two dice, actual cards and mapped placements, two-clarifier maximum, integrated interpretations, journal and branded PDF **before** Golden Thread animation and decorative luminosity polish. This supersedes the earlier optional-Oracle Phase 2 deferral and any proposal for a third clarifier, without implying an approved production release or UAT.
+
 ## Phase 1 — scope for v1.0
 1. Responsive landing layout and balanced hand/Fool/text placement, matching CTA dimensions.
 2. Full 78-card tarot data, images and meanings with appropriate rights and content review.
 3. Reading flows: one-card and three-card free; premium V, relationship, Celtic Cross and other agreed deeper spreads.
-4. Golden filament from hand through UI and sequential card reveal, clarifiers, interpretations and synthesis; reader-paced interactions, reduced-motion support.
-5. Personal invitation ritual mentioning guides and ancestors, optional two 0–9 dice and symbolic number interpretation; no assertion of supernatural certainty.
+4. Functional reading engine and layouts first, with event hooks for Golden filament. Decorative choreography starts only after all engine/layout/journal/PDF/UAT gates pass.
+5. Inclusive invitation ritual; Western/Vedic/Chinese astrology prelude; opening and closing Oracle; numerology and optional two 0–9 dice. Symbolic, non-deterministic interpretation.
 6. Reversals, clarifier logic and grounded, position-aware narrative interpretations.
 7. Philosophy and Angel Numbers exploration.
 8. Secure registered accounts and private dated/time-zoned journal entries; anonymous readings without login; clarify allowance for free saved readings.
 9. Subscription access and lifecycle, agreed launch target AUD 6.99/month, clear cancellations and entitlements. No forced login or payment details for free readings.
 10. Functional, integration, security, responsive, accessibility and UAT verification.
 
-## Phase 2 — deferred
-- Optional oracle card(s) before or after tarot reading and their associated interpretations.
-- No Phase 2 feature is considered launch scope without explicit change control.
+## Phase 2 scope-change note
+- The previously deferred Oracle option is now an **opening and closing Oracle stage** in the integrated functional reading, per 23 October change control.
+- Any other unscheduled extras remain subject to later approval; no production release is authorised here.
 
-## Phase 2 architecture opportunities to flag proactively
+## Required foundation architecture before animation
 - Card model: distinguish tarot and oracle decks, configurable card count, deck IDs, licenses, artwork rights.
 - Reading pipeline: composable opening/closing card stages and type-aware interpretation.
-- Golden filament: reusable sequencing events rather than hard-coded tarot positions.
+- Journey events: reusable events independent of animations; Golden Thread choreography is deliberately blocked until reading functionality and UAT pass.
 - Journal schema: versioned readings capable of recording optional oracle stages and content version.
 - Entitlements: extensible subscription capability definitions, without charging for unspecified Phase 2 offerings.
 For each shared-foundation opportunity: provide cost/risk/rework impact and recommend build-now foundation vs defer. Product owner approves deviations.
