@@ -51,3 +51,38 @@
 .draw-page .spread-board.spread-1 .reading-card-front img{object-fit:contain;box-sizing:border-box}
 .reading-save-final{text-align:center;margin:24px auto 16px}
 .reading-save-final .reflection-note{color:#edc979}
+
+/* Every spread: complete art and separated clarifiers, without the old overlapping fan. */
+.draw-page .spread-board:not(.spread-1) .reading-position{gap:10px;align-content:start}
+.draw-page .spread-board:not(.spread-1) .reading-card{padding:0;max-width:190px;box-sizing:border-box;margin-bottom:64px}
+.draw-page .spread-board:not(.spread-1) .reading-card-front{display:block;padding:0;overflow:visible;border:2px solid #d5ad61;border-radius:10px;box-sizing:border-box}
+.draw-page .spread-board:not(.spread-1) .reading-card-front img{display:block;width:100%;height:100%;padding:0;object-fit:contain}
+.draw-page .spread-board:not(.spread-1) .reading-card-front strong{position:absolute;top:calc(100% + 8px);left:0;width:100%;box-sizing:border-box;padding:0 2px;font:650 12px/1.35 Arial,sans-serif;color:#e7dfd3}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifiers{position:static;display:flex;flex-wrap:nowrap;align-items:start;gap:8px;margin:0;width:100%;max-width:210px;pointer-events:auto}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier:nth-child(n){position:static;inset:auto;transform:none;filter:none;margin:0;flex:1 1 0;width:0;min-width:0;gap:6px}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier img{order:0;width:100%;height:auto;aspect-ratio:2/3;box-sizing:border-box;object-fit:contain;border:2px solid #d5ad61;border-radius:10px}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier .clarifier-layer-label{order:1;display:block;position:static;font:10px/1.4 Arial,sans-serif;color:#edc979}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier strong{order:2;position:static;font:650 12px/1.35 Arial,sans-serif;overflow-wrap:anywhere}
+.draw-page .spread-scroll{overflow:visible}
+@media(max-width:1100px){
+ .draw-page .spread-board:not(.spread-1){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;min-width:0;max-width:100%;gap:28px 18px}
+ .draw-page .spread-board:not(.spread-1) .reading-position:nth-child(n){grid-area:auto;margin:0;justify-self:stretch}
+}
+@media(max-width:700px){
+ .draw-page .spread-board:not(.spread-1){grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+}
+@media(max-width:420px){
+ .draw-page .spread-board:not(.spread-1){grid-template-columns:minmax(0,1fr)}
+ .draw-page .spread-board:not(.spread-1) .slot-label{min-height:0}
+}
+
+.reading-stage-page .spread-scroll{overflow:visible}
+.stage-board:not(.spread-1).is-shuffling .stage-card{animation:tarot-shuffle-contained .86s ease}
+@keyframes tarot-shuffle-contained{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media(max-width:1100px){
+ .reading-stage-page .stage-board:not(.spread-1){grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;min-width:0;max-width:100%;gap:28px 18px}
+ .reading-stage-page .stage-board:not(.spread-1) .reading-position:nth-child(n){grid-area:auto;margin:0;justify-self:stretch}
+}
+@media(max-width:700px){.reading-stage-page .stage-board:not(.spread-1){grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}}
+@media(max-width:420px){.reading-stage-page .stage-board:not(.spread-1){grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.stage-board:not(.spread-1).is-shuffling .stage-card{animation:none}}

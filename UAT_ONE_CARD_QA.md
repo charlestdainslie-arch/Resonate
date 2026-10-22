@@ -29,3 +29,12 @@ Interpretation content is explicitly deferred to the next sub-branch after this 
 Desktop Chrome with responsive viewport emulation is not physical-device Safari testing. The journal remains browser-local and is not an authenticated cloud journal. Artwork and meanings come from the existing prepared 78-card project; identity and asset integrity are verified, not an independent editorial or licensing approval. Historical screenshots recovered from Vercel Deployment Audit establish the unequal landing-action defect. No animation sign-off or product-owner UAT acceptance is implied by automated passes.
 
 PDFs include each original card, both clarifiers and their integrated narrative, whole-reading synthesis, dice, saved reading and card reflections, RESONATE branding, page numbering and copyright. Export runs locally. The embedded standard font supports Western text; unsupported glyphs are normalised or omitted.
+
+
+## All-spread clipping sweep
+
+The result has exactly one reading-reflection textarea, in the bottom journal panel after the action links, with its single Save Reading control. The earlier standalone reflection location is removed.
+
+All five spreads are exercised at all eight widths in both motion preferences: face-down table, shuffle sample, draw/flip sample, settled originals, first clarifier, second clarifier, saved-journal reopen and actual PDF download. Five additional acceptance groups per configuration bring each browser pass to 256 groups. Larger spread layouts reflow to three columns below 1100px, two below 700px and one below 420px; position labels retain the reading order. Full-size desktop V/Celtic arrangements are retained. Clarifiers no longer overlap or rotate over the original cards. Artwork uses contain sizing with intact gold frames. The text-only PDF does not embed card artwork; verify text pagination and margins rather than artwork cropping there.
+
+The sweep uses accelerated browser timers for the extra spread samples; the original one-card journey retains its real timing checks. Normal and reduced motion are both exercised. Physical-device testing remains outside this desktop Chrome emulation evidence.

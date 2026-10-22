@@ -8,7 +8,8 @@ const run=Number(process.argv[2]||1),results=[];
  await new Promise(resolve=>server.listen(8766,'127.0.0.1',resolve));
  const browser=await chromium.launch({headless:true,channel:'chrome'});
  try{
- for(const width of [320,375,390,768,1024,1280,1440,1920])for(const motion of ['reduce','no-preference']){
+ const configurations=[320,375,390,768,1024,1280,1440,1920].flatMap(width=>['reduce','no-preference'].map(motion=>({width,motion})));
+ await Promise.all(Array.from({length:4},async()=>{while(configurations.length){const {width,motion}=configurations.shift();
   const item={width,height:width<600?844:900,motion,passed:[],failed:[]};results.push(item);
   const context=await browser.newContext({viewport:{width,height:item.height},reducedMotion:motion,acceptDownloads:true});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const check=async(name,fn)=>{try{await fn();item.passed.push(name);}catch(e){item.failed.push({name,error:e.message});throw e;}};
@@ -63,9 +64,24 @@ const run=Number(process.argv[2]||1),results=[];
    await check('return action brings same spread into view',async()=>{const box=await page.locator('.spread-scroll').boundingBox();assert.ok(box.y>=-2&&box.y<item.height);assert.equal(await page.evaluate(()=>state.drawnAt),snapshot.at);});
    if(motion==='reduce')await page.screenshot({path:path.join(out,`run-${run}-spread-${width}.png`)});
    await check('new reading resets dice; no JavaScript errors',async()=>{await page.locator('#drawActions [data-go="reading"]').click();assert.equal(await page.evaluate(()=>state.openingDice),null);assert.deepEqual(errors,[]);});
+   await page.clock.install();
+   for(const spread of ['guidance','three','relationship','seven','celtic'])await check('full artwork, single bottom reflection, layers, reopen and PDF: '+spread,async()=>{
+    await page.evaluate(()=>go('reading'));await page.locator('[data-spread="'+spread+'"]').click();
+    const within=async(selector)=>{const boxes=await page.locator(selector).evaluateAll(es=>es.map(e=>e.getBoundingClientRect().toJSON()));for(let i=0;i<boxes.length;i++){const a=boxes[i];assert.ok(a.left>=-1&&a.right<=width+1,'outside screen '+JSON.stringify(a));for(let j=i+1;j<boxes.length;j++){const b=boxes[j];assert.ok(a.right<=b.left+1||b.right<=a.left+1||a.bottom<=b.top+1||b.bottom<=a.top+1,'overlapping cards');}}};
+    await within('.stage-card');await page.locator('#shuffleCardsBtn').click();await page.clock.fastForward(400);await within('.stage-card');await page.clock.fastForward(10000);await page.waitForFunction(()=>!document.getElementById('shuffleCardsBtn').disabled);await page.locator('#stageDrawBtn').click();
+    await page.clock.fastForward(430);await within('.reading-card');await page.clock.fastForward(10000);await page.waitForFunction(()=>state.drawSettled);await page.waitForTimeout(800);
+    const checkArt=async()=>{await page.waitForFunction(()=>[...document.querySelectorAll('.reading-card-front img,.position-clarifier img')].every(e=>e.complete&&e.naturalWidth>0));await within('.reading-card-front,.position-clarifier img');const details=await page.locator('.reading-card-front img,.position-clarifier img').evaluateAll(es=>es.map(e=>({fit:getComputedStyle(e).objectFit,w:e.clientWidth,h:e.clientHeight})));assert.ok(details.every(e=>e.fit==='contain'&&e.w>30&&e.h>45),'artwork fit');assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);};
+    await checkArt();await page.locator('#primaryClarifierAction').click();await checkArt();await page.locator('#primaryClarifierAction').click();await checkArt();
+    const count=await page.locator('.reading-card').count();assert.equal(await page.locator('.position-clarifier').count(),count*2);assert.equal(await page.locator('#primaryClarifierAction').count(),0);assert.equal(await page.locator('textarea').count(),1);assert.equal(await page.locator('#saveReadingJournal').count(),1);
+    assert.equal(await page.evaluate(()=>document.getElementById('drawActions').compareDocumentPosition(document.querySelector('.reading-journal'))&Node.DOCUMENT_POSITION_FOLLOWING),4);
+    await page.locator('#saveReadingJournal').click();await page.locator('#openJournal').click();await page.locator('[data-open-reading]').first().click();await checkArt();assert.equal(await page.locator('textarea').count(),1);
+    const downloadWait=page.waitForEvent('download');await page.locator('#downloadReading').click();const dl=await downloadWait;const file=path.join(out,`all-${run}-${spread}-${width}-${motion}.pdf`);await dl.saveAs(file);const pdf=await PDFDocument.load(fs.readFileSync(file));assert.ok(pdf.getPageCount()>0);
+    if(motion==='reduce'&&[390,768,1440].includes(width)){await page.locator('#backToReadingTop').click();await page.clock.fastForward(1000);await page.screenshot({path:path.join(out,`all-${run}-${spread}-${width}.png`),fullPage:true});}
+   });
+
   }catch(e){console.error(`FAIL ${width} ${motion}: ${e.message}`);await page.screenshot({path:path.join(out,`run-${run}-failure-${width}-${motion}.png`)});}finally{await context.close();}
   console.log(JSON.stringify(item));
- }
+ }}));
  }finally{await browser.close();server.close();fs.writeFileSync(path.join(out,`browser-results-${run}.json`),JSON.stringify(results,null,2));}
  const failed=results.reduce((n,r)=>n+r.failed.length,0);console.log(`RUN ${run}: ${results.reduce((n,r)=>n+r.passed.length,0)} PASS, ${failed} FAIL, ${results.length} configurations`);process.exitCode=failed?1:0;
 })().catch(e=>{console.error(e);server.close();process.exitCode=1});
