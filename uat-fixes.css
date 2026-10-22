@@ -86,3 +86,14 @@
 @media(max-width:700px){.reading-stage-page .stage-board:not(.spread-1){grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}}
 @media(max-width:420px){.reading-stage-page .stage-board:not(.spread-1){grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.stage-board:not(.spread-1).is-shuffling .stage-card{animation:none}}
+
+/* Let the interpretation follow the real spread without a decorative banner. */
+.draw-page .spread-scroll{padding-bottom:0}
+.draw-page .spread-board{margin-bottom:12px}
+.draw-page #readingInterpretation{margin-top:12px}
+
+/* Override the old even-card animation name as well as its shorthand. */
+.stage-board:not(.spread-1).is-shuffling .stage-position:nth-child(n) .stage-card{animation-name:tarot-shuffle-contained}
+.reading-card-lenses{margin-top:20px;padding-top:16px;border-top:1px solid rgba(213,173,97,.3)}
+.reading-card-lenses h4{color:#edc979;margin:14px 0 8px}
+.reading-card-correspondences{margin:12px 0;text-align:left}

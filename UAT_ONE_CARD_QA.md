@@ -38,3 +38,8 @@ The result has exactly one reading-reflection textarea, in the bottom journal pa
 All five spreads are exercised at all eight widths in both motion preferences: face-down table, shuffle sample, draw/flip sample, settled originals, first clarifier, second clarifier, saved-journal reopen and actual PDF download. Five additional acceptance groups per configuration bring each browser pass to 256 groups. Larger spread layouts reflow to three columns below 1100px, two below 700px and one below 420px; position labels retain the reading order. Full-size desktop V/Celtic arrangements are retained. Clarifiers no longer overlap or rotate over the original cards. Artwork uses contain sizing with intact gold frames. The text-only PDF does not embed card artwork; verify text pagination and margins rather than artwork cropping there.
 
 The sweep uses accelerated browser timers for the extra spread samples; the original one-card journey retains its real timing checks. Normal and reduced motion are both exercised. Physical-device testing remains outside this desktop Chrome emulation evidence.
+
+
+## Banner and existing interpretive-lens restoration
+
+The redundant landing-reading banner before YOUR READING is removed; actual drawn-card artwork and later imagery remain. The interpretation starts with its heading and uses a 12px top margin. Existing wuWei and psychological fields are rendered for every original and clarifier, without editing the stored copy. Jungian is the final lens for each card. Existing astrology and numerology fields sit before the meaning prose. Card detail also restores the missing Wu Wei panel, retaining Jungian at the end. An old higher-specificity even-card shuffle rule is overridden so every multi-card shuffle remains contained.
