@@ -41,17 +41,18 @@ const run=Number(process.argv[2]||1),results=[];
     const boxes=await page.locator('.reading-card-front,.position-clarifier img').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().toJSON()));for(let i=0;i<boxes.length;i++){assert.ok(boxes[i].left>=0&&boxes[i].right<=width);for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert.ok(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top);}}
     assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
     for(const b of boxes){assert.ok(Math.abs(b.width-boxes[0].width)<1,'card widths differ');assert.ok(Math.abs(b.height-boxes[0].height)<1,'card heights differ');assert.ok(Math.abs(b.top-boxes[0].top)<1,'card tops differ');}
+    const fit=await page.locator('.reading-card-front img,.position-clarifier img').evaluateAll(es=>es.map(e=>getComputedStyle(e).objectFit));assert.ok(fit.every(v=>v==='contain'),'artwork must not crop');
     const fonts=await page.locator('.reading-card-front strong,.position-clarifier strong').evaluateAll(es=>es.map(e=>{const s=getComputedStyle(e);return [s.fontFamily,s.fontSize,s.fontWeight,s.lineHeight].join('|')}));assert.equal(new Set(fonts).size,1,'title styles differ');
     assert.doesNotMatch(await page.locator('.reading-next-step .reading-help').innerText(),/another card|draw a clarifier/i);
    });
    await check('save without notes visibly confirms on the clicked primary button',async()=>{
-    await page.locator('#primaryClarifierAction').click();assert.equal(await page.locator('#primaryClarifierAction').innerText(),'✓ Saved to Journal');assert.equal(await page.locator('#saveReadingJournal').innerText(),'✓ Saved to Journal');assert.match(await page.locator('#primaryJournalSaveStatus').innerText(),/✓ Reading saved/);
+    assert.equal(await page.locator('#primaryClarifierAction').count(),0);assert.equal(await page.locator('#saveReadingJournal').count(),1);await page.locator('#saveReadingJournal').click();assert.equal(await page.locator('#saveReadingJournal').innerText(),'✓ Saved to Journal');assert.equal(await page.locator('#saveReadingJournal').innerText(),'✓ Saved to Journal');assert.match(await page.locator('#primaryJournalSaveStatus').innerText(),/✓ Reading saved/);
    });
    await page.locator('#readingReflection').fill('UAT reflection: keep the original cards, dice and both clarifiers.');
    const snapshot=await page.evaluate(()=>({ids:[...state.drawnCardIds],at:state.drawnAt,layers:captureClarifierLayers(),dice:[...state.openingDice]}));
-   await page.locator('#primaryClarifierAction').click();
+   await page.locator('#saveReadingJournal').click();
    await check('primary final action saves; journal reopens identical reading after reload',async()=>{
-    assert.equal(await page.locator('#primaryClarifierAction').innerText(),'✓ Saved to Journal');assert.match(await page.locator('#journalSaveStatus').innerText(),/saved/i);await page.locator('#openJournal').click();await page.locator('[data-open-reading]').first().click();await page.reload();await page.evaluate(()=>go('saved'));await page.locator('[data-open-reading]').first().click();
+    assert.equal(await page.locator('#saveReadingJournal').innerText(),'✓ Saved to Journal');assert.match(await page.locator('#journalSaveStatus').innerText(),/saved/i);await page.locator('#openJournal').click();await page.locator('[data-open-reading]').first().click();await page.reload();await page.evaluate(()=>go('saved'));await page.locator('[data-open-reading]').first().click();
     const restored=await page.evaluate(()=>({ids:[...state.drawnCardIds],at:state.drawnAt,layers:captureClarifierLayers(),dice:[...state.openingDice]}));assert.deepEqual(restored,snapshot);assert.match(await page.locator('#readingReflection').inputValue(),/UAT reflection/);
    });
    await check('card detail reflection preserves clarifiers; return keeps reading',async()=>{await page.locator('.reading-card').click();await page.locator('#noteField').fill('Card reflection retained.');await page.locator('#backBtn').click();assert.equal(await page.locator('.position-clarifier').count(),2);assert.equal(await page.evaluate(()=>state.drawnAt),snapshot.at);});

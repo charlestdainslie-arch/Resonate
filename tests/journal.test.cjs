@@ -44,9 +44,9 @@ function feedbackFixture(){
  f.run('state.additionalClarifierReadingAt=state.drawnAt;state.additionalClarifierLayers=[{number:2,cards:[8,9,10]}]');
  return {...f,elements};
 }
-test('successful save without notes gives a tick on both save buttons and beside the primary action',()=>{
+test('successful save without notes gives a tick on the single save button and adjacent confirmation',()=>{
  const f=feedbackFixture();assert.equal(f.run("saveReadingReflection('',null)"),true);
- assert.equal(f.elements.primaryClarifierAction.textContent,'✓ Saved to Journal');assert.equal(f.elements.saveReadingJournal.textContent,'✓ Saved to Journal');assert.match(f.elements.primaryJournalSaveStatus.textContent,/✓ Reading saved/);
+ assert.equal(f.elements.primaryClarifierAction.textContent,'Save Reading to Journal');assert.equal(f.elements.saveReadingJournal.textContent,'✓ Saved to Journal');assert.match(f.elements.primaryJournalSaveStatus.textContent,/✓ Reading saved/);
 });
 test('failed save removes success ticks and shows the error beside the clicked primary action',()=>{
  const f=feedbackFixture();f.run("saveReadingReflection('',null)");f.block();assert.equal(f.run("saveReadingReflection('Changed',null)"),false);

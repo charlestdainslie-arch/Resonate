@@ -20,7 +20,7 @@ Set UAT_OUTPUT_DIR to an evidence directory; the default is ignored test-results
 
 ## Screenshot follow-up
 
-The original and clarifier frames must match in width, height and top alignment within one CSS pixel, and titles must share font family, size, weight and line height. Saving without notes must change the clicked primary action and the journal save button to “✓ Saved to Journal”, with adjacent live confirmation. Failed storage must not display a success tick. After two clarifiers, help text must offer saving rather than another card.
+The original and clarifier frames must match in width, height and top alignment within one CSS pixel, and titles must share font family, size, weight and line height. Exactly one save button sits below the bottom action group. No save button remains above or inside the journal. Saving without notes changes the bottom button to “✓ Saved to Journal”, with adjacent live confirmation. Original and clarifier artwork uses contain sizing so printed borders and titles remain visible. Failed storage must not display a success tick. After two clarifiers, help text must offer saving rather than another card.
 
 Interpretation content is explicitly deferred to the next sub-branch after this development/UAT work. This follow-up changes layout, action guidance and persistence feedback only.
 

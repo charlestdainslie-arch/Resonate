@@ -11,9 +11,7 @@ function journalDate(value,zone){
 function activeJournal(){return journalEntries.find(entry=>entry.id===state.journalId)||journalEntries.find(entry=>entry.readingAt===state.drawnAt&&entry.spreadId===state.spreadId);}
 function journalSaveFeedback(saved,message){
   if(typeof document==='undefined')return;
-  const primary=document.getElementById('primaryClarifierAction');
-  const complete=state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1;
-  const buttons=[document.getElementById('saveReadingJournal'),complete?primary:null].filter(Boolean);
+  const buttons=[document.getElementById('saveReadingJournal')].filter(Boolean);
   for(const button of buttons){button.textContent=saved?'✓ Saved to Journal':'Save Reading to Journal';button.classList.toggle('gold-button',!saved);button.classList.toggle('ghost-button',saved);}
   const visibleStatus=document.getElementById('primaryJournalSaveStatus');
   if(visibleStatus)visibleStatus.textContent=message||'';
@@ -63,9 +61,11 @@ renderDraw=function(){
   journalRenderDraw();
   const entry=activeJournal();
   const timeEntry=entry||{readingAt:state.drawnAt,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone};
-  document.getElementById('drawActions').insertAdjacentHTML('beforebegin',`<section class="reflection-card reading-journal"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h2>Keep this reading and what it brought up.</h2>${journalTime(timeEntry)}<label for="readingReflection">Your comments or reflections on this reading</label><textarea id="readingReflection" placeholder="What stands out? What would you like to return to?">${escapeHtml(entry?.reflection||'')}</textarea><div class="journal-actions"><button class="gold-button" id="saveReadingJournal">${entry?'Save reflection':'Save reading to journal'}</button><button class="ghost-button" id="openJournal">Your Personal Journal</button></div><p class="reflection-note" id="journalSaveStatus" role="status">${entry?'Reading saved. Reflections save as you write.':'Save this reading, or start writing to save it with your reflection.'}</p><p class="reflection-note">Stored on this browser only. Clearing browser data removes these entries.</p></section>`);
+  document.getElementById('drawActions').insertAdjacentHTML('beforebegin',`<section class="reflection-card reading-journal"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h2>Keep this reading and what it brought up.</h2>${journalTime(timeEntry)}<label for="readingReflection">Your comments or reflections on this reading</label><textarea id="readingReflection" placeholder="What stands out? What would you like to return to?">${escapeHtml(entry?.reflection||'')}</textarea><div class="journal-actions"><button class="ghost-button" id="openJournal">Your Personal Journal</button></div><p class="reflection-note" id="journalSaveStatus" role="status">${entry?'Reading saved. Reflections save as you write.':'Save this reading, or start writing to save it with your reflection.'}</p><p class="reflection-note">Stored on this browser only. Clearing browser data removes these entries.</p></section>`);
   const field=document.getElementById('readingReflection'),status=document.getElementById('journalSaveStatus');
-  document.getElementById('primaryClarifierAction').insertAdjacentHTML('afterend','<p class="reflection-note" id="primaryJournalSaveStatus" role="status" aria-live="polite"></p>');
+  document.getElementById('drawActions').insertAdjacentHTML('afterend','<div class="reading-save-final"><button type="button" class="gold-button" id="saveReadingJournal">Save Reading to Journal</button><p class="reflection-note" id="primaryJournalSaveStatus" role="status" aria-live="polite"></p></div>');
+  const clarifyButton=document.getElementById('primaryClarifierAction');
+  if(state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1)clarifyButton.remove();
   const saved=!!entry&&JSON.stringify(entry.clarifierLayers||[])===JSON.stringify(captureClarifierLayers());
   journalSaveFeedback(saved,saved?'✓ Reading saved to Your Personal Journal on this browser.':'');
   if(entry&&!saved)status.textContent='Your new clarifiers are not saved yet. Save this updated reading to your journal.';

@@ -46,3 +46,8 @@
   .reading-stage-page .stage-board.spread-1{padding:8px 0 12px}
   .reading-stage-page .stage-board.spread-1 .stage-position{column-gap:6px}
 }
+
+/* Preserve the entire scanned artwork, including its printed borders and title. */
+.draw-page .spread-board.spread-1 .reading-card-front img{object-fit:contain;box-sizing:border-box}
+.reading-save-final{text-align:center;margin:24px auto 16px}
+.reading-save-final .reflection-note{color:#edc979}
