@@ -3,6 +3,7 @@
 **Decision recorded:** 23 October 2026 (Australia/Sydney)  
 **Source:** Product owner, Chas — explicitly requested that the entire reading engine, card placements, interpretations and PDF experience work **before** Golden Thread/filament animation or hero polish.  
 **Target branch:** `develop/v1.0-base` (or short-lived feature branches based on it).  
+**Tracking issue:** [#7 — Finish integrated reading engine, layouts & PDF before Golden Thread polish](https://github.com/charlestdainslie-arch/Resonate/issues/7)  
 **Status:** BACKLOG / NOT IMPLEMENTED OR UAT-APPROVED BY THIS DOCUMENT.  
 **Priority:** Functional engine → working layouts → integration, journal and branded PDF → full regression/UAT → Golden Thread animation and extra luminance.  
 **Release/version:** Subject to scope review and product-owner sign-off; this decision supersedes the older Phase 2 deferral of Oracle cards for sequencing, but does **not** imply a production release, completed implementation or a committed delivery date.
