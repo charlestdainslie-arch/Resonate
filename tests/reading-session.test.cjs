@@ -9,13 +9,13 @@ test('reading session retains position order and unique base cards',()=>{
  assert.equal(s.layers.length,0);
  assert.equal(s.schemaVersion,1);
 });
-test('three independently shuffled clarifier layers preserve original spread',()=>{
+test('two independently shuffled clarifier layers preserve original spread',()=>{
  const initial=createSession({id:'r2',cardIds:all,spreadPositions:['Past','Present','Future'],random:()=>0.3});
  let s=initial;
- for(let i=1;i<=3;i++)s=appendClarifierLayer(s,all,{random:()=>0.3});
+ for(let i=1;i<=2;i++)s=appendClarifierLayer(s,all,{random:()=>0.3});
  assert.equal(initial.layers.length,0);
  assert.deepEqual(s.baseCards,initial.baseCards);
- assert.deepEqual(s.layers.map(l=>l.number),[1,2,3]);
+ assert.deepEqual(s.layers.map(l=>l.number),[1,2]);
  for(const layer of s.layers){
   assert.equal(new Set(layer.entries.map(e=>e.cardId)).size,3);
   assert.deepEqual(layer.entries.map(e=>e.position),[0,1,2]);

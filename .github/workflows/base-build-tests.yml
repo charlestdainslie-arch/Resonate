@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - develop/v1.0-base
+      - fix/one-card-uat
   workflow_dispatch:
 jobs:
   unit-tests:
@@ -21,5 +22,8 @@ jobs:
           node --check data.js
           node --check journal.js
           node --check reading-stage.js
+          node --check reading-pdf.js
+          node --check opening-dice.js
+          node --check reading-session.js
       - name: Run unit tests
         run: node --test tests/*.test.cjs

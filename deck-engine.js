@@ -30,5 +30,12 @@
     const draw=shuffle(cardIds,random).slice(0,slotCount);
     return {readingId,layer,deckId:'rider-waite-tarot',deckInstanceId:`${readingId}:tarot:${layer}`,cards:draw};
   }
-  return Object.freeze({validateDeck,shuffle,newLayer});
+  function drawRemaining(cardIds,usedIds,count,random=Math.random){
+    validateDeck(cardIds);
+    const used=new Set(usedIds);
+    const available=cardIds.filter(id=>!used.has(id));
+    if(!Number.isInteger(count)||count<1||count>available.length)throw new Error('Not enough unused tarot cards');
+    return shuffle(available,random).slice(0,count);
+  }
+  return Object.freeze({validateDeck,shuffle,newLayer,drawRemaining});
 });

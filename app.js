@@ -107,7 +107,7 @@ function icon(name, size=18) {
   return `<svg ${attrs}><path d="m12 3 1.1 4.4L17 9l-3.9 1.6L12 15l-1.1-4.4L7 9l3.9-1.6Z"/><path d="m18.5 14 .6 2.4 2.4.6-2.4.6-.6 2.4-.6-2.4-2.4-.6 2.4-.6-.6 2.4-.6Z"/></svg>`;
 }
 function escapeHtml(v='') { return String(v).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
-function cardImage(card) { return `https://commons.wikimedia.org/wiki/Special:Redirect/file/RWS_Tarot_${String(card.id).padStart(2,'0')}_${card.name.replace(/^The /,'').replaceAll(' ','_')}.jpg`; }
+function cardImage(card) { return card.image; }
 function imageFallback(img){ img.hidden=true; const wrap=img.parentElement; if(wrap){wrap.classList.add('image-unavailable');wrap.setAttribute('aria-label',`${img.alt} image unavailable`);} }
 function handGraphic() { return `<div class="hand-hero"><img src="assets/mystic-hand-whisper.png" alt="A mystical jeweled hand rising through smoke and golden celestial light"></div>`; }
 function brandHeader() { return `<header class="brand-header"><button class="menu-button" id="menuBtn" aria-label="Main menu">${icon('menu',20)}</button><div class="brand-mark">R</div><div><div class="brand-name">RESONATE</div><div class="brand-sub">TAROT EXPLORER</div></div><button class="brand-orbit" id="centerBtn" aria-label="Re-centre this page" title="Re-centre"><span></span></button></header>`; }
@@ -199,6 +199,7 @@ function currentSky(card, at=state.drawnAt||Date.now()) {
   }catch{return {planet,text:`${planet} placement temporarily unavailable`};}
 }
 function whisperCardArt(card){
+  if(card.atmosphere)return card.atmosphere;
   const names=['fool','magician','high-priestess','empress','emperor'];
   return `assets/whisper-${names[card.id]||'fool'}.jpg`;
 }
@@ -215,7 +216,7 @@ const resonateImagery={
 };
 function imageryInsight(card){
   const profile=resonateImagery[card.id];
-  return profile?`<p class="symbolism-insight"><strong>Looking closer:</strong> Notice ${profile.image}. ${profile.reading}</p>`:'';
+  return profile?`<p class="symbolism-insight"><strong>Looking closer:</strong> Notice ${profile.image}. ${profile.reading}</p>`:`<p class="symbolism-insight"><strong>Looking closer:</strong> ${card.symbolism}</p>`;
 }
 function storyConnection(base,clarifier){
   const a=resonateImagery[base.id],b=resonateImagery[clarifier.id];
@@ -245,13 +246,13 @@ function readingLayerCards(index){
 }
 function numerologyForReading(chosen){
   const all=chosen.flatMap((base,i)=>[base,...readingLayerCards(i)]);
-  const numbers=all.map(c=>Number(c.id)).filter(Number.isFinite);
+  const numbers=all.map(c=>c.number).filter(n=>Number.isInteger(n));
   const sum=numbers.reduce((a,b)=>a+b,0);
   const reduction=n=>{while(n>9)n=String(n).split('').reduce((a,b)=>a+Number(b),0);return n};
   const dice=Array.isArray(state.openingDice)&&state.openingDice.length===2?state.openingDice:null;
-  const numeric=dice?`Your opening dice were ${dice.join(' and ')} (together ${dice[0]+dice[1]}, reduced to ${reduction(dice[0]+dice[1])}).`:'No opening dice were rolled for this reading.';
-  const repeat=[...new Set(all.map(c=>c.id))].filter(id=>all.filter(c=>c.id===id).length>1);
-  return `<section class="reading-number-thread"><h3>Numbers through your reading</h3><p>${all.map((c,i)=>`${i?' · ':''}<strong>${c.name} ${c.roman||c.id} (${c.id})</strong>`).join('')}. Their tarot numbers sum to <strong>${sum}</strong>, reducing to <strong>${reduction(sum)}</strong>. ${numeric}</p>${repeat.length?`<p>A repeated number deserves attention: ${repeat.map(id=>cards.find(c=>c.id===id)?.name).join(', ')} appears more than once. This can symbolically reinforce a theme, rather than creating a separate prediction.</p>`:''}<p>These numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.</p></section>`;
+  const numeric=dice?ResonateDice.interpret(dice):'No opening dice were rolled for this reading.';
+  const repeat=[...new Set(numbers)].filter(n=>numbers.filter(value=>value===n).length>1);
+  return `<section class="reading-number-thread"><h3>Numbers through your reading</h3><p>${all.map((c,i)=>`${i?' · ':''}<strong>${c.name} (${c.number===null?c.rank:c.number})</strong>`).join('')}. ${numbers.length?`Their numbered cards sum to <strong>${sum}</strong>, reducing to <strong>${reduction(sum)}</strong>.`:'Court cards are read by rank rather than assigned an invented tarot number.'} ${numeric}</p>${repeat.length?`<p>Repeated tarot numbers: ${repeat.join(', ')}. Notice whether the cards express a shared theme through different suits.</p>`:''}<p>These numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.</p></section>`;
 }
 function goldenThread(chosen){
   if(!chosen.length)return '';
@@ -279,10 +280,7 @@ function drawFirstLayerClarifiers(){
     // An independently shuffled full tarot deck supplies the clarifier layer.
     // Until all 78 authored cards are available, retain the original sample behaviour.
     if(cardIds.length===78 && typeof ResonateDeck!=='undefined'){
-      const clarifiers=ResonateDeck.newLayer(cardIds,{
-        readingId:state.drawnAt,layer:1,slotCount:state.drawnCardIds.length
-      });
-      state.firstLayerClarifiers=clarifiers.cards;
+      state.firstLayerClarifiers=ResonateDeck.drawRemaining(cardIds,state.drawnCardIds,state.drawnCardIds.length);
     }else{
       const available=cardIds.filter(id=>!state.drawnCardIds.includes(id));
       const pool=available.length?available:cardIds;
@@ -291,7 +289,7 @@ function drawFirstLayerClarifiers(){
     }
   }
   renderDraw();
-  document.querySelector?.('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});
+  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
 }
 function firstLayerClarifierView(labels){
   const ids=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
@@ -310,7 +308,7 @@ function drawNextClarifierLayer(){
   const ids=cards.map(card=>card.id);
   let selected;
   if(ids.length===78 && typeof ResonateDeck!=='undefined'){
-    selected=ResonateDeck.newLayer(ids,{readingId:state.drawnAt,layer:number,slotCount:state.drawnCardIds.length}).cards;
+    selected=ResonateDeck.drawRemaining(ids,[...state.drawnCardIds,...state.firstLayerClarifiers],state.drawnCardIds.length);
   }else{
     const pool=[...ids];
     for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
@@ -319,7 +317,7 @@ function drawNextClarifierLayer(){
   state.additionalClarifierLayers=[...layers,{number,cards:selected}];
   state.drawSettled=true;
   renderDraw();
-  document.querySelector?.('.position-clarifiers')?.scrollIntoView({behavior:'smooth',block:'center'});
+  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
 }
 function additionalClarifierView(labels){
   if(state.additionalClarifierReadingAt!==state.drawnAt)return '';
@@ -335,7 +333,7 @@ function clarifierCardsForPosition(index){
   if(!layers.length)return '';
   return `<div class="position-clarifiers" data-clarifier-count="${layers.length}" aria-label="Clarifiers for position ${index+1}">${layers.map(layer=>{
     const card=cards.find(c=>c.id===layer.id);
-    return card?`<div class="position-clarifier"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${card.name}, clarifier layer ${layer.number}" loading="lazy" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div>`:'';
+    return card?`<div class="position-clarifier"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${card.name}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div>`:'';
   }).join('')}</div>`;
 }
 function evolvingReading(chosen,labels){
@@ -352,7 +350,7 @@ function evolvingReading(chosen,labels){
 function renderDraw(){
   const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation">${atmosphericArt("assets/landing-reading.jpg","Whisper atmosphere — entering the reading")}<div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">When you are ready, continue this reading with another card, or save it for reflection.</p><button type="button" class="gold-button" id="primaryClarifierAction">${state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length?'Draw First Clarifier':state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1?'Save Reading to Journal':'Draw Second Clarifier'} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${labels[i]||'Position'}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation">${atmosphericArt("assets/landing-reading.jpg","Whisper atmosphere — entering the reading")}<div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">When you are ready, continue this reading with another card, or save it for reflection.</p><button type="button" class="gold-button" id="primaryClarifierAction">${state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length?'Draw First Clarifier':state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1?'Save Reading to Journal':'Draw Second Clarifier'} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
@@ -367,24 +365,34 @@ function renderDraw(){
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
   document.getElementById('downloadReading').onclick=downloadReading;
   const clarifyAction=document.getElementById('primaryClarifierAction');
-  if(clarifyAction)clarifyAction.onclick=()=>{if(state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length)drawFirstLayerClarifiers();else if(state.additionalClarifierReadingAt!==state.drawnAt||!state.additionalClarifierLayers?.length)drawNextClarifierLayer();else document.getElementById('saveReadingJournal')?.scrollIntoView({behavior:'smooth',block:'center'});};
+  if(clarifyAction)clarifyAction.onclick=()=>{if(state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length)drawFirstLayerClarifiers();else if(state.additionalClarifierReadingAt!==state.drawnAt||!state.additionalClarifierLayers?.length)drawNextClarifierLayer();else document.getElementById('saveReadingJournal')?.click();};
   const backToReading=document.getElementById('backToReadingTop');
   if(backToReading)backToReading.onclick=()=>document.querySelector('.spread-scroll')?.scrollIntoView({block:'start',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
-function downloadReading(){
-  const labels=positionLabels();
-  const chosen=state.drawnCardIds.map(id=>cards.find(x=>x.id===id)).filter(Boolean);
-  const thread=document.createElement('div');
-  thread.innerHTML=goldenThread(chosen);
-  const threadText=thread.innerText.trim();
-  const lines=['RESONATE Tarot Reading',readingTitle(),currentSpread().positions.length>cards.length?'Sample deck: cards repeat to fill every position.':'','',...chosen.map((c,i)=>`${i+1}. ${labels[i]||'Position'} — ${c.name}\n   ${positionContext(c,i)}\n   ${c.upright}`),'','THE GOLDEN THREAD',threadText,'','For reflection only.'];
-  const blob=new Blob([lines.join('\n')],{type:'text/plain'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob);a.download='resonate-tarot-reading.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500);
+async function downloadReading(){
+  const button=document.getElementById('downloadReading');
+  if(button){button.disabled=true;button.textContent='Preparing PDF…';}
+  try{
+    const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id));
+    const textOf=html=>{const div=document.createElement('div');div.innerHTML=html.replace(/<\/(span|strong)>/g,'$& ').replace(/<\/(p|h[1-6]|div|article)>/g,'$&\n');div.querySelectorAll('button').forEach(button=>button.remove());return div.textContent.replace(/\n{3,}/g,'\n\n').trim();};
+    const entry=typeof activeJournal==='function'?activeJournal():null;
+    const sections=[{title:readingTitle(),text:new Date(state.drawnAt).toLocaleString([], {dateStyle:'full',timeStyle:'long'})}];
+    chosen.forEach((card,i)=>sections.push({title:positionLabels()[i]+' · '+card.name,text:textOf(readingMeaning(card,positionLabels()[i],i))}));
+    sections.push({title:'The Golden Thread',text:textOf(goldenThread(chosen))});
+    if(entry?.reflection)sections.push({title:'Your reflection',text:entry.reflection});
+    for(const [index,note] of Object.entries(entry?.cardReflections||{}))if(note.text)sections.push({title:'Card reflection · '+positionLabels()[index],text:note.text});
+    const bytes=await ResonatePDF.create(sections,new Date(state.drawnAt).getFullYear());
+    const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
+    const link=document.createElement('a');link.href=url;link.download='resonate-tarot-reading.pdf';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+  }catch(error){if(button)button.textContent='PDF failed — try again';console.error('PDF export failed',error);return;}
+  finally{if(button)button.disabled=false;}
+  if(button)button.textContent='Download Reading PDF';
 }
 
 function infoCard(label,title,body) { return `<section class="info-card"><div class="eyebrow">${label}</div><h2>${title}</h2>${body}</section>`; }
 function renderDetail() {
   const card=cards.find(c=>c.id===state.cardId)||cards[0]; const upright=state.orientation==='upright'; const keywords=upright?card.uprightKeywords:card.reversedKeywords; const meaning=upright?card.upright:card.reversed; const bookmarked=state.bookmarks.includes(card.id); const fromReading=state.returnView==='draw'&&Number.isInteger(state.readingIndex)&&state.drawnCardIds[state.readingIndex]===card.id; const role=fromReading?positionLabels()[state.readingIndex]:null; const sky=currentSky(card,fromReading?state.drawnAt:Date.now()); const skyLabel=fromReading?'SKY AT THIS READING':'CURRENT SKY';
-  shell(`<div class="detail-topbar"><button class="icon-button" id="backBtn" aria-label="Return">${icon('back')}</button><div class="detail-brand">RESONATE <span>·</span> ${card.roman}</div><button class="icon-button ${bookmarked?'bookmarked':''}" id="bookmarkBtn" aria-label="Bookmark ${card.name}">${icon('bookmark')}</button></div><section class="detail-hero"><div class="detail-card-image"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"></div><div class="detail-title"><div class="eyebrow">MAJOR ARCANA · ${card.id}</div>${fromReading?`<div class="eyebrow reading-role">${readingTitle()} · Position ${state.readingIndex+1} of ${state.drawnCardIds.length}</div>`:''}<h1>${role?`${role} — `:''}${card.name}</h1><p>${card.subtitle}</p><div class="correspondence-row"><span>${card.astrology}</span><span>Number ${card.id}</span><span>${card.element}</span></div></div></section><section class="content-grid three top-correspondences">${infoCard('ASTROLOGY',card.astrology,`<p>${card.astrology} shapes the card's symbolic rhythm and mode of expression.</p>`)}${infoCard('NUMBER',String(card.id),`<p>${card.numerology}</p>`)}${infoCard('ELEMENT',card.element,`<p>${card.element} describes the elemental field through which this card most naturally operates.</p>`)}</section><section class="reading-astrology detail-astrology" aria-label="Card astrology and planetary position"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>${skyLabel}</span><strong>${sky.text}</strong></div></section>${atmosphericArt(whisperCardArt(card),`Whisper artwork inspired by ${card.name}`)}<section class="meaning-panel"><div class="orientation-tabs"><button id="uprightTab" class="${upright?'active':''}">UPRIGHT MEANING</button><button id="reversedTab" class="${!upright?'active':''}">REVERSED MEANING</button></div><div class="keyword-row large">${keywords.map(k=>`<span>${k}</span>`).join('')}</div>${fromReading?`<h2 class="reading-role">${role}</h2><p class="position-context">${positionContext(card,state.readingIndex,upright)}</p>`:''}<p class="meaning-copy">${meaning}</p></section><section class="detail-insight-grid">${infoCard('VISUAL SYMBOLISM','What the image is saying',`<p>${card.symbolism}</p>`)}${infoCard('SPIRITUAL INTERPRETATION','The deeper invitation',`<p>${card.spiritual}</p>`)}</section>${atmosphericArt("assets/landing-learn.jpg","Whisper atmosphere — symbols and connections")}<section class="connections-card"><div class="eyebrow">${icon('spark',14)} CONNECTIONS</div><h2>How this card changes in relationship</h2><div class="connection-list">${card.connections.map(c=>`<div class="connection"><div><span>WITH</span><strong>${c.card}</strong></div><section><h3>${c.title}</h3><p>${c.meaning}</p></section></div>`).join('')}</div></section><section class="reflection-card"><div class="eyebrow">YOUR REFLECTION</div><h2>What resonates?</h2><p class="journal-prompt">${card.journalPrompt}</p><textarea id="noteField" placeholder="Write without editing yourself…">${escapeHtml(state.notes[card.id]||'')}</textarea><div class="reflection-note">Saved privately in this browser</div></section>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — the inner journey")}<section class="golden-thread">${infoCard('THE GOLDEN THREAD · JUNGIAN / PSYCHOLOGICAL','Jungian Arc',`<p>${card.psychological}</p><small>This is the final interpretive lens: not a replacement for the traditional card meaning, but the thread connecting symbol, psyche and lived experience.</small>`)}</section><nav class="deck-nav"><button id="prevBtn">${icon('back')} Previous card</button><div><span>${fromReading?state.readingIndex+1:card.id+1}</span> / ${fromReading?state.drawnCardIds.length:cards.length}</div><button id="nextBtn">Next card ${icon('arrow')}</button></nav>`, 'detail-page');
+  shell(`<div class="detail-topbar"><button class="icon-button" id="backBtn" aria-label="Return">${icon('back')}</button><div class="detail-brand">RESONATE <span>·</span> ${card.roman}</div><button class="icon-button ${bookmarked?'bookmarked':''}" id="bookmarkBtn" aria-label="Bookmark ${card.name}">${icon('bookmark')}</button></div><section class="detail-hero"><div class="detail-card-image"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"></div><div class="detail-title"><div class="eyebrow">${card.arcana.toUpperCase()} ARCANA${card.suit?' · '+card.suit:''}</div>${fromReading?`<div class="eyebrow reading-role">${readingTitle()} · Position ${state.readingIndex+1} of ${state.drawnCardIds.length}</div>`:''}<h1>${role?`${role} — `:''}${card.name}</h1><p>${card.subtitle}</p><div class="correspondence-row"><span>${card.astrology}</span><span>${card.number===null?card.rank:"Number "+card.number}</span><span>${card.element}</span></div></div></section><section class="content-grid three top-correspondences">${infoCard('ASTROLOGY',card.astrology,`<p>${card.astrology} shapes the card's symbolic rhythm and mode of expression.</p>`)}${infoCard(card.number===null?'COURT RANK':'NUMBER',String(card.number===null?card.rank:card.number),`<p>${card.numerology}</p>`)}${infoCard('ELEMENT',card.element,`<p>${card.element} describes the elemental field through which this card most naturally operates.</p>`)}</section><section class="reading-astrology detail-astrology" aria-label="Card astrology and planetary position"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>${skyLabel}</span><strong>${sky.text}</strong></div></section>${atmosphericArt(whisperCardArt(card),`Whisper artwork inspired by ${card.name}`)}<section class="meaning-panel"><div class="orientation-tabs"><button id="uprightTab" class="${upright?'active':''}">UPRIGHT MEANING</button><button id="reversedTab" class="${!upright?'active':''}">REVERSED MEANING</button></div><div class="keyword-row large">${keywords.map(k=>`<span>${k}</span>`).join('')}</div>${fromReading?`<h2 class="reading-role">${role}</h2><p class="position-context">${positionContext(card,state.readingIndex,upright)}</p>`:''}<p class="meaning-copy">${meaning}</p></section><section class="detail-insight-grid">${infoCard('VISUAL SYMBOLISM','What the image is saying',`<p>${card.symbolism}</p>`)}${infoCard('SPIRITUAL INTERPRETATION','The deeper invitation',`<p>${card.spiritual}</p>`)}</section>${atmosphericArt("assets/landing-learn.jpg","Whisper atmosphere — symbols and connections")}<section class="connections-card"><div class="eyebrow">${icon('spark',14)} CONNECTIONS</div><h2>How this card changes in relationship</h2><div class="connection-list">${card.connections.map(c=>`<div class="connection"><div><span>WITH</span><strong>${c.card}</strong></div><section><h3>${c.title}</h3><p>${c.meaning}</p></section></div>`).join('')}</div></section><section class="reflection-card"><div class="eyebrow">YOUR REFLECTION</div><h2>What resonates?</h2><p class="journal-prompt">${card.journalPrompt}</p><textarea id="noteField" placeholder="Write without editing yourself…">${escapeHtml(state.notes[card.id]||'')}</textarea><div class="reflection-note">Saved privately in this browser</div></section>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — the inner journey")}<section class="golden-thread">${infoCard('THE GOLDEN THREAD · JUNGIAN / PSYCHOLOGICAL','Jungian Arc',`<p>${card.psychological}</p><small>This is the final interpretive lens: not a replacement for the traditional card meaning, but the thread connecting symbol, psyche and lived experience.</small>`)}</section><nav class="deck-nav"><button id="prevBtn">${icon('back')} Previous card</button><div><span>${fromReading?state.readingIndex+1:card.id+1}</span> / ${fromReading?state.drawnCardIds.length:cards.length}</div><button id="nextBtn">Next card ${icon('arrow')}</button></nav>`, 'detail-page');
   if(fromReading){
     document.getElementById('backBtn').setAttribute('aria-label','Return to reading');
     if(state.readingIndex===0) document.getElementById('prevBtn').innerHTML=icon('back')+' Return to reading';

@@ -5,12 +5,12 @@ const path=require('node:path');
 const vm=require('node:vm');
 const catalogue=require('../tarot-catalogue.js');
 
-test('five authored cards match canonical full tarot identities',()=>{
+test('all 78 authored cards match canonical full tarot identities',()=>{
   const source=fs.readFileSync(path.join(__dirname,'../data.js'),'utf8');
   const context=vm.createContext({});
   vm.runInContext(source+'\n;globalThis.__sampleCards=cards;',context);
   const authored=context.__sampleCards;
-  assert.equal(authored.length,5);
+  assert.equal(authored.length,78);
   for(const card of authored){
     assert.equal(catalogue[card.id]?.name,card.name,`Card ${card.id} differs from catalogue`);
     assert.ok(card.upright?.length>20);

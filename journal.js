@@ -24,7 +24,7 @@ function writeJournal(entry,status){
 function readingEntry(){
   const existing=activeJournal();
   if(existing)return {...existing,cardReflections:{...existing.cardReflections}};
-  return {id:crypto.randomUUID(),readingAt:state.drawnAt,savedAt:new Date().toISOString(),updatedAt:null,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,spreadId:state.spreadId,spread:JSON.parse(JSON.stringify(currentSpread())),cardIds:[...state.drawnCardIds],reflection:'',cardReflections:{},clarifierLayers:[]};
+  return {id:crypto.randomUUID(),readingAt:state.drawnAt,savedAt:new Date().toISOString(),updatedAt:null,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,spreadId:state.spreadId,spread:JSON.parse(JSON.stringify(currentSpread())),cardIds:[...state.drawnCardIds],reflection:'',cardReflections:{},clarifierLayers:[],openingDice:state.openingDice?[...state.openingDice]:null};
 }
 function journalTime(entry){
   return `<p class="journal-time">Reading: <time datetime="${escapeHtml(entry.readingAt)}">${escapeHtml(journalDate(entry.readingAt,entry.timeZone))}</time></p>${entry.updatedAt?`<p class="journal-updated">Reflection updated: ${escapeHtml(journalDate(entry.updatedAt,entry.timeZone))}</p>`:''}`;
@@ -71,7 +71,7 @@ renderDetail=function(){
   status.textContent=note?'Saved with this reading in Your Personal Journal.':'Writing here saves this card reflection with its reading.';
   status.setAttribute('role','status');
   field.oninput=()=>{
-    const next=readingEntry();const now=new Date().toISOString();
+    const next=readingEntry();next.clarifierLayers=captureClarifierLayers();const now=new Date().toISOString();
     next.cardReflections[state.readingIndex]={text:field.value,updatedAt:now};next.updatedAt=now;
     writeJournal(next,status);
   };
@@ -82,7 +82,8 @@ function openJournalReading(id){
   clearDrawTimers();state.journalId=id;state.journalSpread=entry.spread;
   state.spreadId=entry.spreadId;state.spreadSize=entry.cardIds.length;
   state.drawnCardIds=[...entry.cardIds];state.drawnAt=entry.readingAt;
-  const layers=entry.clarifierLayers||[];
+  state.openingDice=entry.openingDice?[...entry.openingDice]:null;
+  const layers=(entry.clarifierLayers||[]).filter(layer=>layer.number<=2);
   state.clarifierReadingAt=layers.some(l=>l.number===1)?entry.readingAt:null;
   state.firstLayerClarifiers=[...(layers.find(l=>l.number===1)?.cards||[])];
   state.additionalClarifierReadingAt=layers.some(l=>l.number>1)?entry.readingAt:null;

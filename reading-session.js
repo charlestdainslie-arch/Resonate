@@ -6,7 +6,7 @@
   else root.ResonateReadingSession=api;
 })(typeof globalThis!=='undefined'?globalThis:this,function(deck){
   if(!deck)throw new Error('ResonateDeck must load first');
-  const MAX_CLARIFIER_LAYERS=3;
+  const MAX_CLARIFIER_LAYERS=2;
   function createSession({id,cardIds,spreadPositions,random=Math.random}){
     if(typeof id!=='string'||!id.trim())throw new Error('Reading id required');
     if(!Array.isArray(spreadPositions)||spreadPositions.length<1||spreadPositions.length>78)throw new Error('Invalid spread positions');
@@ -20,7 +20,8 @@
     const positions=targetPositions===undefined?session.positions.map((_,i)=>i):targetPositions;
     if(!Array.isArray(positions)||!positions.length||new Set(positions).size!==positions.length||positions.some(i=>!Number.isInteger(i)||i<0||i>=session.positions.length))throw new Error('Invalid clarifier targets');
     const number=session.layers.length+1;
-    const draw=deck.newLayer(cardIds,{readingId:session.id,layer:number,slotCount:positions.length,random});
+    const used=[...session.baseCards,...session.layers.flatMap(layer=>layer.entries.map(entry=>entry.cardId))];
+    const draw={...deck.newLayer(cardIds,{readingId:session.id,layer:number,slotCount:positions.length,random}),cards:deck.drawRemaining(cardIds,used,positions.length,random)};
     const layer={number,deckId:draw.deckId,deckInstanceId:draw.deckInstanceId,entries:positions.map((position,i)=>({position,cardId:draw.cards[i]}))};
     return {...session,layers:[...session.layers,layer]};
   }

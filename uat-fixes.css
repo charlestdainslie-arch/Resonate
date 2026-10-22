@@ -1,0 +1,28 @@
+/* Keep the same one-card table before and after reveal. */
+.reading-stage-page .stage-board.spread-1{
+  box-sizing:border-box;width:min(100%,640px);max-width:640px;
+  grid-template-columns:minmax(0,1fr);padding:8px 0 18px;margin:12px auto 24px;
+}
+.reading-stage-page .stage-board.spread-1 .stage-position{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:clamp(7px,2vw,22px);row-gap:10px;align-items:start;justify-items:center;
+}
+.reading-stage-page .stage-board.spread-1 .slot-label{grid-column:1/-1;grid-row:1;width:100%;margin:0 0 5px}
+.reading-stage-page .stage-board.spread-1 .stage-card{
+  grid-column:2;grid-row:2;box-sizing:border-box;width:100%;max-width:190px;
+  aspect-ratio:2/3;height:auto;margin:0;min-width:0;
+}
+.reading-stage-page .stage-board.spread-1 .slot-label{color:#edc979;font-size:clamp(17px,2vw,24px);font-weight:800;line-height:1.3;letter-spacing:.055em;text-transform:uppercase}
+/* Put the two clarifier labels below their artwork so all three tops align. */
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{order:1}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{order:2;padding-top:0}
+.draw-page .spread-board.spread-1 .reading-card-front{display:block;overflow:visible;padding:0}
+.draw-page .spread-board.spread-1 .reading-card-front img{display:block;width:100%;height:100%;padding:3px}
+.draw-page .spread-board.spread-1 .reading-card-front::after{content:'ORIGINAL CARD';position:absolute;top:calc(100% + 8px);left:0;width:100%;font:9px/1.6 Arial,sans-serif;color:#d9b979;text-align:center}
+.draw-page .spread-board.spread-1 .reading-card-front strong{position:absolute;top:calc(100% + 28px);left:0;width:100%;padding:0 3px;box-sizing:border-box}
+.draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:70px}
+.draw-page .spread-board.spread-1:has(.position-clarifiers){padding-bottom:18px}
+@media(max-width:520px){
+  .reading-stage-page .stage-board.spread-1{padding:8px 0 12px}
+  .reading-stage-page .stage-board.spread-1 .stage-position{column-gap:6px}
+}
