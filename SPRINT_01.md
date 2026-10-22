@@ -1,5 +1,7 @@
 # Chas Sprint 1 — Baseline acceptance checklist
 
+> **23 October 2026 approved precedence:** [BACKLOG_V1_READING_EXPERIENCE.md](BACKLOG_V1_READING_EXPERIENCE.md) is the current reading-experience backlog. Full engine, Oracle at start and finish, Western/Vedic/Chinese astrology, numerology and two dice, actual card placements, mapped interpretations, branded PDF, then functional UAT **before** Golden Thread animations. **Two clarifiers maximum, never a third.** Older Sprint 1 proposals below about three clarifier layers and deferred Oracle UI are superseded, preserved only for historical context.
+
 ## Scope and evidence
 Source branch: develop/v1.0-base (from release/v0.91, commit 939402183172a8817696a2e71384c0be01354de3).
 
@@ -15,7 +17,7 @@ Repository inspection confirms:
 3. Draft 78-card data schema and unique draw rules with suite of automated tests.
 4. Investigate filament path choreography on responsive card/interpretation geometry. Reduced motion is required.
 5. Draft authentication, private journal persistence and subscription solution with security review.
-6. Phase 2 checkpoint: confirm deck-type IDs, optional stages, versioned journal entries, reusable animation events. Add foundations now only with explicit agreed benefit and adequate tests.
+6. New integrated reading checkpoint: type-aware tarot/Oracle stages, astrology and numerology adapters, stable journal/PDF state, precise card placement and tests. Keep animation hooks but defer Golden Thread implementation until all functional UAT gates pass.
 
 ## Acceptance and exit criteria
 - Each change links to a requirement, evidence and an acceptance criterion.
