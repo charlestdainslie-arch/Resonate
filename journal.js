@@ -21,10 +21,26 @@ function writeJournal(entry,status){
     return false;
   }
 }
+// Save computed sky and sign positions with the reading, never raw birth date,
+// birth time, coordinates or IANA birthplace zone. Reopening reuses this
+// original observation instead of silently substituting today's sky.
+function journalAstrologySnapshot(){
+  const s=state.readingAstrology;
+  if(!s?.sky)return null;
+  const n=s.natal||{};
+  const chinese=n.chinese?{animal:n.chinese.animal,element:n.chinese.element,
+    label:n.chinese.label,boundaryKnown:n.chinese.boundaryKnown}:null;
+  return {version:s.version,sky:JSON.parse(JSON.stringify(s.sky)),
+    readingContext:{...s.readingContext},
+    natal:{sunSign:n.sunSign||null,natalSun:n.natalSun||null,
+      moon:n.moon||null,rising:n.rising||null,
+      siderealSun:n.siderealSun||null,siderealMoon:n.siderealMoon||null,
+      chinese,precision:n.precision||'quick',warnings:[...(n.warnings||[])]}};
+}
 function readingEntry(){
   const existing=activeJournal();
   if(existing)return {...existing,cardReflections:{...existing.cardReflections}};
-  return {id:crypto.randomUUID(),readingAt:state.drawnAt,savedAt:new Date().toISOString(),updatedAt:null,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,spreadId:state.spreadId,spread:JSON.parse(JSON.stringify(currentSpread())),cardIds:[...state.drawnCardIds],reflection:'',cardReflections:{},clarifierLayers:[]};
+  return {id:crypto.randomUUID(),readingAt:state.drawnAt,savedAt:new Date().toISOString(),updatedAt:null,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,spreadId:state.spreadId,spread:JSON.parse(JSON.stringify(currentSpread())),cardIds:[...state.drawnCardIds],reflection:'',cardReflections:{},clarifierLayers:[],astrology:journalAstrologySnapshot()};
 }
 function journalTime(entry){
   return `<p class="journal-time">Reading: <time datetime="${escapeHtml(entry.readingAt)}">${escapeHtml(journalDate(entry.readingAt,entry.timeZone))}</time></p>${entry.updatedAt?`<p class="journal-updated">Reflection updated: ${escapeHtml(journalDate(entry.updatedAt,entry.timeZone))}</p>`:''}`;
@@ -38,6 +54,7 @@ function captureClarifierLayers(){
 function saveReadingReflection(text,status){
   const entry=readingEntry();
   entry.clarifierLayers=captureClarifierLayers();
+  if(!entry.astrology)entry.astrology=journalAstrologySnapshot();
   if(entry.reflection!==text){entry.reflection=text;entry.updatedAt=new Date().toISOString();}
   return writeJournal(entry,status);
 }
@@ -82,6 +99,7 @@ function openJournalReading(id){
   clearDrawTimers();state.journalId=id;state.journalSpread=entry.spread;
   state.spreadId=entry.spreadId;state.spreadSize=entry.cardIds.length;
   state.drawnCardIds=[...entry.cardIds];state.drawnAt=entry.readingAt;
+  state.readingAstrology=entry.astrology||null;
   const layers=entry.clarifierLayers||[];
   state.clarifierReadingAt=layers.some(l=>l.number===1)?entry.readingAt:null;
   state.firstLayerClarifiers=[...(layers.find(l=>l.number===1)?.cards||[])];
@@ -93,7 +111,7 @@ function openJournalReading(id){
 renderSaved=function(){
   const legacy=cards.filter(card=>state.bookmarks.includes(card.id)||state.notes[card.id]);
   const entries=[...journalEntries].sort((a,b)=>new Date(b.readingAt)-new Date(a.readingAt));
-  shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h1>Your readings & reflections.</h1><p>Return to the cards, the moment, and what it meant to you.</p><p>Stored on this browser only. Clearing browser data removes these entries.</p></section><figure class="journal-art-panel" aria-label="A black journal with gold celestial detailing"><img src="assets/landing-saved.jpg" alt="Black leather journal with a gold sun emblem beside a glowing celestial sphere" width="512" height="512"></figure><section class="journal-entries">${entries.length?entries.map(entry=>`<article class="reflection-card journal-entry"><h2>${escapeHtml(entry.spread.name)}</h2>${journalTime(entry)}<ol class="journal-card-list">${entry.cardIds.map((id,index)=>`<li><strong>${escapeHtml(entry.spread.positions[index][0])}</strong> — ${escapeHtml(cards.find(card=>card.id===id)?.name||'Card')} ${entry.cardReflections?.[index]?.text?`<p class="journal-reflection">${escapeHtml(entry.cardReflections[index].text)}</p><small>Reflection updated: ${escapeHtml(journalDate(entry.cardReflections[index].updatedAt,entry.timeZone))}</small>`:''}</li>`).join('')}</ol><p class="journal-reflection"><strong>How these cards connect:</strong> ${entry.cardIds.map((id,i)=>{const base=cards.find(card=>card.id===id);const clarifiers=(entry.clarifierLayers||[]).map(layer=>cards.find(card=>card.id===layer.cards[i])).filter(Boolean);return `${escapeHtml(entry.spread.positions[i]?.[0]||'Position')}: ${escapeHtml(base?.name||'Card')}${clarifiers.length?' with '+clarifiers.map(c=>escapeHtml(c.name)).join(', '):''}. ${escapeHtml((base?.uprightKeywords||[]).slice(0,2).join(' and '))}${clarifiers.length?' meets '+clarifiers.map(c=>escapeHtml((c.uprightKeywords||[]).slice(0,2).join(' and '))).join('; '):''}.`;}).join(' ')}</p><label for="journal-${entry.id}">Your comments or reflections on this reading</label><textarea id="journal-${entry.id}" data-journal-reflection="${entry.id}" placeholder="Add your reflection…">${escapeHtml(entry.reflection)}</textarea><div class="journal-reflection-actions"><button type="button" class="gold-button" data-save-journal-reflection="${entry.id}">Save Reflection</button><p class="reflection-note" role="status" id="status-${entry.id}">Your changes are not saved until you select Save Reflection.</p></div><button class="ghost-button" data-open-reading="${entry.id}">Back to reading ${icon('arrow',16)}</button></article>`).join(''):`<section class="empty"><h3>No saved readings yet</h3><p>Draw a reading and save it here with the date, time and your reflections.</p><button class="gold-button" data-go="reading">Get a Reading</button></section>`}</section>${legacy.length?`<section class="section-hero"><h2>Card bookmarks & earlier reflections</h2><p>Your existing card notes are kept here. They were not linked to a dated reading.</p></section><section class="card-grid">${legacy.map(cardTile).join('')}</section>`:''}`,'page-home');
+  shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h1>Your readings & reflections.</h1><p>Return to the cards, the moment, and what it meant to you.</p><p>Stored on this browser only. Clearing browser data removes these entries. Saved astrology contains calculated sky/sign results, not raw birth date, time, time zone or birthplace coordinates.</p></section><figure class="journal-art-panel" aria-label="A black journal with gold celestial detailing"><img src="assets/landing-saved.jpg" alt="Black leather journal with a gold sun emblem beside a glowing celestial sphere" width="512" height="512"></figure><section class="journal-entries">${entries.length?entries.map(entry=>`<article class="reflection-card journal-entry"><h2>${escapeHtml(entry.spread.name)}</h2>${journalTime(entry)}<ol class="journal-card-list">${entry.cardIds.map((id,index)=>`<li><strong>${escapeHtml(entry.spread.positions[index][0])}</strong> — ${escapeHtml(cards.find(card=>card.id===id)?.name||'Card')} ${entry.cardReflections?.[index]?.text?`<p class="journal-reflection">${escapeHtml(entry.cardReflections[index].text)}</p><small>Reflection updated: ${escapeHtml(journalDate(entry.cardReflections[index].updatedAt,entry.timeZone))}</small>`:''}</li>`).join('')}</ol><p class="journal-reflection"><strong>How these cards connect:</strong> ${entry.cardIds.map((id,i)=>{const base=cards.find(card=>card.id===id);const clarifiers=(entry.clarifierLayers||[]).map(layer=>cards.find(card=>card.id===layer.cards[i])).filter(Boolean);return `${escapeHtml(entry.spread.positions[i]?.[0]||'Position')}: ${escapeHtml(base?.name||'Card')}${clarifiers.length?' with '+clarifiers.map(c=>escapeHtml(c.name)).join(', '):''}. ${escapeHtml((base?.uprightKeywords||[]).slice(0,2).join(' and '))}${clarifiers.length?' meets '+clarifiers.map(c=>escapeHtml((c.uprightKeywords||[]).slice(0,2).join(' and '))).join('; '):''}.`;}).join(' ')}</p><label for="journal-${entry.id}">Your comments or reflections on this reading</label><textarea id="journal-${entry.id}" data-journal-reflection="${entry.id}" placeholder="Add your reflection…">${escapeHtml(entry.reflection)}</textarea><div class="journal-reflection-actions"><button type="button" class="gold-button" data-save-journal-reflection="${entry.id}">Save Reflection</button><p class="reflection-note" role="status" id="status-${entry.id}">Your changes are not saved until you select Save Reflection.</p></div><button class="ghost-button" data-open-reading="${entry.id}">Back to reading ${icon('arrow',16)}</button></article>`).join(''):`<section class="empty"><h3>No saved readings yet</h3><p>Draw a reading and save it here with the date, time and your reflections.</p><button class="gold-button" data-go="reading">Get a Reading</button></section>`}</section>${legacy.length?`<section class="section-hero"><h2>Card bookmarks & earlier reflections</h2><p>Your existing card notes are kept here. They were not linked to a dated reading.</p></section><section class="card-grid">${legacy.map(cardTile).join('')}</section>`:''}`,'page-home');
   bindBack();
   document.querySelectorAll('[data-card]').forEach(button=>button.onclick=()=>openCard(Number(button.dataset.card),'saved'));
   document.querySelectorAll('[data-open-reading]').forEach(button=>button.onclick=()=>openJournalReading(button.dataset.openReading));

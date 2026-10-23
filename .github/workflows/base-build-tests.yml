@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - develop/v1.0-base
+      - feature/live-astrology-prelude
+  pull_request:
+    branches:
+      - develop/v1.0-base
   workflow_dispatch:
 jobs:
   unit-tests:
@@ -21,5 +25,7 @@ jobs:
           node --check data.js
           node --check journal.js
           node --check reading-stage.js
+          node --check astrology-prelude.js
+          node --check astrology-prelude-ui.js
       - name: Run unit tests
         run: node --test tests/*.test.cjs
