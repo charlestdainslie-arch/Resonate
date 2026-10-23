@@ -1,9 +1,14 @@
 /* Local PDF generation: no reading or journal content leaves the browser. */
 (function(root){
-  async function create(sections,year){
+  async function create(sections,year,astrologySnapshot=null){
     const {PDFDocument,StandardFonts,rgb}=root.PDFLib;
     const pdf=await PDFDocument.create();
     pdf.setTitle('RESONATE · Tarot Reading');pdf.setAuthor('RESONATE');
+    if(astrologySnapshot){
+      pdf.setSubject('Preserved astrology session: '+astrologySnapshot.sky.at);
+      await pdf.attach(new TextEncoder().encode(JSON.stringify(astrologySnapshot,null,2)),'resonate-astrology-snapshot.json',{
+        mimeType:'application/json',description:'The exact computed sky/sign snapshot; no raw birth inputs.'});
+    }
     const regular=await pdf.embedFont(StandardFonts.Helvetica);
     const bold=await pdf.embedFont(StandardFonts.HelveticaBold);
     const gold=rgb(.65,.48,.18),ink=rgb(.13,.12,.15);

@@ -30,10 +30,11 @@ function writeJournal(entry,status){
     return false;
   }
 }
+function journalAstrologySnapshot(){return typeof ResonateAstrology==='undefined'?null:ResonateAstrology.snapshot(state.readingAstrology);}
 function readingEntry(){
   const existing=activeJournal();
   if(existing)return {...existing,cardReflections:{...existing.cardReflections}};
-  return {id:crypto.randomUUID(),readingAt:state.drawnAt,savedAt:new Date().toISOString(),updatedAt:null,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,spreadId:state.spreadId,spread:JSON.parse(JSON.stringify(currentSpread())),cardIds:[...state.drawnCardIds],reflection:'',cardReflections:{},clarifierLayers:[],openingDice:state.openingDice?[...state.openingDice]:null};
+  return {id:crypto.randomUUID(),readingAt:state.drawnAt,savedAt:new Date().toISOString(),updatedAt:null,timeZone:Intl.DateTimeFormat().resolvedOptions().timeZone,spreadId:state.spreadId,spread:JSON.parse(JSON.stringify(currentSpread())),cardIds:[...state.drawnCardIds],reflection:'',cardReflections:{},clarifierLayers:[],astrology:journalAstrologySnapshot(),openingDice:state.openingDice?[...state.openingDice]:null};
 }
 function journalTime(entry){
   return `<p class="journal-time">Reading: <time datetime="${escapeHtml(entry.readingAt)}">${escapeHtml(journalDate(entry.readingAt,entry.timeZone))}</time></p>${entry.updatedAt?`<p class="journal-updated">Reflection updated: ${escapeHtml(journalDate(entry.updatedAt,entry.timeZone))}</p>`:''}`;
@@ -96,6 +97,7 @@ function openJournalReading(id){
   clearDrawTimers();state.readingReturn=null;state.journalId=id;state.journalSpread=entry.spread;
   state.spreadId=entry.spreadId;state.spreadSize=entry.cardIds.length;
   state.drawnCardIds=[...entry.cardIds];state.drawnAt=entry.readingAt;
+  state.readingAstrology=entry.astrology?JSON.parse(JSON.stringify(entry.astrology)):null;state.readingStartedAt=entry.astrology?.sky?.at||null;
   state.openingDice=entry.openingDice?[...entry.openingDice]:null;
   const layers=(entry.clarifierLayers||[]).filter(layer=>layer.number<=2);
   state.clarifierReadingAt=layers.some(l=>l.number===1)?entry.readingAt:null;

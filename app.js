@@ -122,7 +122,7 @@ function bindGlobal() {
 }
 function closeMenu(){ state.menuOpen=false; const el=document.getElementById('menuOverlay'); if(el){el.classList.remove('open');el.setAttribute('aria-hidden','true');} }
 function clearDrawTimers(){ drawTimers.forEach(clearTimeout); drawTimers=[]; }
-const readingReturnFields=['spreadId','spreadSize','drawnCardIds','drawnAt','openingDice','clarifierReadingAt','firstLayerClarifiers','additionalClarifierReadingAt','additionalClarifierLayers','journalId','journalSpread','drawPhase','drawSettled','drawnOrientations'];
+const readingReturnFields=['spreadId','spreadSize','drawnCardIds','drawnAt','openingDice','clarifierReadingAt','firstLayerClarifiers','additionalClarifierReadingAt','additionalClarifierLayers','journalId','journalSpread','drawPhase','drawSettled','drawnOrientations','readingAstrology','readingStartedAt'];
 function captureReadingReturn(){return {reading:JSON.parse(JSON.stringify(Object.fromEntries(readingReturnFields.map(key=>[key,state[key]??null])))),scrollY:window.scrollY};}
 function go(view){
   clearDrawTimers();
@@ -197,6 +197,11 @@ function currentSky(card, at=state.drawnAt||Date.now()) {
   const planet=astrologyPlanet(card);
   if(!planet) return {planet:null,text:'No planetary placement assigned'};
   try{
+    const readingContext=state.view==='draw'||(state.view==='detail'&&state.returnView==='draw');
+    if(readingContext&&state.readingAstrology?.sky){
+      const saved=state.readingAstrology.sky.positions[planet];
+      return {planet,text:saved?`${planet} is at ${saved.degrees}° ${String(saved.minutes).padStart(2,'0')}′ ${saved.sign}`:`${planet} not recorded in this snapshot`};
+    }
     if(!window.Astronomy) throw new Error('Astronomy unavailable');
     const when=new Date(at);
     const vector=window.Astronomy.GeoVector(window.Astronomy.Body[planet],when,true);
@@ -393,11 +398,12 @@ async function downloadReading(){
     const textOf=html=>{const div=document.createElement('div');div.innerHTML=html.replace(/<\/(span|strong)>/g,'$& ').replace(/<\/(p|h[1-6]|div|article)>/g,'$&\n');div.querySelectorAll('button').forEach(button=>button.remove());return div.textContent.replace(/\n{3,}/g,'\n\n').trim();};
     const entry=typeof activeJournal==='function'?activeJournal():null;
     const sections=[{title:readingTitle(),text:new Date(state.drawnAt).toLocaleString([], {dateStyle:'full',timeStyle:'long'})}];
+    if(state.readingAstrology&&typeof ResonateAstrology!=='undefined')sections.push({title:'Astrology snapshot · preserved session moment',text:ResonateAstrology.report(state.readingAstrology)});
     chosen.forEach((card,i)=>sections.push({title:positionLabels()[i]+' · '+card.name,text:textOf(readingMeaning(card,positionLabels()[i],i))}));
     sections.push({title:'The Golden Thread',text:textOf(goldenThread(chosen))});
     if(entry?.reflection)sections.push({title:'Your reflection',text:entry.reflection});
     for(const [index,note] of Object.entries(entry?.cardReflections||{}))if(note.text)sections.push({title:'Card reflection · '+positionLabels()[index],text:note.text});
-    const bytes=await ResonatePDF.create(sections,new Date(state.drawnAt).getFullYear());
+    const bytes=await ResonatePDF.create(sections,new Date(state.drawnAt).getFullYear(),state.readingAstrology&&typeof ResonateAstrology!=='undefined'?ResonateAstrology.snapshot(state.readingAstrology):null);
     const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
     const link=document.createElement('a');link.href=url;link.download='resonate-tarot-reading.pdf';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }catch(error){if(button)button.textContent='PDF failed — try again';console.error('PDF export failed',error);return;}

@@ -1,6 +1,7 @@
 const fs=require('fs'),path=require('path'),http=require('http'),assert=require('assert/strict');
 const {chromium}=require('playwright');
-const {PDFDocument}=require('pdf-lib');
+const {PDFDocument,PDFName,PDFDict,PDFArray,PDFRawStream,decodePDFRawStream}=require('pdf-lib');
+function pdfSnapshot(pdf){const names=pdf.catalog.lookup(PDFName.of('Names'),PDFDict).lookup(PDFName.of('EmbeddedFiles'),PDFDict).lookup(PDFName.of('Names'),PDFArray);const spec=pdf.context.lookup(names.get(1),PDFDict);const stream=spec.lookup(PDFName.of('EF'),PDFDict).lookup(PDFName.of('F'),PDFRawStream);return JSON.parse(Buffer.from(decodePDFRawStream(stream).decode()).toString('utf8'));}
 const root=path.resolve(__dirname,'..'),out=path.resolve(process.env.UAT_OUTPUT_DIR||path.join(root,'test-results'));fs.mkdirSync(out,{recursive:true});
 const server=http.createServer((req,res)=>{const file=path.join(root,decodeURIComponent(req.url.split('?')[0]==='/'?'/index.html':req.url.split('?')[0]));try{res.setHeader('Content-Type',({js:'text/javascript',css:'text/css',html:'text/html',jpg:'image/jpeg',png:'image/png'})[file.split('.').pop()]||'application/octet-stream');res.end(fs.readFileSync(file));}catch{res.statusCode=404;res.end();}});
 const run=Number(process.argv[2]||1),results=[];
@@ -22,12 +23,21 @@ const run=Number(process.argv[2]||1),results=[];
    });
    if(motion==='reduce')await page.screenshot({path:path.join(out,`run-${run}-home-${width}.png`),fullPage:true});
    await page.locator('.home-actions [data-go="reading"]').click();
+   await check('optional astrology profile, example isolation, DST error and pre-dice snapshot',async()=>{
+    assert.equal(await page.locator('[name="sunSign"]').inputValue(),'');assert.equal(await page.locator('[name="birthYear"]').inputValue(),'');const anonymous=await page.evaluate(()=>JSON.stringify(state.astrologyPrelude));
+    await page.locator('#astroDemo').click();assert.equal(await page.evaluate(()=>JSON.stringify(state.astrologyPrelude)),anonymous);assert.equal(await page.locator('[name="sunSign"]').inputValue(),'');
+    await page.locator('.astro-full-birth summary').click();await page.locator('[name="birthDate"]').fill('2024-11-03');await page.locator('[name="birthTime"]').fill('01:30');await page.locator('[name="timeZone"]').fill('America/New_York');await page.getByRole('button',{name:'Calculate my sky',exact:true}).click();assert.match(await page.locator('#astroError').innerText(),/occurs twice/);assert.equal(await page.evaluate(()=>state.astrologyPrelude),null);
+    await page.locator('#astroSkip').click();assert.equal(await page.locator('[name="birthDate"]').inputValue(),'');
+    await page.locator('[name="birthDate"]').fill('1990-07-15');await page.locator('[name="birthTime"]').fill('12:34');await page.locator('[name="timeZone"]').fill('Europe/London');await page.locator('[name="latitude"]').fill('51.5');await page.locator('[name="longitude"]').fill('-0.12');await page.getByRole('button',{name:'Calculate my sky',exact:true}).click();assert.equal(await page.locator('#astroError').isVisible(),false);
+    assert.equal(await page.evaluate(()=>state.astrologyPrelude.natal.sunSign),'Cancer');assert.ok(await page.evaluate(()=>!!state.astrologyPrelude.natal.moon&&!!state.astrologyPrelude.natal.rising));assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+   });
+   const expectedAstrology=await page.evaluate(()=>JSON.parse(JSON.stringify(state.astrologyPrelude)));
    await check('dice finish as two 0–9 digits, optional and reduced-motion aware',async()=>{await page.locator('#rollOpeningDice').click();await page.waitForFunction(()=>document.getElementById('rollOpeningDice').disabled===false);assert.match(await page.locator('#openingDiceValues').innerText(),/^\d · \d$/);assert.ok((await page.locator('#openingDiceMeaning').innerText()).includes('symbolic numerology'));});
    const dice=await page.evaluate(()=>[...state.openingDice]);
    await page.locator('[data-spread="guidance"]').click();const before=await page.locator('.stage-card').boundingBox();
    await page.locator('#shuffleCardsBtn').click();await page.waitForFunction(()=>!document.getElementById('shuffleCardsBtn').disabled);await page.locator('#stageDrawBtn').click();await page.waitForFunction(()=>state.drawSettled);
    await check('78 live cards and all images load; stage/reveal dimensions match',async()=>{
-    const after=await page.locator('.reading-card').boundingBox();assert.ok(Math.abs(before.width-after.width)<1,JSON.stringify({before,after}));assert.ok(Math.abs(before.height-after.height)<1);assert.equal(await page.evaluate(()=>cards.length),78);
+    const after=await page.locator('.reading-card').boundingBox();assert.ok(Math.abs(before.width-after.width)<1,JSON.stringify({before,after}));assert.ok(Math.abs(before.height-after.height)<1);assert.equal(await page.evaluate(()=>cards.length),78);assert.deepEqual(await page.evaluate(()=>state.readingAstrology),expectedAstrology);
     await page.waitForFunction(()=>[...document.querySelectorAll('.reading-card-front img')].every(e=>e.complete&&e.naturalWidth>0));
    });
    await page.locator('#primaryClarifierAction').click();await page.locator('#primaryClarifierAction').click();
@@ -54,6 +64,7 @@ const run=Number(process.argv[2]||1),results=[];
    await page.locator('#saveReadingJournal').click();
    await check('primary final action saves; journal reopens identical reading after reload',async()=>{
     assert.equal(await page.locator('#saveReadingJournal').innerText(),'✓ Saved to Journal');assert.match(await page.locator('#journalSaveStatus').innerText(),/saved/i);await page.locator('#openJournal').click();await page.locator('[data-open-reading]').first().click();await page.reload();await page.evaluate(()=>go('saved'));await page.locator('[data-open-reading]').first().click();
+    assert.deepEqual(await page.evaluate(()=>state.readingAstrology),expectedAstrology);const storage=await page.evaluate(()=>localStorage.getItem(journalKey));assert.ok(!storage.includes('1990-07-15'));assert.ok(!storage.includes('Europe/London'));
     const restored=await page.evaluate(()=>({ids:[...state.drawnCardIds],at:state.drawnAt,layers:captureClarifierLayers(),dice:[...state.openingDice]}));assert.deepEqual(restored,snapshot);assert.match(await page.locator('#readingReflection').inputValue(),/UAT reflection/);
    });
    await check('card detail reflection preserves clarifiers; return keeps reading',async()=>{await page.locator('.reading-card').click();await page.locator('#noteField').fill('Card reflection retained.');await page.locator('#backBtn').click();assert.equal(await page.locator('.position-clarifier').count(),2);assert.equal(await page.evaluate(()=>state.drawnAt),snapshot.at);});
@@ -61,7 +72,7 @@ const run=Number(process.argv[2]||1),results=[];
     const original=await page.evaluate(()=>captureReadingReturn().reading);
     for(const control of ['#backBtn','#prevBtn','#nextBtn']){
      await page.locator('[data-reading-detail]').first().click();const returnY=await page.evaluate(()=>state.readingReturn.scrollY);
-     await page.evaluate(()=>{state.spreadId='three';state.spreadSize=3;state.drawnCardIds=[1,2,3];state.drawnAt='old multi reading';state.journalSpread=spreads.three;state.firstLayerClarifiers=[4,5,6];state.additionalClarifierLayers=[{number:2,cards:[7,8,9]}];});
+     await page.evaluate(()=>{state.spreadId='three';state.spreadSize=3;state.drawnCardIds=[1,2,3];state.drawnAt='old multi reading';state.readingAstrology=null;state.readingStartedAt='older';state.journalSpread=spreads.three;state.firstLayerClarifiers=[4,5,6];state.additionalClarifierLayers=[{number:2,cards:[7,8,9]}];});
      await page.locator(control).click();assert.deepEqual(await page.evaluate(()=>captureReadingReturn().reading),original);assert.ok(Math.abs(await page.evaluate(()=>scrollY)-returnY)<5,'return scroll context');assert.equal(await page.locator('.reading-card').count(),1);
     }
    });
@@ -71,7 +82,7 @@ const run=Number(process.argv[2]||1),results=[];
     await page.evaluate(()=>{go('saved')});await page.locator('[data-open-reading]').first().click();assert.equal(await page.locator('.reading-card').count(),1);
    });
    await check('PDF download is branded, paginated PDF with journal content',async()=>{
-    const waiting=page.waitForEvent('download');await page.locator('#downloadReading').click();const download=await waiting;assert.equal(download.suggestedFilename(),'resonate-tarot-reading.pdf');const file=path.join(out,`run-${run}-reading-${width}-${motion}.pdf`);await download.saveAs(file);const bytes=fs.readFileSync(file);assert.equal(bytes.subarray(0,5).toString(),'%PDF-');const pdf=await PDFDocument.load(bytes);assert.equal(pdf.getAuthor(),'RESONATE');assert.ok(pdf.getPageCount()>=1);
+    const waiting=page.waitForEvent('download');await page.locator('#downloadReading').click();const download=await waiting;assert.equal(download.suggestedFilename(),'resonate-tarot-reading.pdf');const file=path.join(out,`run-${run}-reading-${width}-${motion}.pdf`);await download.saveAs(file);const bytes=fs.readFileSync(file);assert.equal(bytes.subarray(0,5).toString(),'%PDF-');const pdf=await PDFDocument.load(bytes);assert.equal(pdf.getAuthor(),'RESONATE');assert.deepEqual(pdfSnapshot(pdf),expectedAstrology);assert.ok(pdf.getPageCount()>=1);
    });
    await page.locator('#backToReadingTop').click();await page.waitForFunction(()=>{const r=document.querySelector('.spread-scroll').getBoundingClientRect();return r.top>=-2&&r.top<innerHeight;});
    await check('return action brings same spread into view',async()=>{const box=await page.locator('.spread-scroll').boundingBox();assert.ok(box.y>=-2&&box.y<item.height);assert.equal(await page.evaluate(()=>state.drawnAt),snapshot.at);});
@@ -89,7 +100,7 @@ const run=Number(process.argv[2]||1),results=[];
     const count=await page.locator('.reading-card').count();assert.equal(await page.locator('.reading-card-lenses').count(),count*3);assert.equal(await page.locator('.jungian-lens:last-child').count(),count*3);const copy=await page.evaluate(()=>[...document.querySelectorAll('.reading-card-lenses')].every(el=>{const card=cards.find(c=>el.getAttribute('aria-label')==='Interpretive lenses for '+c.name);return card&&el.textContent.includes(card.wuWei)&&el.textContent.includes(card.psychological)}));assert.ok(copy,'existing lens copy retained');assert.equal(await page.locator('.position-clarifier').count(),count*2);assert.equal(await page.locator('#primaryClarifierAction').count(),0);assert.equal(await page.locator('textarea').count(),1);assert.equal(await page.locator('#saveReadingJournal').count(),1);
     assert.equal(await page.evaluate(()=>document.getElementById('drawActions').compareDocumentPosition(document.querySelector('.reading-journal'))&Node.DOCUMENT_POSITION_FOLLOWING),4);
     await page.locator('#saveReadingJournal').click();await page.locator('#openJournal').click();await page.locator('[data-open-reading]').first().click();await checkArt();assert.equal(await page.locator('textarea').count(),1);
-    const downloadWait=page.waitForEvent('download');await page.locator('#downloadReading').click();const dl=await downloadWait;const file=path.join(out,`all-${run}-${spread}-${width}-${motion}.pdf`);await dl.saveAs(file);const pdf=await PDFDocument.load(fs.readFileSync(file));assert.ok(pdf.getPageCount()>0);
+    const downloadWait=page.waitForEvent('download');await page.locator('#downloadReading').click();const dl=await downloadWait;const file=path.join(out,`all-${run}-${spread}-${width}-${motion}.pdf`);await dl.saveAs(file);const pdf=await PDFDocument.load(fs.readFileSync(file));assert.ok(pdf.getPageCount()>0);assert.deepEqual(pdfSnapshot(pdf),await page.evaluate(()=>state.readingAstrology));
     if(motion==='reduce'&&[390,768,1440].includes(width)){await page.locator('#backToReadingTop').click();await page.clock.fastForward(1000);await page.screenshot({path:path.join(out,`all-${run}-${spread}-${width}.png`),fullPage:false});}
    });
 
