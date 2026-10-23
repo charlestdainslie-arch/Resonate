@@ -94,7 +94,7 @@
       }catch(ex){
         error.hidden=false;error.textContent='Unable to calculate this profile: '+String(ex.message||ex);
         // Do not quietly retain stale readings after invalid input.
-        state.astrologyPrelude=null;result.innerHTML='';
+        state.astrologyProfile={};state.astrologyPrelude=null;result.innerHTML='';
       }
     }
     form.onsubmit=e=>{e.preventDefault();show(profileFromForm(form));};
