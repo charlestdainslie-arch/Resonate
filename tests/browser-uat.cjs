@@ -57,6 +57,19 @@ const run=Number(process.argv[2]||1),results=[];
     const restored=await page.evaluate(()=>({ids:[...state.drawnCardIds],at:state.drawnAt,layers:captureClarifierLayers(),dice:[...state.openingDice]}));assert.deepEqual(restored,snapshot);assert.match(await page.locator('#readingReflection').inputValue(),/UAT reflection/);
    });
    await check('card detail reflection preserves clarifiers; return keeps reading',async()=>{await page.locator('.reading-card').click();await page.locator('#noteField').fill('Card reflection retained.');await page.locator('#backBtn').click();assert.equal(await page.locator('.position-clarifier').count(),2);assert.equal(await page.evaluate(()=>state.drawnAt),snapshot.at);});
+   await check('all detail return controls restore origin after shared spread state changes',async()=>{
+    const original=await page.evaluate(()=>captureReadingReturn().reading);
+    for(const control of ['#backBtn','#prevBtn','#nextBtn']){
+     await page.locator('[data-reading-detail]').first().click();const returnY=await page.evaluate(()=>state.readingReturn.scrollY);
+     await page.evaluate(()=>{state.spreadId='three';state.spreadSize=3;state.drawnCardIds=[1,2,3];state.drawnAt='old multi reading';state.journalSpread=spreads.three;state.firstLayerClarifiers=[4,5,6];state.additionalClarifierLayers=[{number:2,cards:[7,8,9]}];});
+     await page.locator(control).click();assert.deepEqual(await page.evaluate(()=>captureReadingReturn().reading),original);assert.ok(Math.abs(await page.evaluate(()=>scrollY)-returnY)<5,'return scroll context');assert.equal(await page.locator('.reading-card').count(),1);
+    }
+   });
+   await check('switching spreads gives the next detail its own origin; Learn returns to Learn',async()=>{
+    await page.evaluate(()=>go('reading'));await page.locator('[data-spread="three"]').click();await page.locator('#stageDrawBtn').click();await page.waitForFunction(()=>state.drawSettled);await page.locator('.reading-card').first().click();await page.locator('#nextBtn').click();await page.locator('#backBtn').click();assert.equal(await page.locator('.reading-card').count(),3);assert.equal(await page.evaluate(()=>state.spreadId),'three');
+    await page.evaluate(()=>go('learn'));await page.locator('[data-card]').first().click();await page.locator('#backBtn').click();assert.equal(await page.evaluate(()=>state.view),'learn');assert.equal(await page.evaluate(()=>state.readingReturn),null);
+    await page.evaluate(()=>{go('saved')});await page.locator('[data-open-reading]').first().click();assert.equal(await page.locator('.reading-card').count(),1);
+   });
    await check('PDF download is branded, paginated PDF with journal content',async()=>{
     const waiting=page.waitForEvent('download');await page.locator('#downloadReading').click();const download=await waiting;assert.equal(download.suggestedFilename(),'resonate-tarot-reading.pdf');const file=path.join(out,`run-${run}-reading-${width}-${motion}.pdf`);await download.saveAs(file);const bytes=fs.readFileSync(file);assert.equal(bytes.subarray(0,5).toString(),'%PDF-');const pdf=await PDFDocument.load(bytes);assert.equal(pdf.getAuthor(),'RESONATE');assert.ok(pdf.getPageCount()>=1);
    });

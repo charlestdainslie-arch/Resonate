@@ -54,7 +54,7 @@ function saveReadingReflection(text,status){
 const journalCurrentSpread=currentSpread;
 currentSpread=function(){return state.journalSpread&&['draw','detail'].includes(state.view)?state.journalSpread:journalCurrentSpread();};
 const journalStartDraw=startDraw;
-startDraw=function(){state.journalId=null;state.journalSpread=null;journalStartDraw();};
+startDraw=function(){state.readingReturn=null;state.journalId=null;state.journalSpread=null;journalStartDraw();};
 
 const journalRenderDraw=renderDraw;
 renderDraw=function(){
@@ -93,7 +93,7 @@ renderDetail=function(){
 
 function openJournalReading(id){
   const entry=journalEntries.find(item=>item.id===id);if(!entry)return;
-  clearDrawTimers();state.journalId=id;state.journalSpread=entry.spread;
+  clearDrawTimers();state.readingReturn=null;state.journalId=id;state.journalSpread=entry.spread;
   state.spreadId=entry.spreadId;state.spreadSize=entry.cardIds.length;
   state.drawnCardIds=[...entry.cardIds];state.drawnAt=entry.readingAt;
   state.openingDice=entry.openingDice?[...entry.openingDice]:null;

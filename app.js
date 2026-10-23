@@ -122,7 +122,17 @@ function bindGlobal() {
 }
 function closeMenu(){ state.menuOpen=false; const el=document.getElementById('menuOverlay'); if(el){el.classList.remove('open');el.setAttribute('aria-hidden','true');} }
 function clearDrawTimers(){ drawTimers.forEach(clearTimeout); drawTimers=[]; }
-function go(view){ clearDrawTimers(); state.view=view; state.orientation='upright'; render(); window.scrollTo({top:0,behavior:'smooth'}); }
+const readingReturnFields=['spreadId','spreadSize','drawnCardIds','drawnAt','openingDice','clarifierReadingAt','firstLayerClarifiers','additionalClarifierReadingAt','additionalClarifierLayers','journalId','journalSpread','drawPhase','drawSettled','drawnOrientations'];
+function captureReadingReturn(){return {reading:JSON.parse(JSON.stringify(Object.fromEntries(readingReturnFields.map(key=>[key,state[key]??null])))),scrollY:window.scrollY};}
+function go(view){
+  clearDrawTimers();
+  const origin=view==='draw'&&state.view==='detail'&&state.returnView==='draw'?state.readingReturn:null;
+  if(origin){Object.assign(state,JSON.parse(JSON.stringify(origin.reading)));state.readingIndex=null;state.drawSettled=true;state.drawPhase='settled';}
+  state.view=view;state.orientation='upright';render();
+  if(origin){window.scrollTo({top:origin.scrollY,behavior:'instant'});requestAnimationFrame(()=>window.scrollTo({top:origin.scrollY,behavior:'instant'}));}
+  else window.scrollTo({top:0,behavior:'smooth'});
+}
+
 function backButton(label='Back', target='home'){ return `<button class="back-link" data-back="${target}">${icon('back',16)} ${label}</button>`; }
 function bindBack(){ document.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>go(b.dataset.back)); }
 
@@ -159,7 +169,7 @@ function renderLearn() {
   const reset=document.getElementById('resetFilters'); if(reset) reset.onclick=()=>{state.query='';state.element='All';renderLearn();};
 }
 function cardTile(card) { return `<button class="tarot-card element-${card.element.toLowerCase()}" data-card="${card.id}"><div class="card-image-wrap"><img src="${cardImage(card)}" alt="${card.name}" loading="lazy" referrerpolicy="no-referrer" onerror="imageFallback(this)"></div><div class="card-top"><div class="roman-badge">${card.roman}</div><div class="element-pill">${card.element}</div></div><div class="tile-body"><h2>${card.roman} · ${card.name}</h2><p class="subtitle">${card.subtitle}</p><div class="keyword-row">${card.uprightKeywords.slice(0,2).map(k=>`<span>${k}</span>`).join('')}</div></div><div class="tile-foot"><span>${icon('spark',14)} ${card.astrology}</span>${icon('arrow',17)}</div></button>`; }
-function openCard(id, returnView='learn', positionIndex=null){clearDrawTimers();state.readingIndex=returnView==='draw'?positionIndex:null;if(returnView==='draw'){state.drawSettled=true;state.drawPhase='settled';}state.view='detail';state.cardId=id;state.returnView=returnView;state.orientation='upright';renderDetail();window.scrollTo(0,0);}
+function openCard(id, returnView='learn', positionIndex=null){if(returnView==='draw'){if(state.view==='draw'||!state.readingReturn)state.readingReturn=captureReadingReturn();}else state.readingReturn=null;clearDrawTimers();state.readingIndex=returnView==='draw'?positionIndex:null;if(returnView==='draw'){state.drawSettled=true;state.drawPhase='settled';}state.view='detail';state.cardId=id;state.returnView=returnView;state.orientation='upright';renderDetail();window.scrollTo(0,0);}
 
 function renderReadingHub(){
   shell(`${backButton('Home','home')}<section class="section-hero reading-hero"><div class="eyebrow">TAROT READING</div><h1>Choose the shape of the question.</h1><p>The cards stay face down until you draw. Then each card comes forward, turns, and settles into its place.</p></section><section class="spread-picker"><button data-spread="1"><span>1 CARD</span><strong>Present</strong><small>A clear single focus</small></button><button data-spread="3"><span>3 CARDS</span><strong>Past · Present · Future</strong><small>A simple line through time</small></button><button data-spread="7"><span>7 CARDS</span><strong>V Reading</strong><small>A fuller RESONATE reading</small></button></section><div class="reading-note">Choose a spread, hold your question, then press <strong>Draw Cards</strong>.</div><button class="draw-cta reading-draw" id="drawCardsBtn">${icon('spark',16)} Draw Cards</button>`, 'reading-page');
@@ -410,6 +420,7 @@ function renderDetail() {
   document.getElementById('noteField').oninput=e=>{state.notes[card.id]=e.target.value;save();}; document.getElementById('prevBtn').onclick=()=>navigate(card,-1);document.getElementById('nextBtn').onclick=()=>navigate(card,1);
 }
 function navigate(card,delta){
+  if(state.returnView==='draw'&&state.readingReturn)Object.assign(state,JSON.parse(JSON.stringify(state.readingReturn.reading)));
   if(state.returnView==='draw'&&Number.isInteger(state.readingIndex)){
     const next=state.readingIndex+delta;
     if(next<0||next>=state.drawnCardIds.length){go('draw');return;}
