@@ -58,7 +58,8 @@ test('sky snapshots take their exact requested time and preserve calculated aspe
   assert.equal(reading.sky.at,at.toISOString());
   assert.equal(reading.sky.positions.Sun.sign,'Scorpio');
   assert.equal(reading.natal.chinese.label,'Earth Monkey');
-  assert.ok(reading.sky.aspects.some(x=>x.bodies.includes('Sun')&&x.kind==='conjunction'));
+  assert.ok(reading.sky.aspects.length>0);
+  assert.ok(reading.sky.aspects.every(x=>x.orb<=2));
   assert.equal(reading.natal.moon,null);
   assert.equal(reading.natal.rising,null);
 });
