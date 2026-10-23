@@ -326,9 +326,10 @@ function drawNextClarifierLayer(){
   if(ids.length===78 && typeof ResonateDeck!=='undefined'){
     selected=ResonateDeck.drawRemaining(ids,[...state.drawnCardIds,...state.firstLayerClarifiers],state.drawnCardIds.length);
   }else{
-    const pool=[...ids];
+    const used=new Set([...state.drawnCardIds,...state.firstLayerClarifiers]);
+    const pool=ids.filter(id=>!used.has(id));
     for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-    selected=state.drawnCardIds.map((_,i)=>pool[i%pool.length]);
+    selected=pool.slice(0,state.drawnCardIds.length);
   }
   state.additionalClarifierLayers=[...layers,{number,cards:selected}];
   state.drawSettled=true;
@@ -337,7 +338,7 @@ function drawNextClarifierLayer(){
 }
 function additionalClarifierView(labels){
   if(state.additionalClarifierReadingAt!==state.drawnAt)return '';
-  return (state.additionalClarifierLayers||[]).map(layer=>`<section class="reading-interpretation" id="clarifierLayer${layer.number}" aria-label="Clarifier layer ${layer.number}"><div class="eyebrow">LAYER ${layer.number} · CLARIFIERS</div><h2>Another perspective</h2><p>Each position draws from a newly shuffled tarot deck. A card may reappear across different layers.</p><div class="reading-meanings">${layer.cards.map((id,i)=>{const card=cards.find(x=>x.id===id);return card?`<article class="golden-card-reading"><div class="golden-card-heading"><span>${i+1} · ${labels[i]||'Position'}</span><strong>${card.name}</strong></div><p>${positionContext(card,i)}</p><p>${card.upright}</p></article>`:'';}).join('')}</div></section>`).join('');
+  return (state.additionalClarifierLayers||[]).map(layer=>`<section class="reading-interpretation" id="clarifierLayer${layer.number}" aria-label="Clarifier layer ${layer.number}"><div class="eyebrow">LAYER ${layer.number} · CLARIFIERS</div><h2>Another perspective</h2><p>Each clarifier is drawn from cards not already used in this reading.</p><div class="reading-meanings">${layer.cards.map((id,i)=>{const card=cards.find(x=>x.id===id);return card?`<article class="golden-card-reading"><div class="golden-card-heading"><span>${i+1} · ${labels[i]||'Position'}</span><strong>${card.name}</strong></div><p>${positionContext(card,i)}</p><p>${card.upright}</p></article>`:'';}).join('')}</div></section>`).join('');
 }
 // Every revealed clarifier stays visibly attached to the position it explains.
 function clarifierCardsForPosition(index){
