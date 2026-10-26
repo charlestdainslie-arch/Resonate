@@ -32,5 +32,6 @@ jobs:
           node --check reading-pdf.js
           node --check opening-dice.js
           node --check reading-session.js
+          node --check navigation-a11y.js
       - name: Run unit tests
         run: node --test tests/*.test.cjs

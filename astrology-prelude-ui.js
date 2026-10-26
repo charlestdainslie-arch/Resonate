@@ -47,10 +47,33 @@
       (natal.warnings.length?'<div class="astro-accuracy"><strong>Precision notes:</strong> '+natal.warnings.map(safe).join(' ')+'</div>':'')+
       '<p class="astro-explainer">These positions are calculated when you request the snapshot, not taken from a daily horoscope. Astrology provides a symbolic perspective; it cannot determine which tarot cards you will draw or predict events reliably.</p></div>';
   }
+  // UAT D1/D2: plain text fields with the number keyboard instead of native date/time pickers,
+  // which did not open on Chas's Android in-app browser. The model still receives YYYY-MM-DD and HH:MM.
+  const DATE_HELP='Enter your birth date as DD/MM/YYYY, for example 15/03/1968.';
+  const TIME_HELP='Enter your birth time as HH:MM on a 24-hour clock, for example 09:30 or 21:45.';
+  function isoToDisplayDate(iso){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(iso||''));return m?m[3]+'/'+m[2]+'/'+m[1]:String(iso||'');}
+  function formatDateDigits(value){const d=String(value).replace(/\D/g,'').slice(0,8);return d.length>4?d.slice(0,2)+'/'+d.slice(2,4)+'/'+d.slice(4):d.length>2?d.slice(0,2)+'/'+d.slice(2):d;}
+  function formatTimeDigits(value){const d=String(value).replace(/\D/g,'').slice(0,4);return d.length>2?d.slice(0,2)+':'+d.slice(2):d;}
+  function parseBirthDate(text){
+    const t=String(text||'').trim();if(!t)return '';
+    if(/^\d{4}-\d{2}-\d{2}$/.test(t))return t;
+    const parts=/^\d{8}$/.test(t)?[t.slice(0,2),t.slice(2,4),t.slice(4)]:t.split(/[\/.\-\s]+/);
+    if(parts.length!==3||!/^\d{1,2}$/.test(parts[0])||!/^\d{1,2}$/.test(parts[1])||!/^\d{4}$/.test(parts[2]))throw Error(DATE_HELP);
+    const [day,month,year]=parts.map(Number),check=new Date(Date.UTC(year,month-1,day));
+    if(check.getUTCFullYear()!==year||check.getUTCMonth()!==month-1||check.getUTCDate()!==day)throw Error('That date does not exist. '+DATE_HELP);
+    if(year<1900||year>2100)throw Error('Birth dates from 1900 to 2100 are supported.');
+    return String(year)+'-'+String(month).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+  }
+  function parseBirthTime(text){
+    const t=String(text||'').trim();if(!t)return '';
+    const m=/^(\d{1,2})(?:[:.\s]?(\d{2}))$/.exec(t);
+    if(!m||Number(m[1])>23||Number(m[2])>59)throw Error(TIME_HELP);
+    return m[1].padStart(2,'0')+':'+m[2];
+  }
   function profileFromForm(form){
     const get=name=>String(form.elements.namedItem(name)?.value||'').trim();
-    return {sunSign:get('sunSign'),birthYear:get('birthYear'),birthDate:get('birthDate'),
-      birthTime:get('birthTime'),timeZone:get('timeZone'),latitude:get('latitude'),longitude:get('longitude'),disambiguation:get('disambiguation')||'reject'};
+    return {sunSign:get('sunSign'),birthYear:get('birthYear'),birthDate:parseBirthDate(get('birthDate')),
+      birthTime:parseBirthTime(get('birthTime')),timeZone:get('timeZone'),latitude:get('latitude'),longitude:get('longitude'),disambiguation:get('disambiguation')||'reject'};
   }
   function inputValue(s){return safe(s||'');}
   function mountPrelude(){
@@ -70,16 +93,17 @@
       '</div><details class="astro-full-birth"><summary>Optional full birth details · Moon and Rising</summary>'+
       '<p>For your natal Moon, supply birth date, local clock time and the time zone at the place of birth. Rising also needs the birthplace latitude and longitude. We never guess missing chart points.</p>'+
       '<div class="astro-detail-grid">'+
-      '<label>Birth date<input name="birthDate" type="date" min="1900-01-01" max="2100-12-31" value="'+inputValue(p.birthDate)+'"></label>'+
-      '<label>Local birth time<input name="birthTime" type="time" value="'+inputValue(p.birthTime)+'"></label>'+
+      '<label>Birth date<input name="birthDate" type="text" inputmode="numeric" autocomplete="bday" maxlength="10" placeholder="DD/MM/YYYY" aria-describedby="astroDateHelp" value="'+inputValue(isoToDisplayDate(p.birthDate))+'"><small id="astroDateHelp" class="astro-field-help">Day / month / year, e.g. 15/03/1968</small></label>'+
+      '<label>Local birth time<input name="birthTime" type="text" inputmode="numeric" maxlength="5" placeholder="HH:MM" aria-describedby="astroTimeHelp" value="'+inputValue(p.birthTime)+'"><small id="astroTimeHelp" class="astro-field-help">24-hour clock, e.g. 09:30 or 21:45</small></label>'+
       '<label>Birthplace time zone<input name="timeZone" type="text" placeholder="e.g. Europe/London" value="'+inputValue(p.timeZone)+'" spellcheck="false" autocomplete="off"></label>'+
-      '<label>Repeated clock time<select name="disambiguation"><option value="reject">Ask me if this time occurs twice</option><option value="earlier">Earlier occurrence (before clocks went back)</option><option value="later">Later occurrence (after clocks went back)</option></select></label>'+
+      '<label>Repeated clock time<select name="disambiguation" aria-describedby="astroRepeatHelp"><option value="reject">Ask me if it happens twice</option><option value="earlier">The earlier one</option><option value="later">The later one</option></select><small id="astroRepeatHelp" class="astro-field-help">Only matters if the clocks went back at your birth time, so that time happened twice.</small></label>'+
       '<label>Birthplace latitude<input name="latitude" type="number" step="any" min="-89" max="89" placeholder="e.g. 56.11" value="'+inputValue(p.latitude)+'"></label>'+
       '<label>Birthplace longitude<input name="longitude" type="number" step="any" min="-180" max="180" placeholder="e.g. -3.34" value="'+inputValue(p.longitude)+'"></label>'+
       '</div><p class="astro-accuracy">Birth details remain in this open page’s memory only. Latitude/longitude and timezone are manual in this first slice; no lookup or third-party birth-data upload occurs.</p></details>'+
       '<div class="astro-buttons"><button type="submit" class="draw-cta">Calculate my sky</button>'+
       '<button type="button" class="ghost-button" id="astroDemo">Preview example (not used for your reading)</button>'+
-      '<button type="button" class="ghost-button" id="astroSkip">Clear birth profile</button></div></form>'+
+      '<button type="button" class="ghost-button" id="astroSkip">Clear birth profile</button></div>'+
+      '<p id="astroStatus" class="astro-status" role="status" aria-live="polite"></p></form>'+
       '<div id="astroError" class="astro-error" role="alert" hidden></div>'+
       '<div id="astroResult"></div><div id="astroExampleResult"></div>';
     opening.parentNode.insertBefore(section,opening);
@@ -94,6 +118,7 @@
       if(values)values.textContent='– · –';
       if(meaning)meaning.textContent='The session moment changed. Roll opening numbers again, or continue without them.';
     }
+    const status=section.querySelector('#astroStatus');
     function show(profile){
       resetOpeningNumbers();
       try{
@@ -108,12 +133,42 @@
         state.astrologyProfile={};state.astrologyPrelude=null;result.innerHTML='';
       }
     }
-    form.onsubmit=e=>{e.preventDefault();show(profileFromForm(form));};
+    const dateInput=form.elements.namedItem('birthDate'),timeInput=form.elements.namedItem('birthTime');
+    dateInput.addEventListener('input',()=>{if(!/[^\d\/]/.test(dateInput.value))dateInput.value=formatDateDigits(dateInput.value);});
+    timeInput.addEventListener('input',()=>{if(!/[^\d:]/.test(timeInput.value))timeInput.value=formatTimeDigits(timeInput.value);});
+    // UAT D6: always give visible feedback and bring the result into view, even when the snapshot looks the same.
+    function used(profile){
+      const parts=[];
+      if(profile.sunSign)parts.push('Sun sign '+profile.sunSign);
+      if(profile.birthYear)parts.push('birth year '+profile.birthYear);
+      if(profile.birthDate)parts.push('birth date '+isoToDisplayDate(profile.birthDate));
+      if(profile.birthTime)parts.push('birth time '+profile.birthTime);
+      if(profile.latitude&&profile.longitude)parts.push('birthplace coordinates');
+      return parts;
+    }
+    form.onsubmit=e=>{
+      e.preventDefault();
+      status.textContent='';
+      let profile;
+      try{profile=profileFromForm(form);}
+      catch(ex){
+        // Same rule as show(): never quietly keep a stale snapshot after invalid input.
+        resetOpeningNumbers();state.astrologyProfile={};state.astrologyPrelude=null;result.innerHTML='';
+        error.hidden=false;error.textContent=String(ex.message||ex);error.scrollIntoView({block:'center'});return;
+      }
+      show(profile);
+      if(!state.astrologyPrelude){error.scrollIntoView({block:'center'});return;}
+      const time=new Date(state.astrologyPrelude.sky.at).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});
+      const parts=used(profile);
+      status.textContent='\u2713 Sky calculated at '+time+(parts.length?' using your '+parts.join(', ')+'.':'. No birth details entered, so this shows the sky right now only.');
+      result.scrollIntoView({block:'start',behavior:typeof scrollMotion==='function'?scrollMotion():'auto'});
+    };
     section.querySelector('#astroDemo').onclick=()=>{
       const example=model.snapshot(model.buildPrelude({sunSign:'Aries',birthYear:'1968'},Astronomy,new Date()));
       section.querySelector('#astroExampleResult').innerHTML='<h3>Example only — not your profile or session</h3>'+snapHtml(example);
     };
     section.querySelector('#astroSkip').onclick=()=>{
+      status.textContent='';
       form.reset();
       for(const el of form.elements)if(el.name)el.value='';
       show({});
