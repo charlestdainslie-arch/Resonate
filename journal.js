@@ -132,3 +132,19 @@ renderSaved=function(){
   });
 };
 render();
+
+// UAT D8: a reading opened from the Journal returns to the Journal, not to the spreads (the astrology form).
+// Guarded so journal.js still loads on its own in the unit tests.
+if(typeof readingReturnFields!=='undefined')readingReturnFields.push('drawReturnView'); // kept through card detail and its return
+const journalOpenReading=openJournalReading;
+openJournalReading=function(id){if(journalEntries.some(entry=>entry.id===id))state.drawReturnView='saved';return journalOpenReading.apply(this,arguments);};
+if(typeof go==='function'){const journalGo=go;go=function(view){if(view==='reading')state.drawReturnView=null;return journalGo.apply(this,arguments);};}
+if(typeof renderDraw==='function'){
+  const journalD8RenderDraw=renderDraw;
+  renderDraw=function(){
+    const outcome=journalD8RenderDraw.apply(this,arguments);
+    const back=state.drawReturnView==='saved'&&typeof document!=='undefined'&&document.querySelector('#app .back-link[data-back="reading"]');
+    if(back){back.dataset.back='saved';back.lastChild.textContent=' Back to Journal';}
+    return outcome;
+  };
+}

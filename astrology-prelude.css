@@ -47,3 +47,9 @@
 .astro-reading-summary summary{cursor:pointer;color:#edc979}
 #astroExampleResult:empty{display:none}
 #astroExampleResult:not(:empty){margin-top:18px;border-top:1px solid #d5ad61;padding-top:12px}
+
+/* UAT round 1: field help, calculate feedback, and phone-width select text (D3). */
+.astro-field-help{display:block;margin-top:6px;color:#9a9083;font-size:13px;line-height:1.4;font-weight:400;letter-spacing:0;text-transform:none}
+.astro-status{margin:12px 0 0;color:#edc979;line-height:1.45}
+.astro-status:empty{display:none}
+.astro-profile-form select{max-width:100%;text-overflow:ellipsis}
