@@ -97,3 +97,25 @@
 .reading-card-lenses{margin-top:20px;padding-top:16px;border-top:1px solid rgba(213,173,97,.3)}
 .reading-card-lenses h4{color:#edc979;margin:14px 0 8px}
 .reading-card-correspondences{margin:12px 0;text-align:left}
+
+/* Heading wrap (Claude review, issue #13): break between words; hyphenate only a word that cannot fit.
+   overflow-wrap:anywhere split labels such as OUTCO|ME and SURROU|NDING at 1101–1440px. */
+.slot-label,
+.draw-page .reading-position .slot-label,
+.reading-stage-page .reading-position .slot-label,
+.reading-page .stage-board .slot-label,
+.draw-page .spread-board .slot-label,
+.reading-card-front strong,
+.position-clarifier strong,
+.draw-page .spread-board:not(.spread-1) .reading-card-front strong,
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier strong,
+.detail-title h1{overflow-wrap:break-word;word-break:normal;-webkit-hyphens:auto;hyphens:auto;text-wrap:balance}
+@media(min-width:1101px){
+ .reading-page .stage-board:not(.spread-1) .slot-label,
+ .draw-page .spread-board:not(.spread-1) .slot-label{font-size:clamp(14px,1.2vw,17px);letter-spacing:.03em}
+}
+/* Keep each spread position inside its column. Each position is a one-column grid; without this its track
+   sizes to the longest unbreakable label word (e.g. SURROUNDING at 17px is ~133px in a 118px column at 1440px+),
+   pushing the card into its neighbour. The label then hyphenates within its own column instead. */
+.draw-page .spread-board:not(.spread-1) .reading-position,
+.reading-stage-page .stage-board:not(.spread-1) .reading-position{grid-template-columns:minmax(0,1fr)}

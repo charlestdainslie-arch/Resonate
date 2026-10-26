@@ -89,6 +89,8 @@ function sampleDeckNotice(){
 }
 
 let drawTimers = [];
+function reducedMotion(){ return !!window.matchMedia?.('(prefers-reduced-motion: reduce)').matches; }
+function scrollMotion(){ return reducedMotion()?'auto':'smooth'; }
 
 function readJSON(key, fallback) { try { return JSON.parse(localStorage.getItem(key) || JSON.stringify(fallback)); } catch { return fallback; } }
 function save() { localStorage.setItem('resonate-bookmarks', JSON.stringify(state.bookmarks)); localStorage.setItem('resonate-notes', JSON.stringify(state.notes)); }
@@ -116,7 +118,7 @@ function shell(content, cls='') { app.innerHTML = `<div class="ambient ambient-a
 function bindGlobal() {
   const menuBtn=document.getElementById('menuBtn'); if(menuBtn) menuBtn.onclick=()=>{state.menuOpen=true; document.getElementById('menuOverlay').classList.add('open');document.getElementById('menuOverlay').setAttribute('aria-hidden','false');};
   const close=document.getElementById('closeMenu'); if(close) close.onclick=closeMenu;
-  const center=document.getElementById('centerBtn'); if(center) center.onclick=()=>{closeMenu(); const target=document.querySelector('.draw-stage,.detail-hero,.section-hero,.home-intro')||document.querySelector('.page'); target?.scrollIntoView({behavior:'smooth',block:'start'}); center.classList.add('centered'); setTimeout(()=>center.classList.remove('centered'),650);};
+  const center=document.getElementById('centerBtn'); if(center) center.onclick=()=>{closeMenu(); const target=document.querySelector('.draw-stage,.detail-hero,.section-hero,.home-intro')||document.querySelector('.page'); target?.scrollIntoView({behavior:scrollMotion(),block:'start'}); center.classList.add('centered'); setTimeout(()=>center.classList.remove('centered'),650);};
   document.querySelectorAll('[data-go]').forEach(btn=>btn.onclick=()=>{closeMenu(); go(btn.dataset.go);});
   const overlay=document.getElementById('menuOverlay'); if(overlay) overlay.onclick=e=>{if(e.target===overlay) closeMenu();};
 }
@@ -130,7 +132,7 @@ function go(view){
   if(origin){Object.assign(state,JSON.parse(JSON.stringify(origin.reading)));state.readingIndex=null;state.drawSettled=true;state.drawPhase='settled';}
   state.view=view;state.orientation='upright';render();
   if(origin){window.scrollTo({top:origin.scrollY,behavior:'instant'});requestAnimationFrame(()=>window.scrollTo({top:origin.scrollY,behavior:'instant'}));}
-  else window.scrollTo({top:0,behavior:'smooth'});
+  else window.scrollTo({top:0,behavior:scrollMotion()});
 }
 
 function backButton(label='Back', target='home'){ return `<button class="back-link" data-back="${target}">${icon('back',16)} ${label}</button>`; }
@@ -187,7 +189,7 @@ function startDraw(){
     for(let attempt=0;attempt<4&&next.join(',')===previous;attempt++) next=pickUnique(state.spreadSize);
   }
   state.drawnCardIds=next;state.drawnAt=new Date().toISOString();state.view='draw';state.drawPhase='dealing';state.drawSettled=false;renderDraw();
-  requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'smooth'}));
+  requestAnimationFrame(()=>window.scrollTo({top:0,behavior:scrollMotion()}));
 }
 const zodiacSigns=['Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius','Capricorn','Aquarius','Pisces'];
 function astrologyPlanet(card){
@@ -310,7 +312,7 @@ function drawFirstLayerClarifiers(){
     }
   }
   renderDraw();
-  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:scrollMotion(),block:'start'});
 }
 function firstLayerClarifierView(labels){
   const ids=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
@@ -338,7 +340,7 @@ function drawNextClarifierLayer(){
   state.additionalClarifierLayers=[...layers,{number,cards:selected}];
   state.drawSettled=true;
   renderDraw();
-  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:scrollMotion(),block:'start'});
 }
 function additionalClarifierView(labels){
   if(state.additionalClarifierReadingAt!==state.drawnAt)return '';
@@ -388,7 +390,7 @@ function renderDraw(){
   const clarifyAction=document.getElementById('primaryClarifierAction');
   if(clarifyAction)clarifyAction.onclick=()=>{if(state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length)drawFirstLayerClarifiers();else if(state.additionalClarifierReadingAt!==state.drawnAt||!state.additionalClarifierLayers?.length)drawNextClarifierLayer();else document.getElementById('saveReadingJournal')?.click();};
   const backToReading=document.getElementById('backToReadingTop');
-  if(backToReading)backToReading.onclick=()=>document.querySelector('.spread-scroll')?.scrollIntoView({block:'start',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  if(backToReading)backToReading.onclick=()=>document.querySelector('.spread-scroll')?.scrollIntoView({block:'start',behavior:scrollMotion()});
 }
 async function downloadReading(){
   const button=document.getElementById('downloadReading');
@@ -431,7 +433,7 @@ function navigate(card,delta){
     const next=state.readingIndex+delta;
     if(next<0||next>=state.drawnCardIds.length){go('draw');return;}
     openCard(state.drawnCardIds[next],'draw',next);return;
-  }const i=cards.findIndex(c=>c.id===card.id);const n=(i+delta+cards.length)%cards.length;state.cardId=cards[n].id;state.orientation='upright';renderDetail();window.scrollTo({top:0,behavior:'smooth'});}
+  }const i=cards.findIndex(c=>c.id===card.id);const n=(i+delta+cards.length)%cards.length;state.cardId=cards[n].id;state.orientation='upright';renderDetail();window.scrollTo({top:0,behavior:scrollMotion()});}
 function renderSaved(){
   const saved=cards.filter(c=>state.bookmarks.includes(c.id)||state.notes[c.id]);
   shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h1>Your bookmarks & reflections.</h1><p>Stored privately in this browser.</p></section>${saved.length?`<section class="card-grid">${saved.map(cardTile).join('')}</section>`:`<section class="empty"><h3>Nothing saved yet</h3><p>Bookmark a card or write a reflection and it will appear here.</p><button class="gold-button" data-go="learn">Learn the Cards</button></section>`}`, 'page-home');

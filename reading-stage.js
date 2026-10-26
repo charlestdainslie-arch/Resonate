@@ -70,7 +70,7 @@ renderReadingHub = function(){
       state.shuffleCount=0;
       state.view='stage';
       render();
-      window.scrollTo({top:0,behavior:'smooth'});
+      window.scrollTo({top:0,behavior:scrollMotion()});
     };
   });
 };
@@ -98,7 +98,7 @@ function shuffleCards(){
     board.classList.remove('is-shuffling');
     button.disabled=false;
     if(status) status.textContent=`Deck shuffled${state.shuffleCount>1?` ${state.shuffleCount} times`:''}. Draw when you are ready.`;
-  },900));
+  },reducedMotion()?0:900));
 }
 
 startDraw = function(){
@@ -124,7 +124,7 @@ startDraw = function(){
   state.drawSettled=false;
   state.shuffledDeck=[];
   renderDraw();
-  requestAnimationFrame(()=>window.scrollTo({top:0,behavior:'smooth'}));
+  requestAnimationFrame(()=>window.scrollTo({top:0,behavior:scrollMotion()}));
 };
 
 const renderBase=render;
