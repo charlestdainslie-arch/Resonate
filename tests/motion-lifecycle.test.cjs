@@ -67,8 +67,20 @@ test('settled cards do not replay sparkle or draw an animated filament',()=>{
 test('particle and shimmer timeout cleanup completes naturally',()=>{
  const h=harness(),a=h.api.mount(h.host);a.reveal([h.card]);h.flip();h.advance(1700);assert.equal(h.host.querySelectorAll('.rm-particles').length,0);assert(!h.card.classList.contains('rm-shimmer'));assert.equal(h.timers.size,0);a.destroy();
 });
-test('filament finishes with no queued animation frame',()=>{
- const h=harness(),a=h.api.mount(h.host);a.reveal([h.card]);h.frame(0);h.frame(2500);assert.equal(h.frames.size,0);a.destroy();
+test('filament finishes, fades and is removed with no queued animation frame (F1)',()=>{
+ const h=harness(),a=h.api.mount(h.host);a.reveal([h.card]);h.frame(0);h.flip();h.frame(2100);
+ assert.equal(h.host.querySelectorAll('.rm-filament').length,1,'still visible while holding');
+ h.frame(2600);h.frame(3200);assert.equal(h.frames.size,0);assert.equal(h.host.querySelectorAll('.rm-filament').length,0);
+ assert.equal(h.host.querySelector('.rm-root').getAttribute('data-filament'),'cleared');a.destroy();
+});
+test('filament waits for the last card, but a hard cap still removes it (F1)',()=>{
+ const h=harness(),a=h.api.mount(h.host);a.reveal([h.card]);h.frame(0);h.frame(2500);h.frame(4000);
+ assert.equal(h.host.querySelectorAll('.rm-filament').length,1,'held while a card is still face down');
+ h.frame(9100);h.frame(9600);h.frame(10200);assert.equal(h.host.querySelectorAll('.rm-filament').length,0);assert.equal(h.frames.size,0);a.destroy();
+});
+test('reduced motion seen inside the frame loop cancels and leaves the still layer (F2)',()=>{
+ const h=harness(),a=h.api.mount(h.host);a.reveal([h.card]);h.frame(0);h.media.matches=true;h.frame(100);
+ assert.equal(h.frames.size,0);assert.equal(h.activeObservers(),0);assert.equal(h.host.querySelectorAll('.rm-filament').length,0);assert.equal(h.host.querySelectorAll('.rm-still').length,1);a.destroy();
 });
 test('live reduced motion clears animation, shimmer, particles and timers',()=>{
  const h=harness(),a=h.api.mount(h.host);a.reveal([h.card]);h.flip();h.media.set(true);assert.equal(h.frames.size,0);assert.equal(h.timers.size,0);assert.equal(h.activeObservers(),0);assert(!h.card.classList.contains('rm-shimmer'));assert.equal(h.host.querySelectorAll('.rm-still').length,1);h.media.set(false);assert.equal(h.frames.size,0);a.destroy();assert.equal(h.media.listeners.size,0);
