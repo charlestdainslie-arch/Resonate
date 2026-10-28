@@ -20,6 +20,8 @@ const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
   await page.evaluate(()=>ResonateMotionWire.sync());
   const after=await page.locator('.reading-card[data-reading-card]').evaluateAll(ns=>ns.map(n=>n.dataset.readingCard));assert.deepEqual(after,before);
   if(reduced==='reduce')assert.equal(await page.locator('.rm-spark').count(),0);
+  // F1: the filament must be gone within ~3s of the reading settling, in every spread.
+  await page.waitForFunction(()=>!document.querySelector('.rm-filament'),null,{timeout:3500});
   await page.evaluate(()=>go('home'));await page.waitForTimeout(50);assert.equal(await page.locator('.rm-root').count(),0);assert.deepEqual(errors,[]);
   await page.close();
  }

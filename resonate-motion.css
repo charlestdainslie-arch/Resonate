@@ -1,5 +1,8 @@
 /* Optional decorations only. App cards/positions and existing reveal transitions stay owned by the app. */
-.rm-host { position: relative; }
+.rm-host { position: relative; isolation: isolate; }
+/* Thread layer sits behind the board's cards and labels (isolation keeps it inside the board). */
+.rm-weave { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:-1; }
+.rm-weave * { pointer-events:none; }
 .rm-root { position:absolute; inset:0; pointer-events:none; overflow:hidden; z-index:2; }
 .rm-root * { pointer-events:none; }
 .rm-filament { position:absolute; inset:0; width:100%; height:100%; opacity:.7; }
@@ -13,4 +16,5 @@
 @keyframes rm-shimmer-sweep { from {filter:brightness(1.12)} to {filter:brightness(1)} }
 .rm-still { position:absolute; inset:0; opacity:.45; }
 .rm-still__thread { position:absolute; top:0; bottom:0; left:50%; width:1px; background:linear-gradient(transparent,#d9b97966,transparent); }
-@media(prefers-reduced-motion:reduce) { .rm-filament,.rm-spark {display:none} .rm-shimmer {animation:none} }
+.rm-weave .rm-filament { opacity:.85; }
+@media(prefers-reduced-motion:reduce) { .rm-weave, .rm-filament,.rm-spark {display:none} .rm-shimmer {animation:none} }
