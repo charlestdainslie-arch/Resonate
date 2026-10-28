@@ -72,7 +72,17 @@ renderDraw=function(){
   field.oninput=()=>saveReadingReflection(field.value,status);
   document.getElementById('saveReadingJournal').onclick=()=>{if(saveReadingReflection(field.value,status)){const button=document.getElementById('saveReadingJournal');button.textContent='✓ Saved to Journal';button.classList.remove('gold-button');button.classList.add('ghost-button');}};
   document.getElementById('openJournal').onclick=()=>go('saved');
+  pageEndNav(document.querySelector('.reading-journal'),[
+    ['↑ Back to the top of this reading',()=>document.getElementById('backToReadingTop')?.click()],
+    ['Start a New Reading',()=>go('reading')],['Home',()=>go('home')]]);
 };
+// Chas, 28 Oct UAT: the end of a reading and of the Journal had no way on except the journal buttons,
+// so both pages finish with the same three ways out: back to the reading, a new spread, or home.
+function pageEndNav(after,links){
+  if(!after)return;
+  after.insertAdjacentHTML('afterend',`<nav class="page-end-nav" aria-label="Where to next">${links.map((_,i)=>`<button type="button" class="ghost-button" data-page-end="${i}">${escapeHtml(links[i][0])}</button>`).join('')}</nav>`);
+  document.querySelectorAll('.page-end-nav [data-page-end]').forEach(button=>button.onclick=links[Number(button.dataset.pageEnd)][1]);
+}
 
 const journalRenderDetail=renderDetail;
 renderDetail=function(){
@@ -112,6 +122,10 @@ renderSaved=function(){
   const entries=[...journalEntries].sort((a,b)=>new Date(b.readingAt)-new Date(a.readingAt));
   shell(`${backButton('Home','home')}<section class="section-hero"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h1>Your readings & reflections.</h1><p>Return to the cards, the moment, and what it meant to you.</p><p>Stored on this browser only. Clearing browser data removes these entries.</p></section><figure class="journal-art-panel" aria-label="A black journal with gold celestial detailing"><img src="assets/landing-saved.jpg" alt="Black leather journal with a gold sun emblem beside a glowing celestial sphere" width="512" height="512"></figure><section class="journal-entries">${entries.length?entries.map(entry=>`<article class="reflection-card journal-entry"><h2>${escapeHtml(entry.spread.name)}</h2>${journalTime(entry)}<ol class="journal-card-list">${entry.cardIds.map((id,index)=>`<li><strong>${escapeHtml(entry.spread.positions[index][0])}</strong> — ${escapeHtml(cards.find(card=>card.id===id)?.name||'Card')} ${entry.cardReflections?.[index]?.text?`<p class="journal-reflection">${escapeHtml(entry.cardReflections[index].text)}</p><small>Reflection updated: ${escapeHtml(journalDate(entry.cardReflections[index].updatedAt,entry.timeZone))}</small>`:''}</li>`).join('')}</ol><p class="journal-reflection"><strong>How these cards connect:</strong> ${entry.cardIds.map((id,i)=>{const base=cards.find(card=>card.id===id);const clarifiers=(entry.clarifierLayers||[]).map(layer=>cards.find(card=>card.id===layer.cards[i])).filter(Boolean);return `${escapeHtml(entry.spread.positions[i]?.[0]||'Position')}: ${escapeHtml(base?.name||'Card')}${clarifiers.length?' with '+clarifiers.map(c=>escapeHtml(c.name)).join(', '):''}. ${escapeHtml((base?.uprightKeywords||[]).slice(0,2).join(' and '))}${clarifiers.length?' meets '+clarifiers.map(c=>escapeHtml((c.uprightKeywords||[]).slice(0,2).join(' and '))).join('; '):''}.`;}).join(' ')}</p><label for="journal-${entry.id}">Your comments or reflections on this reading</label><textarea id="journal-${entry.id}" data-journal-reflection="${entry.id}" placeholder="Add your reflection…">${escapeHtml(entry.reflection)}</textarea><div class="journal-reflection-actions"><button type="button" class="gold-button" data-save-journal-reflection="${entry.id}">Save Reflection</button><p class="reflection-note" role="status" id="status-${entry.id}">Your changes are not saved until you select Save Reflection.</p></div><button class="ghost-button" data-open-reading="${entry.id}">Back to reading ${icon('arrow',16)}</button></article>`).join(''):`<section class="empty"><h3>No saved readings yet</h3><p>Draw a reading and save it here with the date, time and your reflections.</p><button class="gold-button" data-go="reading">Get a Reading</button></section>`}</section>${legacy.length?`<section class="section-hero"><h2>Card bookmarks & earlier reflections</h2><p>Your existing card notes are kept here. They were not linked to a dated reading.</p></section><section class="card-grid">${legacy.map(cardTile).join('')}</section>`:''}`,'page-home');
   bindBack();
+  // "Back to your reading" only when a reading from this visit is still open to return to.
+  pageEndNav(document.querySelector('.journal-entries'),[
+    ...(state.drawnAt&&state.drawnCardIds?.length?[['Back to your current reading',()=>go('draw')]]:[]),
+    ['Start a New Reading',()=>go('reading')],['Home',()=>go('home')]]);
   document.querySelectorAll('[data-card]').forEach(button=>button.onclick=()=>openCard(Number(button.dataset.card),'saved'));
   document.querySelectorAll('[data-open-reading]').forEach(button=>button.onclick=()=>openJournalReading(button.dataset.openReading));
   document.querySelectorAll('[data-save-journal-reflection]').forEach(button=>button.onclick=()=>{
