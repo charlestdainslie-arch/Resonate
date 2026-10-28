@@ -47,6 +47,8 @@ const run=Number(process.argv[2]||1),results=[];
     assert.match(await page.locator('.slot-label').innerText(),/GUIDANCE/i);assert.ok(await page.locator('.combined-meaning').isVisible());
     const names=await page.evaluate(()=>[...state.drawnCardIds,...state.firstLayerClarifiers,...state.additionalClarifierLayers.flatMap(l=>l.cards)].map(id=>cards.find(c=>c.id===id).name));const text=await page.locator('.reading-golden-thread').innerText();names.forEach(n=>assert.ok(text.includes(n),n));
     await page.waitForFunction(()=>[...document.querySelectorAll('.position-clarifier img')].every(e=>e.complete&&e.naturalWidth>0));
+    // The second clarifier turns over in its slot with normal motion; measure once the turn has finished.
+    await page.evaluate(()=>Promise.all([...document.querySelectorAll('.clarifier-turn img,.clarifier-turn .clarifier-back-cover')].flatMap(e=>e.getAnimations()).map(a=>a.finished)));
    });
    await check('spread geometry fits without overlap or horizontal overflow',async()=>{
     const boxes=await page.locator('.reading-card-front,.position-clarifier img').evaluateAll(es=>es.map(e=>e.getBoundingClientRect().toJSON()));for(let i=0;i<boxes.length;i++){assert.ok(boxes[i].left>=0&&boxes[i].right<=width);for(let j=i+1;j<boxes.length;j++){const a=boxes[i],b=boxes[j];assert.ok(a.right<=b.left||b.right<=a.left||a.bottom<=b.top||b.bottom<=a.top);}}

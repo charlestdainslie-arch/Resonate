@@ -342,14 +342,19 @@ function drawNextClarifierLayer(){
   }
   state.additionalClarifierLayers=[...layers,{number,cards:selected}];
   state.drawSettled=true;
-  renderDraw();
+  clarifierTurnPending=true;
+  try{renderDraw();}finally{clarifierTurnPending=false;}
   document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:scrollMotion(),block:'start'});
 }
 function additionalClarifierView(labels){
   if(state.additionalClarifierReadingAt!==state.drawnAt)return '';
   return (state.additionalClarifierLayers||[]).map(layer=>`<section class="reading-interpretation" id="clarifierLayer${layer.number}" aria-label="Clarifier layer ${layer.number}"><div class="eyebrow">LAYER ${layer.number} · CLARIFIERS</div><h2>Another perspective</h2><p>Each position draws from a newly shuffled tarot deck. A card may reappear across different layers.</p><div class="reading-meanings">${layer.cards.map((id,i)=>{const card=cards.find(x=>x.id===id);return card?`<article class="golden-card-reading"><div class="golden-card-heading"><span>${i+1} · ${labels[i]||'Position'}</span><strong>${card.name}</strong></div><p>${positionContext(card,i)}</p><p>${card.upright}</p></article>`:'';}).join('')}</div></section>`).join('');
 }
+// Set while the second clarifier layer is being drawn, so only that render turns its cards over.
+let clarifierTurnPending=false;
 // Every revealed clarifier stays visibly attached to the position it explains.
+// After the first clarifier, the second slot already waits face down beside it at the same size,
+// and the second clarifier turns over in that slot, so nothing jumps or shrinks (Chas, 28 Oct UAT).
 function clarifierCardsForPosition(index){
   const layers=[];
   if(state.clarifierReadingAt===state.drawnAt && state.firstLayerClarifiers?.length)
@@ -357,10 +362,13 @@ function clarifierCardsForPosition(index){
   if(state.additionalClarifierReadingAt===state.drawnAt)
     (state.additionalClarifierLayers||[]).filter(layer=>layer.number===2).forEach(layer=>layers.push({number:layer.number,id:layer.cards[index]}));
   if(!layers.length)return '';
+  const turn=clarifierTurnPending&&!reducedMotion();
+  const waiting=layers.length===1?`<div class="position-clarifier-slot" role="img" aria-label="Clarifier 2, not drawn yet"><span class="clarifier-back" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span><span class="clarifier-layer-label">CLARIFIER 2</span><strong>Not drawn yet</strong></div>`:'';
   return `<div class="position-clarifiers" data-clarifier-count="${layers.length}" aria-label="Clarifiers for position ${index+1}">${layers.map(layer=>{
     const card=cards.find(c=>c.id===layer.id);
-    return card?`<div class="position-clarifier"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${card.name}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div>`:'';
-  }).join('')}</div>`;
+    const turning=turn&&layer.number===2;
+    return card?`<div class="position-clarifier${turning?' clarifier-turn':''}"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${card.name}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer">${turning?'<span class="clarifier-back clarifier-back-cover" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span>':''}<strong>${card.roman||card.id} · ${card.name}</strong></div>`:'';
+  }).join('')}${waiting}</div>`;
 }
 function evolvingReading(chosen,labels){
   const sections=chosen.map((base,i)=>{
