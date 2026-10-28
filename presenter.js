@@ -26,30 +26,58 @@
     if(state.journalId)return `From your Journal · ${readingTitle()} · ${when}`;
     return `This reading · ${readingTitle()} · ${when} · not saved yet`;
   }
-  // The script: [{kind:'frame'|'label'|'quote', text, show:[card slot indexes]}].
+  // The script: [{kind:'frame'|'label'|'quote', text, show:[card slot indexes], clips:[{id,text}]}].
+  // Every caption is either a fixed FRAME line, a clarifier label, or text copied from the reading.
+  // Clips split each caption into lines that depend on one card at most, so all of them can be
+  // recorded ahead of time (tools/voice): about 400 clips cover every card in the deck.
   function buildScript(){
     const card=cards.find(c=>c.id===state.drawnCardIds[0]);
     const label=positionLabels()[0];
     const meaning=frag(readingMeaning(card,label,0)),thread=frag(goldenThread([card]));
     const clarifiers=readingLayerCards(0);
     const all=[0,...clarifiers.map((_,i)=>i+1)];
-    const script=[{kind:'frame',text:FRAME.open,show:[]},{kind:'frame',text:isDemo()?FRAME.demo:FRAME.yours,show:[]},{kind:'frame',text:FRAME.card,show:[0]}];
-    const quote=(text,show)=>{if(text)script.push({kind:'quote',text,show});};
-    quote(first(meaning.querySelector('.original-card-explanation .position-context'),2),[0]);
-    quote(first(meaning.querySelector('.original-card-explanation .position-context + p'),2),[0]);
+    const script=[];
+    const add=(kind,text,show,clips)=>{if(text)script.push({kind,text,show,clips:clips||[{id:'',text}]});};
+    const frame=(key,show)=>add('frame',FRAME[key],show,[{id:'frame-'+key,text:FRAME[key]}]);
+    const meaningOf=(block,c,n)=>{const lines=sentences(block?.textContent||'').slice(0,n);return [lines.join(' '),lines.map((text,i)=>({id:`meaning${i?2:''}-${c.id}`,text}))];};
+    frame('open',[]);frame(isDemo()?'demo':'yours',[]);frame('card',[0]);
+    const lens=first(meaning.querySelector('.original-card-explanation .position-context'),2);
+    add('quote',lens,[0],[{id:`lens-${state.spreadId}-0-${card.id}`,text:lens}]);
+    const [cardText,cardClips]=meaningOf(meaning.querySelector('.original-card-explanation .position-context + p'),card,2);
+    add('quote',cardText,[0],cardClips);
     meaning.querySelectorAll('.integrated-clarifier').forEach((block,i)=>{
-      script.push({kind:'label',text:`Clarifier ${i+1}: ${clarifiers[i].name}.`,show:[i+1]});
-      quote(first(block.querySelector(':scope > p')),[i+1]);
-      const conversation=[...block.querySelectorAll('.symbolism-insight')].find(p=>/^The conversation between them/.test(norm(p.textContent)));
-      if(conversation){conversation.querySelector('strong')?.remove();quote(first(conversation),[0,i+1]);}
+      const c=clarifiers[i];
+      add('label',`Clarifier ${i+1}: ${c.name}.`,[i+1],[{id:`label-clarifier-${i+1}`,text:`Clarifier ${i+1}.`},{id:`name-${c.id}`,text:`${c.name}.`}]);
+      const [text,clips]=meaningOf(block.querySelector(':scope > p'),c,1);
+      add('quote',text,[i+1],clips);
     });
-    quote(first(meaning.querySelector('.combined-meaning p'),2),all);
-    script.push({kind:'frame',text:FRAME.thread,show:all});
-    quote(first(thread.querySelector('.golden-thread-summary p'),3),all);
-    quote(norm(thread.querySelector('.golden-thread-resonance')?.textContent||''),all);
-    script.push({kind:'frame',text:FRAME.close,show:all});
+    // "What these cards mean together": the foundation sentence, then each clarifier's part of the next one.
+    const together=sentences(meaning.querySelector('.combined-meaning p')?.textContent||'');
+    if(together.length>1){
+      add('quote',together[0],[0],[{id:`foundation-${card.id}`,text:together[0]}]);
+      add('quote',together[1],all,together[1].replace(/\.$/,'').split('; ').map((part,i)=>({id:`brings-${clarifiers[i].id}`,text:part+'.'})));
+    }
+    frame('thread',all);
+    // The Golden Thread's closing invitation, from its question onwards (the keyword list before it
+    // mixes every card's words, so it stays in the written reading only).
+    const invitation=sentences(thread.querySelector('.golden-thread-summary p')?.textContent||'');
+    const ask=invitation.findIndex(t=>/^Which part speaks/.test(t));
+    if(ask>=0)add('quote',invitation.slice(ask).join(' '),all,invitation.slice(ask).map((text,i)=>({id:`thread-${i}`,text})));
+    const resonance=norm(thread.querySelector('.golden-thread-resonance')?.textContent||'');
+    add('quote',resonance,all,[{id:'thread-resonance',text:resonance}]);
+    frame('close',all);
     return script;
   }
+
+  // Pre-recorded voice (voice/chas/manifest.json), used only when every clip a script needs is there.
+  const VOICE_DIR='voice/chas/';
+  let voicePack;
+  async function loadVoicePack(){
+    if(voicePack!==undefined)return voicePack;
+    try{const res=await fetch(VOICE_DIR+'manifest.json',{cache:'no-cache'});voicePack=res.ok?await res.json():null;}catch{voicePack=null;}
+    return voicePack;
+  }
+  const packCovers=(pack,script)=>!!pack?.clips&&script.every(part=>part.clips.every(clip=>clip.id&&pack.clips[clip.id]));
 
   // Only on-device voices: a network voice (such as Chrome's "Google" voices) would send the reading away.
   function localVoice(){
@@ -59,8 +87,10 @@
   const spoken=text=>text.replace(/ · /g,', ');
 
   let player=null;
-  function openPlayer(){
+  async function openPlayer(){
+    if(player)return;
     const script=buildScript();
+    const pack=packCovers(await loadVoicePack(),script)?voicePack:null;
     const slots=[cards.find(c=>c.id===state.drawnCardIds[0]),...readingLayerCards(0)];
     const slotNames=[positionLabels()[0],'Clarifier 1','Clarifier 2'];
     // Same left-to-right order as the One-card spread on the page: Clarifier 1, the card, Clarifier 2.
@@ -87,10 +117,11 @@
       </div></div>`);
     const root=document.querySelector('.mc-player');
     const $=id=>root.querySelector('#'+id);
-    let index=-1,playing=false,muted=false,captions=true,timer=null,token=0;
-    const voiceNote=()=>{$('mcVoice').textContent=muted?'Sound is off. Captions keep time on their own.':localVoice()?`Temporary voice: your device's built-in speech (${localVoice().name}). Nothing is sent anywhere.`:'No on-device voice was found on this device, so Max is on captions only. Nothing is sent anywhere.';};
+    let index=-1,playing=false,muted=false,captions=true,timer=null,token=0,clip=0;
+    const audio=pack?new Audio():null;
+    const voiceNote=()=>{$('mcVoice').textContent=muted?'Sound is off. Captions keep time on their own.':pack?`${pack.label}. Pre-recorded, so nothing is sent anywhere.`:localVoice()?`Temporary voice: your device's built-in speech (${localVoice().name}). Nothing is sent anywhere.`:'No on-device voice was found on this device, so Max is on captions only. Nothing is sent anywhere.';};
     voiceNote();window.speechSynthesis?.addEventListener?.('voiceschanged',voiceNote);
-    const stopSound=()=>{clearTimeout(timer);token++;try{window.speechSynthesis?.cancel();}catch{}root.classList.remove('is-talking');};
+    const stopSound=()=>{clearTimeout(timer);token++;try{window.speechSynthesis?.cancel();}catch{}if(audio){audio.onended=audio.onerror=null;audio.pause();}root.classList.remove('is-talking');};
     function show(i){
       const part=script[i];
       $('mcCaption').innerHTML=`<p class="mc-kind-${part.kind}">${escapeHtml(part.text)}</p>`;
@@ -98,13 +129,24 @@
       $('mcBar').style.width=`${(i+1)/script.length*100}%`;
       root.querySelectorAll('.mc-card').forEach(el=>{const on=part.show.includes(Number(el.dataset.slot));el.classList.toggle('is-active',on);el.classList.toggle('is-dim',part.show.length>0&&!on);});
     }
-    function playPart(i){
-      stopSound();index=i;
+    // from: the clip to start at, so Resume carries on where Pause stopped in a recorded line.
+    function playPart(i,from=0){
+      stopSound();index=i;clip=from;
       if(i>=script.length){finish();return;}
       show(i);root.classList.add('is-talking');
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
-      const voice=!muted&&localVoice();
-      if(voice){
+      const voice=!muted&&!pack&&localVoice();
+      if(pack&&!muted){
+        const playClip=()=>{
+          if(mine!==token)return;
+          if(clip>=script[i].clips.length){next();return;}
+          audio.src=VOICE_DIR+pack.clips[script[i].clips[clip].id];
+          audio.onended=()=>{clip++;playClip();};
+          audio.onerror=()=>{clip++;playClip();};
+          audio.play().catch(()=>{if(mine===token){clip++;playClip();}});
+        };
+        playClip();
+      } else if(voice){
         const utterance=new SpeechSynthesisUtterance(spoken(script[i].text));
         utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=1;utterance.pitch=0.85;
         utterance.onend=next;utterance.onerror=next;
@@ -115,10 +157,10 @@
     function setPlaying(on){
       playing=on;root.classList.toggle('is-playing',on);root.classList.remove('is-finished');
       $('mcPlay').textContent=on?'❚❚ Pause':'▶ Resume';
-      if(on)playPart(index<0?0:index);else stopSound();
+      if(on)playPart(index<0?0:index,pack&&!muted&&index>=0?clip:0);else stopSound();
     }
     $('mcPlay').onclick=()=>setPlaying(!playing);
-    $('mcReplay').onclick=()=>{index=0;setPlaying(true);};
+    $('mcReplay').onclick=()=>{index=0;clip=0;setPlaying(true);};
     $('mcSound').onclick=()=>{muted=!muted;$('mcSound').textContent=muted?'Sound off':'Sound on';$('mcSound').setAttribute('aria-pressed',String(!muted));voiceNote();if(playing)playPart(index);};
     $('mcCaptions').onclick=()=>{captions=!captions;root.classList.toggle('captions-off',!captions);$('mcCaptions').textContent=captions?'Captions on':'Captions off';$('mcCaptions').setAttribute('aria-pressed',String(captions));};
     const close=()=>{playing=false;stopSound();window.speechSynthesis?.removeEventListener?.('voiceschanged',voiceNote);root.remove();player=null;document.removeEventListener('keydown',onKey);opener?.focus?.();};
@@ -127,7 +169,7 @@
     $('mcClose').onclick=close;
     $('mcFull').onclick=()=>{close();document.getElementById('readingInterpretation')?.scrollIntoView({block:'start',behavior:scrollMotion()});};
     $('mcPlay').focus();
-    player={script,root};
+    player={script,root,pack};
   }
 
   // An original retro presenter: angular gold-edged head on a scan-lined screen. Not anyone's likeness.
@@ -170,6 +212,6 @@
       readingIndex:null,drawSettled:true,drawPhase:'settled'});
     go('draw');
   }
-  window.ResonatePresenter={buildScript,FRAME,DEMO,isDemo,loadDemo,get player(){return player;}};
+  window.ResonatePresenter={buildScript,FRAME,DEMO,VOICE_DIR,isDemo,loadDemo,get player(){return player;}};
   if(!/[?&]own\b/.test(location.search))loadDemo();
 })();

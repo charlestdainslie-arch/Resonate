@@ -73,6 +73,14 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
       else { assert.ok(shown.includes(line.text), `${label}: not on the page: "${line.text}"`); assert.ok(pdf.includes(line.text), `${label}: not in the PDF: "${line.text}"`); }
     }
     assert.equal(clarifier, names.length - 1, `${label}: every clarifier is presented`);
+    // Recordable clips: each depends on one card of this reading at most, and says only words from its caption.
+    for (const line of script) for (const clip of line.clips) {
+      const m = clip.id.match(/^(?:frame-\w+|label-clarifier-[12]|thread-(?:\d|resonance)|(?:lens-guidance-0|meaning2?|foundation|brings|name)-(\d+))$/);
+      assert.ok(m, `${label}: clip id "${clip.id}"`);
+      if (m[1] !== undefined) assert.ok(ids.includes(Number(m[1])), `${label}: clip ${clip.id} belongs to this reading`);
+      if (line.kind === 'label') continue;
+      assert.ok(line.text.includes(clip.text.replace(/\.$/, '')), `${label}: clip "${clip.text}" is part of its caption`);
+    }
     assert.ok(script.some(l => l.kind === 'quote' && /Take what resonates/.test(l.text)), `${label}: Golden Thread close is included`);
     const words = t => t.split(' ').length;
     assert.ok(words(script.map(l => l.text).join(' ')) < words(shown) * 0.35, `${label}: narration is a short version of the reading`);
@@ -160,13 +168,13 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     await page.locator('#mcOpen').click();
     await page.evaluate(() => { const s = window.speechSynthesis, speak = s.speak; s.speak = u => { window.__spoken.push({ text: u.text }); }; s.__speak = speak; });
     await page.locator('#mcPlay').click();
-    assert.equal(await part(page), 'Part 1 of 16');
+    assert.equal(await part(page), await page.evaluate(() => 'Part 1 of ' + ResonatePresenter.buildScript().length));
     await page.locator('#mcPlay').click();
     assert.equal(await page.locator('#mcPlay').innerText(), '▶ Resume');
     const before = await page.evaluate(() => window.__spoken.length);
     await page.waitForTimeout(500);
     assert.equal(await page.evaluate(() => window.__spoken.length), before);
-    assert.equal(await part(page), 'Part 1 of 16');
+    assert.equal(await part(page), await page.evaluate(() => 'Part 1 of ' + ResonatePresenter.buildScript().length));
     await page.locator('#mcPlay').click();
     assert.equal(await page.locator('#mcPlay').innerText(), '❚❚ Pause');
     assert.equal(await page.evaluate(() => window.__spoken.length), before + 1);
@@ -177,7 +185,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     await page.locator('#mcPlay').click();
     await page.waitForFunction(() => /Part (6|7|8|9|1\d) of/.test(document.querySelector('#mcPart').textContent), null, { timeout: 10000 });
     await page.locator('#mcReplay').click();
-    assert.equal(await part(page), 'Part 1 of 16');
+    assert.equal(await part(page), await page.evaluate(() => 'Part 1 of ' + ResonatePresenter.buildScript().length));
   });
   await check('Sound off: no speech, captions keep time; Captions off hides the text', async page => {
     await page.goto(PAGE);
@@ -215,6 +223,55 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     await page.locator('#mcFull').click();
     assert.equal(await page.locator('.mc-player').count(), 0);
     assert.ok(await page.locator('#readingInterpretation').evaluate(e => e.getBoundingClientRect().top < innerHeight));
+  });
+  // A stand-in voice pack: the manifest and clips are served by the test, each clip a short silent mp3.
+  const silent = path.join(require('os').tmpdir(), 'presenter-test-silence.mp3');
+  require('child_process').execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-f', 'lavfi', '-i', 'anullsrc=r=24000:cl=mono', '-t', '0.15', '-b:a', '32k', silent]);
+  const withVoicePack = async (page, drop = []) => {
+    await page.route('**/voice/chas/manifest.json', async route => {
+      const ids = await page.evaluate(() => ResonatePresenter.buildScript().flatMap(p => p.clips.map(c => c.id)));
+      route.fulfill({ contentType: 'application/json', body: JSON.stringify({ label: "Test voice pack", clips: Object.fromEntries(ids.filter(id => !drop.includes(id)).map(id => [id, id + '.mp3'])) }) });
+    });
+    await page.route('**/voice/chas/*.mp3', route => route.fulfill({ contentType: 'audio/mpeg', body: fs.readFileSync(silent) }));
+    await page.addInitScript(() => { window.__played = []; const play = HTMLMediaElement.prototype.play; HTMLMediaElement.prototype.play = function () { window.__played.push(this.src.split('/').pop()); return play.call(this); }; });
+  };
+  await check('recorded voice: every clip plays in order, and device speech is never used', async page => {
+    await withVoicePack(page);
+    await page.goto(PAGE);
+    await page.locator('#mcOpen').click();
+    await page.locator('#mcVoice').filter({ hasText: 'Test voice pack. Pre-recorded, so nothing is sent anywhere.' }).waitFor();
+    assert.deepEqual(await page.evaluate(() => window.__played), [], 'nothing before Play');
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => document.querySelector('.mc-player.is-finished'), null, { timeout: 30000 });
+    const ids = await page.evaluate(() => ResonatePresenter.buildScript().flatMap(p => p.clips.map(c => c.id + '.mp3')));
+    assert.deepEqual(await page.evaluate(() => window.__played), ids);
+    assert.equal(await page.evaluate(() => window.__spoken.length), 0);
+  });
+  await check('recorded voice: Pause stops the clip and Resume carries on from it', async page => {
+    await withVoicePack(page);
+    await page.goto(PAGE);
+    await page.locator('#mcOpen').click();
+    await page.locator('#mcVoice').filter({ hasText: 'Pre-recorded' }).waitFor();
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => window.__played.length >= 4, null, { timeout: 10000 });
+    await page.locator('#mcPlay').click();
+    const at = await page.evaluate(() => window.__played.length);
+    const caption = await page.locator('#mcCaption').innerText();
+    await page.waitForTimeout(600);
+    assert.equal(await page.evaluate(() => window.__played.length), at, 'no clips while paused');
+    assert.equal(await page.locator('#mcCaption').innerText(), caption);
+    await page.locator('#mcPlay').click();
+    const played = await page.evaluate(() => window.__played);
+    assert.equal(played[at], played[at - 1], 'resumes with the clip that was paused');
+  });
+  await check('recorded voice with a missing line falls back to the device voice', async page => {
+    await withVoicePack(page, ['frame-thread']);
+    await page.goto(PAGE);
+    await page.locator('#mcOpen').click();
+    assert.match(await page.locator('#mcVoice').innerText(), /Temporary voice: your device's built-in speech/);
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => window.__spoken.length > 0);
+    assert.deepEqual(await page.evaluate(() => window.__played), []);
   });
   await check('no on-device voice: captions only, said plainly', async page => {
     await page.addInitScript(() => { window.speechSynthesis.getVoices = () => [{ name: 'Network voice', lang: 'en-US', localService: false }]; });
