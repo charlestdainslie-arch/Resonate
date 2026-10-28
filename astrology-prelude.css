@@ -53,3 +53,17 @@
 .astro-status{margin:12px 0 0;color:#edc979;line-height:1.45}
 .astro-status:empty{display:none}
 .astro-profile-form select{max-width:100%;text-overflow:ellipsis}
+
+/* Astrology journey fix: optional by default, problems beside their fields, a clear way on to the cards. */
+.astro-skip-row{margin:4px 0 6px}
+.astro-continue{border-color:rgba(218,180,103,.6);color:#f0d394}
+.astro-field-error{display:block;margin-top:4px;font-size:13px;line-height:1.4;font-weight:400}
+.astro-field-error{color:#ffc9b5}
+.astro-profile-form [aria-invalid="true"]{border-color:#e08b6b;box-shadow:0 0 0 1px #e08b6b}
+.astro-error p{margin:0 0 10px}
+.astro-error button{min-height:45px}
+.astro-gate{box-sizing:border-box;width:min(100%,900px);margin:0 auto 16px;padding:14px 16px;border:1px solid #ba785f;border-radius:12px;background:rgba(40,22,16,.6);color:#ffe6da;line-height:1.5}
+.astro-gate p{margin:0 0 10px}
+.astro-gate .astro-buttons{margin:0}
+.astro-gate[hidden]{display:none}
+@media(max-width:590px){.astro-gate .astro-buttons{flex-direction:column}.astro-gate .astro-buttons button,.astro-error button{width:100%}}

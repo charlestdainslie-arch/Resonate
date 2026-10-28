@@ -1,6 +1,5 @@
 // UAT round 1 browser check (Playwright), phone emulation: fixes for Chas's Android defects on 5fbdf9e.
-// D1/D2 birth date and time are plain number-keyboard fields that convert to the model's YYYY-MM-DD / HH:MM.
-// D3 "Repeated clock time" options fit the field at phone widths.
+// Astrology asks only for Sun sign and birth year (D1/D2/D3 retired with the fields they covered, 28 Oct).
 // D6 "Calculate my sky" always gives visible feedback and brings the result into view.
 // D8 a reading opened from the Journal returns to the Journal (on-screen and phone Back); a new reading returns to spreads.
 // Run with: node tests/uat-round1.browser.cjs
@@ -23,7 +22,6 @@ async function openForm(page) {
   await page.goto(BASE);
   await page.evaluate(() => go('reading'));
   await page.waitForSelector('#astroProfileForm');
-  await page.locator('.astro-full-birth summary').tap();
 }
 
 (async () => {
@@ -38,43 +36,37 @@ async function openForm(page) {
       const check = async (name, fn) => { try { await fn(); } catch (e) { failures.push(`${label} ${name}: ${e.message.replace(/\s+/g, ' ').slice(0, 240)}`); } };
       await openForm(page);
 
-      await check('D1/D2 date and time use the number keyboard, not native pickers', async () => {
-        for (const name of ['birthDate', 'birthTime']) {
-          const attrs = await page.locator(`[name="${name}"]`).evaluate(el => [el.type, el.inputMode]);
-          assert.deepEqual(attrs, ['text', 'numeric'], name);
-        }
+      // Chas, 28 Oct: birth date, time, time zone and coordinates were removed from the journey, which
+      // retires D1/D2/D3 (their fields no longer exist). These checks replace them.
+      await check('Astrology asks only for Sun sign and birth year; the year uses the number keyboard', async () => {
+        for (const name of ['birthDate', 'birthTime', 'timeZone', 'latitude', 'longitude', 'disambiguation'])
+          assert.equal(await page.locator(`[name="${name}"]`).count(), 0, name);
+        assert.deepEqual(await page.locator('[name="birthYear"]').evaluate(el => [el.type, el.inputMode]), ['text', 'numeric']);
+        assert.equal(await page.locator('[name="sunSign"]').count(), 1);
       });
-      await check('D1/D2 typing digits formats as DD/MM/YYYY and HH:MM', async () => {
-        await page.locator('[name="birthDate"]').tap(); await page.keyboard.type('15031968');
-        assert.equal(await page.locator('[name="birthDate"]').inputValue(), '15/03/1968');
-        await page.locator('[name="birthTime"]').tap(); await page.keyboard.type('0930');
-        assert.equal(await page.locator('[name="birthTime"]').inputValue(), '09:30');
-      });
-      await check('D1/D2 entered details reach the calculation as YYYY-MM-DD and HH:MM', async () => {
-        await page.locator('[name="timeZone"]').fill('Europe/London');
-        await page.locator('[name="latitude"]').fill('56.11');
-        await page.locator('[name="longitude"]').fill('-3.34');
+      await check('Sun sign and year reach the calculation; no Moon or Rising is shown', async () => {
+        await page.locator('[name="sunSign"]').selectOption('Pisces');
+        await page.locator('[name="birthYear"]').tap(); await page.keyboard.type('1968');
         await page.getByRole('button', { name: 'Calculate my sky', exact: true }).tap();
-        const profile = await page.evaluate(() => state.astrologyProfile);
-        assert.equal(profile.birthDate, '1968-03-15');
-        assert.equal(profile.birthTime, '09:30');
-        assert.ok(await page.evaluate(() => !!state.astrologyPrelude?.natal?.moon), 'natal Moon calculated');
+        assert.deepEqual(await page.evaluate(() => state.astrologyProfile), { sunSign: 'Pisces', birthYear: '1968' });
+        assert.equal(await page.evaluate(() => state.astrologyPrelude.natal.moon || state.astrologyPrelude.natal.rising), null);
+        assert.doesNotMatch(await page.locator('#astroResult').innerText(), /NATAL MOON|RISING/);
         assert.equal(await page.locator('#astroError').isVisible(), false);
       });
-      await check('D1 an impossible date gives a clear message', async () => {
-        await page.locator('[name="birthDate"]').fill('31/02/1968');
+      await check('A bad year is explained beside the field and Continue without astrology still reaches the cards', async () => {
+        await page.locator('[name="birthYear"]').fill('68');
         await page.getByRole('button', { name: 'Calculate my sky', exact: true }).tap();
-        assert.match(await page.locator('#astroError').innerText(), /does not exist.*DD\/MM\/YYYY/);
+        assert.match(await page.locator('#astroMsg-birthYear').innerText(), /four-digit year/);
         assert.equal(await page.evaluate(() => state.astrologyPrelude), null);
-      });
-      await check('D3 repeated-clock-time options fit the field', async () => {
-        const overflow = await page.locator('[name="disambiguation"]').evaluate(select => {
-          const cs = getComputedStyle(select), ctx = document.createElement('canvas').getContext('2d');
-          ctx.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
-          const room = select.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight) - 20; // native arrow
-          return [...select.options].filter(o => ctx.measureText(o.text).width > room).map(o => o.text);
-        });
-        assert.deepEqual(overflow, []);
+        await page.locator('[data-spread="three"]').tap();
+        assert.equal(await view(page), 'reading');
+        assert.match(await page.locator('#astroGate').innerText(), /can’t be used yet/);
+        await page.locator('#astroGate [data-gate="skip"]').tap();
+        assert.equal(await view(page), 'stage');
+        await page.locator('#stageDrawBtn').tap();
+        assert.equal(await view(page), 'draw');
+        assert.equal(await page.evaluate(() => state.readingAstrology), null);
+        await page.evaluate(() => go('reading'));
       });
       await check('D6 Calculate with no details still shows feedback and the result', async () => {
         await page.locator('#astroSkip').tap();
@@ -83,7 +75,7 @@ async function openForm(page) {
         await page.waitForTimeout(200);
         const status = page.locator('#astroStatus');
         assert.ok(await status.isVisible(), 'status visible');
-        assert.match(await status.innerText(), /Sky calculated at .*No birth details entered/);
+        assert.match(await status.innerText(), /Sky calculated at .*No details entered/);
         const top = await page.locator('#astroResult').evaluate(el => el.getBoundingClientRect().top);
         const height = await page.evaluate(() => innerHeight);
         assert.ok(top >= -2 && top < height * 0.5, `result top ${top} should be near the top of the screen`);
@@ -122,5 +114,5 @@ async function openForm(page) {
     }
   } finally { await browser.close(); server.close(); }
   if (failures.length) { console.error('FAIL\n' + failures.join('\n')); process.exit(1); }
-  console.log('PASS UAT round 1: date/time entry, dropdown fit, Calculate feedback, Journal return (3 phone sizes)');
+  console.log('PASS UAT round 1: sign-and-year form, bad-year recovery, Calculate feedback, Journal return (3 phone sizes)');
 })();
