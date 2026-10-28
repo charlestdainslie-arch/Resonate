@@ -23,7 +23,7 @@ function prepareDeck(){
 }
 
 function faceDownSlot(label,index){
-  return `<div class="reading-position stage-position"><span class="slot-label">${index+1} · ${label||'Position'}</span><div class="stage-card" data-stage-card="${index}" aria-label="Face-down tarot card for ${label||'position'}"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div></div></div>`;
+  return `<div class="reading-position stage-position"><span class="slot-label">${index+1} · ${slotLabelHtml(label||'Position')}</span><div class="stage-card" data-stage-card="${index}" aria-label="Face-down tarot card for ${label||'position'}"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div></div></div>`;
 }
 
 renderReadingHub = function(){
