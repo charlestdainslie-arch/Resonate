@@ -1,0 +1,122 @@
+/* Keep the same one-card table before and after reveal. */
+.reading-stage-page .stage-board.spread-1{
+  box-sizing:border-box;width:min(100%,640px);max-width:640px;
+  grid-template-columns:minmax(0,1fr);padding:8px 0 18px;margin:12px auto 24px;
+}
+.reading-stage-page .stage-board.spread-1 .stage-position{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:clamp(7px,2vw,22px);row-gap:10px;align-items:start;justify-items:center;
+}
+.reading-stage-page .stage-board.spread-1 .slot-label{grid-column:1/-1;grid-row:1;width:100%;margin:0 0 5px}
+.reading-stage-page .stage-board.spread-1 .stage-card{
+  grid-column:2;grid-row:2;box-sizing:border-box;width:100%;max-width:190px;
+  aspect-ratio:2/3;height:auto;margin:0;min-width:0;
+}
+.reading-stage-page .stage-board.spread-1 .slot-label{color:#edc979;font-size:clamp(17px,2vw,24px);font-weight:800;line-height:1.3;letter-spacing:.055em;text-transform:uppercase}
+/* Put the two clarifier labels below their artwork so all three tops align. */
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{order:1}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{order:2;padding-top:0}
+.draw-page .spread-board.spread-1 .reading-card-front{display:block;overflow:visible;padding:0}
+.draw-page .spread-board.spread-1 .reading-card-front img{display:block;width:100%;height:100%;padding:3px}
+.draw-page .spread-board.spread-1 .reading-card-front::after{content:'ORIGINAL CARD';position:absolute;top:calc(100% + 8px);left:0;width:100%;font:9px/1.6 Arial,sans-serif;color:#d9b979;text-align:center}
+.draw-page .spread-board.spread-1 .reading-card-front strong{position:absolute;top:calc(100% + 28px);left:0;width:100%;padding:0 3px;box-sizing:border-box}
+.draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:70px}
+.draw-page .spread-board.spread-1:has(.position-clarifiers){padding-bottom:18px}
+/* The original and clarifiers share the same physical frame and typography. */
+.reading-stage-page .stage-board.spread-1 .stage-card,
+.draw-page .spread-board.spread-1 .reading-card{max-width:none;padding:0}
+.draw-page .spread-board.spread-1 .reading-card-front{box-sizing:border-box;border:2px solid #d5ad61;border-radius:10px}
+.draw-page .spread-board.spread-1 .reading-card-front img{padding:0}
+.draw-page .spread-board.spread-1 .reading-position{--reading-label-size:clamp(9px,1.3vw,12px)}
+.draw-page .spread-board.spread-1 .reading-card-front::after{
+  top:calc(100% + 7px);font-family:Arial,sans-serif;font-size:var(--reading-label-size);line-height:1.6;
+}
+.draw-page .spread-board.spread-1 .reading-card-front strong{
+  top:calc(100% + 14px + 1.6 * var(--reading-label-size));
+}
+.draw-page .spread-board.spread-1 .reading-card-front strong,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{
+  font-family:Arial,sans-serif;font-size:clamp(12px,1.4vw,16px);font-weight:650;line-height:1.3;padding:0 3px;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{
+  font-family:Arial,sans-serif;font-size:var(--reading-label-size);line-height:1.6;
+}
+#primaryJournalSaveStatus{min-height:1.5em;text-align:center;color:#edc979}
+@media(max-width:520px){
+  .reading-stage-page .stage-board.spread-1{padding:8px 0 12px}
+  .reading-stage-page .stage-board.spread-1 .stage-position{column-gap:6px}
+}
+
+/* Preserve the entire scanned artwork, including its printed borders and title. */
+.draw-page .spread-board.spread-1 .reading-card-front img{object-fit:contain;box-sizing:border-box}
+.reading-save-final{text-align:center;margin:24px auto 16px}
+.reading-save-final .reflection-note{color:#edc979}
+
+/* Every spread: complete art and separated clarifiers, without the old overlapping fan. */
+.draw-page .spread-board:not(.spread-1) .reading-position{gap:10px;align-content:start}
+.draw-page .spread-board:not(.spread-1) .reading-card{padding:0;max-width:190px;box-sizing:border-box;margin-bottom:64px}
+.draw-page .spread-board:not(.spread-1) .reading-card-front{display:block;padding:0;overflow:visible;border:2px solid #d5ad61;border-radius:10px;box-sizing:border-box}
+.draw-page .spread-board:not(.spread-1) .reading-card-front img{display:block;width:100%;height:100%;padding:0;object-fit:contain}
+.draw-page .spread-board:not(.spread-1) .reading-card-front strong{position:absolute;top:calc(100% + 8px);left:0;width:100%;box-sizing:border-box;padding:0 2px;font:650 12px/1.35 Arial,sans-serif;color:#e7dfd3}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifiers{position:static;display:flex;flex-wrap:nowrap;align-items:start;gap:8px;margin:0;width:100%;max-width:210px;pointer-events:auto}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier:nth-child(n){position:static;inset:auto;transform:none;filter:none;margin:0;flex:1 1 0;width:0;min-width:0;gap:6px}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier img{order:0;width:100%;height:auto;aspect-ratio:2/3;box-sizing:border-box;object-fit:contain;border:2px solid #d5ad61;border-radius:10px}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier .clarifier-layer-label{order:1;display:block;position:static;font:10px/1.4 Arial,sans-serif;color:#edc979}
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier strong{order:2;position:static;font:650 12px/1.35 Arial,sans-serif;overflow-wrap:anywhere}
+.draw-page .spread-scroll{overflow:visible}
+@media(max-width:1100px){
+ .draw-page .spread-board:not(.spread-1){display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;min-width:0;max-width:100%;gap:28px 18px}
+ .draw-page .spread-board:not(.spread-1) .reading-position:nth-child(n){grid-area:auto;margin:0;justify-self:stretch}
+}
+@media(max-width:700px){
+ .draw-page .spread-board:not(.spread-1){grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}
+}
+@media(max-width:420px){
+ .draw-page .spread-board:not(.spread-1){grid-template-columns:minmax(0,1fr)}
+ .draw-page .spread-board:not(.spread-1) .slot-label{min-height:0}
+}
+
+.reading-stage-page .spread-scroll{overflow:visible}
+.stage-board.is-shuffling .stage-card{animation:tarot-shuffle-contained .86s ease}
+@keyframes tarot-shuffle-contained{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@media(max-width:1100px){
+ .reading-stage-page .stage-board:not(.spread-1){grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;min-width:0;max-width:100%;gap:28px 18px}
+ .reading-stage-page .stage-board:not(.spread-1) .reading-position:nth-child(n){grid-area:auto;margin:0;justify-self:stretch}
+}
+@media(max-width:700px){.reading-stage-page .stage-board:not(.spread-1){grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 16px}}
+@media(max-width:420px){.reading-stage-page .stage-board:not(.spread-1){grid-template-columns:minmax(0,1fr)}}
+@media(prefers-reduced-motion:reduce){.stage-board.is-shuffling .stage-card{animation:none}}
+
+/* Let the interpretation follow the real spread without a decorative banner. */
+.draw-page .spread-scroll{padding-bottom:0}
+.draw-page .spread-board{margin-bottom:12px}
+.draw-page #readingInterpretation{margin-top:12px}
+
+/* Keep the same contained shuffle for every spread, including one-card.
+   Reset old stagger delays so the shuffle completes before controls unlock. */
+.stage-board.is-shuffling .stage-position:nth-child(n) .stage-card{animation-name:tarot-shuffle-contained;animation-delay:0s}
+.reading-card-lenses{margin-top:20px;padding-top:16px;border-top:1px solid rgba(213,173,97,.3)}
+.reading-card-lenses h4{color:#edc979;margin:14px 0 8px}
+.reading-card-correspondences{margin:12px 0;text-align:left}
+
+/* Heading wrap (Claude review, issue #13): break between words; hyphenate only a word that cannot fit.
+   overflow-wrap:anywhere split labels such as OUTCO|ME and SURROU|NDING at 1101–1440px. */
+.slot-label,
+.draw-page .reading-position .slot-label,
+.reading-stage-page .reading-position .slot-label,
+.reading-page .stage-board .slot-label,
+.draw-page .spread-board .slot-label,
+.reading-card-front strong,
+.position-clarifier strong,
+.draw-page .spread-board:not(.spread-1) .reading-card-front strong,
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier strong,
+.detail-title h1{overflow-wrap:break-word;word-break:normal;-webkit-hyphens:auto;hyphens:auto;text-wrap:balance}
+@media(min-width:1101px){
+ .reading-page .stage-board:not(.spread-1) .slot-label,
+ .draw-page .spread-board:not(.spread-1) .slot-label{font-size:clamp(14px,1.2vw,17px);letter-spacing:.03em}
+}
+/* Keep each spread position inside its column. Each position is a one-column grid; without this its track
+   sizes to the longest unbreakable label word (e.g. SURROUNDING at 17px is ~133px in a 118px column at 1440px+),
+   pushing the card into its neighbour. The label then hyphenates within its own column instead. */
+.draw-page .spread-board:not(.spread-1) .reading-position,
+.reading-stage-page .stage-board:not(.spread-1) .reading-position{grid-template-columns:minmax(0,1fr)}

@@ -24,3 +24,31 @@ test('storage failure reports failure without pretending entry was saved',()=>{
 test('full date includes weekday, written month, year, time and zone',()=>{
  const f=fixture();const value=f.run("journalDate('2026-09-10T00:00:00.000Z','Australia/Sydney')");assert.match(value,/Thursday/);assert.match(value,/10 September 2026/);assert.match(value,/10:00 am/);assert.match(value,/AEST|GMT\+10/);
 });
+
+test('journal restores original dice, clarifier identities and date after another reading',()=>{
+ const f=fixture();
+ f.run("state.openingDice=[0,9];state.clarifierReadingAt=state.drawnAt;state.firstLayerClarifiers=[5,6,7];state.additionalClarifierReadingAt=state.drawnAt;state.additionalClarifierLayers=[{number:2,cards:[8,9,10]}];saveReadingReflection('Saved',null)");
+ f.ctx.clearDrawTimers=()=>{};f.ctx.go=()=>{};
+ f.run("state.openingDice=[1,2];state.firstLayerClarifiers=[20];state.additionalClarifierLayers=[];state.drawnAt='later';openJournalReading('reading-id')");
+ assert.deepEqual(Array.from(f.ctx.state.openingDice),[0,9]);assert.deepEqual(Array.from(f.ctx.state.firstLayerClarifiers),[5,6,7]);assert.deepEqual(Array.from(f.ctx.state.additionalClarifierLayers[0].cards),[8,9,10]);assert.equal(f.ctx.state.drawnAt,'2026-09-10T00:00:00.000Z');
+});
+
+test('legacy journal entries without dice do not borrow a later reading roll',()=>{
+ const f=fixture();f.run("saveReadingReflection('Legacy',null)");f.ctx.clearDrawTimers=()=>{};f.ctx.go=()=>{};
+ f.run("state.openingDice=[3,4];openJournalReading('reading-id')");assert.equal(f.ctx.state.openingDice,null);
+});
+
+function feedbackFixture(){
+ const f=fixture();const elements=Object.fromEntries(['primaryClarifierAction','saveReadingJournal','primaryJournalSaveStatus'].map(id=>[id,{textContent:'Save Reading to Journal',classList:{toggle(){}}}]));
+ f.ctx.document={getElementById:id=>elements[id]||null};
+ f.run('state.additionalClarifierReadingAt=state.drawnAt;state.additionalClarifierLayers=[{number:2,cards:[8,9,10]}]');
+ return {...f,elements};
+}
+test('successful save without notes gives a tick on the single save button and adjacent confirmation',()=>{
+ const f=feedbackFixture();assert.equal(f.run("saveReadingReflection('',null)"),true);
+ assert.equal(f.elements.primaryClarifierAction.textContent,'Save Reading to Journal');assert.equal(f.elements.saveReadingJournal.textContent,'✓ Saved to Journal');assert.match(f.elements.primaryJournalSaveStatus.textContent,/✓ Reading saved/);
+});
+test('failed save removes success ticks and shows the error beside the clicked primary action',()=>{
+ const f=feedbackFixture();f.run("saveReadingReflection('',null)");f.block();assert.equal(f.run("saveReadingReflection('Changed',null)"),false);
+ assert.doesNotMatch(f.elements.primaryClarifierAction.textContent,/✓/);assert.match(f.elements.primaryJournalSaveStatus.textContent,/Could not save/);
+});

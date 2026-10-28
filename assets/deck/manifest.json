@@ -1,0 +1,548 @@
+[
+  {
+    "id": 0,
+    "name": "The Fool",
+    "file": "assets/deck/ar00.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar00.jpg",
+    "sha256": "e661bfd69d91e20224a3cc8648323b46eb6ed67df8395ac471842899e4ae728e"
+  },
+  {
+    "id": 1,
+    "name": "The Magician",
+    "file": "assets/deck/ar01.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar01.jpg",
+    "sha256": "8236d43d29dfdc46d2c2700c7f1642ae9977ea0227f26e9fc3b916a4c828c550"
+  },
+  {
+    "id": 2,
+    "name": "The High Priestess",
+    "file": "assets/deck/ar02.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar02.jpg",
+    "sha256": "7ae10c671d8c904747b42621f2e87ca15019d552b616118e16cec584c86a7814"
+  },
+  {
+    "id": 3,
+    "name": "The Empress",
+    "file": "assets/deck/ar03.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar03.jpg",
+    "sha256": "3d6b85a75a71b876d271b10244bc6d9ce79b271c35d1306edac45addb38c6429"
+  },
+  {
+    "id": 4,
+    "name": "The Emperor",
+    "file": "assets/deck/ar04.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar04.jpg",
+    "sha256": "55d01fcfb26d7cdac5342e72d57be99a5459398da85e8527b04473481646f57d"
+  },
+  {
+    "id": 5,
+    "name": "The Hierophant",
+    "file": "assets/deck/ar05.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar05.jpg",
+    "sha256": "a6762659491efd59c896e8586e003d5fd9629bfbbf5e4be6014eb09e1e735b37"
+  },
+  {
+    "id": 6,
+    "name": "The Lovers",
+    "file": "assets/deck/ar06.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar06.jpg",
+    "sha256": "81ad7455286b60138dab02745d0012332b39320570a40705783698161fac9540"
+  },
+  {
+    "id": 7,
+    "name": "The Chariot",
+    "file": "assets/deck/ar07.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar07.jpg",
+    "sha256": "a246c6b970654436ea301345c43967720b797a3323f2a213ab2f443262da0cf6"
+  },
+  {
+    "id": 8,
+    "name": "Strength",
+    "file": "assets/deck/ar08.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar08.jpg",
+    "sha256": "b6d470cf4b899f55822d8388aaa1b658a53a4486d757e7347b5ff0b0b8dcb317"
+  },
+  {
+    "id": 9,
+    "name": "The Hermit",
+    "file": "assets/deck/ar09.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar09.jpg",
+    "sha256": "a39152fc58bb1dd0069ab058910a0bdc3cfae9062a02ebea92e5074c4bda6022"
+  },
+  {
+    "id": 10,
+    "name": "Wheel of Fortune",
+    "file": "assets/deck/ar10.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar10.jpg",
+    "sha256": "97f48b60eb670247db32fb54101c39e810ce0883b10640ad17cd66b44a92bed0"
+  },
+  {
+    "id": 11,
+    "name": "Justice",
+    "file": "assets/deck/ar11.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar11.jpg",
+    "sha256": "a7aedfac26b9d84594e1ecba048d00799c704fd078f649a35e818e9348308111"
+  },
+  {
+    "id": 12,
+    "name": "The Hanged Man",
+    "file": "assets/deck/ar12.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar12.jpg",
+    "sha256": "ba6893782f5b2068a1ea02f7155555b3b61ee8da5fb23445b873277a3bb9ce66"
+  },
+  {
+    "id": 13,
+    "name": "Death",
+    "file": "assets/deck/ar13.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar13.jpg",
+    "sha256": "3e4755796801c0a0a1680de365c80f91eee0d8e3da8f0c376042e27faaad32a3"
+  },
+  {
+    "id": 14,
+    "name": "Temperance",
+    "file": "assets/deck/ar14.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar14.jpg",
+    "sha256": "f63a421ec88009adc595767d39e7c229ea1ab1ba76a2f54f10541e8b4ccf28a7"
+  },
+  {
+    "id": 15,
+    "name": "The Devil",
+    "file": "assets/deck/ar15.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar15.jpg",
+    "sha256": "af416641d72133d37ec19533b4b44bc7315a92f5cd1835a1d3ec4a0c86a6261d"
+  },
+  {
+    "id": 16,
+    "name": "The Tower",
+    "file": "assets/deck/ar16.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar16.jpg",
+    "sha256": "6e01c371290def2b48806406a3c185bee6f0306036339f0bd8ccf894d72c32b4"
+  },
+  {
+    "id": 17,
+    "name": "The Star",
+    "file": "assets/deck/ar17.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar17.jpg",
+    "sha256": "a52e5a7e17e93653754db89cdd6c136b61cf93d1af0cefb635e4f436f54855b4"
+  },
+  {
+    "id": 18,
+    "name": "The Moon",
+    "file": "assets/deck/ar18.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar18.jpg",
+    "sha256": "516a95532b2e09ead3b3cbd07e1d981d1957a5034828faed5edfae3a7b102049"
+  },
+  {
+    "id": 19,
+    "name": "The Sun",
+    "file": "assets/deck/ar19.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar19.jpg",
+    "sha256": "b7dfc23f1c1c4644545640ceb4e87d9d0c7b00e69cb1ab0dbf4d2c9bb6264d5d"
+  },
+  {
+    "id": 20,
+    "name": "Judgement",
+    "file": "assets/deck/ar20.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar20.jpg",
+    "sha256": "ee1eaa308405daa44e3b10d459246eddbb9ecf49b739346cd1d8f49b65300e2b"
+  },
+  {
+    "id": 21,
+    "name": "The World",
+    "file": "assets/deck/ar21.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/ar21.jpg",
+    "sha256": "3b2d20755e83d535d140edc47b97fd5ac094fda34471efd45c83c76b0e5026ce"
+  },
+  {
+    "id": 22,
+    "name": "Ace of Wands",
+    "file": "assets/deck/wa01.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa01.jpg",
+    "sha256": "a12d0e9264cbd49da2a28c0c81518868829dfda4a0a0113ddde0a7c5dfb3b2d8"
+  },
+  {
+    "id": 23,
+    "name": "Two of Wands",
+    "file": "assets/deck/wa02.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa02.jpg",
+    "sha256": "2cf6dadba55dab4da904ac5a1d9ad724530ee56c7e753e49bde7f14b78a5a4e1"
+  },
+  {
+    "id": 24,
+    "name": "Three of Wands",
+    "file": "assets/deck/wa03.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa03.jpg",
+    "sha256": "78c301c422731b5daef56936b1af2dc8fe4c6609cd0fe8824d90135ea71e5bba"
+  },
+  {
+    "id": 25,
+    "name": "Four of Wands",
+    "file": "assets/deck/wa04.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa04.jpg",
+    "sha256": "95ff299c125dc75163f00e8797cba6ebddb3ab2d83df63089791bc6ef834bdfd"
+  },
+  {
+    "id": 26,
+    "name": "Five of Wands",
+    "file": "assets/deck/wa05.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa05.jpg",
+    "sha256": "661202b51ff9cd4c7a65eee1740f345a9d1f99cdf187e1712d19a18a633d8e83"
+  },
+  {
+    "id": 27,
+    "name": "Six of Wands",
+    "file": "assets/deck/wa06.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa06.jpg",
+    "sha256": "d989e283dfbbf75a1ddbf34537f18ca273811aa8aaca3547bcfdc4c98ef215e3"
+  },
+  {
+    "id": 28,
+    "name": "Seven of Wands",
+    "file": "assets/deck/wa07.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa07.jpg",
+    "sha256": "a5aaf0462faac69d4a473b177a5ba1bf29d8147de77d92d301f07efa0667e0b4"
+  },
+  {
+    "id": 29,
+    "name": "Eight of Wands",
+    "file": "assets/deck/wa08.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa08.jpg",
+    "sha256": "687d6c06afddefab5d0050294c0e2b8bbbfdfbe442ac5c49eb0d85cc65788920"
+  },
+  {
+    "id": 30,
+    "name": "Nine of Wands",
+    "file": "assets/deck/wa09.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa09.jpg",
+    "sha256": "1f292d99085759e44dba7458084e918cd7b50f3175d870f27b6f083149736322"
+  },
+  {
+    "id": 31,
+    "name": "Ten of Wands",
+    "file": "assets/deck/wa10.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa10.jpg",
+    "sha256": "6948cdc3a384aa32518cc6d65a510536b851a3a008e2e0f9364c8f9072eb5afe"
+  },
+  {
+    "id": 32,
+    "name": "Page of Wands",
+    "file": "assets/deck/wa11.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa11.jpg",
+    "sha256": "5186efa19974fbdf4d191adf23cb7bd8d55fe0b6420d80975f8ccc35dbead2bf"
+  },
+  {
+    "id": 33,
+    "name": "Knight of Wands",
+    "file": "assets/deck/wa12.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa12.jpg",
+    "sha256": "14768a1344d4a67bbc42b1ff6875e674fce95fc248e47269ed4d13b1b39987ed"
+  },
+  {
+    "id": 34,
+    "name": "Queen of Wands",
+    "file": "assets/deck/wa13.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa13.jpg",
+    "sha256": "b9dbea96021e010a5e76c03acf37dc2a97ba27c6e1ca3456528ce80159f00f63"
+  },
+  {
+    "id": 35,
+    "name": "King of Wands",
+    "file": "assets/deck/wa14.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/wa14.jpg",
+    "sha256": "d94e76444692ac19a17791bd80d157329e4e0df6e674287fa0b7f61a69e578fc"
+  },
+  {
+    "id": 36,
+    "name": "Ace of Cups",
+    "file": "assets/deck/cu01.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu01.jpg",
+    "sha256": "bf3895c40aeae91c0fc013d5805d63496271ba333d54ad0d421bd432a25318f0"
+  },
+  {
+    "id": 37,
+    "name": "Two of Cups",
+    "file": "assets/deck/cu02.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu02.jpg",
+    "sha256": "020162fff599ae9ee4a4e8da83108228a402f80fa807e4ba510d9eade8e1e28f"
+  },
+  {
+    "id": 38,
+    "name": "Three of Cups",
+    "file": "assets/deck/cu03.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu03.jpg",
+    "sha256": "1511df9812736fc33e0ff2a34ce6742533310648fd0a838a5f1c4970cd3cba78"
+  },
+  {
+    "id": 39,
+    "name": "Four of Cups",
+    "file": "assets/deck/cu04.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu04.jpg",
+    "sha256": "d062277b6eb63be682417377299729ca21e0d210997f5fb70cd3775a80ddef72"
+  },
+  {
+    "id": 40,
+    "name": "Five of Cups",
+    "file": "assets/deck/cu05.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu05.jpg",
+    "sha256": "e1d2c86b5c79da7aec952273c4a74bc5fe8cd502fb4495bfc9f0f943564132af"
+  },
+  {
+    "id": 41,
+    "name": "Six of Cups",
+    "file": "assets/deck/cu06.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu06.jpg",
+    "sha256": "166813d6d19d89ece356ca18021c73a8c80f092c5487313fa0ab39eb06d85672"
+  },
+  {
+    "id": 42,
+    "name": "Seven of Cups",
+    "file": "assets/deck/cu07.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu07.jpg",
+    "sha256": "7db8c37fca5f09feef4b68851abaa335d4b627bdc7462590b33c029ce51b97ea"
+  },
+  {
+    "id": 43,
+    "name": "Eight of Cups",
+    "file": "assets/deck/cu08.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu08.jpg",
+    "sha256": "c0d07f86bc6be04fc5300a6d9d83ad78166c1ac5fa461a343248448da55d11cd"
+  },
+  {
+    "id": 44,
+    "name": "Nine of Cups",
+    "file": "assets/deck/cu09.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu09.jpg",
+    "sha256": "32e5ee6de0d28d9466efa35ae1765525f25632eb9a0f0dd7cefd4987a88991cc"
+  },
+  {
+    "id": 45,
+    "name": "Ten of Cups",
+    "file": "assets/deck/cu10.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu10.jpg",
+    "sha256": "84c21545d340c8e3913a7489564fbb0a703ca43fa430d55233edf34bd6d187b0"
+  },
+  {
+    "id": 46,
+    "name": "Page of Cups",
+    "file": "assets/deck/cu11.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu11.jpg",
+    "sha256": "d3bb742d0a73c9f42ce1535b8ff2bb2952e0f3eef7b5623aa83f2630a453adf9"
+  },
+  {
+    "id": 47,
+    "name": "Knight of Cups",
+    "file": "assets/deck/cu12.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu12.jpg",
+    "sha256": "c7bbf5a770898a73d2a18231542a97af1eb0eeb955f3b791b9f4be75ac5ad35f"
+  },
+  {
+    "id": 48,
+    "name": "Queen of Cups",
+    "file": "assets/deck/cu13.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu13.jpg",
+    "sha256": "66c1fef4a0a00301df31a4c59eb844c3cfe52a81779162aec9ecce7ec1fd304c"
+  },
+  {
+    "id": 49,
+    "name": "King of Cups",
+    "file": "assets/deck/cu14.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/cu14.jpg",
+    "sha256": "def42209dc7a6575e3c0553de8bfeaec220c77bba652a57acfb997ac87983ea0"
+  },
+  {
+    "id": 50,
+    "name": "Ace of Swords",
+    "file": "assets/deck/sw01.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw01.jpg",
+    "sha256": "249b097376bffc042e121fd3315dcfebb210d34695d13ef543379bbe5b012fc1"
+  },
+  {
+    "id": 51,
+    "name": "Two of Swords",
+    "file": "assets/deck/sw02.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw02.jpg",
+    "sha256": "ed144e235e08bf2fa19dfe67e231552b319cbee499a1ad64cd56d631cdddc312"
+  },
+  {
+    "id": 52,
+    "name": "Three of Swords",
+    "file": "assets/deck/sw03.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw03.jpg",
+    "sha256": "b2aa40abf1f469a74c98470dd7c47edbf1c6de6450fc11cc366659a8d86a875f"
+  },
+  {
+    "id": 53,
+    "name": "Four of Swords",
+    "file": "assets/deck/sw04.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw04.jpg",
+    "sha256": "823507b0afb735e3edb0ef061ee1d5f19d1dce61d35e6bf508c17816ce9c8f63"
+  },
+  {
+    "id": 54,
+    "name": "Five of Swords",
+    "file": "assets/deck/sw05.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw05.jpg",
+    "sha256": "22450c2079194255fb1862477b1c4478003a4a52a811ce6ca634ab089e291f49"
+  },
+  {
+    "id": 55,
+    "name": "Six of Swords",
+    "file": "assets/deck/sw06.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw06.jpg",
+    "sha256": "41845cd8116d42fc6de6c5aa3ce1d943eaf0c20d68b89b1df35cee4ff2fa054f"
+  },
+  {
+    "id": 56,
+    "name": "Seven of Swords",
+    "file": "assets/deck/sw07.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw07.jpg",
+    "sha256": "3f6de8c3888c0fc45ac2752f66f48f8103eac5295cd65ad965ec34c61a983dc2"
+  },
+  {
+    "id": 57,
+    "name": "Eight of Swords",
+    "file": "assets/deck/sw08.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw08.jpg",
+    "sha256": "83fa3960b0ae100c07a6d8b6653b712745a9f31c71dd13c710d99ea6dfcc8c4a"
+  },
+  {
+    "id": 58,
+    "name": "Nine of Swords",
+    "file": "assets/deck/sw09.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw09.jpg",
+    "sha256": "04a3a791f3341e7f261e23edce799aaddf9cdb8044907b7722a769cb30f18820"
+  },
+  {
+    "id": 59,
+    "name": "Ten of Swords",
+    "file": "assets/deck/sw10.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw10.jpg",
+    "sha256": "72514fb8667a1cfbbcca4f9f12a45f1c87e21f42fe92204660ffcd0b0bf00387"
+  },
+  {
+    "id": 60,
+    "name": "Page of Swords",
+    "file": "assets/deck/sw11.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw11.jpg",
+    "sha256": "783f84ad92d498bfec220589f9465d5e7e1587fbd68f6243d6439e34a62acbaf"
+  },
+  {
+    "id": 61,
+    "name": "Knight of Swords",
+    "file": "assets/deck/sw12.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw12.jpg",
+    "sha256": "c4ff3c192727a8d8256198ecb36319d59defbc33e55eba04fbcce6a4a0e150d2"
+  },
+  {
+    "id": 62,
+    "name": "Queen of Swords",
+    "file": "assets/deck/sw13.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw13.jpg",
+    "sha256": "4e415a9277b37d6d1a69f76ac98b8a00d74fdbbf199e5e914230e094df5400d3"
+  },
+  {
+    "id": 63,
+    "name": "King of Swords",
+    "file": "assets/deck/sw14.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/sw14.jpg",
+    "sha256": "ce1c935f91e81a3494bd1ce9d06a5a3f892c3c783b37b439d05e3c724ae5aced"
+  },
+  {
+    "id": 64,
+    "name": "Ace of Pentacles",
+    "file": "assets/deck/pe01.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe01.jpg",
+    "sha256": "563f5fcc28bdf59f39f5c08871bc23311630003673059324bd71adc36a2a9b9b"
+  },
+  {
+    "id": 65,
+    "name": "Two of Pentacles",
+    "file": "assets/deck/pe02.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe02.jpg",
+    "sha256": "5d59edaf59cf76cd4bcbb2f63afba42e029b3c34ad8be626229a5ef7ea807278"
+  },
+  {
+    "id": 66,
+    "name": "Three of Pentacles",
+    "file": "assets/deck/pe03.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe03.jpg",
+    "sha256": "5908d1ec0490ba952573518400bdcf89ae9c14a9575eea33a87073a45a8ecfa3"
+  },
+  {
+    "id": 67,
+    "name": "Four of Pentacles",
+    "file": "assets/deck/pe04.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe04.jpg",
+    "sha256": "ce68cb27a3d8741ee778b835eca34d6cf3917d611717e178d0cb0b21ee26c119"
+  },
+  {
+    "id": 68,
+    "name": "Five of Pentacles",
+    "file": "assets/deck/pe05.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe05.jpg",
+    "sha256": "14e5b904bfdffd3b116293c417b8a0c2a92248200b211ab1a71d8a79a3cccc05"
+  },
+  {
+    "id": 69,
+    "name": "Six of Pentacles",
+    "file": "assets/deck/pe06.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe06.jpg",
+    "sha256": "65737a43ef4c1aa2aeb84807ae60c7891d739ef7b372703714252184cfb03950"
+  },
+  {
+    "id": 70,
+    "name": "Seven of Pentacles",
+    "file": "assets/deck/pe07.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe07.jpg",
+    "sha256": "2eac3ca3da2dde05673023350a26d49f16a14ebda7c2015889340bc3b3cde5a5"
+  },
+  {
+    "id": 71,
+    "name": "Eight of Pentacles",
+    "file": "assets/deck/pe08.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe08.jpg",
+    "sha256": "e7e36d44561832d7a0154af3528cf0ad3beb864242b3a0af65c983277f6c9119"
+  },
+  {
+    "id": 72,
+    "name": "Nine of Pentacles",
+    "file": "assets/deck/pe09.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe09.jpg",
+    "sha256": "b6806f73ea61c5973097afe7350f40088ad45fed94e753a8fca9c6656fb5dae3"
+  },
+  {
+    "id": 73,
+    "name": "Ten of Pentacles",
+    "file": "assets/deck/pe10.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe10.jpg",
+    "sha256": "14489c66e1bab6f3959178223f6373e1d3938d7d35f1a561b386c0df6985df52"
+  },
+  {
+    "id": 74,
+    "name": "Page of Pentacles",
+    "file": "assets/deck/pe11.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe11.jpg",
+    "sha256": "79cccd120905724a42d29a97c8cdcb3ff94c7639c67473a1852c6213ede724e2"
+  },
+  {
+    "id": 75,
+    "name": "Knight of Pentacles",
+    "file": "assets/deck/pe12.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe12.jpg",
+    "sha256": "f02f2ceef60586289c211df6e8df6289831104ff92306356495174a342016927"
+  },
+  {
+    "id": 76,
+    "name": "Queen of Pentacles",
+    "file": "assets/deck/pe13.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe13.jpg",
+    "sha256": "992c0f5b7e9fa1a0c48e70f5e2e3a969cc4e2447bd4d95a914e841fb03257cd1"
+  },
+  {
+    "id": 77,
+    "name": "King of Pentacles",
+    "file": "assets/deck/pe14.jpg",
+    "source": "https://github.com/sixseeds/tarot-api/blob/71825eed74683305b139a669b23ca5dc12f76857/cards/pe14.jpg",
+    "sha256": "fa55de31179f4cb94cc03c263013707f35071a71135c1d9d7fb6da67981df58f"
+  }
+]

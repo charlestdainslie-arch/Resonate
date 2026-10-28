@@ -1,0 +1,229 @@
+/* Reading welcome: calm, legible, accessible at every width. */
+.reading-welcome{box-sizing:border-box;width:min(100%,900px);margin:16px auto 28px;padding:clamp(20px,4vw,36px);border:1px solid rgba(218,180,103,.28);border-radius:18px;background:linear-gradient(135deg,rgba(218,180,103,.08),rgba(12,12,16,.4));text-align:center}
+.reading-welcome h2{max-width:680px;margin:12px auto 16px;font-size:clamp(24px,3.2vw,37px);line-height:1.2}
+.reading-welcome p{max-width:660px;margin:12px auto;line-height:1.7}
+@media(max-width:520px){.reading-welcome{margin:12px auto 20px;padding:20px 16px}}
+
+/* Optional opening dice ritual */
+.opening-dice{box-sizing:border-box;width:min(100%,900px);margin:0 auto 26px;padding:20px 24px;text-align:center;border:1px solid rgba(218,180,103,.18);border-radius:16px;background:rgba(17,17,19,.7)}
+.opening-dice h2{font-size:clamp(22px,2.5vw,30px);margin:0 0 8px}
+.opening-dice p{max-width:620px;margin:10px auto;line-height:1.6}
+.opening-dice-values{font-size:clamp(30px,5vw,48px);font-variant-numeric:tabular-nums;letter-spacing:.2em;margin:14px auto;color:#e5c47a}
+.opening-dice button{min-height:44px}
+@media(max-width:520px){.opening-dice{padding:18px 14px}}
+
+/* UAT-003: card clarifiers belong to their original spread position. */
+.position-clarifiers{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:12px;margin-top:16px;max-width:100%}
+.position-clarifier{display:flex;flex-direction:column;align-items:center;gap:6px;width:clamp(72px,9vw,100px);min-width:0}
+.position-clarifier img{display:block;width:100%;aspect-ratio:2/3;object-fit:contain;border:1px solid rgba(218,180,103,.5);border-radius:6px;background:#0c0b0b}
+.position-clarifier strong{font-size:11px;font-weight:600;line-height:1.3;text-align:center;overflow-wrap:anywhere}
+.clarifier-layer-label{color:#d9b979;font-size:10px;letter-spacing:.08em;text-align:center}
+.evolving-reading{padding:clamp(18px,3vw,32px);margin:28px auto;border:1px solid rgba(218,180,103,.3);border-radius:14px;max-width:850px}
+.evolving-reading p{line-height:1.75}
+@media(max-width:600px){.position-clarifiers{gap:7px}.position-clarifier{width:68px}.clarifier-layer-label{font-size:9px}}
+
+/* UAT-004: physical overlay — clarifiers fan over the bottom-right of their parent. */
+.reading-position{position:relative}
+.reading-position .position-clarifiers{position:relative;z-index:3;display:flex;justify-content:center;flex-wrap:nowrap;gap:0;margin:-50px 0 0 56px;pointer-events:none}
+.reading-position .position-clarifier{width:clamp(65px,8vw,92px);flex:0 0 auto;margin-left:-23px;transform:rotate(5deg);filter:drop-shadow(0 7px 9px #000);pointer-events:auto}
+.reading-position .position-clarifier:nth-child(2){transform:rotate(-7deg) translateY(9px)}
+.reading-position .position-clarifier:nth-child(3){transform:rotate(8deg) translateY(18px)}
+.reading-position .position-clarifier img{aspect-ratio:2/3;object-fit:cover;border:2px solid #c8a763;border-radius:5px}
+.reading-position .position-clarifier strong{font-size:10px;line-height:1.2}
+.reading-meaning .integrated-clarifier{margin:20px 0 0;padding:16px 20px;border-left:2px solid #c8a763;background:rgba(210,168,92,.05)}
+.reading-meaning .combined-meaning{margin:20px 0;padding:18px 20px;border:1px solid rgba(210,168,92,.4);border-radius:10px;background:rgba(210,168,92,.08)}
+.reading-meaning .integrated-clarifier h3,.reading-meaning .combined-meaning h3{font-size:clamp(17px,2vw,23px);margin:0 0 10px}
+.reading-meaning .integrated-clarifier p,.reading-meaning .combined-meaning p{line-height:1.7}
+@media(max-width:600px){.reading-position .position-clarifiers{margin-top:-35px;margin-left:36px}.reading-position .position-clarifier{width:62px;margin-left:-16px}}
+
+/* UAT sweep: one visual hierarchy for every spread size and card position. */
+.draw-page .reading-position .slot-label,
+.reading-stage-page .reading-position .slot-label{
+ display:block;max-width:100%;font-size:clamp(13px,1.55vw,19px);font-weight:700;
+ letter-spacing:.04em;line-height:1.35;text-align:center;overflow-wrap:anywhere;
+ margin:0 auto 14px;color:#e5c47a;
+}
+.draw-page .reading-meaning .reading-meaning-head span{
+ display:block;font-size:clamp(17px,2.1vw,26px);font-weight:700;line-height:1.25;
+ color:#e5c47a;letter-spacing:.025em;margin-bottom:8px;
+}
+.draw-page .reading-meaning .reading-meaning-head strong{
+ display:block;font-size:clamp(20px,2.4vw,30px);line-height:1.2;
+}
+.draw-page .reading-meaning .position-context{
+ border-left:2px solid #c8a763;padding-left:18px;margin:18px 0;
+}
+.draw-page .reading-next-step{max-width:760px;margin:26px auto 16px;text-align:center;padding:22px 12px}
+.draw-page .reading-next-step button{min-height:50px;padding:12px 22px;max-width:100%;white-space:normal}
+.draw-page .draw-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px}
+.draw-page .draw-actions>button{min-height:44px;max-width:100%;white-space:normal}
+@media(max-width:520px){.draw-page .draw-actions{flex-direction:column}.draw-page .draw-actions>button{width:100%}}
+
+/* One-card acceptance baseline: a full-size, unclipped, layered tarot card stack.
+   Other spread geometries stay unchanged until this reference is visually approved. */
+.draw-page .spread-board.spread-1{padding:10px clamp(30px,8vw,78px) 55px;overflow:visible}
+.draw-page .spread-board.spread-1 .reading-position{position:relative;overflow:visible;isolation:isolate}
+.draw-page .spread-board.spread-1 .reading-position .reading-card{width:100%;z-index:1}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers{
+ position:absolute;top:clamp(80px,12vw,112px);left:0;width:100%;height:auto;
+ display:block;margin:0;padding:0;overflow:visible;pointer-events:none;z-index:3;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier{
+ position:absolute;top:0;left:0;width:100%;height:auto;aspect-ratio:2/3;
+ margin:0;transform:translate(25%,10%) rotate(5deg);filter:drop-shadow(0 12px 15px #000);
+ pointer-events:none;overflow:visible;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(2){
+ transform:translate(31%,17%) rotate(-5deg);z-index:4
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(3){
+ transform:translate(36%,24%) rotate(6deg);z-index:5
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier img{
+ display:block;width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;
+ box-sizing:border-box;border:2px solid #d5ad61;border-radius:10px;background:#0b0b0d;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{
+ position:absolute;top:auto;bottom:-31px;left:0;right:0;text-align:center;
+ background:#0b0b0dec;padding:4px;color:#e6d4b1;white-space:normal;pointer-events:none;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{display:none}
+@media(max-width:520px){
+ .draw-page .spread-board.spread-1{padding-inline:48px}
+ .draw-page .spread-board.spread-1 .reading-position .position-clarifiers{top:92px}
+}
+
+/* UAT: original and all clarifier interpretations have identical framing. */
+.draw-page .reading-meaning .original-card-explanation,
+.draw-page .reading-meaning .integrated-clarifier{
+ margin:20px 0 0;padding:16px 20px;border-left:3px solid #c8a763;
+ background:rgba(210,168,92,.05);
+}
+.draw-page .reading-meaning .original-card-explanation h3,
+.draw-page .reading-meaning .integrated-clarifier h3{
+ color:#f4f0e9;font-family:inherit;font-size:clamp(20px,2.2vw,26px);
+ font-weight:700;line-height:1.3;margin:0 0 12px;text-align:left;
+}
+.draw-page .reading-meaning .original-position-label{
+ color:#dfbd79;font-weight:700;letter-spacing:.05em;margin:8px 0 14px;
+}
+.draw-page .reading-meaning .original-card-explanation>p,
+.draw-page .reading-meaning .integrated-clarifier>p{
+ line-height:1.7;text-align:left;
+}
+.journal-reflection-actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin:14px 0 20px}
+.journal-reflection-actions .reflection-note{margin:0;font-size:13px;line-height:1.5}
+.journal-reflection-actions button{min-height:44px}
+/* Keep each full-size clarifier visible instead of stacking them in the same spot. */
+.draw-page .spread-board.spread-1{padding:10px clamp(100px,16vw,185px) 205px}
+.draw-page .spread-board.spread-1 .position-clarifiers{top:clamp(80px,12vw,112px)}
+.draw-page .spread-board.spread-1 .position-clarifier:nth-child(1){
+ transform:translate(-68%,36%) rotate(-7deg);z-index:3;
+}
+.draw-page .spread-board.spread-1 .position-clarifier:nth-child(2){
+ transform:translate(68%,36%) rotate(7deg);z-index:4;
+}
+.draw-page .spread-board.spread-1 .position-clarifier:nth-child(3){
+ transform:translate(0,98%) rotate(0deg);z-index:5;
+}
+.draw-page .spread-board.spread-1 .position-clarifiers[data-clarifier-count="1"] .position-clarifier:nth-child(1){
+ transform:translate(48%,36%) rotate(6deg);
+}
+.draw-page .spread-board.spread-1 .position-clarifier strong{font-size:11px}
+@media(max-width:520px){
+ .draw-page .spread-board.spread-1{padding:10px 70px 180px}
+ .draw-page .spread-board.spread-1 .position-clarifiers{top:92px}
+ .journal-reflection-actions{flex-direction:column;align-items:stretch}
+ .journal-reflection-actions button{width:100%}
+}
+
+/* One-card UAT: let the table grow only when clarifiers are present. */
+.draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:10px}
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="1"]){padding-bottom:125px}
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="2"]){padding-bottom:135px}
+.draw-page .reading-number-thread{border-top:1px solid rgba(210,168,92,.3);margin-top:22px;padding-top:20px}
+.draw-page .reading-number-thread h3{font-size:clamp(21px,2.4vw,28px);color:#eee6d8}
+.draw-page .reading-number-thread p{line-height:1.7}
+
+/* One-card acceptance geometry: the pre-draw and revealed card have the same dimensions.
+   Clarifiers join the same row rather than masking previously drawn artwork. */
+.reading-page .stage-board.spread-1,
+.draw-page .spread-board.spread-1{
+  box-sizing:border-box;width:min(100%,640px);max-width:640px;
+  grid-template-columns:minmax(0,1fr);padding:8px 0 18px;margin:12px auto 24px;
+  overflow:visible;
+}
+.reading-page .stage-board.spread-1 .stage-position,
+.draw-page .spread-board.spread-1 .reading-position{
+  box-sizing:border-box;width:100%;max-width:100%;min-width:0;
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  column-gap:clamp(7px,2vw,22px);row-gap:10px;
+  align-items:start;justify-items:center;overflow:visible;isolation:isolate;
+}
+.reading-page .stage-board.spread-1 .slot-label,
+.draw-page .spread-board.spread-1 .slot-label{grid-column:1/-1;grid-row:1;width:100%;margin:0 0 5px}
+.reading-page .stage-board.spread-1 .stage-card,
+.draw-page .spread-board.spread-1 .reading-card{
+  grid-column:2;grid-row:2;box-sizing:border-box;width:100%;max-width:190px;
+  aspect-ratio:2/3;height:auto;margin:0;min-width:0;z-index:1;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers{
+  display:contents;position:static;width:auto;height:auto;margin:0;padding:0;overflow:visible;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(1),
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(2),
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(3),
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers[data-clarifier-count="1"] .position-clarifier:nth-child(1){
+  position:relative;inset:auto;top:auto;left:auto;width:100%;height:auto;min-width:0;
+  margin:0;transform:none;filter:none;pointer-events:auto;overflow:visible;
+  display:flex;flex-direction:column;align-items:center;gap:7px;aspect-ratio:auto;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(1){grid-column:1;grid-row:2;z-index:2}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(2){grid-column:3;grid-row:2;z-index:2}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier img{
+  display:block;box-sizing:border-box;width:100%;height:auto;aspect-ratio:2/3;
+  object-fit:contain;border:2px solid #d5ad61;border-radius:10px;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier strong{
+  position:static;inset:auto;display:block;width:100%;padding:5px 4px;
+  text-align:center;font-size:clamp(10px,1.5vw,14px);line-height:1.3;
+  background:transparent;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier .clarifier-layer-label{
+  position:static;inset:auto;display:block;order:-1;min-height:1.6em;padding:0;
+  font-size:clamp(9px,1.3vw,12px);background:transparent;color:#d9b979;
+}
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="1"]),
+.draw-page .spread-board.spread-1:has(.position-clarifiers[data-clarifier-count="2"]),
+.draw-page .spread-board.spread-1:not(:has(.position-clarifiers)){padding-bottom:18px}
+@media(max-width:520px){
+  .reading-page .stage-board.spread-1,.draw-page .spread-board.spread-1{padding:8px 0 12px}
+  .reading-page .stage-board.spread-1 .stage-position,
+  .draw-page .spread-board.spread-1 .reading-position{column-gap:6px}
+}
+
+/* v0.91 UAT position + identity contract. */
+.reading-page .stage-board .slot-label,
+.draw-page .spread-board .slot-label{
+ color:#edc979;font-size:clamp(17px,2vw,24px);font-weight:800;
+ line-height:1.3;letter-spacing:.055em;text-transform:uppercase;text-align:center;
+}
+.draw-page .reading-meaning .reading-meaning-head span{
+ font-size:clamp(19px,2.2vw,27px);color:#edc979;font-weight:800;
+}
+.draw-page .reading-card-front strong,
+.draw-page .position-clarifier strong{
+ color:#f2ece2;font-size:clamp(12px,1.4vw,16px);font-weight:650;
+ line-height:1.3;text-align:center;
+}
+.opening-dice-values{min-height:1.45em;transition:transform .12s ease,filter .12s ease}
+.opening-dice-values.is-rolling{animation:resonate-dice-jostle .28s ease-in-out infinite alternate}
+@keyframes resonate-dice-jostle{
+ from{transform:translateY(-3px) rotate(-2deg);filter:brightness(.9)}
+ to{transform:translateY(3px) rotate(2deg);filter:brightness(1.25)}
+}
+@media(prefers-reduced-motion:reduce){
+ .opening-dice-values.is-rolling{animation:none}
+}

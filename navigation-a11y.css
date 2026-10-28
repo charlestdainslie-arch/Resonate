@@ -1,0 +1,18 @@
+/* RESONATE issue #14 — comfortable touch targets (44px, WCAG 2.5.5 / Apple HIG) without changing the visual design.
+   Height is added through padding/min-size only; colours, type and layout are unchanged. */
+.menu-button{width:44px;height:44px;flex:0 0 44px}
+.back-link{min-height:44px;display:inline-flex;align-items:center;gap:6px}
+#clearSearch{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+#clearSearch:empty{visibility:hidden}
+.chip{min-height:44px}
+.orientation-tabs button{min-height:44px}
+.detail-topbar .icon-button{width:44px;height:44px}
+.deck-nav button{min-height:44px}
+[data-reading-detail]{min-height:44px}
+.astro-full-birth summary,.reading-astrology-snapshot summary,details>summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
+.brand-home{min-height:44px}
+/* Visible keyboard focus on the page heading that receives focus after navigation. */
+.page h1[tabindex="-1"]:focus{outline:none}
+.page h1[tabindex="-1"]:focus-visible{outline:2px solid var(--gold,#c9a96a);outline-offset:4px}
+.search-box input{min-height:44px}
+.journal-actions button,.reading-next-step button,#saveReadingJournal,#openJournal,[data-open-reading],[data-save-journal-reflection]{min-height:44px}

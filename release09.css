@@ -85,3 +85,183 @@
   .hero-card-label small{font-size:7px;letter-spacing:.15em;color:#bd9d61}
   .hero-card-label strong{font:400 12px/1.2 Georgia,serif}
 }
+
+/* v0.91 card-display consistency: full portrait art, no edge clipping. */
+@media (min-width:761px){
+  .home-intro .hand-hero{right:19%;width:37%}
+  .home-intro .hero-card-preview{right:3.5%;top:118px;width:clamp(106px,11vw,144px);transform:rotate(0deg);box-sizing:border-box}
+  .home-intro .hero-card-preview img{width:100%;height:auto;aspect-ratio:2/3;object-fit:contain;object-position:center}
+}
+.hero-card-preview img,.reading-card-front img,.detail-card-image img,.card-image-wrap img{
+  object-fit:contain;
+  object-position:center;
+}
+.hero-card-preview{overflow:visible}
+
+/* v0.91 responsive landing composition: use full page width rather than
+   the old 790px hero constraint that pulled everything to the left. */
+@media (min-width: 1100px) {
+  .home-intro{
+    position:relative;
+    width:100%;
+    max-width:none;
+    box-sizing:border-box;
+    min-height:clamp(500px,48vw,620px);
+    padding:58px 57% 58px 0;
+  }
+  .home-intro h1{max-width:500px;font-size:clamp(48px,5vw,72px)}
+  .home-intro>p{max-width:430px}
+  .home-intro .hand-hero{
+    top:48px;right:15%;width:clamp(280px,29%,390px);height:clamp(340px,36vw,460px);
+  }
+  .home-intro .hero-card-preview{
+    top:clamp(132px,14vw,190px);right:2.8%;
+    width:clamp(114px,11.5%,148px);transform:none;
+  }
+}
+@media (min-width: 761px) and (max-width:1099px){
+  .home-intro{position:relative;width:100%;max-width:none;min-height:480px;padding:45px 53% 40px 0;box-sizing:border-box}
+  .home-intro h1{font-size:clamp(40px,5.8vw,62px);max-width:440px}
+  .home-intro .hand-hero{top:65px;right:14%;width:33%;height:345px}
+  .home-intro .hero-card-preview{right:1%;top:160px;width:clamp(88px,11vw,114px);transform:none}
+}
+@media (min-width: 521px) and (max-width:760px){
+  .home-intro{max-width:none;width:100%;padding:30px 0 32px;box-sizing:border-box}
+  .home-intro .hand-hero{width:min(390px,72vw);height:310px;margin:4px auto 20px}
+  .home-intro h1{font-size:clamp(40px,7vw,56px)}
+  .home-intro .hero-card-preview{display:none}
+}
+@media (max-width:520px){
+  .home-intro{width:100%;max-width:none;padding:28px 0 30px;box-sizing:border-box}
+  .home-intro .hand-hero{width:min(330px,84vw);height:260px;margin:0 auto 16px}
+  .home-intro .hero-card-preview{display:none}
+  .home-intro h1{font-size:clamp(36px,10vw,48px);overflow-wrap:normal}
+}
+@media (prefers-reduced-motion: reduce){
+  .hero-card-preview{transition:none}
+}
+
+/* v0.91 hero alignment: centre the two visual groups within the viewport. */
+@media (min-width:1100px){
+  .home-intro{
+    padding-left:clamp(26px,4.2vw,72px);
+    padding-right:55%;
+    min-height:clamp(500px,48vw,620px);
+  }
+  .home-intro h1{max-width:460px;font-size:clamp(46px,4.6vw,68px);line-height:1.04}
+  .home-intro>p{max-width:410px}
+  .home-intro .hand-hero{right:15%;width:clamp(280px,29%,390px)}
+  .home-intro .hero-card-preview{right:3%;width:clamp(114px,11.5%,148px)}
+}
+@media (min-width:761px) and (max-width:1099px){
+  .home-intro{padding-left:clamp(18px,3vw,36px);padding-right:53%}
+  .home-intro h1{font-size:clamp(38px,5.2vw,57px);line-height:1.05}
+}
+@media (max-width:760px){
+  .home-intro{padding-inline:clamp(8px,3vw,20px)}
+}
+
+/* Explicit three-zone desktop composition: TEXT | HAND | FOOL.
+   The hand's visual centre occupies the midpoint of the free space. */
+@media (min-width:1100px){
+ .home-intro{padding-left:clamp(22px,3vw,46px);padding-right:59%}
+ .home-intro h1{font-size:clamp(45px,4.45vw,66px);max-width:460px}
+ .home-intro .hand-hero{
+   right:13.5%;width:clamp(240px,29%,350px);
+   top:50%;height:clamp(350px,37vw,450px);
+   transform:translateY(-50%);
+ }
+ .home-intro .hero-card-preview{
+   right:1.5%;top:50%;transform:translateY(-50%);
+   width:clamp(110px,11%,140px);
+ }
+ .home-intro .hero-card-preview:hover,.home-intro .hero-card-preview:focus-visible{transform:translateY(calc(-50% - 5px)) scale(1.035)}
+}
+@media (min-width:761px) and (max-width:1099px){
+ .home-intro{padding-right:60%}
+ .home-intro .hand-hero{right:12%;width:30%;top:50%;height:340px;transform:translateY(-50%)}
+ .home-intro .hero-card-preview{right:1%;top:50%;transform:translateY(-50%);width:clamp(78px,10%,110px)}
+}
+
+/* v0.91 canonical layout. Stop absolutely positioning the hand and card;
+   each visual owns an actual CSS grid column. */
+@media(min-width:1000px){
+ .page-home .home-intro{
+   display:grid;
+   grid-template-columns:minmax(0, 1.18fr) minmax(0, 1fr) minmax(105px,.37fr);
+   align-items:center;column-gap:clamp(12px,2vw,30px);
+   width:100%;max-width:none;min-height:540px;
+   padding:30px clamp(10px,2vw,26px);
+   box-sizing:border-box;
+ }
+ .page-home .home-intro .home-hero-copy{grid-column:1;grid-row:1;min-width:0;align-self:center}
+ .page-home .home-intro .hand-hero{
+   grid-column:2;grid-row:1;position:relative;inset:auto;
+   top:auto;right:auto;left:auto;bottom:auto;
+   transform:none;width:100%;max-width:390px;height:440px;
+   margin:0 auto;justify-self:center;align-self:center;
+ }
+ .page-home .home-intro .hero-card-preview{
+   grid-column:3;grid-row:1;position:relative;inset:auto;
+   top:auto;right:auto;left:auto;bottom:auto;
+   display:grid;transform:none;width:100%;max-width:145px;
+   margin:0;justify-self:center;align-self:center;
+ }
+ .page-home .home-intro .hero-card-preview:hover,
+ .page-home .home-intro .hero-card-preview:focus-visible{transform:translateY(-5px) scale(1.035)}
+ .page-home .home-intro h1{font-size:clamp(43px,4.5vw,67px);line-height:1.04;max-width:460px}
+}
+@media(min-width:761px) and (max-width:999px){
+ .page-home .home-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;align-items:center;max-width:none;padding:30px 12px;min-height:440px}
+ .page-home .home-intro .home-hero-copy{grid-column:1;grid-row:1}
+ .page-home .home-intro .hand-hero{grid-column:2;grid-row:1;position:relative;inset:auto;transform:none;width:100%;height:350px;margin:0 auto}
+ .page-home .home-intro .hero-card-preview{display:none}
+ .page-home .home-intro h1{font-size:clamp(38px,5vw,54px)}
+}
+@media(max-width:760px){
+ .page-home .home-intro{display:flex;flex-direction:column;max-width:none;width:100%;padding-inline:clamp(8px,3vw,20px)}
+ .page-home .home-intro .home-hero-copy{order:1;width:100%}
+ .page-home .home-intro .hand-hero{order:0;position:relative;inset:auto;transform:none;margin:0 auto 16px}
+ .page-home .home-intro .hero-card-preview{display:none}
+}
+
+/* v0.91 symmetrical optical spacing: dedicated matching gutters.
+   Desktop grid: COPY | GAP | HAND | GAP | FOOL. */
+@media (min-width:1000px){
+ .page-home .home-intro{
+   grid-template-columns:minmax(0,2.7fr) minmax(36px,.7fr) minmax(0,2fr) minmax(36px,.7fr) minmax(110px,1.15fr);
+   column-gap:0;
+   padding-inline:clamp(16px,2.5vw,34px);
+ }
+ .page-home .home-intro .home-hero-copy{grid-column:1;max-width:none}
+ .page-home .home-intro .hand-hero{
+   grid-column:3;width:100%;max-width:350px;
+   justify-self:center;
+ }
+ .page-home .home-intro .hero-card-preview{
+   grid-column:5;width:min(100%,145px);justify-self:start;
+ }
+}
+
+/* Equal-sized landing action buttons at all widths. */
+.page-home .home-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:430px}
+.page-home .home-actions>button{box-sizing:border-box;width:100%;min-width:0;min-height:52px;padding:12px 14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-align:center;line-height:1.2}
+@media(max-width:390px){.page-home .home-actions{grid-template-columns:1fr;max-width:none}}
+
+/* UAT-001: force precisely matched action dimensions despite legacy button styles. */
+.page-home .home-intro .home-actions > button.draw-cta,
+.page-home .home-intro .home-actions > button.ghost-button {
+  box-sizing:border-box;
+  inline-size:100%;
+  block-size:56px;
+  min-block-size:56px;
+  max-block-size:56px;
+  padding:0 12px;
+  margin:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  align-self:center;
+  line-height:1.2;
+  border-radius:999px;
+}

@@ -1,0 +1,69 @@
+/* RESONATE: functional live-astrology reading prelude, no decorative animation. */
+.astro-prelude{box-sizing:border-box;width:min(100%,900px);margin:0 auto 26px;padding:clamp(18px,3vw,28px);
+ border:1px solid rgba(218,180,103,.32);border-radius:16px;background:rgba(14,14,19,.88);color:#eae7e1}
+.astro-prelude>h2{margin:8px 0 12px;font-size:clamp(24px,3vw,34px);line-height:1.25}
+.astro-prelude>p{line-height:1.65;max-width:760px}
+.astro-profile-form{display:block;margin:18px 0}
+.astro-quick-grid,.astro-detail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.astro-profile-form label{display:flex;flex-direction:column;gap:7px;font-weight:600;font-size:14px;color:#e6ca96;min-width:0}
+.astro-profile-form :is(input,select){box-sizing:border-box;min-width:0;width:100%;min-height:45px;padding:10px 12px;
+ border:1px solid rgba(218,180,103,.5);border-radius:8px;background:#15151b;color:#fff;font:inherit}
+.astro-profile-form :is(input,select):focus-visible,.astro-profile-form button:focus-visible,
+.astro-full-birth summary:focus-visible{outline:3px solid #e9c77e;outline-offset:3px}
+.astro-profile-form input::placeholder{color:#a6a09a}
+.astro-full-birth{margin:18px 0 16px;padding:14px;border:1px solid rgba(218,180,103,.28);border-radius:10px}
+.astro-full-birth summary{cursor:pointer;font-weight:700;color:#e4c17b}
+.astro-full-birth p{line-height:1.6}
+.astro-buttons{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.astro-buttons button{min-height:45px;white-space:normal;max-width:100%}
+.astro-snapshot{padding:18px;border:1px solid rgba(218,180,103,.25);border-radius:12px;background:#13131a;overflow-wrap:anywhere}
+.astro-snapshot h3{font-size:clamp(22px,2.6vw,30px);margin:8px 0 14px}
+.astro-snapshot h4{font-size:clamp(18px,2vw,22px);margin:23px 0 8px;color:#efcf92}
+.astro-snapshot p{line-height:1.7}
+.astro-profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.astro-profile-grid>div{border:1px solid rgba(218,180,103,.23);border-radius:9px;padding:12px;min-width:0}
+.astro-profile-grid span{display:block;color:#d6b774;letter-spacing:.075em;font-size:12px;font-weight:700}
+.astro-profile-grid strong{display:block;margin-top:6px;font-size:clamp(14px,1.7vw,17px);line-height:1.45}
+.astro-planet-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;list-style:none;padding:0}
+.astro-planet-grid li{line-height:1.5}
+.astro-planet-grid strong{color:#e8c789}
+.astro-accuracy,.astro-explainer{font-size:13px;line-height:1.65;color:#cbc4b9}
+.astro-accuracy{padding:11px;border-left:3px solid #d8b976;background:rgba(218,180,103,.08)}
+.astro-theme{font-weight:600;color:#f1e2bf}
+.astro-error{padding:10px 14px;border:1px solid #ba785f;border-radius:8px;color:#ffe6da;line-height:1.5}
+.astro-reading-summary{box-sizing:border-box;width:min(100%,850px);padding:16px;margin:20px auto;
+ border:1px solid rgba(218,180,103,.25);border-radius:12px;background:rgba(20,20,24,.9)}
+.astro-draw-caption{display:flex;flex-direction:column;gap:6px;line-height:1.5}
+.astro-draw-caption strong{color:#f0d394}
+.astro-draw-caption p{font-size:13px;margin:3px 0;color:#c4bbb0}
+@media(max-width:590px){
+ .astro-prelude{padding:18px 14px}
+ .astro-quick-grid,.astro-detail-grid,.astro-profile-grid,.astro-planet-grid{grid-template-columns:minmax(0,1fr)}
+ .astro-buttons{flex-direction:column}
+ .astro-buttons button{width:100%}
+}
+
+.astro-reading-summary details{margin-top:12px;text-align:left}
+.astro-reading-summary summary{cursor:pointer;color:#edc979}
+#astroExampleResult:empty{display:none}
+#astroExampleResult:not(:empty){margin-top:18px;border-top:1px solid #d5ad61;padding-top:12px}
+
+/* UAT round 1: field help, calculate feedback, and phone-width select text (D3). */
+.astro-field-help{display:block;margin-top:6px;color:#9a9083;font-size:13px;line-height:1.4;font-weight:400;letter-spacing:0;text-transform:none}
+.astro-status{margin:12px 0 0;color:#edc979;line-height:1.45}
+.astro-status:empty{display:none}
+.astro-profile-form select{max-width:100%;text-overflow:ellipsis}
+
+/* Astrology journey fix: optional by default, problems beside their fields, a clear way on to the cards. */
+.astro-skip-row{margin:4px 0 6px}
+.astro-continue{border-color:rgba(218,180,103,.6);color:#f0d394}
+.astro-field-error{display:block;margin-top:4px;font-size:13px;line-height:1.4;font-weight:400}
+.astro-field-error{color:#ffc9b5}
+.astro-profile-form [aria-invalid="true"]{border-color:#e08b6b;box-shadow:0 0 0 1px #e08b6b}
+.astro-error p{margin:0 0 10px}
+.astro-error button{min-height:45px}
+.astro-gate{box-sizing:border-box;width:min(100%,900px);margin:0 auto 16px;padding:14px 16px;border:1px solid #ba785f;border-radius:12px;background:rgba(40,22,16,.6);color:#ffe6da;line-height:1.5}
+.astro-gate p{margin:0 0 10px}
+.astro-gate .astro-buttons{margin:0}
+.astro-gate[hidden]{display:none}
+@media(max-width:590px){.astro-gate .astro-buttons{flex-direction:column}.astro-gate .astro-buttons button,.astro-error button{width:100%}}
