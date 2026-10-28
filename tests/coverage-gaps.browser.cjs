@@ -145,7 +145,7 @@ const configs = [
 
       // ---------- G3 Reading cards + astrology expander ----------
       await page.evaluate(() => go('reading'));
-      await page.locator('.astro-full-birth summary').waitFor();
+      await page.locator('#astroProfileForm').waitFor();
       await tap(page.getByRole('button', { name: 'Calculate my sky', exact: true }));
       await page.waitForTimeout(300);
       await drawSpread(page, 'three');

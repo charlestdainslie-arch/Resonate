@@ -23,13 +23,13 @@ const run=Number(process.argv[2]||1),results=[];
    });
    if(motion==='reduce')await page.screenshot({path:path.join(out,`run-${run}-home-${width}.png`),fullPage:true});
    await page.locator('.home-actions [data-go="reading"]').click();
-   await check('optional astrology profile, example isolation, DST error and pre-dice snapshot',async()=>{
+   await check('optional astrology profile, example isolation, year error and pre-dice snapshot',async()=>{
     assert.equal(await page.locator('[name="sunSign"]').inputValue(),'');assert.equal(await page.locator('[name="birthYear"]').inputValue(),'');const anonymous=await page.evaluate(()=>JSON.stringify(state.astrologyPrelude));
     await page.locator('#astroDemo').click();assert.equal(await page.evaluate(()=>JSON.stringify(state.astrologyPrelude)),anonymous);assert.equal(await page.locator('[name="sunSign"]').inputValue(),'');
-    await page.locator('.astro-full-birth summary').click();await page.locator('[name="birthDate"]').fill('2024-11-03');await page.locator('[name="birthTime"]').fill('01:30');await page.locator('[name="timeZone"]').fill('America/New_York');await page.getByRole('button',{name:'Calculate my sky',exact:true}).click();assert.match(await page.locator('#astroError').innerText(),/occurs twice/);assert.equal(await page.evaluate(()=>state.astrologyPrelude),null);
-    await page.locator('#astroSkip').click();assert.equal(await page.locator('[name="birthDate"]').inputValue(),'');
-    await page.locator('[name="birthDate"]').fill('1990-07-15');await page.locator('[name="birthTime"]').fill('12:34');await page.locator('[name="timeZone"]').fill('Europe/London');await page.locator('[name="latitude"]').fill('51.5');await page.locator('[name="longitude"]').fill('-0.12');await page.getByRole('button',{name:'Calculate my sky',exact:true}).click();assert.equal(await page.locator('#astroError').isVisible(),false);
-    assert.equal(await page.evaluate(()=>state.astrologyPrelude.natal.sunSign),'Cancer');assert.ok(await page.evaluate(()=>!!state.astrologyPrelude.natal.moon&&!!state.astrologyPrelude.natal.rising));assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+    await page.locator('[name="birthYear"]').fill('19x0');await page.getByRole('button',{name:'Calculate my sky',exact:true}).click();assert.match(await page.locator('#astroMsg-birthYear').innerText(),/four-digit year/);assert.equal(await page.evaluate(()=>state.astrologyPrelude),null);
+    await page.locator('#astroSkip').click();assert.equal(await page.locator('[name="birthYear"]').inputValue(),'');
+    await page.locator('[name="sunSign"]').selectOption('Cancer');await page.locator('[name="birthYear"]').fill('1990');await page.getByRole('button',{name:'Calculate my sky',exact:true}).click();assert.equal(await page.locator('#astroError').isVisible(),false);
+    assert.equal(await page.evaluate(()=>state.astrologyPrelude.natal.sunSign),'Cancer');assert.ok(await page.evaluate(()=>!state.astrologyPrelude.natal.moon&&!state.astrologyPrelude.natal.rising));assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
    });
    const expectedAstrology=await page.evaluate(()=>JSON.parse(JSON.stringify(state.astrologyPrelude)));
    await check('dice finish as two 0–9 digits, optional and reduced-motion aware',async()=>{await page.locator('#rollOpeningDice').click();await page.waitForFunction(()=>document.getElementById('rollOpeningDice').disabled===false);assert.match(await page.locator('#openingDiceValues').innerText(),/^\d · \d$/);assert.ok((await page.locator('#openingDiceMeaning').innerText()).includes('symbolic numerology'));});
