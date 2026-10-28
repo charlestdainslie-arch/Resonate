@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#09090b">
+<meta name="robots" content="noindex">
+<title>RESONATE Team Hub</title>
+<style>
+:root{--bg:#09090b;--panel:#121214;--line:rgba(201,169,106,.22);--gold:#d9b979;--gold-hi:#f0d79c;--text:#ece6da;--dim:#9a938a;
+  --chas:#e0b860;--claude:#c9a3ff;--si:#7fd1a8;--deep:#e39a6a;--sys:#8a857e}
+*{box-sizing:border-box}html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:15px/1.5 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+button,textarea,input{font:inherit;color:inherit}
+a{color:var(--gold-hi)}
+.app{display:flex;flex-direction:column;height:100dvh;max-width:820px;margin:0 auto}
+header{display:flex;align-items:center;gap:10px;padding:max(10px,env(safe-area-inset-top)) 16px 10px;border-bottom:1px solid var(--line)}
+.brand{font-family:Georgia,serif;letter-spacing:.2em;color:var(--gold);font-size:13px;white-space:nowrap}
+.brand small{display:block;letter-spacing:.14em;color:var(--dim);font-family:inherit;font-size:10px}
+.pill{margin-left:auto;min-height:36px;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:12px;color:var(--gold-hi);background:#16140f;white-space:nowrap;cursor:pointer}
+.pill.warn{border-color:#d9793f;color:#ffb48a}
+nav{display:flex;gap:6px;padding:8px 16px;border-bottom:1px solid var(--line)}
+nav button{flex:1;min-height:40px;border:1px solid var(--line);background:transparent;border-radius:10px;color:var(--dim);cursor:pointer}
+nav button[aria-selected=true]{color:var(--gold-hi);border-color:var(--gold);background:#17150f}
+main{flex:1;overflow:auto;padding:14px 16px}
+.msg{display:flex;gap:10px;margin:0 0 14px}
+.av{flex:0 0 32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:12px;color:#09090b}
+.bubble{flex:1;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:9px 12px}
+.who{font-size:12px;letter-spacing:.06em;font-weight:600;display:flex;gap:8px;align-items:baseline}
+.who time,.who .cost{color:var(--dim);font-weight:400;letter-spacing:0}
+.who .cost{margin-left:auto}
+.body{margin-top:4px;overflow-wrap:anywhere}
+.body code{background:#1f1d18;padding:1px 5px;border-radius:5px;font-size:13px}
+.body a{color:var(--gold-hi)}
+.msg.chas .bubble{background:#17140c;border-color:rgba(224,184,96,.35)}
+.msg.system{justify-content:center}
+.msg.system .bubble{flex:0 1 auto;background:transparent;border-style:dashed;color:var(--sys);font-size:13px;text-align:center}
+.thinking{color:var(--dim);font-size:13px;padding:0 0 12px 42px;min-height:20px}
+.thinking span{animation:blink 1.2s infinite}@keyframes blink{50%{opacity:.3}}
+@media(prefers-reduced-motion:reduce){.thinking span{animation:none}}
+.composer{border-top:1px solid var(--line);padding:10px 16px max(12px,env(safe-area-inset-bottom));background:#0c0c0e}
+.to{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;align-items:center}
+.to span{font-size:12px;color:var(--dim);margin-right:2px}
+.chip{min-height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--dim);cursor:pointer;font-size:13px}
+.chip[aria-pressed=true]{color:#09090b;background:var(--gold);border-color:var(--gold)}
+.row{display:flex;gap:8px;align-items:flex-end}
+textarea{flex:1;resize:none;min-height:44px;max-height:160px;padding:11px 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+textarea:focus,input:focus{outline:2px solid var(--gold);outline-offset:1px}
+.btn{min-height:44px;min-width:44px;padding:0 16px;border-radius:12px;border:1px solid var(--gold);background:var(--gold);color:#09090b;font-weight:700;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--gold-hi)}
+.btn.stop{background:#3a1d12;border-color:#d9793f;color:#ffb48a}
+.btn:disabled{opacity:.5;cursor:default}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.card h2{font-family:Georgia,serif;font-weight:400;font-size:20px;margin:0 0 8px;color:var(--gold-hi)}
+.card p{color:var(--dim);margin:6px 0}
+.meter{height:10px;border-radius:6px;background:#1f1d18;overflow:hidden;margin:6px 0 2px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-hi))}
+.meter.warn i{background:linear-gradient(90deg,#d9793f,#ffb48a)}
+table{width:100%;border-collapse:collapse;font-size:13px}td,th{text-align:left;padding:6px 4px;border-bottom:1px solid #1f1d18}th{color:var(--dim);font-weight:500}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.ok{color:#7fd1a8}.no{color:#ffb48a}
+.center{max-width:420px;margin:12vh auto;padding:0 16px}
+.center input{width:100%;min-height:46px;padding:0 12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);margin:12px 0}
+.err{color:#ffb48a;min-height:22px}
+.hidden{display:none!important}
+ol.setup li{margin:6px 0;color:var(--text)}ol.setup .done{color:#7fd1a8}
+</style>
+</head>
+<body>
+<div id="gate" class="center hidden">
+  <div class="brand" style="font-size:16px">RESONATE<small>TEAM HUB</small></div>
+  <div id="setup" class="card hidden" style="margin-top:20px"><h2>Almost ready</h2><p>Set these in Vercel → project <b>resonate-hub</b> → Settings → Environment Variables, then redeploy:</p><ol class="setup" id="setupList"></ol></div>
+  <form id="login" class="hidden" style="margin-top:20px">
+    <label for="pass">Passcode</label>
+    <input id="pass" type="password" autocomplete="current-password" required>
+    <button class="btn" style="width:100%">Enter the hub</button>
+    <p class="err" id="loginErr" role="alert"></p>
+  </form>
+</div>
+
+<div id="app" class="app hidden">
+  <header>
+    <div class="brand">RESONATE<small>TEAM HUB</small></div>
+    <button class="pill" id="spendPill" title="Open the cost monitor">Today $0.00</button>
+  </header>
+  <nav role="tablist">
+    <button role="tab" aria-selected="true" data-tab="chat">Chat</button>
+    <button role="tab" aria-selected="false" data-tab="monitor">Cost monitor</button>
+    <button role="tab" aria-selected="false" data-tab="notes">Team notes</button>
+  </nav>
+  <main id="chat" aria-live="polite"></main>
+  <main id="monitor" class="hidden"></main>
+  <main id="notes" class="hidden">
+    <div class="card"><h2>Team notes</h2><p>Every agent reads this before replying. Keep the current state, priorities and decisions here, so nobody has to guess.</p>
+      <textarea id="notesText" rows="14" style="width:100%;margin-top:8px"></textarea>
+      <div class="row" style="margin-top:8px"><button class="btn" id="saveNotes">Save notes</button><span id="notesMsg" style="color:var(--dim);font-size:13px"></span></div>
+    </div>
+  </main>
+  <div class="thinking" id="thinking"></div>
+  <form class="composer" id="composer">
+    <div class="to" role="group" aria-label="Who should reply"><span>To:</span>
+      <button type="button" class="chip" data-to="all" aria-pressed="true">All</button>
+      <button type="button" class="chip" data-to="si-aye" aria-pressed="false">Si Aye</button>
+      <button type="button" class="chip" data-to="claude" aria-pressed="false">Claude</button>
+      <button type="button" class="chip" data-to="deep" aria-pressed="false">Deep</button>
+    </div>
+    <div class="row">
+      <textarea id="text" rows="1" placeholder="Message the team. Start with CHAS: for a direction, or STOP to pause everyone." aria-label="Message"></textarea>
+      <button class="btn stop hidden" type="button" id="stop">Stop</button>
+      <button class="btn" id="send">Send</button>
+    </div>
+  </form>
+</div>
+
+<script>
+'use strict';
+const $ = s => document.querySelector(s);
+const PEOPLE = { chas: ['Chas', 'C', 'var(--chas)'], claude: ['Claude', 'Cl', 'var(--claude)'], 'si-aye': ['Si Aye', 'SA', 'var(--si)'], deep: ['Deep', 'D', 'var(--deep)'], system: ['Hub', '·', 'var(--sys)'] };
+let last = 0, driving = false, pollTimer = null, st = null;
+
+async function api(path, opts = {}) {
+  const res = await fetch('/api/' + path, { ...opts, headers: { 'Content-Type': 'application/json', 'x-hub': '1', ...(opts.headers || {}) } });
+  const j = await res.json().catch(() => ({}));
+  if (!res.ok) throw Object.assign(new Error(j.error || 'Error ' + res.status), { status: res.status, setup: j.setup });
+  return j;
+}
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
+function md(t) {
+  return esc(t).replace(/`([^`\n]+)`/g, '<code>$1</code>').replace(/\*\*([^*\n]+)\*\*/g, '<b>$1</b>')
+    .replace(/(https?:\/\/[^\s<)]+)/g, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>').replace(/\n/g, '<br>');
+}
+const money = n => { n = Number(n) || 0; return '$' + n.toFixed(n > 0 && n < 0.01 ? 4 : n > 0 && n < 0.1 ? 3 : 2); };
+
+function render(m) {
+  const [name, init, colour] = PEOPLE[m.from] || [m.from, '?', 'var(--dim)'];
+  const el = document.createElement('div');
+  el.className = 'msg ' + (m.from === 'chas' ? 'chas' : m.from === 'system' ? 'system' : 'agent');
+  const time = new Date(m.at).toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  el.innerHTML = m.from === 'system' ? `<div class="bubble">${md(m.text)}</div>` :
+    `<div class="av" style="background:${colour}" aria-hidden="true">${init}</div><div class="bubble"><div class="who"><span style="color:${colour}">${name}</span><time>${time}</time>${m.usd != null ? `<span class="cost" title="Estimated cost of this reply">${money(m.usd)}</span>` : ''}</div><div class="body">${md(m.text)}</div></div>`;
+  return el;
+}
+function showState(s) {
+  if (!s) return; st = s;
+  const pill = $('#spendPill');
+  pill.textContent = `Today ${money(s.spend.today)} / ${money(s.spend.dailyCap)}`;
+  pill.classList.toggle('warn', s.spend.today >= s.spend.dailyCap * 0.8 || s.spend.month >= s.spend.monthlyCap * 0.8);
+  const next = s.queue && s.queue[0];
+  $('#thinking').innerHTML = !s.paused && next ? `${esc(PEOPLE[next]?.[0] || next)} is replying<span>…</span>` : '';
+  $('#stop').classList.toggle('hidden', !(s.queue && s.queue.length) || !!s.paused);
+}
+async function poll() {
+  try {
+    const j = await api('messages?after=' + last);
+    const box = $('#chat'), atBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 80;
+    j.messages.forEach(m => { box.appendChild(render(m)); last = Math.max(last, m.id); });
+    if (j.messages.length && atBottom) box.scrollTop = box.scrollHeight;
+    showState(j.state);
+    if (j.state.queue.length && !j.state.paused) drive();
+  } catch (e) { if (e.status === 401) return boot(); }
+}
+// Any open page may run the queue; the server lock keeps it to one reply at a time.
+async function drive() {
+  if (driving) return; driving = true;
+  try {
+    for (let i = 0; i < 20; i++) {
+      const r = await api('turn', { method: 'POST' });
+      showState(r.state); await poll();
+      if (r.busy) { await new Promise(r => setTimeout(r, 1500)); continue; }
+      if (!r.pending) break;
+    }
+  } catch (e) { /* the next poll retries */ } finally { driving = false; }
+}
+
+$('#composer').addEventListener('submit', async e => {
+  e.preventDefault();
+  const text = $('#text').value.trim(); if (!text) return;
+  const picked = [...document.querySelectorAll('.chip[aria-pressed=true]')].map(b => b.dataset.to);
+  $('#send').disabled = true;
+  try { const r = await api('messages', { method: 'POST', body: JSON.stringify({ text, to: picked.includes('all') ? [] : picked }) }); $('#text').value = ''; grow(); showState(r.state); await poll(); drive(); }
+  catch (err) { alert(err.message); } finally { $('#send').disabled = false; }
+});
+$('#text').addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey && matchMedia('(pointer:fine)').matches) { e.preventDefault(); $('#composer').requestSubmit(); } });
+function grow() { const t = $('#text'); t.style.height = 'auto'; t.style.height = Math.min(160, t.scrollHeight) + 'px'; }
+$('#text').addEventListener('input', grow);
+document.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => {
+  const all = b.dataset.to === 'all';
+  if (all) document.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', String(c === b)));
+  else { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); document.querySelector('.chip[data-to=all]').setAttribute('aria-pressed', 'false'); }
+  if (![...document.querySelectorAll('.chip')].some(c => c.getAttribute('aria-pressed') === 'true')) document.querySelector('.chip[data-to=all]').setAttribute('aria-pressed', 'true');
+}));
+$('#stop').addEventListener('click', async () => { await api('messages', { method: 'POST', body: JSON.stringify({ text: 'STOP' }) }); poll(); });
+
+function tab(name) {
+  document.querySelectorAll('nav button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === name)));
+  ['chat', 'monitor', 'notes'].forEach(id => $('#' + id).classList.toggle('hidden', id !== name));
+  $('#composer').classList.toggle('hidden', name !== 'chat'); $('#thinking').classList.toggle('hidden', name !== 'chat');
+  if (name === 'monitor') loadMonitor();
+  if (name === 'notes') api('notes').then(j => { $('#notesText').value = j.notes; });
+}
+document.querySelectorAll('nav button').forEach(b => b.addEventListener('click', () => tab(b.dataset.tab)));
+$('#spendPill').addEventListener('click', () => tab('monitor'));
+$('#saveNotes').addEventListener('click', async () => { await api('notes', { method: 'POST', body: JSON.stringify({ notes: $('#notesText').value }) }); $('#notesMsg').textContent = 'Saved. Agents will read it from their next reply.'; });
+
+const BILLING = { anthropic: ['Anthropic', 'https://console.anthropic.com/settings/billing'], openai: ['OpenAI', 'https://platform.openai.com/usage'], deepseek: ['DeepSeek', 'https://platform.deepseek.com/usage'] };
+function meter(v, cap) { const pct = Math.min(100, cap ? v / cap * 100 : 0); return `<div class="meter ${pct >= 80 ? 'warn' : ''}"><i style="width:${pct}%"></i></div>`; }
+async function loadMonitor() {
+  const m = await api('monitor');
+  const t = m.today, mo = m.thisMonth;
+  const provRows = Object.keys(BILLING).map(p => `<tr><td>${BILLING[p][0]}</td><td class="num">${money(t[p])}</td><td class="num">${money(mo[p])}</td><td><a href="${BILLING[p][1]}" target="_blank" rel="noopener noreferrer">real bill ↗</a></td></tr>`).join('');
+  const agents = Object.values(m.agents).map(a => `<tr><td>${esc(a.name)}</td><td>${esc(a.provider)}</td><td><code>${esc(a.model)}</code></td><td class="${a.keySet ? 'ok' : 'no'}">${a.keySet ? 'key set' : 'no key'}</td></tr>`).join('');
+  const calls = m.calls.map(c => `<tr><td>${new Date(c.at).toLocaleString([], { day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit' })}</td><td>${esc(c.agent)}</td><td class="num">${c.inTok}+${c.outTok}</td><td class="num">${money(c.usd)}</td></tr>`).join('') || '<tr><td colspan="4">No calls yet.</td></tr>';
+  $('#monitor').innerHTML = `
+    <div class="card"><h2>Today (${esc(m.day)})</h2><p><b style="color:var(--text)">${money(t.total)}</b> of the ${money(m.dailyCap)} daily cap</p>${meter(t.total || 0, m.dailyCap)}
+      <h2 style="margin-top:14px">This month</h2><p><b style="color:var(--text)">${money(mo.total)}</b> of the ${money(m.monthlyCap)} monthly cap</p>${meter(mo.total || 0, m.monthlyCap)}
+      <p>When a cap is reached, the hub pauses <b>before</b> making the next call. Caps reset at midnight ${esc(m.timezone)} / the 1st of the month. Change them in Vercel: <code>DAILY_CAP_USD</code>, <code>MONTHLY_CAP_USD</code>.</p></div>
+    <div class="card"><h2>By provider</h2><table><tr><th>Provider</th><th class="num">Today</th><th class="num">Month</th><th></th></tr>${provRows}</table>
+      <p>These are estimates from token counts × list prices. Each provider's own billing page is the real bill; set a spending limit there too.</p></div>
+    <div class="card"><h2>Team</h2><table><tr><th>Who</th><th>Provider</th><th>Model</th><th>Key</th></tr>${agents}</table><p>Up to ${m.autonomy} agent-to-agent replies per message from Chas, then they wait for him.</p></div>
+    <div class="card"><h2>Recent replies</h2><table><tr><th>When</th><th>Who</th><th class="num">Tokens</th><th class="num">Est.</th></tr>${calls}</table></div>`;
+}
+
+async function boot() {
+  clearInterval(pollTimer);
+  const s = await fetch('/api/status').then(r => r.json()).catch(() => ({}));
+  if (s.signedIn && s.storage) {
+    $('#gate').classList.add('hidden'); $('#app').classList.remove('hidden');
+    await poll(); $('#chat').scrollTop = $('#chat').scrollHeight;
+    pollTimer = setInterval(() => { if (!document.hidden) poll(); }, 2500);
+    return;
+  }
+  $('#app').classList.add('hidden'); $('#gate').classList.remove('hidden');
+  const needs = [];
+  if (!s.passcodeSet) needs.push('<b>HUB_PASSCODE</b>: a passcode you choose, to sign in to the hub');
+  if (!s.storage) needs.push('<b>Storage</b>: Vercel → Storage → Create → Upstash Redis (free plan) → connect to resonate-hub');
+  $('#setup').classList.toggle('hidden', !needs.length); $('#setupList').innerHTML = needs.map(n => `<li>${n}</li>`).join('');
+  $('#login').classList.toggle('hidden', !s.passcodeSet);
+}
+$('#login').addEventListener('submit', async e => {
+  e.preventDefault(); $('#loginErr').textContent = '';
+  try { await api('login', { method: 'POST', body: JSON.stringify({ passcode: $('#pass').value }) }); $('#pass').value = ''; boot(); }
+  catch (err) { $('#loginErr').textContent = err.message; }
+});
+boot();
+</script>
+</body>
+</html>

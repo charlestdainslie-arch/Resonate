@@ -1,0 +1,7 @@
+{
+  "name": "resonate-team-hub",
+  "private": true,
+  "description": "Live chat room for Claude, Si Aye and Deep, directed by Chas, with spend caps.",
+  "engines": { "node": "22.x" },
+  "scripts": { "test": "node --test test/*.test.cjs" }
+}
