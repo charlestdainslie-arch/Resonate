@@ -1,0 +1,39 @@
+/* Spread parity (PR #26 acceptance, 28 Oct): carry the one-card fixes to Three, Relationship, Seven V and Celtic Cross
+   without changing any spread's shape. Loaded last. */
+
+/* Position labels: a word is never split (e.g. "18–24", "SURROUNDING"); lines break only between words. */
+.slot-label .slot-word{white-space:nowrap}
+
+/* One-card fix: the original is captioned "ORIGINAL CARD" above its title, in the same face as the clarifier captions. */
+.draw-page .spread-board:not(.spread-1) .reading-card{margin-bottom:84px}
+.draw-page .spread-board:not(.spread-1) .reading-card-front::after{
+  content:'ORIGINAL CARD';position:absolute;top:calc(100% + 6px);left:0;width:100%;
+  font:10px/1.4 Arial,sans-serif;letter-spacing:.04em;color:#d9b979;text-align:center;white-space:nowrap
+}
+.draw-page .spread-board:not(.spread-1) .reading-card-front strong{top:calc(100% + 26px)}
+
+/* One-card fix: "CLARIFIER 1/2" stay on one line and are never clipped. */
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier .clarifier-layer-label{white-space:nowrap;letter-spacing:.02em;text-align:center}
+
+/* Seven-card V: inside the 900px page its seven columns left clarifier art 55px wide. From 1200px the V widens
+   past the page column (up to 1240px) so clarifiers stay legible; the V shape itself is unchanged.
+   Between 1101 and 1199px there is not enough room for a legible V, so it uses the same three-column
+   reading order as tablet widths. Applied to the face-down table and the reading so both match. */
+@media(min-width:1200px){
+ .draw-page .spread-board.layout-seven,
+ .reading-stage-page .stage-board.layout-seven{
+  --seven-width:min(1240px,calc(100vw - 48px));
+  width:var(--seven-width);max-width:none;margin-left:calc((100% - var(--seven-width)) / 2);margin-right:0
+ }
+ .draw-page .spread-board.layout-seven .reading-card,
+ .reading-stage-page .stage-board.layout-seven .stage-card{max-width:190px}
+}
+@media(min-width:1101px) and (max-width:1199px){
+ .draw-page .spread-board.layout-seven:not(.spread-1),
+ .reading-stage-page .stage-board.layout-seven:not(.spread-1){grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto;min-width:0;max-width:100%;gap:28px 18px}
+ .draw-page .spread-board.layout-seven:not(.spread-1) .reading-position:nth-child(n),
+ .reading-stage-page .stage-board.layout-seven:not(.spread-1) .reading-position:nth-child(n){grid-area:auto;margin:0;justify-self:stretch}
+}
+
+/* Celtic Cross: separate each row's clarifier titles from the next row's position labels. */
+@media(min-width:1101px){.draw-page .spread-board.layout-celtic{row-gap:30px}}
