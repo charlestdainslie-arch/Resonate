@@ -37,3 +37,28 @@
 
 /* Celtic Cross: separate each row's clarifier titles from the next row's position labels. */
 @media(min-width:1101px){.draw-page .spread-board.layout-celtic{row-gap:30px}}
+
+/* Clarifier slots (Chas, 28 Oct UAT): once the first clarifier is drawn, the second slot waits face down
+   beside it at the same size, and the second clarifier turns over in that slot. Nothing resizes or moves. */
+.draw-page .position-clarifier-slot{display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0;box-sizing:border-box}
+.draw-page .clarifier-back{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%;
+  width:100%;aspect-ratio:2/3;box-sizing:border-box;border:2px solid rgba(213,173,97,.55);border-radius:10px;
+  background:radial-gradient(circle at 50% 38%,rgba(201,169,106,.13),transparent 40%),linear-gradient(145deg,#19181a,#09090b)}
+.draw-page .clarifier-back .back-mark{width:42%;height:auto;aspect-ratio:1;font-size:clamp(12px,2vw,20px)}
+.draw-page .clarifier-back small{font-size:clamp(5px,.8vw,8px);letter-spacing:.18em;color:#756e64}
+.draw-page .position-clarifier-slot .clarifier-layer-label{order:1;display:block;font:10px/1.4 Arial,sans-serif;color:#edc979;white-space:nowrap;letter-spacing:.02em;text-align:center}
+.draw-page .position-clarifier-slot strong{order:2;font:650 12px/1.35 Arial,sans-serif;color:#9a9083;text-align:center}
+/* Every spread except One-card: the slot shares the row with clarifier 1, half each. */
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifier-slot{flex:1 1 0;width:0}
+/* One-card: clarifier 2's column, to the right of the original. */
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier-slot{grid-column:3;grid-row:2;width:100%;gap:7px;z-index:2}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier-slot .clarifier-layer-label{font-size:var(--reading-label-size);line-height:1.6}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier-slot strong{font-size:clamp(12px,1.4vw,16px);padding:0 3px}
+/* The turn: the back folds away and the clarifier's face folds in, in the same place. */
+.draw-page .position-clarifier.clarifier-turn{position:relative;perspective:700px}
+.draw-page .clarifier-turn .clarifier-back-cover{position:absolute;top:0;left:0;z-index:1;pointer-events:none;
+  transform-origin:50% 50%;animation:clarifier-fold-away .38s ease-in forwards}
+.draw-page .clarifier-turn img{animation:clarifier-fold-in .76s ease-out both}
+@keyframes clarifier-fold-away{to{transform:rotateY(90deg);visibility:hidden}}
+@keyframes clarifier-fold-in{0%,50%{transform:rotateY(-90deg)}100%{transform:none}}
+@media(prefers-reduced-motion:reduce){.draw-page .clarifier-turn .clarifier-back-cover{display:none}.draw-page .clarifier-turn img{animation:none}}
