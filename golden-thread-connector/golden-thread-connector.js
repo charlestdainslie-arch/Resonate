@@ -596,7 +596,10 @@
     this._loop = 0;
     if (!this._mounted || this._destroyed || !this._ctx || !this._container) return;
     var self = this;
-    var dt = this._lastTick ? Math.min(0.05, (now - this._lastTick) / 1000) : 1 / 60;
+    // Real elapsed time keeps the flight on schedule when frames are slow; the particle
+    // physics uses a capped step so sparks never jump.
+    var realDt = this._lastTick ? Math.min(0.25, (now - this._lastTick) / 1000) : 1 / 60;
+    var dt = Math.min(0.05, realDt);
     this._lastTick = now;
 
     var rect = this._container.getBoundingClientRect();
@@ -673,7 +676,7 @@
       return true;
     });
 
-    if (this._travel) this._drawTravel(ctx, dt);
+    if (this._travel) this._drawTravel(ctx, realDt);
 
     if (this._nodes.size || this._sparks.length || this._travel) this._loop = requestAnimationFrame(this._tick);
   };
