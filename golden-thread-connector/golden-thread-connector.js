@@ -45,6 +45,8 @@
     reducedMotion: '(prefers-reduced-motion: reduce)',
     duration: 1100,
     sag: 0.3,
+    // Deep, Task 3 B: which element a card's loop is drawn round. Default: the tagged element.
+    ringTarget: function (el) { return el; },
     forceReducedMotion: false
   });
 
@@ -685,7 +687,8 @@
 
   // A rounded loop just outside the card, starting and ending at its top centre, clockwise.
   GoldenThreadConnector.prototype._ringPath = function (el, base) {
-    var r = el.getBoundingClientRect();
+    var ringEl = (this.options.ringTarget && this.options.ringTarget(el)) || el;
+    var r = ringEl.getBoundingClientRect();
     var m = 5;
     var L = r.left - base.left - m, T = r.top - base.top - m;
     var R = r.right - base.left + m, B = r.bottom - base.top + m;
