@@ -542,6 +542,68 @@ function serve() {
     if (r.travel) throw new Error('flight started in reduced motion');
   });
 
+  // ---- One geometry for flight and loop (Si Aye review, 29 Oct) ----
+
+  await test('26. reveal(): flight lands on the loop box and the loop starts right there (ringTarget inset)', async () => {
+    const r = await page.evaluate(async () => {
+      const d = window.__gtcDemo;
+      const c = d.connector;
+      d.reset(); d.mount();
+      c.options.forceReducedMotion = false;
+      // A loop box inset from the card, like a card picture inside its frame.
+      c.options.ringTarget = (el) => ({ getBoundingClientRect() {
+        const b = el.getBoundingClientRect();
+        return { left: b.left + 12, top: b.top + 24, right: b.right - 12, bottom: b.bottom - 24, width: b.width - 24, height: b.height - 48 };
+      } });
+      const p = c.reveal({ type: 'main', positionIndex: 0 }, () => d.revealMain(0));
+      await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
+      const tr = c._travel;
+      const base = document.getElementById('gtcDemo').getBoundingClientRect();
+      const card = document.querySelector('[data-gtc-main-card="0"]').getBoundingClientRect();
+      const at = (len) => tr.pts.reduce((best, q) => (Math.abs(q.d - len) < Math.abs(best.d - len) ? q : best));
+      const out = { to: tr.to, side: tr.side, arrive: at(tr.flyLen), step: at(tr.flyLen + 5),
+        boxTop: card.top + 24 - base.top, boxCx: card.left + card.width / 2 - base.left };
+      await p;
+      c.options.ringTarget = (el) => el;
+      return out;
+    });
+    const near = (a, b) => Math.abs(a - b) <= 2;
+    if (r.side !== 'top') throw new Error('first card should be reached from above, got ' + r.side);
+    if (!near(r.to.y, r.boxTop) || !near(r.to.x, r.boxCx)) throw new Error(`flight target (${r.to.x.toFixed(1)},${r.to.y.toFixed(1)}) is not the loop box top-centre (${r.boxCx.toFixed(1)},${r.boxTop.toFixed(1)})`);
+    if (!near(r.arrive.x, r.to.x) || !near(r.arrive.y, r.to.y)) throw new Error('flight does not end at its target');
+    if (!near(r.step.x, r.to.x) || !near(r.step.y, r.to.y - 5)) throw new Error('loop does not start 5 px out from the arrival point');
+  });
+
+  await test('27. edges:nearest: side-by-side cards join edge to edge, flight arrives on the facing side', async () => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+    const r = await page.evaluate(async () => {
+      const d = window.__gtcDemo;
+      const c = d.connector;
+      d.reset(); d.mount();
+      c.options.edges = 'nearest';
+      c.options.forceReducedMotion = true;
+      d.revealMain(0);
+      c.options.forceReducedMotion = false;
+      const p = c.reveal({ type: 'main', positionIndex: 1 }, () => d.revealMain(1));
+      await new Promise((res) => requestAnimationFrame(() => requestAnimationFrame(res)));
+      const side = c._travel && c._travel.side;
+      await p;
+      await new Promise((res) => setTimeout(res, 150));
+      const g = document.querySelector('[data-gtc-key="main:0:next:1"]');
+      const base = document.getElementById('gtcDemo').getBoundingClientRect();
+      const a = document.querySelector('[data-gtc-main-card="0"]').getBoundingClientRect();
+      const b = document.querySelector('[data-gtc-main-card="1"]').getBoundingClientRect();
+      const out = { side, fromX: g && +g.getAttribute('data-gtc-from-x'), toX: g && +g.getAttribute('data-gtc-to-x'),
+        aRight: a.right - base.left, bLeft: b.left - base.left, sideBySide: b.left >= a.right };
+      c.options.edges = 'top';
+      return out;
+    });
+    await page.setViewportSize({ width: 390, height: 844 });
+    if (!r.sideBySide) throw new Error('precondition: demo cards not side by side at 1280 px');
+    if (r.side !== 'left') throw new Error('flight should arrive on the left side, got ' + r.side);
+    if (Math.abs(r.fromX - r.aRight) > 2 || Math.abs(r.toX - r.bLeft) > 2) throw new Error(`strand ${r.fromX}->${r.toX} should run ${r.aRight}->${r.bLeft}`);
+  });
+
   // ---- Report ----
 
   await browser.close();

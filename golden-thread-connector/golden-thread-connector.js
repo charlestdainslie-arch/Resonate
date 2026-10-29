@@ -47,6 +47,10 @@
     sag: 0.3,
     // Deep, Task 3 B: which element a card's loop is drawn round. Default: the tagged element.
     ringTarget: function (el) { return el; },
+    // 'top' (default): strands leave a card's bottom and arrive at the next card's top.
+    // 'nearest': strands join the facing edges, so cards side by side link side to side
+    // and no strand crosses a card picture (live reading, one-card spread).
+    edges: 'top',
     forceReducedMotion: false
   });
 
@@ -685,22 +689,64 @@
 
   // ---- Tinkerbell reveal -------------------------------------------------------------------------
 
-  // A rounded loop just outside the card, starting and ending at its top centre, clockwise.
-  GoldenThreadConnector.prototype._ringPath = function (el, base) {
+  var RING_MARGIN = 5;
+
+  // The box a card's loop is drawn round (its picture, when the page gives a ringTarget).
+  GoldenThreadConnector.prototype._ringRect = function (el) {
     var ringEl = (this.options.ringTarget && this.options.ringTarget(el)) || el;
-    var r = ringEl.getBoundingClientRect();
-    var m = 5;
+    return ringEl.getBoundingClientRect();
+  };
+
+  // Mid-point of one edge of a box, in container coordinates.
+  function edgePoint(r, base, side) {
+    var cx = r.left - base.left + r.width / 2, cy = r.top - base.top + r.height / 2;
+    if (side === 'top') return { x: cx, y: r.top - base.top };
+    if (side === 'bottom') return { x: cx, y: r.bottom - base.top };
+    if (side === 'left') return { x: r.left - base.left, y: cy };
+    return { x: r.right - base.left, y: cy };
+  }
+
+  // Where a strand from one card to another leaves and arrives, and which side of the
+  // target it arrives on. Both ends use the loop boxes, so strands meet the loops.
+  GoldenThreadConnector.prototype._link = function (fromEl, toEl, base) {
+    var a = this._ringRect(fromEl), b = this._ringRect(toEl);
+    if (this.options.edges === 'nearest') {
+      var overlap = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      var sideBySide = overlap > 0.3 * Math.min(a.height, b.height) && (b.left >= a.right - 2 || b.right <= a.left + 2);
+      if (sideBySide) {
+        var toRight = b.left >= a.right - 2;
+        return { from: edgePoint(a, base, toRight ? 'right' : 'left'), to: edgePoint(b, base, toRight ? 'left' : 'right'), side: toRight ? 'left' : 'right' };
+      }
+      if (b.top + b.height / 2 < a.top + a.height / 2) {
+        return { from: edgePoint(a, base, 'top'), to: edgePoint(b, base, 'bottom'), side: 'bottom' };
+      }
+    }
+    return { from: edgePoint(a, base, 'bottom'), to: edgePoint(b, base, 'top'), side: 'top' };
+  };
+
+  // A rounded loop just outside the card's loop box, clockwise, starting and ending at the
+  // middle of the given side (default top), where the thread arrives.
+  GoldenThreadConnector.prototype._ringPath = function (el, base, side) {
+    var r = this._ringRect(el);
+    var m = RING_MARGIN;
     var L = r.left - base.left - m, T = r.top - base.top - m;
     var R = r.right - base.left + m, B = r.bottom - base.top + m;
-    var cx = (L + R) / 2;
+    var cx = (L + R) / 2, cy = (T + B) / 2;
     var k = Math.min(12, (R - L) / 4, (B - T) / 4);
     var f = function (n) { return n.toFixed(2); };
-    return 'M ' + f(cx) + ' ' + f(T) +
-      ' H ' + f(R - k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(R) + ' ' + f(T + k) +
-      ' V ' + f(B - k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(R - k) + ' ' + f(B) +
-      ' H ' + f(L + k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(L) + ' ' + f(B - k) +
-      ' V ' + f(T + k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(L + k) + ' ' + f(T) +
-      ' H ' + f(cx);
+    var arc = function (x, y) { return ' A ' + k + ' ' + k + ' 0 0 1 ' + f(x) + ' ' + f(y); };
+    var order = ['top', 'right', 'bottom', 'left'];
+    var start = { top: [cx, T], right: [R, cy], bottom: [cx, B], left: [L, cy] };
+    var leg = {
+      top: ' H ' + f(R - k) + arc(R, T + k) + ' V ' + f(cy),
+      right: ' V ' + f(B - k) + arc(R - k, B) + ' H ' + f(cx),
+      bottom: ' H ' + f(L + k) + arc(L, B - k) + ' V ' + f(cy),
+      left: ' V ' + f(T + k) + arc(L + k, T) + ' H ' + f(cx)
+    };
+    var i = Math.max(0, order.indexOf(side || 'top'));
+    var d = 'M ' + f(start[order[i]][0]) + ' ' + f(start[order[i]][1]);
+    for (var n = 0; n < 4; n++) d += leg[order[(i + n) % 4]];
+    return d;
   };
 
   // Where the thread comes from for a target: the top of the stage for the first card,
@@ -709,7 +755,7 @@
     var self = this;
     if (target.type === 'clarifier') {
       var parent = this._mainElement({ positionIndex: target.parent });
-      return parent ? anchor(parent, base, 'bottom') : null;
+      return parent ? { el: parent } : null;
     }
     var mains = this._state.mainCards.slice().sort(function (a, b) { return a.positionIndex - b.positionIndex; });
     var prev = null;
@@ -718,8 +764,9 @@
       prev = mains[i];
     }
     if (!prev) {
-      var a = anchor(el, base, 'top');
-      return { x: a.x, y: 0 };
+      // The first card: the thread comes straight down from the top of the stage.
+      var a = edgePoint(this._ringRect(el), base, 'top');
+      return { point: { x: a.x, y: 0 } };
     }
     var prevEl = this._mainElement(prev);
     if (!prevEl) return null;
@@ -728,7 +775,7 @@
       var cEl = self._clarifierElement(prev.positionIndex, c.slot);
       if (cEl && self._isRevealed(c, cEl) && (!last || c.slot > last.slot)) last = { slot: c.slot, el: cEl };
     });
-    return anchor(last ? last.el : prevEl, base, 'bottom');
+    return { el: last ? last.el : prevEl };
   };
 
   GoldenThreadConnector.prototype._buildRings = function (base) {
@@ -742,7 +789,7 @@
       var m = all[i];
       if (!this._isRevealed(m, m.el)) break;
       if (i === 0) {
-        var top = anchor(m.el, base, 'top');
+        var top = edgePoint(this._ringRect(m.el), base, 'top');
         rings.push({ key: 'ring|enter', ring: 'enter', d: this._curve({ x: top.x, y: 0 }, top) });
       }
       rings.push({ key: 'ring|main:' + m.positionIndex, ring: 'main:' + m.positionIndex, d: this._ringPath(m.el, base) });
@@ -770,22 +817,28 @@
           ? self._clarifierElement(target.parent, target.slot)
           : self._mainElement({ positionIndex: target ? target.positionIndex : 0 });
         var base = self._container.getBoundingClientRect();
-        var from = el && self._fromFor(target, el, base);
-        if (reduced || !el || !from || !self._ctx) { turn(); return; }
-        var to = anchor(el, base, 'top');
+        var src = el && self._fromFor(target, el, base);
+        if (reduced || !el || !src || !self._ctx) { turn(); return; }
+        // One geometry for the flight and the loop (Si Aye, 29 Oct): the flight arrives at
+        // the loop box's facing edge, steps out to the loop, and the loop starts right there.
+        var link = src.point
+          ? { from: src.point, to: edgePoint(self._ringRect(el), base, 'top'), side: 'top' }
+          : self._link(src.el, el, base);
+        var from = link.from, to = link.to;
+        var out = { top: [0, -RING_MARGIN], bottom: [0, RING_MARGIN], left: [-RING_MARGIN, 0], right: [RING_MARGIN, 0] }[link.side];
         var probe = document.createElementNS(SVG_NS, 'path');
         probe.setAttribute('class', 'gtc-probe');
         probe.setAttribute('d', self._curve(from, to));
         self._svg.appendChild(probe);
         var flyLen = probe.getTotalLength();
-        probe.setAttribute('d', self._curve(from, to) + ' L ' + to.x.toFixed(2) + ' ' + (to.y - 5).toFixed(2) + ' ' + self._ringPath(el, base).replace(/^M/, 'L'));
+        probe.setAttribute('d', self._curve(from, to) + ' L ' + (to.x + out[0]).toFixed(2) + ' ' + (to.y + out[1]).toFixed(2) + ' ' + self._ringPath(el, base, link.side).replace(/^M/, 'L'));
         var total = probe.getTotalLength();
         var pts = [];
         var n = Math.max(40, Math.ceil(total / 3));
         for (var i = 0; i <= n; i++) { var q = probe.getPointAtLength(total * i / n); pts.push({ x: q.x, y: q.y, d: total * i / n }); }
         probe.parentNode.removeChild(probe);
         self._travel = {
-          pts: pts, total: total, flyLen: flyLen, t: 0,
+          pts: pts, total: total, flyLen: flyLen, t: 0, to: to, side: link.side,
           fly: 0.75 + Math.min(0.6, flyLen / 900), loop: 1.25, hold: 0.35,
           turned: false, turn: turn
         };
@@ -864,7 +917,6 @@
     }
 
     mains.forEach(function (parent) {
-      var from = anchor(parent.el, base, 'bottom');
       var list = self._state.clarifiers[String(parent.positionIndex)] || [];
       var revealed = [];
       list.forEach(function (c) {
@@ -874,10 +926,11 @@
       revealed.sort(function (a, b) { return a.slot - b.slot; });
 
       revealed.forEach(function (clarifier) {
+        var link = self._link(parent.el, clarifier.el, base);
         segments.push({
           key: 'main:' + parent.positionIndex + ':clarifier:' + clarifier.slot,
-          from: from,
-          to: anchor(clarifier.el, base, 'top')
+          from: link.from,
+          to: link.to
         });
       });
     });
@@ -893,10 +946,11 @@
           last = assign({}, c, { el: el });
         }
       });
+      var nextLink = this._link(last ? last.el : current.el, next.el, base);
       segments.push({
         key: 'main:' + current.positionIndex + ':next:' + next.positionIndex,
-        from: anchor(last ? last.el : current.el, base, 'bottom'),
-        to: anchor(next.el, base, 'top')
+        from: nextLink.from,
+        to: nextLink.to
       });
     }
 
