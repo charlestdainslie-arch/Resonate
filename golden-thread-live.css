@@ -1,0 +1,15 @@
+/* Golden Thread in the live reading (reading-thread-uat.html only). */
+
+/* The thread and its sparkles draw over the cards and clarifiers (Chas, 29 Oct),
+   and never take a tap. */
+.draw-page .spread-board > .gtc-overlay,
+.draw-page .spread-board > .gtc-sparkle { z-index: 6; pointer-events: none; }
+
+/* A newly drawn clarifier waits face down until the thread reaches it. */
+.draw-page .position-clarifier.gtc-pending { position: relative; }
+.draw-page .position-clarifier .gtc-cover {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid; place-items: center; align-content: center; gap: 4px;
+  border-radius: 8px; border: 1px solid rgba(201, 169, 106, .45);
+  background: radial-gradient(circle at 50% 38%, rgba(201, 169, 106, .14), transparent 40%), linear-gradient(145deg, #19181a, #09090b);
+}
