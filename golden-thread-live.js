@@ -15,7 +15,36 @@
   'use strict';
   if (typeof window.GoldenThreadConnector !== 'function' || typeof renderDraw !== 'function' || typeof shell !== 'function') return;
 
-  var connector = new window.GoldenThreadConnector();
+  // Deep, Task 3 B: loops hug the card picture, not the whole button or clarifier box.
+  // The picture's box is measured from layout offsets, which ignore CSS transforms, so the
+  // loop is the right size even while the card is face down (scaled and turned away) or
+  // mid-turn. Claude adjusted Deep's helper for this: the front picture is always in the
+  // DOM, only turned away, so getBoundingClientRect() on it would be foreshortened.
+  function layoutOffset(node) {
+    var x = 0, y = 0;
+    for (var n = node; n; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop; }
+    return { x: x, y: y };
+  }
+  function pictureOf(el) {
+    if (!el || !el.hasAttribute) return null;
+    if (el.hasAttribute('data-gtc-main-card')) return el.querySelector('.reading-card-front img');
+    if (el.hasAttribute('data-gtc-clarifier')) return el.querySelector(':scope > img');
+    return null;
+  }
+  function ringTarget(el) {
+    var img = pictureOf(el);
+    if (!img || !img.offsetWidth) return el;
+    return {
+      getBoundingClientRect: function () {
+        var outer = el.getBoundingClientRect();
+        var a = layoutOffset(el), b = layoutOffset(img);
+        var left = outer.left + (b.x - a.x), top = outer.top + (b.y - a.y);
+        return { left: left, top: top, right: left + img.offsetWidth, bottom: top + img.offsetHeight, width: img.offsetWidth, height: img.offsetHeight };
+      }
+    };
+  }
+
+  var connector = new window.GoldenThreadConnector({ ringTarget: ringTarget });
   var token = 0;                               // bumps on every page render; stale flights do nothing
   var seen = { drawnAt: null, layers: 0 };     // what this reading has already shown
 

@@ -13,3 +13,25 @@
   border-radius: 8px; border: 1px solid rgba(201, 169, 106, .45);
   background: radial-gradient(circle at 50% 38%, rgba(201, 169, 106, .14), transparent 40%), linear-gradient(145deg, #19181a, #09090b);
 }
+
+/* Deep, Task 3 A: words stay readable where the thread crosses them. */
+/* A1. Labels and titles outside the 3D card flip sit above the thread (z-index 6). */
+.draw-page .reading-position > .slot-label,
+.draw-page .position-clarifier .clarifier-layer-label,
+.draw-page .position-clarifier > strong {
+  position: relative;
+  z-index: 7;
+}
+
+/* A2. A soft dark halo on every word the thread crosses. Inside the flipped card
+   (title and ORIGINAL CARD caption) this is the only thing CSS can do. */
+.draw-page .slot-label,
+.draw-page .reading-card-front strong,
+.draw-page .clarifier-layer-label,
+.draw-page .position-clarifier strong,
+.draw-page .reading-card-front::after {
+  text-shadow:
+    0 0 3px rgba(0, 0, 0, 0.92),
+    0 0 7px rgba(0, 0, 0, 0.78),
+    0 1px 2px rgba(0, 0, 0, 0.95);
+}
