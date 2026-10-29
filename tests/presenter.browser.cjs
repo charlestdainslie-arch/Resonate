@@ -198,7 +198,36 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     assert.equal(await part(page), await page.evaluate(() => 'Part 1 of ' + ResonatePresenter.buildScript().length));
     await page.locator('#mcPlay').click();
     assert.equal(await page.locator('#mcPlay').innerText(), '❚❚ Pause');
-    assert.equal(await page.evaluate(() => window.__spoken.length), before + 1);
+    await page.waitForFunction(n => window.__spoken.length === n + 1, before);
+  });
+  await check('a line the phone silently drops does not leave Max stuck (Android cancel bug)', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    // The first line after Play is swallowed: no sound, no onend, as Chrome on Android can do after cancel().
+    await page.evaluate(() => { const s = window.speechSynthesis, speak = s.speak.bind(s); let dropped = false; s.speak = u => { if (!dropped) { dropped = true; return; } speak(u); }; });
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => /Part 2 of/.test(document.querySelector('#mcPart').textContent), null, { timeout: 15000 });
+  });
+  await check('Replay after the end plays everything again from the top', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => document.querySelector('.mc-player.is-finished'), null, { timeout: 15000 });
+    const first = await page.evaluate(() => window.__spoken.length);
+    await page.locator('#mcReplay').click();
+    await page.waitForFunction(() => document.querySelector('.mc-player.is-finished'), null, { timeout: 15000 });
+    assert.equal(await page.evaluate(() => window.__spoken.length), first * 2, 'every line spoken again');
+  });
+  await check('Hide words shrinks the caption box; buttons say what they do', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    assert.equal(await page.locator('#mcCaptions').innerText(), 'Hide words');
+    assert.equal(await page.locator('#mcSound').innerText(), '🔇 Mute');
+    await page.locator('#mcCaptions').click();
+    assert.equal(await page.locator('#mcCaptions').innerText(), 'Show words');
+    assert.ok((await page.locator('#mcCaption').boundingBox()).height <= 8, 'no empty black panel');
+    await page.locator('#mcSound').click();
+    assert.equal(await page.locator('#mcSound').innerText(), '🔊 Unmute');
   });
   await check('Replay goes back to the start', async page => {
     await page.goto(PAGE);

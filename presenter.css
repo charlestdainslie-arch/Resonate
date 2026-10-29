@@ -54,6 +54,8 @@
 .mc-caption p { margin: 0; font-size: 18px; line-height: 1.45; color: #fff; }
 .mc-caption .mc-kind-frame, .mc-caption .mc-kind-label { color: var(--gold-bright); font-style: italic; }
 .mc-player.captions-off .mc-caption p { visibility: hidden; }
+/* With the words hidden, the caption box shrinks to a thin bar instead of an empty black panel. */
+.mc-player.captions-off .mc-caption { min-height: 0; height: 6px; padding: 0; overflow: hidden; }
 .mc-progress { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--gold); }
 .mc-bar { flex: 1; height: 4px; border-radius: 2px; background: rgba(201,169,106,.18); overflow: hidden; }
 .mc-bar i { display: block; height: 100%; width: 0; background: var(--gold-bright); transition: width .3s; }

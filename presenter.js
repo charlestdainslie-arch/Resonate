@@ -157,8 +157,8 @@
         <div class="mc-controls">
           <button type="button" class="gold-button" id="mcPlay">▶ Play</button>
           <button type="button" class="ghost-button" id="mcReplay">↺ Replay</button>
-          <button type="button" class="ghost-button" id="mcSound" aria-pressed="true">Sound on</button>
-          <button type="button" class="ghost-button" id="mcCaptions" aria-pressed="true">Captions on</button>
+          <button type="button" class="ghost-button" id="mcSound" aria-pressed="true">🔇 Mute</button>
+          <button type="button" class="ghost-button" id="mcCaptions" aria-pressed="true">Hide words</button>
         </div>
         <p class="mc-voice" id="mcVoice"></p>
         <details class="mc-transcript"><summary>Transcript</summary><ol>${script.map(p=>`<li class="mc-kind-${p.kind}">${escapeHtml(p.text)}</li>`).join('')}</ol></details>
@@ -206,8 +206,10 @@
       } else if(voice){
         const utterance=new SpeechSynthesisUtterance(spokenText(script[i].text));
         utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=1;utterance.pitch=0.85;
-        utterance.onend=next;utterance.onerror=next;
-        window.speechSynthesis.speak(utterance);
+        const words=script[i].text.split(' ').length;
+        const guard=()=>{timer=setTimeout(()=>{if(mine===token&&!window.speechSynthesis.speaking)next();else if(mine===token)guard();},Math.max(4000,words*700));};
+        utterance.onend=next;utterance.onerror=e=>{if(e?.error!=='interrupted'&&e?.error!=='canceled')next();};
+        timer=setTimeout(()=>{if(mine!==token)return;window.speechSynthesis.speak(utterance);guard();},120);
       } else timer=setTimeout(next,Math.min(12000,Math.max(2600,script[i].text.split(' ').length*400)));
     }
     function finish(){playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';$('mcCaption').innerHTML='<p>That was the short version. The full reading is waiting below.</p>';root.classList.add('is-finished');}
@@ -217,9 +219,9 @@
       if(on)playPart(index<0?0:index,pack&&!muted&&index>=0?clip:0);else stopSound();
     }
     $('mcPlay').onclick=()=>setPlaying(!playing);
-    $('mcReplay').onclick=()=>{index=0;clip=0;setPlaying(true);};
-    $('mcSound').onclick=()=>{muted=!muted;$('mcSound').textContent=muted?'Sound off':'Sound on';$('mcSound').setAttribute('aria-pressed',String(!muted));voiceNote();if(playing)playPart(index);};
-    $('mcCaptions').onclick=()=>{captions=!captions;root.classList.toggle('captions-off',!captions);$('mcCaptions').textContent=captions?'Captions on':'Captions off';$('mcCaptions').setAttribute('aria-pressed',String(captions));};
+    $('mcReplay').onclick=()=>{index=0;clip=0;root.scrollTo?.({top:0});root.querySelector('.mc-cards')?.scrollTo?.({left:0});setPlaying(true);};
+    $('mcSound').onclick=()=>{muted=!muted;$('mcSound').textContent=muted?'🔊 Unmute':'🔇 Mute';$('mcSound').setAttribute('aria-pressed',String(!muted));voiceNote();if(playing)playPart(index);};
+    $('mcCaptions').onclick=()=>{captions=!captions;root.classList.toggle('captions-off',!captions);$('mcCaptions').textContent=captions?'Hide words':'Show words';$('mcCaptions').setAttribute('aria-pressed',String(captions));};
     const close=()=>{playing=false;stopSound();window.speechSynthesis?.removeEventListener?.('voiceschanged',voiceNote);root.remove();player=null;document.removeEventListener('keydown',onKey);opener?.focus?.();};
     const onKey=e=>{if(e.key==='Escape')close();};
     document.addEventListener('keydown',onKey);
