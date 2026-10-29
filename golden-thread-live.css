@@ -35,3 +35,14 @@
     0 0 7px rgba(0, 0, 0, 0.78),
     0 1px 2px rgba(0, 0, 0, 0.95);
 }
+
+/* One-card spread: reading-welcome.css isolates each position in its own stacking
+   context, so A1's z-index could not lift "01 · Guidance" above the thread (Si Aye,
+   29 Oct). Lifting the isolation lets the label rise; the card art stays under the thread. */
+.draw-page .spread-board.spread-1 .reading-position { isolation: auto; }
+
+/* One-card spread: each clarifier is a tilted card with a drop shadow (reading-welcome.css),
+   which makes it its own stacking context, so its label cannot rise on its own. Raise the
+   whole clarifier above the thread instead. With edges: 'nearest' no strand crosses its
+   picture, and the loop sits outside the picture, so only the words are affected. */
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(n) { z-index: 7; }
