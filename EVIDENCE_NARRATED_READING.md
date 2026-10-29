@@ -13,6 +13,28 @@ Author: Claude. Branch `claude/narrated-reading`, stacked on draft PR #37 (`clau
 - `tools/voice/export-clips.cjs` now lists every line Max can say in every spread (2,231 clips, 33,783 words). `--demo` lists the 25 the demo needs. `tools/voice/generate.py` can use Chatterbox **Nano** on CPU (see below). A stray Python cache file from #37 is removed.
 - `app.js`, `index.html` and all other shared files: **unchanged**. Only `presenter*.{js,css,html}`, its test, the voice tools and `.gitignore` changed.
 
+## Update 29 Oct, 17:00: cards linked to each other (Stream A)
+After each card's position name, Max says how it follows the card before it. The link comes only from the card data:
+- **Authored connection:** the cards' own `connections` text in data.js, when there is one for that pair (either direction, the later card's entry first).
+- **Plain fact otherwise:** "Like X, this is a Cups card." / "…a Major Arcana card." / "…carries the element of Fire."
+- **Nothing at all** when the cards share none of these. No link is made up.
+
+Measured across every ordered pair of the 78 cards:
+
+| Link type | Share of neighbouring pairs |
+|---|---|
+| Authored connection | 2.6% |
+| Same suit | 12.1% |
+| Both Major Arcana | 7.3% |
+| Same element | 10.1% |
+| **No link** | **67.9%** |
+
+**Gap, reported not hidden:** data.js has only 84 authored connections (1–3 per card), so about two in three neighbouring cards get no link. A fully connected spoken interpretation needs one of two things, and either is Chas's content decision:
+- more authored link content, or
+- an approved rule for generating a synthesis.
+
+The question field and reversals are still not in the app (see below).
+
 ## Measured narration length
 Averaged over five draws per row; words of narration vs words in the written reading below it.
 
@@ -47,6 +69,17 @@ The repo already wired into #37's `tools/voice/generate.py` is **Chatterbox**. I
 | Consent | The script refuses to run without `--label` and `--consent`, and the player shows the label. Only Chas's own voice, with his consent. |
 
 Alternatives briefly considered: OpenVoice and RVC were named in a 27 Oct chat only; neither has been inspected. Chatterbox is the one already wired in, MIT, and has a CPU model.
+
+## Voice comparison harness (Stream A)
+`tools/voice/compare/`, for Chas's own computer:
+- **Scripts:** five short ones (conversational, a tarot line from the app, humour, Scottish place names, numbers), each original or the app's own text, with its source marked.
+- **`compare.py`:** runs each Chatterbox model and setting and times it (seconds of audio, seconds to make, real-time factor). The converted reference is deleted after every run, and `--delete` removes all outputs.
+- **`listen.html`:** a private page to play each sample beside a clearly labelled browser voice (NOT Chas), grade 1–5, add notes and save the grades.
+- **`README.md`:** recording guidance (10–30 s, quiet room, one take; no hour needed) and exact setup steps per type of computer.
+
+Checked here with `--fake` (test tones): 25 samples written, page loads at phone size with no sideways scroll, grades kept after reload.
+
+**Blocker:** no real audio. This sandbox can't reach PyPI or huggingface.co, has no torch and has 2 CPUs. The first real run is on Chas's computer, with his own voice clip and his consent. Nothing is claimed as a clone until he has listened and graded it.
 
 ## Max video: reusable footage vs a fresh video per reading
 - **Reusable footage + fresh narration and card visuals** (what this preview does, with an SVG presenter in place of footage): feasible now. A short looped Max clip (idle, talking, a few gestures) plays while the pre-recorded lines and card images change per reading. Cost: one-off filming; nothing per reading. Lip-sync is approximate (talking loop), not word-accurate.
