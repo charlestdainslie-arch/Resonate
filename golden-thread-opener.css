@@ -1,0 +1,36 @@
+/* Golden Thread opener (golden-thread-opener.html only). RESONATE black and gold. */
+:root { --gold: #c9a96a; --gold-bright: #e4c88c; --text: #f2ede4; --muted: #b9b2a5; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #050403; color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+.gto-stage { position: fixed; inset: 0; overflow: hidden; --s: 1; --ox: 0px; --oy: 0px; }
+#gtoCanvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* A 390 × 844 world, scaled to fit the screen, so every position matches the canvas drawing. */
+.gto-world { position: absolute; left: 0; top: 0; width: 390px; height: 844px; transform-origin: 0 0; transform: translate(var(--ox), var(--oy)) scale(var(--s)); pointer-events: none; }
+.gto-hand { position: absolute; left: -20px; top: 394px; width: 300px; height: 450px; object-fit: cover; opacity: 0; mix-blend-mode: screen; -webkit-mask-image: radial-gradient(ellipse 70% 62% at 52% 44%, #000 55%, transparent 100%); mask-image: radial-gradient(ellipse 70% 62% at 52% 44%, #000 55%, transparent 100%); }
+.gto-card-wrap { position: absolute; left: 120px; top: 132px; width: 150px; height: 258px; opacity: 0; perspective: 900px; }
+.gto-card { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY(180deg); }
+.gto-card > * { position: absolute; inset: 0; border-radius: 10px; backface-visibility: hidden; -webkit-backface-visibility: hidden; }
+.gto-back { transform: rotateY(180deg); display: grid; place-content: center; text-align: center; background: radial-gradient(circle at 50% 45%, #2a2116, #0c0a07 70%); border: 1.5px solid var(--gold); box-shadow: inset 0 0 0 6px #0c0a07, inset 0 0 0 7px rgba(201,169,106,.55), 0 0 26px rgba(201,169,106,.25); }
+.gto-back span { font: 600 54px/1 Georgia, serif; color: var(--gold-bright); }
+.gto-back small { margin-top: 6px; font-size: 9px; letter-spacing: .3em; color: var(--gold); }
+.gto-face { width: 100%; height: 100%; object-fit: cover; border: 1.5px solid var(--gold); box-shadow: 0 0 30px rgba(228,200,140,.35); }
+.gto-title { position: absolute; left: 0; right: 0; top: 422px; text-align: center; opacity: 0; }
+.gto-title h1 { margin: 0; font: 500 30px/1.1 Georgia, "Times New Roman", serif; letter-spacing: .32em; padding-left: .32em; color: var(--gold-bright); text-shadow: 0 0 18px rgba(228,200,140,.35); }
+.gto-card-name { margin: 18px 0 2px; font-size: 13px; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.gto-keywords { margin: 4px 0 0; font-size: 15px; color: var(--text); }
+.gto-end { position: absolute; left: 0; right: 0; top: 612px; display: grid; justify-items: center; gap: 10px; opacity: 0; pointer-events: none; }
+.gto-cta { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 28px; border: 0; border-radius: 26px; background: var(--gold); color: #0a0805; font-weight: 700; font-size: 17px; text-decoration: none; cursor: pointer; }
+.gto-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 14px; border-radius: 22px; border: 1px solid rgba(201,169,106,.55); background: rgba(5,4,3,.6); color: var(--gold-bright); font-size: 14px; text-decoration: none; cursor: pointer; }
+.gto-caption { position: absolute; left: 16px; right: 16px; bottom: calc(76px + env(safe-area-inset-bottom)); margin: 0; min-height: 1.4em; text-align: center; font-size: 15px; color: #fff; text-shadow: 0 1px 3px #000; }
+.gto-bar { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; gap: 6px; padding: 10px 12px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(transparent, rgba(5,4,3,.9) 40%); }
+.gto-bar .gto-ghost { flex: 1; padding: 0 6px; font-size: 13px; }
+.gto-intro { position: absolute; inset: 0; display: grid; align-content: center; justify-items: center; gap: 14px; padding: 24px; text-align: center; background: radial-gradient(circle at 50% 40%, #1a140c, #050403 70%); }
+.gto-intro[hidden] { display: none; }
+.gto-eyebrow { margin: 0; font-size: 12px; letter-spacing: .26em; color: var(--gold); }
+.gto-intro p { margin: 0; }
+.gto-small { max-width: 320px; font-size: 12px; color: var(--muted); }
+.gto-end .gto-ghost[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { .gto-card, .gto-hand, .gto-title, .gto-end { transition: none !important; } }
+/* Buttons inside the scaled world stay at least 44 px on screen down to a 0.85 scale. */
+.gto-end .gto-ghost { min-height: 54px; min-width: 120px; font-size: 15px; }
+.gto-end .gto-cta { min-height: 56px; }
