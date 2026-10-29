@@ -3,6 +3,13 @@
  * Opt-in, reading-state-driven SVG overlay. No card creation, no meaning changes,
  * no audio, no production import.
  *
+ * Look (Chas, 29 Oct): the same visual language as the PR #45 opener. Each strand
+ * is three stacked gold strokes (wide soft halo, glow, bright core). While a strand
+ * draws in, a glowing head travels along it throwing off sparks; once settled,
+ * glints run along the thread and a few sparks drift off it. Sparks and glints are
+ * drawn on a canvas layer with requestAnimationFrame (no WAAPI), only while
+ * mounted and motion is allowed. Reduced motion shows the strands still.
+ *
  * API: mount(container, readingState, options), update(readingState), destroy()
  *
  * readingState (read-only, normalized):
@@ -21,7 +28,7 @@
   'use strict';
 
   var SVG_NS = 'http://www.w3.org/2000/svg';
-  var VERSION = '0.1.0-phase-a';
+  var VERSION = '0.2.0-phase-a-opener-look';
 
   var DEFAULTS = Object.freeze({
     mainSelector: '[data-gtc-main-card], .reading-card[data-reading-card]',
@@ -30,8 +37,8 @@
     revealedClass: 'revealed',
     facedownClass: 'is-facedown',
     reducedMotion: '(prefers-reduced-motion: reduce)',
-    duration: 620,
-    sag: 0.22,
+    duration: 1100,
+    sag: 0.3,
     forceReducedMotion: false
   });
 
@@ -122,8 +129,15 @@
     this._reducedMql = null;
     this._bfcacheContainer = null;
     this._bfcacheState = null;
+    this._canvas = null;
+    this._ctx = null;
+    this._loop = 0;
+    this._lastTick = 0;
+    this._sparks = [];
+    this._glints = [];
     var self = this;
     this._onReducedChange = function () { self._scheduleRender(false); };
+    this._tick = function (now) { self._sparkleTick(now); };
     this._onPageHide = function () {
       self._bfcacheContainer = self._container;
       self._bfcacheState = self._state;
@@ -197,6 +211,10 @@
     if (!keepInstance) {
       window.removeEventListener('pageshow', this._onPageShow);
     }
+    this._stopLoop();
+    if (this._canvas && this._canvas.parentNode) this._canvas.parentNode.removeChild(this._canvas);
+    this._canvas = null;
+    this._ctx = null;
     if (this._svg && this._svg.parentNode) this._svg.parentNode.removeChild(this._svg);
     this._svg = null;
     if (this._container) {
@@ -232,6 +250,16 @@
       c.insertBefore(svg, c.firstChild);
     }
     this._svg = svg;
+    var canvas = c.querySelector(':scope > canvas.gtc-sparkle');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.className = 'gtc-sparkle';
+      canvas.setAttribute('aria-hidden', 'true');
+      if (svg.nextSibling) c.insertBefore(canvas, svg.nextSibling);
+      else c.appendChild(canvas);
+    }
+    this._canvas = canvas;
+    this._ctx = canvas.getContext ? canvas.getContext('2d') : null;
   };
 
   GoldenThreadConnector.prototype._observe = function () {
@@ -246,7 +274,7 @@
       this._mutationObserver = new MutationObserver(function (mutations) {
         if (Date.now() < self._ignoreMutationsUntil) return;
         var relevant = mutations.some(function (m) {
-          return !(self._svg && self._svg.contains(m.target));
+          return !(self._svg && self._svg.contains(m.target)) && m.target !== self._canvas;
         });
         self._observeCards();
         if (relevant) self._scheduleRender(false);
@@ -385,6 +413,8 @@
 
     this._observeCards();
     this._signature = this._signatureOf(this._state);
+    if (reduced) this._stopLoop();
+    else if (this._nodes.size) this._startLoop();
   };
 
   GoldenThreadConnector.prototype._createNode = function (seg) {
@@ -397,11 +427,19 @@
     group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
     group.setAttribute('aria-hidden', 'true');
 
+    // Three stacked strokes, as in the #45 opener: wide soft halo, glow, bright core.
     var basePath = document.createElementNS(SVG_NS, 'path');
     basePath.setAttribute('d', d);
-    basePath.setAttribute('class', 'gtc-filament gtc-filament--base');
+    basePath.setAttribute('class', 'gtc-filament gtc-filament--base gtc-filament--halo');
     basePath.setAttribute('aria-hidden', 'true');
     group.appendChild(basePath);
+
+    var glowPath = document.createElementNS(SVG_NS, 'path');
+    glowPath.setAttribute('d', d);
+    glowPath.setAttribute('class', 'gtc-filament gtc-filament--glow');
+    glowPath.setAttribute('aria-hidden', 'true');
+    glowPath.style.strokeDashoffset = '0';
+    group.appendChild(glowPath);
 
     var headPath = document.createElementNS(SVG_NS, 'path');
     headPath.setAttribute('d', d);
@@ -418,25 +456,30 @@
     dot.setAttribute('aria-hidden', 'true');
     group.appendChild(dot);
 
-    return { group: group, base: basePath, head: headPath, dot: dot, d: d, animations: [] };
+    return { group: group, base: basePath, glow: glowPath, head: headPath, dot: dot, d: d, animations: [],
+      drawing: null, len: 0, glintIn: 0.4 + Math.random() * 1.2 };
   };
 
   GoldenThreadConnector.prototype._animateNode = function (node) {
     var self = this;
     var length = Math.max(1, node.head.getTotalLength());
-    node.head.style.strokeDasharray = String(length);
-    node.head.style.strokeDashoffset = String(length);
+    node.len = length;
+    var strokes = [node.base, node.glow, node.head];
+    var timing = { duration: this.options.duration, easing: 'cubic-bezier(.45,.05,.25,1)', fill: 'forwards' };
+    strokes.forEach(function (path) {
+      path.style.strokeDasharray = String(length);
+      path.style.strokeDashoffset = String(length);
+    });
     node.dot.style.opacity = '0';
-    var pair = [
-      node.head.animate(
-        [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-        { duration: this.options.duration, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
-      ),
+    var pair = strokes.map(function (path) {
+      return path.animate([{ strokeDashoffset: length }, { strokeDashoffset: 0 }], timing);
+    }).concat([
       node.dot.animate(
         [{ opacity: 0 }, { opacity: 1 }],
         { duration: Math.min(220, this.options.duration), delay: Math.max(0, this.options.duration - 180), fill: 'forwards' }
       )
-    ];
+    ]);
+    node.drawing = pair[2];
     pair.forEach(function (a) { node.animations.push(a); self._animations.push(a); });
 
     var settled = false;
@@ -445,9 +488,12 @@
       settled = true;
       // Bake the final visual state into inline styles, then cancel the
       // WAAPI animation so it leaves document.getAnimations().
-      node.head.style.strokeDasharray = '';
-      node.head.style.strokeDashoffset = '0';
+      strokes.forEach(function (path) {
+        path.style.strokeDasharray = '';
+        path.style.strokeDashoffset = '0';
+      });
       node.dot.style.opacity = '1';
+      if (node.drawing === pair[2]) node.drawing = null;
       pair.forEach(function (a) {
         var i = self._animations.indexOf(a); if (i !== -1) self._animations.splice(i, 1);
         var j = node.animations.indexOf(a); if (j !== -1) node.animations.splice(j, 1);
@@ -461,7 +507,9 @@
     var d = this._curve(seg.from, seg.to);
     if (node.d === d) return;
     node.base.setAttribute('d', d);
+    node.glow.setAttribute('d', d);
     node.head.setAttribute('d', d);
+    node.len = 0;
     node.dot.setAttribute('cx', seg.to.x);
     node.dot.setAttribute('cy', seg.to.y);
     node.group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
@@ -485,6 +533,126 @@
     animations.forEach(function (animation) {
       try { animation.cancel(); } catch (error) {}
     });
+  };
+
+  // ---- sparkle layer (canvas, rAF only; never WAAPI) ---------------------------------------------
+
+  GoldenThreadConnector.prototype._startLoop = function () {
+    if (this._loop || !this._ctx || !this._mounted) return;
+    this._lastTick = 0;
+    this._loop = requestAnimationFrame(this._tick);
+  };
+
+  GoldenThreadConnector.prototype._stopLoop = function () {
+    if (this._loop) cancelAnimationFrame(this._loop);
+    this._loop = 0;
+    this._sparks = [];
+    this._glints = [];
+    if (this._ctx && this._canvas) {
+      this._ctx.setTransform(1, 0, 0, 1, 0, 0);
+      this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
+    }
+  };
+
+  GoldenThreadConnector.prototype._pointOn = function (node, fraction) {
+    if (!node.len) node.len = Math.max(1, node.head.getTotalLength());
+    var p = node.head.getPointAtLength(node.len * Math.max(0, Math.min(1, fraction)));
+    return { x: p.x, y: p.y };
+  };
+
+  GoldenThreadConnector.prototype._spark = function (x, y, spread, lift, life, size) {
+    if (this._sparks.length > 260) return;
+    this._sparks.push({
+      x: x, y: y,
+      vx: (Math.random() - 0.5) * spread,
+      vy: (Math.random() - 0.5) * spread - lift,
+      life: 0, max: life * (0.6 + Math.random() * 0.8),
+      s: size * (0.5 + Math.random())
+    });
+  };
+
+  GoldenThreadConnector.prototype._sparkleTick = function (now) {
+    this._loop = 0;
+    if (!this._mounted || this._destroyed || !this._ctx || !this._container) return;
+    var self = this;
+    var dt = this._lastTick ? Math.min(0.05, (now - this._lastTick) / 1000) : 1 / 60;
+    this._lastTick = now;
+
+    var rect = this._container.getBoundingClientRect();
+    var dpr = Math.min(2, window.devicePixelRatio || 1);
+    var w = Math.max(1, Math.round(rect.width * dpr));
+    var h = Math.max(1, Math.round(rect.height * dpr));
+    if (this._canvas.width !== w) this._canvas.width = w;
+    if (this._canvas.height !== h) this._canvas.height = h;
+    var ctx = this._ctx;
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.globalCompositeOperation = 'lighter';
+
+    var heads = [];
+    this._nodes.forEach(function (node) {
+      var anim = node.drawing;
+      if (anim && anim.playState !== 'finished' && anim.playState !== 'idle') {
+        var timing = anim.effect && anim.effect.getComputedTiming ? anim.effect.getComputedTiming() : null;
+        var progress = timing && timing.progress != null ? timing.progress : 0;
+        var p = self._pointOn(node, progress);
+        heads.push(p);
+        for (var k = 0; k < 3; k++) self._spark(p.x, p.y, 70, 12, 0.9, 2);
+        return;
+      }
+      // Settled: glints run along the thread from time to time, and a few sparks drift off it.
+      node.glintIn -= dt;
+      if (node.glintIn <= 0) {
+        self._glints.push({ node: node, t: 0, dur: 1.2 + Math.random() * 0.6 });
+        node.glintIn = 1.8 + Math.random() * 2.6;
+      }
+      if (Math.random() < dt * 2.2) {
+        var q = self._pointOn(node, Math.random());
+        self._spark(q.x, q.y, 14, 10, 1.6, 1.4);
+      }
+    });
+
+    // Heads: a warm, bright radial glow at the drawing tip.
+    heads.forEach(function (p) {
+      var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 18);
+      g.addColorStop(0, 'rgba(255,240,200,0.95)');
+      g.addColorStop(1, 'rgba(255,200,120,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 18, 0, 7); ctx.fill();
+    });
+
+    // Glints: a small bright light that runs the length of a finished strand.
+    this._glints = this._glints.filter(function (gl) {
+      if (!self._nodes.has(gl.node.group.getAttribute('data-gtc-key'))) return false;
+      gl.t += dt;
+      var u = gl.t / gl.dur;
+      if (u >= 1) return false;
+      var eased = u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+      var p = self._pointOn(gl.node, eased);
+      var a = Math.sin(Math.PI * u);
+      var g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, 11);
+      g.addColorStop(0, 'rgba(255,244,214,' + (0.9 * a).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(255,200,120,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(p.x, p.y, 11, 0, 7); ctx.fill();
+      if (Math.random() < 0.35) self._spark(p.x, p.y, 26, 6, 0.7, 1.4);
+      return true;
+    });
+
+    // Sparks: as in the opener, they fade in and out over their short life.
+    this._sparks = this._sparks.filter(function (sp) {
+      sp.life += dt;
+      if (sp.life >= sp.max) return false;
+      sp.x += sp.vx * dt; sp.y += sp.vy * dt;
+      sp.vx *= 0.96; sp.vy *= 0.96;
+      var a = Math.sin(Math.PI * sp.life / sp.max);
+      ctx.fillStyle = 'rgba(255,' + (210 + Math.round(40 * a)) + ',150,' + a.toFixed(3) + ')';
+      ctx.beginPath(); ctx.arc(sp.x, sp.y, sp.s * (0.6 + 0.4 * a), 0, 7); ctx.fill();
+      return true;
+    });
+
+    if (this._nodes.size || this._sparks.length) this._loop = requestAnimationFrame(this._tick);
   };
 
   GoldenThreadConnector.prototype._buildSegments = function (base) {
@@ -547,7 +715,7 @@
     var dx = to.x - from.x;
     var dy = to.y - from.y;
     var distance = Math.hypot(dx, dy);
-    var sag = Math.min(46, Math.max(10, distance * this.options.sag));
+    var sag = Math.min(64, Math.max(14, distance * this.options.sag));
     var cx = (from.x + to.x) / 2;
     var cy = (from.y + to.y) / 2 + sag;
     return 'M ' + from.x.toFixed(2) + ' ' + from.y.toFixed(2) +

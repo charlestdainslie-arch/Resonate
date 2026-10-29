@@ -1,16 +1,26 @@
-/* Golden Thread connector — Phase A. Decorative overlay only. */
+/* Golden Thread connector — Phase A. Decorative overlay only.
+   Look follows the PR #45 opener: three stacked gold strokes (halo, glow, core). */
 .gtc-host {
   position: relative;
 }
 
-.gtc-overlay {
+.gtc-overlay,
+.gtc-sparkle {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  overflow: visible;
   pointer-events: none;
   z-index: 0;
+}
+
+.gtc-overlay {
+  overflow: visible;
+  mix-blend-mode: screen;
+}
+
+.gtc-sparkle {
+  mix-blend-mode: screen;
 }
 
 .gtc-filament {
@@ -20,21 +30,30 @@
   vector-effect: non-scaling-stroke;
 }
 
-.gtc-filament--base {
-  stroke: rgba(201, 169, 106, 0.18);
-  stroke-width: 3.2;
+/* Wide, soft halo. */
+.gtc-filament--halo {
+  stroke: rgba(232, 196, 120, 0.22);
+  stroke-width: 10;
+  filter: blur(5px);
+}
+
+/* Glow. */
+.gtc-filament--glow {
+  stroke: rgba(232, 196, 120, 0.5);
+  stroke-width: 4;
   filter: blur(1.6px);
 }
 
+/* Bright core. */
 .gtc-filament--head {
-  stroke: rgba(232, 196, 120, 0.95);
-  stroke-width: 1.9;
-  filter: drop-shadow(0 0 3px rgba(255, 210, 130, 0.75));
+  stroke: rgba(255, 228, 165, 0.98);
+  stroke-width: 1.7;
+  filter: drop-shadow(0 0 4px rgba(255, 210, 130, 0.95));
 }
 
 .gtc-filament-dot {
-  fill: rgba(255, 240, 200, 0.95);
-  filter: drop-shadow(0 0 4px rgba(255, 200, 120, 0.85));
+  fill: rgba(255, 244, 214, 0.95);
+  filter: drop-shadow(0 0 5px rgba(255, 200, 120, 0.95));
 }
 
 @media (prefers-reduced-motion: reduce) {

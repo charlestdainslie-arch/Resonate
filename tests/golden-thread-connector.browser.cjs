@@ -238,8 +238,10 @@ function serve() {
       window.__gtcDemo.mount();
     });
     await wait(100);
+    // Wait for the connector's own draw-in duration (plus margin) rather than a fixed time.
+    const settleMs = (await page.evaluate(() => window.__gtcDemo.connector.options.duration)) + 400;
     await setState(baseState(true, true, false, false)); // creates main:0:next:1 (new -> animates)
-    await wait(900); // let it finish + settle
+    await wait(settleMs); // let it finish + settle
     const oldKey = 'main:0:next:1';
     const oldBefore = await countAnimsForKey(oldKey);
     if (oldBefore !== 0) throw new Error(`old segment still tracked as animating after finish (${oldBefore})`);
@@ -250,7 +252,7 @@ function serve() {
     const oldDuring = await countAnimsForKey(oldKey);
     if (newDuring < 1) throw new Error('newly created segment did not animate');
     if (oldDuring > 0) throw new Error('existing segment restarted animation');
-    await wait(900);
+    await wait(settleMs);
     const remaining = await page.evaluate(() => window.__gtcDemo.connector._animations.length);
     if (remaining !== 0) throw new Error(`_animations not pruned after finish (${remaining} left)`);
   });

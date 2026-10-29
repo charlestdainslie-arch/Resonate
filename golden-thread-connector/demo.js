@@ -3,7 +3,7 @@
 
   var host = document.getElementById('gtcDemo');
   var status = document.getElementById('status');
-  var connector = new window.GoldenThreadConnector({ duration: 520 });
+  var connector = new window.GoldenThreadConnector();
   var mounted = true;
 
   var state = {
