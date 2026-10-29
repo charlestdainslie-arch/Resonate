@@ -1,0 +1,45 @@
+/* Golden Thread connector — Phase A. Decorative overlay only. */
+.gtc-host {
+  position: relative;
+}
+
+.gtc-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gtc-filament {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.gtc-filament--base {
+  stroke: rgba(201, 169, 106, 0.22);
+  stroke-width: 1.4;
+}
+
+.gtc-filament--head {
+  stroke: rgba(232, 196, 120, 0.95);
+  stroke-width: 2.1;
+  filter: drop-shadow(0 0 3px rgba(255, 210, 130, 0.75));
+}
+
+.gtc-filament-dot {
+  fill: rgba(255, 240, 200, 0.95);
+  filter: drop-shadow(0 0 4px rgba(255, 200, 120, 0.85));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gtc-filament--head,
+  .gtc-filament-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
