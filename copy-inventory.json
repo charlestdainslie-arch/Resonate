@@ -1,0 +1,6494 @@
+{
+ "generated": "2026-10-29T02:46:41.688Z",
+ "shas": {
+  "main": "8d12cc6",
+  "v091": "9394021",
+  "base": "6b0c98d",
+  "cam": "59f3993",
+  "full": "05f0f5b",
+  "here": "f11ad87"
+ },
+ "refs": [
+  {
+   "key": "main",
+   "ref": "origin/main",
+   "label": "production main"
+  },
+  {
+   "key": "v091",
+   "ref": "origin/release/v0.91",
+   "label": "release/v0.91"
+  },
+  {
+   "key": "base",
+   "ref": "origin/develop/v1.0-base",
+   "label": "develop/v1.0-base"
+  },
+  {
+   "key": "cam",
+   "ref": "origin/integration/astrology-uat",
+   "label": "integration/astrology-uat (preview handed over for Cam)"
+  },
+  {
+   "key": "full",
+   "ref": "origin/integration/full-product-uat",
+   "label": "integration/full-product-uat"
+  },
+  {
+   "key": "here",
+   "ref": "HEAD",
+   "label": "this build"
+  }
+ ],
+ "lines": [
+  {
+   "text": "A clear focus and invitation",
+   "file": "app.js",
+   "line": 10,
+   "fn": "description",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the guidance you can put into practice today",
+   "file": "app.js",
+   "line": 11,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "A simple line through time",
+   "file": "app.js",
+   "line": 13,
+   "fn": "description",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the experiences and patterns that brought you here",
+   "file": "app.js",
+   "line": 14,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "what is active now and how you can respond",
+   "file": "app.js",
+   "line": 15,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "a possible direction if current patterns continue, rather than a fixed prediction",
+   "file": "app.js",
+   "line": 16,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "A general reading or answer to a question",
+   "file": "app.js",
+   "line": 18,
+   "fn": "description",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "fbc6dab",
+    "date": "2026-09-10",
+    "subject": "Align seven-card descriptions with Fenton-Smith method"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "your experiences and influences from approximately the previous 18 to 24 months",
+   "file": "app.js",
+   "line": 19,
+   "fn": "positions",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "your present circumstances, including the period immediately surrounding today",
+   "file": "app.js",
+   "line": 20,
+   "fn": "positions",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "what may develop over approximately the next three months if the present course continues",
+   "file": "app.js",
+   "line": 21,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "fbc6dab",
+    "date": "2026-09-10",
+    "subject": "Align seven-card descriptions with Fenton-Smith method"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the people, home, work and other circumstances influencing you or the question at present",
+   "file": "app.js",
+   "line": 23,
+   "fn": "positions",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the hopes, fears and attitude you bring to the situation or specific question",
+   "file": "app.js",
+   "line": 24,
+   "fn": "positions",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Two perspectives and the connection between them",
+   "file": "app.js",
+   "line": 27,
+   "fn": "description",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "your own feelings, needs and contribution to the relationship",
+   "file": "app.js",
+   "line": 28,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the dynamic created between you",
+   "file": "app.js",
+   "line": 30,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "a tension or unmet need to explore together",
+   "file": "app.js",
+   "line": 31,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "a constructive next step for mutual understanding",
+   "file": "app.js",
+   "line": 32,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Ten perspectives on a deeper question",
+   "file": "app.js",
+   "line": 34,
+   "fn": "description",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the central situation as you experience it now",
+   "file": "app.js",
+   "line": 35,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the tension or obstacle crossing that situation",
+   "file": "app.js",
+   "line": 36,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the deeper roots beneath the situation",
+   "file": "app.js",
+   "line": 37,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "an influence receding into the past",
+   "file": "app.js",
+   "line": 38,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "your hopes, intentions or conscious priorities",
+   "file": "app.js",
+   "line": 39,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "a possible next development, not a fixed prediction",
+   "file": "app.js",
+   "line": 40,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the stance you bring and the choices within your control",
+   "file": "app.js",
+   "line": 41,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the environment and outside influences around you",
+   "file": "app.js",
+   "line": 42,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the desires and worries colouring your view",
+   "file": "app.js",
+   "line": 43,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "a possible outcome if the present pattern continues, with room for your choices",
+   "file": "app.js",
+   "line": 44,
+   "fn": "positions",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "a willingness to begin before every answer is known",
+   "file": "app.js",
+   "line": 55,
+   "fn": "themes",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "hesitation or an impulsive leap without enough preparation",
+   "file": "app.js",
+   "line": 55,
+   "fn": "themes",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "focused use of the skills and resources already available",
+   "file": "app.js",
+   "line": 56,
+   "fn": 1,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "scattered effort, unused ability or attempts to control the result",
+   "file": "app.js",
+   "line": 56,
+   "fn": 1,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "patient listening to intuition while allowing missing information to emerge",
+   "file": "app.js",
+   "line": 57,
+   "fn": 2,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "inner noise or assumptions that need checking against what is actually known",
+   "file": "app.js",
+   "line": 57,
+   "fn": 2,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "steady care that gives a relationship, project or part of yourself room to grow",
+   "file": "app.js",
+   "line": 58,
+   "fn": 3,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "overgiving or depletion that calls for rest and renewed care",
+   "file": "app.js",
+   "line": 58,
+   "fn": 3,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "clear boundaries and dependable structure that protect what matters",
+   "file": "app.js",
+   "line": 59,
+   "fn": 4,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "rigid control or unreliable boundaries that need to become more supportive",
+   "file": "app.js",
+   "line": 59,
+   "fn": 4,
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Looking across the previous 18 to 24 months,",
+   "file": "app.js",
+   "line": 66,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may show an experience or influence that helped shape the present situation.",
+   "file": "app.js",
+   "line": 66,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "In the period immediately surrounding today,",
+   "file": "app.js",
+   "line": 67,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may describe what is active for you now.",
+   "file": "app.js",
+   "line": 67,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Over approximately the next three months,",
+   "file": "app.js",
+   "line": 68,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.",
+   "file": "app.js",
+   "line": 69,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may be expressed through people, home, work or other circumstances influencing the situation now.",
+   "file": "app.js",
+   "line": 70,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may colour your hopes, fears and attitude toward the situation or question.",
+   "file": "app.js",
+   "line": 71,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8ea7b33",
+    "date": "2026-10-21",
+    "subject": "Personalise seven-card readings and add return-to-reading navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Across approximately the next 18 to 24 months,",
+   "file": "app.js",
+   "line": 72,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may describe the likely outcome if present circumstances continue, while leaving room for choice and change.",
+   "file": "app.js",
+   "line": 72,
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "7151e34",
+    "date": "2026-09-10",
+    "subject": "Apply Fenton-Smith timing to seven-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This may describe how",
+   "file": "app.js",
+   "line": 76,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+   "file": "app.js",
+   "line": 76,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This suggests a possible development involving",
+   "file": "app.js",
+   "line": 77,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The tension to explore is",
+   "file": "app.js",
+   "line": 78,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your next step is to work consciously with",
+   "file": "app.js",
+   "line": 79,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Consider whether your perception of the other person is coloured by",
+   "file": "app.js",
+   "line": 80,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.",
+   "file": "app.js",
+   "line": 81,
+   "fn": "positionContext",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Sample-deck reading: this test version has",
+   "file": "app.js",
+   "line": 91,
+   "fn": "sampleDeckNotice",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "cards, so cards repeat to fill all",
+   "file": "app.js",
+   "line": 91,
+   "fn": "sampleDeckNotice",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "374ba57",
+    "date": "2026-09-09",
+    "subject": "Keep spread roles and contextual meanings throughout Tarot readings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "(prefers-reduced-motion: reduce)",
+   "file": "app.js",
+   "line": 95,
+   "fn": "reducedMotion",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"",
+   "file": "app.js",
+   "line": 101,
+   "fn": "attrs",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"menu-overlay",
+   "file": "app.js",
+   "line": 119,
+   "fn": "menuOverlay",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" id=\"menuOverlay\" aria-hidden=\"",
+   "file": "app.js",
+   "line": 119,
+   "fn": "menuOverlay",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Explore meanings and symbolism",
+   "file": "app.js",
+   "line": 119,
+   "fn": "menuOverlay",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Every path has a clear way home.",
+   "file": "app.js",
+   "line": 119,
+   "fn": "menuOverlay",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button class=\"back-link\" data-back=\"",
+   "file": "app.js",
+   "line": 141,
+   "fn": "backButton",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button class=\"hero-card-preview\" data-home-card=\"",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f19b681",
+    "date": "2026-09-23",
+    "subject": "Add a quiet card preview to the desktop hero"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" loading=\"eager\" referrerpolicy=\"no-referrer\">",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f19b681",
+    "date": "2026-09-23",
+    "subject": "Add a quiet card preview to the desktop hero"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Read the symbol. Hear what resonates.",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": null,
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Learn the cards, draw a reading, then follow the meaning deeper.",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Choose a spread and draw",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Study meanings, symbols and connections",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Return to bookmarks and reflections",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "RESONATE · a deeper way into the cards",
+   "file": "app.js",
+   "line": 146,
+   "fn": "renderHome",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Learn the cards before memorising them.",
+   "file": "app.js",
+   "line": 168,
+   "fn": "renderLearn",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<input id=\"searchInput\" value=\"",
+   "file": "app.js",
+   "line": 168,
+   "fn": "renderLearn",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" placeholder=\"Search cards, elements, astrology…\">",
+   "file": "app.js",
+   "line": 168,
+   "fn": "renderLearn",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Try a shorter word or a close spelling.",
+   "file": "app.js",
+   "line": 168,
+   "fn": "renderLearn",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ec8069b",
+    "date": "2026-09-05",
+    "subject": "Polish 0.9 reading flow, centering control and navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button class=\"tarot-card element-",
+   "file": "app.js",
+   "line": 176,
+   "fn": "cardTile",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" loading=\"lazy\" referrerpolicy=\"no-referrer\" onerror=\"imageFallback(this)\">",
+   "file": "app.js",
+   "line": 176,
+   "fn": "cardTile",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ae85c82",
+    "date": "2026-09-06",
+    "subject": "Fix reading return state and restore guided reflection prompt"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Choose the shape of the question.",
+   "file": "app.js",
+   "line": 180,
+   "fn": "renderReadingHub",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The cards stay face down until you draw. Then each card comes forward, turns, and settles into its place.",
+   "file": "app.js",
+   "line": 180,
+   "fn": "renderReadingHub",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Choose a spread, hold your question, then press",
+   "file": "app.js",
+   "line": 180,
+   "fn": "renderReadingHub",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "No planetary placement assigned",
+   "file": "app.js",
+   "line": 203,
+   "fn": "text",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "9888b80",
+    "date": "2026-09-06",
+    "subject": "Show card correspondences and live planetary placements"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "not recorded in this snapshot",
+   "file": "app.js",
+   "line": 208,
+   "fn": "text",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" loading=\"lazy\" decoding=\"async\" width=\"1536\" height=\"1024\">",
+   "file": "app.js",
+   "line": 227,
+   "fn": "atmosphericArt",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5686145",
+    "date": "2026-09-23",
+    "subject": "Restore atmospheric Whisper artwork throughout reading and card meanings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the white rose and the bright sky",
+   "file": "app.js",
+   "line": 231,
+   "fn": "image",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The rose invites sincerity of intention while the bright sky suggests room to think clearly before stepping ahead.",
+   "file": "app.js",
+   "line": 231,
+   "fn": "reading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the red outer garment, white clothing and tools on the table",
+   "file": "app.js",
+   "line": 232,
+   "fn": "image",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Passion and deliberate effort meet a question of honest purpose: what resources can be used well?",
+   "file": "app.js",
+   "line": 232,
+   "fn": "reading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the blue garment and contrasting pillars",
+   "file": "app.js",
+   "line": 233,
+   "fn": "image",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Reflection and deeper understanding sit between opposing possibilities, inviting patience with uncertainty.",
+   "file": "app.js",
+   "line": 233,
+   "fn": "reading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "learning to listen inwardly",
+   "file": "app.js",
+   "line": 233,
+   "fn": "stage",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the warm yellow landscape and the green growth around the seated figure",
+   "file": "app.js",
+   "line": 234,
+   "fn": "image",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "nurturing what can grow",
+   "file": "app.js",
+   "line": 234,
+   "fn": "stage",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "the red robes and the firm stone throne",
+   "file": "app.js",
+   "line": 235,
+   "fn": "image",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Determination is given form through limits, responsibility and practical structure.",
+   "file": "app.js",
+   "line": 235,
+   "fn": "reading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "learning structure and stewardship",
+   "file": "app.js",
+   "line": 235,
+   "fn": "stage",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": ", linking their visual language.",
+   "file": "app.js",
+   "line": 244,
+   "fn": "palette",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "As a story, this moves from",
+   "file": "app.js",
+   "line": 245,
+   "fn": "development",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The conversation between them:",
+   "file": "app.js",
+   "line": 246,
+   "fn": "storyConnection",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "into the same question.",
+   "file": "app.js",
+   "line": 246,
+   "fn": "storyConnection",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Read this as a possible shift in emphasis, not a certainty.",
+   "file": "app.js",
+   "line": 246,
+   "fn": "storyConnection",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "a66ce2b",
+    "date": "2026-10-21",
+    "subject": "Add original RWS colour imagery and developmental connections to one-card interpretations"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<section class=\"reading-card-lenses\" aria-label=\"Interpretive lenses for",
+   "file": "app.js",
+   "line": 249,
+   "fn": "existingReadingLenses",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "af8473c",
+    "date": "2026-10-22",
+    "subject": "Remove redundant reading banner and restore existing Tao and Jungian lenses"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "What these cards mean together",
+   "file": "app.js",
+   "line": 263,
+   "fn": "synthesis",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "1d9d554",
+    "date": "2026-10-21",
+    "subject": "UAT-004 put evolving clarifier synthesis into main card interpretations and remove duplicate sections"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "provides the foundation of",
+   "file": "app.js",
+   "line": 263,
+   "fn": "synthesis",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "1d9d554",
+    "date": "2026-10-21",
+    "subject": "UAT-004 put evolving clarifier synthesis into main card interpretations and remove duplicate sections"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "position, consider how these themes interact: what might become possible when they are held together, and which practical response resonates with your situation? This is a perspective for reflection, not a fixed prediction.",
+   "file": "app.js",
+   "line": 263,
+   "fn": "synthesis",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "1d9d554",
+    "date": "2026-10-21",
+    "subject": "UAT-004 put evolving clarifier synthesis into main card interpretations and remove duplicate sections"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"reading-art\" style=\"background-image:url('",
+   "file": "app.js",
+   "line": 264,
+   "fn": "readingMeaning",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "e12e5c0",
+    "date": "2026-09-06",
+    "subject": "Add Whisper art and paired insight cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "')\" role=\"img\" aria-label=\"Whisper-style artwork inspired by",
+   "file": "app.js",
+   "line": 264,
+   "fn": "readingMeaning",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "e12e5c0",
+    "date": "2026-09-06",
+    "subject": "Add Whisper art and paired insight cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "SKY AT THIS READING",
+   "file": "app.js",
+   "line": 264,
+   "fn": "readingMeaning",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "9888b80",
+    "date": "2026-09-06",
+    "subject": "Show card correspondences and live planetary placements"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button data-reading-detail=\"",
+   "file": "app.js",
+   "line": 264,
+   "fn": "readingMeaning",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ec8069b",
+    "date": "2026-09-05",
+    "subject": "Polish 0.9 reading flow, centering control and navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "No opening dice were rolled for this reading.",
+   "file": "app.js",
+   "line": 279,
+   "fn": "numeric",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Numbers through your reading",
+   "file": "app.js",
+   "line": 281,
+   "fn": "numerologyForReading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "These numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.",
+   "file": "app.js",
+   "line": 281,
+   "fn": "numerologyForReading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Their numbered cards sum to",
+   "file": "app.js",
+   "line": 281,
+   "fn": "numerologyForReading",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Court cards are read by rank rather than assigned an invented tarot number.",
+   "file": "app.js",
+   "line": 281,
+   "fn": "numerologyForReading",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The astrological correspondences in dialogue are",
+   "file": "app.js",
+   "line": 292,
+   "fn": "groups",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "returns in this reading. Rather than a new message, its reappearance amplifies and asks you to revisit its original theme.",
+   "file": "app.js",
+   "line": 292,
+   "fn": "groups",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The Golden Thread follows",
+   "file": "app.js",
+   "line": 296,
+   "fn": "goldenThread",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "across this reading, including every clarifier.",
+   "file": "app.js",
+   "line": 296,
+   "fn": "goldenThread",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This is a perspective, not a fixed prediction.",
+   "file": "app.js",
+   "line": 296,
+   "fn": "goldenThread",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Take what resonates, and leave the rest.",
+   "file": "app.js",
+   "line": 296,
+   "fn": "goldenThread",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond?",
+   "file": "app.js",
+   "line": 296,
+   "fn": "goldenThread",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Use the shared themes as a prompt for reflection and choice.",
+   "file": "app.js",
+   "line": 296,
+   "fn": "goldenThread",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "A closer look at each position",
+   "file": "app.js",
+   "line": 323,
+   "fn": "firstLayerClarifierView",
+   "inBuilds": [
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "9c413fd",
+    "date": "2026-10-21",
+    "subject": "Introduce prominent functional first-layer clarifier step in reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<section class=\"reading-interpretation\" id=\"clarifierLayer",
+   "file": "app.js",
+   "line": 351,
+   "fn": "additionalClarifierView",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5aa3d6f",
+    "date": "2026-10-21",
+    "subject": "Add second and third visible clarifier layer controls with independent deck draws"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" aria-label=\"Clarifier layer",
+   "file": "app.js",
+   "line": 351,
+   "fn": "additionalClarifierView",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5aa3d6f",
+    "date": "2026-10-21",
+    "subject": "Add second and third visible clarifier layer controls with independent deck draws"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Each position draws from a newly shuffled tarot deck. A card may reappear across different layers.",
+   "file": "app.js",
+   "line": 351,
+   "fn": "additionalClarifierView",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5aa3d6f",
+    "date": "2026-10-21",
+    "subject": "Add second and third visible clarifier layer controls with independent deck draws"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"position-clarifiers\" data-clarifier-count=\"",
+   "file": "app.js",
+   "line": 367,
+   "fn": "clarifierCardsForPosition",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "e6b34e0",
+    "date": "2026-10-21",
+    "subject": "Preserve existing clarifier class contract while exposing count as a data attribute"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" aria-label=\"Clarifiers for position",
+   "file": "app.js",
+   "line": 367,
+   "fn": "clarifierCardsForPosition",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "4ba5ee9",
+    "date": "2026-10-21",
+    "subject": "UAT-003 display attached clarifier cards, evolving reading, and return to spread"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"position-clarifier",
+   "file": "app.js",
+   "line": 370,
+   "fn": "clarifierCardsForPosition",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "4ba5ee9",
+    "date": "2026-10-21",
+    "subject": "UAT-003 display attached clarifier cards, evolving reading, and return to spread"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "How the cards speak together",
+   "file": "app.js",
+   "line": 382,
+   "fn": "evolvingReading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "4ba5ee9",
+    "date": "2026-10-21",
+    "subject": "UAT-003 display attached clarifier cards, evolving reading, and return to spread"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The original cards remain the foundation. Each new clarifier adds another perspective without replacing what came before.",
+   "file": "app.js",
+   "line": 382,
+   "fn": "evolvingReading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "4ba5ee9",
+    "date": "2026-10-21",
+    "subject": "UAT-003 display attached clarifier cards, evolving reading, and return to spread"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Notice which meanings connect with your situation. Your choices remain yours.",
+   "file": "app.js",
+   "line": 382,
+   "fn": "evolvingReading",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "4ba5ee9",
+    "date": "2026-10-21",
+    "subject": "UAT-003 display attached clarifier cards, evolving reading, and return to spread"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Let the cards come to you.",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"spread-board spread-",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "What each position is saying",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ec8069b",
+    "date": "2026-09-05",
+    "subject": "Polish 0.9 reading flow, centering control and navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Planetary positions calculated for",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "9888b80",
+    "date": "2026-09-06",
+    "subject": "Show card correspondences and live planetary placements"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Read the spread as a whole",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ec8069b",
+    "date": "2026-09-05",
+    "subject": "Polish 0.9 reading flow, centering control and navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "↑ Back to the spread & clarifiers",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": null,
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Return to your spread to explore clarifiers, or open your journal to revisit what you saved.",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "de3f956",
+    "date": "2026-10-21",
+    "subject": "UAT-005 simplify reading completion actions and add direct journal navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button type=\"button\" class=\"reading-card is-facedown\" data-reading-card=\"",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "581d72b",
+    "date": "2026-09-05",
+    "subject": "Fix Draw again mobile flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Whisper atmosphere — reflecting on the whole spread",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5686145",
+    "date": "2026-09-23",
+    "subject": "Restore atmospheric Whisper artwork throughout reading and card meanings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your two clarifiers are complete. Save this reading to your journal for reflection.",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "e915fa8",
+    "date": "2026-10-22",
+    "subject": "Confirm journal saves and align one-card frames and labels"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "When you are ready, draw a clarifier to explore this reading further, or save it for reflection.",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "e915fa8",
+    "date": "2026-10-22",
+    "subject": "Confirm journal saves and align one-card frames and labels"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Save Reading to Journal",
+   "file": "app.js",
+   "line": 387,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "c97e117",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: two clarifiers maximum, integrated golden thread and dice/card numerology"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your spread is ready. Follow the reading below, or tap a card to go deeper.",
+   "file": "app.js",
+   "line": 393,
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ec8069b",
+    "date": "2026-09-05",
+    "subject": "Polish 0.9 reading flow, centering control and navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Astrology snapshot · preserved session moment",
+   "file": "app.js",
+   "line": 414,
+   "fn": "title",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "resonate-tarot-reading.pdf",
+   "file": "app.js",
+   "line": 421,
+   "fn": "downloadReading",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "PDF failed — try again",
+   "file": "app.js",
+   "line": 422,
+   "fn": "downloadReading",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button class=\"icon-button",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" id=\"bookmarkBtn\" aria-label=\"Bookmark",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "ec8069b",
+    "date": "2026-09-05",
+    "subject": "Polish 0.9 reading flow, centering control and navigation"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button id=\"uprightTab\" class=\"",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button id=\"reversedTab\" class=\"",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "How this card changes in relationship",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Saved privately in this browser",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "shapes the card's symbolic rhythm and mode of expression.",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "describes the elemental field through which this card most naturally operates.",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Whisper artwork inspired by",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5686145",
+    "date": "2026-09-23",
+    "subject": "Restore atmospheric Whisper artwork throughout reading and card meanings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "What the image is saying",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5948467",
+    "date": "2026-09-04",
+    "subject": "Add RESONATE app flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Whisper atmosphere — symbols and connections",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5686145",
+    "date": "2026-09-23",
+    "subject": "Restore atmospheric Whisper artwork throughout reading and card meanings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Whisper atmosphere — the inner journey",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5686145",
+    "date": "2026-09-23",
+    "subject": "Restore atmospheric Whisper artwork throughout reading and card meanings"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "THE GOLDEN THREAD · JUNGIAN / PSYCHOLOGICAL",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This is the final interpretive lens: not a replacement for the traditional card meaning, but the thread connecting symbol, psyche and lived experience.",
+   "file": "app.js",
+   "line": 430,
+   "fn": "renderDetail",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Stored privately in this browser.",
+   "file": "app.js",
+   "line": 450,
+   "fn": "renderSaved",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Bookmark a card or write a reflection and it will appear here.",
+   "file": "app.js",
+   "line": 450,
+   "fn": "renderSaved",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "8c030cc",
+    "date": "2026-09-04",
+    "subject": "Release 0.9 navigation and reading flow"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Not supplied: add a birth year",
+   "file": "astrology-prelude-ui.js",
+   "line": 22,
+   "fn": "cards",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "No tight major aspects within 2° among these planets",
+   "file": "astrology-prelude-ui.js",
+   "line": 33,
+   "fn": "aspects",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Western (tropical) sky at session start",
+   "file": "astrology-prelude-ui.js",
+   "line": 40,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Planetary aspects at session start:",
+   "file": "astrology-prelude-ui.js",
+   "line": 42,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Vedic-style sidereal context",
+   "file": "astrology-prelude-ui.js",
+   "line": 43,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Approximate Lahiri sidereal Sun:",
+   "file": "astrology-prelude-ui.js",
+   "line": 43,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Sidereal conversion is approximate, not a fully calculated Vedic birth chart.",
+   "file": "astrology-prelude-ui.js",
+   "line": 47,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Calculated locally with Astronomy Engine. The calculation method and library fingerprint stay with this snapshot.",
+   "file": "astrology-prelude-ui.js",
+   "line": 48,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth time uses historical time-zone rules. Historical or high-latitude chart points need specialist verification.",
+   "file": "astrology-prelude-ui.js",
+   "line": 48,
+   "fn": "snapHtml",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "BEFORE YOUR CARDS · OPTIONAL",
+   "file": "astrology-prelude-ui.js",
+   "line": 63,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Add astrology to your reading",
+   "file": "astrology-prelude-ui.js",
+   "line": 63,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Astrology is optional. Add your Sun sign, your birth year, both or neither, or go straight to the cards.",
+   "file": "astrology-prelude-ui.js",
+   "line": 64,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Continue to tarot without astrology",
+   "file": "astrology-prelude-ui.js",
+   "line": 65,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Western Sun sign Optional · choose a sign",
+   "file": "astrology-prelude-ui.js",
+   "line": 67,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": null,
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your star sign, from your birthday.",
+   "file": "astrology-prelude-ui.js",
+   "line": 68,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth year<input name=\"birthYear\" type=\"text\" inputmode=\"numeric\" maxlength=\"4\" enterkeyhint=\"done\" autocomplete=\"bday-year\" placeholder=\"Optional, e.g. 1968\" aria-describedby=\"astroYearHelp\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "line": 69,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "For your Chinese zodiac sign.",
+   "file": "astrology-prelude-ui.js",
+   "line": 69,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "These stay in this open page only. Nothing is looked up or sent anywhere. Moon and Rising signs need an exact birth time and place, so they are not part of this reading.",
+   "file": "astrology-prelude-ui.js",
+   "line": 70,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Show an example (doesn’t change your reading)",
+   "file": "astrology-prelude-ui.js",
+   "line": 73,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The session moment changed. Roll opening numbers again, or continue without them.",
+   "file": "astrology-prelude-ui.js",
+   "line": 94,
+   "fn": "resetOpeningNumbers",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Please check the birth year above, or continue to tarot without astrology.",
+   "file": "astrology-prelude-ui.js",
+   "line": 110,
+   "fn": "fail",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Enter a four-digit year, for example 1968, or leave it blank.",
+   "file": "astrology-prelude-ui.js",
+   "line": 117,
+   "fn": "problem",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth years from 1900 to 2100 are supported.",
+   "file": "astrology-prelude-ui.js",
+   "line": 118,
+   "fn": "problem",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Choose a spread below when you’re ready.",
+   "file": "astrology-prelude-ui.js",
+   "line": 142,
+   "fn": "submit",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Astrology is off for this reading. Choose a spread below. To add it back, choose a sign or year and select Calculate my sky.",
+   "file": "astrology-prelude-ui.js",
+   "line": 152,
+   "fn": "continueWithout",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Example only — not your profile or session",
+   "file": "astrology-prelude-ui.js",
+   "line": 161,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your details are cleared. The reading will show the sky right now only.",
+   "file": "astrology-prelude-ui.js",
+   "line": 165,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Astrology is off for this reading. To add it, choose a sign or year and select Calculate my sky.",
+   "file": "astrology-prelude-ui.js",
+   "line": 167,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "You changed your Sun sign or birth year but haven’t calculated it yet.",
+   "file": "astrology-prelude-ui.js",
+   "line": 178,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your birth year can’t be used yet.",
+   "file": "astrology-prelude-ui.js",
+   "line": 178,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Fix my birth year",
+   "file": "astrology-prelude-ui.js",
+   "line": 179,
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94b546b",
+    "date": "2026-10-28",
+    "subject": "Astrology entry: Sun sign and birth year only, with a clear way on to the cards"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Astrology snapshot at the time of your reading",
+   "file": "astrology-prelude-ui.js",
+   "line": 213,
+   "fn": "(top level)",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Full preserved astrology snapshot",
+   "file": "astrology-prelude-ui.js",
+   "line": 214,
+   "fn": "(top level)",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "taking initiative with care",
+   "file": "astrology-prelude.js",
+   "line": 14,
+   "fn": "Aries",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "stability and what deserves your patience",
+   "file": "astrology-prelude.js",
+   "line": 14,
+   "fn": "Taurus",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "curiosity and honest conversation",
+   "file": "astrology-prelude.js",
+   "line": 15,
+   "fn": "Gemini",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "belonging and emotional boundaries",
+   "file": "astrology-prelude.js",
+   "line": 15,
+   "fn": "Cancer",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "creative courage and generous leadership",
+   "file": "astrology-prelude.js",
+   "line": 16,
+   "fn": "Leo",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "discernment and useful small steps",
+   "file": "astrology-prelude.js",
+   "line": 16,
+   "fn": "Virgo",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "change and emotional honesty",
+   "file": "astrology-prelude.js",
+   "line": 17,
+   "fn": "Scorpio",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "exploration and broader perspective",
+   "file": "astrology-prelude.js",
+   "line": 18,
+   "fn": "Sagittarius",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "commitment and practical structure",
+   "file": "astrology-prelude.js",
+   "line": 18,
+   "fn": "Capricorn",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "original thinking and community",
+   "file": "astrology-prelude.js",
+   "line": 19,
+   "fn": "Aquarius",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "compassion and reflective imagination",
+   "file": "astrology-prelude.js",
+   "line": 19,
+   "fn": "Pisces",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth date must be YYYY-MM-DD",
+   "file": "astrology-prelude.js",
+   "line": 65,
+   "fn": "validISODate",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth year must be 1900–2100",
+   "file": "astrology-prelude.js",
+   "line": 82,
+   "fn": "chineseYear",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth time must be HH:MM",
+   "file": "astrology-prelude.js",
+   "line": 99,
+   "fn": "localBirthToUTC",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "A birth-place time zone is required for Moon and Rising",
+   "file": "astrology-prelude.js",
+   "line": 100,
+   "fn": "localBirthToUTC",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Choose reject, earlier or later for repeated local times",
+   "file": "astrology-prelude.js",
+   "line": 101,
+   "fn": "localBirthToUTC",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Unknown birth time zone: use an IANA zone such as Europe/London",
+   "file": "astrology-prelude.js",
+   "line": 112,
+   "fn": "localBirthToUTC",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This local birth time does not exist in the selected time zone (DST change)",
+   "file": "astrology-prelude.js",
+   "line": 114,
+   "fn": "localBirthToUTC",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This birth time occurs twice during a clock change. Choose the earlier or later occurrence, or omit the birth time.",
+   "file": "astrology-prelude.js",
+   "line": 115,
+   "fn": "localBirthToUTC",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Valid latitude and longitude required for Rising",
+   "file": "astrology-prelude.js",
+   "line": 124,
+   "fn": "risingLongitude",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Sidereal time calculation unavailable",
+   "file": "astrology-prelude.js",
+   "line": 125,
+   "fn": "risingLongitude",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Rising sign unavailable for these coordinates/time",
+   "file": "astrology-prelude.js",
+   "line": 152,
+   "fn": "risingLongitude",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Birth year and date do not match",
+   "file": "astrology-prelude.js",
+   "line": 168,
+   "fn": "birthProfile",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Enter a birth date to calculate natal Moon and Rising.",
+   "file": "astrology-prelude.js",
+   "line": 175,
+   "fn": "birthProfile",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Both latitude and longitude are required for Rising.",
+   "file": "astrology-prelude.js",
+   "line": 189,
+   "fn": "birthProfile",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Select your Sun sign, or provide birth time and time zone for a calculated Sun sign.",
+   "file": "astrology-prelude.js",
+   "line": 196,
+   "fn": "birthProfile",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Apparent geocentric ecliptic longitude of date",
+   "file": "astrology-prelude.js",
+   "line": 207,
+   "fn": "coordinates",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Approximate Lahiri: 23.8531 degrees at J2000 + 0.013969 degrees/year",
+   "file": "astrology-prelude.js",
+   "line": 208,
+   "fn": "sidereal",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Approximation from Sun-Moon elongation, rounded to percent",
+   "file": "astrology-prelude.js",
+   "line": 212,
+   "fn": "lunarIllumination",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Sun, you may reflect on",
+   "file": "astrology-prelude.js",
+   "line": 216,
+   "fn": "theme",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your current sky offers a symbolic lens before the cards.",
+   "file": "astrology-prelude.js",
+   "line": 216,
+   "fn": "theme",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Astrology is interpretive and does not predetermine your tarot draw or your choices.",
+   "file": "astrology-prelude.js",
+   "line": 217,
+   "fn": "note",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "No astrology snapshot was recorded for this reading.",
+   "file": "astrology-prelude.js",
+   "line": 233,
+   "fn": "report",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Natal sidereal Sun (approximate):",
+   "file": "astrology-prelude.js",
+   "line": 238,
+   "fn": "natal",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Natal sidereal Moon (approximate):",
+   "file": "astrology-prelude.js",
+   "line": 239,
+   "fn": "natal",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Session astrology moment (UTC):",
+   "file": "astrology-prelude.js",
+   "line": 240,
+   "fn": "report",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Approximate current sidereal Sun:",
+   "file": "astrology-prelude.js",
+   "line": 241,
+   "fn": "report",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Approximate current sidereal Moon:",
+   "file": "astrology-prelude.js",
+   "line": 242,
+   "fn": "report",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Sidereal conversion is approximate, not a full Vedic chart. Astrology is a symbolic interpretation, not a scientifically reliable prediction. It does not control Oracle, dice or tarot draws.",
+   "file": "astrology-prelude.js",
+   "line": 247,
+   "fn": "report",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "✓ Reading saved to Your Personal Journal on this browser.",
+   "file": "journal.js",
+   "line": 24,
+   "fn": "writeJournal",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "adb04a8",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: persist clarifier layers and provide saved feedback and journal card summary"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Could not save in this browser. Keep this page open and copy your reflection before leaving.",
+   "file": "journal.js",
+   "line": 28,
+   "fn": "writeJournal",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Keep this reading and what it brought up.",
+   "file": "journal.js",
+   "line": 65,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your comments or reflections on this reading",
+   "file": "journal.js",
+   "line": 65,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Stored on this browser only. Clearing browser data removes these entries.",
+   "file": "journal.js",
+   "line": 65,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Reading saved. Reflections save as you write.",
+   "file": "journal.js",
+   "line": 65,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Save this reading, or start writing to save it with your reflection.",
+   "file": "journal.js",
+   "line": 65,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your new clarifiers are not saved yet. Save this updated reading to your journal.",
+   "file": "journal.js",
+   "line": 71,
+   "fn": "(top level)",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "e915fa8",
+    "date": "2026-10-22",
+    "subject": "Confirm journal saves and align one-card frames and labels"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "↑ Back to the top of this reading",
+   "file": "journal.js",
+   "line": 76,
+   "fn": "(top level)",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5e2305c",
+    "date": "2026-10-28",
+    "subject": "End every reading and the Journal with ways back: reading, new spread, Home"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button type=\"button\" class=\"ghost-button\" data-page-end=\"",
+   "file": "journal.js",
+   "line": 83,
+   "fn": "pageEndNav",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5e2305c",
+    "date": "2026-10-28",
+    "subject": "End every reading and the Journal with ways back: reading, new spread, Home"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Reflection on this card in this reading",
+   "file": "journal.js",
+   "line": 94,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "This reflection belongs to position",
+   "file": "journal.js",
+   "line": 95,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Saved with this reading in Your Personal Journal.",
+   "file": "journal.js",
+   "line": 96,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Writing here saves this card reflection with its reading.",
+   "file": "journal.js",
+   "line": 96,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Return to the cards, the moment, and what it meant to you.",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "How these cards connect:",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "adb04a8",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: persist clarifier layers and provide saved feedback and journal card summary"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\">Your comments or reflections on this reading",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" placeholder=\"Add your reflection…\">",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button type=\"button\" class=\"gold-button\" data-save-journal-reflection=\"",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "db219c3",
+    "date": "2026-10-21",
+    "subject": "UAT: explicit Save Reflection button and visible journal saved/unsaved status"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<p class=\"reflection-note\" role=\"status\" id=\"status-",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "db219c3",
+    "date": "2026-10-21",
+    "subject": "UAT: explicit Save Reflection button and visible journal saved/unsaved status"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\">Your changes are not saved until you select Save Reflection.",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "db219c3",
+    "date": "2026-10-21",
+    "subject": "UAT: explicit Save Reflection button and visible journal saved/unsaved status"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<button class=\"ghost-button\" data-open-reading=\"",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "adb04a8",
+    "date": "2026-10-21",
+    "subject": "One-card UAT: persist clarifier layers and provide saved feedback and journal card summary"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "No saved readings yet",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Draw a reading and save it here with the date, time and your reflections.",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Card bookmarks & earlier reflections",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Your existing card notes are kept here. They were not linked to a dated reading.",
+   "file": "journal.js",
+   "line": 123,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "be55624",
+    "date": "2026-09-10",
+    "subject": "Save timestamped readings and linked reflections in the personal journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Back to your current reading",
+   "file": "journal.js",
+   "line": 127,
+   "fn": "(top level)",
+   "inBuilds": [
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "5e2305c",
+    "date": "2026-10-28",
+    "subject": "End every reading and the Journal with ways back: reading, new spread, Home"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "[data-save-journal-reflection]",
+   "file": "journal.js",
+   "line": 131,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "db219c3",
+    "date": "2026-10-21",
+    "subject": "UAT: explicit Save Reflection button and visible journal saved/unsaved status"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "[data-save-journal-reflection=\"",
+   "file": "journal.js",
+   "line": 142,
+   "fn": "button",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "db219c3",
+    "date": "2026-10-21",
+    "subject": "UAT: explicit Save Reflection button and visible journal saved/unsaved status"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Unsaved changes — select Save Reflection.",
+   "file": "journal.js",
+   "line": 145,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "db219c3",
+    "date": "2026-10-21",
+    "subject": "UAT: explicit Save Reflection button and visible journal saved/unsaved status"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "potential and new beginnings",
+   "file": "opening-dice.js",
+   "line": 7,
+   "fn": "symbols",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f6fbb14",
+    "date": "2026-10-21",
+    "subject": "Add optional two-digit symbolic opening dice utility"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "reflection and inner wisdom",
+   "file": "opening-dice.js",
+   "line": 7,
+   "fn": "symbols",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f6fbb14",
+    "date": "2026-10-21",
+    "subject": "Add optional two-digit symbolic opening dice utility"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "confidence and practical progress",
+   "file": "opening-dice.js",
+   "line": 7,
+   "fn": "symbols",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f6fbb14",
+    "date": "2026-10-21",
+    "subject": "Add optional two-digit symbolic opening dice utility"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Expected two digits from 0 to 9",
+   "file": "opening-dice.js",
+   "line": 14,
+   "fn": "interpret",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f6fbb14",
+    "date": "2026-10-21",
+    "subject": "Add optional two-digit symbolic opening dice utility"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "can work together in your situation. Their sum",
+   "file": "opening-dice.js",
+   "line": 18,
+   "fn": "interpret",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "resonate-astrology-snapshot.json",
+   "file": "reading-pdf.js",
+   "line": 9,
+   "fn": "create",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "59f3993",
+    "date": "2026-10-23",
+    "subject": "Preserve calculated astrology snapshot through tarot and journal"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "TAROT EXPLORER · YOUR PERSONAL READING",
+   "file": "reading-pdf.js",
+   "line": 19,
+   "fn": "newPage",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "RESONATE. All rights reserved. For personal reflection.",
+   "file": "reading-pdf.js",
+   "line": 43,
+   "fn": "create",
+   "inBuilds": [
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f488713",
+    "date": "2026-10-22",
+    "subject": "Fix one-card UAT deck, clarifiers, journal replay and PDF export"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "ResonateDeck must load first",
+   "file": "reading-session.js",
+   "line": 8,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "154d42b",
+    "date": "2026-10-21",
+    "subject": "Create immutable reading sessions supporting three independent clarifier layers"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Maximum clarifier layers reached",
+   "file": "reading-session.js",
+   "line": 19,
+   "fn": "appendClarifierLayer",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "154d42b",
+    "date": "2026-10-21",
+    "subject": "Create immutable reading sessions supporting three independent clarifier layers"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"stage-card\" data-stage-card=\"",
+   "file": "reading-stage.js",
+   "line": 26,
+   "fn": "faceDownSlot",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "966f585",
+    "date": "2026-09-07",
+    "subject": "RESONATE 9.0: dedicated reading stage and tarot shuffle"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "\" aria-label=\"Face-down tarot card for",
+   "file": "reading-stage.js",
+   "line": 26,
+   "fn": "faceDownSlot",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "966f585",
+    "date": "2026-09-07",
+    "subject": "RESONATE 9.0: dedicated reading stage and tarot shuffle"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Select a spread to enter the reading table. Your cards will be waiting face down.",
+   "file": "reading-stage.js",
+   "line": 30,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "966f585",
+    "date": "2026-09-07",
+    "subject": "RESONATE 9.0: dedicated reading stage and tarot shuffle"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "You are welcome to invite whichever guides, guardian angels, ancestors or spiritual connections you personally believe in. Take a moment to settle and follow your intuition.",
+   "file": "reading-stage.js",
+   "line": 30,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "fcc2eb7",
+    "date": "2026-10-21",
+    "subject": "Add inclusive personal reading welcome before spread selection"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "An optional moment of reflection before your cards.",
+   "file": "reading-stage.js",
+   "line": 30,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "3f71d1d",
+    "date": "2026-10-21",
+    "subject": "Add optional opening dice control and reflective result to reading selection"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "You can roll, or simply choose your spread below.",
+   "file": "reading-stage.js",
+   "line": 30,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "3f71d1d",
+    "date": "2026-10-21",
+    "subject": "Add optional opening dice control and reflective result to reading selection"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Choose a spread to continue.",
+   "file": "reading-stage.js",
+   "line": 30,
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "966f585",
+    "date": "2026-09-07",
+    "subject": "RESONATE 9.0: dedicated reading stage and tarot shuffle"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "The dice are rolling…",
+   "file": "reading-stage.js",
+   "line": 44,
+   "fn": "(top level)",
+   "inBuilds": [
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "f4df353",
+    "date": "2026-10-21",
+    "subject": "Animate opening dice roll and remove duplicated dice-state assignments"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Shuffle if it feels right, then draw when you are ready.",
+   "file": "reading-stage.js",
+   "line": 80,
+   "fn": "renderReadingStage",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "966f585",
+    "date": "2026-09-07",
+    "subject": "RESONATE 9.0: dedicated reading stage and tarot shuffle"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "<div class=\"spread-board stage-board spread-",
+   "file": "reading-stage.js",
+   "line": 80,
+   "fn": "renderReadingStage",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "966f585",
+    "date": "2026-09-07",
+    "subject": "RESONATE 9.0: dedicated reading stage and tarot shuffle"
+   },
+   "flag": null,
+   "proposal": null
+  },
+  {
+   "text": "Open the RESONATE Store by Chas",
+   "file": "shop-link.js",
+   "line": 11,
+   "fn": "installHeaderLinks",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base",
+    "cam",
+    "full",
+    "here"
+   ],
+   "firstCommit": {
+    "sha": "94a8dbb",
+    "date": "2026-09-10",
+    "subject": "Add RESONATE shop link enhancement"
+   },
+   "flag": null,
+   "proposal": null
+  }
+ ],
+ "removed": [
+  {
+   "text": "the client’s experiences and influences from approximately the previous 18 to 24 months",
+   "file": "app.js",
+   "fn": "positions",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": "your experiences and influences from approximately the previous 18 to 24 months",
+   "score": 0.89,
+   "proposal": null
+  },
+  {
+   "text": "the client’s present circumstances, including the period immediately surrounding today",
+   "file": "app.js",
+   "fn": "positions",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": "your present circumstances, including the period immediately surrounding today",
+   "score": 0.89,
+   "proposal": null
+  },
+  {
+   "text": "the people, home, work and other circumstances influencing the client or the question at present",
+   "file": "app.js",
+   "fn": "positions",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": "the people, home, work and other circumstances influencing you or the question at present",
+   "score": 0.91,
+   "proposal": null
+  },
+  {
+   "text": "the hopes, fears and attitude the client brings to the situation or specific question",
+   "file": "app.js",
+   "fn": "positions",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": "the hopes, fears and attitude you bring to the situation or specific question",
+   "score": 0.8,
+   "proposal": null
+  },
+  {
+   "text": "may describe what is active for the client now.",
+   "file": "app.js",
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": "may describe what is active for you now.",
+   "score": 0.75,
+   "proposal": null
+  },
+  {
+   "text": "may describe the client’s current state. For a specific question, interpret this card last as the answer to that question.",
+   "file": "app.js",
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": null,
+   "score": 0.47,
+   "proposal": null
+  },
+  {
+   "text": "In the client’s surroundings,",
+   "file": "app.js",
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": null,
+   "score": 0.33,
+   "proposal": null
+  },
+  {
+   "text": "may colour the client’s hopes, fears and attitude toward the situation or question.",
+   "file": "app.js",
+   "fn": "sevenLenses",
+   "inBuilds": [
+    "main"
+   ],
+   "closest": "may colour your hopes, fears and attitude toward the situation or question.",
+   "score": 0.91,
+   "proposal": null
+  },
+  {
+   "text": "The reading centres on",
+   "file": "app.js",
+   "fn": "opening",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.4,
+   "proposal": null
+  },
+  {
+   "text": "The reading begins with",
+   "file": "app.js",
+   "fn": "opening",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.4,
+   "proposal": null
+  },
+  {
+   "text": ", this develops the thread:",
+   "file": "app.js",
+   "fn": "cardsHtml",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "As the next step in the Major Arcana sequence after",
+   "file": "app.js",
+   "fn": "cardsHtml",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.29,
+   "proposal": null
+  },
+  {
+   "text": "turns that earlier impulse toward",
+   "file": "app.js",
+   "fn": "cardsHtml",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.2,
+   "proposal": {
+    "after": "invites that earlier impulse toward",
+    "why": "Deep's review (#39/#40): 'turns' states an outcome as fact; 'invites' keeps it a possibility. Applies only if Chas restores the card-to-card bridges."
+   }
+  },
+  {
+   "text": "shifts the emphasis toward",
+   "file": "app.js",
+   "fn": "cardsHtml",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": {
+    "after": "may draw your attention toward",
+    "why": "Deep's review: the generic fallback reads as a fixed outcome and says little. Applies only if Chas restores the card-to-card bridges."
+   }
+  },
+  {
+   "text": "The card-to-card movement is the heart of this reading:",
+   "file": "app.js",
+   "fn": "connections",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "opens the question, and",
+   "file": "app.js",
+   "fn": "connections",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "shows where that pattern may be heading if the present choices continue.",
+   "file": "app.js",
+   "fn": "connections",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.4,
+   "proposal": null
+  },
+  {
+   "text": "In summary, the reading gathers around",
+   "file": "app.js",
+   "fn": "summary",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.4,
+   "proposal": null
+  },
+  {
+   "text": "In summary, let the card meanings and your own response show you what deserves attention now.",
+   "file": "app.js",
+   "fn": "summary",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.31,
+   "proposal": null
+  },
+  {
+   "text": "Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.",
+   "file": "app.js",
+   "fn": "resonance",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.47,
+   "proposal": null
+  },
+  {
+   "text": "Tap a card or its interpretation for the full meaning, then return to this reading.",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.33,
+   "proposal": null
+  },
+  {
+   "text": "Whisper atmosphere — entering the reading",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base"
+   ],
+   "closest": "Whisper atmosphere — the inner journey",
+   "score": 0.6,
+   "proposal": null
+  },
+  {
+   "text": "Sample deck: cards repeat to fill every position.",
+   "file": "app.js",
+   "fn": "lines",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base"
+   ],
+   "closest": null,
+   "score": 0.43,
+   "proposal": null
+  },
+  {
+   "text": "resonate-tarot-reading.txt",
+   "file": "app.js",
+   "fn": "downloadReading",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base"
+   ],
+   "closest": "resonate-tarot-reading.pdf",
+   "score": 0.75,
+   "proposal": null
+  },
+  {
+   "text": "Saved in Your Personal Journal on this browser.",
+   "file": "journal.js",
+   "fn": "writeJournal",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": "✓ Reading saved to Your Personal Journal on this browser.",
+   "score": 0.86,
+   "proposal": null
+  },
+  {
+   "text": "Save reading to journal",
+   "file": "journal.js",
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091",
+    "base"
+   ],
+   "closest": "Save Reading to Journal",
+   "score": 1,
+   "proposal": null
+  },
+  {
+   "text": "Reflections save as you write.",
+   "file": "journal.js",
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": "Reading saved. Reflections save as you write.",
+   "score": 0.67,
+   "proposal": null
+  },
+  {
+   "text": "<button class=\"gold-button\" data-open-reading=\"",
+   "file": "journal.js",
+   "fn": "(top level)",
+   "inBuilds": [
+    "main",
+    "v091"
+   ],
+   "closest": "<button class=\"ghost-button\" data-open-reading=\"",
+   "score": 0.83,
+   "proposal": null
+  },
+  {
+   "text": "Next step: explore an additional card for each position.",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.38,
+   "proposal": null
+  },
+  {
+   "text": "↑ Back to reading · Next step",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "Review first-layer clarifiers",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Clarify the first layer →",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "v091"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Your opening dice were",
+   "file": "app.js",
+   "fn": "numeric",
+   "inBuilds": [
+    "base"
+   ],
+   "closest": null,
+   "score": 0.43,
+   "proposal": null
+  },
+  {
+   "text": "A repeated number deserves attention:",
+   "file": "app.js",
+   "fn": "numerologyForReading",
+   "inBuilds": [
+    "base"
+   ],
+   "closest": null,
+   "score": 0.17,
+   "proposal": null
+  },
+  {
+   "text": "appears more than once. This can symbolically reinforce a theme, rather than creating a separate prediction.",
+   "file": "app.js",
+   "fn": "numerologyForReading",
+   "inBuilds": [
+    "base"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "\" loading=\"lazy\" referrerpolicy=\"no-referrer\">",
+   "file": "app.js",
+   "fn": "clarifierCardsForPosition",
+   "inBuilds": [
+    "base"
+   ],
+   "closest": "\" loading=\"eager\" referrerpolicy=\"no-referrer\">",
+   "score": 0.75,
+   "proposal": null
+  },
+  {
+   "text": "When you are ready, continue this reading with another card, or save it for reflection.",
+   "file": "app.js",
+   "fn": "renderDraw",
+   "inBuilds": [
+    "base"
+   ],
+   "closest": "When you are ready, draw a clarifier to explore this reading further, or save it for reflection.",
+   "score": 0.69,
+   "proposal": null
+  },
+  {
+   "text": "Optional — needs birth date, time and zone",
+   "file": "astrology-prelude-ui.js",
+   "fn": "cards",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.44,
+   "proposal": null
+  },
+  {
+   "text": "Optional — needs exact birth time and birthplace coordinates",
+   "file": "astrology-prelude-ui.js",
+   "fn": "cards",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.33,
+   "proposal": null
+  },
+  {
+   "text": "Optional — birth year needed",
+   "file": "astrology-prelude-ui.js",
+   "fn": "cards",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "The sky at the start of your reading",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "Birth year<input name=\"birthYear\" type=\"number\" min=\"1900\" max=\"2100\" inputmode=\"numeric\" placeholder=\"e.g. 1968\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "Optional full birth details · Moon and Rising",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.5,
+   "proposal": null
+  },
+  {
+   "text": "For your natal Moon, supply birth date, local clock time and the time zone at the place of birth. Rising also needs the birthplace latitude and longitude. We never guess missing chart points.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.32,
+   "proposal": null
+  },
+  {
+   "text": "Birth date<input name=\"birthDate\" type=\"date\" min=\"1900-01-01\" max=\"2100-12-31\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Local birth time<input name=\"birthTime\" type=\"time\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Birthplace time zone<input name=\"timeZone\" type=\"text\" placeholder=\"e.g. Europe/London\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.33,
+   "proposal": null
+  },
+  {
+   "text": "\" spellcheck=\"false\" autocomplete=\"off\">",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.08,
+   "proposal": null
+  },
+  {
+   "text": "Repeated clock time Ask me if this time occurs twice Earlier occurrence (before clocks went back) Later occurrence (after clocks went back)",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam"
+   ],
+   "closest": null,
+   "score": 0.53,
+   "proposal": null
+  },
+  {
+   "text": "Birthplace latitude<input name=\"latitude\" type=\"number\" step=\"any\" min=\"-89\" max=\"89\" placeholder=\"e.g. 56.11\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Birthplace longitude<input name=\"longitude\" type=\"number\" step=\"any\" min=\"-180\" max=\"180\" placeholder=\"e.g. -3.34\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Preview example (not used for your reading)",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.43,
+   "proposal": null
+  },
+  {
+   "text": "Unable to calculate this profile:",
+   "file": "astrology-prelude-ui.js",
+   "fn": "show",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.25,
+   "proposal": null
+  },
+  {
+   "text": "Correct the profile or select Clear birth profile to continue anonymously.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "cam",
+    "full"
+   ],
+   "closest": null,
+   "score": 0.3,
+   "proposal": null
+  },
+  {
+   "text": "Enter your birth date as DD/MM/YYYY, for example 15/03/1968.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "DATE_HELP",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": null,
+   "score": 0.43,
+   "proposal": null
+  },
+  {
+   "text": "Enter your birth time as HH:MM on a 24-hour clock, for example 09:30 or 21:45.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "TIME_HELP",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": null,
+   "score": 0.38,
+   "proposal": null
+  },
+  {
+   "text": "That date does not exist.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "parseBirthDate",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": null,
+   "score": 0.33,
+   "proposal": null
+  },
+  {
+   "text": "Birth dates from 1900 to 2100 are supported.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "parseBirthDate",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": "Birth years from 1900 to 2100 are supported.",
+   "score": 0.8,
+   "proposal": null
+  },
+  {
+   "text": "Birth date<input name=\"birthDate\" type=\"text\" inputmode=\"numeric\" autocomplete=\"bday\" maxlength=\"10\" placeholder=\"DD/MM/YYYY\" aria-describedby=\"astroDateHelp\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": "Birth year<input name=\"birthYear\" type=\"text\" inputmode=\"numeric\" maxlength=\"4\" enterkeyhint=\"done\" autocomplete=\"bday-year\" placeholder=\"Optional, e.g. 1968\" aria-describedby=\"astroYearHelp\" value=\"",
+   "score": 0.7,
+   "proposal": null
+  },
+  {
+   "text": "Local birth time<input name=\"birthTime\" type=\"text\" inputmode=\"numeric\" maxlength=\"5\" placeholder=\"HH:MM\" aria-describedby=\"astroTimeHelp\" value=\"",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": "Birth year<input name=\"birthYear\" type=\"text\" inputmode=\"numeric\" maxlength=\"4\" enterkeyhint=\"done\" autocomplete=\"bday-year\" placeholder=\"Optional, e.g. 1968\" aria-describedby=\"astroYearHelp\" value=\"",
+   "score": 0.6,
+   "proposal": null
+  },
+  {
+   "text": "Repeated clock time Ask me if it happens twice The earlier one The later one",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": null,
+   "score": 0.43,
+   "proposal": null
+  },
+  {
+   "text": "Only matters if the clocks went back at your birth time, so that time happened twice.",
+   "file": "astrology-prelude-ui.js",
+   "fn": "mountPrelude",
+   "inBuilds": [
+    "full"
+   ],
+   "closest": null,
+   "score": 0.29,
+   "proposal": null
+  }
+ ],
+ "cardCounts": {
+  "main": 5,
+  "v091": 5,
+  "base": 5,
+  "cam": 78,
+  "full": 78,
+  "here": 78
+ },
+ "cardChanges": [],
+ "cardFlags": [
+  {
+   "card": "The Fool",
+   "field": "upright",
+   "sentence": "In a Past position it can reflect the leap that brought you here; in the Present, a threshold you are standing at now; in the Future, an emerging possibility rather than a guaranteed event.",
+   "word": "guaranteed",
+   "proposal": null
+  },
+  {
+   "card": "The Magician",
+   "field": "subtitle",
+   "sentence": "The Alchemist & Conduit of Will",
+   "word": "Will",
+   "proposal": null
+  },
+  {
+   "card": "The Magician",
+   "field": "wuWei",
+   "sentence": "Wu Wei: effective action is not always greater effort.",
+   "word": "always",
+   "proposal": null
+  },
+  {
+   "card": "The Empress",
+   "field": "wuWei",
+   "sentence": "Wu Wei: growth cannot always be hurried.",
+   "word": "always",
+   "proposal": null
+  },
+  {
+   "card": "The Chariot",
+   "field": "symbolism",
+   "sentence": "Their opposing colours suggest forces that must cooperate for the vehicle to move.",
+   "word": "must",
+   "proposal": null
+  },
+  {
+   "card": "Justice",
+   "field": "symbolism",
+   "sentence": "Consideration and clear judgement must work together, with consequences following the decision.",
+   "word": "must",
+   "proposal": null
+  },
+  {
+   "card": "The Star",
+   "field": "upright",
+   "sentence": "Replenish what has been depleted and give a modest hope some daily attention; renewal does not require pretending that the difficulty never happened.",
+   "word": "never",
+   "proposal": null
+  },
+  {
+   "card": "Three of Wands",
+   "field": "upright",
+   "sentence": "Watch for feedback, coordinate with others and prepare for what growth will require rather than treating the first success as the whole journey.",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Three of Wands",
+   "field": "wuWei",
+   "sentence": "A practice of unforced attention with Three of Wands: What support will I need if this project grows beyond me?",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Three of Wands",
+   "field": "spiritual",
+   "sentence": "What support will I need if this project grows beyond me?",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Three of Wands",
+   "field": "journalPrompt",
+   "sentence": "What support will I need if this project grows beyond me?",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Knight of Wands",
+   "field": "upright",
+   "sentence": "Commit your energy, but consider the practical follow-through and the people who must live with the pace you set.",
+   "word": "must",
+   "proposal": null
+  },
+  {
+   "card": "Knight of Wands",
+   "field": "reversed",
+   "sentence": "Slow down enough to choose a commitment you will still honour after the excitement fades.",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "King of Cups",
+   "field": "psychological",
+   "sentence": "Psychological lens: Emotional maturity joins containment with contact; composure alone does not guarantee that feeling has been understood.",
+   "word": "guarantee",
+   "proposal": null
+  },
+  {
+   "card": "King of Cups",
+   "field": "wabiSabi",
+   "sentence": "Emotional maturity joins containment with contact; composure alone does not guarantee that feeling has been understood.",
+   "word": "guarantee",
+   "proposal": null
+  },
+  {
+   "card": "Six of Swords",
+   "field": "psychological",
+   "sentence": "Psychological lens: Distance can create perspective, while the mind still carries patterns that will need attention on the new shore.",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Six of Swords",
+   "field": "wabiSabi",
+   "sentence": "Distance can create perspective, while the mind still carries patterns that will need attention on the new shore.",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Five of Pentacles",
+   "field": "upright",
+   "sentence": "Name the need and investigate available help rather than assuming you must manage it unseen.",
+   "word": "must",
+   "proposal": null
+  },
+  {
+   "card": "Seven of Pentacles",
+   "field": "wuWei",
+   "sentence": "A practice of unforced attention with Seven of Pentacles: What evidence will help me decide whether to keep tending this effort?",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Seven of Pentacles",
+   "field": "spiritual",
+   "sentence": "What evidence will help me decide whether to keep tending this effort?",
+   "word": "will",
+   "proposal": null
+  },
+  {
+   "card": "Seven of Pentacles",
+   "field": "journalPrompt",
+   "sentence": "What evidence will help me decide whether to keep tending this effort?",
+   "word": "will",
+   "proposal": null
+  }
+ ]
+}
