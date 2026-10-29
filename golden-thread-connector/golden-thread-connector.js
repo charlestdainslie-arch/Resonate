@@ -10,6 +10,12 @@
  * drawn on a canvas layer with requestAnimationFrame (no WAAPI), only while
  * mounted and motion is allowed. Reduced motion shows the strands still.
  *
+ * Tinkerbell reveal (Chas, 29 Oct): reveal(target, onTurn) flies the thread to a
+ * card (down from the top of the stage for the first card), loops a twinkling
+ * light once round it, then calls onTurn() so the APP turns the card over. The
+ * connector still never flips a card itself. Each revealed card keeps its gold
+ * loop (data-gtc-ring), and the first card keeps the strand from the top.
+ *
  * API: mount(container, readingState, options), update(readingState), destroy()
  *
  * readingState (read-only, normalized):
@@ -28,7 +34,7 @@
   'use strict';
 
   var SVG_NS = 'http://www.w3.org/2000/svg';
-  var VERSION = '0.2.0-phase-a-opener-look';
+  var VERSION = '0.3.0-phase-a-tinkerbell';
 
   var DEFAULTS = Object.freeze({
     mainSelector: '[data-gtc-main-card], .reading-card[data-reading-card]',
@@ -135,6 +141,9 @@
     this._lastTick = 0;
     this._sparks = [];
     this._glints = [];
+    this._travel = null;
+    this._queue = null;
+    this._skipAnimate = false;
     var self = this;
     this._onReducedChange = function () { self._scheduleRender(false); };
     this._tick = function (now) { self._sparkleTick(now); };
@@ -387,9 +396,11 @@
     }
 
     var reduced = this.options.forceReducedMotion || prefersReducedMotion(this._reducedMql);
-    var segments = this._buildSegments(base);
+    var segments = this._buildSegments(base).concat(this._buildRings(base));
     var self = this;
     var nextKeys = new Set();
+    var skip = this._skipAnimate;
+    this._skipAnimate = false;
 
     segments.forEach(function (seg) {
       nextKeys.add(seg.key);
@@ -398,7 +409,7 @@
         node = self._createNode(seg);
         self._svg.appendChild(node.group);
         self._nodes.set(seg.key, node);
-        if (animate && !reduced) self._animateNode(node);
+        if (animate && !reduced && !skip) self._animateNode(node);
       } else {
         self._updateNode(node, seg);
       }
@@ -414,17 +425,22 @@
     this._observeCards();
     this._signature = this._signatureOf(this._state);
     if (reduced) this._stopLoop();
-    else if (this._nodes.size) this._startLoop();
+    else if (this._nodes.size || this._travel) this._startLoop();
   };
 
   GoldenThreadConnector.prototype._createNode = function (seg) {
-    var d = this._curve(seg.from, seg.to);
+    var d = seg.d || this._curve(seg.from, seg.to);
     var group = document.createElementNS(SVG_NS, 'g');
-    group.setAttribute('data-gtc-key', seg.key);
-    group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
-    group.setAttribute('data-gtc-from-y', seg.from.y.toFixed(2));
-    group.setAttribute('data-gtc-to-x', seg.to.x.toFixed(2));
-    group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
+    // Rings and the entry strand carry data-gtc-ring, so card-to-card strands
+    // (data-gtc-key) keep the counts and endpoints the tests check.
+    if (seg.ring) group.setAttribute('data-gtc-ring', seg.ring);
+    else {
+      group.setAttribute('data-gtc-key', seg.key);
+      group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
+      group.setAttribute('data-gtc-from-y', seg.from.y.toFixed(2));
+      group.setAttribute('data-gtc-to-x', seg.to.x.toFixed(2));
+      group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
+    }
     group.setAttribute('aria-hidden', 'true');
 
     // Three stacked strokes, as in the #45 opener: wide soft halo, glow, bright core.
@@ -449,14 +465,16 @@
     group.appendChild(headPath);
 
     var dot = document.createElementNS(SVG_NS, 'circle');
-    dot.setAttribute('cx', seg.to.x);
-    dot.setAttribute('cy', seg.to.y);
+    if (seg.to) {
+      dot.setAttribute('cx', seg.to.x);
+      dot.setAttribute('cy', seg.to.y);
+    }
     dot.setAttribute('r', '2.6');
     dot.setAttribute('class', 'gtc-filament-dot');
     dot.setAttribute('aria-hidden', 'true');
-    group.appendChild(dot);
+    if (!seg.ring) group.appendChild(dot);
 
-    return { group: group, base: basePath, glow: glowPath, head: headPath, dot: dot, d: d, animations: [],
+    return { key: seg.key, group: group, base: basePath, glow: glowPath, head: headPath, dot: dot, d: d, animations: [],
       drawing: null, len: 0, glintIn: 0.4 + Math.random() * 1.2 };
   };
 
@@ -504,18 +522,20 @@
   };
 
   GoldenThreadConnector.prototype._updateNode = function (node, seg) {
-    var d = this._curve(seg.from, seg.to);
+    var d = seg.d || this._curve(seg.from, seg.to);
     if (node.d === d) return;
     node.base.setAttribute('d', d);
     node.glow.setAttribute('d', d);
     node.head.setAttribute('d', d);
     node.len = 0;
-    node.dot.setAttribute('cx', seg.to.x);
-    node.dot.setAttribute('cy', seg.to.y);
-    node.group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
-    node.group.setAttribute('data-gtc-from-y', seg.from.y.toFixed(2));
-    node.group.setAttribute('data-gtc-to-x', seg.to.x.toFixed(2));
-    node.group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
+    if (!seg.ring) {
+      node.dot.setAttribute('cx', seg.to.x);
+      node.dot.setAttribute('cy', seg.to.y);
+      node.group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
+      node.group.setAttribute('data-gtc-from-y', seg.from.y.toFixed(2));
+      node.group.setAttribute('data-gtc-to-x', seg.to.x.toFixed(2));
+      node.group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
+    }
     node.d = d;
     this._cancelNode(node);
     node.head.style.strokeDashoffset = '0';
@@ -548,6 +568,7 @@
     this._loop = 0;
     this._sparks = [];
     this._glints = [];
+    this._finishTravel();
     if (this._ctx && this._canvas) {
       this._ctx.setTransform(1, 0, 0, 1, 0, 0);
       this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height);
@@ -624,7 +645,7 @@
 
     // Glints: a small bright light that runs the length of a finished strand.
     this._glints = this._glints.filter(function (gl) {
-      if (!self._nodes.has(gl.node.group.getAttribute('data-gtc-key'))) return false;
+      if (self._nodes.get(gl.node.key) !== gl.node) return false;
       gl.t += dt;
       var u = gl.t / gl.dur;
       if (u >= 1) return false;
@@ -652,7 +673,172 @@
       return true;
     });
 
-    if (this._nodes.size || this._sparks.length) this._loop = requestAnimationFrame(this._tick);
+    if (this._travel) this._drawTravel(ctx, dt);
+
+    if (this._nodes.size || this._sparks.length || this._travel) this._loop = requestAnimationFrame(this._tick);
+  };
+
+  // ---- Tinkerbell reveal -------------------------------------------------------------------------
+
+  // A rounded loop just outside the card, starting and ending at its top centre, clockwise.
+  GoldenThreadConnector.prototype._ringPath = function (el, base) {
+    var r = el.getBoundingClientRect();
+    var m = 5;
+    var L = r.left - base.left - m, T = r.top - base.top - m;
+    var R = r.right - base.left + m, B = r.bottom - base.top + m;
+    var cx = (L + R) / 2;
+    var k = Math.min(12, (R - L) / 4, (B - T) / 4);
+    var f = function (n) { return n.toFixed(2); };
+    return 'M ' + f(cx) + ' ' + f(T) +
+      ' H ' + f(R - k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(R) + ' ' + f(T + k) +
+      ' V ' + f(B - k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(R - k) + ' ' + f(B) +
+      ' H ' + f(L + k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(L) + ' ' + f(B - k) +
+      ' V ' + f(T + k) + ' A ' + k + ' ' + k + ' 0 0 1 ' + f(L + k) + ' ' + f(T) +
+      ' H ' + f(cx);
+  };
+
+  // Where the thread comes from for a target: the top of the stage for the first card,
+  // the parent card for a clarifier, otherwise the end of the previous card's thread.
+  GoldenThreadConnector.prototype._fromFor = function (target, el, base) {
+    var self = this;
+    if (target.type === 'clarifier') {
+      var parent = this._mainElement({ positionIndex: target.parent });
+      return parent ? anchor(parent, base, 'bottom') : null;
+    }
+    var mains = this._state.mainCards.slice().sort(function (a, b) { return a.positionIndex - b.positionIndex; });
+    var prev = null;
+    for (var i = 0; i < mains.length; i++) {
+      if (mains[i].positionIndex === target.positionIndex) break;
+      prev = mains[i];
+    }
+    if (!prev) {
+      var a = anchor(el, base, 'top');
+      return { x: a.x, y: 0 };
+    }
+    var prevEl = this._mainElement(prev);
+    if (!prevEl) return null;
+    var last = null;
+    (this._state.clarifiers[String(prev.positionIndex)] || []).forEach(function (c) {
+      var cEl = self._clarifierElement(prev.positionIndex, c.slot);
+      if (cEl && self._isRevealed(c, cEl) && (!last || c.slot > last.slot)) last = { slot: c.slot, el: cEl };
+    });
+    return anchor(last ? last.el : prevEl, base, 'bottom');
+  };
+
+  GoldenThreadConnector.prototype._buildRings = function (base) {
+    var self = this;
+    var rings = [];
+    var all = this._state.mainCards
+      .map(function (m) { return assign({}, m, { el: self._mainElement(m) }); })
+      .filter(function (m) { return m.el; })
+      .sort(function (a, b) { return a.positionIndex - b.positionIndex; });
+    for (var i = 0; i < all.length; i++) {
+      var m = all[i];
+      if (!this._isRevealed(m, m.el)) break;
+      if (i === 0) {
+        var top = anchor(m.el, base, 'top');
+        rings.push({ key: 'ring|enter', ring: 'enter', d: this._curve({ x: top.x, y: 0 }, top) });
+      }
+      rings.push({ key: 'ring|main:' + m.positionIndex, ring: 'main:' + m.positionIndex, d: this._ringPath(m.el, base) });
+      (this._state.clarifiers[String(m.positionIndex)] || []).forEach(function (c) {
+        var el = self._clarifierElement(m.positionIndex, c.slot);
+        if (el && self._isRevealed(c, el)) {
+          var k = 'main:' + m.positionIndex + ':clarifier:' + c.slot;
+          rings.push({ key: 'ring|' + k, ring: k, d: self._ringPath(el, base) });
+        }
+      });
+    }
+    return rings;
+  };
+
+  // target: { type: 'main', positionIndex } or { type: 'clarifier', parent, slot }.
+  // Resolves after onTurn() has been called. Calls are queued, so taps never overlap.
+  GoldenThreadConnector.prototype.reveal = function (target, onTurn) {
+    var self = this;
+    var run = function () {
+      return new Promise(function (resolve) {
+        var turn = function () { try { if (onTurn) onTurn(); } finally { resolve(); } };
+        if (!self._mounted || self._destroyed || !self._container || !self._svg) { turn(); return; }
+        var reduced = self.options.forceReducedMotion || prefersReducedMotion(self._reducedMql);
+        var el = target && target.type === 'clarifier'
+          ? self._clarifierElement(target.parent, target.slot)
+          : self._mainElement({ positionIndex: target ? target.positionIndex : 0 });
+        var base = self._container.getBoundingClientRect();
+        var from = el && self._fromFor(target, el, base);
+        if (reduced || !el || !from || !self._ctx) { turn(); return; }
+        var to = anchor(el, base, 'top');
+        var probe = document.createElementNS(SVG_NS, 'path');
+        probe.setAttribute('class', 'gtc-probe');
+        probe.setAttribute('d', self._curve(from, to));
+        self._svg.appendChild(probe);
+        var flyLen = probe.getTotalLength();
+        probe.setAttribute('d', self._curve(from, to) + ' L ' + to.x.toFixed(2) + ' ' + (to.y - 5).toFixed(2) + ' ' + self._ringPath(el, base).replace(/^M/, 'L'));
+        var total = probe.getTotalLength();
+        var pts = [];
+        var n = Math.max(40, Math.ceil(total / 3));
+        for (var i = 0; i <= n; i++) { var q = probe.getPointAtLength(total * i / n); pts.push({ x: q.x, y: q.y, d: total * i / n }); }
+        probe.parentNode.removeChild(probe);
+        self._travel = {
+          pts: pts, total: total, flyLen: flyLen, t: 0,
+          fly: 0.75 + Math.min(0.6, flyLen / 900), loop: 1.25, hold: 0.35,
+          turned: false, turn: turn
+        };
+        self._startLoop();
+      });
+    };
+    this._queue = (this._queue || Promise.resolve()).then(run, run);
+    return this._queue;
+  };
+
+  GoldenThreadConnector.prototype._finishTravel = function () {
+    var tr = this._travel;
+    this._travel = null;
+    if (tr && !tr.turned) { tr.turned = true; tr.turn(); }
+  };
+
+  GoldenThreadConnector.prototype._drawTravel = function (ctx, dt) {
+    var tr = this._travel;
+    tr.t += dt;
+    var ease = function (x) { return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2; };
+    var reach;
+    if (tr.t < tr.fly) reach = tr.flyLen * ease(tr.t / tr.fly);
+    else reach = tr.flyLen + (tr.total - tr.flyLen) * ease(Math.min(1, (tr.t - tr.fly) / tr.loop));
+    var done = tr.t >= tr.fly + tr.loop;
+    if (done && !tr.turned) {
+      tr.turned = true;
+      this._skipAnimate = true;   // the strand and loop were just drawn by the flight
+      tr.turn();
+    }
+    var fade = done ? Math.max(0, 1 - (tr.t - tr.fly - tr.loop) / tr.hold) : 1;
+    var pts = tr.pts;
+    ctx.save();
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    [[9, 0.10, 18], [4, 0.35, 10], [1.6, 0.95, 4]].forEach(function (layer) {
+      ctx.beginPath();
+      ctx.moveTo(pts[0].x, pts[0].y);
+      for (var i = 1; i < pts.length && pts[i].d <= reach; i++) ctx.lineTo(pts[i].x, pts[i].y);
+      ctx.strokeStyle = 'rgba(232,196,120,' + (layer[1] * fade).toFixed(3) + ')';
+      ctx.lineWidth = layer[0];
+      ctx.shadowColor = 'rgba(255,210,130,0.9)';
+      ctx.shadowBlur = layer[2];
+      ctx.stroke();
+    });
+    ctx.restore();
+    if (!done) {
+      var idx = 0;
+      while (idx < pts.length - 1 && pts[idx + 1].d <= reach) idx++;
+      var h = pts[idx];
+      var pulse = 22 + 4 * Math.sin(tr.t * 18);
+      var g = ctx.createRadialGradient(h.x, h.y, 0, h.x, h.y, pulse);
+      g.addColorStop(0, 'rgba(255,248,225,1)');
+      g.addColorStop(0.35, 'rgba(255,226,160,0.55)');
+      g.addColorStop(1, 'rgba(255,200,120,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(h.x, h.y, pulse, 0, 7); ctx.fill();
+      for (var k = 0; k < 6; k++) this._spark(h.x, h.y, 90, 18, 1.1, 2.4);
+    } else if (fade <= 0) {
+      this._travel = null;
+    }
   };
 
   GoldenThreadConnector.prototype._buildSegments = function (base) {

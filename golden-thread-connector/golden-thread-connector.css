@@ -64,5 +64,8 @@
   }
 }
 
+/* Measuring path only; never painted. */
+.gtc-probe { fill: none; stroke: none; visibility: hidden; }
+
 /* Decorative only: never intercept touch or pointer input. */
 .gtc-overlay g { pointer-events: none; }

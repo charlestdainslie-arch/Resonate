@@ -496,6 +496,52 @@ function serve() {
     if (!c2Now) throw new Error('clarifier 2 did not reveal after clarifier 1');
   });
 
+  // ---- Tinkerbell reveal (Claude, 29 Oct) ----
+
+  await test('24. reveal(): thread flies and loops, then the APP turns the card; connector never flips it', async () => {
+    const r = await page.evaluate(async () => {
+      const d = window.__gtcDemo;
+      d.connector.options.forceReducedMotion = false;
+      d.reset(); d.mount();
+      const el = document.querySelector('[data-gtc-main-card="0"]');
+      let turnedAt = -1, facedownDuringFlight = null;
+      const t0 = performance.now();
+      const p = d.connector.reveal({ type: 'main', positionIndex: 0 }, () => {
+        facedownDuringFlight = el.classList.contains('is-facedown');
+        turnedAt = performance.now() - t0;
+        d.revealMain(0);
+      });
+      await p;
+      await new Promise((res) => setTimeout(res, 120));
+      return {
+        turnedAt, facedownDuringFlight,
+        ring: !!document.querySelector('[data-gtc-ring="main:0"]'),
+        enter: !!document.querySelector('[data-gtc-ring="enter"]'),
+        revealed: el.classList.contains('revealed')
+      };
+    });
+    if (!r.facedownDuringFlight) throw new Error('card was turned before the callback');
+    if (r.turnedAt < 800) throw new Error('card turned too early (' + Math.round(r.turnedAt) + ' ms); the loop should play first');
+    if (!r.revealed) throw new Error('card not turned after callback');
+    if (!r.ring || !r.enter) throw new Error('missing the card loop or the strand from the top');
+  });
+
+  await test('25. reveal() in reduced motion turns the card straight away, no flight', async () => {
+    const r = await page.evaluate(async () => {
+      const d = window.__gtcDemo;
+      d.reset(); d.mount();
+      d.connector.options.forceReducedMotion = true;
+      const t0 = performance.now();
+      await d.connector.reveal({ type: 'main', positionIndex: 0 }, () => d.revealMain(0));
+      const took = performance.now() - t0;
+      const running = document.getAnimations().length;
+      d.connector.options.forceReducedMotion = false;
+      return { took, running, travel: !!d.connector._travel };
+    });
+    if (r.took > 100) throw new Error('reduced motion waited ' + Math.round(r.took) + ' ms');
+    if (r.travel) throw new Error('flight started in reduced motion');
+  });
+
   // ---- Report ----
 
   await browser.close();
