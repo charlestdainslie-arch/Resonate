@@ -250,7 +250,9 @@
     if(!interpretation||!state.drawnCardIds?.length)return;
     const drawn=layers().length;
     const extra=[1,2].filter(n=>n<=drawn).map(n=>`<button type="button" class="ghost-button" data-mc-chapter="c${n}">▶ Hear Clarifier ${n}</button>`).join('');
-    interpretation.insertAdjacentHTML('beforebegin',`<section class="mc-launch"><div class="eyebrow">MAX CHASROOM · PRESENTER PREVIEW</div><p>A short spoken walk through this reading. The full reading stays below.</p><button type="button" class="gold-button" id="mcOpen">▶ Watch Max Chasroom present this reading</button>${extra?`<div class="mc-launch-more">${extra}</div>`:''}</section>`);
+    // At the top of the reading, straight under its heading, so it is seen without scrolling on a phone.
+    const anchor=document.querySelector('.mc-demo-banner')||document.querySelector('.draw-stage h1');
+    (anchor||interpretation).insertAdjacentHTML(anchor?'afterend':'beforebegin',`<section class="mc-launch"><div class="eyebrow">MAX CHASROOM · PRESENTER PREVIEW</div><p>A short spoken walk through this reading. The full reading stays below.</p><button type="button" class="gold-button" id="mcOpen">▶ Watch Max Chasroom present this reading</button>${extra?`<div class="mc-launch-more">${extra}</div>`:''}</section>`);
     document.getElementById('mcOpen')?.addEventListener('click',()=>openPlayer());
     document.querySelectorAll('[data-mc-chapter]').forEach(b=>b.addEventListener('click',()=>openPlayer(b.dataset.mcChapter)));
   }

@@ -79,3 +79,8 @@
   .mc-card, .mc-clar, .mc-bar i { transition: none; }
 }
 .mc-clar span { font-size: 8px; letter-spacing: .04em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+/* Tells anyone opening the preview where Max is. Hidden while the player is open. */
+.mc-ribbon { margin: 0; padding: 8px 16px; background: #120f09; border-bottom: 1px solid rgba(201,169,106,.4); color: var(--gold-bright, #dfc48b); font-size: 13px; line-height: 1.35; text-align: center; }
+.mc-ribbon strong { letter-spacing: .14em; font-size: 11px; margin-right: 6px; }
+body:has(.mc-player) .mc-ribbon { display: none; }
+.mc-launch { margin: 10px 0 14px; }
