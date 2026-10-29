@@ -191,7 +191,12 @@
     window.removeEventListener('resize', this._onResize);
     window.removeEventListener('orientationchange', this._onResize);
     window.removeEventListener('pagehide', this._onPageHide);
-    window.removeEventListener('pageshow', this._onPageShow);
+    // bfcache: pagehide -> destroy({keepInstance:true}) must leave the
+    // pageshow listener alive so _onPageShow can remount. A full destroy
+    // (default) tears it down.
+    if (!keepInstance) {
+      window.removeEventListener('pageshow', this._onPageShow);
+    }
     if (this._svg && this._svg.parentNode) this._svg.parentNode.removeChild(this._svg);
     this._svg = null;
     if (this._container) {
@@ -417,20 +422,39 @@
   };
 
   GoldenThreadConnector.prototype._animateNode = function (node) {
+    var self = this;
     var length = Math.max(1, node.head.getTotalLength());
     node.head.style.strokeDasharray = String(length);
     node.head.style.strokeDashoffset = String(length);
     node.dot.style.opacity = '0';
-    var headAnimation = node.head.animate(
-      [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-      { duration: this.options.duration, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
-    );
-    var dotAnimation = node.dot.animate(
-      [{ opacity: 0 }, { opacity: 1 }],
-      { duration: Math.min(220, this.options.duration), delay: Math.max(0, this.options.duration - 180), fill: 'forwards' }
-    );
-    node.animations.push(headAnimation, dotAnimation);
-    this._animations.push(headAnimation, dotAnimation);
+    var pair = [
+      node.head.animate(
+        [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
+        { duration: this.options.duration, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
+      ),
+      node.dot.animate(
+        [{ opacity: 0 }, { opacity: 1 }],
+        { duration: Math.min(220, this.options.duration), delay: Math.max(0, this.options.duration - 180), fill: 'forwards' }
+      )
+    ];
+    pair.forEach(function (a) { node.animations.push(a); self._animations.push(a); });
+
+    var settled = false;
+    var settle = function () {
+      if (settled) return;
+      settled = true;
+      // Bake the final visual state into inline styles, then cancel the
+      // WAAPI animation so it leaves document.getAnimations().
+      node.head.style.strokeDasharray = '';
+      node.head.style.strokeDashoffset = '0';
+      node.dot.style.opacity = '1';
+      pair.forEach(function (a) {
+        var i = self._animations.indexOf(a); if (i !== -1) self._animations.splice(i, 1);
+        var j = node.animations.indexOf(a); if (j !== -1) node.animations.splice(j, 1);
+        try { a.cancel(); } catch (e) {}
+      });
+    };
+    pair.forEach(function (a) { a.onfinish = settle; a.oncancel = settle; });
   };
 
   GoldenThreadConnector.prototype._updateNode = function (node, seg) {
@@ -456,10 +480,11 @@
   };
 
   GoldenThreadConnector.prototype._cancelNode = function (node) {
-    node.animations.forEach(function (animation) {
+    var animations = node.animations.slice();
+    node.animations = [];
+    animations.forEach(function (animation) {
       try { animation.cancel(); } catch (error) {}
     });
-    node.animations = [];
   };
 
   GoldenThreadConnector.prototype._buildSegments = function (base) {
