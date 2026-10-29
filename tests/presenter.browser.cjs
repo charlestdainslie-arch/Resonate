@@ -82,16 +82,26 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     r.ids.forEach((id, i) => allowed.add(one ? `${r.names[i]}.` : `${r.labels[i]}: ${r.names[i]}.`));
     r.layers.forEach((layer, l) => layer.forEach((c, i) => allowed.add(one ? `Clarifier ${l + 1}: ${c.name}.` : `Clarifier ${l + 1} · ${r.labels[i]}: ${c.name}.`)));
     const labels = script.filter(l => l.kind === 'label').map(l => l.text);
+    // Every possible link between neighbouring cards: their authored connection, or a fact from the card data.
+    const links = await page.evaluate(() => state.drawnCardIds.slice(1).flatMap((id, i) => {
+      const a = cards.find(c => c.id === state.drawnCardIds[i]), b = cards.find(c => c.id === id), n = x => normalise(x);
+      const out = [...(b.connections || []).filter(c => n(c.card) === n(a.name)), ...(a.connections || []).filter(c => n(c.card) === n(b.name))].map(c => c.meaning);
+      if (a.suit && a.suit === b.suit) out.push(`Like ${a.name}, this is a ${b.suit} card.`);
+      if (a.arcana === 'Major' && b.arcana === 'Major') out.push(`Like ${a.name}, this is a Major Arcana card.`);
+      if (a.element === b.element) out.push(`Like ${a.name}, this card carries the element of ${b.element}.`);
+      return out;
+    }));
     for (const line of script) {
       if (line.kind === 'frame') assert.ok(frames.includes(line.text), `${label}: unknown presenter line "${line.text}"`);
       else if (line.kind === 'label') assert.ok(allowed.has(line.text), `${label}: unexpected label "${line.text}"`);
+      else if (line.kind === 'link') assert.ok(links.includes(line.text), `${label}: link not from the card data: "${line.text}"`);
       else { assert.ok(shown.includes(line.text), `${label}: not on the page: "${line.text}"`); assert.ok(pdf.includes(line.text), `${label}: not in the PDF: "${line.text}"`); }
     }
     assert.deepEqual([...labels].sort(), [...allowed].sort(), `${label}: every position and clarifier is named once`);
     // Recordable clips: each depends on one card of this reading at most, and says only words from its caption.
     const ids = [...r.ids, ...r.layers.flat().map(c => c.id)];
     for (const line of script) for (const clip of line.clips) {
-      const m = clip.id.match(/^(?:frame-\w+|title-\w+|pos-\w+-\d+|label-clarifier-[12]|thread-(?:\d|resonance)|(?:lens-\w+-\d+|meaning|name)-(\d+))$/);
+      const m = clip.id.match(/^(?:frame-\w+|title-\w+|pos-\w+-\d+|label-clarifier-[12]|thread-(?:\d|resonance)|is-(?:major|suit-\w+|element-\w+)|conn-\d+-\d+|(?:lens-\w+-\d+|meaning|name|like)-(\d+))$/);
       assert.ok(m, `${label}: clip id "${clip.id}"`);
       if (m[1] !== undefined) assert.ok(ids.includes(Number(m[1])), `${label}: clip ${clip.id} belongs to this reading`);
       if (line.kind === 'label') continue;
@@ -360,6 +370,22 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
       });
     }
   }
+  await check('cards are linked: authored connection, else a fact from the card data', async page => {
+    await page.goto(OWN);
+    const script = await page.evaluate(() => {
+      const id = n => cards.find(c => c.name === n).id;
+      const at = '2026-10-28T11:00:00.000Z';
+      Object.assign(state, { spreadId: 'three', spreadSize: 3, drawnCardIds: [id('The Fool'), id('The Magician'), id('Two of Cups')], drawnAt: at, journalId: null, journalSpread: null,
+        readingAstrology: null, openingDice: null, clarifierReadingAt: null, firstLayerClarifiers: [], additionalClarifierReadingAt: null, additionalClarifierLayers: [], drawSettled: true, drawPhase: 'settled' });
+      go('draw');
+      return ResonatePresenter.buildScript();
+    });
+    const links = script.filter(l => l.kind === 'link').map(l => l.text);
+    const authored = await page.evaluate(() => [['The Magician', 'The Fool'], ['The Fool', 'The Magician']].flatMap(([a, b]) => cards.find(c => c.name === a).connections.filter(c => c.card === b).map(c => c.meaning)));
+    assert.equal(links[0], authored[0], 'Fool → Magician uses their authored connection (the later card\'s own entry first)');
+    assert.equal(links.length, 1, 'Magician → Two of Cups share nothing, so no link is made up');
+    await faithful(page, 'linked');
+  });
   await check('Hear Clarifier 2 plays only that clarifier and the close', async page => {
     await drawSpread(page, 'seven', 2);
     assert.deepEqual(await page.locator('[data-mc-chapter]').allInnerTexts(), ['▶ Hear Clarifier 1', '▶ Hear Clarifier 2']);

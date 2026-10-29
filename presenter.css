@@ -53,6 +53,7 @@
 .mc-caption { min-height: 6.2em; padding: 14px 16px; border-radius: 14px; background: #000; border: 1px solid rgba(201,169,106,.3); }
 .mc-caption p { margin: 0; font-size: 18px; line-height: 1.45; color: #fff; }
 .mc-caption .mc-kind-frame, .mc-caption .mc-kind-label { color: var(--gold-bright); font-style: italic; }
+.mc-caption .mc-kind-link { color: var(--gold-bright); }
 .mc-player.captions-off .mc-caption p { visibility: hidden; }
 /* With the words hidden, the caption box shrinks to a thin bar instead of an empty black panel. */
 .mc-player.captions-off .mc-caption { min-height: 0; height: 6px; padding: 0; overflow: hidden; }
