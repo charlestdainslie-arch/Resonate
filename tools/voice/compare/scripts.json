@@ -1,0 +1,35 @@
+{
+  "_about": "Short test scripts for comparing cloned-voice settings. Original text written for RESONATE, plus lines the app itself already says (marked source). No third-party text.",
+  "scripts": [
+    {
+      "id": "conversation",
+      "title": "Conversational",
+      "source": "original",
+      "text": "Right, come in, sit yourself down. Kettle's on. Take a breath, there's no rush. Whatever brought you here tonight, we'll have a look at it together."
+    },
+    {
+      "id": "tarot",
+      "title": "Tarot reading",
+      "source": "app: The Magician, One-card Guidance (data.js and positionContext)",
+      "text": "Guidance: The Magician. Your next step is to work consciously with focused use of the skills and resources already available. Take what resonates, and leave the rest."
+    },
+    {
+      "id": "humour",
+      "title": "Humour",
+      "source": "original, plus Max's opening line from presenter.js",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions. Mostly good intentions. The pixels were on special."
+    },
+    {
+      "id": "places",
+      "title": "Scottish place names",
+      "source": "original",
+      "text": "Tonight's readings come from Milngavie, Kirkcaldy, Auchtermuchty, Culross, Kirkcudbright, Ecclefechan and Strathaven. And a big hello to everyone in Glasgow."
+    },
+    {
+      "id": "numbers",
+      "title": "Numbers and positions",
+      "source": "app: Seven-card V position names (app.js spreads)",
+      "text": "Past, eighteen to twenty-four months. Near future, three months. Outcome, the next eighteen to twenty-four months. Your opening dice were seven and three."
+    }
+  ]
+}
