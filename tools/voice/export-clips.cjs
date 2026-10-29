@@ -1,5 +1,5 @@
 // Lists every line Max Chasroom can say, as [{id, text, spoken}], by running the presenter's own
-// buildScript() over every card as the main card and as both clarifiers.
+// buildScript() over every card in every position of every spread, and as both clarifiers.
 // Usage: node tools/voice/export-clips.cjs [--demo] > clips.json
 //   --demo  only the lines the demonstration reading needs (a quick trial batch).
 const fs = require('fs'), path = require('path'), http = require('http');
@@ -19,7 +19,7 @@ const spoken = text => text.replace(/ · /g, ', ').replace(/ — /g, ', ');
   await new Promise(r => server.listen(port, '127.0.0.1', r));
   const browser = await chromium.launch();
   const page = await browser.newPage();
-  await page.goto(['http:', '', '127.0.0.1:' + port, 'presenter-uat.html'].join('/'));
+  await page.goto(['http:', '', '127.0.0.1:' + port, 'presenter-uat.html?demo'].join('/'));
   await page.waitForFunction(() => window.ResonatePresenter);
   const demoOnly = process.argv.includes('--demo');
   const clips = await page.evaluate(demoOnly => {
@@ -27,12 +27,19 @@ const spoken = text => text.replace(/ · /g, ', ').replace(/ — /g, ', ');
     const collect = () => ResonatePresenter.buildScript().forEach(part => part.clips.forEach(c => found.set(c.id, c.text)));
     collect(); // the demo reading, as loaded
     if (!demoOnly) {
+      // Every card in every position of every spread, with two clarifier layers, so every line Max
+      // can say is listed once.
       const at = '2026-10-28T12:00:00.000Z';
-      for (const card of cards) {
-        const next = n => cards[(cards.indexOf(card) + n) % cards.length].id;
-        Object.assign(state, { spreadId: 'guidance', spreadSize: 1, drawnCardIds: [card.id], drawnAt: at, journalId: null, journalSpread: null,
-          clarifierReadingAt: at, firstLayerClarifiers: [next(1)], additionalClarifierReadingAt: at, additionalClarifierLayers: [{ number: 2, cards: [next(2)] }] });
-        collect();
+      for (const [spreadId, spread] of Object.entries(spreads)) {
+        const size = spread.positions.length;
+        for (let start = 0; start < cards.length; start++) {
+          const pick = n => cards[(start + n) % cards.length].id;
+          const ids = Array.from({ length: size }, (_, i) => pick(i));
+          Object.assign(state, { spreadId, spreadSize: size, drawnCardIds: ids, drawnAt: at, journalId: null, journalSpread: null,
+            clarifierReadingAt: at, firstLayerClarifiers: ids.map((_, i) => pick(size + i)), additionalClarifierReadingAt: at,
+            additionalClarifierLayers: [{ number: 2, cards: ids.map((_, i) => pick(2 * size + i)) }] });
+          collect();
+        }
       }
     }
     return [...found].map(([id, text]) => ({ id, text }));

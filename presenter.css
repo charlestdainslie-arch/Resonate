@@ -5,7 +5,7 @@
 .mc-demo-banner { margin: 6px auto 12px; max-width: 640px; padding: 10px 14px; border: 1px dashed var(--gold); border-radius: 12px; color: var(--gold-bright); font-size: 14px; text-align: center; }
 .mc-demo-banner strong { display: block; letter-spacing: .14em; font-size: 12px; margin-bottom: 2px; }
 
-.mc-player { position: fixed; inset: 0; z-index: 1000; background: rgba(5,5,6,.97); overflow-y: auto; overscroll-behavior: contain; }
+.mc-player { position: fixed; inset: 0; z-index: 1000; background: #050506; overflow-y: auto; overscroll-behavior: contain; }
 .mc-frame { box-sizing: border-box; max-width: 920px; margin: 0 auto; padding: 14px 16px 28px; display: flex; flex-direction: column; gap: 12px; min-height: 100%; }
 .mc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .mc-head h2 { margin: 0; font-size: 14px; letter-spacing: .3em; color: var(--gold-bright); }
@@ -35,25 +35,39 @@
 @keyframes mc-glitch { 0%, 86%, 100% { transform: none; } 88% { transform: translate(3px, -1px) skewX(-4deg); } 90% { transform: translate(-2px, 0); } 92% { transform: translate(1px, 1px) scale(1.02); } }
 .mc-tag { position: absolute; z-index: 2; left: 8px; top: 8px; padding: 3px 7px; background: rgba(0,0,0,.75); border: 1px solid rgba(201,169,106,.5); border-radius: 6px; font-size: 9px; letter-spacing: .12em; color: var(--gold-bright); }
 
-.mc-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; align-content: center; }
-.mc-card { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; transition: opacity .3s, transform .3s; }
-.mc-card img { width: 100%; aspect-ratio: 0.58; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201,169,106,.35); background: #111; }
-.mc-card span { font-size: 9px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
-.mc-card strong { font-size: 12px; line-height: 1.2; color: var(--text, #f2ede4); }
-.mc-card.is-active img { border: 2px solid var(--gold-bright); box-shadow: 0 0 18px rgba(223,196,139,.45); }
-.mc-card.is-active { transform: translateY(-4px); }
-.mc-card.is-dim { opacity: .38; }
+/* Each position's card, its clarifiers small underneath (1 left, 2 right), as on the reading page.
+   Wide spreads become a sideways strip that follows the card being discussed. */
+.mc-cards { list-style: none; margin: 0; padding: 4px 2px 8px; display: flex; gap: 10px; justify-content: center; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.mc-cards.is-wide { justify-content: flex-start; }
+.mc-card { flex: 0 0 auto; width: min(46%, 170px); display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; transition: opacity .3s; }
+.mc-cards.is-wide .mc-card { width: clamp(86px, 27vw, 120px); }
+.mc-card img, .mc-clar img { width: 100%; aspect-ratio: 0.58; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201,169,106,.35); background: #111; }
+.mc-card > span { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); line-height: 1.25; }
+.mc-card > strong { font-size: 12px; line-height: 1.2; color: var(--text, #f2ede4); }
+.mc-clars { list-style: none; margin: 4px 0 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.mc-clar { display: flex; flex-direction: column; align-items: center; gap: 2px; transition: opacity .3s; }
+.mc-clar strong { font-size: 10px; line-height: 1.15; color: var(--text, #f2ede4); }
+.mc-card.is-active > img, .mc-clar.is-active img { border: 2px solid var(--gold-bright); box-shadow: 0 0 16px rgba(223,196,139,.45); }
+.mc-card.is-dim > img, .mc-card.is-dim > span, .mc-card.is-dim > strong, .mc-clar.is-dim { opacity: .38; }
 
 .mc-caption { min-height: 6.2em; padding: 14px 16px; border-radius: 14px; background: #000; border: 1px solid rgba(201,169,106,.3); }
 .mc-caption p { margin: 0; font-size: 18px; line-height: 1.45; color: #fff; }
 .mc-caption .mc-kind-frame, .mc-caption .mc-kind-label { color: var(--gold-bright); font-style: italic; }
 .mc-player.captions-off .mc-caption p { visibility: hidden; }
+/* With the words hidden, the caption box shrinks to a thin bar instead of an empty black panel. */
+.mc-player.captions-off .mc-caption { min-height: 0; height: 6px; padding: 0; overflow: hidden; }
 .mc-progress { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--gold); }
 .mc-bar { flex: 1; height: 4px; border-radius: 2px; background: rgba(201,169,106,.18); overflow: hidden; }
 .mc-bar i { display: block; height: 100%; width: 0; background: var(--gold-bright); transition: width .3s; }
 .mc-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .mc-controls button { min-height: 48px; margin: 0; padding: 8px; }
 .mc-voice { margin: 0; font-size: 12px; color: var(--muted, #b9b2a5); }
+.mc-launch-more { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.mc-launch-more button { min-height: 44px; margin: 0; }
+.mc-transcript { border-top: 1px solid rgba(201,169,106,.25); padding-top: 8px; }
+.mc-transcript summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--gold-bright); font-size: 14px; }
+.mc-transcript ol { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; line-height: 1.45; color: var(--text, #f2ede4); }
+.mc-transcript .mc-kind-frame, .mc-transcript .mc-kind-label { color: var(--gold); }
 .mc-full { align-self: center; min-height: 44px; padding: 8px 16px; background: transparent; border: 0; color: var(--gold-bright); text-decoration: underline; font-size: 14px; cursor: pointer; }
 
 @media (max-width: 640px) {
@@ -64,5 +78,11 @@
 }
 @media (prefers-reduced-motion: reduce) {
   .mc-screen::before, .mc-player .mc-jaw, .mc-player .mc-head-group { animation: none !important; }
-  .mc-card, .mc-bar i { transition: none; }
+  .mc-card, .mc-clar, .mc-bar i { transition: none; }
 }
+.mc-clar span { font-size: 8px; letter-spacing: .04em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+/* Tells anyone opening the preview where Max is. Hidden while the player is open. */
+.mc-ribbon { margin: 0; padding: 8px 16px; background: #120f09; border-bottom: 1px solid rgba(201,169,106,.4); color: var(--gold-bright, #dfc48b); font-size: 13px; line-height: 1.35; text-align: center; }
+.mc-ribbon strong { letter-spacing: .14em; font-size: 11px; margin-right: 6px; }
+body:has(.mc-player) .mc-ribbon { display: none; }
+.mc-launch { margin: 10px 0 14px; }
