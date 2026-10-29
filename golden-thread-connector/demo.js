@@ -69,7 +69,21 @@
   }
 
   function revealClarifier(slot) {
+    var parent = state.mainCards.find(function (m) { return m.positionIndex === 0; });
+    if (!parent || !parent.revealed) {
+      status.textContent = 'Reveal the parent card before its clarifiers.';
+      return;
+    }
     var list = state.clarifiers[0] || [];
+    // The controller never flips cards. Sequencing is application policy:
+    // clarifier 2 is eligible only after clarifier 1 has been revealed.
+    if (slot === 2) {
+      var first = list.find(function (c) { return c.slot === 1; });
+      if (!first || !first.revealed) {
+        status.textContent = 'Clarifier 2 is eligible only after clarifier 1.';
+        return;
+      }
+    }
     var clarifier = list.find(function (c) { return c.slot === slot; });
     if (clarifier) clarifier.revealed = true;
     render();

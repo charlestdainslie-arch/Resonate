@@ -113,14 +113,30 @@
     this._state = null;
     this._signature = '';
     this._animations = [];
+    this._nodes = new Map();
+    this._observedEls = new Set();
     this._resizeObserver = null;
     this._mutationObserver = null;
     this._raf = 0;
     this._ignoreMutationsUntil = 0;
     this._reducedMql = null;
+    this._bfcacheContainer = null;
+    this._bfcacheState = null;
     var self = this;
     this._onReducedChange = function () { self._scheduleRender(false); };
-    this._onPageHide = function () { self.destroy({ keepInstance: true }); };
+    this._onPageHide = function () {
+      self._bfcacheContainer = self._container;
+      self._bfcacheState = self._state;
+      self.destroy({ keepInstance: true });
+    };
+    this._onPageShow = function (event) {
+      if (!event || !event.persisted) return;
+      var container = self._bfcacheContainer;
+      var state = self._bfcacheState;
+      self._bfcacheContainer = null;
+      self._bfcacheState = null;
+      if (container && container.isConnected && state) self.mount(container, state);
+    };
     this._onResize = function () { self._scheduleRender(false); };
   }
 
@@ -143,22 +159,31 @@
     var next = normalize(readingState);
     var signature = this._signatureOf(next);
     this._state = next;
-    if (signature !== this._signature) this._render(false);
+    if (signature !== this._signature) this._render(true);
     else this._scheduleRender(false);
     return this;
   };
 
   GoldenThreadConnector.prototype.destroy = function (opts) {
+    var self = this;
     var keepInstance = !!(opts && opts.keepInstance);
     this._mounted = false;
     this._destroyed = !keepInstance;
     this._cancelAnimations();
     if (this._raf) cancelAnimationFrame(this._raf);
     this._raf = 0;
-    if (this._resizeObserver) this._resizeObserver.disconnect();
+    if (this._resizeObserver) {
+      this._observedEls.forEach(function (el) {
+        try { self._resizeObserver.unobserve(el); } catch (error) {}
+      });
+      this._resizeObserver.disconnect();
+    }
     this._resizeObserver = null;
+    this._observedEls.clear();
     if (this._mutationObserver) this._mutationObserver.disconnect();
     this._mutationObserver = null;
+    this._nodes.forEach(function (node) { self._cancelNode(node); });
+    this._nodes.clear();
     if (this._reducedMql) {
       if (this._reducedMql.removeEventListener) this._reducedMql.removeEventListener('change', this._onReducedChange);
       this._reducedMql = null;
@@ -166,6 +191,7 @@
     window.removeEventListener('resize', this._onResize);
     window.removeEventListener('orientationchange', this._onResize);
     window.removeEventListener('pagehide', this._onPageHide);
+    window.removeEventListener('pageshow', this._onPageShow);
     if (this._svg && this._svg.parentNode) this._svg.parentNode.removeChild(this._svg);
     this._svg = null;
     if (this._container) {
@@ -209,7 +235,7 @@
     if (typeof ResizeObserver === 'function') {
       this._resizeObserver = new ResizeObserver(function () { self._scheduleRender(false); });
       this._resizeObserver.observe(c);
-      this._allCardElements().forEach(function (el) { self._resizeObserver.observe(el); });
+      this._observeCards();
     }
     if (typeof MutationObserver === 'function') {
       this._mutationObserver = new MutationObserver(function (mutations) {
@@ -217,6 +243,7 @@
         var relevant = mutations.some(function (m) {
           return !(self._svg && self._svg.contains(m.target));
         });
+        self._observeCards();
         if (relevant) self._scheduleRender(false);
       });
       this._mutationObserver.observe(c, {
@@ -229,6 +256,7 @@
     window.addEventListener('resize', this._onResize, { passive: true });
     window.addEventListener('orientationchange', this._onResize, { passive: true });
     window.addEventListener('pagehide', this._onPageHide);
+    window.addEventListener('pageshow', this._onPageShow);
     if (window.matchMedia) {
       this._reducedMql = window.matchMedia(this.options.reducedMotion);
       if (this._reducedMql.addEventListener) this._reducedMql.addEventListener('change', this._onReducedChange);
@@ -244,9 +272,27 @@
 
   GoldenThreadConnector.prototype._clarifierElement = function (parentIndex, slot) {
     var parent = this._container.querySelector(this.options.parentSelector + '[data-gtc-parent="' + parentIndex + '"]');
-    var scope = parent || this._container;
-    return scope.querySelector('[data-gtc-clarifier="' + slot + '"]') ||
-      this._container.querySelector('[data-gtc-clarifier="' + slot + '"]');
+    if (!parent) return null;
+    return parent.querySelector('[data-gtc-clarifier="' + slot + '"]');
+  };
+
+  GoldenThreadConnector.prototype._observeCards = function () {
+    if (!this._resizeObserver) return;
+    var self = this;
+    var current = this._allCardElements();
+    var currentSet = new Set(current);
+    current.forEach(function (el) {
+      if (!self._observedEls.has(el)) {
+        self._resizeObserver.observe(el);
+        self._observedEls.add(el);
+      }
+    });
+    this._observedEls.forEach(function (el) {
+      if (!currentSet.has(el)) {
+        try { self._resizeObserver.unobserve(el); } catch (error) {}
+        self._observedEls.delete(el);
+      }
+    });
   };
 
   GoldenThreadConnector.prototype._allCardElements = function () {
@@ -294,7 +340,6 @@
 
   GoldenThreadConnector.prototype._render = function (animate) {
     if (!this._svg || !this._container) return;
-    this._cancelAnimations();
     this._ignoreMutationsUntil = Date.now() + 120;
 
     var base = this._container.getBoundingClientRect();
@@ -303,91 +348,169 @@
     this._svg.setAttribute('viewBox', '0 0 ' + width + ' ' + height);
     this._svg.setAttribute('width', width);
     this._svg.setAttribute('height', height);
-    while (this._svg.firstChild) this._svg.removeChild(this._svg.firstChild);
+
+    if (this._nodes.size === 0) {
+      while (this._svg.firstChild) this._svg.removeChild(this._svg.firstChild);
+    }
 
     var reduced = this.options.forceReducedMotion || prefersReducedMotion(this._reducedMql);
     var segments = this._buildSegments(base);
-    var fragment = document.createDocumentFragment();
     var self = this;
+    var nextKeys = new Set();
 
-    segments.forEach(function (seg, index) {
-      var d = self._curve(seg.from, seg.to);
-
-      var basePath = document.createElementNS(SVG_NS, 'path');
-      basePath.setAttribute('d', d);
-      basePath.setAttribute('class', 'gtc-filament gtc-filament--base');
-      basePath.setAttribute('aria-hidden', 'true');
-      fragment.appendChild(basePath);
-
-      var headPath = document.createElementNS(SVG_NS, 'path');
-      headPath.setAttribute('d', d);
-      headPath.setAttribute('class', 'gtc-filament gtc-filament--head');
-      headPath.setAttribute('aria-hidden', 'true');
-      fragment.appendChild(headPath);
-
-      var dot = document.createElementNS(SVG_NS, 'circle');
-      dot.setAttribute('cx', seg.to.x);
-      dot.setAttribute('cy', seg.to.y);
-      dot.setAttribute('r', '2.6');
-      dot.setAttribute('class', 'gtc-filament-dot');
-      dot.setAttribute('aria-hidden', 'true');
-      fragment.appendChild(dot);
-
-      if (!reduced && animate) {
-        var length = Math.max(1, headPath.getTotalLength());
-        headPath.style.strokeDasharray = String(length);
-        headPath.style.strokeDashoffset = String(length);
-        self._animations.push(headPath.animate(
-          [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
-          { duration: self.options.duration + index * 35, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
-        ));
-        self._animations.push(dot.animate(
-          [{ opacity: 0 }, { opacity: 1 }],
-          { duration: Math.min(220, self.options.duration), delay: Math.max(0, self.options.duration - 180), fill: 'forwards' }
-        ));
+    segments.forEach(function (seg) {
+      nextKeys.add(seg.key);
+      var node = self._nodes.get(seg.key);
+      if (!node) {
+        node = self._createNode(seg);
+        self._svg.appendChild(node.group);
+        self._nodes.set(seg.key, node);
+        if (animate && !reduced) self._animateNode(node);
       } else {
-        headPath.style.strokeDashoffset = '0';
+        self._updateNode(node, seg);
       }
     });
 
-    this._svg.appendChild(fragment);
+    this._nodes.forEach(function (node, key) {
+      if (!nextKeys.has(key)) {
+        self._removeNode(node);
+        self._nodes.delete(key);
+      }
+    });
+
+    this._observeCards();
     this._signature = this._signatureOf(this._state);
+  };
+
+  GoldenThreadConnector.prototype._createNode = function (seg) {
+    var d = this._curve(seg.from, seg.to);
+    var group = document.createElementNS(SVG_NS, 'g');
+    group.setAttribute('data-gtc-key', seg.key);
+    group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
+    group.setAttribute('data-gtc-from-y', seg.from.y.toFixed(2));
+    group.setAttribute('data-gtc-to-x', seg.to.x.toFixed(2));
+    group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
+    group.setAttribute('aria-hidden', 'true');
+
+    var basePath = document.createElementNS(SVG_NS, 'path');
+    basePath.setAttribute('d', d);
+    basePath.setAttribute('class', 'gtc-filament gtc-filament--base');
+    basePath.setAttribute('aria-hidden', 'true');
+    group.appendChild(basePath);
+
+    var headPath = document.createElementNS(SVG_NS, 'path');
+    headPath.setAttribute('d', d);
+    headPath.setAttribute('class', 'gtc-filament gtc-filament--head');
+    headPath.setAttribute('aria-hidden', 'true');
+    headPath.style.strokeDashoffset = '0';
+    group.appendChild(headPath);
+
+    var dot = document.createElementNS(SVG_NS, 'circle');
+    dot.setAttribute('cx', seg.to.x);
+    dot.setAttribute('cy', seg.to.y);
+    dot.setAttribute('r', '2.6');
+    dot.setAttribute('class', 'gtc-filament-dot');
+    dot.setAttribute('aria-hidden', 'true');
+    group.appendChild(dot);
+
+    return { group: group, base: basePath, head: headPath, dot: dot, d: d, animations: [] };
+  };
+
+  GoldenThreadConnector.prototype._animateNode = function (node) {
+    var length = Math.max(1, node.head.getTotalLength());
+    node.head.style.strokeDasharray = String(length);
+    node.head.style.strokeDashoffset = String(length);
+    node.dot.style.opacity = '0';
+    var headAnimation = node.head.animate(
+      [{ strokeDashoffset: length }, { strokeDashoffset: 0 }],
+      { duration: this.options.duration, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
+    );
+    var dotAnimation = node.dot.animate(
+      [{ opacity: 0 }, { opacity: 1 }],
+      { duration: Math.min(220, this.options.duration), delay: Math.max(0, this.options.duration - 180), fill: 'forwards' }
+    );
+    node.animations.push(headAnimation, dotAnimation);
+    this._animations.push(headAnimation, dotAnimation);
+  };
+
+  GoldenThreadConnector.prototype._updateNode = function (node, seg) {
+    var d = this._curve(seg.from, seg.to);
+    if (node.d === d) return;
+    node.base.setAttribute('d', d);
+    node.head.setAttribute('d', d);
+    node.dot.setAttribute('cx', seg.to.x);
+    node.dot.setAttribute('cy', seg.to.y);
+    node.group.setAttribute('data-gtc-from-x', seg.from.x.toFixed(2));
+    node.group.setAttribute('data-gtc-from-y', seg.from.y.toFixed(2));
+    node.group.setAttribute('data-gtc-to-x', seg.to.x.toFixed(2));
+    node.group.setAttribute('data-gtc-to-y', seg.to.y.toFixed(2));
+    node.d = d;
+    this._cancelNode(node);
+    node.head.style.strokeDashoffset = '0';
+    node.dot.style.opacity = '1';
+  };
+
+  GoldenThreadConnector.prototype._removeNode = function (node) {
+    this._cancelNode(node);
+    if (node.group.parentNode) node.group.parentNode.removeChild(node.group);
+  };
+
+  GoldenThreadConnector.prototype._cancelNode = function (node) {
+    node.animations.forEach(function (animation) {
+      try { animation.cancel(); } catch (error) {}
+    });
+    node.animations = [];
   };
 
   GoldenThreadConnector.prototype._buildSegments = function (base) {
     var self = this;
     var segments = [];
-    var mains = this._state.mainCards
+    var all = this._state.mainCards
       .map(function (m) { return assign({}, m, { el: self._mainElement(m) }); })
-      .filter(function (m) { return m.el && self._isRevealed(m, m.el); })
+      .filter(function (m) { return m.el; })
       .sort(function (a, b) { return a.positionIndex - b.positionIndex; });
+
+    // P1-C: only a contiguous revealed prefix is eligible. A face-down main
+    // card blocks every card after it, so 0 can never connect to 2.
+    var mains = [];
+    for (var i = 0; i < all.length; i++) {
+      if (!self._isRevealed(all[i], all[i].el)) break;
+      mains.push(all[i]);
+    }
 
     mains.forEach(function (parent) {
       var from = anchor(parent.el, base, 'bottom');
       var list = self._state.clarifiers[String(parent.positionIndex)] || [];
-      var revealed = list.map(function (c) {
-        return assign({}, c, { el: self._clarifierElement(parent.positionIndex, c.slot) });
-      }).filter(function (c) {
-        return c.el && self._isRevealed(c, c.el);
-      }).sort(function (a, b) { return a.slot - b.slot; });
+      var revealed = [];
+      list.forEach(function (c) {
+        var el = self._clarifierElement(parent.positionIndex, c.slot);
+        if (el && self._isRevealed(c, el)) revealed.push(assign({}, c, { el: el }));
+      });
+      revealed.sort(function (a, b) { return a.slot - b.slot; });
 
       revealed.forEach(function (clarifier) {
-        segments.push({ from: from, to: anchor(clarifier.el, base, 'top') });
+        segments.push({
+          key: 'main:' + parent.positionIndex + ':clarifier:' + clarifier.slot,
+          from: from,
+          to: anchor(clarifier.el, base, 'top')
+        });
       });
     });
 
-    for (var i = 0; i < mains.length - 1; i++) {
-      var current = mains[i];
-      var next = mains[i + 1];
+    for (var j = 0; j < mains.length - 1; j++) {
+      var current = mains[j];
+      var next = mains[j + 1];
       var list = this._state.clarifiers[String(current.positionIndex)] || [];
-      var last = list.filter(function (c) { return c.revealed; }).sort(function (a, b) { return b.slot - a.slot; })[0];
-      var startEl = current.el;
-      if (last) {
-        var cEl = this._clarifierElement(current.positionIndex, last.slot);
-        if (cEl && this._isRevealed(last, cEl)) startEl = cEl;
-      }
+      var last = null;
+      list.forEach(function (c) {
+        var el = self._clarifierElement(current.positionIndex, c.slot);
+        if (el && self._isRevealed(c, el) && (!last || c.slot > last.slot)) {
+          last = assign({}, c, { el: el });
+        }
+      });
       segments.push({
-        from: anchor(startEl, base, 'bottom'),
+        key: 'main:' + current.positionIndex + ':next:' + next.positionIndex,
+        from: anchor(last ? last.el : current.el, base, 'bottom'),
         to: anchor(next.el, base, 'top')
       });
     }
