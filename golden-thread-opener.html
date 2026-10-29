@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#050403" />
+  <meta name="robots" content="noindex" />
+  <title>RESONATE · Golden Thread opener (UAT demo)</title>
+  <link rel="stylesheet" href="golden-thread-opener.css" />
+</head>
+<body>
+  <div class="gto-stage" id="gtoStage" aria-label="Golden Thread opening sequence">
+    <canvas id="gtoCanvas" aria-hidden="true"></canvas>
+    <div class="gto-world">
+      <img class="gto-hand" id="gtoHand" src="assets/opener/hand-640.jpg" alt="" aria-hidden="true" />
+      <div class="gto-card-wrap" id="gtoCardWrap" aria-hidden="true"><div class="gto-card" id="gtoCard">
+        <div class="gto-back"><span>R</span><small>RESONATE</small></div>
+        <img class="gto-face" id="gtoFace" src="assets/deck/ar00.jpg" alt="The Fool" />
+      </div></div>
+      <div class="gto-title" id="gtoTitle">
+        <h1>RESONATE</h1>
+        <p class="gto-card-name" id="gtoCardName">0 · The Fool</p>
+        <p class="gto-keywords" id="gtoKeywords"></p>
+      </div>
+      <div class="gto-end" id="gtoEnd">
+        <a class="gto-cta" href="presenter-uat.html">Begin your reading →</a>
+        <button type="button" class="gto-ghost" id="gtoReplay" hidden>↺ Replay</button>
+      </div>
+    </div>
+    <p class="gto-caption" id="gtoCaption" aria-live="polite"></p>
+    <div class="gto-bar">
+      <a class="gto-ghost" href="presenter-uat.html" id="gtoBack">← Back</a>
+      <button type="button" class="gto-ghost" id="gtoMute" aria-pressed="false">🔇 Mute</button>
+      <button type="button" class="gto-ghost" id="gtoCaptions">Hide words</button>
+      <button type="button" class="gto-ghost" id="gtoSkip">Skip ⏭</button>
+    </div>
+    <div class="gto-intro" id="gtoIntro">
+      <p class="gto-eyebrow">GOLDEN THREAD · OPENING DEMO</p>
+      <p>A 16-second opening with sound.</p>
+      <button type="button" class="gto-cta" id="gtoStart">▶ Play with sound</button>
+      <button type="button" class="gto-ghost" id="gtoSilent">Play silently</button>
+      <p class="gto-small">Original sound made in your browser. Images: RESONATE artwork already in the app. Demo only, not the live app.</p>
+    </div>
+  </div>
+  <script src="data.js"></script>
+  <script src="golden-thread-opener.js"></script>
+</body>
+</html>
