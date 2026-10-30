@@ -1,0 +1,1724 @@
+[
+ {
+  "w": 360,
+  "journey": "Landing",
+  "step": "loads, no sideways scroll, both main buttons visible",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Learn",
+  "step": "Learn the Cards → 78 cards listed, no sideways scroll",
+  "result": "PASS",
+  "note": "78 cards"
+ },
+ {
+  "w": 360,
+  "journey": "Learn",
+  "step": "open a card → detail with artwork; Back returns to Learn",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Learn",
+  "step": "browser Back from Learn reaches Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "1 unique cards"
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "1+1 clarifiers, all unique"
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "11 KB, all 1 card names present"
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading guidance",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "3 unique cards"
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "3+3 clarifiers, all unique"
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "22 KB, all 3 card names present"
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading three",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "5 unique cards"
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "5+5 clarifiers, all unique"
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "34 KB, all 5 card names present"
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading relationship",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "7 unique cards"
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "7+7 clarifiers, all unique"
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "44 KB, all 7 card names present"
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading seven",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "10 unique cards"
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "10+10 clarifiers, all unique"
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "61 KB, all 10 card names present"
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Reading celtic",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 360,
+  "journey": "Journal",
+  "step": "Journal lists all five saved readings; Home from Journal",
+  "result": "PASS",
+  "note": "5 readings"
+ },
+ {
+  "w": 360,
+  "journey": "Browser Back",
+  "step": "after a reading, browser Back steps back through screens without a blank or broken page",
+  "result": "FAIL",
+  "note": "page left the app: reading → home → gone"
+ },
+ {
+  "w": 390,
+  "journey": "Landing",
+  "step": "loads, no sideways scroll, both main buttons visible",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Learn",
+  "step": "Learn the Cards → 78 cards listed, no sideways scroll",
+  "result": "PASS",
+  "note": "78 cards"
+ },
+ {
+  "w": 390,
+  "journey": "Learn",
+  "step": "open a card → detail with artwork; Back returns to Learn",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Learn",
+  "step": "browser Back from Learn reaches Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "1 unique cards"
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "1+1 clarifiers, all unique"
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "12 KB, all 1 card names present"
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading guidance",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "3 unique cards"
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "3+3 clarifiers, all unique"
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "22 KB, all 3 card names present"
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading three",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "5 unique cards"
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "5+5 clarifiers, all unique"
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "34 KB, all 5 card names present"
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading relationship",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "7 unique cards"
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "7+7 clarifiers, all unique"
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "44 KB, all 7 card names present"
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading seven",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "10 unique cards"
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "10+10 clarifiers, all unique"
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "61 KB, all 10 card names present"
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Reading celtic",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 390,
+  "journey": "Journal",
+  "step": "Journal lists all five saved readings; Home from Journal",
+  "result": "PASS",
+  "note": "5 readings"
+ },
+ {
+  "w": 390,
+  "journey": "Browser Back",
+  "step": "after a reading, browser Back steps back through screens without a blank or broken page",
+  "result": "FAIL",
+  "note": "page left the app: reading → home → gone"
+ },
+ {
+  "w": 768,
+  "journey": "Landing",
+  "step": "loads, no sideways scroll, both main buttons visible",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Learn",
+  "step": "Learn the Cards → 78 cards listed, no sideways scroll",
+  "result": "PASS",
+  "note": "78 cards"
+ },
+ {
+  "w": 768,
+  "journey": "Learn",
+  "step": "open a card → detail with artwork; Back returns to Learn",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Learn",
+  "step": "browser Back from Learn reaches Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "1 unique cards"
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "1+1 clarifiers, all unique"
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "11 KB, all 1 card names present"
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading guidance",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "3 unique cards"
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "3+3 clarifiers, all unique"
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "22 KB, all 3 card names present"
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading three",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "5 unique cards"
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "5+5 clarifiers, all unique"
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "33 KB, all 5 card names present"
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading relationship",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "7 unique cards"
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "7+7 clarifiers, all unique"
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "44 KB, all 7 card names present"
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading seven",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "10 unique cards"
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "10+10 clarifiers, all unique"
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "59 KB, all 10 card names present"
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Reading celtic",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 768,
+  "journey": "Journal",
+  "step": "Journal lists all five saved readings; Home from Journal",
+  "result": "PASS",
+  "note": "5 readings"
+ },
+ {
+  "w": 768,
+  "journey": "Browser Back",
+  "step": "after a reading, browser Back steps back through screens without a blank or broken page",
+  "result": "FAIL",
+  "note": "page left the app: reading → home → gone"
+ },
+ {
+  "w": 1180,
+  "journey": "Landing",
+  "step": "loads, no sideways scroll, both main buttons visible",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Learn",
+  "step": "Learn the Cards → 78 cards listed, no sideways scroll",
+  "result": "PASS",
+  "note": "78 cards"
+ },
+ {
+  "w": 1180,
+  "journey": "Learn",
+  "step": "open a card → detail with artwork; Back returns to Learn",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Learn",
+  "step": "browser Back from Learn reaches Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "1 unique cards"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "1+1 clarifiers, all unique"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "12 KB, all 1 card names present"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading guidance",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "3 unique cards"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "3+3 clarifiers, all unique"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "22 KB, all 3 card names present"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading three",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "5 unique cards"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "5+5 clarifiers, all unique"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "33 KB, all 5 card names present"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading relationship",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "7 unique cards"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "7+7 clarifiers, all unique"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "44 KB, all 7 card names present"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading seven",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "10 unique cards"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "10+10 clarifiers, all unique"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "60 KB, all 10 card names present"
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Reading celtic",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1180,
+  "journey": "Journal",
+  "step": "Journal lists all five saved readings; Home from Journal",
+  "result": "PASS",
+  "note": "5 readings"
+ },
+ {
+  "w": 1180,
+  "journey": "Browser Back",
+  "step": "after a reading, browser Back steps back through screens without a blank or broken page",
+  "result": "FAIL",
+  "note": "page left the app: reading → home → gone"
+ },
+ {
+  "w": 1280,
+  "journey": "Landing",
+  "step": "loads, no sideways scroll, both main buttons visible",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Learn",
+  "step": "Learn the Cards → 78 cards listed, no sideways scroll",
+  "result": "PASS",
+  "note": "78 cards"
+ },
+ {
+  "w": 1280,
+  "journey": "Learn",
+  "step": "open a card → detail with artwork; Back returns to Learn",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Learn",
+  "step": "browser Back from Learn reaches Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "1 unique cards"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "1+1 clarifiers, all unique"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "12 KB, all 1 card names present"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading guidance",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "3 unique cards"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "3+3 clarifiers, all unique"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "22 KB, all 3 card names present"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading three",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "5 unique cards"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "5+5 clarifiers, all unique"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "34 KB, all 5 card names present"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading relationship",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "7 unique cards"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "7+7 clarifiers, all unique"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "45 KB, all 7 card names present"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading seven",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "10 unique cards"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "10+10 clarifiers, all unique"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "61 KB, all 10 card names present"
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Reading celtic",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1280,
+  "journey": "Journal",
+  "step": "Journal lists all five saved readings; Home from Journal",
+  "result": "PASS",
+  "note": "5 readings"
+ },
+ {
+  "w": 1280,
+  "journey": "Browser Back",
+  "step": "after a reading, browser Back steps back through screens without a blank or broken page",
+  "result": "FAIL",
+  "note": "page left the app: reading → home → gone"
+ },
+ {
+  "w": 1920,
+  "journey": "Landing",
+  "step": "loads, no sideways scroll, both main buttons visible",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Learn",
+  "step": "Learn the Cards → 78 cards listed, no sideways scroll",
+  "result": "PASS",
+  "note": "78 cards"
+ },
+ {
+  "w": 1920,
+  "journey": "Learn",
+  "step": "open a card → detail with artwork; Back returns to Learn",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Learn",
+  "step": "browser Back from Learn reaches Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "1 unique cards"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "1+1 clarifiers, all unique"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "11 KB, all 1 card names present"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading guidance",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "3 unique cards"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "3+3 clarifiers, all unique"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "23 KB, all 3 card names present"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading three",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "5 unique cards"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "5+5 clarifiers, all unique"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "34 KB, all 5 card names present"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading relationship",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "7 unique cards"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "7+7 clarifiers, all unique"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "45 KB, all 7 card names present"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading seven",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "Home → Get a Reading → spread → Shuffle → Draw: all cards turn, artwork loads",
+  "result": "PASS",
+  "note": "10 unique cards"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "Draw First Clarifier → Draw Second Clarifier: one per position each, artwork loads",
+  "result": "PASS",
+  "note": "10+10 clarifiers, all unique"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "Explore a card → detail → Back returns to this reading",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "Download Reading PDF: a real PDF naming the drawn cards",
+  "result": "PASS",
+  "note": "61 KB, all 10 card names present"
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "Save Reading to Journal → confirmed saved",
+  "result": "PASS",
+  "note": "✓ Reading saved to Your Personal Journal on this browser. ✓ "
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "Journal → reopen → same cards and both clarifier layers",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Reading celtic",
+  "step": "end of page: Back to top, then Home",
+  "result": "PASS",
+  "note": ""
+ },
+ {
+  "w": 1920,
+  "journey": "Journal",
+  "step": "Journal lists all five saved readings; Home from Journal",
+  "result": "PASS",
+  "note": "5 readings"
+ },
+ {
+  "w": 1920,
+  "journey": "Browser Back",
+  "step": "after a reading, browser Back steps back through screens without a blank or broken page",
+  "result": "FAIL",
+  "note": "page left the app: reading → home → gone"
+ }
+]
