@@ -55,7 +55,7 @@ Author: Claude, 30 Oct 2026, for #24 item 7. **Describes the candidate exactly a
 - **PDF:** generated in the browser with pdf-lib, file name `resonate-tarot-reading.pdf`. When present, the astrology snapshot is attached as `resonate-astrology-snapshot.json`, with no raw birth inputs. Nothing is uploaded.
 
 ## 5. Backup and restore
-- **Users:** the only backup is the **PDF download**. Clearing site data, uninstalling the browser or changing phone loses the Journal; there is no import. Say this plainly to testers.
+- **Users: there is no backup or restore.** The **PDF is an export / archival copy to read or keep**; it **cannot be imported** back into the Journal, on this device or another. Clearing site data, uninstalling the browser or changing phone loses the Journal for good. Say this plainly to testers. (Corrected 30 Oct after Si Aye's review.)
 - **Code:** GitHub is the record. Every candidate is a branch plus full SHA. Nothing to back up on Vercel beyond its deployment history.
 
 ## 6. Configuration and environment
@@ -80,16 +80,16 @@ All author-run, headless Chromium (Playwright 1.63); detail in `EVIDENCE_SAT_31O
 - **Privacy:** no analytics, cookies, accounts, tracking or network calls by the app. Readings, reflections and optional Sun sign/year stay in the browser. A privacy note saying exactly this is still needed before public release (**not present**).
 - **Accessibility, as tested:** keyboard menu and Escape, focus moves to each new heading, labelled toggles (`aria-pressed`), touch targets, reduced-motion honoured, no sideways scroll at 360–1920. **Not tested:** screen reader on a real device, colour contrast audit, zoom to 200%.
 - **Content:** reading text says it is a perspective, not a prediction ("not a fixed prediction", "symbolic prompts, not guarantees"). PR #42 found no absolute-prediction wording in app text.
-- **Artwork rights: UNKNOWN.** The deck images in `assets/deck/` (78 + back) have no recorded source or licence in the repo, and the landing/spread artwork has none either. Record provenance before public release.
+- **Artwork rights: UNKNOWN — not cleared.** The deck images in `assets/deck/` (78 + back) have no recorded source or licence in the repo, and the landing/spread artwork has none either. Record provenance before public release.
 - **Store:** stays password-protected; no checkout, subscription or payment change.
 - **`README.txt` is out of date** (it still says five cards). Docs only, not a user-facing defect.
 
 ## 10. Troubleshooting
 | Symptom | Likely cause | What to do |
 |---|---|---|
-| Journal empty on another phone or browser | Journal is per browser | Expected; use the PDF to keep a reading |
-| "Could not save in this browser" | Storage blocked or full (private mode, storage cleared, quota) | Leave private mode / allow site data; download the PDF |
-| Readings vanished | Site data cleared | No server copy exists; PDFs are the only backup |
+| Journal empty on another phone or browser | Journal is per browser | Expected; a downloaded PDF keeps a readable copy but cannot be loaded back in |
+| "Could not save in this browser" | Storage blocked or full (private mode, storage cleared, quota) | Leave private mode / allow site data; download the PDF to keep a readable copy |
+| Readings vanished | Site data cleared | Not recoverable; no server copy and no import. Any downloaded PDFs remain readable copies |
 | Card images missing | Asset failed to load (connection) | Reload; images are local files under `assets/deck/` |
 | Phone Back leaves the app | Already on Home | Expected; Back from Home leaves |
 | Forward does nothing useful | Not supported by design | Use the on-screen buttons |
