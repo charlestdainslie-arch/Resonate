@@ -420,7 +420,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     // Every line is swallowed: no sound, no start, no end.
     await page.evaluate(() => { window.speechSynthesis.speak = u => { window.__spoken.push({ text: u.text }); }; });
     await page.locator('#mcPlay').click();
-    await page.waitForFunction(() => /did not speak, so Max is on captions only/.test(document.querySelector('#mcVoice').textContent), null, { timeout: 15000 });
+    await page.waitForFunction(() => /did not speak, so Max is on captions only/.test(document.querySelector('#mcVoice').textContent), null, { timeout: 25000 });
     const tried = await page.evaluate(() => window.__spoken.length);
     assert.ok(tried <= 2, `gave up after two silent lines (tried ${tried})`);
     assert.equal(await page.evaluate(() => ResonatePresenter.player.voice), null, 'no voice claimed');
@@ -468,6 +468,22 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     const n = await page.evaluate(() => window.__spoken.length);
     await page.waitForTimeout(3500);
     assert.equal(await page.evaluate(() => window.__spoken.length), n, 'nothing more spoken while away');
+  });
+  await check('Samsung-style voice names (en_AU, zh_HK_#Hans): Max picks English and speaks with a standard language tag', async page => {
+    await page.addInitScript(() => {
+      const voices = [{ name: 'Chinese Hong Kong', lang: 'zh_HK_#Hans', localService: true }, { name: 'English Australia', lang: 'en_AU', localService: true }, { name: 'English United States', lang: 'en_US', localService: true }];
+      window.speechSynthesis.getVoices = () => voices;
+      const speak = window.speechSynthesis.speak.bind(window.speechSynthesis);
+      window.__langs = [];
+      window.speechSynthesis.speak = u => { window.__langs.push(u.lang); speak(u); };
+    });
+    await page.goto(PAGE);
+    await open(page);
+    assert.match(await page.locator('#mcVoice').innerText(), /\(English Australia\)/);
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => window.__langs.length >= 2);
+    assert.deepEqual([...new Set(await page.evaluate(() => window.__langs))], ['en-AU'], 'standard tag, never en_AU');
+    assert.ok(await page.evaluate(() => window.__spoken.every(s => s.voice === 'English Australia')));
   });
   await check('?voices lists the device voices and says which Max would use, speaking nothing', async page => {
     await page.goto(OWN + '?voices');

@@ -120,9 +120,12 @@
   const packCovers=(pack,script)=>!!pack?.clips&&script.every(part=>part.clips.every(clip=>clip.id&&pack.clips[clip.id]));
 
   // Only on-device voices: a network voice (such as Chrome's "Google" voices) would send the reading away.
+  // Samsung's Chrome names voices 'en_AU' or 'zh_HK_#Hans'; the standard tag is 'en-AU'
+  // (Chas's Android, 30 Oct). Read both, and only ever hand the standard form back.
+  const bcp47=lang=>String(lang||'').split('_#')[0].replace(/_/g,'-');
   function localVoice(){
-    const voices=window.speechSynthesis?.getVoices?.().filter(v=>v.localService&&/^en/i.test(v.lang))||[];
-    return voices.find(v=>/en-GB/i.test(v.lang))||voices[0]||null;
+    const voices=window.speechSynthesis?.getVoices?.().filter(v=>v.localService&&/^en\b/i.test(bcp47(v.lang)))||[];
+    return voices.find(v=>/^en-GB$/i.test(bcp47(v.lang)))||voices.find(v=>/^en-AU$/i.test(bcp47(v.lang)))||voices[0]||null;
   }
   const spokenText=text=>text.replace(/ · /g,', ').replace(/ — /g,', ');
 
@@ -176,17 +179,17 @@
       const finish=ok=>{if(settled||mine!==deviceToken)return;settled=true;clearTimeout(deviceTimer);if(ok)self.silent=0;on.done();};
       const fail=reason=>{if(settled||mine!==deviceToken)return;settled=true;clearTimeout(deviceTimer);self.broken=reason;on.fail(reason);};
       const utterance=new SpeechSynthesisUtterance(spokenText(part.text));
-      utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=1;utterance.pitch=0.85;
-      utterance.onstart=()=>{started=true;};
+      utterance.voice=voice;utterance.lang=bcp47(voice.lang);utterance.rate=1;utterance.pitch=0.85;
+      utterance.onstart=()=>{started=true;self.warm=true;};
       utterance.onend=()=>finish(true);
       utterance.onerror=e=>{const err=e?.error||'';if(err==='interrupted'||err==='canceled')return;if(FATAL.test(err))fail(err);else finish(false);};
       const words=part.text.split(' ').length;
       // Has the line actually started? If not after a few seconds, it was dropped.
       const check=()=>{deviceTimer=setTimeout(()=>{
         if(mine!==deviceToken||settled)return;
-        if(started||window.speechSynthesis.speaking){started=true;deviceTimer=setTimeout(guard,Math.max(4000,words*700));return;}
+        if(started||window.speechSynthesis.speaking){started=true;self.warm=true;deviceTimer=setTimeout(guard,Math.max(4000,words*700));return;}
         if(++self.silent>=2)fail('silent');else finish(false);
-      },3000);};
+      },self.warm?3000:7000);};
       // Started but no end event (Android): move on once speech has stopped.
       const guard=()=>{if(mine!==deviceToken||settled)return;if(!window.speechSynthesis.speaking)finish(true);else deviceTimer=setTimeout(guard,1500);};
       deviceTimer=setTimeout(()=>{if(mine!==deviceToken)return;window.speechSynthesis.speak(utterance);check();},120);
@@ -361,8 +364,8 @@
   function voiceInventory(){
     const all=window.speechSynthesis?.getVoices?.()||[];
     const pick=localVoice();
-    return {supported:!!window.speechSynthesis,picked:pick?`${pick.name} (${pick.lang})`:null,
-      voices:all.map(v=>({name:v.name,lang:v.lang,onDevice:!!v.localService,english:/^en/i.test(v.lang)}))};
+    return {supported:!!window.speechSynthesis,picked:pick?`${pick.name} (${bcp47(pick.lang)})`:null,
+      voices:all.map(v=>({name:v.name,lang:v.lang,onDevice:!!v.localService,english:/^en\b/i.test(bcp47(v.lang))}))};
   }
   function showInventory(){
     const inv=voiceInventory();
