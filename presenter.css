@@ -75,6 +75,16 @@
   .mc-screen { aspect-ratio: 16 / 9; }
   .mc-caption p { font-size: 17px; }
   .mc-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Chas's Android, 30 Oct: on a phone, up to three cards share the width instead of scrolling
+     off the sides, and their names wrap rather than being cut off. */
+  .mc-cards:not(.is-wide) { overflow-x: visible; }
+  .mc-cards:not(.is-wide) .mc-card { flex: 1 1 0; width: auto; min-width: 0; max-width: 170px; }
+  .mc-card > strong, .mc-card > span { overflow-wrap: anywhere; }
+  /* Keep Max's words on screen: a shorter presenter box and a one-line title. */
+  .mc-frame { gap: 10px; padding-top: 10px; }
+  .mc-head h2 { font-size: 12px; letter-spacing: .18em; }
+  .mc-screen { aspect-ratio: auto; height: clamp(96px, 20vh, 150px); }
+  .mc-cards:not(.is-wide) .mc-card img { max-height: 30vh; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mc-screen::before, .mc-player .mc-jaw, .mc-player .mc-head-group { animation: none !important; }
