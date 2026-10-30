@@ -41,6 +41,12 @@
 .mc-cards.is-wide { justify-content: flex-start; }
 .mc-card { flex: 0 0 auto; width: min(46%, 170px); display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; transition: opacity .3s; }
 .mc-cards.is-wide .mc-card { width: clamp(86px, 27vw, 120px); }
+/* Up to three cards share the strip's width at every screen size, so none is cut off beside Max
+   (Chas's phone 30 Oct; Chas's laptop window, 30 Oct 23:04). Names wrap rather than clip.
+   Wider spreads (.is-wide) still scroll sideways and Max keeps the card he is on in view. */
+.mc-cards:not(.is-wide) { overflow-x: visible; }
+.mc-cards:not(.is-wide) .mc-card { flex: 1 1 0; width: auto; min-width: 0; max-width: 170px; }
+.mc-card > strong, .mc-card > span { overflow-wrap: anywhere; }
 .mc-card img, .mc-clar img { width: 100%; aspect-ratio: 0.58; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201,169,106,.35); background: #111; }
 .mc-card > span { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); line-height: 1.25; }
 .mc-card > strong { font-size: 12px; line-height: 1.2; color: var(--text, #f2ede4); }
@@ -77,9 +83,6 @@
   .mc-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   /* Chas's Android, 30 Oct: on a phone, up to three cards share the width instead of scrolling
      off the sides, and their names wrap rather than being cut off. */
-  .mc-cards:not(.is-wide) { overflow-x: visible; }
-  .mc-cards:not(.is-wide) .mc-card { flex: 1 1 0; width: auto; min-width: 0; max-width: 170px; }
-  .mc-card > strong, .mc-card > span { overflow-wrap: anywhere; }
   /* Keep Max's words on screen: a shorter presenter box and a one-line title. */
   .mc-frame { gap: 10px; padding-top: 10px; }
   .mc-head h2 { font-size: 12px; letter-spacing: .18em; }
