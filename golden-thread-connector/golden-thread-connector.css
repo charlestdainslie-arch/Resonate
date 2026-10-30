@@ -1,0 +1,71 @@
+/* Golden Thread connector — Phase A. Decorative overlay only.
+   Look follows the PR #45 opener: three stacked gold strokes (halo, glow, core). */
+.gtc-host {
+  position: relative;
+}
+
+.gtc-overlay,
+.gtc-sparkle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gtc-overlay {
+  overflow: visible;
+  mix-blend-mode: screen;
+}
+
+.gtc-sparkle {
+  mix-blend-mode: screen;
+}
+
+.gtc-filament {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+/* Wide, soft halo. */
+.gtc-filament--halo {
+  stroke: rgba(232, 196, 120, 0.22);
+  stroke-width: 10;
+  filter: blur(5px);
+}
+
+/* Glow. */
+.gtc-filament--glow {
+  stroke: rgba(232, 196, 120, 0.5);
+  stroke-width: 4;
+  filter: blur(1.6px);
+}
+
+/* Bright core. */
+.gtc-filament--head {
+  stroke: rgba(255, 228, 165, 0.98);
+  stroke-width: 1.7;
+  filter: drop-shadow(0 0 4px rgba(255, 210, 130, 0.95));
+}
+
+.gtc-filament-dot {
+  fill: rgba(255, 244, 214, 0.95);
+  filter: drop-shadow(0 0 5px rgba(255, 200, 120, 0.95));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gtc-filament--head,
+  .gtc-filament-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Measuring path only; never painted. */
+.gtc-probe { fill: none; stroke: none; visibility: hidden; }
+
+/* Decorative only: never intercept touch or pointer input. */
+.gtc-overlay g { pointer-events: none; }

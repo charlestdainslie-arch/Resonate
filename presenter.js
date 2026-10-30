@@ -260,6 +260,8 @@
     const motion=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
     function show(i){
       const part=script[i];
+      // Lets the Golden Thread (max-golden-thread.js) follow the card being discussed.
+      document.dispatchEvent(new CustomEvent('maxchasroom:show',{detail:{root,index:i,show:part.show}}));
       $('mcCaption').innerHTML=`<p class="mc-kind-${part.kind}">${escapeHtml(part.text)}</p>`;
       $('mcPart').textContent=`Part ${i+1} of ${script.length}`;
       $('mcBar').style.width=`${(i+1)/script.length*100}%`;
@@ -302,13 +304,14 @@
     const onHide=()=>{if(document.hidden&&playing)setPlaying(false);};
     const onPageHide=()=>{if(playing)setPlaying(false);};
     document.addEventListener('visibilitychange',onHide);window.addEventListener('pagehide',onPageHide);
-    const close=()=>{playing=false;stopSound();window.speechSynthesis?.removeEventListener?.('voiceschanged',onVoices);document.removeEventListener('visibilitychange',onHide);window.removeEventListener('pagehide',onPageHide);root.remove();player=null;document.removeEventListener('keydown',onKey);opener?.focus?.();};
+    const close=()=>{playing=false;stopSound();document.dispatchEvent(new CustomEvent('maxchasroom:close',{detail:{root}}));window.speechSynthesis?.removeEventListener?.('voiceschanged',onVoices);document.removeEventListener('visibilitychange',onHide);window.removeEventListener('pagehide',onPageHide);root.remove();player=null;document.removeEventListener('keydown',onKey);opener?.focus?.();};
     const onKey=e=>{if(e.key==='Escape')close();};
     document.addEventListener('keydown',onKey);
     $('mcClose').onclick=close;
     $('mcFull').onclick=()=>{close();document.getElementById('readingInterpretation')?.scrollIntoView({block:'start',behavior:scrollMotion()});};
     $('mcPlay').focus();
     player={script,root,pack,get voice(){return muted?null:(voice?voice.id:null);},chapter:typeof chapter==='string'?chapter:null};
+    document.dispatchEvent(new CustomEvent('maxchasroom:open',{detail:{root,chapter:player.chapter}}));
   }
 
   // An original retro presenter: angular gold-edged head on a scan-lined screen. Not anyone's likeness.
