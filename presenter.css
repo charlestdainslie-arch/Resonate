@@ -86,3 +86,12 @@
 .mc-ribbon strong { letter-spacing: .14em; font-size: 11px; margin-right: 6px; }
 body:has(.mc-player) .mc-ribbon { display: none; }
 .mc-launch { margin: 10px 0 14px; }
+
+/* ?voices: the voice check for the Android review. */
+.mc-inventory{position:relative;z-index:50;margin:12px;padding:16px;border:1px solid rgba(201,169,106,.55);border-radius:16px;background:#111113;color:#eee6da;font-size:14px;line-height:1.5}
+.mc-inventory h2{margin:0 0 6px;font-size:12px;letter-spacing:.2em;color:#d9b979}
+.mc-inventory p{margin:6px 0}
+.mc-inv-scroll{max-height:40vh;overflow:auto;margin:8px 0}
+.mc-inventory table{width:100%;border-collapse:collapse;font-size:12px}
+.mc-inventory th,.mc-inventory td{padding:5px 6px;border-bottom:1px solid #2a2722;text-align:left;word-break:break-word}
+.mc-inventory tr.mc-usable td{color:#f2d79a;font-weight:600}

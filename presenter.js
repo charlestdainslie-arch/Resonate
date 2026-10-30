@@ -4,8 +4,10 @@
    the page and the PDF use. Max's own lines (FRAME) are framing only; they never interpret. Labels only
    name a position and a card. Kept short for a phone: per card, one line on the position and one on the card.
    Clarifiers are separate chapters, so a clarifier drawn later can be heard on its own.
-   Voice: a pre-recorded voice pack if one covers the whole script, else the device's own on-device speech,
-   else captions alone. Nothing is sent anywhere. */
+   Voice: swappable providers behind one interface (window.MaxVoice), tried in order: any registered voice
+   (for Chas's own consented voice later), a pre-recorded voice pack if one covers the whole script, the
+   device's own on-device speech, else captions alone. Device speech is labelled "synthetic temporary voice,
+   not Chas", and is dropped for captions if it turns out not to work. Nothing is sent anywhere. */
 (function(){
   const DEMO={at:'2026-10-28T09:00:00.000Z',spreadId:'guidance',base:1,clarifiers:[2,3]};
   // Every line Max may say that is not quoted from the reading or a label. Tests check nothing else is spoken.
@@ -124,6 +126,78 @@
   }
   const spokenText=text=>text.replace(/ · /g,', ').replace(/ — /g,', ');
 
+  // ---- Voice providers -------------------------------------------------------------------------------
+  // One interface, so a consented clone of Chas's voice can replace the temporary voice later without
+  // touching the script, captions or controls. A provider is:
+  //   { id, prepare(script) -> Promise<bool>   can it voice this whole script?
+  //     note() -> string                       what the listener is told about the voice
+  //     speak(part, fromClip, on)              on.clip(n) as each recorded clip starts, on.done() when the
+  //                                            part has been voiced, on.fail(reason) if the voice cannot work
+  //     stop() }                               silence now; a stopped part never calls on.done
+  // A provider must not send the reading off the device without Chas's consent recorded in the repo.
+  const registered=[];
+  window.MaxVoice={register(provider){if(provider&&provider.id&&!registered.includes(provider))registered.push(provider);},providers:()=>[...registered,packVoice,deviceVoice]};
+
+  const packAudio=typeof Audio==='function'?new Audio():null;
+  let packToken=0;
+  const packVoice={
+    id:'pack',pack:null,
+    async prepare(script){this.pack=packCovers(await loadVoicePack(),script)?voicePack:null;return !!this.pack&&!!packAudio;},
+    note(){return `${this.pack.label}. Pre-recorded, so nothing is sent anywhere.`;},
+    speak(part,from,on){
+      const mine=++packToken,pack=this.pack;let n=from;
+      const playClip=()=>{
+        if(mine!==packToken)return;
+        if(n>=part.clips.length){on.done();return;}
+        on.clip(n);
+        packAudio.src=VOICE_DIR+pack.clips[part.clips[n].id];
+        packAudio.onended=()=>{n++;playClip();};
+        packAudio.onerror=()=>{n++;playClip();};
+        packAudio.play().catch(()=>{if(mine===packToken){n++;playClip();}});
+      };
+      playClip();
+    },
+    stop(){packToken++;if(packAudio){packAudio.onended=packAudio.onerror=null;packAudio.pause();}}
+  };
+
+  // The device's own speech. Some phones list a voice that then never makes a sound. One dropped line is
+  // a known Android quirk and is skipped; two silent lines in a row, or an engine error, mean the voice
+  // does not work here, so Max says so and carries on with captions (Si Aye, 30 Oct: no claimed audio).
+  const FATAL=/synthesis-failed|synthesis-unavailable|audio-hardware|not-allowed|voice-unavailable|language-unavailable/;
+  let deviceTimer=null,deviceToken=0;
+  const deviceVoice={
+    id:'device',broken:null,silent:0,
+    async prepare(){return !this.broken&&!!localVoice();},
+    note(){return `Synthetic temporary voice — not Chas. Your device's built-in speech (${localVoice().name}). Nothing is sent anywhere.`;},
+    speak(part,from,on){
+      const mine=++deviceToken,voice=localVoice(),self=this;
+      if(!voice){on.fail('no-voice');return;}
+      let started=false,settled=false;
+      const finish=ok=>{if(settled||mine!==deviceToken)return;settled=true;clearTimeout(deviceTimer);if(ok)self.silent=0;on.done();};
+      const fail=reason=>{if(settled||mine!==deviceToken)return;settled=true;clearTimeout(deviceTimer);self.broken=reason;on.fail(reason);};
+      const utterance=new SpeechSynthesisUtterance(spokenText(part.text));
+      utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=1;utterance.pitch=0.85;
+      utterance.onstart=()=>{started=true;};
+      utterance.onend=()=>finish(true);
+      utterance.onerror=e=>{const err=e?.error||'';if(err==='interrupted'||err==='canceled')return;if(FATAL.test(err))fail(err);else finish(false);};
+      const words=part.text.split(' ').length;
+      // Has the line actually started? If not after a few seconds, it was dropped.
+      const check=()=>{deviceTimer=setTimeout(()=>{
+        if(mine!==deviceToken||settled)return;
+        if(started||window.speechSynthesis.speaking){started=true;deviceTimer=setTimeout(guard,Math.max(4000,words*700));return;}
+        if(++self.silent>=2)fail('silent');else finish(false);
+      },3000);};
+      // Started but no end event (Android): move on once speech has stopped.
+      const guard=()=>{if(mine!==deviceToken||settled)return;if(!window.speechSynthesis.speaking)finish(true);else deviceTimer=setTimeout(guard,1500);};
+      deviceTimer=setTimeout(()=>{if(mine!==deviceToken)return;window.speechSynthesis.speak(utterance);check();},120);
+    },
+    stop(){deviceToken++;clearTimeout(deviceTimer);try{window.speechSynthesis?.cancel();}catch{}}
+  };
+  async function pickVoice(script){
+    for(const provider of window.MaxVoice.providers()){try{if(await provider.prepare(script))return provider;}catch{}}
+    return null;
+  }
+
   // The cards on the player: each position's card, with its clarifiers small underneath (1 left, 2 right),
   // matching the reading page. A strip that scrolls sideways when the spread is wider than the phone.
   function cardStrip(){
@@ -141,7 +215,8 @@
     if(player)return;
     player={pending:true};
     const full=buildScript(),script=playlist(full,typeof chapter==='string'?chapter:null);
-    const pack=packCovers(await loadVoicePack(),script)?voicePack:null;
+    let voice=await pickVoice(script);
+    const pack=voice===packVoice?packVoice.pack:null;
     const opener=document.activeElement;
     const what=typeof chapter==='string'?` · Clarifier ${chapter.slice(1)}`:'';
     document.body.insertAdjacentHTML('beforeend',`<div class="mc-player" role="dialog" aria-modal="true" aria-labelledby="mcTitle">
@@ -167,10 +242,18 @@
     const root=document.querySelector('.mc-player');
     const $=id=>root.querySelector('#'+id);
     let index=-1,playing=false,muted=false,captions=true,timer=null,token=0,clip=0;
-    const audio=pack?new Audio():null;
-    const voiceNote=()=>{$('mcVoice').textContent=muted?'Sound is off. Captions keep time on their own.':pack?`${pack.label}. Pre-recorded, so nothing is sent anywhere.`:localVoice()?`Temporary voice: your device's built-in speech (${localVoice().name}). Nothing is sent anywhere.`:'No on-device voice was found on this device, so Max is on captions only. Nothing is sent anywhere.';};
-    voiceNote();window.speechSynthesis?.addEventListener?.('voiceschanged',voiceNote);
-    const stopSound=()=>{clearTimeout(timer);token++;try{window.speechSynthesis?.cancel();}catch{}if(audio){audio.onended=audio.onerror=null;audio.pause();}root.classList.remove('is-talking');};
+    const voiceNote=()=>{
+      let note;
+      if(muted)note='Sound is off. Captions keep time on their own.';
+      else if(voice)note=voice.note();
+      else if(deviceVoice.broken)note='This device lists a voice but it did not speak, so Max is on captions only. Nothing is sent anywhere.';
+      else note='No on-device voice was found on this device, so Max is on captions only. Nothing is sent anywhere.';
+      $('mcVoice').textContent=note;
+    };
+    // Voices often arrive late on Android: pick again when they do, unless a part is already playing.
+    const onVoices=async()=>{if(!playing&&(!voice||voice===deviceVoice)){voice=await pickVoice(script);}voiceNote();};
+    voiceNote();window.speechSynthesis?.addEventListener?.('voiceschanged',onVoices);
+    const stopSound=()=>{clearTimeout(timer);token++;window.MaxVoice.providers().forEach(p=>{try{p.stop();}catch{}});root.classList.remove('is-talking');};
     const motion=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
     function show(i){
       const part=script[i];
@@ -186,49 +269,43 @@
         strip.scrollTo({left:target.offsetLeft-(strip.clientWidth-target.offsetWidth)/2,behavior:motion()});
       }
     }
+    const captionTime=i=>Math.min(12000,Math.max(2600,script[i].text.split(' ').length*400));
     // from: the clip to start at, so Resume carries on where Pause stopped in a recorded line.
     function playPart(i,from=0){
       stopSound();index=i;clip=from;
       if(i>=script.length){finish();return;}
       show(i);root.classList.add('is-talking');
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
-      const voice=!muted&&!pack&&localVoice();
-      if(pack&&!muted){
-        const playClip=()=>{
-          if(mine!==token)return;
-          if(clip>=script[i].clips.length){next();return;}
-          audio.src=VOICE_DIR+pack.clips[script[i].clips[clip].id];
-          audio.onended=()=>{clip++;playClip();};
-          audio.onerror=()=>{clip++;playClip();};
-          audio.play().catch(()=>{if(mine===token){clip++;playClip();}});
-        };
-        playClip();
-      } else if(voice){
-        const utterance=new SpeechSynthesisUtterance(spokenText(script[i].text));
-        utterance.voice=voice;utterance.lang=voice.lang;utterance.rate=1;utterance.pitch=0.85;
-        const words=script[i].text.split(' ').length;
-        const guard=()=>{timer=setTimeout(()=>{if(mine===token&&!window.speechSynthesis.speaking)next();else if(mine===token)guard();},Math.max(4000,words*700));};
-        utterance.onend=next;utterance.onerror=e=>{if(e?.error!=='interrupted'&&e?.error!=='canceled')next();};
-        timer=setTimeout(()=>{if(mine!==token)return;window.speechSynthesis.speak(utterance);guard();},120);
-      } else timer=setTimeout(next,Math.min(12000,Math.max(2600,script[i].text.split(' ').length*400)));
+      const v=!muted&&voice;
+      if(!v){timer=setTimeout(next,captionTime(i));return;}
+      v.speak(script[i],from,{
+        clip:n=>{if(mine===token)clip=n;},
+        done:next,
+        // The voice does not work here: say so, and carry on from this part with the next voice or captions.
+        fail:async()=>{if(mine!==token)return;voice=await pickVoice(script);voiceNote();if(mine===token&&playing)playPart(i);}
+      });
     }
     function finish(){playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';$('mcCaption').innerHTML='<p>That was the short version. The full reading is waiting below.</p>';root.classList.add('is-finished');}
     function setPlaying(on){
       playing=on;root.classList.toggle('is-playing',on);root.classList.remove('is-finished');
       $('mcPlay').textContent=on?'❚❚ Pause':'▶ Resume';
-      if(on)playPart(index<0?0:index,pack&&!muted&&index>=0?clip:0);else stopSound();
+      if(on)playPart(index<0?0:index,voice===packVoice&&!muted&&index>=0?clip:0);else stopSound();
     }
     $('mcPlay').onclick=()=>setPlaying(!playing);
     $('mcReplay').onclick=()=>{index=0;clip=0;root.scrollTo?.({top:0});root.querySelector('.mc-cards')?.scrollTo?.({left:0});setPlaying(true);};
     $('mcSound').onclick=()=>{muted=!muted;$('mcSound').textContent=muted?'🔊 Unmute':'🔇 Mute';$('mcSound').setAttribute('aria-pressed',String(!muted));voiceNote();if(playing)playPart(index);};
     $('mcCaptions').onclick=()=>{captions=!captions;root.classList.toggle('captions-off',!captions);$('mcCaptions').textContent=captions?'Hide words':'Show words';$('mcCaptions').setAttribute('aria-pressed',String(captions));};
-    const close=()=>{playing=false;stopSound();window.speechSynthesis?.removeEventListener?.('voiceschanged',voiceNote);root.remove();player=null;document.removeEventListener('keydown',onKey);opener?.focus?.();};
+    // Leaving the page or switching away pauses Max: nothing carries on speaking in the background.
+    const onHide=()=>{if(document.hidden&&playing)setPlaying(false);};
+    const onPageHide=()=>{if(playing)setPlaying(false);};
+    document.addEventListener('visibilitychange',onHide);window.addEventListener('pagehide',onPageHide);
+    const close=()=>{playing=false;stopSound();window.speechSynthesis?.removeEventListener?.('voiceschanged',onVoices);document.removeEventListener('visibilitychange',onHide);window.removeEventListener('pagehide',onPageHide);root.remove();player=null;document.removeEventListener('keydown',onKey);opener?.focus?.();};
     const onKey=e=>{if(e.key==='Escape')close();};
     document.addEventListener('keydown',onKey);
     $('mcClose').onclick=close;
     $('mcFull').onclick=()=>{close();document.getElementById('readingInterpretation')?.scrollIntoView({block:'start',behavior:scrollMotion()});};
     $('mcPlay').focus();
-    player={script,root,pack,chapter:typeof chapter==='string'?chapter:null};
+    player={script,root,pack,get voice(){return muted?null:(voice?voice.id:null);},chapter:typeof chapter==='string'?chapter:null};
   }
 
   // An original retro presenter: angular gold-edged head on a scan-lined screen. Not anyone's likeness.
@@ -275,7 +352,32 @@
       readingIndex:null,drawSettled:true,drawPhase:'settled'});
     go('draw');
   }
-  window.ResonatePresenter={buildScript,playlist,FRAME,DEMO,VOICE_DIR,isDemo,loadDemo,openPlayer,get player(){return player&&!player.pending?player:null;}};
+  window.ResonatePresenter={voiceInventory,buildScript,playlist,FRAME,DEMO,VOICE_DIR,isDemo,loadDemo,openPlayer,get player(){return player&&!player.pending?player:null;}};
   // The page now opens as the normal app, for real readings in any spread. ?demo loads the synthetic demo.
   if(/[?&]demo\b/.test(location.search))loadDemo();
+
+  // ?voices: a plain list of this device's speech voices, for the Android check (Si Aye, 30 Oct).
+  // Reads the list only; nothing is spoken and nothing is sent anywhere.
+  function voiceInventory(){
+    const all=window.speechSynthesis?.getVoices?.()||[];
+    const pick=localVoice();
+    return {supported:!!window.speechSynthesis,picked:pick?`${pick.name} (${pick.lang})`:null,
+      voices:all.map(v=>({name:v.name,lang:v.lang,onDevice:!!v.localService,english:/^en/i.test(v.lang)}))};
+  }
+  function showInventory(){
+    const inv=voiceInventory();
+    const rows=inv.voices.map(v=>`<tr${v.onDevice&&v.english?' class="mc-usable"':''}><td>${escapeHtml(v.name)}</td><td>${escapeHtml(v.lang)}</td><td>${v.onDevice?'On this device':'Online (never used)'}</td></tr>`).join('');
+    const summary=!inv.supported?'This browser has no speech at all. Max will use captions only.'
+      :inv.picked?`Max would use: ${inv.picked}. Synthetic temporary voice — not Chas.`
+      :inv.voices.length?'No English voice on this device. Max will use captions only.':'No voices listed yet. Wait a moment, or tap Check again.';
+    let box=document.getElementById('mcInventory');
+    if(!box){document.body.insertAdjacentHTML('afterbegin','<section class="mc-inventory" id="mcInventory" role="region" aria-label="Voice check"></section>');box=document.getElementById('mcInventory');}
+    box.innerHTML=`<h2>VOICE CHECK</h2><p><strong>${escapeHtml(summary)}</strong></p><p>${inv.voices.length} voice${inv.voices.length===1?'':'s'} listed. Highlighted ones can be used. Please screenshot this for the team.</p>${rows?`<div class="mc-inv-scroll"><table><thead><tr><th>Voice</th><th>Language</th><th>Where</th></tr></thead><tbody>${rows}</tbody></table></div>`:''}<button type="button" class="ghost-button" id="mcInvAgain">Check again</button>`;
+    document.getElementById('mcInvAgain').onclick=showInventory;
+  }
+  if(/[?&]voices\b/.test(location.search)){
+    const run=()=>showInventory();
+    if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
+    window.speechSynthesis?.addEventListener?.('voiceschanged',run);
+  }
 })();

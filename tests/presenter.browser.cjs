@@ -320,7 +320,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     await withVoicePack(page, ['frame-close']);
     await page.goto(PAGE);
     await open(page);
-    assert.match(await page.locator('#mcVoice').innerText(), /Temporary voice: your device's built-in speech/);
+    assert.match(await page.locator('#mcVoice').innerText(), /Synthetic temporary voice — not Chas\. Your device's built-in speech/);
     await page.locator('#mcPlay').click();
     await page.waitForFunction(() => window.__spoken.length > 0);
     assert.deepEqual(await page.evaluate(() => window.__played), []);
@@ -406,6 +406,92 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
       }
       assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false);
     }, device);
+  }
+  // ---- Voice fallback for the 31 Oct review (Si Aye, 30 Oct) ----
+  await check('voice label: device speech is called a synthetic temporary voice, not Chas, before Play', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    assert.match(await page.locator('#mcVoice').innerText(), /^Synthetic temporary voice — not Chas\. Your device's built-in speech \(Device voice\)\. Nothing is sent anywhere\.$/);
+    assert.equal(await page.evaluate(() => window.__spoken.length), 0, 'nothing spoken before Play');
+  });
+  await check('a listed voice that never speaks: Max says so and finishes on captions', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    // Every line is swallowed: no sound, no start, no end.
+    await page.evaluate(() => { window.speechSynthesis.speak = u => { window.__spoken.push({ text: u.text }); }; });
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => /did not speak, so Max is on captions only/.test(document.querySelector('#mcVoice').textContent), null, { timeout: 15000 });
+    const tried = await page.evaluate(() => window.__spoken.length);
+    assert.ok(tried <= 2, `gave up after two silent lines (tried ${tried})`);
+    assert.equal(await page.evaluate(() => ResonatePresenter.player.voice), null, 'no voice claimed');
+    await page.waitForFunction(() => document.querySelector('.mc-player.is-finished'), null, { timeout: 120000 });
+    assert.equal(await page.evaluate(() => window.__spoken.length), tried, 'no more speech attempts on captions');
+  });
+  await check('an engine error drops device speech for captions at once', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    await page.evaluate(() => { window.speechSynthesis.speak = u => { window.__spoken.push({ text: u.text }); setTimeout(() => u.onerror && u.onerror({ error: 'synthesis-failed' }), 30); }; });
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => /did not speak, so Max is on captions only/.test(document.querySelector('#mcVoice').textContent), null, { timeout: 5000 });
+    assert.equal(await page.evaluate(() => window.__spoken.length), 1);
+    assert.equal(await part(page), await page.evaluate(() => 'Part 1 of ' + ResonatePresenter.buildScript().length), 'the failed line is shown again as a caption, not skipped');
+  });
+  await check('a registered voice (stand-in for Chas\'s consented clone) replaces the temporary voice with no other change', async page => {
+    await page.addInitScript(() => {
+      window.__clone = [];
+      window.addEventListener('DOMContentLoaded', () => window.MaxVoice.register({
+        id: 'chas-clone-standin', stopped: 0,
+        async prepare() { return true; },
+        note() { return 'Stand-in for Chas\'s own voice.'; },
+        speak(part, from, on) { window.__clone.push(part.text); this.t = setTimeout(on.done, 20); },
+        stop() { clearTimeout(this.t); this.stopped++; window.__cloneStops = this.stopped; }
+      }));
+    });
+    await page.goto(PAGE);
+    await open(page);
+    assert.equal(await page.locator('#mcVoice').innerText(), 'Stand-in for Chas\'s own voice.');
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => document.querySelector('.mc-player.is-finished'), null, { timeout: 15000 });
+    const script = await page.evaluate(() => ResonatePresenter.buildScript().map(p => p.text));
+    assert.deepEqual(await page.evaluate(() => window.__clone), script, 'same script, same order');
+    assert.equal(await page.evaluate(() => window.__spoken.length), 0, 'device speech not used');
+  });
+  await check('switching away from the page pauses Max and stops speech', async page => {
+    await page.goto(PAGE);
+    await open(page);
+    await page.evaluate(() => { window.speechSynthesis.speak = u => { window.__spoken.push({ text: u.text }); }; window.__cancels = 0; const c = window.speechSynthesis.cancel; window.speechSynthesis.cancel = function () { window.__cancels++; return c.call(this); }; });
+    await page.locator('#mcPlay').click();
+    await page.waitForFunction(() => window.__spoken.length === 1);
+    await page.evaluate(() => { Object.defineProperty(document, 'hidden', { value: true, configurable: true }); document.dispatchEvent(new Event('visibilitychange')); });
+    assert.equal(await page.locator('#mcPlay').innerText(), '▶ Resume');
+    assert.ok(await page.evaluate(() => window.__cancels > 0), 'speech cancelled');
+    const n = await page.evaluate(() => window.__spoken.length);
+    await page.waitForTimeout(3500);
+    assert.equal(await page.evaluate(() => window.__spoken.length), n, 'nothing more spoken while away');
+  });
+  await check('?voices lists the device voices and says which Max would use, speaking nothing', async page => {
+    await page.goto(OWN + '?voices');
+    await page.locator('#mcInventory').waitFor();
+    const text = await page.locator('#mcInventory').innerText();
+    assert.match(text, /Max would use: Device voice \(en-GB\)\. Synthetic temporary voice — not Chas\./);
+    assert.match(text, /Network voice[\s\S]*Online \(never used\)/);
+    assert.equal(await page.locator('#mcInventory tr.mc-usable').count(), 1);
+    assert.equal(await page.evaluate(() => window.__spoken.length), 0);
+  });
+  for (const spread of ['guidance', 'celtic']) {
+    await check(`${spread} with 2 clarifier layers: Max speaks every part with the device voice, captions in step, to the end`, async page => {
+      await drawSpread(page, spread, 2);
+      await open(page);
+      await page.evaluate(() => { window.__captions = []; new MutationObserver(() => window.__captions.push(document.querySelector('#mcCaption').innerText)).observe(document.querySelector('#mcCaption'), { childList: true, subtree: true }); });
+      await page.locator('#mcPlay').click();
+      await page.waitForFunction(() => document.querySelector('.mc-player.is-finished'), null, { timeout: 120000 });
+      const script = await page.evaluate(() => ResonatePresenter.buildScript().map(p => p.text));
+      const spoken = await page.evaluate(() => window.__spoken.map(s => s.text));
+      assert.deepEqual(spoken, script.map(t => t.replace(/ · /g, ', ').replace(/ — /g, ', ')), 'every part spoken once, in order');
+      const captions = await page.evaluate(() => window.__captions.filter((c, i, a) => c && c !== a[i - 1]));
+      assert.deepEqual(captions.slice(0, script.length).map(norm), script.map(norm), 'caption for each part, in the same order');
+      console.log(`  ${spread}: ${script.length} parts spoken and captioned`);
+    });
   }
   await browser.close();
   server.close();
