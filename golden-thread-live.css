@@ -1,0 +1,48 @@
+/* Golden Thread in the live reading (reading-thread-uat.html only). */
+
+/* The thread and its sparkles draw over the cards and clarifiers (Chas, 29 Oct),
+   and never take a tap. */
+.draw-page .spread-board > .gtc-overlay,
+.draw-page .spread-board > .gtc-sparkle { z-index: 6; pointer-events: none; }
+
+/* A newly drawn clarifier waits face down until the thread reaches it. */
+.draw-page .position-clarifier.gtc-pending { position: relative; }
+.draw-page .position-clarifier .gtc-cover {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid; place-items: center; align-content: center; gap: 4px;
+  border-radius: 8px; border: 1px solid rgba(201, 169, 106, .45);
+  background: radial-gradient(circle at 50% 38%, rgba(201, 169, 106, .14), transparent 40%), linear-gradient(145deg, #19181a, #09090b);
+}
+
+/* Deep, Task 3 A: words stay readable where the thread crosses them. */
+/* A1. Labels and titles outside the 3D card flip sit above the thread (z-index 6). */
+.draw-page .reading-position > .slot-label,
+.draw-page .position-clarifier .clarifier-layer-label,
+.draw-page .position-clarifier > strong {
+  position: relative;
+  z-index: 7;
+}
+
+/* A2. A soft dark halo on every word the thread crosses. Inside the flipped card
+   (title and ORIGINAL CARD caption) this is the only thing CSS can do. */
+.draw-page .slot-label,
+.draw-page .reading-card-front strong,
+.draw-page .clarifier-layer-label,
+.draw-page .position-clarifier strong,
+.draw-page .reading-card-front::after {
+  text-shadow:
+    0 0 3px rgba(0, 0, 0, 0.92),
+    0 0 7px rgba(0, 0, 0, 0.78),
+    0 1px 2px rgba(0, 0, 0, 0.95);
+}
+
+/* One-card spread: reading-welcome.css isolates each position in its own stacking
+   context, so A1's z-index could not lift "01 · Guidance" above the thread (Si Aye,
+   29 Oct). Lifting the isolation lets the label rise; the card art stays under the thread. */
+.draw-page .spread-board.spread-1 .reading-position { isolation: auto; }
+
+/* One-card spread: each clarifier is a tilted card with a drop shadow (reading-welcome.css),
+   which makes it its own stacking context, so its label cannot rise on its own. Raise the
+   whole clarifier above the thread instead. With edges: 'nearest' no strand crosses its
+   picture, and the loop sits outside the picture, so only the words are affected. */
+.draw-page .spread-board.spread-1 .reading-position .position-clarifier:nth-child(n) { z-index: 7; }

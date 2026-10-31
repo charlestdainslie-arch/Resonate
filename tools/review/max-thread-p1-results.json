@@ -1,0 +1,158 @@
+[
+ {
+  "area": "Thread follows Max",
+  "name": "360px three, 0 clarifier layers",
+  "status": "PASS",
+  "detail": "3/3 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "360px three, 0 clarifier layers",
+  "status": "PASS",
+  "detail": "6 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 3; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "360px relationship, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "15/15 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "360px relationship, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "10 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 5; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "390px guidance, 1 clarifier layer",
+  "status": "PASS",
+  "detail": "2/2 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "390px guidance, 1 clarifier layer",
+  "status": "PASS",
+  "detail": "2 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 1; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "390px three, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "9/9 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "390px three, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "6 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 3; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "412px relationship, 1 clarifier layer",
+  "status": "PASS",
+  "detail": "10/10 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "412px relationship, 1 clarifier layer",
+  "status": "PASS",
+  "detail": "10 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 5; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "412px guidance, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "3/3 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "412px guidance, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "2 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 1; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "1280px relationship, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "15/15 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "1280px relationship, 2 clarifier layers",
+  "status": "PASS",
+  "detail": "10 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 5; thread pointer-events none"
+ },
+ {
+  "area": "Thread follows Max",
+  "name": "1280px three, 0 clarifier layers",
+  "status": "PASS",
+  "detail": "3/3 loops, order matches narration, overlays 1, cards cut off 0, page side-scroll false, errors 0"
+ },
+ {
+  "area": "Labels legible",
+  "name": "1280px three, 0 clarifier layers",
+  "status": "PASS",
+  "detail": "6 labels; clipped 0; covered 0; position labels at 9px (unchanged from parent) 3; thread pointer-events none"
+ },
+ {
+  "area": "Replay",
+  "name": "Replay restarts the thread and completes it again",
+  "status": "PASS",
+  "detail": "rings just after Replay 0, at end 15/15, overlays 1"
+ },
+ {
+  "area": "Rapid taps",
+  "name": "12× Play/Pause + 5× Replay, then play out",
+  "status": "PASS",
+  "detail": "rings 15/15, overlays 1, pending 0, errors 0"
+ },
+ {
+  "area": "Close",
+  "name": "Close removes Max's thread and stops speech",
+  "status": "PASS",
+  "detail": "player false, Max connector false, speech after close 0, overlays left on reading page 1"
+ },
+ {
+  "area": "Close",
+  "name": "Close mid-flight, reopen: fresh thread, one overlay",
+  "status": "PASS",
+  "detail": "rings 0, overlays in player 1, errors 0"
+ },
+ {
+  "area": "Chapters",
+  "name": "\"Hear Clarifier 2\": cards + clarifier 1 pre-threaded, clarifier 2 added in order",
+  "status": "PASS",
+  "detail": "start 10 (want 10), end 15 (want 15)"
+ },
+ {
+  "area": "Chapters",
+  "name": "\"Hear Clarifier 1\": cards pre-threaded, clarifier 1 added",
+  "status": "FAIL",
+  "detail": "start 5 (want 5), end 15 (want 10)"
+ },
+ {
+  "area": "Captions",
+  "name": "Caption region is announced to screen readers",
+  "status": "PASS",
+  "detail": "aria-live=polite, role=null"
+ },
+ {
+  "area": "Reduced motion",
+  "name": "390px three-card, 2 layers",
+  "status": "PASS",
+  "detail": "loops 9/9, thread animations seen 0"
+ },
+ {
+  "area": "Reading text",
+  "name": "Same saved Relationship reading (2 clarifier layers) reopened in both builds: page text identical to parent 1fff68b",
+  "status": "PASS",
+  "detail": "25842 vs 25842 chars; errors 0"
+ },
+ {
+  "area": "PDF",
+  "name": "PDF of that reading: downloads in both builds",
+  "status": "PASS",
+  "detail": "33715 vs 33715 bytes (text compared separately)"
+ }
+]

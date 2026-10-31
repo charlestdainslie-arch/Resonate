@@ -1,0 +1,5 @@
+/* Max Chasroom + Golden Thread: the thread draws over Max's card strip and never takes a tap. */
+.mc-player .mc-cards > .gtc-overlay,
+.mc-player .mc-cards > .gtc-sparkle { z-index: 3; pointer-events: none; }
+/* Room above the first card for the thread to come down into it. */
+.mc-player .mc-cards.gtc-host { padding-top: 14px; }

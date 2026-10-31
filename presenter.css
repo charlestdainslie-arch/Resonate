@@ -1,0 +1,110 @@
+/* Max Chasroom presenter (presenter-uat.html only). RESONATE black and gold, retro broadcast screen. */
+.mc-launch { margin: 28px 0 8px; padding: 18px; border: 1px solid rgba(201,169,106,.38); border-radius: 18px; background: linear-gradient(135deg, rgba(201,169,106,.09), transparent 60%); }
+.mc-launch p { margin: 8px 0 14px; color: var(--muted, #b9b2a5); }
+.mc-launch .gold-button { width: 100%; max-width: 420px; }
+.mc-demo-banner { margin: 6px auto 12px; max-width: 640px; padding: 10px 14px; border: 1px dashed var(--gold); border-radius: 12px; color: var(--gold-bright); font-size: 14px; text-align: center; }
+.mc-demo-banner strong { display: block; letter-spacing: .14em; font-size: 12px; margin-bottom: 2px; }
+
+.mc-player { position: fixed; inset: 0; z-index: 1000; background: #050506; overflow-y: auto; overscroll-behavior: contain; }
+.mc-frame { box-sizing: border-box; max-width: 920px; margin: 0 auto; padding: 14px 16px 28px; display: flex; flex-direction: column; gap: 12px; min-height: 100%; }
+.mc-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.mc-head h2 { margin: 0; font-size: 14px; letter-spacing: .3em; color: var(--gold-bright); }
+.mc-head h2 span { color: var(--gold); letter-spacing: .2em; }
+.mc-close { flex: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(201,169,106,.5); background: transparent; color: var(--gold-bright); font-size: 18px; cursor: pointer; }
+.mc-provenance { margin: 0; font-size: 12px; letter-spacing: .08em; color: var(--gold); }
+
+.mc-stage { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 14px; align-items: stretch; }
+.mc-screen { position: relative; aspect-ratio: 4 / 3; border-radius: 22px / 18px; overflow: hidden; border: 2px solid rgba(201,169,106,.55); background: #070605; box-shadow: inset 0 0 40px rgba(0,0,0,.9), 0 0 24px rgba(201,169,106,.12); }
+/* Rotating gold wireframe behind the presenter, then scan lines over everything. */
+.mc-screen::before { content: ''; position: absolute; inset: -50%; background: repeating-linear-gradient(0deg, transparent 0 22px, rgba(201,169,106,.32) 22px 23px), repeating-linear-gradient(90deg, transparent 0 22px, rgba(201,169,106,.22) 22px 23px); transform: perspective(300px) rotateX(55deg) rotateZ(0deg); animation: mc-grid 14s linear infinite; }
+.mc-screen::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0,0,0,.28) 0 2px, transparent 2px 4px); pointer-events: none; }
+@keyframes mc-grid { to { transform: perspective(300px) rotateX(55deg) rotateZ(360deg); } }
+.mc-avatar { position: absolute; left: 50%; bottom: 0; height: 92%; transform: translateX(-50%); }
+.mc-collar { fill: #0d0c0a; stroke: var(--gold); stroke-width: 2; }
+.mc-lapel { fill: var(--gold); }
+.mc-skin { fill: url(#mcSkin); stroke: var(--gold-bright); stroke-width: 2.5; stroke-linejoin: bevel; }
+.mc-hair { fill: #c9a96a; }
+.mc-visor { fill: #050505; stroke: var(--gold); stroke-width: 1.5; }
+.mc-glint { fill: var(--gold-bright); opacity: .85; }
+.mc-edge { fill: none; stroke: var(--gold); stroke-width: 2; }
+.mc-lip, .mc-jaw { fill: var(--gold-bright); }
+.mc-jaw { transform-box: fill-box; }
+.mc-player.is-talking.is-playing .mc-jaw { animation: mc-talk .18s steps(2) infinite alternate; }
+.mc-player.is-talking.is-playing .mc-head-group { animation: mc-glitch 3.4s steps(1) infinite; }
+@keyframes mc-talk { from { transform: translateY(0); } to { transform: translateY(5px); } }
+@keyframes mc-glitch { 0%, 86%, 100% { transform: none; } 88% { transform: translate(3px, -1px) skewX(-4deg); } 90% { transform: translate(-2px, 0); } 92% { transform: translate(1px, 1px) scale(1.02); } }
+.mc-tag { position: absolute; z-index: 2; left: 8px; top: 8px; padding: 3px 7px; background: rgba(0,0,0,.75); border: 1px solid rgba(201,169,106,.5); border-radius: 6px; font-size: 9px; letter-spacing: .12em; color: var(--gold-bright); }
+
+/* Each position's card, its clarifiers small underneath (1 left, 2 right), as on the reading page.
+   Wide spreads become a sideways strip that follows the card being discussed. */
+.mc-cards { list-style: none; margin: 0; padding: 4px 2px 8px; display: flex; gap: 10px; justify-content: center; align-items: flex-start; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.mc-cards.is-wide { justify-content: flex-start; }
+.mc-card { flex: 0 0 auto; width: min(46%, 170px); display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; transition: opacity .3s; }
+.mc-cards.is-wide .mc-card { width: clamp(86px, 27vw, 120px); }
+/* Up to three cards share the strip's width at every screen size, so none is cut off beside Max
+   (Chas's phone 30 Oct; Chas's laptop window, 30 Oct 23:04). Names wrap rather than clip.
+   Wider spreads (.is-wide) still scroll sideways and Max keeps the card he is on in view. */
+.mc-cards:not(.is-wide) { overflow-x: visible; }
+.mc-cards:not(.is-wide) .mc-card { flex: 1 1 0; width: auto; min-width: 0; max-width: 170px; }
+.mc-card > strong, .mc-card > span { overflow-wrap: anywhere; }
+.mc-card img, .mc-clar img { width: 100%; aspect-ratio: 0.58; object-fit: cover; border-radius: 8px; border: 1px solid rgba(201,169,106,.35); background: #111; }
+.mc-card > span { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); line-height: 1.25; }
+.mc-card > strong { font-size: 12px; line-height: 1.2; color: var(--text, #f2ede4); }
+.mc-clars { list-style: none; margin: 4px 0 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+.mc-clar { display: flex; flex-direction: column; align-items: center; gap: 2px; transition: opacity .3s; }
+.mc-clar strong { font-size: 10px; line-height: 1.15; color: var(--text, #f2ede4); }
+.mc-card.is-active > img, .mc-clar.is-active img { border: 2px solid var(--gold-bright); box-shadow: 0 0 16px rgba(223,196,139,.45); }
+.mc-card.is-dim > img, .mc-card.is-dim > span, .mc-card.is-dim > strong, .mc-clar.is-dim { opacity: .38; }
+
+.mc-caption { min-height: 6.2em; padding: 14px 16px; border-radius: 14px; background: #000; border: 1px solid rgba(201,169,106,.3); }
+.mc-caption p { margin: 0; font-size: 18px; line-height: 1.45; color: #fff; }
+.mc-caption .mc-kind-frame, .mc-caption .mc-kind-label { color: var(--gold-bright); font-style: italic; }
+.mc-player.captions-off .mc-caption p { visibility: hidden; }
+/* With the words hidden, the caption box shrinks to a thin bar instead of an empty black panel. */
+.mc-player.captions-off .mc-caption { min-height: 0; height: 6px; padding: 0; overflow: hidden; }
+.mc-progress { display: flex; align-items: center; gap: 10px; font-size: 12px; color: var(--gold); }
+.mc-bar { flex: 1; height: 4px; border-radius: 2px; background: rgba(201,169,106,.18); overflow: hidden; }
+.mc-bar i { display: block; height: 100%; width: 0; background: var(--gold-bright); transition: width .3s; }
+.mc-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.mc-controls button { min-height: 48px; margin: 0; padding: 8px; }
+.mc-voice { margin: 0; font-size: 12px; color: var(--muted, #b9b2a5); }
+.mc-launch-more { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.mc-launch-more button { min-height: 44px; margin: 0; }
+.mc-transcript { border-top: 1px solid rgba(201,169,106,.25); padding-top: 8px; }
+.mc-transcript summary { min-height: 44px; display: flex; align-items: center; cursor: pointer; color: var(--gold-bright); font-size: 14px; }
+.mc-transcript ol { margin: 6px 0 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; line-height: 1.45; color: var(--text, #f2ede4); }
+.mc-transcript .mc-kind-frame, .mc-transcript .mc-kind-label { color: var(--gold); }
+.mc-full { align-self: center; min-height: 44px; padding: 8px 16px; background: transparent; border: 0; color: var(--gold-bright); text-decoration: underline; font-size: 14px; cursor: pointer; }
+
+@media (max-width: 640px) {
+  .mc-stage { grid-template-columns: 1fr; }
+  .mc-screen { aspect-ratio: 16 / 9; }
+  .mc-caption p { font-size: 17px; }
+  .mc-controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Chas's Android, 30 Oct: on a phone, up to three cards share the width instead of scrolling
+     off the sides, and their names wrap rather than being cut off. */
+  /* Keep Max's words on screen: a shorter presenter box and a one-line title. */
+  .mc-frame { gap: 10px; padding-top: 10px; }
+  .mc-head h2 { font-size: 12px; letter-spacing: .18em; }
+  .mc-screen { aspect-ratio: auto; height: clamp(96px, 20vh, 150px); }
+  .mc-cards:not(.is-wide) .mc-card img { max-height: 30vh; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mc-screen::before, .mc-player .mc-jaw, .mc-player .mc-head-group { animation: none !important; }
+  .mc-card, .mc-clar, .mc-bar i { transition: none; }
+}
+.mc-clar span { font-size: 8px; letter-spacing: .04em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+/* Tells anyone opening the preview where Max is. Hidden while the player is open. */
+.mc-ribbon { margin: 0; padding: 8px 16px; background: #120f09; border-bottom: 1px solid rgba(201,169,106,.4); color: var(--gold-bright, #dfc48b); font-size: 13px; line-height: 1.35; text-align: center; }
+.mc-ribbon strong { letter-spacing: .14em; font-size: 11px; margin-right: 6px; }
+body:has(.mc-player) .mc-ribbon { display: none; }
+.mc-launch { margin: 10px 0 14px; }
+
+/* ?voices: the voice check for the Android review. */
+.mc-inventory{position:relative;z-index:50;margin:12px;padding:16px;border:1px solid rgba(201,169,106,.55);border-radius:16px;background:#111113;color:#eee6da;font-size:14px;line-height:1.5}
+.mc-inventory h2{margin:0 0 6px;font-size:12px;letter-spacing:.2em;color:#d9b979}
+.mc-inventory p{margin:6px 0}
+.mc-inv-scroll{max-height:40vh;overflow:auto;margin:8px 0}
+.mc-inventory table{width:100%;border-collapse:collapse;font-size:12px}
+.mc-inventory th,.mc-inventory td{padding:5px 6px;border-bottom:1px solid #2a2722;text-align:left;word-break:break-word}
+.mc-inventory tr.mc-usable td{color:#f2d79a;font-weight:600}
