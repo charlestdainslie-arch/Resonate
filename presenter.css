@@ -108,3 +108,9 @@ body:has(.mc-player) .mc-ribbon { display: none; }
 .mc-inventory table{width:100%;border-collapse:collapse;font-size:12px}
 .mc-inventory th,.mc-inventory td{padding:5px 6px;border-bottom:1px solid #2a2722;text-align:left;word-break:break-word}
 .mc-inventory tr.mc-usable td{color:#f2d79a;font-weight:600}
+
+/* Chas's recorded voice panel (chas-voice.js). */
+.chas-voice{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 12px;margin:0;padding:10px 16px;background:#0f0c07;border-bottom:1px solid rgba(201,169,106,.25);color:#e8dcc4;font-size:13px;line-height:1.4;text-align:center}
+.chas-voice p{margin:0;max-width:640px}
+.chas-voice .ghost-button{min-height:40px;padding:8px 14px;cursor:pointer}
+body:has(.mc-player) .chas-voice{display:none}

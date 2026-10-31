@@ -2,3 +2,8 @@ node_modules/
 test-results/
 .vercel/
 __pycache__/
+
+# Chas's private voice recordings: never committed (Issue #49)
+max-voice-chas/
+*.m4a
+*.wav
