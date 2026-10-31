@@ -12,9 +12,11 @@ test('every reading presents only one active clarifier next action',()=>{
  assert.match(source,/id="primaryClarifierAction"/);
  assert.doesNotMatch(source,/id="clarifyFirstLayer"/);
  assert.doesNotMatch(source,/id="nextClarifierLayer"/);
- assert.match(source,/Draw First Clarifier/);
- assert.match(source,/Draw Second Clarifier/);
- assert.doesNotMatch(source,/Draw Third Clarifier/);
+ // Labels now come from clarifierNextStep() (Chas's clarifier rule, Issue #13).
+ assert.match(source,/clarifierNextStep\(\)\.label/);
+ assert.match(app,/Draw First Clarifier/);
+ assert.match(app,/Draw Second Clarifier/);
+ assert.doesNotMatch(app,/Draw Third Clarifier/);
  assert.match(source,/clarifyAction.onclick/);
 });
 test('primary action is gold and return, journal and download are secondary',()=>{

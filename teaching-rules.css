@@ -1,0 +1,5 @@
+/* Clarifier rule and card-to-card thread (Chas, 31 Oct; Issues #13, #10 F1). */
+.card-to-card-thread{margin:22px 0 18px;padding-top:16px;border-top:1px solid rgba(201,169,106,.28);display:grid;gap:10px}
+.card-to-card-thread .eyebrow{margin:0}
+.card-to-card-thread .golden-card-bridge{margin:0}
+.clarify-choice{display:block;margin:8px auto 0;min-height:44px;padding:8px 14px;font-size:13px;letter-spacing:.02em}

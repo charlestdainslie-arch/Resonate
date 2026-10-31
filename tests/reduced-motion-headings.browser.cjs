@@ -40,6 +40,7 @@ function midWordBreaks(selector) {
   try {
     for (const width of [320, 390, 768, 1024, 1180, 1280, 1440, 1920]) for (const motion of ['reduce', 'no-preference']) {
       const ctx = await browser.newContext({ viewport: { width, height: width < 600 ? 844 : 900 }, reducedMotion: motion });
+      await ctx.addInitScript(require('./helpers/majors-first.cjs')); // two clarifiers available under the rule
       await ctx.addInitScript(() => {
         window.__smooth = 0;
         const st = window.scrollTo.bind(window); window.scrollTo = (a, b) => { if (a?.behavior === 'smooth') window.__smooth++; return st(a, b); };

@@ -114,6 +114,7 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
       for (const [vp, options] of configs) {
         if (motion === 'no-preference' && !['390', '1280'].includes(vp)) continue; // normal motion: shuffle/draw only
         const ctx = await browser.newContext({ ...options, reducedMotion: motion, acceptDownloads: true });
+        await ctx.addInitScript(require('./helpers/majors-first.cjs')); // every position fully clarified under the rule
         const page = await ctx.newPage();
         const errors = []; page.on('pageerror', e => errors.push(e.message));
         await page.goto(BASE);

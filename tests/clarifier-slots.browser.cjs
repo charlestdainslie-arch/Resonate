@@ -41,6 +41,7 @@ const turnFinished = page => page.evaluate(() => Promise.all([...document.queryS
   let passed = 0;
   for (const [width, device] of Object.entries(configs)) for (const spread of SPREADS) for (const motion of width === '390' || width === '1280' ? ['reduce', 'no-preference'] : ['reduce']) {
     const page = await browser.newPage({ ...device, reducedMotion: motion });
+    await page.addInitScript(require('./helpers/majors-first.cjs')); // every position fully clarified under the rule
     const errors = [];
     page.on('pageerror', e => errors.push(e.message));
     try {

@@ -280,6 +280,30 @@ function numerologyForReading(chosen){
   const repeat=[...new Set(numbers)].filter(n=>numbers.filter(value=>value===n).length>1);
   return `<section class="reading-number-thread"><h3>Numbers through your reading</h3><p>${all.map((c,i)=>`${i?' · ':''}<strong>${c.name} (${c.number===null?c.rank:c.number})</strong>`).join('')}. ${numbers.length?`Their numbered cards sum to <strong>${sum}</strong>, reducing to <strong>${reduction(sum)}</strong>.`:'Court cards are read by rank rather than assigned an invented tarot number.'} ${numeric}</p>${repeat.length?`<p>Repeated tarot numbers: ${repeat.join(', ')}. Notice whether the cards express a shared theme through different suits.</p>`:''}<p>These numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.</p></section>`;
 }
+// The card-to-card thread from the production reading (main @ 8d12cc6), restored alongside the current
+// Golden Thread (Chas, 31 Oct: "both", Issue #10 F1). Bridges use each card's own connections text; the two
+// generic fallbacks use Deep's softer wording (PR #42 proposals P1, P2) so they suggest rather than predict.
+function cardToCardThread(chosen){
+  if(chosen.length<2)return '';
+  const labels=positionLabels();
+  const first=chosen[0],last=chosen[chosen.length-1];
+  const opening=`The reading begins with ${first.name} in ${labels[0]||'the opening position'} and moves toward ${last.name} in ${labels[chosen.length-1]||'the final position'}.`;
+  const bridges=chosen.slice(1).map((card,k)=>{
+    const previous=chosen[k],index=k+1;
+    const direct=(previous.connections||[]).find(connection=>normalise(connection.card)===normalise(card.name));
+    const reverse=(card.connections||[]).find(connection=>normalise(connection.card)===normalise(previous.name));
+    const keyword=(card.uprightKeywords&&card.uprightKeywords[0]||'its theme').toLowerCase();
+    let bridge;
+    if(direct)bridge=`Read after ${previous.name}, this develops the thread: ${direct.meaning}`;
+    else if(reverse)bridge=`Read after ${previous.name}, this develops the thread: ${reverse.meaning}`;
+    else if(previous.arcana==='Major'&&card.arcana==='Major'&&previous.id+1===card.id)bridge=`As the next step in the Major Arcana sequence after ${previous.name}, ${card.name} invites that earlier impulse toward ${keyword}.`;
+    else bridge=`Following ${previous.name}, ${card.name} may draw your attention toward ${keyword}.`;
+    return `<p class="golden-card-bridge"><strong>${labels[index]||'Next'} · ${card.name}.</strong> ${bridge}</p>`;
+  }).join('');
+  const movement=`The card-to-card movement is the heart of this reading: ${first.name} opens the question, and ${last.name} shows where that pattern may be heading if the present choices continue.`;
+  const resonance='Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.';
+  return `<div class="card-to-card-thread"><div class="eyebrow">FROM CARD TO CARD</div><p class="golden-thread-opening">${opening}</p>${bridges}<p class="golden-thread-connection">${movement}</p><p class="golden-thread-resonance">${resonance}</p></div>`;
+}
 function goldenThread(chosen){
   if(!chosen.length)return '';
   const labels=positionLabels();
@@ -293,29 +317,49 @@ function goldenThread(chosen){
   }).join('');
   const all=chosen.flatMap((c,i)=>[c,...readingLayerCards(i)]);
   const distinct=[...new Set(all.flatMap(c=>c.uprightKeywords||[]))].slice(0,4);
-  return `<div class="golden-thread-reading"><p class="golden-thread-opening">The Golden Thread follows ${all.length} revealed card${all.length===1?'':'s'} across this reading, including every clarifier.</p>${groups}<div class="golden-thread-summary"><span>THE OVERALL INVITATION</span><p>${distinct.length?`Across these cards, ${distinct.join(', ').toLowerCase()} form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond?`:'Use the shared themes as a prompt for reflection and choice.'} This is a perspective, not a fixed prediction.</p></div>${numerologyForReading(chosen)}<p class="golden-thread-resonance">Take what resonates, and leave the rest.</p></div>`;
+  return `<div class="golden-thread-reading"><p class="golden-thread-opening">The Golden Thread follows ${all.length} revealed card${all.length===1?'':'s'} across this reading, including every clarifier.</p>${groups}${cardToCardThread(chosen)}<div class="golden-thread-summary"><span>THE OVERALL INVITATION</span><p>${distinct.length?`Across these cards, ${distinct.join(', ').toLowerCase()} form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond?`:'Use the shared themes as a prompt for reflection and choice.'} This is a perspective, not a fixed prediction.</p></div>${numerologyForReading(chosen)}<p class="golden-thread-resonance">Take what resonates, and leave the rest.</p></div>`;
 }
-// First-layer clarifiers are supplementary cards; they never replace the original spread.
-function drawFirstLayerClarifiers(){
-  if(state.clarifierReadingAt!==state.drawnAt){
-    state.firstLayerClarifiers=[];
+// Clarifiers follow Chas's teaching rule (Issue #13, clarifier-rules.js): a Major Arcana card gets a
+// first clarifier; a second only if that clarifier is also a Major; any other card may be clarified by
+// the seeker's choice. Layer arrays keep one entry per position, null where there is no clarifier.
+function readingSecondLayer(){
+  return state.additionalClarifierReadingAt===state.drawnAt?((state.additionalClarifierLayers||[]).find(l=>l.number===2)?.cards||[]):[];
+}
+function clarifierPlan(){
+  const base=state.drawnCardIds.map(id=>cards.find(c=>c.id===id));
+  const first=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
+  return ResonateClarifiers.plan(base,first,readingSecondLayer(),id=>cards.find(c=>c.id===id));
+}
+function readingUsedIds(){
+  const first=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
+  return [...state.drawnCardIds,...first,...readingSecondLayer()].filter(id=>id!=null);
+}
+// Draws count cards that are not already in this reading.
+function drawUnusedCards(count){
+  if(count<=0)return [];
+  const cardIds=cards.map(card=>card.id);
+  const used=readingUsedIds();
+  if(cardIds.length===78 && typeof ResonateDeck!=='undefined')return ResonateDeck.drawRemaining(cardIds,used,count);
+  const pool=cardIds.filter(id=>!used.includes(id));
+  for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+  return pool.slice(0,count);
+}
+// No argument: every Major that is still waiting. With an index: the seeker's choice for that card.
+function drawFirstLayerClarifiers(position){
+  if(state.clarifierReadingAt!==state.drawnAt||!Array.isArray(state.firstLayerClarifiers)||state.firstLayerClarifiers.length!==state.drawnCardIds.length){
+    state.firstLayerClarifiers=state.drawnCardIds.map(()=>null);
     state.clarifierReadingAt=state.drawnAt;
   }
-  if(!state.firstLayerClarifiers.length){
-    const cardIds=cards.map(card=>card.id);
-    // An independently shuffled full tarot deck supplies the clarifier layer.
-    // Until all 78 authored cards are available, retain the original sample behaviour.
-    if(cardIds.length===78 && typeof ResonateDeck!=='undefined'){
-      state.firstLayerClarifiers=ResonateDeck.drawRemaining(cardIds,state.drawnCardIds,state.drawnCardIds.length);
-    }else{
-      const available=cardIds.filter(id=>!state.drawnCardIds.includes(id));
-      const pool=available.length?available:cardIds;
-      for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-      state.firstLayerClarifiers=state.drawnCardIds.map((_,i)=>pool[i%pool.length]);
-    }
-  }
+  const plan=clarifierPlan();
+  const targets=Number.isInteger(position)?(plan.positions[position]&&plan.positions[position].first==null?[position]:[]):plan.pendingFirst;
+  const drawn=drawUnusedCards(targets.length);
+  const next=[...state.firstLayerClarifiers];
+  targets.forEach((index,k)=>{next[index]=drawn[k];});
+  state.firstLayerClarifiers=next;
+  state.drawSettled=true;
   renderDraw();
-  document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:scrollMotion(),block:'start'});
+  if(Number.isInteger(position))document.querySelectorAll('.reading-position')[position]?.scrollIntoView({behavior:scrollMotion(),block:'center'});
+  else document.querySelector?.('.spread-scroll')?.scrollIntoView({behavior:scrollMotion(),block:'start'});
 }
 function firstLayerClarifierView(labels){
   const ids=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
@@ -324,23 +368,19 @@ function firstLayerClarifierView(labels){
 }
 function drawNextClarifierLayer(){
   if(state.clarifierReadingAt!==state.drawnAt || !state.firstLayerClarifiers?.length)return;
-  if(state.additionalClarifierReadingAt!==state.drawnAt){
-    state.additionalClarifierLayers=[];
+  const targets=clarifierPlan().pendingSecond;
+  if(!targets.length)return;
+  if(state.additionalClarifierReadingAt!==state.drawnAt||!(state.additionalClarifierLayers||[]).some(l=>l.number===2)){
+    state.additionalClarifierLayers=[{number:2,cards:state.drawnCardIds.map(()=>null)}];
     state.additionalClarifierReadingAt=state.drawnAt;
   }
-  const layers=state.additionalClarifierLayers||[];
-  if(layers.length>=1)return;
-  const number=layers.length+2;
-  const ids=cards.map(card=>card.id);
-  let selected;
-  if(ids.length===78 && typeof ResonateDeck!=='undefined'){
-    selected=ResonateDeck.drawRemaining(ids,[...state.drawnCardIds,...state.firstLayerClarifiers],state.drawnCardIds.length);
-  }else{
-    const pool=[...ids];
-    for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
-    selected=state.drawnCardIds.map((_,i)=>pool[i%pool.length]);
-  }
-  state.additionalClarifierLayers=[...layers,{number,cards:selected}];
+  const drawn=drawUnusedCards(targets.length);
+  state.additionalClarifierLayers=state.additionalClarifierLayers.map(layer=>{
+    if(layer.number!==2)return layer;
+    const next=[...layer.cards];
+    targets.forEach((index,k)=>{next[index]=drawn[k];});
+    return {number:2,cards:next};
+  });
   state.drawSettled=true;
   clarifierTurnPending=true;
   try{renderDraw();}finally{clarifierTurnPending=false;}
@@ -357,18 +397,30 @@ let clarifierTurnPending=false;
 // and the second clarifier turns over in that slot, so nothing jumps or shrinks (Chas, 28 Oct UAT).
 function clarifierCardsForPosition(index){
   const layers=[];
-  if(state.clarifierReadingAt===state.drawnAt && state.firstLayerClarifiers?.length)
+  if(state.clarifierReadingAt===state.drawnAt && state.firstLayerClarifiers?.length && state.firstLayerClarifiers[index]!=null)
     layers.push({number:1,id:state.firstLayerClarifiers[index]});
-  if(state.additionalClarifierReadingAt===state.drawnAt)
-    (state.additionalClarifierLayers||[]).filter(layer=>layer.number===2).forEach(layer=>layers.push({number:layer.number,id:layer.cards[index]}));
-  if(!layers.length)return '';
+  const second=readingSecondLayer()[index];
+  if(second!=null)layers.push({number:2,id:second});
+  const spot=typeof ResonateClarifiers!=='undefined'?clarifierPlan().positions[index]:null;
+  if(!layers.length){
+    return spot&&spot.mayChooseFirst?`<button type="button" class="ghost-button clarify-choice" data-clarify-position="${index}" aria-label="Clarify card ${index+1} (optional)">+ Clarify this card</button>`:'';
+  }
   const turn=clarifierTurnPending&&!reducedMotion();
-  const waiting=layers.length===1?`<div class="position-clarifier-slot" role="img" aria-label="Clarifier 2, not drawn yet"><span class="clarifier-back" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span><span class="clarifier-layer-label">CLARIFIER 2</span><strong>Not drawn yet</strong></div>`:'';
+  const waiting=layers.length===1&&spot&&spot.needsSecond?`<div class="position-clarifier-slot" role="img" aria-label="Clarifier 2, not drawn yet"><span class="clarifier-back" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span><span class="clarifier-layer-label">CLARIFIER 2</span><strong>Not drawn yet</strong></div>`:'';
   return `<div class="position-clarifiers" data-clarifier-count="${layers.length}" aria-label="Clarifiers for position ${index+1}">${layers.map(layer=>{
     const card=cards.find(c=>c.id===layer.id);
     const turning=turn&&layer.number===2;
     return card?`<div class="position-clarifier${turning?' clarifier-turn':''}"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${card.name}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer">${turning?'<span class="clarifier-back clarifier-back-cover" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span>':''}<strong>${card.roman||card.id} · ${card.name}</strong></div>`:'';
   }).join('')}${waiting}</div>`;
+}
+// Text and label for the main clarifier button, from the rule.
+function clarifierNextStep(){
+  const plan=clarifierPlan();
+  if(plan.pendingFirst.length)return {action:'first',label:'Draw First Clarifier',help:`${plan.pendingFirst.length===1?'A Major Arcana card in your spread receives':'The Major Arcana cards in your spread receive'} a clarifier. You can also clarify any other card if you wish.`};
+  if(plan.pendingSecond.length)return {action:'second',label:'Draw Second Clarifier',help:'A clarifier that is itself a Major Arcana card receives a second clarifier.'};
+  const any=readingUsedIds().length>state.drawnCardIds.length;
+  const allTwo=any&&plan.positions.every(p=>p.count===0||p.count===2);
+  return {action:'save',label:'Save Reading to Journal',help:allTwo?'Your two clarifiers are complete. Save this reading to your journal for reflection.':any?'Your clarifiers are complete. Save this reading to your journal for reflection.':'No Major Arcana card needs a clarifier in this reading. You can still clarify any card, or save it for reflection.'};
 }
 function evolvingReading(chosen,labels){
   const sections=chosen.map((base,i)=>{
@@ -384,7 +436,7 @@ function evolvingReading(chosen,labels){
 function renderDraw(){
   const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${slotLabelHtml(labels[i]||'Position')}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">${state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1?'Your two clarifiers are complete. Save this reading to your journal for reflection.':'When you are ready, draw a clarifier to explore this reading further, or save it for reflection.'}</p><button type="button" class="gold-button" id="primaryClarifierAction">${state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length?'Draw First Clarifier':state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1?'Save Reading to Journal':'Draw Second Clarifier'} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${slotLabelHtml(labels[i]||'Position')}</span><button type="button" class="reading-card is-facedown" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${card.name}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${card.name}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${card.name}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">${clarifierNextStep().help}</p><button type="button" class="gold-button" id="primaryClarifierAction">${clarifierNextStep().label} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
@@ -399,7 +451,8 @@ function renderDraw(){
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
   document.getElementById('downloadReading').onclick=downloadReading;
   const clarifyAction=document.getElementById('primaryClarifierAction');
-  if(clarifyAction)clarifyAction.onclick=()=>{if(state.clarifierReadingAt!==state.drawnAt||!state.firstLayerClarifiers?.length)drawFirstLayerClarifiers();else if(state.additionalClarifierReadingAt!==state.drawnAt||!state.additionalClarifierLayers?.length)drawNextClarifierLayer();else document.getElementById('saveReadingJournal')?.click();};
+  if(clarifyAction)clarifyAction.onclick=()=>{const step=clarifierNextStep().action;if(step==='first')drawFirstLayerClarifiers();else if(step==='second')drawNextClarifierLayer();else document.getElementById('saveReadingJournal')?.click();};
+  document.querySelectorAll('[data-clarify-position]').forEach(button=>button.onclick=()=>drawFirstLayerClarifiers(Number(button.dataset.clarifyPosition)));
   const backToReading=document.getElementById('backToReadingTop');
   if(backToReading)backToReading.onclick=()=>document.querySelector('.spread-scroll')?.scrollIntoView({block:'start',behavior:scrollMotion()});
 }

@@ -65,7 +65,8 @@ renderDraw=function(){
   document.getElementById('drawActions').insertAdjacentHTML('afterend',`<section class="reflection-card reading-journal"><div class="eyebrow">YOUR PERSONAL JOURNAL</div><h2>Keep this reading and what it brought up.</h2>${journalTime(timeEntry)}<label for="readingReflection">Your comments or reflections on this reading</label><textarea id="readingReflection" placeholder="What stands out? What would you like to return to?">${escapeHtml(entry?.reflection||'')}</textarea><div class="journal-actions"><button type="button" class="gold-button" id="saveReadingJournal">Save Reading to Journal</button><button class="ghost-button" id="openJournal">Your Personal Journal</button></div><p class="reflection-note" id="primaryJournalSaveStatus" role="status" aria-live="polite"></p><p class="reflection-note" id="journalSaveStatus" role="status">${entry?'Reading saved. Reflections save as you write.':'Save this reading, or start writing to save it with your reflection.'}</p><p class="reflection-note">Stored on this browser only. Clearing browser data removes these entries.</p></section>`);
   const field=document.getElementById('readingReflection'),status=document.getElementById('journalSaveStatus');
   const clarifyButton=document.getElementById('primaryClarifierAction');
-  if(state.additionalClarifierReadingAt===state.drawnAt&&state.additionalClarifierLayers?.length>=1)clarifyButton.remove();
+  // The journal's own Save button takes over once the clarifier rule has nothing left to draw.
+  if(clarifyButton&&clarifierNextStep().action==='save')clarifyButton.remove();
   const saved=!!entry&&JSON.stringify(entry.clarifierLayers||[])===JSON.stringify(captureClarifierLayers());
   journalSaveFeedback(saved,saved?'✓ Reading saved to Your Personal Journal on this browser.':'');
   if(entry&&!saved)status.textContent='Your new clarifiers are not saved yet. Save this updated reading to your journal.';
