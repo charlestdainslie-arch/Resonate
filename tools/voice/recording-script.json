@@ -1,0 +1,1017 @@
+[
+ {
+  "n": 1,
+  "id": "frame-open",
+  "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+ },
+ {
+  "n": 2,
+  "id": "frame-short",
+  "text": "I'll keep it short. The full reading stays below."
+ },
+ {
+  "n": 3,
+  "id": "frame-cards",
+  "text": "Let's go through your cards, one position at a time."
+ },
+ {
+  "n": 4,
+  "id": "frame-card",
+  "text": "First, your card."
+ },
+ {
+  "n": 5,
+  "id": "frame-c1s",
+  "text": "Now, your first clarifiers, one for each position."
+ },
+ {
+  "n": 6,
+  "id": "frame-c1",
+  "text": "Now, your first clarifier."
+ },
+ {
+  "n": 7,
+  "id": "frame-c2s",
+  "text": "And your second clarifiers."
+ },
+ {
+  "n": 8,
+  "id": "frame-c2",
+  "text": "And your second clarifier."
+ },
+ {
+  "n": 9,
+  "id": "frame-back",
+  "text": "Max Chasroom, back for the next part of your reading."
+ },
+ {
+  "n": 10,
+  "id": "frame-ask",
+  "text": "Before I go, one question to carry with you."
+ },
+ {
+  "n": 11,
+  "id": "frame-close",
+  "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ },
+ {
+  "n": 12,
+  "id": "frame-demo",
+  "text": "Tonight's reading is a demonstration. These cards were chosen for this demo, not drawn for you."
+ },
+ {
+  "n": 13,
+  "id": "title-celtic",
+  "text": "Tonight: your Celtic Cross."
+ },
+ {
+  "n": 14,
+  "id": "title-guidance",
+  "text": "Tonight: your One-card Guidance."
+ },
+ {
+  "n": 15,
+  "id": "title-relationship",
+  "text": "Tonight: your Relationship."
+ },
+ {
+  "n": 16,
+  "id": "title-seven",
+  "text": "Tonight: your Seven-card V Reading."
+ },
+ {
+  "n": 17,
+  "id": "title-three",
+  "text": "Tonight: your Past \u00b7 Present \u00b7 Future."
+ },
+ {
+  "n": 18,
+  "id": "label-clarifier-1",
+  "text": "Clarifier 1,"
+ },
+ {
+  "n": 19,
+  "id": "label-clarifier-2",
+  "text": "Clarifier 2,"
+ },
+ {
+  "n": 20,
+  "id": "thread-0",
+  "text": "Which part speaks to your present circumstances, and what choice might help you respond?"
+ },
+ {
+  "n": 21,
+  "id": "thread-1",
+  "text": "This is a perspective, not a fixed prediction."
+ },
+ {
+  "n": 22,
+  "id": "thread-resonance",
+  "text": "Take what resonates, and leave the rest."
+ },
+ {
+  "n": 23,
+  "id": "pos-three-0",
+  "text": "Past:"
+ },
+ {
+  "n": 24,
+  "id": "pos-three-1",
+  "text": "Present:"
+ },
+ {
+  "n": 25,
+  "id": "pos-three-2",
+  "text": "Future:"
+ },
+ {
+  "n": 26,
+  "id": "pos-relationship-0",
+  "text": "You:"
+ },
+ {
+  "n": 27,
+  "id": "pos-relationship-1",
+  "text": "The Other Person:"
+ },
+ {
+  "n": 28,
+  "id": "pos-relationship-2",
+  "text": "The Connection:"
+ },
+ {
+  "n": 29,
+  "id": "pos-relationship-3",
+  "text": "Relationship Challenge:"
+ },
+ {
+  "n": 30,
+  "id": "pos-relationship-4",
+  "text": "Shared Guidance:"
+ },
+ {
+  "n": 31,
+  "id": "pos-seven-0",
+  "text": "Past, 18\u201324 Months:"
+ },
+ {
+  "n": 32,
+  "id": "pos-seven-1",
+  "text": "Present Time:"
+ },
+ {
+  "n": 33,
+  "id": "pos-seven-2",
+  "text": "Near Future, 3 Months:"
+ },
+ {
+  "n": 34,
+  "id": "pos-seven-3",
+  "text": "You / Answer:"
+ },
+ {
+  "n": 35,
+  "id": "pos-seven-4",
+  "text": "Surrounding Energies:"
+ },
+ {
+  "n": 36,
+  "id": "pos-seven-5",
+  "text": "Hopes, Fears & Attitude:"
+ },
+ {
+  "n": 37,
+  "id": "pos-seven-6",
+  "text": "Outcome, Next 18\u201324 Months:"
+ },
+ {
+  "n": 38,
+  "id": "pos-celtic-0",
+  "text": "Present Situation:"
+ },
+ {
+  "n": 39,
+  "id": "pos-celtic-1",
+  "text": "Crossing Challenge:"
+ },
+ {
+  "n": 40,
+  "id": "pos-celtic-2",
+  "text": "Foundation:"
+ },
+ {
+  "n": 41,
+  "id": "pos-celtic-3",
+  "text": "Recent Past:"
+ },
+ {
+  "n": 42,
+  "id": "pos-celtic-4",
+  "text": "Conscious Focus:"
+ },
+ {
+  "n": 43,
+  "id": "pos-celtic-5",
+  "text": "Near Future:"
+ },
+ {
+  "n": 44,
+  "id": "pos-celtic-6",
+  "text": "Your Approach:"
+ },
+ {
+  "n": 45,
+  "id": "pos-celtic-7",
+  "text": "Surrounding Influences:"
+ },
+ {
+  "n": 46,
+  "id": "pos-celtic-8",
+  "text": "Hopes and Fears:"
+ },
+ {
+  "n": 47,
+  "id": "pos-celtic-9",
+  "text": "Potential Outcome:"
+ },
+ {
+  "n": 48,
+  "id": "name-0",
+  "text": "The Fool."
+ },
+ {
+  "n": 49,
+  "id": "name-1",
+  "text": "The Magician."
+ },
+ {
+  "n": 50,
+  "id": "name-2",
+  "text": "The High Priestess."
+ },
+ {
+  "n": 51,
+  "id": "name-3",
+  "text": "The Empress."
+ },
+ {
+  "n": 52,
+  "id": "name-4",
+  "text": "The Emperor."
+ },
+ {
+  "n": 53,
+  "id": "name-5",
+  "text": "The Hierophant."
+ },
+ {
+  "n": 54,
+  "id": "name-6",
+  "text": "The Lovers."
+ },
+ {
+  "n": 55,
+  "id": "name-7",
+  "text": "The Chariot."
+ },
+ {
+  "n": 56,
+  "id": "name-8",
+  "text": "Strength."
+ },
+ {
+  "n": 57,
+  "id": "name-9",
+  "text": "The Hermit."
+ },
+ {
+  "n": 58,
+  "id": "name-10",
+  "text": "Wheel of Fortune."
+ },
+ {
+  "n": 59,
+  "id": "name-11",
+  "text": "Justice."
+ },
+ {
+  "n": 60,
+  "id": "name-12",
+  "text": "The Hanged Man."
+ },
+ {
+  "n": 61,
+  "id": "name-13",
+  "text": "Death."
+ },
+ {
+  "n": 62,
+  "id": "name-14",
+  "text": "Temperance."
+ },
+ {
+  "n": 63,
+  "id": "name-15",
+  "text": "The Devil."
+ },
+ {
+  "n": 64,
+  "id": "name-16",
+  "text": "The Tower."
+ },
+ {
+  "n": 65,
+  "id": "name-17",
+  "text": "The Star."
+ },
+ {
+  "n": 66,
+  "id": "name-18",
+  "text": "The Moon."
+ },
+ {
+  "n": 67,
+  "id": "name-19",
+  "text": "The Sun."
+ },
+ {
+  "n": 68,
+  "id": "name-20",
+  "text": "Judgement."
+ },
+ {
+  "n": 69,
+  "id": "name-21",
+  "text": "The World."
+ },
+ {
+  "n": 70,
+  "id": "name-22",
+  "text": "Ace of Wands."
+ },
+ {
+  "n": 71,
+  "id": "name-23",
+  "text": "Two of Wands."
+ },
+ {
+  "n": 72,
+  "id": "name-24",
+  "text": "Three of Wands."
+ },
+ {
+  "n": 73,
+  "id": "name-25",
+  "text": "Four of Wands."
+ },
+ {
+  "n": 74,
+  "id": "name-26",
+  "text": "Five of Wands."
+ },
+ {
+  "n": 75,
+  "id": "name-27",
+  "text": "Six of Wands."
+ },
+ {
+  "n": 76,
+  "id": "name-28",
+  "text": "Seven of Wands."
+ },
+ {
+  "n": 77,
+  "id": "name-29",
+  "text": "Eight of Wands."
+ },
+ {
+  "n": 78,
+  "id": "name-30",
+  "text": "Nine of Wands."
+ },
+ {
+  "n": 79,
+  "id": "name-31",
+  "text": "Ten of Wands."
+ },
+ {
+  "n": 80,
+  "id": "name-32",
+  "text": "Page of Wands."
+ },
+ {
+  "n": 81,
+  "id": "name-33",
+  "text": "Knight of Wands."
+ },
+ {
+  "n": 82,
+  "id": "name-34",
+  "text": "Queen of Wands."
+ },
+ {
+  "n": 83,
+  "id": "name-35",
+  "text": "King of Wands."
+ },
+ {
+  "n": 84,
+  "id": "name-36",
+  "text": "Ace of Cups."
+ },
+ {
+  "n": 85,
+  "id": "name-37",
+  "text": "Two of Cups."
+ },
+ {
+  "n": 86,
+  "id": "name-38",
+  "text": "Three of Cups."
+ },
+ {
+  "n": 87,
+  "id": "name-39",
+  "text": "Four of Cups."
+ },
+ {
+  "n": 88,
+  "id": "name-40",
+  "text": "Five of Cups."
+ },
+ {
+  "n": 89,
+  "id": "name-41",
+  "text": "Six of Cups."
+ },
+ {
+  "n": 90,
+  "id": "name-42",
+  "text": "Seven of Cups."
+ },
+ {
+  "n": 91,
+  "id": "name-43",
+  "text": "Eight of Cups."
+ },
+ {
+  "n": 92,
+  "id": "name-44",
+  "text": "Nine of Cups."
+ },
+ {
+  "n": 93,
+  "id": "name-45",
+  "text": "Ten of Cups."
+ },
+ {
+  "n": 94,
+  "id": "name-46",
+  "text": "Page of Cups."
+ },
+ {
+  "n": 95,
+  "id": "name-47",
+  "text": "Knight of Cups."
+ },
+ {
+  "n": 96,
+  "id": "name-48",
+  "text": "Queen of Cups."
+ },
+ {
+  "n": 97,
+  "id": "name-49",
+  "text": "King of Cups."
+ },
+ {
+  "n": 98,
+  "id": "name-50",
+  "text": "Ace of Swords."
+ },
+ {
+  "n": 99,
+  "id": "name-51",
+  "text": "Two of Swords."
+ },
+ {
+  "n": 100,
+  "id": "name-52",
+  "text": "Three of Swords."
+ },
+ {
+  "n": 101,
+  "id": "name-53",
+  "text": "Four of Swords."
+ },
+ {
+  "n": 102,
+  "id": "name-54",
+  "text": "Five of Swords."
+ },
+ {
+  "n": 103,
+  "id": "name-55",
+  "text": "Six of Swords."
+ },
+ {
+  "n": 104,
+  "id": "name-56",
+  "text": "Seven of Swords."
+ },
+ {
+  "n": 105,
+  "id": "name-57",
+  "text": "Eight of Swords."
+ },
+ {
+  "n": 106,
+  "id": "name-58",
+  "text": "Nine of Swords."
+ },
+ {
+  "n": 107,
+  "id": "name-59",
+  "text": "Ten of Swords."
+ },
+ {
+  "n": 108,
+  "id": "name-60",
+  "text": "Page of Swords."
+ },
+ {
+  "n": 109,
+  "id": "name-61",
+  "text": "Knight of Swords."
+ },
+ {
+  "n": 110,
+  "id": "name-62",
+  "text": "Queen of Swords."
+ },
+ {
+  "n": 111,
+  "id": "name-63",
+  "text": "King of Swords."
+ },
+ {
+  "n": 112,
+  "id": "name-64",
+  "text": "Ace of Pentacles."
+ },
+ {
+  "n": 113,
+  "id": "name-65",
+  "text": "Two of Pentacles."
+ },
+ {
+  "n": 114,
+  "id": "name-66",
+  "text": "Three of Pentacles."
+ },
+ {
+  "n": 115,
+  "id": "name-67",
+  "text": "Four of Pentacles."
+ },
+ {
+  "n": 116,
+  "id": "name-68",
+  "text": "Five of Pentacles."
+ },
+ {
+  "n": 117,
+  "id": "name-69",
+  "text": "Six of Pentacles."
+ },
+ {
+  "n": 118,
+  "id": "name-70",
+  "text": "Seven of Pentacles."
+ },
+ {
+  "n": 119,
+  "id": "name-71",
+  "text": "Eight of Pentacles."
+ },
+ {
+  "n": 120,
+  "id": "name-72",
+  "text": "Nine of Pentacles."
+ },
+ {
+  "n": 121,
+  "id": "name-73",
+  "text": "Ten of Pentacles."
+ },
+ {
+  "n": 122,
+  "id": "name-74",
+  "text": "Page of Pentacles."
+ },
+ {
+  "n": 123,
+  "id": "name-75",
+  "text": "Knight of Pentacles."
+ },
+ {
+  "n": 124,
+  "id": "name-76",
+  "text": "Queen of Pentacles."
+ },
+ {
+  "n": 125,
+  "id": "name-77",
+  "text": "King of Pentacles."
+ },
+ {
+  "n": 126,
+  "id": "meaning-0",
+  "text": "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first."
+ },
+ {
+  "n": 127,
+  "id": "meaning-1",
+  "text": "The Magician is focused agency."
+ },
+ {
+  "n": 128,
+  "id": "meaning-2",
+  "text": "The High Priestess asks for receptivity rather than force."
+ },
+ {
+  "n": 129,
+  "id": "meaning-3",
+  "text": "The Empress represents life that grows when it is nourished."
+ },
+ {
+  "n": 130,
+  "id": "meaning-4",
+  "text": "The Emperor is the capacity to create order that protects what matters."
+ },
+ {
+  "n": 131,
+  "id": "meaning-5",
+  "text": "A teacher, tradition or shared practice can give your experience a useful framework."
+ },
+ {
+  "n": 132,
+  "id": "meaning-6",
+  "text": "A meaningful relationship or choice asks you to act in line with your values."
+ },
+ {
+  "n": 133,
+  "id": "meaning-7",
+  "text": "Progress depends on bringing competing impulses into a chosen direction."
+ },
+ {
+  "n": 134,
+  "id": "meaning-8",
+  "text": "Meet a strong feeling or difficult situation with patient courage."
+ },
+ {
+  "n": 135,
+  "id": "meaning-9",
+  "text": "Step back from competing voices long enough to recognise your own understanding."
+ },
+ {
+  "n": 136,
+  "id": "meaning-10",
+  "text": "Circumstances are moving through a turn in the cycle."
+ },
+ {
+  "n": 137,
+  "id": "meaning-11",
+  "text": "Look carefully at evidence, agreements and consequences."
+ },
+ {
+  "n": 138,
+  "id": "meaning-12",
+  "text": "A deliberate pause can reveal what effort has obscured."
+ },
+ {
+  "n": 139,
+  "id": "meaning-13",
+  "text": "An ending or change of form asks you to release what has completed its purpose."
+ },
+ {
+  "n": 140,
+  "id": "meaning-14",
+  "text": "Bring different needs into a workable relationship through measured adjustments."
+ },
+ {
+  "n": 141,
+  "id": "meaning-15",
+  "text": "A habit, agreement or desire may be narrowing your sense of choice."
+ },
+ {
+  "n": 142,
+  "id": "meaning-16",
+  "text": "A sudden change or unwelcome truth may expose a structure that could not hold."
+ },
+ {
+  "n": 143,
+  "id": "meaning-17",
+  "text": "After strain, a quieter sense of possibility can return."
+ },
+ {
+  "n": 144,
+  "id": "meaning-18",
+  "text": "Not everything is clear enough to conclude."
+ },
+ {
+  "n": 145,
+  "id": "meaning-19",
+  "text": "Clarity, warmth or a shared success can restore your energy."
+ },
+ {
+  "n": 146,
+  "id": "meaning-20",
+  "text": "An honest review of the past can help you answer a new sense of purpose."
+ },
+ {
+  "n": 147,
+  "id": "meaning-21",
+  "text": "A cycle is reaching a meaningful completion."
+ },
+ {
+  "n": 148,
+  "id": "meaning-22",
+  "text": "A fresh creative impulse asks for a first experiment."
+ },
+ {
+  "n": 149,
+  "id": "meaning-23",
+  "text": "You have an initial foothold and can now consider a wider horizon."
+ },
+ {
+  "n": 150,
+  "id": "meaning-24",
+  "text": "Early efforts are reaching beyond their starting point."
+ },
+ {
+  "n": 151,
+  "id": "meaning-25",
+  "text": "Pause to recognise a milestone and the people who helped create it."
+ },
+ {
+  "n": 152,
+  "id": "meaning-26",
+  "text": "Different aims or styles are colliding."
+ },
+ {
+  "n": 153,
+  "id": "meaning-27",
+  "text": "An effort is being recognised or a difficult stage has been passed."
+ },
+ {
+  "n": 154,
+  "id": "meaning-28",
+  "text": "You may need to defend a position you have worked to establish."
+ },
+ {
+  "n": 155,
+  "id": "meaning-29",
+  "text": "Events or communications may be moving quickly."
+ },
+ {
+  "n": 156,
+  "id": "meaning-30",
+  "text": "Experience has made you alert, and the task may need one more measured effort."
+ },
+ {
+  "n": 157,
+  "id": "meaning-31",
+  "text": "A worthwhile commitment may have grown into an excessive load."
+ },
+ {
+  "n": 158,
+  "id": "meaning-32",
+  "text": "Approach an interest as a learner."
+ },
+ {
+  "n": 159,
+  "id": "meaning-33",
+  "text": "A bold move can break inertia when it serves a clear purpose."
+ },
+ {
+  "n": 160,
+  "id": "meaning-34",
+  "text": "Lead through warmth, confidence and a clear relationship to your own energy."
+ },
+ {
+  "n": 161,
+  "id": "meaning-35",
+  "text": "Give a shared vision a direction others can understand."
+ },
+ {
+  "n": 162,
+  "id": "meaning-36",
+  "text": "A new feeling or opportunity for connection asks for receptivity."
+ },
+ {
+  "n": 163,
+  "id": "meaning-37",
+  "text": "A connection can deepen through reciprocal attention and honest exchange."
+ },
+ {
+  "n": 164,
+  "id": "meaning-38",
+  "text": "Friendship and shared joy can nourish a situation that has become too solitary."
+ },
+ {
+  "n": 165,
+  "id": "meaning-39",
+  "text": "A pause in interest may be asking you to examine what you actually want."
+ },
+ {
+  "n": 166,
+  "id": "meaning-40",
+  "text": "Give a disappointment its proper weight without making it the whole picture."
+ },
+ {
+  "n": 167,
+  "id": "meaning-41",
+  "text": "A memory, familiar place or simple kindness can reconnect you with something valuable."
+ },
+ {
+  "n": 168,
+  "id": "meaning-42",
+  "text": "Many attractive possibilities may be competing for attention."
+ },
+ {
+  "n": 169,
+  "id": "meaning-43",
+  "text": "Something may be intact on the surface yet no longer meaningful enough to sustain you."
+ },
+ {
+  "n": 170,
+  "id": "meaning-44",
+  "text": "Enjoy what has been achieved and acknowledge enough when it is present."
+ },
+ {
+  "n": 171,
+  "id": "meaning-45",
+  "text": "Shared care can create a strong sense of belonging."
+ },
+ {
+  "n": 172,
+  "id": "meaning-46",
+  "text": "An unexpected feeling or creative idea deserves a curious response."
+ },
+ {
+  "n": 173,
+  "id": "meaning-47",
+  "text": "Follow a meaningful feeling with a clear and considerate gesture."
+ },
+ {
+  "n": 174,
+  "id": "meaning-48",
+  "text": "Listen deeply while keeping a place for your own experience."
+ },
+ {
+  "n": 175,
+  "id": "meaning-49",
+  "text": "Meet strong feeling with steadiness and honest expression."
+ },
+ {
+  "n": 176,
+  "id": "meaning-50",
+  "text": "A clear distinction or honest conversation can cut through confusion."
+ },
+ {
+  "n": 177,
+  "id": "meaning-51",
+  "text": "A decision may be held between competing needs."
+ },
+ {
+  "n": 178,
+  "id": "meaning-52",
+  "text": "A painful truth, separation or disappointment deserves honest acknowledgement."
+ },
+ {
+  "n": 179,
+  "id": "meaning-53",
+  "text": "Step away from continual mental effort and let recovery become part of the task."
+ },
+ {
+  "n": 180,
+  "id": "meaning-54",
+  "text": "A conflict may offer a victory that costs too much in trust or connection."
+ },
+ {
+  "n": 181,
+  "id": "meaning-55",
+  "text": "A move toward calmer conditions may be possible with help."
+ },
+ {
+  "n": 182,
+  "id": "meaning-56",
+  "text": "A delicate situation may call for discretion and careful strategy."
+ },
+ {
+  "n": 183,
+  "id": "meaning-57",
+  "text": "A situation may feel more closed than it is, though some limits may be real."
+ },
+ {
+  "n": 184,
+  "id": "meaning-58",
+  "text": "Worry may be growing in isolation or repeating through the night."
+ },
+ {
+  "n": 185,
+  "id": "meaning-59",
+  "text": "A painful chapter may have reached its limit."
+ },
+ {
+  "n": 186,
+  "id": "meaning-60",
+  "text": "Ask a precise question and remain alert to new information."
+ },
+ {
+  "n": 187,
+  "id": "meaning-61",
+  "text": "A clear aim may call for a direct response."
+ },
+ {
+  "n": 188,
+  "id": "meaning-62",
+  "text": "Speak clearly from experience and hold a fair boundary."
+ },
+ {
+  "n": 189,
+  "id": "meaning-63",
+  "text": "Bring clear standards and careful reasoning to a decision."
+ },
+ {
+  "n": 190,
+  "id": "meaning-64",
+  "text": "A practical opportunity can become valuable through steady attention."
+ },
+ {
+  "n": 191,
+  "id": "meaning-65",
+  "text": "Several demands may need an adaptable rhythm."
+ },
+ {
+  "n": 192,
+  "id": "meaning-66",
+  "text": "A shared task benefits from distinct skills and practical feedback."
+ },
+ {
+  "n": 193,
+  "id": "meaning-67",
+  "text": "Protecting resources can create a useful foundation."
+ },
+ {
+  "n": 194,
+  "id": "meaning-68",
+  "text": "A period of practical or emotional hardship may be making you feel outside the circle of support."
+ },
+ {
+  "n": 195,
+  "id": "meaning-69",
+  "text": "Resources or attention are being exchanged."
+ },
+ {
+  "n": 196,
+  "id": "meaning-70",
+  "text": "Pause to assess the return on sustained effort."
+ },
+ {
+  "n": 197,
+  "id": "meaning-71",
+  "text": "A skill or project benefits from focused practice."
+ },
+ {
+  "n": 198,
+  "id": "meaning-72",
+  "text": "Recognise the independence or comfort that patient work has made possible."
+ },
+ {
+  "n": 199,
+  "id": "meaning-73",
+  "text": "Consider the long-term structures that support a household, community or shared endeavour."
+ },
+ {
+  "n": 200,
+  "id": "meaning-74",
+  "text": "Choose a skill or practical goal and approach it as a student."
+ },
+ {
+  "n": 201,
+  "id": "meaning-75",
+  "text": "A worthwhile task may need consistency more than speed."
+ },
+ {
+  "n": 202,
+  "id": "meaning-76",
+  "text": "Care becomes tangible through a meal, a workable space, a clear budget or time made available."
+ },
+ {
+  "n": 203,
+  "id": "meaning-77",
+  "text": "Use experience and resources to create dependable conditions for yourself and others."
+ }
+]
