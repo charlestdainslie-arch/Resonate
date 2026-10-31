@@ -336,6 +336,8 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
   });
   // Real draws through the app in every spread, then each clarifier layer the app allows (two at most).
   const drawSpread = async (page, spread, clarifierLayers) => {
+    // Majors first, so under Chas's clarifier rule (Issue #13) every card has both clarifiers to narrate.
+    if (clarifierLayers) await page.addInitScript(require('./helpers/majors-first.cjs'));
     await page.goto(OWN);
     await page.evaluate(() => go('reading'));
     await page.locator(`[data-spread="${spread}"]`).click();

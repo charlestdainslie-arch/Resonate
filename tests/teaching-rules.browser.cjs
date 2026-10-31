@@ -146,6 +146,7 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     assert.match(t, /The reading begins with The Fool/);
     assert.equal(await p.locator('.card-to-card-thread .golden-card-bridge').count(), 2);
     assert.match(t, /Keep the part that speaks to your lived situation/);
+    assert.equal(await p.locator('.card-to-card-thread .golden-thread-resonance').count(), 0, 'Max reads the Golden Thread’s own closing line, not this one');
     assert.doesNotMatch(t, /turns that earlier impulse|shifts the emphasis/, 'Deep’s softer wording only');
     await ctx.close();
     const one = await reading(390, 'guidance', [0], []);

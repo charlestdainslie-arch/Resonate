@@ -302,7 +302,7 @@ function cardToCardThread(chosen){
   }).join('');
   const movement=`The card-to-card movement is the heart of this reading: ${first.name} opens the question, and ${last.name} shows where that pattern may be heading if the present choices continue.`;
   const resonance='Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.';
-  return `<div class="card-to-card-thread"><div class="eyebrow">FROM CARD TO CARD</div><p class="golden-thread-opening">${opening}</p>${bridges}<p class="golden-thread-connection">${movement}</p><p class="golden-thread-resonance">${resonance}</p></div>`;
+  return `<div class="card-to-card-thread"><div class="eyebrow">FROM CARD TO CARD</div><p class="golden-thread-opening">${opening}</p>${bridges}<p class="golden-thread-connection">${movement}</p><p class="card-to-card-close">${resonance}</p></div>`;
 }
 function goldenThread(chosen){
   if(!chosen.length)return '';

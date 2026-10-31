@@ -7,3 +7,4 @@
    (left half of the pair), rather than stretching across both. */
 .draw-page .spread-board:not(.spread-1) .reading-position .position-clarifiers[data-clarifier-count="1"]:not(:has(.position-clarifier-slot)) .position-clarifier:nth-child(n){flex:0 0 calc(50% - 4px);width:calc(50% - 4px)}
 .card-to-card-thread .golden-card-bridge{text-align:left}
+.card-to-card-close{margin:0;color:#cdbf9f;font-style:italic;line-height:1.6}
