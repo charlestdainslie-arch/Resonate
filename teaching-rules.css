@@ -3,3 +3,7 @@
 .card-to-card-thread .eyebrow{margin:0}
 .card-to-card-thread .golden-card-bridge{margin:0}
 .clarify-choice{display:block;margin:8px auto 0;min-height:44px;padding:8px 14px;font-size:13px;letter-spacing:.02em}
+/* A position whose rule stops at one clarifier keeps clarifier 1 at its usual size and place
+   (left half of the pair), rather than stretching across both. */
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifiers[data-clarifier-count="1"]:not(:has(.position-clarifier-slot)) .position-clarifier:nth-child(n){flex:0 0 calc(50% - 4px);width:calc(50% - 4px)}
+.card-to-card-thread .golden-card-bridge{text-align:left}
