@@ -41,6 +41,9 @@ def seconds(path):
 
 
 def load(model, device):
+    if model == 'openvoice':  # needs .venv-openvoice, see openvoice_tts.py
+        from openvoice_tts import OpenVoiceTTS
+        return OpenVoiceTTS(device)
     if model == 'original':
         from chatterbox.tts import ChatterboxTTS
         return ChatterboxTTS.from_pretrained(device=device)
@@ -54,6 +57,8 @@ def main():
     ap.add_argument('--consent', help='who agreed, when and where')
     ap.add_argument('--models', default='nano')
     ap.add_argument('--device', default='cpu', help='cpu, cuda or mps')
+    ap.add_argument('--bases', default='vctk:p252', help='openvoice: Piper voices that carry the accent, e.g. vctk:p252,alba')
+    ap.add_argument('--scripts', help='only these script ids, e.g. humour,tarot,places (default all)')
     ap.add_argument('--fake', action='store_true')
     ap.add_argument('--delete', action='store_true')
     args = ap.parse_args()
@@ -66,6 +71,10 @@ def main():
         ap.error('--ref and --consent are required (or --fake to test the harness)')
 
     scripts = json.load(open(os.path.join(HERE, 'scripts.json')))['scripts']
+    if args.scripts:
+        scripts = [s for s in scripts if s['id'] in args.scripts.split(',')]
+    # OpenVoice's settings are its base voices; the base, not the clone, sets the accent.
+    SETTINGS['openvoice'] = [(base.replace(':', '-'), base, None) for base in args.bases.split(',')]
     os.makedirs(OUT, exist_ok=True)
     work = tempfile.mkdtemp()
     ref = os.path.join(work, 'ref.wav')
@@ -83,7 +92,11 @@ def main():
             tts = None if args.fake else load(model, args.device)
             load_s = time.time() - start
             for name, exaggeration, cfg in SETTINGS[model]:
-                if not args.fake:
+                if args.fake:
+                    pass
+                elif model == 'openvoice':
+                    tts.prepare_conditionals(ref, base=exaggeration)
+                else:
                     tts.prepare_conditionals(ref, exaggeration=exaggeration if exaggeration is not None else 0.5)
                 for script in scripts:
                     file = f'{model}-{name}-{script["id"]}.mp3'
