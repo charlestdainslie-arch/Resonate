@@ -113,17 +113,25 @@
   window.MaxVoice.register(provider);
 
   // ---- the panel ----
+  // On a reading it sits in Max's own box, beside "Watch Max" (Chas, 3 Nov: at the top of the page it was out of
+  // sight once the cards were drawn); elsewhere under the preview ribbon.
+  function place(box) {
+    const launch = document.querySelector('.mc-launch'), ribbon = document.querySelector('.mc-ribbon');
+    if (launch) { if (box.parentElement !== launch) launch.appendChild(box); }
+    else if (ribbon) { if (box.previousElementSibling !== ribbon) ribbon.insertAdjacentElement('afterend', box); }
+    else if (!box.isConnected) document.body.insertAdjacentElement('afterbegin', box);
+    return box;
+  }
   function panel() {
     let box = document.getElementById('chasVoice');
-    if (box) return box;
-    const ribbon = document.querySelector('.mc-ribbon');
+    if (box) return place(box);
     const html = `<section class="chas-voice" id="chasVoice" aria-label="Chas's recorded voice">
       <p id="chasVoiceStatus"></p>
       <label class="ghost-button chas-voice-load">Load my voice<input type="file" id="chasVoicePick" webkitdirectory directory multiple hidden></label>
       <button type="button" class="ghost-button" id="chasVoiceForget" hidden>Forget my voice</button>
     </section>`;
-    if (ribbon) ribbon.insertAdjacentHTML('afterend', html); else document.body.insertAdjacentHTML('afterbegin', html);
-    box = document.getElementById('chasVoice');
+    document.body.insertAdjacentHTML('afterbegin', html);
+    box = place(document.getElementById('chasVoice'));
     document.getElementById('chasVoicePick').addEventListener('change', async e => {
       const s = document.getElementById('chasVoiceStatus');
       try { const record = await fromFiles(e.target.files); use(record); await save(record); }
@@ -142,6 +150,11 @@
     document.getElementById('chasVoiceForget').hidden = !pack;
   }
 
+  // Each reading render rebuilds Max's box, so put the panel back in it (presenter.js adds the box first).
+  if (typeof renderDraw === 'function') {
+    const voiceRenderDraw = renderDraw;
+    renderDraw = function () { const outcome = voiceRenderDraw.apply(this, arguments); status(); return outcome; };
+  }
   const start = async () => { panel(); use(await load()); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
   window.__chasVoice = { get loaded() { return pack ? pack.count : 0; }, fromFiles, use };

@@ -116,3 +116,5 @@ body:has(.mc-player) .mc-ribbon { display: none; }
 .chas-voice p{margin:0;max-width:640px}
 .chas-voice .ghost-button{min-height:40px;padding:8px 14px;cursor:pointer}
 body:has(.mc-player) .chas-voice{display:none}
+.chas-voice [hidden]{display:none}
+.mc-launch .chas-voice{justify-content:flex-start;margin-top:14px;padding:12px 0 0;background:none;border-bottom:0;border-top:1px solid rgba(201,169,106,.22);text-align:left}
