@@ -2,3 +2,8 @@ node_modules/
 test-results/
 .vercel/
 __pycache__/
+tools/voice/compare/out/
+# Chas's cloned voice pack stays on his computer only.
+voice/chas/
+.venv/
+.venv-openvoice/

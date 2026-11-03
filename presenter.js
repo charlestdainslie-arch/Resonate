@@ -42,7 +42,7 @@
     return `This reading · ${readingTitle()} · ${when} · not saved yet`;
   }
 
-  // The script: [{kind:'frame'|'label'|'quote', chapter, text, show:[slot keys], clips:[{id,text}]}].
+  // The script: [{kind:'frame'|'label'|'quote'|'link', chapter, text, show:[slot keys], clips:[{id,text}]}].
   // Slot keys: 'p<i>' for the card in position i, 'c<i>-<n>' for clarifier n of position i.
   // Clips split each caption into lines that depend on one card or one position at most, so they can be
   // recorded ahead of time (tools/voice).
@@ -67,12 +67,27 @@
       const card=byId(id),block=blocks[i],key='p'+i;
       if(!one)add('cards','label',`${labels[i]}: ${card.name}.`,[key],[pos(i),{id:`name-${id}`,text:`${card.name}.`}]);
       else add('cards','label',`${card.name}.`,[key],[{id:`name-${id}`,text:`${card.name}.`}]);
+      // How this card follows the one before: the cards' own authored connection where data.js has one,
+      // otherwise a plain fact from the card data (same suit, both Major Arcana, same element), else nothing.
+      if(i>0)linkLine(byId(ids[i-1]),card,['p'+(i-1),key]);
       // The position lens: its first sentence after "Position: <role> — <card>."
       const lens=sentences(block.querySelector('.original-card-explanation .position-context')?.textContent||'')[1];
       add('cards','quote',lens,[key],[{id:`lens-${spread}-${i}-${id}`,text:lens}]);
       const meaning=sentences(block.querySelector('.original-card-explanation .position-context + p')?.textContent||'')[0];
       add('cards','quote',meaning,[key],[{id:`meaning-${id}`,text:meaning}]);
     });
+
+    function linkLine(prev,card,show){
+      const same=(a,b)=>normalise(a)===normalise(b);
+      const authored=(card.connections||[]).find(c=>same(c.card,prev.name))||(prev.connections||[]).find(c=>same(c.card,card.name));
+      if(authored){add('cards','link',authored.meaning,show,[{id:`conn-${[prev.id,card.id].sort((a,b)=>a-b).join('-')}`,text:authored.meaning}]);return;}
+      const like={id:`like-${prev.id}`,text:`Like ${prev.name},`};
+      let tail=null;
+      if(prev.suit&&prev.suit===card.suit)tail={id:`is-suit-${card.suit}`,text:`this is a ${card.suit} card.`};
+      else if(prev.arcana==='Major'&&card.arcana==='Major')tail={id:'is-major',text:'this is a Major Arcana card.'};
+      else if(prev.element&&prev.element===card.element)tail={id:`is-element-${card.element}`,text:`this card carries the element of ${card.element}.`};
+      if(tail)add('cards','link',`${like.text} ${tail.text}`,show,[like,tail]);
+    }
 
     // Clarifiers: one chapter per layer, each card's first meaning line as written in its position.
     layerCards.forEach((layer,l)=>{
