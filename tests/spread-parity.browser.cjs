@@ -282,6 +282,8 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
             await tap(page.locator(`.reading-card[data-index="${last}"]`));
             assert.equal(await page.evaluate(() => state.view), 'detail');
             assert.match(await page.locator('.detail-title .reading-role').innerText(), new RegExp(`Position ${last + 1} of ${expected.length}`));
+            // A reversed card opens on its Reversed tab, so choose Upright first.
+            await tap(page.locator('#uprightTab'));
             const up = await page.locator('.meaning-copy').innerText();
             await tap(page.locator('#reversedTab'));
             const down = await page.locator('.meaning-copy').innerText();

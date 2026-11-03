@@ -70,7 +70,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     const pdf = norm(await pdfText(page));
     // Positions, their cards and their clarifiers, straight from the app's state.
     const r = await page.evaluate(() => {
-      const name = id => cards.find(c => c.id === id).name;
+      const name = id => cardName(cards.find(c => c.id === id)); // ", reversed" when the card came up reversed
       const layers = [];
       if (state.clarifierReadingAt === state.drawnAt && state.firstLayerClarifiers?.length) layers.push(state.firstLayerClarifiers);
       if (state.additionalClarifierReadingAt === state.drawnAt) (state.additionalClarifierLayers || []).filter(l => l.number === 2).forEach(l => layers.push(l.cards));
@@ -91,7 +91,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     // Recordable clips: each depends on one card of this reading at most, and says only words from its caption.
     const ids = [...r.ids, ...r.layers.flat().map(c => c.id)];
     for (const line of script) for (const clip of line.clips) {
-      const m = clip.id.match(/^(?:frame-\w+|title-\w+|pos-\w+-\d+|label-clarifier-[12]|thread-(?:\d|resonance)|(?:lens-\w+-\d+|meaning|name)-(\d+))$/);
+      const m = clip.id.match(/^(?:frame-\w+|title-\w+|pos-\w+-\d+|label-clarifier-[12]|thread-(?:\d|resonance)|(?:lens-\w+-\d+|meaning|name)-(\d+)(?:-r)?)$/);
       assert.ok(m, `${label}: clip id "${clip.id}"`);
       if (m[1] !== undefined) assert.ok(ids.includes(Number(m[1])), `${label}: clip ${clip.id} belongs to this reading`);
       if (line.kind === 'label') continue;

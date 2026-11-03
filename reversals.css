@@ -1,0 +1,11 @@
+/* RESONATE · reversed cards. A reversed card's picture is shown upside down wherever the reading shows it;
+   its name and label stay upright and readable. */
+.reading-card.is-reversed .reading-card-front img,
+.position-clarifier.is-reversed img,
+.mc-cards img.is-reversed { transform: rotate(180deg); }
+
+.reversal-choice { display: flex; align-items: flex-start; gap: 12px; max-width: 640px; margin: 18px auto 6px; padding: 14px 16px;
+  border: 1px solid rgba(201,169,106,.35); border-radius: 14px; background: rgba(12,10,7,.7); cursor: pointer; text-align: left; }
+.reversal-choice input { flex: 0 0 auto; width: 22px; height: 22px; margin: 2px 0 0; accent-color: var(--gold-bright, #dfc48b); }
+.reversal-choice strong { display: block; color: var(--gold-bright, #dfc48b); font-size: 15px; letter-spacing: .04em; }
+.reversal-choice small { display: block; margin-top: 4px; color: var(--muted, #cfc6b4); font-size: 13px; line-height: 1.45; }

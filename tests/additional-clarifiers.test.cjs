@@ -11,7 +11,7 @@ const code=source.slice(start,end);
 function fixture(first){
  const state={drawnAt:'2026-10-21T00:00:00Z',clarifierReadingAt:'2026-10-21T00:00:00Z',firstLayerClarifiers:first,drawnCardIds:[1,30,3],additionalClarifierLayers:[]};
  let renders=0;
- const ctx=vm.createContext({state,cards:Array.from({length:78},(_,id)=>({id,name:'Card '+id,upright:'Meaning',arcana:id<22?'Major':'Minor'})),Math,ResonateDeck:require('../deck-engine.js'),ResonateClarifiers:require('../clarifier-rules.js'),renderDraw(){renders++},reducedMotion(){return true},scrollMotion(){return 'auto'},document:{querySelector(){return {scrollIntoView(){}}},getElementById(){return {scrollIntoView(){}}}}});
+ const ctx=vm.createContext({state,cards:Array.from({length:78},(_,id)=>({id,name:'Card '+id,upright:'Meaning',arcana:id<22?'Major':'Minor'})),Math,ResonateDeck:require('../deck-engine.js'),ResonateClarifiers:require('../clarifier-rules.js'),orientCards:ids=>ids,renderDraw(){renders++},reducedMotion(){return true},scrollMotion(){return 'auto'},document:{querySelector(){return {scrollIntoView(){}}},getElementById(){return {scrollIntoView(){}}}}});
  vm.runInContext(code,ctx);
  return {ctx,state,draw:()=>vm.runInContext('drawNextClarifierLayer()',ctx),renders:()=>renders};
 }

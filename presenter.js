@@ -67,13 +67,15 @@
     const blocks=ids.map((id,i)=>frag(readingMeaning(byId(id),labels[i],i)));
     ids.forEach((id,i)=>{
       const card=byId(id),block=blocks[i],key='p'+i;
-      if(!one)add('cards','label',`${labels[i]}: ${card.name}.`,[key],[pos(i),{id:`name-${id}`,text:`${card.name}.`}]);
-      else add('cards','label',`${card.name}.`,[key],[{id:`name-${id}`,text:`${card.name}.`}]);
+      // A reversed card has its own name, lens and meaning lines, so a recorded voice pack keeps them apart.
+      const r=isReversed(card)?'-r':'',name={id:`name-${id}${r}`,text:`${cardName(card)}.`};
+      if(!one)add('cards','label',`${labels[i]}: ${cardName(card)}.`,[key],[pos(i),name]);
+      else add('cards','label',`${cardName(card)}.`,[key],[name]);
       // The position lens: its first sentence after "Position: <role> — <card>."
       const lens=sentences(block.querySelector('.original-card-explanation .position-context')?.textContent||'')[1];
-      add('cards','quote',lens,[key],[{id:`lens-${spread}-${i}-${id}`,text:lens}]);
+      add('cards','quote',lens,[key],[{id:`lens-${spread}-${i}-${id}${r}`,text:lens}]);
       const meaning=sentences(block.querySelector('.original-card-explanation .position-context + p')?.textContent||'')[0];
-      add('cards','quote',meaning,[key],[{id:`meaning-${id}`,text:meaning}]);
+      add('cards','quote',meaning,[key],[{id:`meaning-${id}${r}`,text:meaning}]);
     });
 
     // Clarifiers: one chapter per layer, each card's first meaning line as written in its position.
@@ -83,11 +85,12 @@
       layer.forEach((c,i)=>{
         if(!c)return;
         const key=`c${i}-${n}`;
-        const label=one?`Clarifier ${n}: ${c.name}.`:`Clarifier ${n} · ${labels[i]}: ${c.name}.`;
-        add(chapter,'label',label,['p'+i,key],[{id:`label-clarifier-${n}`,text:`Clarifier ${n}${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}`,text:`${c.name}.`}]);
+        const r=isReversed(c)?'-r':'';
+        const label=one?`Clarifier ${n}: ${cardName(c)}.`:`Clarifier ${n} · ${labels[i]}: ${cardName(c)}.`;
+        add(chapter,'label',label,['p'+i,key],[{id:`label-clarifier-${n}`,text:`Clarifier ${n}${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
         const block=blocks[i].querySelectorAll('.integrated-clarifier')[l];
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
-        add(chapter,'quote',meaning,[key],[{id:`meaning-${c.id}`,text:meaning}]);
+        add(chapter,'quote',meaning,[key],[{id:`meaning-${c.id}${r}`,text:meaning}]);
       });
     });
 
@@ -205,11 +208,11 @@
   // matching the reading page. A strip that scrolls sideways when the spread is wider than the phone.
   function cardStrip(){
     const labels=positionLabels(),layerCards=layers();
-    const img=(c,cls)=>`<img class="${cls}" src="${cardImage(c)}" alt="${escapeHtml(c.name)}" referrerpolicy="no-referrer">`;
+    const img=(c,cls)=>`<img class="${[cls,isReversed(c)?'is-reversed':''].filter(Boolean).join(' ')}" src="${cardImage(c)}" alt="${escapeHtml(cardName(c))}" referrerpolicy="no-referrer">`;
     return `<ol class="mc-cards${state.drawnCardIds.length>3?' is-wide':''}" aria-label="Cards in this reading">${state.drawnCardIds.map((id,i)=>{
       const c=byId(id);
-      const clar=layerCards.map((layer,l)=>layer[i]?`<li class="mc-clar" data-slot="c${i}-${l+1}">${img(layer[i],'')}<span>Clarifier ${l+1}</span><strong>${escapeHtml(layer[i].name)}</strong></li>`:'').join('');
-      return `<li class="mc-card" data-slot="p${i}">${img(c,'mc-main')}<span>${escapeHtml(labels[i]||'Position')}</span><strong>${escapeHtml(c.name)}</strong>${clar?`<ol class="mc-clars">${clar}</ol>`:''}</li>`;
+      const clar=layerCards.map((layer,l)=>layer[i]?`<li class="mc-clar" data-slot="c${i}-${l+1}">${img(layer[i],'')}<span>Clarifier ${l+1}</span><strong>${escapeHtml(cardName(layer[i]))}</strong></li>`:'').join('');
+      return `<li class="mc-card" data-slot="p${i}">${img(c,'mc-main')}<span>${escapeHtml(labels[i]||'Position')}</span><strong>${escapeHtml(cardName(c))}</strong>${clar?`<ol class="mc-clars">${clar}</ol>`:''}</li>`;
     }).join('')}</ol>`;
   }
 
