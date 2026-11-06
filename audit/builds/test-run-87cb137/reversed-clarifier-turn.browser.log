@@ -1,0 +1,6 @@
+PASS  index.html (no-preference): reversed clarifiers 1 and 2 are upside down after turning
+PASS  index.html (reduce): reversed clarifiers 1 and 2 are upside down after turning
+PASS  presenter-uat.html (no-preference): reversed clarifiers 1 and 2 are upside down after turning
+PASS  presenter-uat.html (reduce): reversed clarifiers 1 and 2 are upside down after turning
+
+4/4 passed
