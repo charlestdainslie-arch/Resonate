@@ -1,0 +1,17 @@
+# Item 1 — manifest verification · 2026-11-06T03:10:19Z · by Claude
+commit: a4bbc67618f56eb4f8ec8a76f86437cdb0c5eb01
+## A. clean git archive of a4bbc67
+manifest lines: 92
+distinct paths in manifest: 92
+files in audit/ (excluding MANIFEST.sha256): 92
+listed but missing: 0
+present but unlisted: 0
+sha256sum -c results:
+     92 OK
+MANIFEST.sha256 itself: da7702ee6c46fab5812f485d5f3e03152364d00b55ea884bbe8370970fac29b4
+## B. portable ZIP
+zip sha256: 401a577a0c63d6c7a9716a72f2eb8cc84441f74100520bb784cbfc8d5463dba0  bytes: 11043088
+zip entries (files): 93 (= 92 + MANIFEST.sha256)
+sha256sum -c results:
+     92 OK
+zip vs clean archive: IDENTICAL

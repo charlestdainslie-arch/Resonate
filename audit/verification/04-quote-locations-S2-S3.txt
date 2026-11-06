@@ -1,0 +1,46 @@
+# Every Max Chasroom quote in S2 and S3, located on the page and in the PDF (poppler pdftotext, not pdf.js).
+# Page = audit/samples/<s>/written-interpretation.txt line number. PDF = page number in reading.pdf.
+# A quote may wrap across lines; the line given is where it starts.
+
+## S2 Three-card: 10 quotes
+PASS script part  6 | page line 26 | PDF page 2 | This may describe how mutuality, connection, agreement shaped the path to your current situation.
+PASS script part  7 | page line 28 | PDF page 2 | A connection can deepen through reciprocal attention and honest exchange.
+PASS script part  9 | page line 109 | PDF page 4 | Here, harsh judgement, bitterness, emotional distance is a lens for what is active now and how you can respond…
+PASS script part 10 | page line 111 | PDF page 4 | Past hurt may be sharpening judgement or creating distance where dialogue is possible.
+PASS script part 12 | page line 144 | PDF page 5 | This suggests a possible development involving stewardship, stability, competence.
+PASS script part 13 | page line 146 | PDF page 5 | Use experience and resources to create dependable conditions for yourself and others.
+PASS script part 16 | page line 40 | PDF page 3 | Reversed, skill may be scattered, misdirected or used to control rather than create.
+PASS script part 19 | page line 54 | PDF page 3 | A burden may be easing, or you may be hiding how difficult things feel.
+PASS script part 21 | page line 199 | PDF page 6 | Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective…
+PASS script part 22 | page line 207 | PDF page 6 | Take what resonates, and leave the rest.
+=> 10/10 found verbatim on the page AND in the PDF
+
+## S3 Celtic Cross: 26 quotes
+PASS script part  6 | page line 26 | PDF page 2 | Here, confusion, harshness, unclear thinking is a lens for the central situation as you experience it now.
+PASS script part  7 | page line 28 | PDF page 2 | An idea may be incomplete or language may be sharper than the situation requires.
+PASS script part  9 | page line 87 | PDF page 4 | The tension to explore is contemplation, reassessment, disengagement.
+PASS script part 10 | page line 89 | PDF page 4 | A pause in interest may be asking you to examine what you actually want.
+PASS script part 12 | page line 122 | PDF page 4 | Here, poor coordination, undervalued work, skill gaps is a lens for the deeper roots beneath the situation.
+PASS script part 13 | page line 124 | PDF page 4 | The work may be suffering from unclear roles or dismissed expertise.
+PASS script part 15 | page line 157 | PDF page 5 | This may describe how vitality, joy, clarity shaped the path to your current situation.
+PASS script part 16 | page line 159 | PDF page 5 | Clarity, warmth or a shared success can restore your energy.
+PASS script part 18 | page line 218 | PDF page 7 | Here, unfinished work, delayed closure, fragmentation is a lens for your hopes, intentions or conscious priori…
+PASS script part 19 | page line 220 | PDF page 7 | Something remains to be integrated before a chapter can close.
+PASS script part 21 | page line 301 | PDF page 9 | This suggests a possible development involving imbalance, disconnection, broken trust.
+PASS script part 22 | page line 303 | PDF page 9 | A relationship or agreement may be unequal or out of tune.
+PASS script part 24 | page line 336 | PDF page 9 | Here, acceptance, lingering regret, reconnection is a lens for the stance you bring and the choices within you…
+PASS script part 25 | page line 338 | PDF page 9 | Acceptance may be growing, or regret may be repeating without bringing new understanding.
+PASS script part 27 | page line 371 | PDF page 10 | Here, idealised past, growing beyond, old patterns is a lens for the environment and outside influences around…
+PASS script part 28 | page line 373 | PDF page 10 | Nostalgia may be editing the past or an old role may no longer fit.
+PASS script part 30 | page line 406 | PDF page 11 | Here, help, recovery, lingering scarcity is a lens for the desires and worries colouring your view.
+PASS script part 31 | page line 408 | PDF page 11 | Support or recovery may be becoming available, though a sense of exclusion can persist.
+PASS script part 33 | page line 441 | PDF page 12 | Here, fear of expansion, indecision, small horizons is a lens for a possible outcome if the present pattern co…
+PASS script part 34 | page line 443 | PDF page 12 | You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty.
+PASS script part 37 | page line 40 | PDF page 3 | Recognise the independence or comfort that patient work has made possible.
+PASS script part 39 | page line 171 | PDF page 5 | A clear aim may call for a direct response.
+PASS script part 41 | page line 232 | PDF page 7 | Waiting may have lost its purpose, or a sacrifice may no longer serve anyone.
+PASS script part 44 | page line 246 | PDF page 7 | Attraction, duty and personal values may be pulling in different directions.
+PASS script part 46 | page line 559 | PDF page 14 | Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective…
+PASS script part 47 | page line 569 | PDF page 15 | Take what resonates, and leave the rest.
+=> 26/26 found verbatim on the page AND in the PDF
+

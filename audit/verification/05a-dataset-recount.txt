@@ -1,0 +1,36 @@
+# Item 5a — 78-card recount · 2026-11-06T03:10:47.605Z · by Claude (separate script, reads data.js directly)
+data.js sha256: 68348c894a4876134fb621cbab04899549ee5b16f8483d8ed6df333d02be6ad5
+cards in data.js: 78 | unique ids: 78 | ids 0..77 contiguous: true
+Majors: 22
+Wands: 14 (ranks: 14)
+Cups: 14 (ranks: 14)
+Swords: 14 (ranks: 14)
+Pentacles: 14 (ranks: 14)
+Court cards (number null): 16
+non-empty upright: 78
+non-empty reversed: 78
+non-empty uprightKeywords: 78
+non-empty reversedKeywords: 78
+non-empty numerology: 78
+non-empty element: 78
+non-empty astrology: 78
+non-empty image: 78
+Strength number: 8 | Justice number: 11
+image files present: 78
+image sha256 == deck manifest: 78
+--- committed export (audit/sources/cards-78.json) vs data.js
+export count: 78 | rows: 78
+field name identical for all 78: true
+field arcana identical for all 78: true
+field suit identical for all 78: true
+field rank identical for all 78: true
+field number identical for all 78: true
+field element identical for all 78: true
+field astrology identical for all 78: true
+field upright identical for all 78: true
+field reversed identical for all 78: true
+field uprightKeywords identical for all 78: true
+field reversedKeywords identical for all 78: true
+field numerology identical for all 78: true
+export text_provenance UNKNOWN: 78 | correspondence citation UNKNOWN: 78
+templated cards (export): 73 | recount by prefix: 73

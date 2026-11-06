@@ -1,0 +1,3 @@
+pictures 14, strands 13, strands crossing another card's picture: 2
+  Knight of Swords, clarifier layer 1  →  The World, reversed  crosses: The Sun (188px); The Hanged Man, reversed, clarifier layer 1 (104px)
+  Two of Cups, reversed  →  Five of Cups, reversed  crosses: Six of Cups, reversed (78px)

@@ -1,0 +1,26 @@
+// Independent recount: evaluates data.js directly (not via export-dataset.cjs) and compares with the committed export.
+'use strict';
+const fs=require('fs'),vm=require('vm'),crypto=require('crypto'),path=require('path');
+const R=process.argv[2];
+const ctx={};vm.createContext(ctx);vm.runInContext(fs.readFileSync(path.join(R,'data.js'),'utf8')+';globalThis.__c=cards;',ctx);
+const c=ctx.__c, ex=JSON.parse(fs.readFileSync(path.join(R,'audit/sources/cards-78.json'),'utf8'));
+const out=[];const log=(...a)=>out.push(a.join(' '));
+log('# Item 5a — 78-card recount · '+new Date().toISOString()+' · by Claude (separate script, reads data.js directly)');
+log('data.js sha256:',crypto.createHash('sha256').update(fs.readFileSync(path.join(R,'data.js'))).digest('hex'));
+log('cards in data.js:',c.length,'| unique ids:',new Set(c.map(x=>x.id)).size,'| ids 0..77 contiguous:',JSON.stringify([...c.map(x=>x.id)].sort((a,b)=>a-b))===JSON.stringify([...Array(78).keys()]));
+log('Majors:',c.filter(x=>x.arcana==='Major').length);
+for(const s of ['Wands','Cups','Swords','Pentacles'])log(s+':',c.filter(x=>x.suit===s).length,'(ranks:',[...new Set(c.filter(x=>x.suit===s).map(x=>x.rank))].length+')');
+log('Court cards (number null):',c.filter(x=>x.number===null).length);
+const need=['upright','reversed','uprightKeywords','reversedKeywords','numerology','element','astrology','image'];
+need.forEach(k=>log('non-empty',k+':',c.filter(x=>Array.isArray(x[k])?x[k].length:String(x[k]||'').trim()).length));
+log('Strength number:',c.find(x=>x.name==='Strength').number,'| Justice number:',c.find(x=>x.name==='Justice').number);
+const imgOk=c.filter(x=>fs.existsSync(path.join(R,x.image))).length;log('image files present:',imgOk);
+const man=JSON.parse(fs.readFileSync(path.join(R,'assets/deck/manifest.json'),'utf8'));
+log('image sha256 == deck manifest:',c.filter(x=>{const m=man.find(y=>y.id===x.id);return m&&crypto.createHash('sha256').update(fs.readFileSync(path.join(R,x.image))).digest('hex')===m.sha256;}).length);
+log('--- committed export (audit/sources/cards-78.json) vs data.js');
+log('export count:',ex.count,'| rows:',ex.cards.length);
+const same=k=>ex.cards.every(r=>{const d=c.find(x=>x.id===r.id);return JSON.stringify(d[k])===JSON.stringify(r[{uprightKeywords:'upright_keywords',reversedKeywords:'reversed_keywords',astrology:'astrology_as_stored'}[k]||k]);});
+['name','arcana','suit','rank','number','element','astrology','upright','reversed','uprightKeywords','reversedKeywords','numerology'].forEach(k=>log('field',k,'identical for all 78:',same(k)));
+log('export text_provenance UNKNOWN:',ex.cards.filter(r=>/UNKNOWN/.test(r.text_provenance)).length,'| correspondence citation UNKNOWN:',ex.cards.filter(r=>/UNKNOWN/.test(r.correspondence_source_citation)).length);
+log('templated cards (export):',ex.cards.filter(r=>r.templated_fields.length).length,'| recount by prefix:',c.filter(x=>x.wuWei.startsWith('A practice of unforced attention with '+x.name)).length);
+console.log(out.join('\n'));

@@ -1,0 +1,114 @@
+{
+ "viewport": 1280,
+ "pictures": 14,
+ "strands": [
+  {
+   "key": "main:0:clarifier:1",
+   "from": "Ace of Swords, reversed",
+   "to": "Nine of Pentacles, clarifier layer 1",
+   "strand_length_px": 98,
+   "crosses": []
+  },
+  {
+   "key": "main:3:clarifier:1",
+   "from": "The Sun",
+   "to": "Knight of Swords, clarifier layer 1",
+   "strand_length_px": 98,
+   "crosses": []
+  },
+  {
+   "key": "main:4:clarifier:1",
+   "from": "The World, reversed",
+   "to": "The Hanged Man, reversed, clarifier layer 1",
+   "strand_length_px": 106,
+   "crosses": []
+  },
+  {
+   "key": "main:4:clarifier:2",
+   "from": "The World, reversed",
+   "to": "The Lovers, reversed, clarifier layer 2",
+   "strand_length_px": 108,
+   "crosses": []
+  },
+  {
+   "key": "main:0:next:1",
+   "from": "Nine of Pentacles, clarifier layer 1",
+   "to": "Four of Cups",
+   "strand_length_px": 198,
+   "crosses": []
+  },
+  {
+   "key": "main:1:next:2",
+   "from": "Four of Cups",
+   "to": "Three of Pentacles, reversed",
+   "strand_length_px": 397,
+   "crosses": []
+  },
+  {
+   "key": "main:2:next:3",
+   "from": "Three of Pentacles, reversed",
+   "to": "The Sun",
+   "strand_length_px": 397,
+   "crosses": []
+  },
+  {
+   "key": "main:3:next:4",
+   "from": "Knight of Swords, clarifier layer 1",
+   "to": "The World, reversed",
+   "strand_length_px": 730,
+   "crosses": [
+    {
+     "picture": "The Sun",
+     "id": "main:3",
+     "px_inside": 188
+    },
+    {
+     "picture": "The Hanged Man, reversed, clarifier layer 1",
+     "id": "main:4:clarifier:1",
+     "px_inside": 104
+    }
+   ]
+  },
+  {
+   "key": "main:4:next:5",
+   "from": "The Lovers, reversed, clarifier layer 2",
+   "to": "Two of Cups, reversed",
+   "strand_length_px": 348,
+   "crosses": []
+  },
+  {
+   "key": "main:5:next:6",
+   "from": "Two of Cups, reversed",
+   "to": "Five of Cups, reversed",
+   "strand_length_px": 861,
+   "crosses": [
+    {
+     "picture": "Six of Cups, reversed",
+     "id": "main:7",
+     "px_inside": 78
+    }
+   ]
+  },
+  {
+   "key": "main:6:next:7",
+   "from": "Five of Cups, reversed",
+   "to": "Six of Cups, reversed",
+   "strand_length_px": 247,
+   "crosses": []
+  },
+  {
+   "key": "main:7:next:8",
+   "from": "Six of Cups, reversed",
+   "to": "Five of Pentacles, reversed",
+   "strand_length_px": 377,
+   "crosses": []
+  },
+  {
+   "key": "main:8:next:9",
+   "from": "Five of Pentacles, reversed",
+   "to": "Two of Wands, reversed",
+   "strand_length_px": 392,
+   "crosses": []
+  }
+ ]
+}

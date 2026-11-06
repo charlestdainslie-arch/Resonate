@@ -1,0 +1,161 @@
+## three-flip (Past · Present · Future, 3 positions): 32/35 PASS
+  PASS  no card repeated in the reading  [5 cards]
+  PASS  pos 1: clarifier 2 only after a Major clarifier 1
+  PASS  pos 1: Major clarifier 1 received clarifier 2
+  PASS  PDF: every position section present, in order, with base card + orientation
+  PASS  Page: every position block present with base card + orientation
+  PASS  Page: position blocks in order
+  PASS  PDF pos 1: clarifier 1 = The Magician, reversed
+  PASS  PDF pos 1: clarifier 2 = Nine of Swords, reversed
+  PASS  PDF pos 1: 'Two of Cups' never named reversed
+  PASS  PDF pos 2: no clarifier 1
+  PASS  PDF pos 2: no clarifier 2
+  FAIL  PDF pos 2: 'Queen of Swords' never named reversed
+  PASS  PDF pos 3: no clarifier 1
+  PASS  PDF pos 3: no clarifier 2
+  PASS  PDF pos 3: 'King of Pentacles' never named reversed
+  PASS  Page pos 1: clarifier 1 = The Magician, reversed
+  PASS  Page pos 1: clarifier 2 = Nine of Swords, reversed
+  PASS  Page pos 1: 'Two of Cups' never named reversed
+  PASS  Page pos 2: no clarifier 1
+  PASS  Page pos 2: no clarifier 2
+  FAIL  Page pos 2: 'Queen of Swords' never named reversed
+  PASS  Page pos 3: no clarifier 1
+  PASS  Page pos 3: no clarifier 2
+  PASS  Page pos 3: 'King of Pentacles' never named reversed
+  PASS  Max pos 1: 'Past: Two of Cups.'
+  PASS  Max pos 1: 'Clarifier 1 · Past: The Magician, reversed.'
+  PASS  Max pos 1: 'Clarifier 2 · Past: Nine of Swords, reversed.'
+  FAIL  Max pos 2: 'Present: Queen of Swords.'
+  PASS  Max pos 2: no clarifier 1 line
+  PASS  Max pos 2: no clarifier 2 line
+  PASS  Max pos 3: 'Future: King of Pentacles.'
+  PASS  Max pos 3: no clarifier 1 line
+  PASS  Max pos 3: no clarifier 2 line
+  PASS  Max quotes verbatim on page  [10/10]
+  PASS  Max quotes verbatim in PDF (poppler)  [10/10]
+## celtic-clar (Celtic Cross, 10 positions): 85/88 PASS
+  PASS  no card repeated in the reading  [14 cards]
+  PASS  pos 4: Major base has clarifier 1
+  PASS  pos 5: Major base has clarifier 1
+  PASS  pos 5: clarifier 2 only after a Major clarifier 1
+  PASS  pos 5: Major clarifier 1 received clarifier 2
+  PASS  PDF: every position section present, in order, with base card + orientation
+  PASS  Page: every position block present with base card + orientation
+  PASS  Page: position blocks in order
+  PASS  PDF pos 1: clarifier 1 = Nine of Pentacles
+  PASS  PDF pos 1: no clarifier 2
+  PASS  PDF pos 1: 'Nine of Pentacles' never named reversed
+  PASS  PDF pos 2: no clarifier 1
+  PASS  PDF pos 2: no clarifier 2
+  PASS  PDF pos 2: 'Four of Cups' never named reversed
+  PASS  PDF pos 3: no clarifier 1
+  PASS  PDF pos 3: no clarifier 2
+  FAIL  PDF pos 4: clarifier 1 = Knight of Cups
+  PASS  PDF pos 4: no clarifier 2
+  PASS  PDF pos 4: 'The Sun' never named reversed
+  PASS  PDF pos 4: 'Knight of Cups' never named reversed
+  PASS  PDF pos 5: clarifier 1 = The Hanged Man, reversed
+  PASS  PDF pos 5: clarifier 2 = The Lovers, reversed
+  PASS  PDF pos 6: no clarifier 1
+  PASS  PDF pos 6: no clarifier 2
+  PASS  PDF pos 7: no clarifier 1
+  PASS  PDF pos 7: no clarifier 2
+  PASS  PDF pos 8: no clarifier 1
+  PASS  PDF pos 8: no clarifier 2
+  PASS  PDF pos 9: no clarifier 1
+  PASS  PDF pos 9: no clarifier 2
+  PASS  PDF pos 10: no clarifier 1
+  PASS  PDF pos 10: no clarifier 2
+  PASS  Page pos 1: clarifier 1 = Nine of Pentacles
+  PASS  Page pos 1: no clarifier 2
+  PASS  Page pos 1: 'Nine of Pentacles' never named reversed
+  PASS  Page pos 2: no clarifier 1
+  PASS  Page pos 2: no clarifier 2
+  PASS  Page pos 2: 'Four of Cups' never named reversed
+  PASS  Page pos 3: no clarifier 1
+  PASS  Page pos 3: no clarifier 2
+  FAIL  Page pos 4: clarifier 1 = Knight of Cups
+  PASS  Page pos 4: no clarifier 2
+  PASS  Page pos 4: 'The Sun' never named reversed
+  PASS  Page pos 4: 'Knight of Cups' never named reversed
+  PASS  Page pos 5: clarifier 1 = The Hanged Man, reversed
+  PASS  Page pos 5: clarifier 2 = The Lovers, reversed
+  PASS  Page pos 6: no clarifier 1
+  PASS  Page pos 6: no clarifier 2
+  PASS  Page pos 7: no clarifier 1
+  PASS  Page pos 7: no clarifier 2
+  PASS  Page pos 8: no clarifier 1
+  PASS  Page pos 8: no clarifier 2
+  PASS  Page pos 9: no clarifier 1
+  PASS  Page pos 9: no clarifier 2
+  PASS  Page pos 10: no clarifier 1
+  PASS  Page pos 10: no clarifier 2
+  PASS  Max pos 1: 'Present Situation: Ace of Swords, reversed.'
+  PASS  Max pos 1: 'Clarifier 1 · Present Situation: Nine of Pentacles.'
+  PASS  Max pos 1: no clarifier 2 line
+  PASS  Max pos 2: 'Crossing Challenge: Four of Cups.'
+  PASS  Max pos 2: no clarifier 1 line
+  PASS  Max pos 2: no clarifier 2 line
+  PASS  Max pos 3: 'Foundation: Three of Pentacles, reversed.'
+  PASS  Max pos 3: no clarifier 1 line
+  PASS  Max pos 3: no clarifier 2 line
+  PASS  Max pos 4: 'Recent Past: The Sun.'
+  FAIL  Max pos 4: 'Clarifier 1 · Recent Past: Knight of Cups.'
+  PASS  Max pos 4: no clarifier 2 line
+  PASS  Max pos 5: 'Conscious Focus: The World, reversed.'
+  PASS  Max pos 5: 'Clarifier 1 · Conscious Focus: The Hanged Man, reversed.'
+  PASS  Max pos 5: 'Clarifier 2 · Conscious Focus: The Lovers, reversed.'
+  PASS  Max pos 6: 'Near Future: Two of Cups, reversed.'
+  PASS  Max pos 6: no clarifier 1 line
+  PASS  Max pos 6: no clarifier 2 line
+  PASS  Max pos 7: 'Your Approach: Five of Cups, reversed.'
+  PASS  Max pos 7: no clarifier 1 line
+  PASS  Max pos 7: no clarifier 2 line
+  PASS  Max pos 8: 'Surrounding Influences: Six of Cups, reversed.'
+  PASS  Max pos 8: no clarifier 1 line
+  PASS  Max pos 8: no clarifier 2 line
+  PASS  Max pos 9: 'Hopes and Fears: Five of Pentacles, reversed.'
+  PASS  Max pos 9: no clarifier 1 line
+  PASS  Max pos 9: no clarifier 2 line
+  PASS  Max pos 10: 'Potential Outcome: Two of Wands, reversed.'
+  PASS  Max pos 10: no clarifier 1 line
+  PASS  Max pos 10: no clarifier 2 line
+  PASS  Max quotes verbatim on page  [26/26]
+  PASS  Max quotes verbatim in PDF (poppler)  [26/26]
+## three-quote (Past · Present · Future, 3 positions): 31/33 PASS
+  PASS  no card repeated in the reading  [5 cards]
+  PASS  pos 1: clarifier 2 only after a Major clarifier 1
+  PASS  pos 1: Major clarifier 1 received clarifier 2
+  PASS  PDF: every position section present, in order, with base card + orientation
+  PASS  Page: every position block present with base card + orientation
+  PASS  Page: position blocks in order
+  PASS  PDF pos 1: clarifier 1 = The Magician, reversed
+  PASS  PDF pos 1: clarifier 2 = Nine of Swords, reversed
+  PASS  PDF pos 1: 'Two of Cups' never named reversed
+  PASS  PDF pos 2: no clarifier 1
+  PASS  PDF pos 2: no clarifier 2
+  PASS  PDF pos 3: no clarifier 1
+  PASS  PDF pos 3: no clarifier 2
+  PASS  PDF pos 3: 'King of Pentacles' never named reversed
+  PASS  Page pos 1: clarifier 1 = The Magician, reversed
+  PASS  Page pos 1: clarifier 2 = Nine of Swords, reversed
+  PASS  Page pos 1: 'Two of Cups' never named reversed
+  PASS  Page pos 2: no clarifier 1
+  PASS  Page pos 2: no clarifier 2
+  PASS  Page pos 3: no clarifier 1
+  PASS  Page pos 3: no clarifier 2
+  PASS  Page pos 3: 'King of Pentacles' never named reversed
+  PASS  Max pos 1: 'Past: Two of Cups.'
+  PASS  Max pos 1: 'Clarifier 1 · Past: The Magician, reversed.'
+  PASS  Max pos 1: 'Clarifier 2 · Past: Nine of Swords, reversed.'
+  PASS  Max pos 2: 'Present: Queen of Swords, reversed.'
+  PASS  Max pos 2: no clarifier 1 line
+  PASS  Max pos 2: no clarifier 2 line
+  PASS  Max pos 3: 'Future: King of Pentacles.'
+  PASS  Max pos 3: no clarifier 1 line
+  PASS  Max pos 3: no clarifier 2 line
+  FAIL  Max quotes verbatim on page  [9/10]
+  FAIL  Max quotes verbatim in PDF (poppler)  [9/10]
+
+TOTAL FAILURES: 8
