@@ -118,3 +118,17 @@ body:has(.mc-player) .mc-ribbon { display: none; }
 body:has(.mc-player) .chas-voice{display:none}
 .chas-voice [hidden]{display:none}
 .mc-launch .chas-voice{justify-content:flex-start;margin-top:14px;padding:12px 0 0;background:none;border-bottom:0;border-top:1px solid rgba(201,169,106,.22);text-align:left}
+
+/* Floating ▶ Watch Max (Samsung UAT, 6 Nov): Max's retro screen glow, thumb-reachable, above the safe area. */
+.mc-float { position: fixed; right: max(14px, env(safe-area-inset-right)); bottom: max(16px, env(safe-area-inset-bottom)); z-index: 60;
+  display: inline-flex; align-items: center; gap: 9px; min-height: 50px; padding: 0 18px 0 12px; border-radius: 999px;
+  border: 1px solid rgba(223,196,139,.75); background: linear-gradient(180deg, #1a150d, #0b0907); color: var(--gold-bright, #dfc48b);
+  font: 700 15px/1 inherit; letter-spacing: .04em; box-shadow: 0 10px 26px rgba(0,0,0,.55), 0 0 18px rgba(223,180,100,.25); cursor: pointer; }
+.mc-float[hidden] { display: none; }
+.mc-float:focus-visible { outline: 2px solid #f2dca8; outline-offset: 3px; }
+.mc-float-screen { width: 26px; height: 20px; border-radius: 4px; border: 1px solid rgba(223,196,139,.7);
+  background: repeating-linear-gradient(0deg, rgba(255,214,140,.10) 0 1px, transparent 1px 3px), radial-gradient(circle at 50% 45%, rgba(255,200,110,.55), rgba(40,28,10,.9) 70%);
+  box-shadow: inset 0 0 6px rgba(255,200,110,.35); }
+@media (prefers-reduced-motion: no-preference) { .mc-float:not([hidden]) { animation: mc-float-in .35s ease-out; } }
+@keyframes mc-float-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+body:has(.mc-player) .mc-float { display: none; }

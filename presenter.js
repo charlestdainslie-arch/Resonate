@@ -351,8 +351,31 @@
     const journal=document.querySelector('.reading-journal');
     if(journal)journal.innerHTML='<div class="eyebrow">YOUR PERSONAL JOURNAL</div><p>Saving is turned off for the demonstration reading. Draw your own reading to save it.</p>';
   }
+  // Floating ▶ Watch Max (Samsung UAT, 6 Nov). The launcher sits at the top of the reading; on a phone,
+  // following a Celtic Cross reveal down the page leaves it far above the screen. Once every card is
+  // revealed this gold button stays at the bottom of the screen wherever you are, hiding while the top
+  // launcher is visible (no duplicate), while Max is open, and away from the reading.
+  let floatTimer=0;
+  function floatWatch(){
+    clearInterval(floatTimer);
+    document.getElementById('mcFloat')?.remove();
+    const top=document.querySelector('.mc-launch');
+    if(!top)return;
+    document.body.insertAdjacentHTML('beforeend','<button type="button" class="mc-float" id="mcFloat" hidden aria-label="Watch Max Chasroom present this reading"><span class="mc-float-screen" aria-hidden="true"></span>▶ Watch Max</button>');
+    const btn=document.getElementById('mcFloat');
+    btn.addEventListener('click',()=>openPlayer());
+    let topVisible=true;
+    const io='IntersectionObserver' in window?new IntersectionObserver(e=>{topVisible=e[0].isIntersecting;update();}):null;
+    io?.observe(top);
+    function update(){
+      if(state.view!=='draw'||!document.body.contains(top)){clearInterval(floatTimer);io?.disconnect();btn.remove();return;}
+      btn.hidden=!(state.drawSettled&&!topVisible&&!document.querySelector('.mc-player'));
+    }
+    floatTimer=setInterval(update,250);
+    update();
+  }
   const presenterRenderDraw=renderDraw;
-  renderDraw=function(){const outcome=presenterRenderDraw.apply(this,arguments);demoBanner();launcher();return outcome;};
+  renderDraw=function(){const outcome=presenterRenderDraw.apply(this,arguments);demoBanner();launcher();floatWatch();return outcome;};
 
   function loadDemo(){
     Object.assign(state,{spreadId:DEMO.spreadId,spreadSize:1,drawnCardIds:[DEMO.base],drawnAt:DEMO.at,journalId:null,journalSpread:null,readingReturn:null,
