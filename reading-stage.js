@@ -103,8 +103,9 @@ function shuffleCards(){
   },reducedMotion()?0:900));
 }
 
-startDraw = function(){
-  clearDrawTimers();
+// Which cards this reading gets: the top of the shuffled deck, one per position. Chosen before any
+// deal animation runs (deck-theatre.js), so the animation only shows this order; it never decides it.
+function selectDraw(){
   state.spreadSize=currentSpread().positions.length;
   if(!state.shuffledDeck.length) prepareDeck();
   const previous=state.drawnCardIds.join(',');
@@ -118,6 +119,19 @@ startDraw = function(){
     prepareDeck();
     next.push(...state.shuffledDeck.slice(0,state.spreadSize-next.length));
   }
+  return next;
+}
+
+// state.pendingDraw: cards already chosen by selectDraw() and shown being dealt; used once, exactly.
+startDraw = function(){
+  const next=Array.isArray(state.pendingDraw)?state.pendingDraw:selectDraw();
+  state.pendingDraw=null;
+  commitDraw(next);
+};
+
+function commitDraw(next){
+  clearDrawTimers();
+  state.spreadSize=currentSpread().positions.length;
   state.readingIndex=null;
   state.drawnCardIds=next;
   state.drawnAt=new Date().toISOString();

@@ -1,0 +1,35 @@
+/* RESONATE · deck theatre (deck-theatre.js): the 78-card deck, shuffle and deal. Black-and-gold backs,
+   composited transforms only. */
+.dt-spot{height:calc(var(--dt-h,87px) + 40px);margin:-4px auto 2px;width:100%;pointer-events:none}
+.dt-theatre{position:fixed;inset:0;pointer-events:none;z-index:70}
+.dt-deck{position:absolute;left:0;top:0;width:var(--dt-w,58px);height:var(--dt-h,87px);will-change:transform;transform-origin:50% 50%}
+.dt-deck::after{content:"";position:absolute;left:-14%;right:-14%;bottom:-16px;height:22px;border-radius:50%;
+  background:radial-gradient(ellipse at center,rgba(0,0,0,.55),rgba(0,0,0,0) 70%);z-index:-1}
+.dt-card{position:absolute;inset:0;border-radius:7px;box-sizing:border-box;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6%;
+  background:radial-gradient(circle at 50% 38%,rgba(201,169,106,.13),transparent 34%),linear-gradient(145deg,#19181a,#09090b);
+  border:1px solid rgba(201,169,106,.5);box-shadow:0 1px 0 rgba(0,0,0,.7);backface-visibility:hidden;will-change:transform}
+.dt-card span{display:grid;place-items:center;width:52%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(201,169,106,.5);
+  color:#e3c47f;font:400 calc(var(--dt-w,58px)*.2)/1 Georgia,'Times New Roman',serif}
+.dt-card small{font-size:calc(var(--dt-w,58px)*.07);letter-spacing:.18em;color:#756e64;line-height:1}
+.dt-flyer.stage-card{position:absolute;margin:0;aspect-ratio:auto;transform-origin:0 0;z-index:200;max-width:none;
+  filter:drop-shadow(0 14px 22px rgba(0,0,0,.5)) drop-shadow(0 0 12px rgba(232,196,120,.22))}
+.dt-theatre::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 42%,rgba(18,15,10,.55),rgba(4,4,5,.86) 70%);
+  opacity:0;transition:opacity .35s ease}
+.dt-theatre.is-shuffling::before{opacity:1}
+.dt-spark{position:absolute;left:0;top:0;width:4px;height:4px;border-radius:50%;background:#ffe0a0;
+  box-shadow:0 0 8px 2px rgba(255,200,110,.65);z-index:300;pointer-events:none}
+.dt-skip{position:fixed;right:max(14px,env(safe-area-inset-right));top:max(14px,env(safe-area-inset-top));pointer-events:auto;z-index:400;
+  min-height:44px;padding:0 16px;border-radius:999px;border:1px solid rgba(214,180,110,.6);background:rgba(10,9,8,.86);color:#ecd29a;
+  font:600 14px/1 inherit;letter-spacing:.03em;backdrop-filter:blur(4px)}
+.dt-skip[hidden]{display:none}
+.dt-skip:focus-visible{outline:2px solid #ecd29a;outline-offset:2px}
+.dt-live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* The spread on the table: empty outlines until each card is dealt to its place. */
+.stage-board.dt-ready .stage-position.dt-await .stage-card{background:transparent;filter:none;
+  box-shadow:inset 0 0 0 1px rgba(214,180,110,.34);border-radius:10px}
+.stage-board.dt-ready .stage-position.dt-await .stage-card>*{opacity:0}
+.stage-board.dt-ready .stage-position.dt-dealt .stage-card{animation:dt-land .42s ease-out}
+@keyframes dt-land{0%{filter:drop-shadow(0 0 0 rgba(232,196,120,0)) drop-shadow(0 12px 20px rgba(0,0,0,.35))}
+  40%{filter:drop-shadow(0 0 14px rgba(232,196,120,.55)) drop-shadow(0 12px 20px rgba(0,0,0,.35))}
+  100%{filter:drop-shadow(0 0 0 rgba(232,196,120,0)) drop-shadow(0 12px 20px rgba(0,0,0,.35))}}
+@media (prefers-reduced-motion:reduce){.stage-board.dt-ready .stage-position.dt-dealt .stage-card{animation:none}}

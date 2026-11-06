@@ -202,12 +202,13 @@ const configs = [
         await page.evaluate(() => go('reading'));
         await page.locator(`[data-spread="${spread}"]`).click();
         await page.locator('#shuffleCardsBtn').click();
-        await page.waitForSelector('.stage-board.is-shuffling', { timeout: 3000 });
-        const anims = await page.locator('.stage-board.is-shuffling .stage-card').evaluateAll(els => els.map(e => { const s = getComputedStyle(e); return `${s.animationName}/${s.animationDuration}/${s.animationDelay}`; }));
-        const unique = [...new Set(anims)];
-        assert.deepEqual(unique, ['tarot-shuffle-contained/0.86s/0s'], `${spread}: ${unique.join(', ')}`);
+        // Deck theatre (6 Nov): the full 78-card deck riffles in the theatre (replaces the bouncing shuffle).
+        await page.waitForSelector('.dt-theatre.is-shuffling', { timeout: 3000 });
+        assert.equal(await page.locator('.dt-deck .dt-card').count(), 78, `${spread}: full deck`);
+        assert.ok(await page.evaluate(() => [...document.querySelectorAll('.dt-deck .dt-card, .dt-deck')].some(e => e.getAnimations().length)), `${spread}: deck is moving`);
         assert.equal(await page.locator('#shuffleCardsBtn').isDisabled(), true, 'shuffle button locks while shuffling');
-        await page.waitForSelector('.stage-board:not(.is-shuffling)', { timeout: 3000 });
+        assert.equal(await page.locator('#stageDrawBtn').isDisabled(), true, 'deal button locks while shuffling');
+        await page.waitForSelector('.dt-theatre:not(.is-shuffling)', { timeout: 15000 });
         assert.equal(await page.locator('#shuffleCardsBtn').isDisabled(), false, 'shuffle button unlocks afterwards');
         assert.match(await page.locator('#shuffleStatus').textContent(), /Deck shuffled/);
         await page.locator('#stageDrawBtn').click();

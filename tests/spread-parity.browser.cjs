@@ -133,11 +133,12 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
           await chooseSpread(page, spread);
           await check('P4', async () => {
             await page.locator('#shuffleCardsBtn').click();
-            const anim = await page.evaluate(() => { const c = document.querySelector('.stage-board.is-shuffling .stage-card'); if (!c) return null; const s = getComputedStyle(c); return [s.animationName, s.animationDuration, s.animationDelay].join(' / '); });
-            // Reduced motion: no shuffle movement (no animation, or one that lasts 0s).
-            if (motion === 'reduce') assert.ok(anim === null || /^none/.test(anim) || / \/ 0s \/ /.test(anim), 'reduced motion still animates: ' + anim);
-            else assert.equal(anim, 'tarot-shuffle-contained / 0.86s / 0s');
-            await page.waitForFunction(() => !document.getElementById('shuffleCardsBtn').disabled, null, { timeout: 5000 });
+            // Deck theatre (6 Nov, replaces the bouncing shuffle Chas rejected): the 78-card deck riffles in
+            // the theatre with motion on; reduced motion: no shuffle movement at all.
+            const anim = await page.evaluate(() => ({ shuffling: !!document.querySelector('.dt-theatre.is-shuffling'), moving: document.querySelectorAll('.dt-deck .dt-card').length && [...document.querySelectorAll('.dt-deck .dt-card, .dt-deck')].some(e => e.getAnimations().length) }));
+            if (motion === 'reduce') assert.ok(!anim.shuffling && !anim.moving, 'reduced motion still animates: ' + JSON.stringify(anim));
+            else assert.ok(anim.shuffling && anim.moving, 'deck theatre shuffle not running: ' + JSON.stringify(anim));
+            await page.waitForFunction(() => !document.getElementById('shuffleCardsBtn').disabled, null, { timeout: 15000 });
             assert.match(await page.locator('#shuffleStatus').innerText(), /Deck shuffled/);
             const t0 = Date.now(); await drawSettled(page);
             if (motion === 'reduce') assert.ok(Date.now() - t0 < 2500, 'reduced-motion draw took ' + (Date.now() - t0) + 'ms');
