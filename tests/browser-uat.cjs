@@ -12,7 +12,8 @@ const run=Number(process.argv[2]||1),results=[];
  const configurations=[320,375,390,768,1024,1280,1440,1920].flatMap(width=>['reduce','no-preference'].map(motion=>({width,motion})));
  await Promise.all(Array.from({length:4},async()=>{while(configurations.length){const {width,motion}=configurations.shift();
   const item={width,height:width<600?844:900,motion,passed:[],failed:[]};results.push(item);
-  const context=await browser.newContext({viewport:{width,height:item.height},reducedMotion:motion,acceptDownloads:true});const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+  const context=await browser.newContext({viewport:{width,height:item.height},reducedMotion:motion,acceptDownloads:true});await context.addInitScript(require('./helpers/majors-first.cjs')); // Chas's clarifier rule (Issue #13): two clarifiers per position need Majors; deal them first, as the other suites do
+  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   const check=async(name,fn)=>{try{await fn();item.passed.push(name);}catch(e){item.failed.push({name,error:e.message});throw e;}};
   try{
    await page.goto('http://127.0.0.1:8766');
