@@ -1,0 +1,55 @@
+{
+ "count": 78,
+ "unique_ids": 78,
+ "majors": 22,
+ "minors": 56,
+ "all_names_match_catalogue": true,
+ "images_hash_verified": 78,
+ "golden_dawn_major": {
+  "match": [
+   "The Magician",
+   "The High Priestess",
+   "The Empress",
+   "The Hierophant",
+   "The Lovers",
+   "The Chariot",
+   "Strength",
+   "The Hermit",
+   "Wheel of Fortune",
+   "Justice",
+   "The Hanged Man",
+   "Death",
+   "Temperance",
+   "The Devil",
+   "The Tower",
+   "The Star",
+   "The Moon",
+   "The Sun",
+   "Judgement",
+   "The World"
+  ],
+  "partial": [
+   "The Emperor: PARTIAL (extra: Mars)"
+  ],
+  "differs": [
+   "The Fool: stored Uranus; DIFFERS (Golden Dawn: Air)"
+  ]
+ },
+ "planet_element_rule_undocumented": [
+  "The Fool: Planet → element mapping (Uranus → Air): rule UNKNOWN, not documented in repo",
+  "The Magician: Planet → element mapping (Mercury → Air): rule UNKNOWN, not documented in repo",
+  "The High Priestess: Planet → element mapping (The Moon → Water): rule UNKNOWN, not documented in repo",
+  "The Empress: Planet → element mapping (Venus → Earth): rule UNKNOWN, not documented in repo",
+  "Wheel of Fortune: Planet → element mapping (Jupiter → Fire): rule UNKNOWN, not documented in repo",
+  "The Tower: Planet → element mapping (Mars → Fire): rule UNKNOWN, not documented in repo",
+  "The Sun: Planet → element mapping (Sun → Fire): rule UNKNOWN, not documented in repo",
+  "The World: Planet → element mapping (Saturn → Earth): rule UNKNOWN, not documented in repo"
+ ],
+ "element_mismatches": [],
+ "minors_with_decans": 0,
+ "cards_with_templated_fields": 73,
+ "minors_connection_counts": [
+  1
+ ],
+ "text_citations_present": 0
+}
