@@ -1,0 +1,165 @@
+[
+ {
+  "file": "guidance-412.webm",
+  "spread": "guidance",
+  "viewport": "412x915",
+  "dealtIds": [
+   59
+  ],
+  "reading": [
+   "Ten of Swords (reversed)"
+  ],
+  "sameCards": true,
+  "errors": []
+ },
+ {
+  "file": "three-412.webm",
+  "spread": "three",
+  "viewport": "412x915",
+  "dealtIds": [
+   76,
+   32,
+   40
+  ],
+  "reading": [
+   "Queen of Pentacles (reversed)",
+   "Page of Wands",
+   "Five of Cups (reversed)"
+  ],
+  "sameCards": true,
+  "errors": []
+ },
+ {
+  "file": "relationship-412.webm",
+  "spread": "relationship",
+  "viewport": "412x915",
+  "dealtIds": [
+   70,
+   1,
+   40,
+   57,
+   65
+  ],
+  "reading": [
+   "Seven of Pentacles (reversed)",
+   "The Magician (reversed)",
+   "Five of Cups (reversed)",
+   "Eight of Swords",
+   "Two of Pentacles"
+  ],
+  "sameCards": true,
+  "errors": []
+ },
+ {
+  "file": "seven-412.webm",
+  "spread": "seven",
+  "viewport": "412x915",
+  "dealtIds": [
+   69,
+   54,
+   26,
+   70,
+   6,
+   42,
+   72
+  ],
+  "reading": [
+   "Six of Pentacles",
+   "Five of Swords",
+   "Five of Wands (reversed)",
+   "Seven of Pentacles (reversed)",
+   "The Lovers (reversed)",
+   "Seven of Cups (reversed)",
+   "Nine of Pentacles"
+  ],
+  "sameCards": true,
+  "errors": []
+ },
+ {
+  "file": "celtic-412.webm",
+  "spread": "celtic",
+  "viewport": "412x915",
+  "dealtIds": [
+   68,
+   64,
+   5,
+   72,
+   29,
+   73,
+   40,
+   4,
+   8,
+   32
+  ],
+  "reading": [
+   "Five of Pentacles",
+   "Ace of Pentacles (reversed)",
+   "The Hierophant (reversed)",
+   "Nine of Pentacles (reversed)",
+   "Eight of Wands",
+   "Ten of Pentacles",
+   "Five of Cups",
+   "The Emperor (reversed)",
+   "Strength",
+   "Page of Wands (reversed)"
+  ],
+  "sameCards": true,
+  "errors": []
+ },
+ {
+  "file": "celtic-1280.webm",
+  "spread": "celtic",
+  "viewport": "1280x800",
+  "dealtIds": [
+   1,
+   62,
+   56,
+   77,
+   69,
+   20,
+   59,
+   72,
+   34,
+   66
+  ],
+  "reading": [
+   "The Magician",
+   "Queen of Swords (reversed)",
+   "Seven of Swords",
+   "King of Pentacles",
+   "Six of Pentacles (reversed)",
+   "Judgement",
+   "Ten of Swords",
+   "Nine of Pentacles",
+   "Queen of Wands (reversed)",
+   "Three of Pentacles"
+  ],
+  "sameCards": true,
+  "errors": []
+ },
+ {
+  "file": "seven-1280.webm",
+  "spread": "seven",
+  "viewport": "1280x800",
+  "dealtIds": [
+   37,
+   71,
+   72,
+   66,
+   32,
+   16,
+   2
+  ],
+  "reading": [
+   "Two of Cups",
+   "Eight of Pentacles",
+   "Nine of Pentacles",
+   "Three of Pentacles",
+   "Page of Wands (reversed)",
+   "The Tower (reversed)",
+   "The High Priestess (reversed)"
+  ],
+  "sameCards": true,
+  "errors": []
+ }
+]
