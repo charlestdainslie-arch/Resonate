@@ -34,7 +34,7 @@
   'use strict';
 
   var SVG_NS = 'http://www.w3.org/2000/svg';
-  var VERSION = '0.3.0-phase-a-tinkerbell';
+  var VERSION = '0.4.0-avoid-cards';
 
   var DEFAULTS = Object.freeze({
     mainSelector: '[data-gtc-main-card], .reading-card[data-reading-card]',
@@ -51,6 +51,12 @@
     // 'nearest': strands join the facing edges, so cards side by side link side to side
     // and no strand crosses a card picture (live reading, one-card spread).
     edges: 'top',
+    // G5 (Issue #49): when true, a strand that would pass over another card's picture (or its
+    // loop) bends round it instead. Strands that are already clear are drawn exactly as before.
+    avoidCards: false,
+    // With avoidCards: text a bent strand should keep off where it can (titles, captions, buttons).
+    // A soft preference only; card pictures are the hard rule.
+    avoidText: null,
     forceReducedMotion: false
   });
 
@@ -209,6 +215,7 @@
     }
     this._resizeObserver = null;
     this._observedEls.clear();
+    if (this._routeCache) this._routeCache.clear();
     if (this._mutationObserver) this._mutationObserver.disconnect();
     this._mutationObserver = null;
     this._nodes.forEach(function (node) { self._cancelNode(node); });
@@ -802,7 +809,7 @@
       if (!this._isRevealed(m, m.el)) break;
       if (i === 0) {
         var top = edgePoint(this._ringRect(m.el), base, 'top');
-        rings.push({ key: 'ring|enter', ring: 'enter', d: this._curve({ x: top.x, y: 0 }, top) });
+        rings.push({ key: 'ring|enter', ring: 'enter', d: this._routeLink(null, m.el, base, { from: { x: top.x, y: 0 }, to: top, side: 'top' }).d });
       }
       rings.push({ key: 'ring|main:' + m.positionIndex, ring: 'main:' + m.positionIndex, d: this._ringPath(m.el, base) });
       (this._state.clarifiers[String(m.positionIndex)] || []).forEach(function (c) {
@@ -836,14 +843,16 @@
         var link = src.point
           ? { from: src.point, to: edgePoint(self._ringRect(el), base, 'top'), side: 'top' }
           : self._link(src.el, el, base);
+        link = self._routeLink(src.point ? null : src.el, el, base, link);
         var from = link.from, to = link.to;
         var out = { top: [0, -RING_MARGIN], bottom: [0, RING_MARGIN], left: [-RING_MARGIN, 0], right: [RING_MARGIN, 0] }[link.side];
         var probe = document.createElementNS(SVG_NS, 'path');
         probe.setAttribute('class', 'gtc-probe');
-        probe.setAttribute('d', self._curve(from, to));
+        var flight = link.d;
+        probe.setAttribute('d', flight);
         self._svg.appendChild(probe);
         var flyLen = probe.getTotalLength();
-        probe.setAttribute('d', self._curve(from, to) + ' L ' + (to.x + out[0]).toFixed(2) + ' ' + (to.y + out[1]).toFixed(2) + ' ' + self._ringPath(el, base, link.side).replace(/^M/, 'L'));
+        probe.setAttribute('d', flight + ' L ' + (to.x + out[0]).toFixed(2) + ' ' + (to.y + out[1]).toFixed(2) + ' ' + self._ringPath(el, base, link.side).replace(/^M/, 'L'));
         var total = probe.getTotalLength();
         var pts = [];
         var n = Math.max(40, Math.ceil(total / 3));
@@ -938,11 +947,12 @@
       revealed.sort(function (a, b) { return a.slot - b.slot; });
 
       revealed.forEach(function (clarifier) {
-        var link = self._link(parent.el, clarifier.el, base);
+        var link = self._routeLink(parent.el, clarifier.el, base, self._link(parent.el, clarifier.el, base));
         segments.push({
           key: 'main:' + parent.positionIndex + ':clarifier:' + clarifier.slot,
           from: link.from,
-          to: link.to
+          to: link.to,
+          d: link.d
         });
       });
     });
@@ -958,15 +968,198 @@
           last = assign({}, c, { el: el });
         }
       });
-      var nextLink = this._link(last ? last.el : current.el, next.el, base);
+      var fromEl = last ? last.el : current.el;
+      var nextLink = this._routeLink(fromEl, next.el, base, this._link(fromEl, next.el, base));
       segments.push({
         key: 'main:' + current.positionIndex + ':next:' + next.positionIndex,
         from: nextLink.from,
-        to: nextLink.to
+        to: nextLink.to,
+        d: nextLink.d
       });
     }
 
     return segments;
+  };
+
+  // ---- G5: keep strands off other cards (Issue #49) ------------------------------------------
+  // Every card picture (main or clarifier, face up or down) is an obstacle: with pad 2 a hard one
+  // (artwork is never crossed); with the loop margin a soft one (a strand may use a narrow gutter
+  // past a gold loop, at a cost). The two cards a strand joins are excluded.
+  GoldenThreadConnector.prototype._obstacles = function (base, exclude, pad) {
+    var self = this, out = [];
+    if (!this._container) return out;
+    var els = this._container.querySelectorAll(this.options.mainSelector + ',' + this.options.clarifierSelector);
+    Array.prototype.forEach.call(els, function (el) {
+      if (exclude.indexOf(el) >= 0) return;
+      if (exclude.some(function (x) { return x && (x.contains(el) || el.contains(x)); })) return;
+      var r = self._ringRect(el);
+      if (!r || r.width < 2 || r.height < 2) return;
+      out.push({ l: r.left - base.left - pad, t: r.top - base.top - pad, r: r.right - base.left + pad, b: r.bottom - base.top + pad });
+    });
+    return out;
+  };
+  // Text belonging to the two cards' own positions is not counted: a strand has to reach them.
+  GoldenThreadConnector.prototype._textBoxes = function (base, ends) {
+    if (!this.options.avoidText || !this._container) return [];
+    var parentSel = this.options.parentSelector, out = [];
+    var own = ends.map(function (el) { return el && el.closest ? el.closest(parentSel) : null; }).filter(Boolean);
+    Array.prototype.forEach.call(this._container.querySelectorAll(this.options.avoidText), function (el) {
+      if (own.some(function (p) { return p.contains(el); })) return;
+      var r = el.getBoundingClientRect();
+      if (r.width < 2 || r.height < 2) return;
+      out.push({ l: r.left - base.left - 2, t: r.top - base.top - 2, r: r.right - base.left + 2, b: r.bottom - base.top + 2 });
+    });
+    return out;
+  };
+
+  function quadPoint(a, c, b, t) {
+    var u = 1 - t;
+    return { x: u * u * a.x + 2 * u * t * c.x + t * t * b.x, y: u * u * a.y + 2 * u * t * c.y + t * t * b.y };
+  }
+  // Samples about every 6 px along the curve (its control polygon bounds its length), so a long
+  // strand cannot clip a picture's corner between samples.
+  function samplesFor(a, c, b) {
+    var n = Math.ceil((Math.hypot(c.x - a.x, c.y - a.y) + Math.hypot(b.x - c.x, b.y - c.y)) / 6);
+    return Math.max(24, Math.min(400, n));
+  }
+  function quadClear(a, c, b, boxes, limit) {
+    // A coarse pass rejects most candidates cheaply; only survivors get the fine pass.
+    return quadClearN(a, c, b, boxes, limit, 24) && quadClearN(a, c, b, boxes, limit, samplesFor(a, c, b));
+  }
+  function quadClearN(a, c, b, boxes, limit, n) {
+    for (var i = 1; i < n; i++) {
+      var p = quadPoint(a, c, b, i / n);
+      if (limit && (p.x < 0 || p.x > limit.w || p.y < 0 || p.y > limit.h)) return false;
+      // Where a strand leaves or meets its own loop, a neighbouring card's margin can sit within a
+      // few pixels (clarifiers side by side, a clarifier under its card). Only the margin, never a
+      // picture, is that close, so the ends are not tested.
+      if (Math.hypot(p.x - a.x, p.y - a.y) < 14 || Math.hypot(p.x - b.x, p.y - b.y) < 14) continue;
+      for (var k = 0; k < boxes.length; k++) {
+        var o = boxes[k];
+        if (p.x > o.l && p.x < o.r && p.y > o.t && p.y < o.b) return false;
+      }
+    }
+    return true;
+  }
+  // Cost of a clear candidate: samples over text weigh heavily, then the extra length of the detour.
+  function inAny(p, list) {
+    for (var k = 0; k < list.length; k++) { var o = list[k]; if (p.x > o.l && p.x < o.r && p.y > o.t && p.y < o.b) return true; }
+    return false;
+  }
+  // soft = { text: [...], loops: [...] }
+  function quadCost(a, c, b, soft) {
+    var text = 0, loops = 0, len = 0, prev = a, n = samplesFor(a, c, b);
+    for (var i = 1; i <= n; i++) {
+      var p = quadPoint(a, c, b, i / n);
+      len += Math.hypot(p.x - prev.x, p.y - prev.y); prev = p;
+      if (Math.hypot(p.x - a.x, p.y - a.y) < 14 || Math.hypot(p.x - b.x, p.y - b.y) < 14) continue;
+      if (inAny(p, soft.text)) text++;
+      else if (inAny(p, soft.loops)) loops++;
+    }
+    var per = 48 / n;   // costs are per 48 samples, whatever the sampling density
+    return (text * 30 + loops * 8) * per + (len - Math.hypot(b.x - a.x, b.y - a.y));
+  }
+  GoldenThreadConnector.routeClear = quadClear;   // exposed for tests
+
+  // The cheapest clear single-curve path from `from` to `to` (see quadCost), or null if none
+  // within reach. Same single quadratic stroke, so the look, draw-in, flight and reduced motion
+  // are unchanged.
+  GoldenThreadConnector.prototype._bend = function (from, to, boxes, text, limit) {
+    var c0 = this._control(from, to), L = Math.hypot(to.x - from.x, to.y - from.y);
+    var best = null;
+    var consider = function (c) {
+      if (!quadClear(from, c, to, boxes, limit)) return;
+      var cost = quadCost(from, c, to, text);
+      if (!best || cost < best.cost) best = { c: c, cost: cost };
+    };
+    consider(c0);
+    for (var r = 24; r <= 720; r += 24) {
+      // A bend this wide adds at least this much length; stop once that beats the best found.
+      if (best && Math.hypot(L, r / 2) - L > best.cost) break;
+      for (var k = 0; k < 24; k++) {
+        var ang = k * Math.PI / 12;
+        consider({ x: c0.x + r * Math.cos(ang), y: c0.y + r * Math.sin(ang) });
+      }
+    }
+    return best && { d: this._quad(from, best.c, to), cost: best.cost };
+  };
+
+  // Where a strand runs, given the usual link. With avoidCards off, or when the usual path does
+  // not cross another card, this is exactly the old path. Otherwise the same two cards are joined
+  // by the cheapest clear path over the usual sides and the other sides of the two loop boxes
+  // (changing sides costs a little, so the usual sides win a tie).
+  // fromEl may be null (the entry strand from the top of the stage, which keeps its start point).
+  GoldenThreadConnector.prototype._routeLink = function (fromEl, toEl, base, link) {
+    var plain = { from: link.from, to: link.to, side: link.side, d: this._curve(link.from, link.to) };
+    if (!this.options.avoidCards || !toEl) return plain;
+    var ends = [fromEl, toEl].filter(Boolean);
+    var boxes = this._obstacles(base, ends, 3);
+    if (!boxes.length || quadClear(link.from, this._control(link.from, link.to), link.to, boxes)) return plain;
+    var text = { text: this._textBoxes(base, [fromEl, toEl]), loops: this._obstacles(base, ends, RING_MARGIN + 3) };
+    var key = [link.from.x, link.from.y, link.to.x, link.to.y, base.width].map(Math.round).join(',') + '|' +
+      boxes.concat(text.text).map(function (o) { return [o.l, o.t, o.r, o.b].map(Math.round).join(','); }).join(';');
+    this._routeCache = this._routeCache || new Map();
+    if (this._routeCache.has(key)) return this._routeCache.get(key);
+    var limit = { w: base.width, h: base.height };
+    var sides = ['top', 'bottom', 'left', 'right'];
+    var a = fromEl ? this._ringRect(fromEl) : null, b = this._ringRect(toEl);
+    var tries = [{ from: link.from, to: link.to, side: link.side, extra: 0 }];
+    (a ? sides : [null]).forEach(function (fs) {
+      sides.forEach(function (ts) {
+        var f = fs ? edgePoint(a, base, fs) : link.from, t = edgePoint(b, base, ts);
+        if (f.x === link.from.x && f.y === link.from.y && t.x === link.to.x && t.y === link.to.y) return;
+        tries.push({ from: f, to: t, side: ts, extra: 40 });
+      });
+    });
+    var best = null;
+    for (var i = 0; i < tries.length; i++) {
+      var r = this._bend(tries[i].from, tries[i].to, boxes, text, limit);
+      if (r && (!best || r.cost + tries[i].extra < best.cost)) best = { from: tries[i].from, to: tries[i].to, side: tries[i].side, d: r.d, cost: r.cost + tries[i].extra };
+    }
+    // Hemmed in (no single curve is clear): one smooth two-piece curve through a waypoint.
+    for (var j = 0; !best && j < tries.length; j++) {
+      var w = this._bend2(tries[j].from, tries[j].to, boxes, text, limit);
+      if (w && (!best || w.cost + tries[j].extra < best.cost)) best = { from: tries[j].from, to: tries[j].to, side: tries[j].side, d: w.d, cost: w.cost + tries[j].extra };
+    }
+    var out = best ? { from: best.from, to: best.to, side: best.side, d: best.d } : plain;   // nothing clear: unchanged
+    if (this._routeCache.size > 200) this._routeCache.clear();
+    this._routeCache.set(key, out);
+    return out;
+  };
+
+  // Two quadratic pieces joined smoothly at waypoint w ('Q … T …': the second control point is the
+  // first one mirrored through w). Waypoints are tried on a 24 px grid; cheapest clear one wins.
+  GoldenThreadConnector.prototype._bend2 = function (from, to, boxes, text, limit) {
+    // Waypoints near the two cards only (within 360 px of the box they span), on a 30 px grid.
+    var best = null, step = 30, m = 360;
+    var x0 = Math.max(step / 2, Math.min(from.x, to.x) - m), x1 = Math.min(limit.w, Math.max(from.x, to.x) + m);
+    var y0 = Math.max(step / 2, Math.min(from.y, to.y) - m), y1 = Math.min(limit.h, Math.max(from.y, to.y) + m);
+    for (var x = x0; x < x1; x += step) {
+      for (var y = y0; y < y1; y += step) {
+        var w = { x: x, y: y };
+        if (boxes.some(function (o) { return w.x > o.l && w.x < o.r && w.y > o.t && w.y < o.b; })) continue;
+        var c1 = this._control(from, w), c2 = { x: 2 * w.x - c1.x, y: 2 * w.y - c1.y };
+        if (!quadClear(from, c1, w, boxes, limit) || !quadClear(w, c2, to, boxes, limit)) continue;
+        var cost = quadCost(from, c1, w, text) + quadCost(w, c2, to, text) +
+          Math.hypot(w.x - from.x, w.y - from.y) + Math.hypot(to.x - w.x, to.y - w.y) - Math.hypot(to.x - from.x, to.y - from.y) + 60;
+        if (!best || cost < best.cost) best = { w: w, c1: c1, cost: cost };
+      }
+    }
+    if (!best) return null;
+    var f = function (n) { return n.toFixed(2); };
+    return { d: 'M ' + f(from.x) + ' ' + f(from.y) + ' Q ' + f(best.c1.x) + ' ' + f(best.c1.y) + ' ' + f(best.w.x) + ' ' + f(best.w.y) +
+      ' T ' + f(to.x) + ' ' + f(to.y), cost: best.cost };
+  };
+
+  GoldenThreadConnector.prototype._control = function (from, to) {
+    var distance = Math.hypot(to.x - from.x, to.y - from.y);
+    var sag = Math.min(64, Math.max(14, distance * this.options.sag));
+    return { x: (from.x + to.x) / 2, y: (from.y + to.y) / 2 + sag };
+  };
+  GoldenThreadConnector.prototype._quad = function (from, c, to) {
+    return 'M ' + from.x.toFixed(2) + ' ' + from.y.toFixed(2) +
+      ' Q ' + c.x.toFixed(2) + ' ' + c.y.toFixed(2) +
+      ' ' + to.x.toFixed(2) + ' ' + to.y.toFixed(2);
   };
 
   GoldenThreadConnector.prototype._curve = function (from, to) {

@@ -46,7 +46,9 @@
 
   // edges: 'nearest' — strands join facing edges, so in the one-card spread, where the
   // clarifiers sit beside the card, no strand crosses a card picture.
-  var connector = new window.GoldenThreadConnector({ ringTarget: ringTarget, edges: 'nearest' });
+  // avoidCards: strands bend round other cards' pictures instead of crossing them (G5, Issue #49).
+  var connector = new window.GoldenThreadConnector({ ringTarget: ringTarget, edges: 'nearest', avoidCards: true,
+    avoidText: '.slot-label, .reading-card-front strong, .position-clarifier > strong, .clarifier-layer-label, .clarify-choice, .position-clarifier-slot strong' });
   var token = 0;                               // bumps on every page render; stale flights do nothing
   var seen = { drawnAt: null, layers: 0 };     // what this reading has already shown
 
