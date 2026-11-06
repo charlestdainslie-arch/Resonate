@@ -67,6 +67,7 @@ const results = [];
       await press(page.locator('[data-spread="three"]'));
       assert.equal(await view(page), 'stage');
       await press(page.locator('#stageDrawBtn'));
+      await page.waitForFunction(() => state.view === 'draw', null, { timeout: 30000 });   // Draw deals the cards first (deck theatre)
       assert.equal(await view(page), 'draw');
       assert.equal(await page.evaluate(() => state.readingAstrology), null);
       assert.equal(await page.locator('.astro-reading-summary').count(), 0);
@@ -85,6 +86,7 @@ const results = [];
       assert.match(text, /Pisces/); assert.match(text, /CHINESE/); assert.doesNotMatch(text, /NATAL MOON|RISING/);
       await press(page.locator('[data-spread="guidance"]'));
       await press(page.locator('#stageDrawBtn'));
+      await page.waitForFunction(() => state.view === 'draw', null, { timeout: 30000 });   // Draw deals the cards first (deck theatre)
       assert.equal(await page.evaluate(() => state.readingAstrology?.natal?.sunSign), 'Pisces');
       assert.equal(await page.locator('.astro-reading-summary').count(), 1);
     });
@@ -161,6 +163,7 @@ const results = [];
       assert.equal(await view(page), 'stage');
       assert.equal(await page.evaluate(() => state.astrologyPrelude.natal.sunSign), 'Virgo');
       await press(page.locator('#stageDrawBtn'));
+      await page.waitForFunction(() => state.view === 'draw', null, { timeout: 30000 });   // Draw deals the cards first (deck theatre)
       assert.equal(await page.evaluate(() => state.readingAstrology.natal.sunSign), 'Virgo');
     });
     await check('A13', 'Back to spreads (table) and Home (spreads)', 'Return to spreads with details kept, then Home', async page => {

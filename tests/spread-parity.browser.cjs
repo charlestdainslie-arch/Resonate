@@ -100,7 +100,10 @@ async function chooseSpread(page, spread) {
 }
 async function drawSettled(page) {
   await page.locator('#stageDrawBtn').click();
-  await page.waitForFunction(() => state.drawSettled === true, null, { timeout: 15000 });
+  // Draw now deals the cards first (deck theatre, 6 Nov); drawSettled can still be true from the
+  // previous spread on this page, so wait for the reading page before waiting for it to settle.
+  await page.waitForFunction(() => state.view === 'draw', null, { timeout: 30000 });
+  await page.waitForFunction(() => state.drawSettled === true, null, { timeout: 30000 });
 }
 const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.spreadId, ids: state.drawnCardIds, c1: state.firstLayerClarifiers, layers: state.additionalClarifierLayers, at: state.drawnAt }));
 
