@@ -67,8 +67,11 @@ const turnFinished = page => page.evaluate(() => Promise.all([...document.queryS
       assert.deepEqual(two, one, 'clarifier 2 lands exactly where the slot was; clarifier 1 does not move: ' + JSON.stringify(one.flat().map((b, i) => [b, two.flat()[i]]).filter(([a, c]) => String(a) !== String(c)).slice(0, 3)));
       assert.equal(await page.locator('.position-clarifier-slot').count(), 0, 'no waiting slot once both are drawn');
       if (motion !== 'reduce') {
-        const settled = await page.evaluate(() => [...document.querySelectorAll('.clarifier-turn')].every(t =>
-          getComputedStyle(t.querySelector('img')).transform === 'none' || getComputedStyle(t.querySelector('img')).transform === 'matrix(1, 0, 0, 1, 0, 0)'));
+        // Flat = no residual turn. A reversed clarifier finishes upside down (Issue #49 audit, D1), not upright.
+        const settled = await page.evaluate(() => [...document.querySelectorAll('.clarifier-turn')].every(t => {
+          const m = getComputedStyle(t.querySelector('img')).transform;
+          return t.classList.contains('is-reversed') ? m === 'matrix(-1, 0, 0, -1, 0, 0)' : (m === 'none' || m === 'matrix(1, 0, 0, 1, 0, 0)');
+        }));
         assert.ok(settled, 'turned cards finish flat');
       }
       await page.evaluate(() => renderDraw());
