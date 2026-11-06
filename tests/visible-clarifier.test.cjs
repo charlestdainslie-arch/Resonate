@@ -11,11 +11,17 @@ const begin=source.indexOf('function readingSecondLayer(){');
 const end=source.indexOf('\nfunction firstLayerClarifierView(',begin);
 if(begin<0||end<0)throw Error('Clarifier function not found');
 const method=source.slice(begin,end);
+// Draws are oriented (upright/reversed) by the reversals block in app.js; load the real code, not a stub.
+const rBegin=source.indexOf("const reversalsKey=");
+const rEnd=source.indexOf('\nfunction cardMeaning(',rBegin);
+if(rBegin<0||rEnd<0)throw Error('Reversals block not found');
+const reversals=source.slice(rBegin,rEnd);
 function context(count,drawn){
  const state={drawnAt:'2026-10-21T00:00:00Z',drawnCardIds:drawn,firstLayerClarifiers:[],clarifierReadingAt:null};
  const cards=Array.from({length:count},(_,id)=>({id,arcana:id<22?'Major':'Minor'}));
  let renders=0;
- const ctx=vm.createContext({state,cards,Math,ResonateDeck:engine,ResonateClarifiers:rules,renderDraw(){renders++},scrollMotion(){return 'auto'},document:{querySelector(){return {scrollIntoView(){}}},querySelectorAll(){return []},getElementById(){return {scrollIntoView(){}}}}});
+ const ctx=vm.createContext({state,cards,Math,ResonateDeck:engine,ResonateClarifiers:rules,renderDraw(){renders++},scrollMotion(){return 'auto'},document:{querySelector(){return {scrollIntoView(){}}},querySelectorAll(){return []},getElementById(){return {scrollIntoView(){}}}},localStorage:{getItem(){return null},setItem(){}}});
+ vm.runInContext(reversals,ctx);
  vm.runInContext(method,ctx);
  return {state,ctx,renders:()=>renders,run:code=>vm.runInContext(code,ctx)};
 }

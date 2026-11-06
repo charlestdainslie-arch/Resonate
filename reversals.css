@@ -3,6 +3,12 @@
 .reading-card.is-reversed .reading-card-front img,
 .position-clarifier.is-reversed img,
 .mc-cards img.is-reversed { transform: rotate(180deg); }
+/* The clarifier turn (spread-parity.css) holds its last frame (fill-mode both), and an animation's
+   transform overrides the rule above, so a reversed clarifier landed upright (Issue #49 audit, 6 Nov).
+   A reversed clarifier turns over into its reversed position instead. */
+.draw-page .position-clarifier.clarifier-turn.is-reversed img { animation-name: clarifier-fold-in-reversed; }
+@keyframes clarifier-fold-in-reversed { 0%, 50% { transform: rotate(180deg) rotateY(-90deg); } 100% { transform: rotate(180deg); } }
+@media (prefers-reduced-motion: reduce) { .draw-page .position-clarifier.clarifier-turn.is-reversed img { animation: none; } }
 
 .reversal-choice { display: flex; align-items: flex-start; gap: 12px; max-width: 640px; margin: 18px auto 6px; padding: 14px 16px;
   border: 1px solid rgba(201,169,106,.35); border-radius: 14px; background: rgba(12,10,7,.7); cursor: pointer; text-align: left; }
