@@ -13,7 +13,8 @@ const PAGE = { 'astrology-journey.browser': 'index.html', 'chas-voice.browser': 
 const NEW = new Set(['reversed-clarifier-turn.browser', 'spread-layout-with-thread.browser']);
 const result = r => { const log = fs.readFileSync(path.join(dir, r.suite + '.log'), 'utf8');
   if (r.suite === 'unit-all') { const p = /# pass (\d+)/.exec(log), t = /# tests (\d+)/.exec(log); return `${p && p[1]}/${t && t[1]} pass`; }
-  const m = log.match(/(\d+)\/(\d+) passed/) || log.match(/PASS (\d+) [^\n]*/);
+  if (/All spread parity checks PASS/.test(log)) { const rows = (log.match(/^[A-Z]\d+\s+(PASS|FAIL)/gm) || []).length; const fails = (log.match(/ FAIL /g) || []).length; return `All spread parity checks PASS (${rows} checks × 5 spreads${fails ? ', ' + fails + ' FAIL' : ''})`; }
+  const m = log.match(/(\d+)\/(\d+) (?:passed|PASS)/) || log.match(/PASS (\d+) [^\n]*/);
   const last = (log.match(/^(PASS|FAIL)[^\n]*$/gm) || []).slice(-1)[0] || '';
   return m ? (m[2] ? `${m[1]}/${m[2]} pass` : m[0].slice(0, 110)) : last.slice(0, 110); };
 const syntax = rows.filter(r => r.suite.startsWith('syntax-'));
@@ -33,11 +34,20 @@ All results below were **run by Claude** in a Linux workspace (headless Chromium
 
 **Syntax checks (CI step):** ${syntax.filter(r => r.exit === 0).length}/${syntax.length} files pass \`node --check\`.
 
-**Suites:** ${ok}/${rest.length} exit 0.
+**Suites:** ${ok}/${rest.length} exit 0 at this SHA. The one failure (\`browser-uat\`) is pre-existing and a stale test (finding D4); after its test-only fix at \`b3a34c3\` it passes **304/304**, so **16/16 suites pass on the final SHA** (details below).
 
 | Suite | Page under test | Exit | Result | Seconds |
 |---|---|---|---|---|
 ${rest.map(r => `| \`${r.suite}\`${NEW.has(r.suite) ? ' *(new, this audit)*' : ''} | ${PAGE[r.suite] || '?'} | ${r.exit} | ${result(r).replace(/\|/g, '/')} | ${r.seconds} |`).join('\n')}
+
+## \`browser-uat\`: the one failure, explained
+
+- At \`${env.sha.slice(0, 7)}\` it exited 1: **74 pass, then a 30 s timeout on \`#primaryClarifierAction\` in all 16 configurations** (\`browser-uat.log\`).
+- **Pre-existing:** the untouched candidate \`4c37890\` fails identically (\`browser-uat.at-4c37890-baseline.log\`).
+- **Cause (stale test, not an app defect):** the suite (28 Oct) presses the clarifier button twice expecting two clarifiers on every card. Since Chas's clarifier rule (31 Oct) that needs Major Arcana cards; on an ordinary draw the button becomes "Save to Journal". The other suites were updated then to deal Majors first (\`tests/helpers/majors-first.cjs\`); this one was missed.
+- **Fixed** in \`b3a34c35f5a6991554a385cef7a835827e6d7f94\` (test file only; \`git diff --stat a667664 b3a34c3 -- . ':!audit'\` shows just \`tests/browser-uat.cjs\`): **304 pass, 0 fail, 16 configurations** (\`browser-uat.at-b3a34c3.log\`).
+
+**Final SHA \`b3a34c3\`:** app code is identical to \`${env.sha.slice(0, 7)}\`, so every result above applies to it; \`browser-uat\` was re-run on it as shown. The three sample readings were generated on \`b3a34c3\`.
 
 ## How to reproduce
 
@@ -45,13 +55,13 @@ Prerequisites: Git, Node 22, and Playwright with Chromium.
 
 \`\`\`bash
 git clone -b claude/uat-all-in-one https://github.com/charlestdainslie-arch/resonate && cd resonate
-git checkout ${env.sha}
+git checkout b3a34c35f5a6991554a385cef7a835827e6d7f94
 npm i --no-save playwright pdfjs-dist && npx playwright install chromium
 # CI's exact unit step
 node --test tests/*.test.cjs
 # Everything, with logs and a summary table
 bash audit/tools/run-all-tests.sh /tmp/resonate-run
-# The three sample readings (deterministic draws; seeds in each draw-record.json)
+# The three sample readings (seeded; same cards every run; three runs gave identical draws)
 node audit/tools/sample-readings.cjs
 # The 78-card export
 node audit/tools/export-dataset.cjs

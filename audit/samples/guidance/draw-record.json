@@ -1,0 +1,45 @@
+{
+ "spreadId": "guidance",
+ "spreadName": "One-card Guidance",
+ "drawnAt": "2026-11-06T01:00:00.529Z",
+ "reversalsIncluded": true,
+ "positions": [
+  {
+   "position": 1,
+   "label": "Guidance",
+   "card": {
+    "id": 0,
+    "name": "The Fool",
+    "arcana": "Major",
+    "orientation": "upright",
+    "display": "The Fool"
+   },
+   "clarifier1": {
+    "id": 28,
+    "name": "Seven of Wands",
+    "arcana": "Minor",
+    "orientation": "reversed",
+    "display": "Seven of Wands, reversed"
+   },
+   "clarifier2": null
+  }
+ ],
+ "ruleCheck": [],
+ "seed": 7,
+ "sequence": [
+  {
+   "action": "rule: Major Arcana base card → Clarifier 1",
+   "button": "Draw First Clarifier",
+   "before": {
+    "first": [],
+    "second": []
+   },
+   "after": {
+    "first": [
+     28
+    ],
+    "second": []
+   }
+  }
+ ]
+}

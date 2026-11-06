@@ -1,4 +1,4 @@
-# Golden Thread — verification at `a667664`
+# Golden Thread — verification at `b3a34c3`
 
 Two different things share the name, and the audit treats them separately:
 
@@ -23,7 +23,7 @@ Measured strands for each sample are listed in `samples/<spread>/golden-thread-g
 
 - **Sequence: yes.** The written card-to-card section also runs position 1 → 2 → … → n, and each clarifier is interpreted against its base card (`storyConnection(base, clarifier)`), which is what the parent → clarifier strands show.
 - **Meaning: no.** The visual thread receives no card identity for clarifiers, always `orientation: 'upright'`, and no `connections`, suit, element, numerology or keyword data. The same spread shape always produces the same thread whatever is drawn. **It is decorative, not meaning-driven** (Finding G1).
-- **One visible mismatch (G2):** where a position has clarifiers, the strand to the next position leaves from the last clarifier, but the written bridge links the two *base* cards. Celtic Cross sample: strand *King of Swords (Clarifier 2 of The Sun) → The World*; text: *The Sun → The World*.
+- **One visible mismatch (G2):** where a position has clarifiers, the strand to the next position leaves from the last clarifier, but the written bridge links the two *base* cards. Celtic Cross sample: strand *The Lovers, reversed (Clarifier 2 of The World) → Two of Cups, reversed*; text: "Following The World, Two of Cups may draw your attention toward imbalance." Three-card sample: strand *Nine of Swords, reversed (Clarifier 2 of Two of Cups) → Queen of Swords, reversed*.
 
 What the written thread *does* use from the cards: each card's first two keywords per orientation, its astrology string, its `connections` text when neighbours name each other (otherwise a generic sentence), number sums, and a sentence counting reversed cards.
 
@@ -31,7 +31,7 @@ What the written thread *does* use from the cards: each card's first two keyword
 
 Each ring is drawn round the card **picture** (not the whole button or caption box) with a fixed `RING_MARGIN` of 5 px, measured from layout offsets so it is correct while a card is face down or mid-turn. Strands join the facing edges of two rings (`edges: 'nearest'`).
 
-Measured in every sample at 1280, 390 and 360 px: `rings[].margin_px` = distance from picture edge to ring path on each side. See the summary table at the end.
+Measured in every sample at 1280, 390 and 360 px (`golden-thread-geometry.json → rings[].margin_px`, distance from picture edge to the ring path on each side): **3 to 7 px on every side of every ring** (nominal 5 px; the path's corner arcs and sub-pixel rounding account for ±2 px). 21 card rings × 3 widths = 63 measurements (the 3 remaining loops per width are the entry strands from the top of the stage, with no card to hug).
 
 The Golden Thread's own suite (`tests/golden-thread-connector.browser.cjs`, 27 checks on `demo.html`) asserts geometry within 2 px at 360/390/1280.
 

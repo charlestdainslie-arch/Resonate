@@ -1,0 +1,81 @@
+FAIL 320 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":320,"height":844,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 375 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":375,"height":844,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 320 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+FAIL 375 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":320,"height":844,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+{"width":375,"height":844,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 390 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":390,"height":844,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 768 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":768,"height":900,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 390 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":390,"height":844,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 768 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":768,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1024 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1024,"height":900,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1280 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1280,"height":900,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1024 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1024,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1280 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1280,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1440 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1440,"height":900,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1440 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1440,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+FAIL 1920 reduce: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1920,"height":900,"motion":"reduce","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match","two clarifiers maximum; three unique cards; visible labels and integrated narrative","spread geometry fits without overlap or horizontal overflow","save without notes visibly confirms on the clicked primary button","primary final action saves; journal reopens identical reading after reload","card detail reflection preserves clarifiers; return keeps reading","all detail return controls restore origin after shared spread state changes","switching spreads gives the next detail its own origin; Learn returns to Learn","PDF download is branded, paginated PDF with journal content","return action brings same spread into view","new reading resets dice; no JavaScript errors"],"failed":[{"name":"full artwork, single bottom reflection, layers, reopen and PDF: guidance","error":"locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#primaryClarifierAction')\u001b[22m\n"}]}
+FAIL 1920 no-preference: locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#primaryClarifierAction')[22m
+
+{"width":1920,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot","dice finish as two 0–9 digits, optional and reduced-motion aware","78 live cards and all images load; stage/reveal dimensions match"],"failed":[]}
+RUN 1: 74 PASS, 1 FAIL, 16 configurations

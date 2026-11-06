@@ -1,0 +1,665 @@
+{
+ "desktop_1280": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "Two of Cups",
+    "to": "The Magician, reversed, clarifier layer 1",
+    "from_xy": [
+     250,
+     333
+    ],
+    "to_xy": [
+     205,
+     431
+    ]
+   },
+   {
+    "key": "main:0:next:1",
+    "kind": "position→next position",
+    "from": "Nine of Swords, reversed, clarifier layer 2",
+    "from_is_clarifier": true,
+    "to": "Queen of Swords, reversed",
+    "from_xy": [
+     299,
+     431
+    ],
+    "to_xy": [
+     448,
+     333
+    ]
+   },
+   {
+    "key": "main:1:next:2",
+    "kind": "position→next position",
+    "from": "Queen of Swords, reversed",
+    "from_is_clarifier": false,
+    "to": "King of Pentacles",
+    "from_xy": [
+     536,
+     200
+    ],
+    "to_xy": [
+     558,
+     200
+    ]
+   },
+   {
+    "key": "main:0:clarifier:2",
+    "kind": "parent→clarifier",
+    "from": "Two of Cups",
+    "to": "Nine of Swords, reversed, clarifier layer 2",
+    "from_xy": [
+     250,
+     333
+    ],
+    "to_xy": [
+     299,
+     431
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 250,
+     "y": 0,
+     "w": 0,
+     "h": 67
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 157,
+     "y": 62,
+     "w": 186,
+     "h": 276
+    },
+    "picture": {
+     "x": 164,
+     "y": 69,
+     "w": 176,
+     "h": 266
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": 157,
+     "y": 426,
+     "w": 96,
+     "h": 139
+    },
+    "picture": {
+     "x": 162,
+     "y": 431,
+     "w": 86,
+     "h": 129
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5
+    }
+   },
+   {
+    "ring": "main:1",
+    "bbox": {
+     "x": 355,
+     "y": 62,
+     "w": 186,
+     "h": 276
+    },
+    "picture": {
+     "x": 362,
+     "y": 69,
+     "w": 176,
+     "h": 266
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:2",
+    "bbox": {
+     "x": 553,
+     "y": 62,
+     "w": 186,
+     "h": 276
+    },
+    "picture": {
+     "x": 560,
+     "y": 69,
+     "w": 176,
+     "h": 266
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:2",
+    "bbox": {
+     "x": 251,
+     "y": 426,
+     "w": 96,
+     "h": 139
+    },
+    "picture": {
+     "x": 256,
+     "y": 431,
+     "w": 86,
+     "h": 129
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "three",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 37,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 1,
+     "cardId": 62,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 2,
+     "cardId": 77,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     },
+     {
+      "slot": 2,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "1": [],
+    "2": []
+   }
+  },
+  "page_scroll_width": 1280,
+  "viewport": 1280
+ },
+ "mobile_390": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "Two of Cups",
+    "to": "The Magician, reversed, clarifier layer 1",
+    "from_xy": [
+     182,
+     327.09
+    ],
+    "to_xy": [
+     129.5,
+     425.09
+    ]
+   },
+   {
+    "key": "main:0:next:1",
+    "kind": "position→next position",
+    "from": "Nine of Swords, reversed, clarifier layer 2",
+    "from_is_clarifier": true,
+    "to": "Queen of Swords, reversed",
+    "from_xy": [
+     238.5,
+     577.09
+    ],
+    "to_xy": [
+     182,
+     709.06
+    ]
+   },
+   {
+    "key": "main:1:next:2",
+    "kind": "position→next position",
+    "from": "Queen of Swords, reversed",
+    "from_is_clarifier": false,
+    "to": "King of Pentacles",
+    "from_xy": [
+     182,
+     990.06
+    ],
+    "to_xy": [
+     182,
+     1214.16
+    ]
+   },
+   {
+    "key": "main:0:clarifier:2",
+    "kind": "parent→clarifier",
+    "from": "Two of Cups",
+    "to": "Nine of Swords, reversed, clarifier layer 2",
+    "from_xy": [
+     182,
+     327.09
+    ],
+    "to_xy": [
+     238.5,
+     425.09
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 182,
+     "y": 0,
+     "w": 0,
+     "h": 46.1
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 84,
+     "y": 41.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 48.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": 74,
+     "y": 420.1,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 79,
+     "y": 425.1,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:1",
+    "bbox": {
+     "x": 84,
+     "y": 704.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 711.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:2",
+    "bbox": {
+     "x": 84,
+     "y": 1209.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 1216.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:2",
+    "bbox": {
+     "x": 183,
+     "y": 420.1,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 188,
+     "y": 425.1,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "three",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 37,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 1,
+     "cardId": 62,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 2,
+     "cardId": 77,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     },
+     {
+      "slot": 2,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "1": [],
+    "2": []
+   }
+  },
+  "page_scroll_width": 390,
+  "viewport": 390
+ },
+ "mobile_360": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "Two of Cups",
+    "to": "The Magician, reversed, clarifier layer 1",
+    "from_xy": [
+     167,
+     327.09
+    ],
+    "to_xy": [
+     114.5,
+     425.09
+    ]
+   },
+   {
+    "key": "main:0:next:1",
+    "kind": "position→next position",
+    "from": "Nine of Swords, reversed, clarifier layer 2",
+    "from_is_clarifier": true,
+    "to": "Queen of Swords, reversed",
+    "from_xy": [
+     223.5,
+     577.09
+    ],
+    "to_xy": [
+     167,
+     709.06
+    ]
+   },
+   {
+    "key": "main:1:next:2",
+    "kind": "position→next position",
+    "from": "Queen of Swords, reversed",
+    "from_is_clarifier": false,
+    "to": "King of Pentacles",
+    "from_xy": [
+     167,
+     990.06
+    ],
+    "to_xy": [
+     167,
+     1214.16
+    ]
+   },
+   {
+    "key": "main:0:clarifier:2",
+    "kind": "parent→clarifier",
+    "from": "Two of Cups",
+    "to": "Nine of Swords, reversed, clarifier layer 2",
+    "from_xy": [
+     167,
+     327.09
+    ],
+    "to_xy": [
+     223.5,
+     425.09
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 167,
+     "y": 0,
+     "w": 0,
+     "h": 46.1
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 69,
+     "y": 41.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 48.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": 59,
+     "y": 420.1,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 64,
+     "y": 425.1,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:1",
+    "bbox": {
+     "x": 69,
+     "y": 704.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 711.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:2",
+    "bbox": {
+     "x": 69,
+     "y": 1209.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 1216.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:2",
+    "bbox": {
+     "x": 168,
+     "y": 420.1,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 173,
+     "y": 425.1,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "three",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 37,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 1,
+     "cardId": 62,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 2,
+     "cardId": 77,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     },
+     {
+      "slot": 2,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "1": [],
+    "2": []
+   }
+  },
+  "page_scroll_width": 360,
+  "viewport": 360
+ }
+}

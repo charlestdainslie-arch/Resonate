@@ -1,0 +1,23 @@
+01 [intro/frame] Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.
+02 [intro/label] Tonight: your Past · Present · Future.
+03 [intro/frame] I'll keep it short. The full reading stays below.
+04 [cards/frame] Let's go through your cards, one position at a time.
+05 [cards/label] Past: Two of Cups.
+06 [cards/quote] This may describe how mutuality, connection, agreement shaped the path to your current situation.
+07 [cards/quote] A connection can deepen through reciprocal attention and honest exchange.
+08 [cards/label] Present: Queen of Swords, reversed.
+09 [cards/quote] Here, harsh judgement, bitterness, emotional distance is a lens for what is active now and how you can respond.
+10 [cards/quote] Past hurt may be sharpening judgement or creating distance where dialogue is possible.
+11 [cards/label] Future: King of Pentacles.
+12 [cards/quote] This suggests a possible development involving stewardship, stability, competence.
+13 [cards/quote] Use experience and resources to create dependable conditions for yourself and others.
+14 [c1/frame] Now, your first clarifiers, one for each position.
+15 [c1/label] Clarifier 1 · Past: The Magician, reversed.
+16 [c1/quote] Reversed, skill may be scattered, misdirected or used to control rather than create.
+17 [c2/frame] And your second clarifiers.
+18 [c2/label] Clarifier 2 · Past: Nine of Swords, reversed.
+19 [c2/quote] A burden may be easing, or you may be hiding how difficult things feel.
+20 [close/frame] Before I go, one question to carry with you.
+21 [close/quote] Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.
+22 [close/quote] Take what resonates, and leave the rest.
+23 [close/frame] That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.

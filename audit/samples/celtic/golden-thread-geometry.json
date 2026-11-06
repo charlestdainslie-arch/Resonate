@@ -1,0 +1,1814 @@
+{
+ "desktop_1280": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "Ace of Swords, reversed",
+    "to": "Nine of Pentacles, clarifier layer 1",
+    "from_xy": [
+     264,
+     901.25
+    ],
+    "to_xy": [
+     266,
+     999.25
+    ]
+   },
+   {
+    "key": "main:3:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The Sun",
+    "to": "Knight of Swords, clarifier layer 1",
+    "from_xy": [
+     100,
+     901.25
+    ],
+    "to_xy": [
+     102,
+     999.25
+    ]
+   },
+   {
+    "key": "main:4:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The World, reversed",
+    "to": "The Hanged Man, reversed, clarifier layer 1",
+    "from_xy": [
+     264,
+     288
+    ],
+    "to_xy": [
+     226.5,
+     386
+    ]
+   },
+   {
+    "key": "main:4:clarifier:2",
+    "kind": "parent→clarifier",
+    "from": "The World, reversed",
+    "to": "The Lovers, reversed, clarifier layer 2",
+    "from_xy": [
+     264,
+     288
+    ],
+    "to_xy": [
+     305.5,
+     386
+    ]
+   },
+   {
+    "key": "main:0:next:1",
+    "kind": "position→next position",
+    "from": "Nine of Pentacles, clarifier layer 1",
+    "from_is_clarifier": true,
+    "to": "Four of Cups",
+    "from_xy": [
+     266,
+     999.25
+    ],
+    "to_xy": [
+     428,
+     901.25
+    ]
+   },
+   {
+    "key": "main:1:next:2",
+    "kind": "position→next position",
+    "from": "Four of Cups",
+    "from_is_clarifier": false,
+    "to": "Three of Pentacles, reversed",
+    "from_xy": [
+     428,
+     901.25
+    ],
+    "to_xy": [
+     264,
+     1261.13
+    ]
+   },
+   {
+    "key": "main:2:next:3",
+    "kind": "position→next position",
+    "from": "Three of Pentacles, reversed",
+    "from_is_clarifier": false,
+    "to": "The Sun",
+    "from_xy": [
+     264,
+     1261.13
+    ],
+    "to_xy": [
+     100,
+     901.25
+    ]
+   },
+   {
+    "key": "main:3:next:4",
+    "kind": "position→next position",
+    "from": "Knight of Swords, clarifier layer 1",
+    "from_is_clarifier": true,
+    "to": "The World, reversed",
+    "from_xy": [
+     102,
+     999.25
+    ],
+    "to_xy": [
+     264,
+     288
+    ]
+   },
+   {
+    "key": "main:4:next:5",
+    "kind": "position→next position",
+    "from": "The Lovers, reversed, clarifier layer 2",
+    "from_is_clarifier": true,
+    "to": "Two of Cups, reversed",
+    "from_xy": [
+     305.5,
+     493
+    ],
+    "to_xy": [
+     592,
+     680.25
+    ]
+   },
+   {
+    "key": "main:5:next:6",
+    "kind": "position→next position",
+    "from": "Two of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Five of Cups, reversed",
+    "from_xy": [
+     592,
+     901.25
+    ],
+    "to_xy": [
+     756,
+     1745.98
+    ]
+   },
+   {
+    "key": "main:6:next:7",
+    "kind": "position→next position",
+    "from": "Five of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Six of Cups, reversed",
+    "from_xy": [
+     756,
+     1745.98
+    ],
+    "to_xy": [
+     756,
+     1498.98
+    ]
+   },
+   {
+    "key": "main:7:next:8",
+    "kind": "position→next position",
+    "from": "Six of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Five of Pentacles, reversed",
+    "from_xy": [
+     756,
+     1277.98
+    ],
+    "to_xy": [
+     756,
+     901.25
+    ]
+   },
+   {
+    "key": "main:8:next:9",
+    "kind": "position→next position",
+    "from": "Five of Pentacles, reversed",
+    "from_is_clarifier": false,
+    "to": "Two of Wands, reversed",
+    "from_xy": [
+     756,
+     680.25
+    ],
+    "to_xy": [
+     756,
+     288
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 264,
+     "y": 0,
+     "w": 0,
+     "h": 680.3
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 186,
+     "y": 675.3,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 193,
+     "y": 682.3,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": 225.5,
+     "y": 994.3,
+     "w": 81,
+     "h": 117
+    },
+    "picture": {
+     "x": 230.5,
+     "y": 999.3,
+     "w": 71,
+     "h": 106.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:1",
+    "bbox": {
+     "x": 350,
+     "y": 675.3,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 357,
+     "y": 682.3,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:2",
+    "bbox": {
+     "x": 186,
+     "y": 1256.1,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 193,
+     "y": 1263.1,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:3",
+    "bbox": {
+     "x": 22,
+     "y": 675.3,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 29,
+     "y": 682.3,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:3:clarifier:1",
+    "bbox": {
+     "x": 61.5,
+     "y": 994.3,
+     "w": 81,
+     "h": 117
+    },
+    "picture": {
+     "x": 66.5,
+     "y": 999.3,
+     "w": 71,
+     "h": 106.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:4",
+    "bbox": {
+     "x": 186,
+     "y": 62,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 193,
+     "y": 69,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:4:clarifier:1",
+    "bbox": {
+     "x": 186,
+     "y": 381,
+     "w": 81,
+     "h": 117
+    },
+    "picture": {
+     "x": 191,
+     "y": 386,
+     "w": 71,
+     "h": 106.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:4:clarifier:2",
+    "bbox": {
+     "x": 265,
+     "y": 381,
+     "w": 81,
+     "h": 117
+    },
+    "picture": {
+     "x": 270,
+     "y": 386,
+     "w": 71,
+     "h": 106.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:5",
+    "bbox": {
+     "x": 514,
+     "y": 675.3,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 521,
+     "y": 682.3,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:6",
+    "bbox": {
+     "x": 678,
+     "y": 1741,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 685,
+     "y": 1748,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:7",
+    "bbox": {
+     "x": 678,
+     "y": 1273,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 685,
+     "y": 1280,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:8",
+    "bbox": {
+     "x": 678,
+     "y": 675.3,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 685,
+     "y": 682.3,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:9",
+    "bbox": {
+     "x": 678,
+     "y": 62,
+     "w": 156,
+     "h": 231
+    },
+    "picture": {
+     "x": 685,
+     "y": 69,
+     "w": 146,
+     "h": 221
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "celtic",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 50,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 1,
+     "cardId": 39,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 2,
+     "cardId": 66,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 3,
+     "cardId": 19,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 4,
+     "cardId": 21,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 5,
+     "cardId": 37,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 6,
+     "cardId": 40,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 7,
+     "cardId": 41,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 8,
+     "cardId": 68,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 9,
+     "cardId": 23,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "1": [],
+    "2": [],
+    "3": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "4": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     },
+     {
+      "slot": 2,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": []
+   }
+  },
+  "page_scroll_width": 1280,
+  "viewport": 1280
+ },
+ "mobile_390": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "Ace of Swords, reversed",
+    "to": "Nine of Pentacles, clarifier layer 1",
+    "from_xy": [
+     182,
+     327.09
+    ],
+    "to_xy": [
+     184,
+     425.09
+    ]
+   },
+   {
+    "key": "main:3:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The Sun",
+    "to": "Knight of Swords, clarifier layer 1",
+    "from_xy": [
+     182,
+     2000.25
+    ],
+    "to_xy": [
+     184,
+     2098.25
+    ]
+   },
+   {
+    "key": "main:4:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The World, reversed",
+    "to": "The Hanged Man, reversed, clarifier layer 1",
+    "from_xy": [
+     182,
+     2663.22
+    ],
+    "to_xy": [
+     129.5,
+     2761.22
+    ]
+   },
+   {
+    "key": "main:4:clarifier:2",
+    "kind": "parent→clarifier",
+    "from": "The World, reversed",
+    "to": "The Lovers, reversed, clarifier layer 2",
+    "from_xy": [
+     182,
+     2663.22
+    ],
+    "to_xy": [
+     238.5,
+     2761.22
+    ]
+   },
+   {
+    "key": "main:0:next:1",
+    "kind": "position→next position",
+    "from": "Nine of Pentacles, clarifier layer 1",
+    "from_is_clarifier": true,
+    "to": "Four of Cups",
+    "from_xy": [
+     184,
+     577.09
+    ],
+    "to_xy": [
+     182,
+     709.06
+    ]
+   },
+   {
+    "key": "main:1:next:2",
+    "kind": "position→next position",
+    "from": "Four of Cups",
+    "from_is_clarifier": false,
+    "to": "Three of Pentacles, reversed",
+    "from_xy": [
+     182,
+     990.06
+    ],
+    "to_xy": [
+     182,
+     1214.16
+    ]
+   },
+   {
+    "key": "main:2:next:3",
+    "kind": "position→next position",
+    "from": "Three of Pentacles, reversed",
+    "from_is_clarifier": false,
+    "to": "The Sun",
+    "from_xy": [
+     182,
+     1495.16
+    ],
+    "to_xy": [
+     182,
+     1719.25
+    ]
+   },
+   {
+    "key": "main:3:next:4",
+    "kind": "position→next position",
+    "from": "Knight of Swords, clarifier layer 1",
+    "from_is_clarifier": true,
+    "to": "The World, reversed",
+    "from_xy": [
+     184,
+     2250.25
+    ],
+    "to_xy": [
+     182,
+     2382.22
+    ]
+   },
+   {
+    "key": "main:4:next:5",
+    "kind": "position→next position",
+    "from": "The Lovers, reversed, clarifier layer 2",
+    "from_is_clarifier": true,
+    "to": "Two of Cups, reversed",
+    "from_xy": [
+     238.5,
+     2913.22
+    ],
+    "to_xy": [
+     182,
+     3045.19
+    ]
+   },
+   {
+    "key": "main:5:next:6",
+    "kind": "position→next position",
+    "from": "Two of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Five of Cups, reversed",
+    "from_xy": [
+     182,
+     3326.19
+    ],
+    "to_xy": [
+     182,
+     3550.28
+    ]
+   },
+   {
+    "key": "main:6:next:7",
+    "kind": "position→next position",
+    "from": "Five of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Six of Cups, reversed",
+    "from_xy": [
+     182,
+     3831.28
+    ],
+    "to_xy": [
+     182,
+     4055.38
+    ]
+   },
+   {
+    "key": "main:7:next:8",
+    "kind": "position→next position",
+    "from": "Six of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Five of Pentacles, reversed",
+    "from_xy": [
+     182,
+     4336.38
+    ],
+    "to_xy": [
+     182,
+     4560.47
+    ]
+   },
+   {
+    "key": "main:8:next:9",
+    "kind": "position→next position",
+    "from": "Five of Pentacles, reversed",
+    "from_is_clarifier": false,
+    "to": "Two of Wands, reversed",
+    "from_xy": [
+     182,
+     4841.47
+    ],
+    "to_xy": [
+     182,
+     5065.56
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 182,
+     "y": 0,
+     "w": 0,
+     "h": 46.1
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 84,
+     "y": 41.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 48.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": 128.5,
+     "y": 420.1,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 133.5,
+     "y": 425.1,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:1",
+    "bbox": {
+     "x": 84,
+     "y": 704.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 711.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:2",
+    "bbox": {
+     "x": 84,
+     "y": 1209.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 1216.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:3",
+    "bbox": {
+     "x": 84,
+     "y": 1714.3,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 1721.3,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:3:clarifier:1",
+    "bbox": {
+     "x": 128.5,
+     "y": 2093.3,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 133.5,
+     "y": 2098.3,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:4",
+    "bbox": {
+     "x": 84,
+     "y": 2377.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 2384.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:4:clarifier:1",
+    "bbox": {
+     "x": 74,
+     "y": 2756.2,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 79,
+     "y": 2761.2,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:4:clarifier:2",
+    "bbox": {
+     "x": 183,
+     "y": 2756.2,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 188,
+     "y": 2761.2,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:5",
+    "bbox": {
+     "x": 84,
+     "y": 3040.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 3047.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:6",
+    "bbox": {
+     "x": 84,
+     "y": 3545.3,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 3552.3,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:7",
+    "bbox": {
+     "x": 84,
+     "y": 4050.4,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 4057.4,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:8",
+    "bbox": {
+     "x": 84,
+     "y": 4555.5,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 4562.5,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:9",
+    "bbox": {
+     "x": 84,
+     "y": 5060.6,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 91,
+     "y": 5067.6,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "celtic",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 50,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 1,
+     "cardId": 39,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 2,
+     "cardId": 66,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 3,
+     "cardId": 19,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 4,
+     "cardId": 21,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 5,
+     "cardId": 37,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 6,
+     "cardId": 40,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 7,
+     "cardId": 41,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 8,
+     "cardId": 68,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 9,
+     "cardId": 23,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "1": [],
+    "2": [],
+    "3": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "4": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     },
+     {
+      "slot": 2,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": []
+   }
+  },
+  "page_scroll_width": 390,
+  "viewport": 390
+ },
+ "mobile_360": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "Ace of Swords, reversed",
+    "to": "Nine of Pentacles, clarifier layer 1",
+    "from_xy": [
+     167,
+     327.09
+    ],
+    "to_xy": [
+     169,
+     425.09
+    ]
+   },
+   {
+    "key": "main:3:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The Sun",
+    "to": "Knight of Swords, clarifier layer 1",
+    "from_xy": [
+     167,
+     2000.25
+    ],
+    "to_xy": [
+     169,
+     2098.25
+    ]
+   },
+   {
+    "key": "main:4:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The World, reversed",
+    "to": "The Hanged Man, reversed, clarifier layer 1",
+    "from_xy": [
+     167,
+     2663.22
+    ],
+    "to_xy": [
+     114.5,
+     2761.22
+    ]
+   },
+   {
+    "key": "main:4:clarifier:2",
+    "kind": "parent→clarifier",
+    "from": "The World, reversed",
+    "to": "The Lovers, reversed, clarifier layer 2",
+    "from_xy": [
+     167,
+     2663.22
+    ],
+    "to_xy": [
+     223.5,
+     2761.22
+    ]
+   },
+   {
+    "key": "main:0:next:1",
+    "kind": "position→next position",
+    "from": "Nine of Pentacles, clarifier layer 1",
+    "from_is_clarifier": true,
+    "to": "Four of Cups",
+    "from_xy": [
+     169,
+     577.09
+    ],
+    "to_xy": [
+     167,
+     709.06
+    ]
+   },
+   {
+    "key": "main:1:next:2",
+    "kind": "position→next position",
+    "from": "Four of Cups",
+    "from_is_clarifier": false,
+    "to": "Three of Pentacles, reversed",
+    "from_xy": [
+     167,
+     990.06
+    ],
+    "to_xy": [
+     167,
+     1214.16
+    ]
+   },
+   {
+    "key": "main:2:next:3",
+    "kind": "position→next position",
+    "from": "Three of Pentacles, reversed",
+    "from_is_clarifier": false,
+    "to": "The Sun",
+    "from_xy": [
+     167,
+     1495.16
+    ],
+    "to_xy": [
+     167,
+     1719.25
+    ]
+   },
+   {
+    "key": "main:3:next:4",
+    "kind": "position→next position",
+    "from": "Knight of Swords, clarifier layer 1",
+    "from_is_clarifier": true,
+    "to": "The World, reversed",
+    "from_xy": [
+     169,
+     2250.25
+    ],
+    "to_xy": [
+     167,
+     2382.22
+    ]
+   },
+   {
+    "key": "main:4:next:5",
+    "kind": "position→next position",
+    "from": "The Lovers, reversed, clarifier layer 2",
+    "from_is_clarifier": true,
+    "to": "Two of Cups, reversed",
+    "from_xy": [
+     223.5,
+     2913.22
+    ],
+    "to_xy": [
+     167,
+     3045.19
+    ]
+   },
+   {
+    "key": "main:5:next:6",
+    "kind": "position→next position",
+    "from": "Two of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Five of Cups, reversed",
+    "from_xy": [
+     167,
+     3326.19
+    ],
+    "to_xy": [
+     167,
+     3550.28
+    ]
+   },
+   {
+    "key": "main:6:next:7",
+    "kind": "position→next position",
+    "from": "Five of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Six of Cups, reversed",
+    "from_xy": [
+     167,
+     3831.28
+    ],
+    "to_xy": [
+     167,
+     4055.38
+    ]
+   },
+   {
+    "key": "main:7:next:8",
+    "kind": "position→next position",
+    "from": "Six of Cups, reversed",
+    "from_is_clarifier": false,
+    "to": "Five of Pentacles, reversed",
+    "from_xy": [
+     167,
+     4336.38
+    ],
+    "to_xy": [
+     167,
+     4560.47
+    ]
+   },
+   {
+    "key": "main:8:next:9",
+    "kind": "position→next position",
+    "from": "Five of Pentacles, reversed",
+    "from_is_clarifier": false,
+    "to": "Two of Wands, reversed",
+    "from_xy": [
+     167,
+     4841.47
+    ],
+    "to_xy": [
+     167,
+     5065.56
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 167,
+     "y": 0,
+     "w": 0,
+     "h": 46.1
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 69,
+     "y": 41.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 48.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": 113.5,
+     "y": 420.1,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 118.5,
+     "y": 425.1,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:1",
+    "bbox": {
+     "x": 69,
+     "y": 704.1,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 711.1,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:2",
+    "bbox": {
+     "x": 69,
+     "y": 1209.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 1216.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:3",
+    "bbox": {
+     "x": 69,
+     "y": 1714.3,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 1721.3,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:3:clarifier:1",
+    "bbox": {
+     "x": 113.5,
+     "y": 2093.3,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 118.5,
+     "y": 2098.3,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:4",
+    "bbox": {
+     "x": 69,
+     "y": 2377.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 2384.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:4:clarifier:1",
+    "bbox": {
+     "x": 59,
+     "y": 2756.2,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 64,
+     "y": 2761.2,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:4:clarifier:2",
+    "bbox": {
+     "x": 168,
+     "y": 2756.2,
+     "w": 111,
+     "h": 162
+    },
+    "picture": {
+     "x": 173,
+     "y": 2761.2,
+     "w": 101,
+     "h": 151.5
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5,
+     "bottom": 5.5
+    }
+   },
+   {
+    "ring": "main:5",
+    "bbox": {
+     "x": 69,
+     "y": 3040.2,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 3047.2,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:6",
+    "bbox": {
+     "x": 69,
+     "y": 3545.3,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 3552.3,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:7",
+    "bbox": {
+     "x": 69,
+     "y": 4050.4,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 4057.4,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:8",
+    "bbox": {
+     "x": 69,
+     "y": 4555.5,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 4562.5,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:9",
+    "bbox": {
+     "x": 69,
+     "y": 5060.6,
+     "w": 196,
+     "h": 291
+    },
+    "picture": {
+     "x": 76,
+     "y": 5067.6,
+     "w": 186,
+     "h": 281
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3,
+     "bottom": 3
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "celtic",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 50,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 1,
+     "cardId": 39,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 2,
+     "cardId": 66,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 3,
+     "cardId": 19,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 4,
+     "cardId": 21,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 5,
+     "cardId": 37,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 6,
+     "cardId": 40,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 7,
+     "cardId": 41,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 8,
+     "cardId": 68,
+     "orientation": "upright",
+     "revealed": true
+    },
+    {
+     "positionIndex": 9,
+     "cardId": 23,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "1": [],
+    "2": [],
+    "3": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "4": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     },
+     {
+      "slot": 2,
+      "cardId": null,
+      "revealed": true
+     }
+    ],
+    "5": [],
+    "6": [],
+    "7": [],
+    "8": [],
+    "9": []
+   }
+  },
+  "page_scroll_width": 360,
+  "viewport": 360
+ }
+}

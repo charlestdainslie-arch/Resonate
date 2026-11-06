@@ -1,0 +1,102 @@
+{
+ "spreadId": "three",
+ "spreadName": "Past · Present · Future",
+ "drawnAt": "2026-11-06T01:00:00.529Z",
+ "reversalsIncluded": true,
+ "positions": [
+  {
+   "position": 1,
+   "label": "Past",
+   "card": {
+    "id": 37,
+    "name": "Two of Cups",
+    "arcana": "Minor",
+    "orientation": "upright",
+    "display": "Two of Cups"
+   },
+   "clarifier1": {
+    "id": 1,
+    "name": "The Magician",
+    "arcana": "Major",
+    "orientation": "reversed",
+    "display": "The Magician, reversed"
+   },
+   "clarifier2": {
+    "id": 58,
+    "name": "Nine of Swords",
+    "arcana": "Minor",
+    "orientation": "reversed",
+    "display": "Nine of Swords, reversed"
+   }
+  },
+  {
+   "position": 2,
+   "label": "Present",
+   "card": {
+    "id": 62,
+    "name": "Queen of Swords",
+    "arcana": "Minor",
+    "orientation": "reversed",
+    "display": "Queen of Swords, reversed"
+   },
+   "clarifier1": null,
+   "clarifier2": null
+  },
+  {
+   "position": 3,
+   "label": "Future",
+   "card": {
+    "id": 77,
+    "name": "King of Pentacles",
+    "arcana": "Minor",
+    "orientation": "upright",
+    "display": "King of Pentacles"
+   },
+   "clarifier1": null,
+   "clarifier2": null
+  }
+ ],
+ "ruleCheck": [],
+ "seed": 11,
+ "sequence": [
+  {
+   "action": "seeker's choice: \"+ Clarify this card\" on position 1",
+   "before": {
+    "first": [],
+    "second": []
+   },
+   "after": {
+    "first": [
+     1,
+     null,
+     null
+    ],
+    "second": []
+   }
+  },
+  {
+   "action": "rule: Clarifier 1 is Major Arcana → Clarifier 2",
+   "button": "Draw Second Clarifier",
+   "before": {
+    "first": [
+     1,
+     null,
+     null
+    ],
+    "second": []
+   },
+   "after": {
+    "first": [
+     1,
+     null,
+     null
+    ],
+    "second": [
+     58,
+     null,
+     null
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,287 @@
+{
+ "desktop_1280": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The Fool",
+    "to": "Seven of Wands, reversed, clarifier layer 1",
+    "from_xy": [
+     220.66,
+     237.19
+    ],
+    "to_xy": [
+     199,
+     239.19
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 318.2,
+     "y": 0,
+     "w": 0,
+     "h": 90.2
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 215.7,
+     "y": 85.2,
+     "w": 205,
+     "h": 304
+    },
+    "picture": {
+     "x": 222.7,
+     "y": 92.2,
+     "w": 194.7,
+     "h": 294
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3.3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": -5,
+     "y": 85.2,
+     "w": 209,
+     "h": 308
+    },
+    "picture": {
+     "x": 0,
+     "y": 90.2,
+     "w": 198.7,
+     "h": 298
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5.3,
+     "bottom": 5
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "guidance",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 0,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ]
+   }
+  },
+  "page_scroll_width": 1280,
+  "viewport": 1280
+ },
+ "mobile_390": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The Fool",
+    "to": "Seven of Wands, reversed, clarifier layer 1",
+    "from_xy": [
+     124.66,
+     174.59
+    ],
+    "to_xy": [
+     119,
+     176.59
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 182.2,
+     "y": 0,
+     "w": 0,
+     "h": 87.6
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 119.7,
+     "y": 82.6,
+     "w": 125,
+     "h": 184
+    },
+    "picture": {
+     "x": 126.7,
+     "y": 89.6,
+     "w": 114.7,
+     "h": 174
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3.3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": -5,
+     "y": 82.6,
+     "w": 129,
+     "h": 188
+    },
+    "picture": {
+     "x": 0,
+     "y": 87.6,
+     "w": 118.7,
+     "h": 178
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5.3,
+     "bottom": 5
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "guidance",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 0,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ]
+   }
+  },
+  "page_scroll_width": 390,
+  "viewport": 390
+ },
+ "mobile_360": {
+  "strands": [
+   {
+    "key": "main:0:clarifier:1",
+    "kind": "parent→clarifier",
+    "from": "The Fool",
+    "to": "Seven of Wands, reversed, clarifier layer 1",
+    "from_xy": [
+     114.66,
+     167.09
+    ],
+    "to_xy": [
+     109,
+     169.09
+    ]
+   }
+  ],
+  "rings": [
+   {
+    "ring": "enter",
+    "bbox": {
+     "x": 167.2,
+     "y": 0,
+     "w": 0,
+     "h": 87.6
+    },
+    "picture": null,
+    "margin_px": null
+   },
+   {
+    "ring": "main:0",
+    "bbox": {
+     "x": 109.7,
+     "y": 82.6,
+     "w": 115,
+     "h": 169
+    },
+    "picture": {
+     "x": 116.7,
+     "y": 89.6,
+     "w": 104.7,
+     "h": 159
+    },
+    "margin_px": {
+     "left": 7,
+     "top": 7,
+     "right": 3.3,
+     "bottom": 3
+    }
+   },
+   {
+    "ring": "main:0:clarifier:1",
+    "bbox": {
+     "x": -5,
+     "y": 82.6,
+     "w": 119,
+     "h": 173
+    },
+    "picture": {
+     "x": 0,
+     "y": 87.6,
+     "w": 108.7,
+     "h": 163
+    },
+    "margin_px": {
+     "left": 5,
+     "top": 5,
+     "right": 5.3,
+     "bottom": 5
+    }
+   }
+  ],
+  "connector_state": {
+   "spreadId": "guidance",
+   "mainCards": [
+    {
+     "positionIndex": 0,
+     "cardId": 0,
+     "orientation": "upright",
+     "revealed": true
+    }
+   ],
+   "clarifiers": {
+    "0": [
+     {
+      "slot": 1,
+      "cardId": null,
+      "revealed": true
+     }
+    ]
+   }
+  },
+  "page_scroll_width": 360,
+  "viewport": 360
+ }
+}

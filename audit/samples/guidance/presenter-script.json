@@ -1,0 +1,203 @@
+[
+ {
+  "chapter": "intro",
+  "kind": "frame",
+  "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-open",
+    "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+   }
+  ]
+ },
+ {
+  "chapter": "intro",
+  "kind": "label",
+  "text": "Tonight: your One-card Guidance.",
+  "show": [],
+  "clips": [
+   {
+    "id": "title-guidance",
+    "text": "Tonight: your One-card Guidance."
+   }
+  ]
+ },
+ {
+  "chapter": "intro",
+  "kind": "frame",
+  "text": "I'll keep it short. The full reading stays below.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-short",
+    "text": "I'll keep it short. The full reading stays below."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "frame",
+  "text": "First, your card.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-card",
+    "text": "First, your card."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "The Fool.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "name-0",
+    "text": "The Fool."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Your next step is to work consciously with a willingness to begin before every answer is known.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "lens-guidance-0-0",
+    "text": "Your next step is to work consciously with a willingness to begin before every answer is known."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "meaning-0",
+    "text": "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "frame",
+  "text": "Now, your first clarifier.",
+  "show": [
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "frame-c1",
+    "text": "Now, your first clarifier."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "label",
+  "text": "Clarifier 1: Seven of Wands, reversed.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-1",
+    "text": "Clarifier 1:"
+   },
+   {
+    "id": "name-28-r",
+    "text": "Seven of Wands, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "quote",
+  "text": "Constant defence may be draining you or obscuring a reasonable alternative.",
+  "show": [
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-28-r",
+    "text": "Constant defence may be draining you or obscuring a reasonable alternative."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "frame",
+  "text": "Before I go, one question to carry with you.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "frame-ask",
+    "text": "Before I go, one question to carry with you."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "quote",
+  "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "thread-0",
+    "text": "Which part speaks to your present circumstances, and what choice might help you respond?"
+   },
+   {
+    "id": "thread-1",
+    "text": "This is a perspective, not a fixed prediction."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "quote",
+  "text": "Take what resonates, and leave the rest.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "thread-resonance",
+    "text": "Take what resonates, and leave the rest."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "frame",
+  "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "frame-close",
+    "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+   }
+  ]
+ }
+]

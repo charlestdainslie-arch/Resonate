@@ -1,0 +1,880 @@
+[
+ {
+  "chapter": "intro",
+  "kind": "frame",
+  "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-open",
+    "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+   }
+  ]
+ },
+ {
+  "chapter": "intro",
+  "kind": "label",
+  "text": "Tonight: your Celtic Cross.",
+  "show": [],
+  "clips": [
+   {
+    "id": "title-celtic",
+    "text": "Tonight: your Celtic Cross."
+   }
+  ]
+ },
+ {
+  "chapter": "intro",
+  "kind": "frame",
+  "text": "I'll keep it short. The full reading stays below.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-short",
+    "text": "I'll keep it short. The full reading stays below."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "frame",
+  "text": "Let's go through your cards, one position at a time.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-cards",
+    "text": "Let's go through your cards, one position at a time."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Present Situation: Ace of Swords, reversed.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-0",
+    "text": "Present Situation:"
+   },
+   {
+    "id": "name-50-r",
+    "text": "Ace of Swords, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, confusion, harshness, unclear thinking is a lens for the central situation as you experience it now.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-0-50-r",
+    "text": "Here, confusion, harshness, unclear thinking is a lens for the central situation as you experience it now."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "An idea may be incomplete or language may be sharper than the situation requires.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "meaning-50-r",
+    "text": "An idea may be incomplete or language may be sharper than the situation requires."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Crossing Challenge: Four of Cups.",
+  "show": [
+   "p1"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-1",
+    "text": "Crossing Challenge:"
+   },
+   {
+    "id": "name-39",
+    "text": "Four of Cups."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "The tension to explore is contemplation, reassessment, disengagement.",
+  "show": [
+   "p1"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-1-39",
+    "text": "The tension to explore is contemplation, reassessment, disengagement."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "A pause in interest may be asking you to examine what you actually want.",
+  "show": [
+   "p1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-39",
+    "text": "A pause in interest may be asking you to examine what you actually want."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Foundation: Three of Pentacles, reversed.",
+  "show": [
+   "p2"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-2",
+    "text": "Foundation:"
+   },
+   {
+    "id": "name-66-r",
+    "text": "Three of Pentacles, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, poor coordination, undervalued work, skill gaps is a lens for the deeper roots beneath the situation.",
+  "show": [
+   "p2"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-2-66-r",
+    "text": "Here, poor coordination, undervalued work, skill gaps is a lens for the deeper roots beneath the situation."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "The work may be suffering from unclear roles or dismissed expertise.",
+  "show": [
+   "p2"
+  ],
+  "clips": [
+   {
+    "id": "meaning-66-r",
+    "text": "The work may be suffering from unclear roles or dismissed expertise."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Recent Past: The Sun.",
+  "show": [
+   "p3"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-3",
+    "text": "Recent Past:"
+   },
+   {
+    "id": "name-19",
+    "text": "The Sun."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "This may describe how vitality, joy, clarity shaped the path to your current situation.",
+  "show": [
+   "p3"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-3-19",
+    "text": "This may describe how vitality, joy, clarity shaped the path to your current situation."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Clarity, warmth or a shared success can restore your energy.",
+  "show": [
+   "p3"
+  ],
+  "clips": [
+   {
+    "id": "meaning-19",
+    "text": "Clarity, warmth or a shared success can restore your energy."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Conscious Focus: The World, reversed.",
+  "show": [
+   "p4"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-4",
+    "text": "Conscious Focus:"
+   },
+   {
+    "id": "name-21-r",
+    "text": "The World, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, unfinished work, delayed closure, fragmentation is a lens for your hopes, intentions or conscious priorities.",
+  "show": [
+   "p4"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-4-21-r",
+    "text": "Here, unfinished work, delayed closure, fragmentation is a lens for your hopes, intentions or conscious priorities."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Something remains to be integrated before a chapter can close.",
+  "show": [
+   "p4"
+  ],
+  "clips": [
+   {
+    "id": "meaning-21-r",
+    "text": "Something remains to be integrated before a chapter can close."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Near Future: Two of Cups, reversed.",
+  "show": [
+   "p5"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-5",
+    "text": "Near Future:"
+   },
+   {
+    "id": "name-37-r",
+    "text": "Two of Cups, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "This suggests a possible development involving imbalance, disconnection, broken trust.",
+  "show": [
+   "p5"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-5-37-r",
+    "text": "This suggests a possible development involving imbalance, disconnection, broken trust."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "A relationship or agreement may be unequal or out of tune.",
+  "show": [
+   "p5"
+  ],
+  "clips": [
+   {
+    "id": "meaning-37-r",
+    "text": "A relationship or agreement may be unequal or out of tune."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Your Approach: Five of Cups, reversed.",
+  "show": [
+   "p6"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-6",
+    "text": "Your Approach:"
+   },
+   {
+    "id": "name-40-r",
+    "text": "Five of Cups, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, acceptance, lingering regret, reconnection is a lens for the stance you bring and the choices within your control.",
+  "show": [
+   "p6"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-6-40-r",
+    "text": "Here, acceptance, lingering regret, reconnection is a lens for the stance you bring and the choices within your control."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Acceptance may be growing, or regret may be repeating without bringing new understanding.",
+  "show": [
+   "p6"
+  ],
+  "clips": [
+   {
+    "id": "meaning-40-r",
+    "text": "Acceptance may be growing, or regret may be repeating without bringing new understanding."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Surrounding Influences: Six of Cups, reversed.",
+  "show": [
+   "p7"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-7",
+    "text": "Surrounding Influences:"
+   },
+   {
+    "id": "name-41-r",
+    "text": "Six of Cups, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, idealised past, growing beyond, old patterns is a lens for the environment and outside influences around you.",
+  "show": [
+   "p7"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-7-41-r",
+    "text": "Here, idealised past, growing beyond, old patterns is a lens for the environment and outside influences around you."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Nostalgia may be editing the past or an old role may no longer fit.",
+  "show": [
+   "p7"
+  ],
+  "clips": [
+   {
+    "id": "meaning-41-r",
+    "text": "Nostalgia may be editing the past or an old role may no longer fit."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Hopes and Fears: Five of Pentacles, reversed.",
+  "show": [
+   "p8"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-8",
+    "text": "Hopes and Fears:"
+   },
+   {
+    "id": "name-68-r",
+    "text": "Five of Pentacles, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, help, recovery, lingering scarcity is a lens for the desires and worries colouring your view.",
+  "show": [
+   "p8"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-8-68-r",
+    "text": "Here, help, recovery, lingering scarcity is a lens for the desires and worries colouring your view."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Support or recovery may be becoming available, though a sense of exclusion can persist.",
+  "show": [
+   "p8"
+  ],
+  "clips": [
+   {
+    "id": "meaning-68-r",
+    "text": "Support or recovery may be becoming available, though a sense of exclusion can persist."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Potential Outcome: Two of Wands, reversed.",
+  "show": [
+   "p9"
+  ],
+  "clips": [
+   {
+    "id": "pos-celtic-9",
+    "text": "Potential Outcome:"
+   },
+   {
+    "id": "name-23-r",
+    "text": "Two of Wands, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, fear of expansion, indecision, small horizons is a lens for a possible outcome if the present pattern continues, with room for your choices.",
+  "show": [
+   "p9"
+  ],
+  "clips": [
+   {
+    "id": "lens-celtic-9-23-r",
+    "text": "Here, fear of expansion, indecision, small horizons is a lens for a possible outcome if the present pattern continues, with room for your choices."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty.",
+  "show": [
+   "p9"
+  ],
+  "clips": [
+   {
+    "id": "meaning-23-r",
+    "text": "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "frame",
+  "text": "Now, your first clarifiers, one for each position.",
+  "show": [
+   "c0-1",
+   "c1-1",
+   "c2-1",
+   "c3-1",
+   "c4-1",
+   "c5-1",
+   "c6-1",
+   "c7-1",
+   "c8-1",
+   "c9-1"
+  ],
+  "clips": [
+   {
+    "id": "frame-c1s",
+    "text": "Now, your first clarifiers, one for each position."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "label",
+  "text": "Clarifier 1 · Present Situation: Nine of Pentacles.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-1",
+    "text": "Clarifier 1,"
+   },
+   {
+    "id": "pos-celtic-0",
+    "text": "Present Situation:"
+   },
+   {
+    "id": "name-72",
+    "text": "Nine of Pentacles."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "quote",
+  "text": "Recognise the independence or comfort that patient work has made possible.",
+  "show": [
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-72",
+    "text": "Recognise the independence or comfort that patient work has made possible."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "label",
+  "text": "Clarifier 1 · Recent Past: Knight of Swords.",
+  "show": [
+   "p3",
+   "c3-1"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-1",
+    "text": "Clarifier 1,"
+   },
+   {
+    "id": "pos-celtic-3",
+    "text": "Recent Past:"
+   },
+   {
+    "id": "name-61",
+    "text": "Knight of Swords."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "quote",
+  "text": "A clear aim may call for a direct response.",
+  "show": [
+   "c3-1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-61",
+    "text": "A clear aim may call for a direct response."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "label",
+  "text": "Clarifier 1 · Conscious Focus: The Hanged Man, reversed.",
+  "show": [
+   "p4",
+   "c4-1"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-1",
+    "text": "Clarifier 1,"
+   },
+   {
+    "id": "pos-celtic-4",
+    "text": "Conscious Focus:"
+   },
+   {
+    "id": "name-12-r",
+    "text": "The Hanged Man, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "quote",
+  "text": "Waiting may have lost its purpose, or a sacrifice may no longer serve anyone.",
+  "show": [
+   "c4-1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-12-r",
+    "text": "Waiting may have lost its purpose, or a sacrifice may no longer serve anyone."
+   }
+  ]
+ },
+ {
+  "chapter": "c2",
+  "kind": "frame",
+  "text": "And your second clarifiers.",
+  "show": [
+   "c0-2",
+   "c1-2",
+   "c2-2",
+   "c3-2",
+   "c4-2",
+   "c5-2",
+   "c6-2",
+   "c7-2",
+   "c8-2",
+   "c9-2"
+  ],
+  "clips": [
+   {
+    "id": "frame-c2s",
+    "text": "And your second clarifiers."
+   }
+  ]
+ },
+ {
+  "chapter": "c2",
+  "kind": "label",
+  "text": "Clarifier 2 · Conscious Focus: The Lovers, reversed.",
+  "show": [
+   "p4",
+   "c4-2"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-2",
+    "text": "Clarifier 2,"
+   },
+   {
+    "id": "pos-celtic-4",
+    "text": "Conscious Focus:"
+   },
+   {
+    "id": "name-6-r",
+    "text": "The Lovers, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "c2",
+  "kind": "quote",
+  "text": "Attraction, duty and personal values may be pulling in different directions.",
+  "show": [
+   "c4-2"
+  ],
+  "clips": [
+   {
+    "id": "meaning-6-r",
+    "text": "Attraction, duty and personal values may be pulling in different directions."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "frame",
+  "text": "Before I go, one question to carry with you.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2",
+   "p3",
+   "c3-1",
+   "c3-2",
+   "p4",
+   "c4-1",
+   "c4-2",
+   "p5",
+   "c5-1",
+   "c5-2",
+   "p6",
+   "c6-1",
+   "c6-2",
+   "p7",
+   "c7-1",
+   "c7-2",
+   "p8",
+   "c8-1",
+   "c8-2",
+   "p9",
+   "c9-1",
+   "c9-2"
+  ],
+  "clips": [
+   {
+    "id": "frame-ask",
+    "text": "Before I go, one question to carry with you."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "quote",
+  "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2",
+   "p3",
+   "c3-1",
+   "c3-2",
+   "p4",
+   "c4-1",
+   "c4-2",
+   "p5",
+   "c5-1",
+   "c5-2",
+   "p6",
+   "c6-1",
+   "c6-2",
+   "p7",
+   "c7-1",
+   "c7-2",
+   "p8",
+   "c8-1",
+   "c8-2",
+   "p9",
+   "c9-1",
+   "c9-2"
+  ],
+  "clips": [
+   {
+    "id": "thread-0",
+    "text": "Which part speaks to your present circumstances, and what choice might help you respond?"
+   },
+   {
+    "id": "thread-1",
+    "text": "This is a perspective, not a fixed prediction."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "quote",
+  "text": "Take what resonates, and leave the rest.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2",
+   "p3",
+   "c3-1",
+   "c3-2",
+   "p4",
+   "c4-1",
+   "c4-2",
+   "p5",
+   "c5-1",
+   "c5-2",
+   "p6",
+   "c6-1",
+   "c6-2",
+   "p7",
+   "c7-1",
+   "c7-2",
+   "p8",
+   "c8-1",
+   "c8-2",
+   "p9",
+   "c9-1",
+   "c9-2"
+  ],
+  "clips": [
+   {
+    "id": "thread-resonance",
+    "text": "Take what resonates, and leave the rest."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "frame",
+  "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2",
+   "p3",
+   "c3-1",
+   "c3-2",
+   "p4",
+   "c4-1",
+   "c4-2",
+   "p5",
+   "c5-1",
+   "c5-2",
+   "p6",
+   "c6-1",
+   "c6-2",
+   "p7",
+   "c7-1",
+   "c7-2",
+   "p8",
+   "c8-1",
+   "c8-2",
+   "p9",
+   "c9-1",
+   "c9-2"
+  ],
+  "clips": [
+   {
+    "id": "frame-close",
+    "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+   }
+  ]
+ }
+]

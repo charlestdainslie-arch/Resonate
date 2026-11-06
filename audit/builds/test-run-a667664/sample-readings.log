@@ -1,0 +1,126 @@
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+Warning: UnknownErrorException: Ensure that the `standardFontDataUrl` API parameter is provided.
+[
+ {
+  "spread": "guidance",
+  "seed": 7,
+  "cards": [
+   "The Fool",
+   "Eight of Swords, reversed"
+  ],
+  "sequence": [
+   "rule: Major Arcana base card → Clarifier 1"
+  ],
+  "all_cards_in_all_three": true,
+  "orientation_conflict": false,
+  "quotes": "5/5 written, 5/5 pdf",
+  "rule_violations": 0,
+  "errors": 1,
+  "rm": {
+   "strands": 1,
+   "rings": 3,
+   "running_animations": 0
+  },
+  "leftover": 0,
+  "overflow": {
+   "w390": false,
+   "w360": false
+  },
+  "strands": [
+   "The Fool → Eight of Swords, reversed, clarifier layer 1"
+  ]
+ },
+ {
+  "spread": "three",
+  "seed": 11,
+  "cards": [
+   "Two of Cups",
+   "Eight of Cups",
+   "Queen of Swords, reversed",
+   "King of Pentacles"
+  ],
+  "sequence": [
+   "seeker's choice: \"+ Clarify this card\" on position 1"
+  ],
+  "all_cards_in_all_three": true,
+  "orientation_conflict": false,
+  "quotes": "9/9 written, 9/9 pdf",
+  "rule_violations": 0,
+  "errors": 1,
+  "rm": {
+   "strands": 3,
+   "rings": 5,
+   "running_animations": 0
+  },
+  "leftover": 0,
+  "overflow": {
+   "w390": false,
+   "w360": false
+  },
+  "strands": [
+   "Eight of Cups, clarifier layer 1 → Queen of Swords, reversed",
+   "Queen of Swords, reversed → King of Pentacles",
+   "Two of Cups → Eight of Cups, clarifier layer 1"
+  ]
+ },
+ {
+  "spread": "celtic",
+  "seed": 3,
+  "cards": [
+   "Ace of Swords, reversed",
+   "Nine of Pentacles",
+   "Four of Cups",
+   "Three of Pentacles, reversed",
+   "The Sun",
+   "Judgement, reversed",
+   "Page of Swords, reversed",
+   "The World, reversed",
+   "Three of Swords",
+   "Two of Cups, reversed",
+   "Five of Cups, reversed",
+   "Six of Cups, reversed",
+   "Five of Pentacles, reversed",
+   "Two of Wands, reversed"
+  ],
+  "sequence": [
+   "rule: Major Arcana base card → Clarifier 1",
+   "rule: Clarifier 1 is Major Arcana → Clarifier 2",
+   "seeker's choice: \"+ Clarify this card\" on position 1"
+  ],
+  "all_cards_in_all_three": true,
+  "orientation_conflict": false,
+  "quotes": "26/26 written, 26/26 pdf",
+  "rule_violations": 0,
+  "errors": 1,
+  "rm": {
+   "strands": 13,
+   "rings": 15,
+   "running_animations": 0
+  },
+  "leftover": 0,
+  "overflow": {
+   "w390": false,
+   "w360": false
+  },
+  "strands": [
+   "Ace of Swords, reversed → Nine of Pentacles, clarifier layer 1",
+   "The Sun → Judgement, reversed, clarifier layer 1",
+   "The Sun → Page of Swords, reversed, clarifier layer 2",
+   "The World, reversed → Three of Swords, clarifier layer 1",
+   "Nine of Pentacles, clarifier layer 1 → Four of Cups",
+   "Four of Cups → Three of Pentacles, reversed",
+   "Three of Pentacles, reversed → The Sun",
+   "Page of Swords, reversed, clarifier layer 2 → The World, reversed",
+   "Three of Swords, clarifier layer 1 → Two of Cups, reversed",
+   "Two of Cups, reversed → Five of Cups, reversed",
+   "Five of Cups, reversed → Six of Cups, reversed",
+   "Six of Cups, reversed → Five of Pentacles, reversed",
+   "Five of Pentacles, reversed → Two of Wands, reversed"
+  ]
+ }
+]
+samples-exit=0

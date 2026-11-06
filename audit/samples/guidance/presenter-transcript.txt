@@ -1,0 +1,14 @@
+01 [intro/frame] Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.
+02 [intro/label] Tonight: your One-card Guidance.
+03 [intro/frame] I'll keep it short. The full reading stays below.
+04 [cards/frame] First, your card.
+05 [cards/label] The Fool.
+06 [cards/quote] Your next step is to work consciously with a willingness to begin before every answer is known.
+07 [cards/quote] The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first.
+08 [c1/frame] Now, your first clarifier.
+09 [c1/label] Clarifier 1: Seven of Wands, reversed.
+10 [c1/quote] Constant defence may be draining you or obscuring a reasonable alternative.
+11 [close/frame] Before I go, one question to carry with you.
+12 [close/quote] Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.
+13 [close/quote] Take what resonates, and leave the rest.
+14 [close/frame] That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.

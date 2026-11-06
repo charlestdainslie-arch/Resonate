@@ -75,7 +75,7 @@ async function threadGeometry(page) {
     const rings = [...(svg ? svg.querySelectorAll('[data-gtc-ring]') : [])].map(g => {
       const ring = g.getAttribute('data-gtc-ring'); const p = g.querySelector('path'); const bb = p ? p.getBBox() : null;
       let el = null; let m = /^main:(\d+)$/.exec(ring); if (m) el = mainEl(+m[1])?.querySelector('.reading-card-front img');
-      m = /clarifier:(\d+):(\d+)$/.exec(ring) || /^(\d+):(\d+)$/.exec(ring); if (!el && m) el = clarEl(+m[1], +m[2])?.querySelector(':scope > img');
+      m = /^main:(\d+):clarifier:(\d+)$/.exec(ring); if (!el && m) el = clarEl(+m[1], +m[2])?.querySelector(':scope > img');
       let pic = null; if (el && base) { const r = el.getBoundingClientRect(); pic = { x: r.left - base.left, y: r.top - base.top, w: r.width, h: r.height }; }
       return { ring, bbox: bb && { x: +bb.x.toFixed(1), y: +bb.y.toFixed(1), w: +bb.width.toFixed(1), h: +bb.height.toFixed(1) }, picture: pic && { x: +pic.x.toFixed(1), y: +pic.y.toFixed(1), w: +pic.w.toFixed(1), h: +pic.h.toFixed(1) },
         margin_px: bb && pic ? { left: +(pic.x - bb.x).toFixed(1), top: +(pic.y - bb.y).toFixed(1), right: +((bb.x + bb.width) - (pic.x + pic.w)).toFixed(1), bottom: +((bb.y + bb.height) - (pic.y + pic.h)).toFixed(1) } : null };
@@ -94,7 +94,15 @@ async function threadGeometry(page) {
     const dir = path.join(OUT, spread); fs.mkdirSync(dir, { recursive: true });
     const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 }, locale: 'en-AU', timezoneId: 'Australia/Sydney', acceptDownloads: true });
     await ctx.addInitScript(([seed, start]) => {
-      let s = seed; Math.random = () => ((s = (s * 1103515245 + 12345) % 2147483648) / 2147483648);
+      // Draws use a seeded stream. The Golden Thread's sparkles also call Math.random on every animation
+      // frame, and the number of frames varies run to run, so anything running inside requestAnimationFrame
+      // gets a separate stream; otherwise clarifier draws would not reproduce from the seed.
+      let s = seed, f = 99991, inFrame = 0;
+      const seeded = () => ((s = (s * 1103515245 + 12345) % 2147483648) / 2147483648);
+      const frames = () => ((f = (f * 1103515245 + 12345) % 2147483648) / 2147483648);
+      Math.random = () => (inFrame ? frames() : seeded());
+      const raf = window.requestAnimationFrame.bind(window);
+      window.requestAnimationFrame = cb => raf(t => { inFrame++; try { return cb(t); } finally { inFrame--; } });
       const real = Date, t0 = real.now();
       const now = () => start + (real.now() - t0);
       function D(...a) { return a.length ? new real(...a) : new real(now()); }

@@ -1,0 +1,284 @@
+{
+ "cards_checked": 14,
+ "all_cards_in_all_three": true,
+ "any_orientation_conflict": false,
+ "presenter_quotes": 26,
+ "presenter_quotes_verbatim_in_written": 26,
+ "presenter_quotes_verbatim_in_pdf": 26,
+ "clarifier_rule_violations": [],
+ "card_checks": [
+  {
+   "card": "Ace of Swords, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Nine of Pentacles",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Four of Cups",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Three of Pentacles, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "The Sun",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Knight of Swords",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "The World, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "The Hanged Man, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "The Lovers, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Two of Cups, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Five of Cups, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Six of Cups, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Five of Pentacles, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Two of Wands, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  }
+ ],
+ "quote_checks": [
+  {
+   "text": "Here, confusion, harshness, unclear thinking is a lens for the central situation as you experience it now.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "An idea may be incomplete or language may be sharper than the situation requires.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "The tension to explore is contemplation, reassessment, disengagement.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "A pause in interest may be asking you to examine what you actually want.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, poor coordination, undervalued work, skill gaps is a lens for the deeper roots beneath the situation.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "The work may be suffering from unclear roles or dismissed expertise.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "This may describe how vitality, joy, clarity shaped the path to your current situation.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Clarity, warmth or a shared success can restore your energy.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, unfinished work, delayed closure, fragmentation is a lens for your hopes, intentions or conscious priorities.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Something remains to be integrated before a chapter can close.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "This suggests a possible development involving imbalance, disconnection, broken trust.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "A relationship or agreement may be unequal or out of tune.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, acceptance, lingering regret, reconnection is a lens for the stance you bring and the choices within your control.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Acceptance may be growing, or regret may be repeating without bringing new understanding.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, idealised past, growing beyond, old patterns is a lens for the environment and outside influences around you.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Nostalgia may be editing the past or an old role may no longer fit.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, help, recovery, lingering scarcity is a lens for the desires and worries colouring your view.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Support or recovery may be becoming available, though a sense of exclusion can persist.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, fear of expansion, indecision, small horizons is a lens for a possible outcome if the present pattern continues, with room for your choices.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Recognise the independence or comfort that patient work has made possible.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "A clear aim may call for a direct response.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Waiting may have lost its purpose, or a sacrifice may no longer serve anyone.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Attraction, duty and personal values may be pulling in different directions.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Take what resonates, and leave the rest.",
+   "in_written": true,
+   "in_pdf": true
+  }
+ ],
+ "pdf_pages": 15,
+ "pdf_attachments": [],
+ "page_errors": [
+  "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ],
+ "reduced_motion": {
+  "strands": 13,
+  "rings": 15,
+  "running_animations": 0
+ },
+ "overlay_nodes_after_leaving_reading": 0,
+ "horizontal_page_overflow": {
+  "w390": false,
+  "w360": false
+ }
+}

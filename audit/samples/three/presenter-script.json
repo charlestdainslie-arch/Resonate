@@ -1,0 +1,386 @@
+[
+ {
+  "chapter": "intro",
+  "kind": "frame",
+  "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-open",
+    "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+   }
+  ]
+ },
+ {
+  "chapter": "intro",
+  "kind": "label",
+  "text": "Tonight: your Past · Present · Future.",
+  "show": [],
+  "clips": [
+   {
+    "id": "title-three",
+    "text": "Tonight: your Past · Present · Future."
+   }
+  ]
+ },
+ {
+  "chapter": "intro",
+  "kind": "frame",
+  "text": "I'll keep it short. The full reading stays below.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-short",
+    "text": "I'll keep it short. The full reading stays below."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "frame",
+  "text": "Let's go through your cards, one position at a time.",
+  "show": [],
+  "clips": [
+   {
+    "id": "frame-cards",
+    "text": "Let's go through your cards, one position at a time."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Past: Two of Cups.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "pos-three-0",
+    "text": "Past:"
+   },
+   {
+    "id": "name-37",
+    "text": "Two of Cups."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "This may describe how mutuality, connection, agreement shaped the path to your current situation.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "lens-three-0-37",
+    "text": "This may describe how mutuality, connection, agreement shaped the path to your current situation."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "A connection can deepen through reciprocal attention and honest exchange.",
+  "show": [
+   "p0"
+  ],
+  "clips": [
+   {
+    "id": "meaning-37",
+    "text": "A connection can deepen through reciprocal attention and honest exchange."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Present: Queen of Swords, reversed.",
+  "show": [
+   "p1"
+  ],
+  "clips": [
+   {
+    "id": "pos-three-1",
+    "text": "Present:"
+   },
+   {
+    "id": "name-62-r",
+    "text": "Queen of Swords, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Here, harsh judgement, bitterness, emotional distance is a lens for what is active now and how you can respond.",
+  "show": [
+   "p1"
+  ],
+  "clips": [
+   {
+    "id": "lens-three-1-62-r",
+    "text": "Here, harsh judgement, bitterness, emotional distance is a lens for what is active now and how you can respond."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Past hurt may be sharpening judgement or creating distance where dialogue is possible.",
+  "show": [
+   "p1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-62-r",
+    "text": "Past hurt may be sharpening judgement or creating distance where dialogue is possible."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "label",
+  "text": "Future: King of Pentacles.",
+  "show": [
+   "p2"
+  ],
+  "clips": [
+   {
+    "id": "pos-three-2",
+    "text": "Future:"
+   },
+   {
+    "id": "name-77",
+    "text": "King of Pentacles."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "This suggests a possible development involving stewardship, stability, competence.",
+  "show": [
+   "p2"
+  ],
+  "clips": [
+   {
+    "id": "lens-three-2-77",
+    "text": "This suggests a possible development involving stewardship, stability, competence."
+   }
+  ]
+ },
+ {
+  "chapter": "cards",
+  "kind": "quote",
+  "text": "Use experience and resources to create dependable conditions for yourself and others.",
+  "show": [
+   "p2"
+  ],
+  "clips": [
+   {
+    "id": "meaning-77",
+    "text": "Use experience and resources to create dependable conditions for yourself and others."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "frame",
+  "text": "Now, your first clarifiers, one for each position.",
+  "show": [
+   "c0-1",
+   "c1-1",
+   "c2-1"
+  ],
+  "clips": [
+   {
+    "id": "frame-c1s",
+    "text": "Now, your first clarifiers, one for each position."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "label",
+  "text": "Clarifier 1 · Past: The Magician, reversed.",
+  "show": [
+   "p0",
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-1",
+    "text": "Clarifier 1,"
+   },
+   {
+    "id": "pos-three-0",
+    "text": "Past:"
+   },
+   {
+    "id": "name-1-r",
+    "text": "The Magician, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "c1",
+  "kind": "quote",
+  "text": "Reversed, skill may be scattered, misdirected or used to control rather than create.",
+  "show": [
+   "c0-1"
+  ],
+  "clips": [
+   {
+    "id": "meaning-1-r",
+    "text": "Reversed, skill may be scattered, misdirected or used to control rather than create."
+   }
+  ]
+ },
+ {
+  "chapter": "c2",
+  "kind": "frame",
+  "text": "And your second clarifiers.",
+  "show": [
+   "c0-2",
+   "c1-2",
+   "c2-2"
+  ],
+  "clips": [
+   {
+    "id": "frame-c2s",
+    "text": "And your second clarifiers."
+   }
+  ]
+ },
+ {
+  "chapter": "c2",
+  "kind": "label",
+  "text": "Clarifier 2 · Past: Nine of Swords, reversed.",
+  "show": [
+   "p0",
+   "c0-2"
+  ],
+  "clips": [
+   {
+    "id": "label-clarifier-2",
+    "text": "Clarifier 2,"
+   },
+   {
+    "id": "pos-three-0",
+    "text": "Past:"
+   },
+   {
+    "id": "name-58-r",
+    "text": "Nine of Swords, reversed."
+   }
+  ]
+ },
+ {
+  "chapter": "c2",
+  "kind": "quote",
+  "text": "A burden may be easing, or you may be hiding how difficult things feel.",
+  "show": [
+   "c0-2"
+  ],
+  "clips": [
+   {
+    "id": "meaning-58-r",
+    "text": "A burden may be easing, or you may be hiding how difficult things feel."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "frame",
+  "text": "Before I go, one question to carry with you.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2"
+  ],
+  "clips": [
+   {
+    "id": "frame-ask",
+    "text": "Before I go, one question to carry with you."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "quote",
+  "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2"
+  ],
+  "clips": [
+   {
+    "id": "thread-0",
+    "text": "Which part speaks to your present circumstances, and what choice might help you respond?"
+   },
+   {
+    "id": "thread-1",
+    "text": "This is a perspective, not a fixed prediction."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "quote",
+  "text": "Take what resonates, and leave the rest.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2"
+  ],
+  "clips": [
+   {
+    "id": "thread-resonance",
+    "text": "Take what resonates, and leave the rest."
+   }
+  ]
+ },
+ {
+  "chapter": "close",
+  "kind": "frame",
+  "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.",
+  "show": [
+   "p0",
+   "c0-1",
+   "c0-2",
+   "p1",
+   "c1-1",
+   "c1-2",
+   "p2",
+   "c2-1",
+   "c2-2"
+  ],
+  "clips": [
+   {
+    "id": "frame-close",
+    "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+   }
+  ]
+ }
+]

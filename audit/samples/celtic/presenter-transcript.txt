@@ -1,0 +1,48 @@
+01 [intro/frame] Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.
+02 [intro/label] Tonight: your Celtic Cross.
+03 [intro/frame] I'll keep it short. The full reading stays below.
+04 [cards/frame] Let's go through your cards, one position at a time.
+05 [cards/label] Present Situation: Ace of Swords, reversed.
+06 [cards/quote] Here, confusion, harshness, unclear thinking is a lens for the central situation as you experience it now.
+07 [cards/quote] An idea may be incomplete or language may be sharper than the situation requires.
+08 [cards/label] Crossing Challenge: Four of Cups.
+09 [cards/quote] The tension to explore is contemplation, reassessment, disengagement.
+10 [cards/quote] A pause in interest may be asking you to examine what you actually want.
+11 [cards/label] Foundation: Three of Pentacles, reversed.
+12 [cards/quote] Here, poor coordination, undervalued work, skill gaps is a lens for the deeper roots beneath the situation.
+13 [cards/quote] The work may be suffering from unclear roles or dismissed expertise.
+14 [cards/label] Recent Past: The Sun.
+15 [cards/quote] This may describe how vitality, joy, clarity shaped the path to your current situation.
+16 [cards/quote] Clarity, warmth or a shared success can restore your energy.
+17 [cards/label] Conscious Focus: The World, reversed.
+18 [cards/quote] Here, unfinished work, delayed closure, fragmentation is a lens for your hopes, intentions or conscious priorities.
+19 [cards/quote] Something remains to be integrated before a chapter can close.
+20 [cards/label] Near Future: Two of Cups, reversed.
+21 [cards/quote] This suggests a possible development involving imbalance, disconnection, broken trust.
+22 [cards/quote] A relationship or agreement may be unequal or out of tune.
+23 [cards/label] Your Approach: Five of Cups, reversed.
+24 [cards/quote] Here, acceptance, lingering regret, reconnection is a lens for the stance you bring and the choices within your control.
+25 [cards/quote] Acceptance may be growing, or regret may be repeating without bringing new understanding.
+26 [cards/label] Surrounding Influences: Six of Cups, reversed.
+27 [cards/quote] Here, idealised past, growing beyond, old patterns is a lens for the environment and outside influences around you.
+28 [cards/quote] Nostalgia may be editing the past or an old role may no longer fit.
+29 [cards/label] Hopes and Fears: Five of Pentacles, reversed.
+30 [cards/quote] Here, help, recovery, lingering scarcity is a lens for the desires and worries colouring your view.
+31 [cards/quote] Support or recovery may be becoming available, though a sense of exclusion can persist.
+32 [cards/label] Potential Outcome: Two of Wands, reversed.
+33 [cards/quote] Here, fear of expansion, indecision, small horizons is a lens for a possible outcome if the present pattern continues, with room for your choices.
+34 [cards/quote] You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty.
+35 [c1/frame] Now, your first clarifiers, one for each position.
+36 [c1/label] Clarifier 1 · Present Situation: Nine of Pentacles.
+37 [c1/quote] Recognise the independence or comfort that patient work has made possible.
+38 [c1/label] Clarifier 1 · Recent Past: Knight of Swords.
+39 [c1/quote] A clear aim may call for a direct response.
+40 [c1/label] Clarifier 1 · Conscious Focus: The Hanged Man, reversed.
+41 [c1/quote] Waiting may have lost its purpose, or a sacrifice may no longer serve anyone.
+42 [c2/frame] And your second clarifiers.
+43 [c2/label] Clarifier 2 · Conscious Focus: The Lovers, reversed.
+44 [c2/quote] Attraction, duty and personal values may be pulling in different directions.
+45 [close/frame] Before I go, one question to carry with you.
+46 [close/quote] Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.
+47 [close/quote] Take what resonates, and leave the rest.
+48 [close/frame] That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.

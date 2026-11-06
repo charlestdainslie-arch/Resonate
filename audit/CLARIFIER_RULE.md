@@ -1,4 +1,4 @@
-# Clarifier rule — as implemented at `a667664`
+# Clarifier rule — as implemented at `b3a34c3`
 
 ## Label and attribution
 
@@ -24,9 +24,9 @@ It is **not** attributed in the code, the UI or the PDF to any published author.
 
 ## Evidence
 
-- Unit: `tests/clarifier-rules.test.cjs`, `tests/visible-clarifier.test.cjs`, `tests/additional-clarifiers.test.cjs` — all pass at `a667664` (see `builds/test-run-a667664/`).
+- Unit: `tests/clarifier-rules.test.cjs`, `tests/visible-clarifier.test.cjs`, `tests/additional-clarifiers.test.cjs` — all pass (see `builds/TEST_EVIDENCE.md`).
 - Browser: `tests/clarifier-slots.browser.cjs`, `tests/teaching-rules.browser.cjs`.
-- Real draws: each `samples/*/draw-record.json` holds the button-by-button `sequence` and `ruleCheck` (the app's own `validate()`), which is empty (no violations) for all three samples. The Celtic Cross sample exercises every branch: Major → Major → Clarifier 2 (The Sun → The Devil → King of Swords), Major → Minor stops (The World → Ace of Cups), and a seeker's choice on a Minor (Ace of Swords → Knight of Cups).
+- Real draws: each `samples/*/draw-record.json` holds the button-by-button `sequence` and `ruleCheck` (the app's own `validate()`), which is empty (no violations) for all three samples. Between them the samples exercise every branch: Major → Minor stops (Celtic: The Sun → Knight of Swords); Major → Major → Clarifier 2 (Celtic: The World reversed → The Hanged Man reversed → The Lovers reversed — Clarifier 2 is itself a Major and **no third card is drawn**, see "Not implemented"); seeker's choice on a Minor (Celtic: Ace of Swords reversed → Nine of Pentacles); and the rule applying to a seeker-chosen clarifier (Three-card: Two of Cups → The Magician reversed, a Major, so → Nine of Swords reversed).
 
 ## Notes for the reviewer
 

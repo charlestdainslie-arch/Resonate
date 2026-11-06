@@ -1,0 +1,123 @@
+{
+ "cards_checked": 5,
+ "all_cards_in_all_three": true,
+ "any_orientation_conflict": false,
+ "presenter_quotes": 10,
+ "presenter_quotes_verbatim_in_written": 10,
+ "presenter_quotes_verbatim_in_pdf": 10,
+ "clarifier_rule_violations": [],
+ "card_checks": [
+  {
+   "card": "Two of Cups",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "The Magician, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Nine of Swords, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "Queen of Swords, reversed",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  },
+  {
+   "card": "King of Pentacles",
+   "in_written": true,
+   "in_pdf": true,
+   "in_presenter": true,
+   "wrong_orientation_in_written": false,
+   "wrong_orientation_in_pdf": false,
+   "wrong_orientation_in_presenter": false
+  }
+ ],
+ "quote_checks": [
+  {
+   "text": "This may describe how mutuality, connection, agreement shaped the path to your current situation.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "A connection can deepen through reciprocal attention and honest exchange.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Here, harsh judgement, bitterness, emotional distance is a lens for what is active now and how you can respond.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Past hurt may be sharpening judgement or creating distance where dialogue is possible.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "This suggests a possible development involving stewardship, stability, competence.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Use experience and resources to create dependable conditions for yourself and others.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Reversed, skill may be scattered, misdirected or used to control rather than create.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "A burden may be easing, or you may be hiding how difficult things feel.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+   "in_written": true,
+   "in_pdf": true
+  },
+  {
+   "text": "Take what resonates, and leave the rest.",
+   "in_written": true,
+   "in_pdf": true
+  }
+ ],
+ "pdf_pages": 6,
+ "pdf_attachments": [],
+ "page_errors": [
+  "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+ ],
+ "reduced_motion": {
+  "strands": 4,
+  "rings": 6,
+  "running_animations": 0
+ },
+ "overlay_nodes_after_leaving_reading": 0,
+ "horizontal_page_overflow": {
+  "w390": false,
+  "w360": false
+ }
+}
