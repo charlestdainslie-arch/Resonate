@@ -1,0 +1,8 @@
+sha=af08931e9b532033efee345def3830ee083ccbaa
+uncommitted_non_audit_changes=0
+node=v22.23.4
+playwright=1.63.0
+os=Linux 6.18.44-fc-v242
+started=2026-11-06T11:29:40Z
+finished=2026-11-06T11:59:02Z
+porcelain_after_run=0
