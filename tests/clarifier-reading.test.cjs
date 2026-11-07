@@ -83,3 +83,12 @@ test('the method line makes no claim to a published source', () => {
   assert.match(R.METHOD, /RESONATE/);
   assert.match(R.METHOD, /not a quotation from a published source/);
 });
+
+test('an agreement among mostly reversed cards is read as a shared difficulty, not acted on with confidence (QA S15)', () => {
+  const h = helpers(['Queen of Wands', 'Justice', 'Nine of Swords']);
+  const s = R.synthesis(by('Queen of Wands'), by('Justice'), by('Nine of Swords'), { pos: 'Present Situation', index: 0, spreadId: 'guidance', labels: ['P'], baseCards: [by('Queen of Wands')] }, h);
+  assert.doesNotMatch(s.guide, /confidence/);
+  assert.match(s.guide, /all of them are reversed/);
+  const w = R.wider(by('Two of Cups'), { pos: 'Present Situation', index: 0, spreadId: 'celtic', labels: CELTIC, baseCards: ['Two of Cups', 'Queen of Wands', 'Ace of Cups', 'Ace of Swords', 'Ace of Wands', 'Ace of Pentacles', 'Two of Wands', 'Two of Swords', 'Two of Pentacles', 'Three of Cups'].map(by), clarified: [0, 1] }, h);
+  assert.match(w, /Crossing Challenge, Queen of Wands \(reversed; clarified\)/);
+});

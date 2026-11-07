@@ -129,6 +129,10 @@
     else if (tension === 0 && harmony * 2 < kinds.length) { tone = 'a layered message, each card shifting the angle a little'; guide = 'Notice which angle feels most true to your situation, and start there.'; }
     else if (tension === 0) { tone = 'a mostly consistent message'; guide = 'Let the shared theme lead, and notice where the other card shifts it.'; }
     else { tone = 'a mixed message, with both agreement and friction'; guide = 'Notice which card feels most true to your situation, and let it lead.'; }
+    // QA 7 Nov (sample S15): three reversed cards in agreement were told to "work with this theme with some
+    // confidence". When most of the cards are reversed, an agreement is read as a shared difficulty.
+    const reversedCount = group.filter(c => H.reversed(c)).length;
+    if (reversedCount * 2 > group.length && tension === 0 && harmony * 2 >= kinds.length) guide = `The cards agree, but ${reversedCount === group.length ? 'all' : 'most'} of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting.`;
     const themes = list(group.map(c => word(H, c)));
     const lead = `Together, ${list(group.map(H.name))} give ${ctx.pos} ${tone}: ${themes}.`;
     const counts = {};
@@ -141,7 +145,7 @@
   function wider(base, ctx, H) {
     const cardsIn = ctx.baseCards || [], labels = ctx.labels || [], i = ctx.index;
     if (cardsIn.length < 2) return '';
-    const describe = j => `${labels[j] || 'position ' + (j + 1)}, ${H.name(cardsIn[j])}${ctx.clarified && ctx.clarified[j] ? ` (clarified)` : ''}`;
+    const describe = j => { const c = cardsIn[j], tags = [H.reversed(c) ? 'reversed' : '', ctx.clarified && ctx.clarified[j] ? 'clarified' : ''].filter(Boolean); return `${labels[j] || 'position ' + (j + 1)}, ${c.name}${tags.length ? ` (${tags.join('; ')})` : ''}`; };
     if (ctx.spreadId === 'celtic' && cardsIn.length === 10) {
       const pair = CELTIC_PAIRS.find(p => p[0] === i || p[1] === i);
       if (!pair) return '';
