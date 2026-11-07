@@ -1,0 +1,191 @@
+{
+ "sample": {
+  "id": "OC-03",
+  "kind": "matrix",
+  "spread": "guidance",
+  "mode": "matrix",
+  "note": "Tower upright, Star upright clarifier (the matrix gives no Clarifier 2; the rule makes it due because The Star is a Major)",
+  "seeded": [
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   16
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 17
+   }
+  ],
+  "c1": [
+   17
+  ],
+  "c2": [
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "One-card Guidance",
+ "drew": [
+  "first"
+ ],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Guidance",
+   "meaning": "the guidance you can put into practice today",
+   "base": {
+    "id": 16,
+    "name": "The Tower",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": {
+    "id": 17,
+    "name": "The Star",
+    "arcana": "Major",
+    "element": "Air",
+    "reversed": false
+   },
+   "c2": null,
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XVI · The Tower\n\nGuidance\n\nCARD CORRESPONDENCE\nMars\nSKY AT THIS READING\nMars is at 21° 36′ Leo\n\nAstrology: Mars · Fire\n\nNumber: 16\n\nSixteen breaks a familiar structure and exposes the foundations beneath it. In The Tower, consider how this relates to disruption.\n\nDisruption\nRevelation\nRebuilding\n\nPosition: Guidance — The Tower. Your next step is to work consciously with disruption, revelation, rebuilding. Choose one practical response you can try, then notice whether it helps.\n\nA sudden change or unwelcome truth may expose a structure that could not hold. Attend first to immediate support and practical needs, then decide what deserves rebuilding on more honest foundations.\n\nLooking closer: Lightning strikes a crowned tower and figures fall from it. The image shows the collapse of assumed security, without specifying a literal future event.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · XVII · The Star\n\nAfter strain, a quieter sense of possibility can return. Replenish what has been depleted and give a modest hope some daily attention; renewal does not require pretending that the difficulty never happened.\n\nAstrology: Aquarius · Air\n\nNumber: 17\n\nSeventeen opens a relationship with hope after the disruption of a former certainty. In The Star, consider how this relates to hope.\n\nLooking closer: A kneeling figure pours water onto land and into a pool beneath a large star. Generosity and replenishment connect inner life with the wider world.\n\nThe Star supports The Tower.\n\nIn Guidance, the theme of hope and renewal can help disruption and revelation find a constructive outlet.\n\nRead this way because Fire and Air are friendly elements.\n\nRESONATE's card notes link these two: The Tower exposes a failed structure; The Star offers replenishment after strain. Attend to immediate support before asking renewal to explain the disruption.",
+   "clar2": "",
+   "notes": "Clarifier 1 is a Major Arcana card, so a second clarifier is due here. When it is drawn, this reading updates to include it.",
+   "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Guidance\n\nRevision 1 · with Clarifier 1.\n\nTogether, The Tower and The Star give Guidance a consistent message: disruption and hope. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · The Tower\n\nA practice of unforced attention with The Tower: Which foundation needs honest attention before I build anything more on it?\n\nJungian interpretation · The Tower\n\nPsychological lens: A challenged belief can feel like a threat to identity. Grounding and support help the psyche revise its picture of the world without demanding instant meaning from disruption.",
+   "positionContext": "Position: Guidance — The Tower. Your next step is to work consciously with disruption, revelation, rebuilding. Choose one practical response you can try, then notice whether it helps.",
+   "relation1": "The Star supports The Tower.\n\nIn Guidance, the theme of hope and renewal can help disruption and revelation find a constructive outlet.\n\nRead this way because Fire and Air are friendly elements.\n\nRESONATE's card notes link these two: The Tower exposes a failed structure; The Star offers replenishment after strain. Attend to immediate support before asking renewal to explain the disruption.",
+   "relation2": "",
+   "synthesisLead": "Together, The Tower and The Star give Guidance a consistent message: disruption and hope. Consider working with this theme with some confidence, while staying open to how it unfolds.",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": true
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 2 revealed cards across this reading, including every clarifier.\n\nGUIDANCE\nThe Tower + The Star\n\nThe original The Tower highlights disruption and revelation; The Star introduces hope and renewal. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The Tower (Mars) meets The Star (Aquarius). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, disruption, revelation, rebuilding, hope form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Tower (16) · The Star (17). Their numbered cards sum to 33, reducing to 6. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nGUIDANCE\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XVI · The Tower\n\nGuidance\n\nCARD CORRESPONDENCE\nMars\nSKY AT THIS READING\nMars is at 21° 36′ Leo\n\nAstrology: Mars · Fire\n\nNumber: 16\n\nSixteen breaks a familiar structure and exposes the foundations beneath it. In The Tower, consider how this relates to disruption.\n\nDisruption\nRevelation\nRebuilding\n\nPosition: Guidance — The Tower. Your next step is to work consciously with disruption, revelation, rebuilding. Choose one practical response you can try, then notice whether it helps.\n\nA sudden change or unwelcome truth may expose a structure that could not hold. Attend first to immediate support and practical needs, then decide what deserves rebuilding on more honest foundations.\n\nLooking closer: Lightning strikes a crowned tower and figures fall from it. The image shows the collapse of assumed security, without specifying a literal future event.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · XVII · The Star\n\nAfter strain, a quieter sense of possibility can return. Replenish what has been depleted and give a modest hope some daily attention; renewal does not require pretending that the difficulty never happened.\n\nAstrology: Aquarius · Air\n\nNumber: 17\n\nSeventeen opens a relationship with hope after the disruption of a former certainty. In The Star, consider how this relates to hope.\n\nLooking closer: A kneeling figure pours water onto land and into a pool beneath a large star. Generosity and replenishment connect inner life with the wider world.\n\nThe Star supports The Tower.\n\nIn Guidance, the theme of hope and renewal can help disruption and revelation find a constructive outlet.\n\nRead this way because Fire and Air are friendly elements.\n\nRESONATE's card notes link these two: The Tower exposes a failed structure; The Star offers replenishment after strain. Attend to immediate support before asking renewal to explain the disruption.\n\nClarifier 1 is a Major Arcana card, so a second clarifier is due here. When it is drawn, this reading updates to include it.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Guidance\n\nRevision 1 · with Clarifier 1.\n\nTogether, The Tower and The Star give Guidance a consistent message: disruption and hope. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · The Tower\n\nA practice of unforced attention with The Tower: Which foundation needs honest attention before I build anything more on it?\n\nJungian interpretation · The Tower\n\nPsychological lens: A challenged belief can feel like a threat to identity. Grounding and support help the psyche revise its picture of the world without demanding instant meaning from disruption.\n\nTao / Wu Wei · The Star\n\nA practice of unforced attention with The Star: What small practice helps me feel replenished and able to hope again?\n\nJungian interpretation · The Star\n\nPsychological lens: Trust can return gradually after disillusionment. Letting the self be seen without armour may restore connection more effectively than constructing a new ideal image.\n\nExplore The Tower\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 2 revealed cards across this reading, including every clarifier.\n\nGUIDANCE\nThe Tower + The Star\n\nThe original The Tower highlights disruption and revelation; The Star introduces hope and renewal. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The Tower (Mars) meets The Star (Aquarius). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, disruption, revelation, rebuilding, hope form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Tower (16) · The Star (17). Their numbered cards sum to 33, reducing to 6. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your One-card Guidance."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "First, your card."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "The Tower."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with disruption, revelation, rebuilding."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A sudden change or unwelcome truth may expose a structure that could not hold."
+  },
+  {
+   "chapter": "c1",
+   "kind": "frame",
+   "text": "Now, your first clarifier."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1: The Star."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "After strain, a quieter sense of possibility can return."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "The Star supports The Tower."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Guidance, the theme of hope and renewal can help disruption and revelation find a constructive outlet."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, The Tower and The Star give Guidance a consistent message: disruption and hope."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Consider working with this theme with some confidence, while staying open to how it unfolds."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your One-card Guidance.",
+  "I'll keep it short. The full reading stays below.",
+  "First, your card.",
+  "The Tower.",
+  "Your next step is to work consciously with disruption, revelation, rebuilding.",
+  "A sudden change or unwelcome truth may expose a structure that could not hold.",
+  "Now, your first clarifier.",
+  "Clarifier 1: The Star.",
+  "After strain, a quieter sense of possibility can return.",
+  "The Star supports The Tower.",
+  "In Guidance, the theme of hope and renewal can help disruption and revelation find a constructive outlet.",
+  "Together, The Tower and The Star give Guidance a consistent message: disruption and hope.",
+  "Consider working with this theme with some confidence, while staying open to how it unfolds.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

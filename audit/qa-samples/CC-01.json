@@ -1,0 +1,572 @@
+{
+ "sample": {
+  "id": "CC-01",
+  "kind": "matrix",
+  "spread": "celtic",
+  "mode": "matrix",
+  "note": "All upright, no clarifiers",
+  "seeded": [
+   "base cards: seeded deal, seed 7412, all upright"
+  ],
+  "base": [
+   59,
+   65,
+   14,
+   52,
+   70,
+   4,
+   21,
+   27,
+   49,
+   64
+  ],
+  "reversed": [],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "Celtic Cross",
+ "drew": [],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Present Situation",
+   "meaning": "the central situation as you experience it now",
+   "base": {
+    "id": 59,
+    "name": "Ten of Swords",
+    "arcana": "Minor",
+    "element": "Air",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · X · Ten of Swords\n\nPresent Situation\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Swords, consider how this relates to ending.\n\nEnding\nExhaustion\nAcceptance\n\nPosition: Present Situation — Ten of Swords. Here, ending, exhaustion, acceptance is a lens for the central situation as you experience it now. Identify one concrete example in your situation and consider how it shapes your response.\n\nA painful chapter may have reached its limit. Acknowledge what cannot be sustained and prioritise support and recovery; the image marks an ending rather than a literal prediction of harm.\n\nLooking closer: A prone figure lies beneath ten swords while light appears beyond dark clouds.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Ten of Swords\n\nA practice of unforced attention with Ten of Swords: What can I stop trying to revive so that recovery has room to begin?\n\nJungian interpretation · Ten of Swords\n\nPsychological lens: When a familiar story collapses, the psyche needs care before it can construct a more spacious one.",
+   "positionContext": "Position: Present Situation — Ten of Swords. Here, ending, exhaustion, acceptance is a lens for the central situation as you experience it now. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 2,
+   "label": "Crossing Challenge",
+   "meaning": "the tension or obstacle crossing that situation",
+   "base": {
+    "id": 65,
+    "name": "Two of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · II · Two of Pentacles\n\nCrossing Challenge\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nAdaptability\nBalance\nPriorities\n\nPosition: Crossing Challenge — Two of Pentacles. The tension to explore is adaptability, balance, priorities. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nSeveral demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.",
+   "positionContext": "Position: Crossing Challenge — Two of Pentacles. The tension to explore is adaptability, balance, priorities. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 3,
+   "label": "Foundation",
+   "meaning": "the deeper roots beneath the situation",
+   "base": {
+    "id": 14,
+    "name": "Temperance",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · XIV · Temperance\n\nFoundation\n\nCARD CORRESPONDENCE\nSagittarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Sagittarius · Fire\n\nNumber: 14\n\nFourteen explores integration through patient adjustment rather than a fixed midpoint. In Temperance, consider how this relates to integration.\n\nIntegration\nModeration\nHealing\n\nPosition: Foundation — Temperance. Here, integration, moderation, healing is a lens for the deeper roots beneath the situation. Identify one concrete example in your situation and consider how it shapes your response.\n\nBring different needs into a workable relationship through measured adjustments. The useful balance is responsive rather than fixed: combine what helps, leave room for rest, and allow integration to take time.\n\nLooking closer: An angel pours between two cups with one foot on land and one in water. A path leads toward distant light, suggesting patient integration.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Temperance\n\nA practice of unforced attention with Temperance: Which small adjustment would make my current rhythm more sustainable?\n\nJungian interpretation · Temperance\n\nPsychological lens: Integration allows apparently opposing needs to inform one another. The aim is a living relationship between them rather than a perfect compromise reached once.",
+   "positionContext": "Position: Foundation — Temperance. Here, integration, moderation, healing is a lens for the deeper roots beneath the situation. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 4,
+   "label": "Recent Past",
+   "meaning": "an influence receding into the past",
+   "base": {
+    "id": 52,
+    "name": "Three of Swords",
+    "arcana": "Minor",
+    "element": "Air",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · III · Three of Swords\n\nRecent Past\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Swords, consider how this relates to sorrow.\n\nSorrow\nPainful Truth\nAcknowledgement\n\nPosition: Recent Past — Three of Swords. This may describe how sorrow, painful truth, acknowledgement shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nA painful truth, separation or disappointment deserves honest acknowledgement. Seek a form of expression and support that lets the feeling move, without treating this moment as a verdict on all future connection.\n\nLooking closer: Three swords pierce a heart beneath rain clouds, giving emotional pain a direct visual form.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Three of Swords\n\nA practice of unforced attention with Three of Swords: What painful truth can I acknowledge without making it my whole identity?\n\nJungian interpretation · Three of Swords\n\nPsychological lens: Naming hurt can interrupt the attempt to manage it entirely through thought or blame.",
+   "positionContext": "Position: Recent Past — Three of Swords. This may describe how sorrow, painful truth, acknowledgement shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 5,
+   "label": "Conscious Focus",
+   "meaning": "your hopes, intentions or conscious priorities",
+   "base": {
+    "id": 70,
+    "name": "Seven of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · VII · Seven of Pentacles\n\nConscious Focus\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 7\n\nSeven pauses to examine direction, effort and inner conviction. In Seven of Pentacles, consider how this relates to patience.\n\nPatience\nAssessment\nCultivation\n\nPosition: Conscious Focus — Seven of Pentacles. Here, patience, assessment, cultivation is a lens for your hopes, intentions or conscious priorities. Identify one concrete example in your situation and consider how it shapes your response.\n\nPause to assess the return on sustained effort. Consider what is growing, what needs adjustment and whether the result still matters to you before investing more of your time.\n\nLooking closer: A figure leans on a tool while looking at pentacles growing on a vine.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Seven of Pentacles\n\nA practice of unforced attention with Seven of Pentacles: What evidence will help me decide whether to keep tending this effort?\n\nJungian interpretation · Seven of Pentacles\n\nPsychological lens: Investment can create attachment to a plan. Reflective assessment separates commitment from the fear of admitting a change is needed.",
+   "positionContext": "Position: Conscious Focus — Seven of Pentacles. Here, patience, assessment, cultivation is a lens for your hopes, intentions or conscious priorities. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 6,
+   "label": "Near Future",
+   "meaning": "a possible next development, not a fixed prediction",
+   "base": {
+    "id": 4,
+    "name": "The Emperor",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · IV · The Emperor\n\nNear Future\n\nCARD CORRESPONDENCE\nAries · Mars\nSKY AT THIS READING\nMars is at 21° 36′ Leo\n\nAstrology: Aries · Mars · Fire\n\nNumber: 4\n\nFour is foundation: the square, the stable frame, the four directions. It brings containment, reliability and the challenge of balancing stability with flexibility.\n\nAuthority\nStructure\nBoundaries\n\nPosition: Near Future — The Emperor. This suggests a possible development involving clear boundaries and dependable structure that protect what matters. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nThe Emperor is the capacity to create order that protects what matters. Upright, he represents boundaries, leadership, consistency and the willingness to make decisions that give a system strength. In a reading, this may describe your own need for structure or the influence of someone carrying strong leadership, authority or Aries-like qualities. In a Past position it can point to structures or authority that shaped the situation; in the Present, a need for clear boundaries or decisions; in the Future, greater stability that may come through deliberate organisation rather than prediction of a fixed outcome.\n\nLooking closer: Notice the red robes and the firm stone throne. Determination is given form through limits, responsibility and practical structure.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · The Emperor\n\nWu Wei: good structure should support movement rather than fight it. The Emperor can ask where one clear boundary or decision would create enough stability for everything else to move more naturally.\n\nJungian interpretation · The Emperor\n\nJungian lens: Logos, Father and Wise Sovereign. The Emperor reflects the psyche's capacity for limits, responsibility and coherent order. In shadow, authority becomes inflexible, punitive or disconnected from feeling.",
+   "positionContext": "Position: Near Future — The Emperor. This suggests a possible development involving clear boundaries and dependable structure that protect what matters. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 7,
+   "label": "Your Approach",
+   "meaning": "the stance you bring and the choices within your control",
+   "base": {
+    "id": 21,
+    "name": "The World",
+    "arcana": "Major",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · XXI · The World\n\nYour Approach\n\nCARD CORRESPONDENCE\nSaturn\nSKY AT THIS READING\nSaturn is at 8° 55′ Aries\n\nAstrology: Saturn · Earth\n\nNumber: 21\n\nTwenty-one gathers the cycle into a completion that can support further participation. In The World, consider how this relates to completion.\n\nCompletion\nIntegration\nParticipation\n\nPosition: Your Approach — The World. Your next step is to work consciously with completion, integration, participation. Choose one practical response you can try, then notice whether it helps.\n\nA cycle is reaching a meaningful completion. Recognise the skills and relationships that made it possible, attend to the final details, and let what you have learned inform your next participation in the world.\n\nLooking closer: A dancing figure stands within a wreath, surrounded by four creatures. Movement inside an enclosing form suggests both wholeness and continuing life.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · The World\n\nA practice of unforced attention with The World: What needs acknowledgement or completion before I move into the next chapter?\n\nJungian interpretation · The World\n\nPsychological lens: Wholeness is the capacity to hold different parts of experience in relationship. Completion can be celebrated without expecting the self to become finished forever.",
+   "positionContext": "Position: Your Approach — The World. Your next step is to work consciously with completion, integration, participation. Choose one practical response you can try, then notice whether it helps.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 8,
+   "label": "Surrounding Influences",
+   "meaning": "the environment and outside influences around you",
+   "base": {
+    "id": 27,
+    "name": "Six of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · VI · Six of Wands\n\nSurrounding Influences\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Wands, consider how this relates to recognition.\n\nRecognition\nProgress\nEncouragement\n\nPosition: Surrounding Influences — Six of Wands. Here, recognition, progress, encouragement is a lens for the environment and outside influences around you. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn effort is being recognised or a difficult stage has been passed. Receive encouragement, share the credit and use the confidence to support continued work rather than rest everything on applause.\n\nLooking closer: A rider crowned with a wreath carries a decorated wand among companions.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Six of Wands\n\nA practice of unforced attention with Six of Wands: What achievement can I acknowledge without needing everyone to approve?\n\nJungian interpretation · Six of Wands\n\nPsychological lens: External recognition supports confidence best when it does not become its only source.",
+   "positionContext": "Position: Surrounding Influences — Six of Wands. Here, recognition, progress, encouragement is a lens for the environment and outside influences around you. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 9,
+   "label": "Hopes and Fears",
+   "meaning": "the desires and worries colouring your view",
+   "base": {
+    "id": 49,
+    "name": "King of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · K · King of Cups\n\nHopes and Fears\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nEmotional Balance\nDiplomacy\nSteadiness\n\nPosition: Hopes and Fears — King of Cups. Here, emotional balance, diplomacy, steadiness is a lens for the desires and worries colouring your view. Identify one concrete example in your situation and consider how it shapes your response.\n\nMeet strong feeling with steadiness and honest expression. You can acknowledge an emotion without allowing it to direct every action; use that balance to support a difficult conversation.\n\nLooking closer: A king holds cup and sceptre on a throne surrounded by moving water.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · King of Cups\n\nA practice of unforced attention with King of Cups: How can I stay steady while still letting the truth of my feelings be heard?\n\nJungian interpretation · King of Cups\n\nPsychological lens: Emotional maturity joins containment with contact; composure alone does not guarantee that feeling has been understood.",
+   "positionContext": "Position: Hopes and Fears — King of Cups. Here, emotional balance, diplomacy, steadiness is a lens for the desires and worries colouring your view. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 10,
+   "label": "Potential Outcome",
+   "meaning": "a possible outcome if the present pattern continues, with room for your choices",
+   "base": {
+    "id": 64,
+    "name": "Ace of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · I · Ace of Pentacles\n\nPotential Outcome\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Pentacles, consider how this relates to opportunity.\n\nOpportunity\nResources\nGrounding\n\nPosition: Potential Outcome — Ace of Pentacles. This suggests a possible development involving opportunity, resources, grounding. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nA practical opportunity can become valuable through steady attention. Look at the resources, skills or conditions available and choose a first step that makes the possibility concrete.\n\nLooking closer: A hand offers a pentacle above a garden path leading through an archway.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Ace of Pentacles\n\nA practice of unforced attention with Ace of Pentacles: What practical first step would help this opportunity take root?\n\nJungian interpretation · Ace of Pentacles\n\nPsychological lens: A sense of possibility becomes more secure when it is translated into tangible action.",
+   "positionContext": "Position: Potential Outcome — Ace of Pentacles. This suggests a possible development involving opportunity, resources, grounding. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 10 revealed cards across this reading, including every clarifier.\n\nPRESENT SITUATION\nTen of Swords\n\nThe foundation is ending and exhaustion; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCROSSING CHALLENGE\nTwo of Pentacles\n\nThe foundation is adaptability and balance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFOUNDATION\nTemperance\n\nThe foundation is integration and moderation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Temperance (Sagittarius). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRECENT PAST\nThree of Swords\n\nThe foundation is sorrow and painful truth; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Three of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCONSCIOUS FOCUS\nSeven of Pentacles\n\nThe foundation is patience and assessment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Seven of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE\nThe Emperor\n\nThe foundation is authority and structure; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Emperor (Aries · Mars). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOUR APPROACH\nThe World\n\nThe foundation is completion and integration; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The World (Saturn). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING INFLUENCES\nSix of Wands\n\nThe foundation is recognition and progress; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES AND FEARS\nKing of Cups\n\nThe foundation is emotional balance and diplomacy; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are King of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPOTENTIAL OUTCOME\nAce of Pentacles\n\nThe foundation is opportunity and resources; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Ten of Swords in Present Situation and moves toward Ace of Pentacles in Potential Outcome.\n\nCrossing Challenge · Two of Pentacles. Following Ten of Swords, Two of Pentacles may draw your attention toward adaptability.\n\nFoundation · Temperance. Read after Two of Pentacles, this develops the thread: Temperance blends different needs; Two of Pentacles manages their daily demands. Small changes in rhythm can make a larger integration sustainable.\n\nRecent Past · Three of Swords. Following Temperance, Three of Swords may draw your attention toward sorrow.\n\nConscious Focus · Seven of Pentacles. Following Three of Swords, Seven of Pentacles may draw your attention toward patience.\n\nNear Future · The Emperor. Following Seven of Pentacles, The Emperor may draw your attention toward authority.\n\nYour Approach · The World. Following The Emperor, The World may draw your attention toward completion.\n\nSurrounding Influences · Six of Wands. Following The World, Six of Wands may draw your attention toward recognition.\n\nHopes and Fears · King of Cups. Following Six of Wands, King of Cups may draw your attention toward emotional balance.\n\nPotential Outcome · Ace of Pentacles. Following King of Cups, Ace of Pentacles may draw your attention toward opportunity.\n\nThe card-to-card movement is the heart of this reading: Ten of Swords opens the question, and Ace of Pentacles shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, ending, exhaustion, acceptance, adaptability form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTen of Swords (10) · Two of Pentacles (2) · Temperance (14) · Three of Swords (3) · Seven of Pentacles (7) · The Emperor (4) · The World (21) · Six of Wands (6) · King of Cups (King) · Ace of Pentacles (1). Their numbered cards sum to 68, reducing to 5. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPRESENT SITUATION\nOriginal Card · X · Ten of Swords\n\nPresent Situation\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Swords, consider how this relates to ending.\n\nEnding\nExhaustion\nAcceptance\n\nPosition: Present Situation — Ten of Swords. Here, ending, exhaustion, acceptance is a lens for the central situation as you experience it now. Identify one concrete example in your situation and consider how it shapes your response.\n\nA painful chapter may have reached its limit. Acknowledge what cannot be sustained and prioritise support and recovery; the image marks an ending rather than a literal prediction of harm.\n\nLooking closer: A prone figure lies beneath ten swords while light appears beyond dark clouds.\n\nTao / Wu Wei · Ten of Swords\n\nA practice of unforced attention with Ten of Swords: What can I stop trying to revive so that recovery has room to begin?\n\nJungian interpretation · Ten of Swords\n\nPsychological lens: When a familiar story collapses, the psyche needs care before it can construct a more spacious one.\n\nExplore Ten of Swords\nCROSSING CHALLENGE\nOriginal Card · II · Two of Pentacles\n\nCrossing Challenge\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nAdaptability\nBalance\nPriorities\n\nPosition: Crossing Challenge — Two of Pentacles. The tension to explore is adaptability, balance, priorities. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nSeveral demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.\n\nTao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.\n\nExplore Two of Pentacles\nFOUNDATION\nOriginal Card · XIV · Temperance\n\nFoundation\n\nCARD CORRESPONDENCE\nSagittarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Sagittarius · Fire\n\nNumber: 14\n\nFourteen explores integration through patient adjustment rather than a fixed midpoint. In Temperance, consider how this relates to integration.\n\nIntegration\nModeration\nHealing\n\nPosition: Foundation — Temperance. Here, integration, moderation, healing is a lens for the deeper roots beneath the situation. Identify one concrete example in your situation and consider how it shapes your response.\n\nBring different needs into a workable relationship through measured adjustments. The useful balance is responsive rather than fixed: combine what helps, leave room for rest, and allow integration to take time.\n\nLooking closer: An angel pours between two cups with one foot on land and one in water. A path leads toward distant light, suggesting patient integration.\n\nTao / Wu Wei · Temperance\n\nA practice of unforced attention with Temperance: Which small adjustment would make my current rhythm more sustainable?\n\nJungian interpretation · Temperance\n\nPsychological lens: Integration allows apparently opposing needs to inform one another. The aim is a living relationship between them rather than a perfect compromise reached once.\n\nExplore Temperance\nRECENT PAST\nOriginal Card · III · Three of Swords\n\nRecent Past\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Swords, consider how this relates to sorrow.\n\nSorrow\nPainful Truth\nAcknowledgement\n\nPosition: Recent Past — Three of Swords. This may describe how sorrow, painful truth, acknowledgement shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nA painful truth, separation or disappointment deserves honest acknowledgement. Seek a form of expression and support that lets the feeling move, without treating this moment as a verdict on all future connection.\n\nLooking closer: Three swords pierce a heart beneath rain clouds, giving emotional pain a direct visual form.\n\nTao / Wu Wei · Three of Swords\n\nA practice of unforced attention with Three of Swords: What painful truth can I acknowledge without making it my whole identity?\n\nJungian interpretation · Three of Swords\n\nPsychological lens: Naming hurt can interrupt the attempt to manage it entirely through thought or blame.\n\nExplore Three of Swords\nCONSCIOUS FOCUS\nOriginal Card · VII · Seven of Pentacles\n\nConscious Focus\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 7\n\nSeven pauses to examine direction, effort and inner conviction. In Seven of Pentacles, consider how this relates to patience.\n\nPatience\nAssessment\nCultivation\n\nPosition: Conscious Focus — Seven of Pentacles. Here, patience, assessment, cultivation is a lens for your hopes, intentions or conscious priorities. Identify one concrete example in your situation and consider how it shapes your response.\n\nPause to assess the return on sustained effort. Consider what is growing, what needs adjustment and whether the result still matters to you before investing more of your time.\n\nLooking closer: A figure leans on a tool while looking at pentacles growing on a vine.\n\nTao / Wu Wei · Seven of Pentacles\n\nA practice of unforced attention with Seven of Pentacles: What evidence will help me decide whether to keep tending this effort?\n\nJungian interpretation · Seven of Pentacles\n\nPsychological lens: Investment can create attachment to a plan. Reflective assessment separates commitment from the fear of admitting a change is needed.\n\nExplore Seven of Pentacles\nNEAR FUTURE\nOriginal Card · IV · The Emperor\n\nNear Future\n\nCARD CORRESPONDENCE\nAries · Mars\nSKY AT THIS READING\nMars is at 21° 36′ Leo\n\nAstrology: Aries · Mars · Fire\n\nNumber: 4\n\nFour is foundation: the square, the stable frame, the four directions. It brings containment, reliability and the challenge of balancing stability with flexibility.\n\nAuthority\nStructure\nBoundaries\n\nPosition: Near Future — The Emperor. This suggests a possible development involving clear boundaries and dependable structure that protect what matters. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nThe Emperor is the capacity to create order that protects what matters. Upright, he represents boundaries, leadership, consistency and the willingness to make decisions that give a system strength. In a reading, this may describe your own need for structure or the influence of someone carrying strong leadership, authority or Aries-like qualities. In a Past position it can point to structures or authority that shaped the situation; in the Present, a need for clear boundaries or decisions; in the Future, greater stability that may come through deliberate organisation rather than prediction of a fixed outcome.\n\nLooking closer: Notice the red robes and the firm stone throne. Determination is given form through limits, responsibility and practical structure.\n\nTao / Wu Wei · The Emperor\n\nWu Wei: good structure should support movement rather than fight it. The Emperor can ask where one clear boundary or decision would create enough stability for everything else to move more naturally.\n\nJungian interpretation · The Emperor\n\nJungian lens: Logos, Father and Wise Sovereign. The Emperor reflects the psyche's capacity for limits, responsibility and coherent order. In shadow, authority becomes inflexible, punitive or disconnected from feeling.\n\nExplore The Emperor\nYOUR APPROACH\nOriginal Card · XXI · The World\n\nYour Approach\n\nCARD CORRESPONDENCE\nSaturn\nSKY AT THIS READING\nSaturn is at 8° 55′ Aries\n\nAstrology: Saturn · Earth\n\nNumber: 21\n\nTwenty-one gathers the cycle into a completion that can support further participation. In The World, consider how this relates to completion.\n\nCompletion\nIntegration\nParticipation\n\nPosition: Your Approach — The World. Your next step is to work consciously with completion, integration, participation. Choose one practical response you can try, then notice whether it helps.\n\nA cycle is reaching a meaningful completion. Recognise the skills and relationships that made it possible, attend to the final details, and let what you have learned inform your next participation in the world.\n\nLooking closer: A dancing figure stands within a wreath, surrounded by four creatures. Movement inside an enclosing form suggests both wholeness and continuing life.\n\nTao / Wu Wei · The World\n\nA practice of unforced attention with The World: What needs acknowledgement or completion before I move into the next chapter?\n\nJungian interpretation · The World\n\nPsychological lens: Wholeness is the capacity to hold different parts of experience in relationship. Completion can be celebrated without expecting the self to become finished forever.\n\nExplore The World\nSURROUNDING INFLUENCES\nOriginal Card · VI · Six of Wands\n\nSurrounding Influences\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Wands, consider how this relates to recognition.\n\nRecognition\nProgress\nEncouragement\n\nPosition: Surrounding Influences — Six of Wands. Here, recognition, progress, encouragement is a lens for the environment and outside influences around you. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn effort is being recognised or a difficult stage has been passed. Receive encouragement, share the credit and use the confidence to support continued work rather than rest everything on applause.\n\nLooking closer: A rider crowned with a wreath carries a decorated wand among companions.\n\nTao / Wu Wei · Six of Wands\n\nA practice of unforced attention with Six of Wands: What achievement can I acknowledge without needing everyone to approve?\n\nJungian interpretation · Six of Wands\n\nPsychological lens: External recognition supports confidence best when it does not become its only source.\n\nExplore Six of Wands\nHOPES AND FEARS\nOriginal Card · K · King of Cups\n\nHopes and Fears\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nEmotional Balance\nDiplomacy\nSteadiness\n\nPosition: Hopes and Fears — King of Cups. Here, emotional balance, diplomacy, steadiness is a lens for the desires and worries colouring your view. Identify one concrete example in your situation and consider how it shapes your response.\n\nMeet strong feeling with steadiness and honest expression. You can acknowledge an emotion without allowing it to direct every action; use that balance to support a difficult conversation.\n\nLooking closer: A king holds cup and sceptre on a throne surrounded by moving water.\n\nTao / Wu Wei · King of Cups\n\nA practice of unforced attention with King of Cups: How can I stay steady while still letting the truth of my feelings be heard?\n\nJungian interpretation · King of Cups\n\nPsychological lens: Emotional maturity joins containment with contact; composure alone does not guarantee that feeling has been understood.\n\nExplore King of Cups\nPOTENTIAL OUTCOME\nOriginal Card · I · Ace of Pentacles\n\nPotential Outcome\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Pentacles, consider how this relates to opportunity.\n\nOpportunity\nResources\nGrounding\n\nPosition: Potential Outcome — Ace of Pentacles. This suggests a possible development involving opportunity, resources, grounding. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nA practical opportunity can become valuable through steady attention. Look at the resources, skills or conditions available and choose a first step that makes the possibility concrete.\n\nLooking closer: A hand offers a pentacle above a garden path leading through an archway.\n\nTao / Wu Wei · Ace of Pentacles\n\nA practice of unforced attention with Ace of Pentacles: What practical first step would help this opportunity take root?\n\nJungian interpretation · Ace of Pentacles\n\nPsychological lens: A sense of possibility becomes more secure when it is translated into tangible action.\n\nExplore Ace of Pentacles\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 10 revealed cards across this reading, including every clarifier.\n\nPRESENT SITUATION\nTen of Swords\n\nThe foundation is ending and exhaustion; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCROSSING CHALLENGE\nTwo of Pentacles\n\nThe foundation is adaptability and balance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFOUNDATION\nTemperance\n\nThe foundation is integration and moderation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Temperance (Sagittarius). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRECENT PAST\nThree of Swords\n\nThe foundation is sorrow and painful truth; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Three of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCONSCIOUS FOCUS\nSeven of Pentacles\n\nThe foundation is patience and assessment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Seven of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE\nThe Emperor\n\nThe foundation is authority and structure; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Emperor (Aries · Mars). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOUR APPROACH\nThe World\n\nThe foundation is completion and integration; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The World (Saturn). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING INFLUENCES\nSix of Wands\n\nThe foundation is recognition and progress; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES AND FEARS\nKing of Cups\n\nThe foundation is emotional balance and diplomacy; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are King of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPOTENTIAL OUTCOME\nAce of Pentacles\n\nThe foundation is opportunity and resources; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Ten of Swords in Present Situation and moves toward Ace of Pentacles in Potential Outcome.\n\nCrossing Challenge · Two of Pentacles. Following Ten of Swords, Two of Pentacles may draw your attention toward adaptability.\n\nFoundation · Temperance. Read after Two of Pentacles, this develops the thread: Temperance blends different needs; Two of Pentacles manages their daily demands. Small changes in rhythm can make a larger integration sustainable.\n\nRecent Past · Three of Swords. Following Temperance, Three of Swords may draw your attention toward sorrow.\n\nConscious Focus · Seven of Pentacles. Following Three of Swords, Seven of Pentacles may draw your attention toward patience.\n\nNear Future · The Emperor. Following Seven of Pentacles, The Emperor may draw your attention toward authority.\n\nYour Approach · The World. Following The Emperor, The World may draw your attention toward completion.\n\nSurrounding Influences · Six of Wands. Following The World, Six of Wands may draw your attention toward recognition.\n\nHopes and Fears · King of Cups. Following Six of Wands, King of Cups may draw your attention toward emotional balance.\n\nPotential Outcome · Ace of Pentacles. Following King of Cups, Ace of Pentacles may draw your attention toward opportunity.\n\nThe card-to-card movement is the heart of this reading: Ten of Swords opens the question, and Ace of Pentacles shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, ending, exhaustion, acceptance, adaptability form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTen of Swords (10) · Two of Pentacles (2) · Temperance (14) · Three of Swords (3) · Seven of Pentacles (7) · The Emperor (4) · The World (21) · Six of Wands (6) · King of Cups (King) · Ace of Pentacles (1). Their numbered cards sum to 68, reducing to 5. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Celtic Cross."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present Situation: Ten of Swords."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, ending, exhaustion, acceptance is a lens for the central situation as you experience it now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A painful chapter may have reached its limit."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Crossing Challenge: Two of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The tension to explore is adaptability, balance, priorities."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Several demands may need an adaptable rhythm."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Foundation: Temperance."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, integration, moderation, healing is a lens for the deeper roots beneath the situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Bring different needs into a workable relationship through measured adjustments."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Recent Past: Three of Swords."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This may describe how sorrow, painful truth, acknowledgement shaped the path to your current situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A painful truth, separation or disappointment deserves honest acknowledgement."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Conscious Focus: Seven of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, patience, assessment, cultivation is a lens for your hopes, intentions or conscious priorities."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Pause to assess the return on sustained effort."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Near Future: The Emperor."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving clear boundaries and dependable structure that protect what matters."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The Emperor is the capacity to create order that protects what matters."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Your Approach: The World."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with completion, integration, participation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A cycle is reaching a meaningful completion."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Surrounding Influences: Six of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, recognition, progress, encouragement is a lens for the environment and outside influences around you."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An effort is being recognised or a difficult stage has been passed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Hopes and Fears: King of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, emotional balance, diplomacy, steadiness is a lens for the desires and worries colouring your view."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Meet strong feeling with steadiness and honest expression."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Potential Outcome: Ace of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving opportunity, resources, grounding."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A practical opportunity can become valuable through steady attention."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your Celtic Cross.",
+  "I'll keep it short. The full reading stays below.",
+  "Let's go through your cards, one position at a time.",
+  "Present Situation: Ten of Swords.",
+  "Here, ending, exhaustion, acceptance is a lens for the central situation as you experience it now.",
+  "A painful chapter may have reached its limit.",
+  "Crossing Challenge: Two of Pentacles.",
+  "The tension to explore is adaptability, balance, priorities.",
+  "Several demands may need an adaptable rhythm.",
+  "Foundation: Temperance.",
+  "Here, integration, moderation, healing is a lens for the deeper roots beneath the situation.",
+  "Bring different needs into a workable relationship through measured adjustments.",
+  "Recent Past: Three of Swords.",
+  "This may describe how sorrow, painful truth, acknowledgement shaped the path to your current situation.",
+  "A painful truth, separation or disappointment deserves honest acknowledgement.",
+  "Conscious Focus: Seven of Pentacles.",
+  "Here, patience, assessment, cultivation is a lens for your hopes, intentions or conscious priorities.",
+  "Pause to assess the return on sustained effort.",
+  "Near Future: The Emperor.",
+  "This suggests a possible development involving clear boundaries and dependable structure that protect what matters.",
+  "The Emperor is the capacity to create order that protects what matters.",
+  "Your Approach: The World.",
+  "Your next step is to work consciously with completion, integration, participation.",
+  "A cycle is reaching a meaningful completion.",
+  "Surrounding Influences: Six of Wands.",
+  "Here, recognition, progress, encouragement is a lens for the environment and outside influences around you.",
+  "An effort is being recognised or a difficult stage has been passed.",
+  "Hopes and Fears: King of Cups.",
+  "Here, emotional balance, diplomacy, steadiness is a lens for the desires and worries colouring your view.",
+  "Meet strong feeling with steadiness and honest expression.",
+  "Potential Outcome: Ace of Pentacles.",
+  "This suggests a possible development involving opportunity, resources, grounding.",
+  "A practical opportunity can become valuable through steady attention.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

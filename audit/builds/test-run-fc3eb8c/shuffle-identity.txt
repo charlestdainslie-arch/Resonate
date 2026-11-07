@@ -1,0 +1,8 @@
+file                 reference    candidate    result
+deck-theatre.js      d303fb248ce5 d303fb248ce5 IDENTICAL
+deck-theatre.css     58a12f49cab0 58a12f49cab0 IDENTICAL
+deck-engine.js       75646620add9 75646620add9 IDENTICAL
+reading-stage.js     ab12ec3f70c2 ab12ec3f70c2 IDENTICAL
+reference 73da97de95c8ef790d552cb695021412050b5473
+candidate fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39
+shuffle-identity exit 0

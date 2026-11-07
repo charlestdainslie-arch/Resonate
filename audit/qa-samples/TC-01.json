@@ -1,0 +1,227 @@
+{
+ "sample": {
+  "id": "TC-01",
+  "kind": "matrix",
+  "spread": "three",
+  "mode": "matrix",
+  "note": "Ace of Pentacles U / Five of Cups U / Six of Wands U",
+  "seeded": [],
+  "base": [
+   64,
+   40,
+   27
+  ],
+  "reversed": [],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "Past · Present · Future",
+ "drew": [],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Past",
+   "meaning": "the experiences and patterns that brought you here",
+   "base": {
+    "id": 64,
+    "name": "Ace of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · I · Ace of Pentacles\n\nPast\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Pentacles, consider how this relates to opportunity.\n\nOpportunity\nResources\nGrounding\n\nPosition: Past — Ace of Pentacles. This may describe how opportunity, resources, grounding shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nA practical opportunity can become valuable through steady attention. Look at the resources, skills or conditions available and choose a first step that makes the possibility concrete.\n\nLooking closer: A hand offers a pentacle above a garden path leading through an archway.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Ace of Pentacles\n\nA practice of unforced attention with Ace of Pentacles: What practical first step would help this opportunity take root?\n\nJungian interpretation · Ace of Pentacles\n\nPsychological lens: A sense of possibility becomes more secure when it is translated into tangible action.",
+   "positionContext": "Position: Past — Ace of Pentacles. This may describe how opportunity, resources, grounding shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 2,
+   "label": "Present",
+   "meaning": "what is active now and how you can respond",
+   "base": {
+    "id": 40,
+    "name": "Five of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · V · Five of Cups\n\nPresent\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Cups, consider how this relates to grief.\n\nGrief\nDisappointment\nRemaining Support\n\nPosition: Present — Five of Cups. Here, grief, disappointment, remaining support is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nGive a disappointment its proper weight without making it the whole picture. Grief and remaining support can coexist; acknowledge the loss, then notice who or what is still available.\n\nLooking closer: A cloaked figure looks at three spilled cups while two stand behind, with a bridge nearby.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Five of Cups\n\nA practice of unforced attention with Five of Cups: What deserves mourning, and what support have I not yet turned toward?\n\nJungian interpretation · Five of Cups\n\nPsychological lens: Attention can become fixed on absence. Integration makes room for loss within a larger life.",
+   "positionContext": "Position: Present — Five of Cups. Here, grief, disappointment, remaining support is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 3,
+   "label": "Future",
+   "meaning": "a possible direction if current patterns continue, rather than a fixed prediction",
+   "base": {
+    "id": 27,
+    "name": "Six of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · VI · Six of Wands\n\nFuture\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Wands, consider how this relates to recognition.\n\nRecognition\nProgress\nEncouragement\n\nPosition: Future — Six of Wands. This suggests a possible development involving recognition, progress, encouragement. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nAn effort is being recognised or a difficult stage has been passed. Receive encouragement, share the credit and use the confidence to support continued work rather than rest everything on applause.\n\nLooking closer: A rider crowned with a wreath carries a decorated wand among companions.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Six of Wands\n\nA practice of unforced attention with Six of Wands: What achievement can I acknowledge without needing everyone to approve?\n\nJungian interpretation · Six of Wands\n\nPsychological lens: External recognition supports confidence best when it does not become its only source.",
+   "positionContext": "Position: Future — Six of Wands. This suggests a possible development involving recognition, progress, encouragement. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier.\n\nPAST\nAce of Pentacles\n\nThe foundation is opportunity and resources; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT\nFive of Cups\n\nThe foundation is grief and disappointment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Five of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFUTURE\nSix of Wands\n\nThe foundation is recognition and progress; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Ace of Pentacles in Past and moves toward Six of Wands in Future.\n\nPresent · Five of Cups. Following Ace of Pentacles, Five of Cups may draw your attention toward grief.\n\nFuture · Six of Wands. Following Five of Cups, Six of Wands may draw your attention toward recognition.\n\nThe card-to-card movement is the heart of this reading: Ace of Pentacles opens the question, and Six of Wands shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, opportunity, resources, grounding, grief form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nAce of Pentacles (1) · Five of Cups (5) · Six of Wands (6). Their numbered cards sum to 12, reducing to 3. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPAST\nOriginal Card · I · Ace of Pentacles\n\nPast\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Pentacles, consider how this relates to opportunity.\n\nOpportunity\nResources\nGrounding\n\nPosition: Past — Ace of Pentacles. This may describe how opportunity, resources, grounding shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nA practical opportunity can become valuable through steady attention. Look at the resources, skills or conditions available and choose a first step that makes the possibility concrete.\n\nLooking closer: A hand offers a pentacle above a garden path leading through an archway.\n\nTao / Wu Wei · Ace of Pentacles\n\nA practice of unforced attention with Ace of Pentacles: What practical first step would help this opportunity take root?\n\nJungian interpretation · Ace of Pentacles\n\nPsychological lens: A sense of possibility becomes more secure when it is translated into tangible action.\n\nExplore Ace of Pentacles\nPRESENT\nOriginal Card · V · Five of Cups\n\nPresent\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Cups, consider how this relates to grief.\n\nGrief\nDisappointment\nRemaining Support\n\nPosition: Present — Five of Cups. Here, grief, disappointment, remaining support is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nGive a disappointment its proper weight without making it the whole picture. Grief and remaining support can coexist; acknowledge the loss, then notice who or what is still available.\n\nLooking closer: A cloaked figure looks at three spilled cups while two stand behind, with a bridge nearby.\n\nTao / Wu Wei · Five of Cups\n\nA practice of unforced attention with Five of Cups: What deserves mourning, and what support have I not yet turned toward?\n\nJungian interpretation · Five of Cups\n\nPsychological lens: Attention can become fixed on absence. Integration makes room for loss within a larger life.\n\nExplore Five of Cups\nFUTURE\nOriginal Card · VI · Six of Wands\n\nFuture\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Wands, consider how this relates to recognition.\n\nRecognition\nProgress\nEncouragement\n\nPosition: Future — Six of Wands. This suggests a possible development involving recognition, progress, encouragement. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nAn effort is being recognised or a difficult stage has been passed. Receive encouragement, share the credit and use the confidence to support continued work rather than rest everything on applause.\n\nLooking closer: A rider crowned with a wreath carries a decorated wand among companions.\n\nTao / Wu Wei · Six of Wands\n\nA practice of unforced attention with Six of Wands: What achievement can I acknowledge without needing everyone to approve?\n\nJungian interpretation · Six of Wands\n\nPsychological lens: External recognition supports confidence best when it does not become its only source.\n\nExplore Six of Wands\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier.\n\nPAST\nAce of Pentacles\n\nThe foundation is opportunity and resources; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT\nFive of Cups\n\nThe foundation is grief and disappointment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Five of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFUTURE\nSix of Wands\n\nThe foundation is recognition and progress; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Ace of Pentacles in Past and moves toward Six of Wands in Future.\n\nPresent · Five of Cups. Following Ace of Pentacles, Five of Cups may draw your attention toward grief.\n\nFuture · Six of Wands. Following Five of Cups, Six of Wands may draw your attention toward recognition.\n\nThe card-to-card movement is the heart of this reading: Ace of Pentacles opens the question, and Six of Wands shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, opportunity, resources, grounding, grief form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nAce of Pentacles (1) · Five of Cups (5) · Six of Wands (6). Their numbered cards sum to 12, reducing to 3. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Past · Present · Future."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Past: Ace of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This may describe how opportunity, resources, grounding shaped the path to your current situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A practical opportunity can become valuable through steady attention."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present: Five of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, grief, disappointment, remaining support is a lens for what is active now and how you can respond."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Give a disappointment its proper weight without making it the whole picture."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Future: Six of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving recognition, progress, encouragement."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An effort is being recognised or a difficult stage has been passed."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your Past · Present · Future.",
+  "I'll keep it short. The full reading stays below.",
+  "Let's go through your cards, one position at a time.",
+  "Past: Ace of Pentacles.",
+  "This may describe how opportunity, resources, grounding shaped the path to your current situation.",
+  "A practical opportunity can become valuable through steady attention.",
+  "Present: Five of Cups.",
+  "Here, grief, disappointment, remaining support is a lens for what is active now and how you can respond.",
+  "Give a disappointment its proper weight without making it the whole picture.",
+  "Future: Six of Wands.",
+  "This suggests a possible development involving recognition, progress, encouragement.",
+  "An effort is being recognised or a difficult stage has been passed.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

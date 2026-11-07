@@ -1,0 +1,229 @@
+{
+ "sample": {
+  "id": "S04",
+  "kind": "baseline",
+  "spread": "three",
+  "seed": 7114,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   69,
+   14,
+   44
+  ],
+  "reversed": [
+   69
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "Past · Present · Future",
+ "drew": [],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Past",
+   "meaning": "the experiences and patterns that brought you here",
+   "base": {
+    "id": 69,
+    "name": "Six of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · VI · Six of Pentacles, reversed\n\nPast\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Pentacles, consider how this relates to generosity.\n\nStrings Attached\nUnequal Exchange\nOvergiving\n\nPosition: Past — Six of Pentacles reversed. This may describe how strings attached, unequal exchange, overgiving shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nAn exchange may carry unspoken conditions or ask too much of one side. Make the terms visible and distinguish generosity from a pattern that creates dependency or resentment.\n\nLooking closer: A standing figure distributes coins while holding scales above two kneeling figures.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Six of Pentacles\n\nA practice of unforced attention with Six of Pentacles: What would make this exchange fair and freely chosen?\n\nJungian interpretation · Six of Pentacles\n\nPsychological lens: Giving can express care or manage a need for power and approval. Examining the motive protects mutual dignity.",
+   "positionContext": "Position: Past — Six of Pentacles reversed. This may describe how strings attached, unequal exchange, overgiving shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 2,
+   "label": "Present",
+   "meaning": "what is active now and how you can respond",
+   "base": {
+    "id": 14,
+    "name": "Temperance",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · XIV · Temperance\n\nPresent\n\nCARD CORRESPONDENCE\nSagittarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Sagittarius · Fire\n\nNumber: 14\n\nFourteen explores integration through patient adjustment rather than a fixed midpoint. In Temperance, consider how this relates to integration.\n\nIntegration\nModeration\nHealing\n\nPosition: Present — Temperance. Here, integration, moderation, healing is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nBring different needs into a workable relationship through measured adjustments. The useful balance is responsive rather than fixed: combine what helps, leave room for rest, and allow integration to take time.\n\nLooking closer: An angel pours between two cups with one foot on land and one in water. A path leads toward distant light, suggesting patient integration.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Temperance\n\nA practice of unforced attention with Temperance: Which small adjustment would make my current rhythm more sustainable?\n\nJungian interpretation · Temperance\n\nPsychological lens: Integration allows apparently opposing needs to inform one another. The aim is a living relationship between them rather than a perfect compromise reached once.",
+   "positionContext": "Position: Present — Temperance. Here, integration, moderation, healing is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 3,
+   "label": "Future",
+   "meaning": "a possible direction if current patterns continue, rather than a fixed prediction",
+   "base": {
+    "id": 44,
+    "name": "Nine of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · IX · Nine of Cups\n\nFuture\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Cups, consider how this relates to contentment.\n\nContentment\nEnjoyment\nAppreciation\n\nPosition: Future — Nine of Cups. This suggests a possible development involving contentment, enjoyment, appreciation. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nEnjoy what has been achieved and acknowledge enough when it is present. Satisfaction grows through inhabiting the experience, rather than immediately turning it into a demand for the next reward.\n\nLooking closer: A seated figure rests before an arrangement of nine cups, appearing pleased with the display.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Nine of Cups\n\nA practice of unforced attention with Nine of Cups: What does enough feel like when no one else is watching?\n\nJungian interpretation · Nine of Cups\n\nPsychological lens: Pleasure supports wellbeing when it remains connected to feeling rather than becoming a substitute for it.",
+   "positionContext": "Position: Future — Nine of Cups. This suggests a possible development involving contentment, enjoyment, appreciation. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST\nSix of Pentacles, reversed\n\nThe foundation is strings attached and unequal exchange; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT\nTemperance\n\nThe foundation is integration and moderation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Temperance (Sagittarius). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFUTURE\nNine of Cups\n\nThe foundation is contentment and enjoyment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Nine of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Six of Pentacles, reversed in Past and moves toward Nine of Cups in Future.\n\nPresent · Temperance. Following Six of Pentacles, Temperance may draw your attention toward integration.\n\nFuture · Nine of Cups. Following Temperance, Nine of Cups may draw your attention toward contentment.\n\nThe card-to-card movement is the heart of this reading: Six of Pentacles, reversed opens the question, and Nine of Cups shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, strings attached, unequal exchange, overgiving, integration form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nSix of Pentacles (6) · Temperance (14) · Nine of Cups (9). Their numbered cards sum to 29, reducing to 2. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPAST\nOriginal Card · VI · Six of Pentacles, reversed\n\nPast\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Pentacles, consider how this relates to generosity.\n\nStrings Attached\nUnequal Exchange\nOvergiving\n\nPosition: Past — Six of Pentacles reversed. This may describe how strings attached, unequal exchange, overgiving shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nAn exchange may carry unspoken conditions or ask too much of one side. Make the terms visible and distinguish generosity from a pattern that creates dependency or resentment.\n\nLooking closer: A standing figure distributes coins while holding scales above two kneeling figures.\n\nTao / Wu Wei · Six of Pentacles\n\nA practice of unforced attention with Six of Pentacles: What would make this exchange fair and freely chosen?\n\nJungian interpretation · Six of Pentacles\n\nPsychological lens: Giving can express care or manage a need for power and approval. Examining the motive protects mutual dignity.\n\nExplore Six of Pentacles\nPRESENT\nOriginal Card · XIV · Temperance\n\nPresent\n\nCARD CORRESPONDENCE\nSagittarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Sagittarius · Fire\n\nNumber: 14\n\nFourteen explores integration through patient adjustment rather than a fixed midpoint. In Temperance, consider how this relates to integration.\n\nIntegration\nModeration\nHealing\n\nPosition: Present — Temperance. Here, integration, moderation, healing is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nBring different needs into a workable relationship through measured adjustments. The useful balance is responsive rather than fixed: combine what helps, leave room for rest, and allow integration to take time.\n\nLooking closer: An angel pours between two cups with one foot on land and one in water. A path leads toward distant light, suggesting patient integration.\n\nTao / Wu Wei · Temperance\n\nA practice of unforced attention with Temperance: Which small adjustment would make my current rhythm more sustainable?\n\nJungian interpretation · Temperance\n\nPsychological lens: Integration allows apparently opposing needs to inform one another. The aim is a living relationship between them rather than a perfect compromise reached once.\n\nExplore Temperance\nFUTURE\nOriginal Card · IX · Nine of Cups\n\nFuture\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Cups, consider how this relates to contentment.\n\nContentment\nEnjoyment\nAppreciation\n\nPosition: Future — Nine of Cups. This suggests a possible development involving contentment, enjoyment, appreciation. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nEnjoy what has been achieved and acknowledge enough when it is present. Satisfaction grows through inhabiting the experience, rather than immediately turning it into a demand for the next reward.\n\nLooking closer: A seated figure rests before an arrangement of nine cups, appearing pleased with the display.\n\nTao / Wu Wei · Nine of Cups\n\nA practice of unforced attention with Nine of Cups: What does enough feel like when no one else is watching?\n\nJungian interpretation · Nine of Cups\n\nPsychological lens: Pleasure supports wellbeing when it remains connected to feeling rather than becoming a substitute for it.\n\nExplore Nine of Cups\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST\nSix of Pentacles, reversed\n\nThe foundation is strings attached and unequal exchange; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT\nTemperance\n\nThe foundation is integration and moderation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Temperance (Sagittarius). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFUTURE\nNine of Cups\n\nThe foundation is contentment and enjoyment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Nine of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Six of Pentacles, reversed in Past and moves toward Nine of Cups in Future.\n\nPresent · Temperance. Following Six of Pentacles, Temperance may draw your attention toward integration.\n\nFuture · Nine of Cups. Following Temperance, Nine of Cups may draw your attention toward contentment.\n\nThe card-to-card movement is the heart of this reading: Six of Pentacles, reversed opens the question, and Nine of Cups shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, strings attached, unequal exchange, overgiving, integration form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nSix of Pentacles (6) · Temperance (14) · Nine of Cups (9). Their numbered cards sum to 29, reducing to 2. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Past · Present · Future."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Past: Six of Pentacles, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This may describe how strings attached, unequal exchange, overgiving shaped the path to your current situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An exchange may carry unspoken conditions or ask too much of one side."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present: Temperance."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, integration, moderation, healing is a lens for what is active now and how you can respond."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Bring different needs into a workable relationship through measured adjustments."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Future: Nine of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving contentment, enjoyment, appreciation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Enjoy what has been achieved and acknowledge enough when it is present."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your Past · Present · Future.",
+  "I'll keep it short. The full reading stays below.",
+  "Let's go through your cards, one position at a time.",
+  "Past: Six of Pentacles, reversed.",
+  "This may describe how strings attached, unequal exchange, overgiving shaped the path to your current situation.",
+  "An exchange may carry unspoken conditions or ask too much of one side.",
+  "Present: Temperance.",
+  "Here, integration, moderation, healing is a lens for what is active now and how you can respond.",
+  "Bring different needs into a workable relationship through measured adjustments.",
+  "Future: Nine of Cups.",
+  "This suggests a possible development involving contentment, enjoyment, appreciation.",
+  "Enjoy what has been achieved and acknowledge enough when it is present.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

@@ -1,0 +1,781 @@
+{
+ "sample": {
+  "id": "S14",
+  "kind": "baseline",
+  "spread": "celtic",
+  "seed": 7124,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   45,
+   8,
+   65,
+   39,
+   20,
+   77,
+   35,
+   11,
+   57,
+   69
+  ],
+  "reversed": [
+   65,
+   39,
+   77,
+   33
+  ],
+  "steps": [
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 49
+   },
+   {
+    "pos": 4,
+    "layer": 1,
+    "id": 33
+   },
+   {
+    "pos": 7,
+    "layer": 1,
+    "id": 22
+   }
+  ],
+  "c1": [
+   null,
+   49,
+   null,
+   null,
+   33,
+   null,
+   null,
+   22,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "Celtic Cross",
+ "drew": [
+  "first",
+  "first",
+  "first"
+ ],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Present Situation",
+   "meaning": "the central situation as you experience it now",
+   "base": {
+    "id": 45,
+    "name": "Ten of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · X · Ten of Cups\n\nPresent Situation\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Cups, consider how this relates to emotional fulfilment.\n\nEmotional Fulfilment\nShared Values\nBelonging\n\nPosition: Present Situation — Ten of Cups. Here, emotional fulfilment, shared values, belonging is a lens for the central situation as you experience it now. Identify one concrete example in your situation and consider how it shapes your response.\n\nShared care can create a strong sense of belonging. Notice the daily choices behind a happy picture and make room for different needs within the relationship or chosen community.\n\nLooking closer: A family raises its arms beneath a rainbow of cups beside a home and landscape.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Ten of Cups\n\nA practice of unforced attention with Ten of Cups: Which daily acts make our idea of belonging real?\n\nJungian interpretation · Ten of Cups\n\nPsychological lens: An image of a happy life becomes more humane when it can include ordinary frustration and difference.",
+   "positionContext": "Position: Present Situation — Ten of Cups. Here, emotional fulfilment, shared values, belonging is a lens for the central situation as you experience it now. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 2,
+   "label": "Crossing Challenge",
+   "meaning": "the tension or obstacle crossing that situation",
+   "base": {
+    "id": 8,
+    "name": "Strength",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": {
+    "id": 49,
+    "name": "King of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c2": null,
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · VIII · Strength\n\nCrossing Challenge\n\nCARD CORRESPONDENCE\nLeo\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Leo · Fire\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Strength, consider how this relates to courage.\n\nCourage\nCompassion\nPatience\n\nPosition: Crossing Challenge — Strength. The tension to explore is courage, compassion, patience. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nMeet a strong feeling or difficult situation with patient courage. Firmness can be gentle: recognise the instinct beneath the reaction and respond without humiliating yourself or another person.\n\nLooking closer: A woman calmly tends a lion beneath an infinity sign. The image joins instinct and awareness through trust rather than a display of force.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · K · King of Cups\n\nMeet strong feeling with steadiness and honest expression. You can acknowledge an emotion without allowing it to direct every action; use that balance to support a difficult conversation.\n\nAstrology: Water · Cups · Water\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nLooking closer: A king holds cup and sceptre on a throne surrounded by moving water.\n\nKing of Cups challenges Strength.\n\nIn Crossing Challenge, the theme of emotional balance and diplomacy pushes against courage and compassion; ask what needs balancing before you act.\n\nRead this way because Fire and Water are contrary elements.\n\nAs a Minor Arcana card, King of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships. As a court card (King), King of Cups may describe a person involved, or a way of behaving you could adopt.",
+   "clar2": "",
+   "notes": "",
+   "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Crossing Challenge\n\nRevision 1 · with Clarifier 1.\n\nTogether, Strength and King of Cups give Crossing Challenge a message with real tension in it: courage and emotional balance. Treat the friction as information: what would honour both sides?\n\nIn the wider Celtic Cross, Crossing Challenge is read with Present Situation, Ten of Cups: together they show the situation and what crosses it. There, Ten of Cups challenges Strength (Fire and Water are contrary elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · Strength\n\nA practice of unforced attention with Strength: Where would compassionate firmness help more than trying to overpower my feelings?\n\nJungian interpretation · Strength\n\nPsychological lens: Instinct becomes less frightening when it is acknowledged. The task is to develop a relationship with anger, desire or fear instead of treating it as an enemy.",
+   "positionContext": "Position: Crossing Challenge — Strength. The tension to explore is courage, compassion, patience. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.",
+   "relation1": "King of Cups challenges Strength.\n\nIn Crossing Challenge, the theme of emotional balance and diplomacy pushes against courage and compassion; ask what needs balancing before you act.\n\nRead this way because Fire and Water are contrary elements.\n\nAs a Minor Arcana card, King of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships. As a court card (King), King of Cups may describe a person involved, or a way of behaving you could adopt.",
+   "relation2": "",
+   "synthesisLead": "Together, Strength and King of Cups give Crossing Challenge a message with real tension in it: courage and emotional balance. Treat the friction as information: what would honour both sides?",
+   "synthesisWider": "In the wider Celtic Cross, Crossing Challenge is read with Present Situation, Ten of Cups: together they show the situation and what crosses it. There, Ten of Cups challenges Strength (Fire and Water are contrary elements).",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 3,
+   "label": "Foundation",
+   "meaning": "the deeper roots beneath the situation",
+   "base": {
+    "id": 65,
+    "name": "Two of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · II · Two of Pentacles, reversed\n\nFoundation\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nOvercommitment\nDisorganisation\nStrain\n\nPosition: Foundation — Two of Pentacles reversed. Here, overcommitment, disorganisation, strain is a lens for the deeper roots beneath the situation. Identify one concrete example in your situation and consider how it shapes your response.\n\nToo many demands may be exceeding your capacity. Simplify commitments and choose what can wait rather than relying on constant adjustment to make an impossible load sustainable.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.",
+   "positionContext": "Position: Foundation — Two of Pentacles reversed. Here, overcommitment, disorganisation, strain is a lens for the deeper roots beneath the situation. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 4,
+   "label": "Recent Past",
+   "meaning": "an influence receding into the past",
+   "base": {
+    "id": 39,
+    "name": "Four of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · IV · Four of Cups, reversed\n\nRecent Past\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nRenewed Interest\nWithdrawal\nMissed Opening\n\nPosition: Recent Past — Four of Cups reversed. This may describe how renewed interest, withdrawal, missed opening shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nInterest may be returning, or withdrawal may be keeping a useful opening out of view. Re-engage gradually and test what feels nourishing rather than forcing enthusiasm.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Four of Cups\n\nA practice of unforced attention with Four of Cups: What am I overlooking because it does not resemble the offer I expected?\n\nJungian interpretation · Four of Cups\n\nPsychological lens: Turning inward can clarify desire, but habitual detachment can also protect it from being tested.",
+   "positionContext": "Position: Recent Past — Four of Cups reversed. This may describe how renewed interest, withdrawal, missed opening shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 5,
+   "label": "Conscious Focus",
+   "meaning": "your hopes, intentions or conscious priorities",
+   "base": {
+    "id": 20,
+    "name": "Judgement",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": {
+    "id": 33,
+    "name": "Knight of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": true
+   },
+   "c2": null,
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XX · Judgement\n\nConscious Focus\n\nCARD CORRESPONDENCE\nFire\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Fire\n\nNumber: 20\n\nTwenty reviews the journey and invites a more conscious response to its meaning. In Judgement, consider how this relates to awakening.\n\nAwakening\nReview\nRenewed Purpose\n\nPosition: Conscious Focus — Judgement. Here, awakening, review, renewed purpose is a lens for your hopes, intentions or conscious priorities. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn honest review of the past can help you answer a new sense of purpose. Recognise what you have learned, make amends where possible, and choose the responsibility you are ready to accept now.\n\nLooking closer: Figures rise toward an angel sounding a trumpet. The image suggests a summons to awareness and renewal rather than a final verdict on a person.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · Kn · Knight of Wands, reversed\n\nAction may be outrunning judgement or enthusiasm may disappear when work becomes routine. Slow down enough to choose a commitment you will still honour after the excitement fades.\n\nAstrology: Fire · Wands · Fire\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nLooking closer: A rider on a rearing horse carries a wand through a dry landscape.\n\nKnight of Wands (reversed) modifies Judgement.\n\nIn Conscious Focus, the theme of impulsiveness and frustration changes how awakening and review may be expressed, rather than strengthening or opposing it.\n\nRead this way because both are Fire cards, but Knight of Wands is reversed.\n\nBecause Knight of Wands (reversed) is reversed, it may point to what is blocked, delayed or turned inward in this theme. As a Minor Arcana card, Knight of Wands brings the Major theme down to a practical, everyday expression in energy, drive and creative action. As a court card (Knight), Knight of Wands may describe a person involved, or a way of behaving you could adopt.",
+   "clar2": "",
+   "notes": "",
+   "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Conscious Focus\n\nRevision 1 · with Clarifier 1.\n\nTogether, Judgement and Knight of Wands (reversed) give Conscious Focus a layered message, each card shifting the angle a little: awakening and impulsiveness. Both cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.\n\nIn the wider Celtic Cross, Conscious Focus is read with Foundation, Two of Pentacles (reversed): together they show what lies beneath and what you consciously aim for. There, Two of Pentacles modifies Judgement (Fire and Earth are neutral to each other).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · Judgement\n\nA practice of unforced attention with Judgement: What is asking for my response now, and what from the past can I carry differently?\n\nJungian interpretation · Judgement\n\nPsychological lens: Revisiting the personal story can reveal possibilities that an older identity excluded. Integration includes accountability while allowing the self to develop beyond an earlier mistake.",
+   "positionContext": "Position: Conscious Focus — Judgement. Here, awakening, review, renewed purpose is a lens for your hopes, intentions or conscious priorities. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "Knight of Wands (reversed) modifies Judgement.\n\nIn Conscious Focus, the theme of impulsiveness and frustration changes how awakening and review may be expressed, rather than strengthening or opposing it.\n\nRead this way because both are Fire cards, but Knight of Wands is reversed.\n\nBecause Knight of Wands (reversed) is reversed, it may point to what is blocked, delayed or turned inward in this theme. As a Minor Arcana card, Knight of Wands brings the Major theme down to a practical, everyday expression in energy, drive and creative action. As a court card (Knight), Knight of Wands may describe a person involved, or a way of behaving you could adopt.",
+   "relation2": "",
+   "synthesisLead": "Together, Judgement and Knight of Wands (reversed) give Conscious Focus a layered message, each card shifting the angle a little: awakening and impulsiveness. Both cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.",
+   "synthesisWider": "In the wider Celtic Cross, Conscious Focus is read with Foundation, Two of Pentacles (reversed): together they show what lies beneath and what you consciously aim for. There, Two of Pentacles modifies Judgement (Fire and Earth are neutral to each other).",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 6,
+   "label": "Near Future",
+   "meaning": "a possible next development, not a fixed prediction",
+   "base": {
+    "id": 77,
+    "name": "King of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · K · King of Pentacles, reversed\n\nNear Future\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nPossessiveness\nStatus Anxiety\nRigid Control\n\nPosition: Near Future — King of Pentacles reversed. This suggests a possible development involving possessiveness, status anxiety, rigid control. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nSecurity or status may be turning into possessiveness or resistance to change. Ask whether your resources are supporting life or whether protecting the position has become the main task.\n\nLooking closer: A king rests with a pentacle and sceptre amid vines, bull imagery and a substantial estate.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · King of Pentacles\n\nA practice of unforced attention with King of Pentacles: How can I use what I have built to create lasting, shared stability?\n\nJungian interpretation · King of Pentacles\n\nPsychological lens: Material authority develops when competence serves a wider responsibility rather than only defending an image of success.",
+   "positionContext": "Position: Near Future — King of Pentacles reversed. This suggests a possible development involving possessiveness, status anxiety, rigid control. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 7,
+   "label": "Your Approach",
+   "meaning": "the stance you bring and the choices within your control",
+   "base": {
+    "id": 35,
+    "name": "King of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · K · King of Wands\n\nYour Approach\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nVision\nLeadership\nEnterprise\n\nPosition: Your Approach — King of Wands. Your next step is to work consciously with vision, leadership, enterprise. Choose one practical response you can try, then notice whether it helps.\n\nGive a shared vision a direction others can understand. Mature leadership combines initiative with trust in other people; set the purpose clearly and make the work possible rather than doing it all yourself.\n\nLooking closer: A king holds a living wand on a throne decorated with lions and salamanders.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · King of Wands\n\nA practice of unforced attention with King of Wands: How can I lead this vision without needing to control every part of it?\n\nJungian interpretation · King of Wands\n\nPsychological lens: Authority matures when personal drive can support other people’s agency.",
+   "positionContext": "Position: Your Approach — King of Wands. Your next step is to work consciously with vision, leadership, enterprise. Choose one practical response you can try, then notice whether it helps.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 8,
+   "label": "Surrounding Influences",
+   "meaning": "the environment and outside influences around you",
+   "base": {
+    "id": 11,
+    "name": "Justice",
+    "arcana": "Major",
+    "element": "Air",
+    "reversed": false
+   },
+   "c1": {
+    "id": 22,
+    "name": "Ace of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c2": null,
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XI · Justice\n\nSurrounding Influences\n\nCARD CORRESPONDENCE\nLibra\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Libra · Air\n\nNumber: 11\n\nEleven asks for conscious judgement as an established order is examined. In Justice, consider how this relates to fairness.\n\nFairness\nAccountability\nClarity\n\nPosition: Surrounding Influences — Justice. Here, fairness, accountability, clarity is a lens for the environment and outside influences around you. Identify one concrete example in your situation and consider how it shapes your response.\n\nLook carefully at evidence, agreements and consequences. A balanced decision requires honesty about your own part as well as the other side; make the choice you can explain and take responsibility for.\n\nLooking closer: A seated figure holds scales and an upright sword. Consideration and clear judgement must work together, with consequences following the decision.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · I · Ace of Wands\n\nA fresh creative impulse asks for a first experiment. Give the idea a small practical outlet before deciding its final shape; enthusiasm needs somewhere to take root.\n\nAstrology: Fire · Wands · Fire\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Wands, consider how this relates to inspiration.\n\nLooking closer: A hand holds a budding wand above a fertile landscape, making possibility visible before a finished project exists.\n\nAce of Wands supports Justice.\n\nIn Surrounding Influences, the theme of inspiration and potential can help fairness and accountability find a constructive outlet.\n\nRead this way because Air and Fire are friendly elements.\n\nAs a Minor Arcana card, Ace of Wands brings the Major theme down to a practical, everyday expression in energy, drive and creative action.",
+   "clar2": "",
+   "notes": "",
+   "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Surrounding Influences\n\nRevision 1 · with Clarifier 1.\n\nTogether, Justice and Ace of Wands give Surrounding Influences a consistent message: fairness and inspiration. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nIn the wider Celtic Cross, Surrounding Influences is read with Your Approach, King of Wands: together they show how you approach things and what surrounds you. There, King of Wands supports Justice (Air and Fire are friendly elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · Justice\n\nA practice of unforced attention with Justice: What would a fair account of this situation include about my own actions?\n\nJungian interpretation · Justice\n\nPsychological lens: Conscience matures when it can examine intention and impact together. Being accountable need not become a judgement that the whole self is beyond repair.",
+   "positionContext": "Position: Surrounding Influences — Justice. Here, fairness, accountability, clarity is a lens for the environment and outside influences around you. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "Ace of Wands supports Justice.\n\nIn Surrounding Influences, the theme of inspiration and potential can help fairness and accountability find a constructive outlet.\n\nRead this way because Air and Fire are friendly elements.\n\nAs a Minor Arcana card, Ace of Wands brings the Major theme down to a practical, everyday expression in energy, drive and creative action.",
+   "relation2": "",
+   "synthesisLead": "Together, Justice and Ace of Wands give Surrounding Influences a consistent message: fairness and inspiration. Consider working with this theme with some confidence, while staying open to how it unfolds.",
+   "synthesisWider": "In the wider Celtic Cross, Surrounding Influences is read with Your Approach, King of Wands: together they show how you approach things and what surrounds you. There, King of Wands supports Justice (Air and Fire are friendly elements).",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 9,
+   "label": "Hopes and Fears",
+   "meaning": "the desires and worries colouring your view",
+   "base": {
+    "id": 57,
+    "name": "Eight of Swords",
+    "arcana": "Minor",
+    "element": "Air",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · VIII · Eight of Swords\n\nHopes and Fears\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Eight of Swords, consider how this relates to restriction.\n\nRestriction\nFear\nLimited Perspective\n\nPosition: Hopes and Fears — Eight of Swords. Here, restriction, fear, limited perspective is a lens for the desires and worries colouring your view. Identify one concrete example in your situation and consider how it shapes your response.\n\nA situation may feel more closed than it is, though some limits may be real. Separate concrete constraints from feared consequences and look for one safe step that increases your room to choose.\n\nLooking closer: A bound, blindfolded figure stands among swords with open ground nearby.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Eight of Swords\n\nA practice of unforced attention with Eight of Swords: Which limit is a fact, and which might change with information or support?\n\nJungian interpretation · Eight of Swords\n\nPsychological lens: A protective belief can narrow perception until alternatives become difficult to imagine. Recognition begins to widen the field.",
+   "positionContext": "Position: Hopes and Fears — Eight of Swords. Here, restriction, fear, limited perspective is a lens for the desires and worries colouring your view. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 10,
+   "label": "Potential Outcome",
+   "meaning": "a possible outcome if the present pattern continues, with room for your choices",
+   "base": {
+    "id": 69,
+    "name": "Six of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · VI · Six of Pentacles\n\nPotential Outcome\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Pentacles, consider how this relates to generosity.\n\nGenerosity\nReciprocity\nFair Exchange\n\nPosition: Potential Outcome — Six of Pentacles. This suggests a possible development involving generosity, reciprocity, fair exchange. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nResources or attention are being exchanged. Notice who has the power to give, ask or refuse, and aim for help that respects the recipient’s dignity and real needs.\n\nLooking closer: A standing figure distributes coins while holding scales above two kneeling figures.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Six of Pentacles\n\nA practice of unforced attention with Six of Pentacles: What would make this exchange fair and freely chosen?\n\nJungian interpretation · Six of Pentacles\n\nPsychological lens: Giving can express care or manage a need for power and approval. Examining the motive protects mutual dignity.",
+   "positionContext": "Position: Potential Outcome — Six of Pentacles. This suggests a possible development involving generosity, reciprocity, fair exchange. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 13 revealed cards across this reading, including every clarifier. 4 cards came up reversed and are read through their reversed meaning.\n\nPRESENT SITUATION\nTen of Cups\n\nThe foundation is emotional fulfilment and shared values; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCROSSING CHALLENGE\nStrength + King of Cups\n\nThe original Strength highlights courage and compassion; King of Cups introduces emotional balance and diplomacy. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Strength (Leo) meets King of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFOUNDATION\nTwo of Pentacles, reversed\n\nThe foundation is overcommitment and disorganisation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRECENT PAST\nFour of Cups, reversed\n\nThe foundation is renewed interest and withdrawal; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Four of Cups, reversed (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCONSCIOUS FOCUS\nJudgement + Knight of Wands, reversed\n\nThe original Judgement highlights awakening and review; Knight of Wands, reversed introduces impulsiveness and frustration. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Judgement (Fire) meets Knight of Wands, reversed (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE\nKing of Pentacles, reversed\n\nThe foundation is possessiveness and status anxiety; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are King of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOUR APPROACH\nKing of Wands\n\nThe foundation is vision and leadership; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are King of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING INFLUENCES\nJustice + Ace of Wands\n\nThe original Justice highlights fairness and accountability; Ace of Wands introduces inspiration and potential. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Justice (Libra) meets Ace of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES AND FEARS\nEight of Swords\n\nThe foundation is restriction and fear; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Eight of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPOTENTIAL OUTCOME\nSix of Pentacles\n\nThe foundation is generosity and reciprocity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Ten of Cups in Present Situation and moves toward Six of Pentacles in Potential Outcome.\n\nCrossing Challenge · Strength. Following Ten of Cups, Strength may draw your attention toward courage.\n\nFoundation · Two of Pentacles, reversed. Following Strength, Two of Pentacles may draw your attention toward overcommitment.\n\nRecent Past · Four of Cups, reversed. Following Two of Pentacles, Four of Cups may draw your attention toward renewed interest.\n\nConscious Focus · Judgement. Following Four of Cups, Judgement may draw your attention toward awakening.\n\nNear Future · King of Pentacles, reversed. Following Judgement, King of Pentacles may draw your attention toward possessiveness.\n\nYour Approach · King of Wands. Read after King of Pentacles, this develops the thread: Pentacles sustains the work; Wands gives it energy and direction. Growth needs both a viable foundation and a reason to begin.\n\nSurrounding Influences · Justice. Following King of Wands, Justice may draw your attention toward fairness.\n\nHopes and Fears · Eight of Swords. Following Justice, Eight of Swords may draw your attention toward restriction.\n\nPotential Outcome · Six of Pentacles. Following Eight of Swords, Six of Pentacles may draw your attention toward generosity.\n\nThe card-to-card movement is the heart of this reading: Ten of Cups opens the question, and Six of Pentacles shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, emotional fulfilment, shared values, belonging, courage form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTen of Cups (10) · Strength (8) · King of Cups (King) · Two of Pentacles (2) · Four of Cups (4) · Judgement (20) · Knight of Wands (Knight) · King of Pentacles (King) · King of Wands (King) · Justice (11) · Ace of Wands (1) · Eight of Swords (8) · Six of Pentacles (6). Their numbered cards sum to 70, reducing to 7. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 8. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPRESENT SITUATION\nOriginal Card · X · Ten of Cups\n\nPresent Situation\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Cups, consider how this relates to emotional fulfilment.\n\nEmotional Fulfilment\nShared Values\nBelonging\n\nPosition: Present Situation — Ten of Cups. Here, emotional fulfilment, shared values, belonging is a lens for the central situation as you experience it now. Identify one concrete example in your situation and consider how it shapes your response.\n\nShared care can create a strong sense of belonging. Notice the daily choices behind a happy picture and make room for different needs within the relationship or chosen community.\n\nLooking closer: A family raises its arms beneath a rainbow of cups beside a home and landscape.\n\nTao / Wu Wei · Ten of Cups\n\nA practice of unforced attention with Ten of Cups: Which daily acts make our idea of belonging real?\n\nJungian interpretation · Ten of Cups\n\nPsychological lens: An image of a happy life becomes more humane when it can include ordinary frustration and difference.\n\nExplore Ten of Cups\nCROSSING CHALLENGE\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · VIII · Strength\n\nCrossing Challenge\n\nCARD CORRESPONDENCE\nLeo\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Leo · Fire\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Strength, consider how this relates to courage.\n\nCourage\nCompassion\nPatience\n\nPosition: Crossing Challenge — Strength. The tension to explore is courage, compassion, patience. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nMeet a strong feeling or difficult situation with patient courage. Firmness can be gentle: recognise the instinct beneath the reaction and respond without humiliating yourself or another person.\n\nLooking closer: A woman calmly tends a lion beneath an infinity sign. The image joins instinct and awareness through trust rather than a display of force.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · K · King of Cups\n\nMeet strong feeling with steadiness and honest expression. You can acknowledge an emotion without allowing it to direct every action; use that balance to support a difficult conversation.\n\nAstrology: Water · Cups · Water\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nLooking closer: A king holds cup and sceptre on a throne surrounded by moving water.\n\nKing of Cups challenges Strength.\n\nIn Crossing Challenge, the theme of emotional balance and diplomacy pushes against courage and compassion; ask what needs balancing before you act.\n\nRead this way because Fire and Water are contrary elements.\n\nAs a Minor Arcana card, King of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships. As a court card (King), King of Cups may describe a person involved, or a way of behaving you could adopt.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Crossing Challenge\n\nRevision 1 · with Clarifier 1.\n\nTogether, Strength and King of Cups give Crossing Challenge a message with real tension in it: courage and emotional balance. Treat the friction as information: what would honour both sides?\n\nIn the wider Celtic Cross, Crossing Challenge is read with Present Situation, Ten of Cups: together they show the situation and what crosses it. There, Ten of Cups challenges Strength (Fire and Water are contrary elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · Strength\n\nA practice of unforced attention with Strength: Where would compassionate firmness help more than trying to overpower my feelings?\n\nJungian interpretation · Strength\n\nPsychological lens: Instinct becomes less frightening when it is acknowledged. The task is to develop a relationship with anger, desire or fear instead of treating it as an enemy.\n\nTao / Wu Wei · King of Cups\n\nA practice of unforced attention with King of Cups: How can I stay steady while still letting the truth of my feelings be heard?\n\nJungian interpretation · King of Cups\n\nPsychological lens: Emotional maturity joins containment with contact; composure alone does not guarantee that feeling has been understood.\n\nExplore Strength\nFOUNDATION\nOriginal Card · II · Two of Pentacles, reversed\n\nFoundation\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nOvercommitment\nDisorganisation\nStrain\n\nPosition: Foundation — Two of Pentacles reversed. Here, overcommitment, disorganisation, strain is a lens for the deeper roots beneath the situation. Identify one concrete example in your situation and consider how it shapes your response.\n\nToo many demands may be exceeding your capacity. Simplify commitments and choose what can wait rather than relying on constant adjustment to make an impossible load sustainable.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.\n\nTao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.\n\nExplore Two of Pentacles\nRECENT PAST\nOriginal Card · IV · Four of Cups, reversed\n\nRecent Past\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nRenewed Interest\nWithdrawal\nMissed Opening\n\nPosition: Recent Past — Four of Cups reversed. This may describe how renewed interest, withdrawal, missed opening shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nInterest may be returning, or withdrawal may be keeping a useful opening out of view. Re-engage gradually and test what feels nourishing rather than forcing enthusiasm.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.\n\nTao / Wu Wei · Four of Cups\n\nA practice of unforced attention with Four of Cups: What am I overlooking because it does not resemble the offer I expected?\n\nJungian interpretation · Four of Cups\n\nPsychological lens: Turning inward can clarify desire, but habitual detachment can also protect it from being tested.\n\nExplore Four of Cups\nCONSCIOUS FOCUS\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XX · Judgement\n\nConscious Focus\n\nCARD CORRESPONDENCE\nFire\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Fire\n\nNumber: 20\n\nTwenty reviews the journey and invites a more conscious response to its meaning. In Judgement, consider how this relates to awakening.\n\nAwakening\nReview\nRenewed Purpose\n\nPosition: Conscious Focus — Judgement. Here, awakening, review, renewed purpose is a lens for your hopes, intentions or conscious priorities. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn honest review of the past can help you answer a new sense of purpose. Recognise what you have learned, make amends where possible, and choose the responsibility you are ready to accept now.\n\nLooking closer: Figures rise toward an angel sounding a trumpet. The image suggests a summons to awareness and renewal rather than a final verdict on a person.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · Kn · Knight of Wands, reversed\n\nAction may be outrunning judgement or enthusiasm may disappear when work becomes routine. Slow down enough to choose a commitment you will still honour after the excitement fades.\n\nAstrology: Fire · Wands · Fire\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nLooking closer: A rider on a rearing horse carries a wand through a dry landscape.\n\nKnight of Wands (reversed) modifies Judgement.\n\nIn Conscious Focus, the theme of impulsiveness and frustration changes how awakening and review may be expressed, rather than strengthening or opposing it.\n\nRead this way because both are Fire cards, but Knight of Wands is reversed.\n\nBecause Knight of Wands (reversed) is reversed, it may point to what is blocked, delayed or turned inward in this theme. As a Minor Arcana card, Knight of Wands brings the Major theme down to a practical, everyday expression in energy, drive and creative action. As a court card (Knight), Knight of Wands may describe a person involved, or a way of behaving you could adopt.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Conscious Focus\n\nRevision 1 · with Clarifier 1.\n\nTogether, Judgement and Knight of Wands (reversed) give Conscious Focus a layered message, each card shifting the angle a little: awakening and impulsiveness. Both cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.\n\nIn the wider Celtic Cross, Conscious Focus is read with Foundation, Two of Pentacles (reversed): together they show what lies beneath and what you consciously aim for. There, Two of Pentacles modifies Judgement (Fire and Earth are neutral to each other).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · Judgement\n\nA practice of unforced attention with Judgement: What is asking for my response now, and what from the past can I carry differently?\n\nJungian interpretation · Judgement\n\nPsychological lens: Revisiting the personal story can reveal possibilities that an older identity excluded. Integration includes accountability while allowing the self to develop beyond an earlier mistake.\n\nTao / Wu Wei · Knight of Wands\n\nA practice of unforced attention with Knight of Wands: Where can I act boldly while still taking responsibility for the follow-through?\n\nJungian interpretation · Knight of Wands\n\nPsychological lens: The adventurous impulse develops through relating freedom to consequence rather than treating them as opposites.\n\nExplore Judgement\nNEAR FUTURE\nOriginal Card · K · King of Pentacles, reversed\n\nNear Future\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nPossessiveness\nStatus Anxiety\nRigid Control\n\nPosition: Near Future — King of Pentacles reversed. This suggests a possible development involving possessiveness, status anxiety, rigid control. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nSecurity or status may be turning into possessiveness or resistance to change. Ask whether your resources are supporting life or whether protecting the position has become the main task.\n\nLooking closer: A king rests with a pentacle and sceptre amid vines, bull imagery and a substantial estate.\n\nTao / Wu Wei · King of Pentacles\n\nA practice of unforced attention with King of Pentacles: How can I use what I have built to create lasting, shared stability?\n\nJungian interpretation · King of Pentacles\n\nPsychological lens: Material authority develops when competence serves a wider responsibility rather than only defending an image of success.\n\nExplore King of Pentacles\nYOUR APPROACH\nOriginal Card · K · King of Wands\n\nYour Approach\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nVision\nLeadership\nEnterprise\n\nPosition: Your Approach — King of Wands. Your next step is to work consciously with vision, leadership, enterprise. Choose one practical response you can try, then notice whether it helps.\n\nGive a shared vision a direction others can understand. Mature leadership combines initiative with trust in other people; set the purpose clearly and make the work possible rather than doing it all yourself.\n\nLooking closer: A king holds a living wand on a throne decorated with lions and salamanders.\n\nTao / Wu Wei · King of Wands\n\nA practice of unforced attention with King of Wands: How can I lead this vision without needing to control every part of it?\n\nJungian interpretation · King of Wands\n\nPsychological lens: Authority matures when personal drive can support other people’s agency.\n\nExplore King of Wands\nSURROUNDING INFLUENCES\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XI · Justice\n\nSurrounding Influences\n\nCARD CORRESPONDENCE\nLibra\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Libra · Air\n\nNumber: 11\n\nEleven asks for conscious judgement as an established order is examined. In Justice, consider how this relates to fairness.\n\nFairness\nAccountability\nClarity\n\nPosition: Surrounding Influences — Justice. Here, fairness, accountability, clarity is a lens for the environment and outside influences around you. Identify one concrete example in your situation and consider how it shapes your response.\n\nLook carefully at evidence, agreements and consequences. A balanced decision requires honesty about your own part as well as the other side; make the choice you can explain and take responsibility for.\n\nLooking closer: A seated figure holds scales and an upright sword. Consideration and clear judgement must work together, with consequences following the decision.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · I · Ace of Wands\n\nA fresh creative impulse asks for a first experiment. Give the idea a small practical outlet before deciding its final shape; enthusiasm needs somewhere to take root.\n\nAstrology: Fire · Wands · Fire\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Wands, consider how this relates to inspiration.\n\nLooking closer: A hand holds a budding wand above a fertile landscape, making possibility visible before a finished project exists.\n\nAce of Wands supports Justice.\n\nIn Surrounding Influences, the theme of inspiration and potential can help fairness and accountability find a constructive outlet.\n\nRead this way because Air and Fire are friendly elements.\n\nAs a Minor Arcana card, Ace of Wands brings the Major theme down to a practical, everyday expression in energy, drive and creative action.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Surrounding Influences\n\nRevision 1 · with Clarifier 1.\n\nTogether, Justice and Ace of Wands give Surrounding Influences a consistent message: fairness and inspiration. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nIn the wider Celtic Cross, Surrounding Influences is read with Your Approach, King of Wands: together they show how you approach things and what surrounds you. There, King of Wands supports Justice (Air and Fire are friendly elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · Justice\n\nA practice of unforced attention with Justice: What would a fair account of this situation include about my own actions?\n\nJungian interpretation · Justice\n\nPsychological lens: Conscience matures when it can examine intention and impact together. Being accountable need not become a judgement that the whole self is beyond repair.\n\nTao / Wu Wei · Ace of Wands\n\nA practice of unforced attention with Ace of Wands: What small action would give my new idea somewhere to grow?\n\nJungian interpretation · Ace of Wands\n\nPsychological lens: Creative energy becomes usable when curiosity is given permission to act before mastery.\n\nExplore Justice\nHOPES AND FEARS\nOriginal Card · VIII · Eight of Swords\n\nHopes and Fears\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Eight of Swords, consider how this relates to restriction.\n\nRestriction\nFear\nLimited Perspective\n\nPosition: Hopes and Fears — Eight of Swords. Here, restriction, fear, limited perspective is a lens for the desires and worries colouring your view. Identify one concrete example in your situation and consider how it shapes your response.\n\nA situation may feel more closed than it is, though some limits may be real. Separate concrete constraints from feared consequences and look for one safe step that increases your room to choose.\n\nLooking closer: A bound, blindfolded figure stands among swords with open ground nearby.\n\nTao / Wu Wei · Eight of Swords\n\nA practice of unforced attention with Eight of Swords: Which limit is a fact, and which might change with information or support?\n\nJungian interpretation · Eight of Swords\n\nPsychological lens: A protective belief can narrow perception until alternatives become difficult to imagine. Recognition begins to widen the field.\n\nExplore Eight of Swords\nPOTENTIAL OUTCOME\nOriginal Card · VI · Six of Pentacles\n\nPotential Outcome\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Pentacles, consider how this relates to generosity.\n\nGenerosity\nReciprocity\nFair Exchange\n\nPosition: Potential Outcome — Six of Pentacles. This suggests a possible development involving generosity, reciprocity, fair exchange. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nResources or attention are being exchanged. Notice who has the power to give, ask or refuse, and aim for help that respects the recipient’s dignity and real needs.\n\nLooking closer: A standing figure distributes coins while holding scales above two kneeling figures.\n\nTao / Wu Wei · Six of Pentacles\n\nA practice of unforced attention with Six of Pentacles: What would make this exchange fair and freely chosen?\n\nJungian interpretation · Six of Pentacles\n\nPsychological lens: Giving can express care or manage a need for power and approval. Examining the motive protects mutual dignity.\n\nExplore Six of Pentacles\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 13 revealed cards across this reading, including every clarifier. 4 cards came up reversed and are read through their reversed meaning.\n\nPRESENT SITUATION\nTen of Cups\n\nThe foundation is emotional fulfilment and shared values; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCROSSING CHALLENGE\nStrength + King of Cups\n\nThe original Strength highlights courage and compassion; King of Cups introduces emotional balance and diplomacy. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Strength (Leo) meets King of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFOUNDATION\nTwo of Pentacles, reversed\n\nThe foundation is overcommitment and disorganisation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRECENT PAST\nFour of Cups, reversed\n\nThe foundation is renewed interest and withdrawal; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Four of Cups, reversed (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nCONSCIOUS FOCUS\nJudgement + Knight of Wands, reversed\n\nThe original Judgement highlights awakening and review; Knight of Wands, reversed introduces impulsiveness and frustration. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Judgement (Fire) meets Knight of Wands, reversed (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE\nKing of Pentacles, reversed\n\nThe foundation is possessiveness and status anxiety; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are King of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOUR APPROACH\nKing of Wands\n\nThe foundation is vision and leadership; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are King of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING INFLUENCES\nJustice + Ace of Wands\n\nThe original Justice highlights fairness and accountability; Ace of Wands introduces inspiration and potential. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Justice (Libra) meets Ace of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES AND FEARS\nEight of Swords\n\nThe foundation is restriction and fear; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Eight of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPOTENTIAL OUTCOME\nSix of Pentacles\n\nThe foundation is generosity and reciprocity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Ten of Cups in Present Situation and moves toward Six of Pentacles in Potential Outcome.\n\nCrossing Challenge · Strength. Following Ten of Cups, Strength may draw your attention toward courage.\n\nFoundation · Two of Pentacles, reversed. Following Strength, Two of Pentacles may draw your attention toward overcommitment.\n\nRecent Past · Four of Cups, reversed. Following Two of Pentacles, Four of Cups may draw your attention toward renewed interest.\n\nConscious Focus · Judgement. Following Four of Cups, Judgement may draw your attention toward awakening.\n\nNear Future · King of Pentacles, reversed. Following Judgement, King of Pentacles may draw your attention toward possessiveness.\n\nYour Approach · King of Wands. Read after King of Pentacles, this develops the thread: Pentacles sustains the work; Wands gives it energy and direction. Growth needs both a viable foundation and a reason to begin.\n\nSurrounding Influences · Justice. Following King of Wands, Justice may draw your attention toward fairness.\n\nHopes and Fears · Eight of Swords. Following Justice, Eight of Swords may draw your attention toward restriction.\n\nPotential Outcome · Six of Pentacles. Following Eight of Swords, Six of Pentacles may draw your attention toward generosity.\n\nThe card-to-card movement is the heart of this reading: Ten of Cups opens the question, and Six of Pentacles shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, emotional fulfilment, shared values, belonging, courage form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTen of Cups (10) · Strength (8) · King of Cups (King) · Two of Pentacles (2) · Four of Cups (4) · Judgement (20) · Knight of Wands (Knight) · King of Pentacles (King) · King of Wands (King) · Justice (11) · Ace of Wands (1) · Eight of Swords (8) · Six of Pentacles (6). Their numbered cards sum to 70, reducing to 7. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 8. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Celtic Cross."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present Situation: Ten of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, emotional fulfilment, shared values, belonging is a lens for the central situation as you experience it now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Shared care can create a strong sense of belonging."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Crossing Challenge: Strength."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The tension to explore is courage, compassion, patience."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Meet a strong feeling or difficult situation with patient courage."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Foundation: Two of Pentacles, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, overcommitment, disorganisation, strain is a lens for the deeper roots beneath the situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Too many demands may be exceeding your capacity."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Recent Past: Four of Cups, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This may describe how renewed interest, withdrawal, missed opening shaped the path to your current situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Interest may be returning, or withdrawal may be keeping a useful opening out of view."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Conscious Focus: Judgement."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, awakening, review, renewed purpose is a lens for your hopes, intentions or conscious priorities."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An honest review of the past can help you answer a new sense of purpose."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Near Future: King of Pentacles, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving possessiveness, status anxiety, rigid control."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Security or status may be turning into possessiveness or resistance to change."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Your Approach: King of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with vision, leadership, enterprise."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Give a shared vision a direction others can understand."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Surrounding Influences: Justice."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, fairness, accountability, clarity is a lens for the environment and outside influences around you."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Look carefully at evidence, agreements and consequences."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Hopes and Fears: Eight of Swords."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, restriction, fear, limited perspective is a lens for the desires and worries colouring your view."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A situation may feel more closed than it is, though some limits may be real."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Potential Outcome: Six of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving generosity, reciprocity, fair exchange."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Resources or attention are being exchanged."
+  },
+  {
+   "chapter": "c1",
+   "kind": "frame",
+   "text": "Now, your first clarifiers, card by card."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · Crossing Challenge: King of Cups."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Meet strong feeling with steadiness and honest expression."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "King of Cups challenges Strength."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Crossing Challenge, the theme of emotional balance and diplomacy pushes against courage and compassion; ask what needs balancing before you act."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, Strength and King of Cups give Crossing Challenge a message with real tension in it: courage and emotional balance."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Treat the friction as information: what would honour both sides?"
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In the wider Celtic Cross, Crossing Challenge is read with Present Situation, Ten of Cups: together they show the situation and what crosses it."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "There, Ten of Cups challenges Strength (Fire and Water are contrary elements)."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · Conscious Focus: Knight of Wands, reversed."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Action may be outrunning judgement or enthusiasm may disappear when work becomes routine."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Knight of Wands (reversed) modifies Judgement."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Conscious Focus, the theme of impulsiveness and frustration changes how awakening and review may be expressed, rather than strengthening or opposing it."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, Judgement and Knight of Wands (reversed) give Conscious Focus a layered message, each card shifting the angle a little: awakening and impulsiveness."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Both cards are Fire, putting the weight on energy, will and action."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Notice which angle feels most true to your situation, and start there."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In the wider Celtic Cross, Conscious Focus is read with Foundation, Two of Pentacles (reversed): together they show what lies beneath and what you consciously aim for."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "There, Two of Pentacles modifies Judgement (Fire and Earth are neutral to each other)."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · Surrounding Influences: Ace of Wands."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "A fresh creative impulse asks for a first experiment."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Ace of Wands supports Justice."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Surrounding Influences, the theme of inspiration and potential can help fairness and accountability find a constructive outlet."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, Justice and Ace of Wands give Surrounding Influences a consistent message: fairness and inspiration."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Consider working with this theme with some confidence, while staying open to how it unfolds."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In the wider Celtic Cross, Surrounding Influences is read with Your Approach, King of Wands: together they show how you approach things and what surrounds you."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "There, King of Wands supports Justice (Air and Fire are friendly elements)."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your Celtic Cross.",
+  "I'll keep it short. The full reading stays below.",
+  "Let's go through your cards, one position at a time.",
+  "Present Situation: Ten of Cups.",
+  "Here, emotional fulfilment, shared values, belonging is a lens for the central situation as you experience it now.",
+  "Shared care can create a strong sense of belonging.",
+  "Crossing Challenge: Strength.",
+  "The tension to explore is courage, compassion, patience.",
+  "Meet a strong feeling or difficult situation with patient courage.",
+  "Foundation: Two of Pentacles, reversed.",
+  "Here, overcommitment, disorganisation, strain is a lens for the deeper roots beneath the situation.",
+  "Too many demands may be exceeding your capacity.",
+  "Recent Past: Four of Cups, reversed.",
+  "This may describe how renewed interest, withdrawal, missed opening shaped the path to your current situation.",
+  "Interest may be returning, or withdrawal may be keeping a useful opening out of view.",
+  "Conscious Focus: Judgement.",
+  "Here, awakening, review, renewed purpose is a lens for your hopes, intentions or conscious priorities.",
+  "An honest review of the past can help you answer a new sense of purpose.",
+  "Near Future: King of Pentacles, reversed.",
+  "This suggests a possible development involving possessiveness, status anxiety, rigid control.",
+  "Security or status may be turning into possessiveness or resistance to change.",
+  "Your Approach: King of Wands.",
+  "Your next step is to work consciously with vision, leadership, enterprise.",
+  "Give a shared vision a direction others can understand.",
+  "Surrounding Influences: Justice.",
+  "Here, fairness, accountability, clarity is a lens for the environment and outside influences around you.",
+  "Look carefully at evidence, agreements and consequences.",
+  "Hopes and Fears: Eight of Swords.",
+  "Here, restriction, fear, limited perspective is a lens for the desires and worries colouring your view.",
+  "A situation may feel more closed than it is, though some limits may be real.",
+  "Potential Outcome: Six of Pentacles.",
+  "This suggests a possible development involving generosity, reciprocity, fair exchange.",
+  "Resources or attention are being exchanged.",
+  "Now, your first clarifiers, card by card.",
+  "Clarifier 1 · Crossing Challenge: King of Cups.",
+  "Meet strong feeling with steadiness and honest expression.",
+  "King of Cups challenges Strength.",
+  "In Crossing Challenge, the theme of emotional balance and diplomacy pushes against courage and compassion; ask what needs balancing before you act.",
+  "Together, Strength and King of Cups give Crossing Challenge a message with real tension in it: courage and emotional balance.",
+  "Treat the friction as information: what would honour both sides?",
+  "In the wider Celtic Cross, Crossing Challenge is read with Present Situation, Ten of Cups: together they show the situation and what crosses it.",
+  "There, Ten of Cups challenges Strength (Fire and Water are contrary elements).",
+  "Clarifier 1 · Conscious Focus: Knight of Wands, reversed.",
+  "Action may be outrunning judgement or enthusiasm may disappear when work becomes routine.",
+  "Knight of Wands (reversed) modifies Judgement.",
+  "In Conscious Focus, the theme of impulsiveness and frustration changes how awakening and review may be expressed, rather than strengthening or opposing it.",
+  "Together, Judgement and Knight of Wands (reversed) give Conscious Focus a layered message, each card shifting the angle a little: awakening and impulsiveness.",
+  "Both cards are Fire, putting the weight on energy, will and action.",
+  "Notice which angle feels most true to your situation, and start there.",
+  "In the wider Celtic Cross, Conscious Focus is read with Foundation, Two of Pentacles (reversed): together they show what lies beneath and what you consciously aim for.",
+  "There, Two of Pentacles modifies Judgement (Fire and Earth are neutral to each other).",
+  "Clarifier 1 · Surrounding Influences: Ace of Wands.",
+  "A fresh creative impulse asks for a first experiment.",
+  "Ace of Wands supports Justice.",
+  "In Surrounding Influences, the theme of inspiration and potential can help fairness and accountability find a constructive outlet.",
+  "Together, Justice and Ace of Wands give Surrounding Influences a consistent message: fairness and inspiration.",
+  "Consider working with this theme with some confidence, while staying open to how it unfolds.",
+  "In the wider Celtic Cross, Surrounding Influences is read with Your Approach, King of Wands: together they show how you approach things and what surrounds you.",
+  "There, King of Wands supports Justice (Air and Fire are friendly elements).",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

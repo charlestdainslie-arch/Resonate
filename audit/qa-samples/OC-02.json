@@ -1,0 +1,131 @@
+{
+ "sample": {
+  "id": "OC-02",
+  "kind": "matrix",
+  "spread": "guidance",
+  "mode": "matrix",
+  "note": "Ten of Swords reversed",
+  "seeded": [],
+  "base": [
+   59
+  ],
+  "reversed": [
+   59
+  ],
+  "steps": [],
+  "c1": [
+   null
+  ],
+  "c2": [
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "One-card Guidance",
+ "drew": [],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Guidance",
+   "meaning": "the guidance you can put into practice today",
+   "base": {
+    "id": 59,
+    "name": "Ten of Swords",
+    "arcana": "Minor",
+    "element": "Air",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · X · Ten of Swords, reversed\n\nGuidance\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Swords, consider how this relates to ending.\n\nRecovery\nResistance to an Ending\nRenewed Ground\n\nPosition: Guidance — Ten of Swords reversed. Your next step is to work consciously with recovery, resistance to an ending, renewed ground. Choose one practical response you can try, then notice whether it helps.\n\nRecovery may be beginning, or an ending may still be resisted. Let the first improvement be modest and protect yourself from returning too quickly to the conditions that exhausted you.\n\nLooking closer: A prone figure lies beneath ten swords while light appears beyond dark clouds.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Ten of Swords\n\nA practice of unforced attention with Ten of Swords: What can I stop trying to revive so that recovery has room to begin?\n\nJungian interpretation · Ten of Swords\n\nPsychological lens: When a familiar story collapses, the psyche needs care before it can construct a more spacious one.",
+   "positionContext": "Position: Guidance — Ten of Swords reversed. Your next step is to work consciously with recovery, resistance to an ending, renewed ground. Choose one practical response you can try, then notice whether it helps.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 1 revealed card across this reading, including every clarifier. Every card came up reversed and is read through its reversed meaning.\n\nGUIDANCE\nTen of Swords, reversed\n\nThe foundation is recovery and resistance to an ending; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, recovery, resistance to an ending, renewed ground form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTen of Swords (10). Their numbered cards sum to 10, reducing to 1. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nGUIDANCE\nOriginal Card · X · Ten of Swords, reversed\n\nGuidance\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Swords, consider how this relates to ending.\n\nRecovery\nResistance to an Ending\nRenewed Ground\n\nPosition: Guidance — Ten of Swords reversed. Your next step is to work consciously with recovery, resistance to an ending, renewed ground. Choose one practical response you can try, then notice whether it helps.\n\nRecovery may be beginning, or an ending may still be resisted. Let the first improvement be modest and protect yourself from returning too quickly to the conditions that exhausted you.\n\nLooking closer: A prone figure lies beneath ten swords while light appears beyond dark clouds.\n\nTao / Wu Wei · Ten of Swords\n\nA practice of unforced attention with Ten of Swords: What can I stop trying to revive so that recovery has room to begin?\n\nJungian interpretation · Ten of Swords\n\nPsychological lens: When a familiar story collapses, the psyche needs care before it can construct a more spacious one.\n\nExplore Ten of Swords\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 1 revealed card across this reading, including every clarifier. Every card came up reversed and is read through its reversed meaning.\n\nGUIDANCE\nTen of Swords, reversed\n\nThe foundation is recovery and resistance to an ending; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, recovery, resistance to an ending, renewed ground form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTen of Swords (10). Their numbered cards sum to 10, reducing to 1. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your One-card Guidance."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "First, your card."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Ten of Swords, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with recovery, resistance to an ending, renewed ground."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Recovery may be beginning, or an ending may still be resisted."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your One-card Guidance.",
+  "I'll keep it short. The full reading stays below.",
+  "First, your card.",
+  "Ten of Swords, reversed.",
+  "Your next step is to work consciously with recovery, resistance to an ending, renewed ground.",
+  "Recovery may be beginning, or an ending may still be resisted.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

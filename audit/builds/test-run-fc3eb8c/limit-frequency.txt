@@ -1,0 +1,2 @@
+One Major card: P(both clarifiers Major) = 21/77 × 20/76 = 420/5852 = 7.18% (exact)
+Celtic Cross, every Major clarified: 18.96% of readings have at least one card at the limit (estimate, 1000000 seeded trials, seed 71107; 95% interval 18.88–19.03%)

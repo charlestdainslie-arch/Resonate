@@ -1,0 +1,11 @@
+PASS  BT-01 Clarifier 2 without Clarifier 1 is refused
+PASS  BT-02 a clarifier cannot itself be clarified (no recursion)
+PASS  BT-03 two Major clarifiers: the limit is shown and flagged for Chas
+PASS  BT-04 adding a clarifier during narration stops it at once and offers the update
+PASS  BT-05 reversed original and reversed clarifier are both stated
+PASS  BT-06 a contradicting clarifier: stage 1 kept, the change shown as a revision
+PASS  BT-07 a new reading mid-flow inherits no clarifiers
+PASS  BT-09 Clarify with no card in view asks you to choose a card
+PASS  BT-10 pause, add a clarifier, resume: no stale audio or captions
+
+9/9 passed

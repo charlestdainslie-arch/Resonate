@@ -1,0 +1,131 @@
+{
+ "sample": {
+  "id": "S01",
+  "kind": "baseline",
+  "spread": "guidance",
+  "seed": 7111,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   61
+  ],
+  "reversed": [
+   61
+  ],
+  "steps": [],
+  "c1": [
+   null
+  ],
+  "c2": [
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "One-card Guidance",
+ "drew": [],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Guidance",
+   "meaning": "the guidance you can put into practice today",
+   "base": {
+    "id": 61,
+    "name": "Knight of Swords",
+    "arcana": "Minor",
+    "element": "Air",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · Kn · Knight of Swords, reversed\n\nGuidance\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nRecklessness\nArgument\nTunnel Vision\n\nPosition: Guidance — Knight of Swords reversed. Your next step is to work consciously with recklessness, argument, tunnel vision. Choose one practical response you can try, then notice whether it helps.\n\nUrgency may be narrowing your judgement or making a conversation unnecessarily combative. Pause long enough to ask whether speed is helping the purpose you claim to serve.\n\nLooking closer: A rider charges forward with a raised sword under a turbulent sky.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Knight of Swords\n\nA practice of unforced attention with Knight of Swords: Where do I need decisiveness, and where am I confusing urgency with certainty?\n\nJungian interpretation · Knight of Swords\n\nPsychological lens: The wish to cut through difficulty can become rigid when thought loses contact with feeling and circumstance.",
+   "positionContext": "Position: Guidance — Knight of Swords reversed. Your next step is to work consciously with recklessness, argument, tunnel vision. Choose one practical response you can try, then notice whether it helps.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 1 revealed card across this reading, including every clarifier. Every card came up reversed and is read through its reversed meaning.\n\nGUIDANCE\nKnight of Swords, reversed\n\nThe foundation is recklessness and argument; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, recklessness, argument, tunnel vision form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nKnight of Swords (Knight). Court cards are read by rank rather than assigned an invented tarot number. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nGUIDANCE\nOriginal Card · Kn · Knight of Swords, reversed\n\nGuidance\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nRecklessness\nArgument\nTunnel Vision\n\nPosition: Guidance — Knight of Swords reversed. Your next step is to work consciously with recklessness, argument, tunnel vision. Choose one practical response you can try, then notice whether it helps.\n\nUrgency may be narrowing your judgement or making a conversation unnecessarily combative. Pause long enough to ask whether speed is helping the purpose you claim to serve.\n\nLooking closer: A rider charges forward with a raised sword under a turbulent sky.\n\nTao / Wu Wei · Knight of Swords\n\nA practice of unforced attention with Knight of Swords: Where do I need decisiveness, and where am I confusing urgency with certainty?\n\nJungian interpretation · Knight of Swords\n\nPsychological lens: The wish to cut through difficulty can become rigid when thought loses contact with feeling and circumstance.\n\nExplore Knight of Swords\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 1 revealed card across this reading, including every clarifier. Every card came up reversed and is read through its reversed meaning.\n\nGUIDANCE\nKnight of Swords, reversed\n\nThe foundation is recklessness and argument; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, recklessness, argument, tunnel vision form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nKnight of Swords (Knight). Court cards are read by rank rather than assigned an invented tarot number. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your One-card Guidance."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "First, your card."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Knight of Swords, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with recklessness, argument, tunnel vision."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Urgency may be narrowing your judgement or making a conversation unnecessarily combative."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your One-card Guidance.",
+  "I'll keep it short. The full reading stays below.",
+  "First, your card.",
+  "Knight of Swords, reversed.",
+  "Your next step is to work consciously with recklessness, argument, tunnel vision.",
+  "Urgency may be narrowing your judgement or making a conversation unnecessarily combative.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

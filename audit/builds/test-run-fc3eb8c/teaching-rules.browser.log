@@ -1,0 +1,11 @@
+PASS 390px three-card: Majors get a first clarifier one card at a time, the Minor waits for the seeker
+PASS 1280px three-card: Majors get a first clarifier one card at a time, the Minor waits for the seeker
+PASS a card’s own button clarifies that card only
+PASS second clarifier only after a Major clarifier; never a third
+PASS seeker clarifies the Minor; a Major clarifier there earns a second
+PASS no Major in the spread: nothing drawn unasked, every card can be clarified
+PASS saved to the Journal and reopened: same cards, same clarifiers, same empty slots
+PASS PDF downloads and names every card and clarifier drawn
+PASS card-to-card thread: opening, one bridge per following card, closing; none for one card
+PASS Celtic Cross at 360px: rule holds across ten positions, no repeats
+PASS 10 teaching-rule checks

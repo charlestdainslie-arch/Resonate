@@ -1,0 +1,406 @@
+{
+ "sample": {
+  "id": "S05",
+  "kind": "baseline",
+  "spread": "three",
+  "seed": 7115,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   5,
+   14,
+   33
+  ],
+  "reversed": [
+   5,
+   14,
+   33,
+   39,
+   8
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 39
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 4
+   },
+   {
+    "pos": 1,
+    "layer": 2,
+    "id": 8
+   }
+  ],
+  "c1": [
+   39,
+   4,
+   null
+  ],
+  "c2": [
+   null,
+   8,
+   null
+  ]
+ },
+ "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "Past · Present · Future",
+ "drew": [
+  "first",
+  "first",
+  "second"
+ ],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Past",
+   "meaning": "the experiences and patterns that brought you here",
+   "base": {
+    "id": 5,
+    "name": "The Hierophant",
+    "arcana": "Major",
+    "element": "Earth",
+    "reversed": true
+   },
+   "c1": {
+    "id": 39,
+    "name": "Four of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": true
+   },
+   "c2": null,
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · V · The Hierophant, reversed\n\nPast\n\nCARD CORRESPONDENCE\nTaurus\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Taurus · Earth\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In The Hierophant, consider how this relates to tradition.\n\nDogma\nConformity\nQuestioning\n\nPosition: Past — The Hierophant reversed. This may describe how dogma, conformity, questioning shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nInherited rules may no longer fit your experience. Question a teaching without dismissing everything it offered; distinguish an honest search for meaning from obedience motivated by fear.\n\nLooking closer: A seated teacher, two students and crossed keys suggest initiation, shared knowledge and the structures through which a community passes on its values.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · IV · Four of Cups, reversed\n\nInterest may be returning, or withdrawal may be keeping a useful opening out of view. Re-engage gradually and test what feels nourishing rather than forcing enthusiasm.\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.\n\nFour of Cups (reversed) supports The Hierophant (reversed).\n\nIn Past, the theme of renewed interest and withdrawal can help dogma and conformity find a constructive outlet.\n\nRead this way because Earth and Water are friendly elements.\n\nWith both cards reversed, look at what is being held back or resisted. As a Minor Arcana card, Four of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships.",
+   "clar2": "",
+   "notes": "",
+   "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Past\n\nRevision 1 · with Clarifier 1.\n\nTogether, The Hierophant (reversed) and Four of Cups (reversed) give Past a consistent message: dogma and renewed interest. The cards agree, but all of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting.\n\nIn the wider Past · Present · Future spread, Past opens the reading; its neighbour is Present, Temperance (reversed; clarified), which modifies The Hierophant (Earth and Fire are neutral to each other).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · The Hierophant\n\nA practice of unforced attention with The Hierophant: Which teaching supports my integrity, and which rule am I following only to belong?\n\nJungian interpretation · The Hierophant\n\nPsychological lens: The inner teacher develops when received wisdom is examined rather than simply repeated. Belonging need not require abandoning personal judgement.",
+   "positionContext": "Position: Past — The Hierophant reversed. This may describe how dogma, conformity, questioning shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+   "relation1": "Four of Cups (reversed) supports The Hierophant (reversed).\n\nIn Past, the theme of renewed interest and withdrawal can help dogma and conformity find a constructive outlet.\n\nRead this way because Earth and Water are friendly elements.\n\nWith both cards reversed, look at what is being held back or resisted. As a Minor Arcana card, Four of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships.",
+   "relation2": "",
+   "synthesisLead": "Together, The Hierophant (reversed) and Four of Cups (reversed) give Past a consistent message: dogma and renewed interest. The cards agree, but all of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting.",
+   "synthesisWider": "In the wider Past · Present · Future spread, Past opens the reading; its neighbour is Present, Temperance (reversed; clarified), which modifies The Hierophant (Earth and Fire are neutral to each other).",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 2,
+   "label": "Present",
+   "meaning": "what is active now and how you can respond",
+   "base": {
+    "id": 14,
+    "name": "Temperance",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": true
+   },
+   "c1": {
+    "id": 4,
+    "name": "The Emperor",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c2": {
+    "id": 8,
+    "name": "Strength",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": true
+   },
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · Clarifier 2 · how it develops the relationship between both",
+    "4 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XIV · Temperance, reversed\n\nPresent\n\nCARD CORRESPONDENCE\nSagittarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Sagittarius · Fire\n\nNumber: 14\n\nFourteen explores integration through patient adjustment rather than a fixed midpoint. In Temperance, consider how this relates to integration.\n\nExcess\nDiscord\nImpatience\n\nPosition: Present — Temperance reversed. Here, excess, discord, impatience is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn extreme response or impatient mixture may be increasing strain. Simplify the demands, identify what is out of proportion, and rebuild a rhythm you can maintain.\n\nLooking closer: An angel pours between two cups with one foot on land and one in water. A path leads toward distant light, suggesting patient integration.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · IV · The Emperor\n\nThe Emperor is the capacity to create order that protects what matters. Upright, he represents boundaries, leadership, consistency and the willingness to make decisions that give a system strength. In a reading, this may describe your own need for structure or the influence of someone carrying strong leadership, authority or Aries-like qualities. In a Past position it can point to structures or authority that shaped the situation; in the Present, a need for clear boundaries or decisions; in the Future, greater stability that may come through deliberate organisation rather than prediction of a fixed outcome.\n\nAstrology: Aries · Mars · Fire\n\nNumber: 4\n\nFour is foundation: the square, the stable frame, the four directions. It brings containment, reliability and the challenge of balancing stability with flexibility.\n\nLooking closer: Notice the red robes and the firm stone throne. Determination is given form through limits, responsibility and practical structure.\n\nThe Emperor modifies Temperance (reversed).\n\nIn Present, the theme of authority and structure changes how excess and discord may be expressed, rather than strengthening or opposing it.\n\nRead this way because both are Fire cards, but Temperance is reversed.\n\nBecause The Emperor is upright, it may show a way through the difficulty shown by Temperance reversed.",
+   "clar2": "3 · CLARIFIER 2 · HOW IT DEVELOPS THE RELATIONSHIP BETWEEN BOTH\nClarifier 2 · VIII · Strength, reversed\n\nFear, fatigue or harsh self-judgement may make a situation feel unmanageable. Reduce the strain before testing your endurance again; courage can begin with asking for support.\n\nAstrology: Leo · Fire\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Strength, consider how this relates to courage.\n\nLooking closer: A woman calmly tends a lion beneath an infinity sign. The image joins instinct and awareness through trust rather than a display of force.\n\nStrength (reversed) reinforces Temperance (reversed) and modifies The Emperor.\n\nIn Present, it adds a further angle: the theme of self-doubt and reactivity shifts how excess (Temperance) and authority (The Emperor) work together.\n\nRead this way because with Temperance: both are Fire cards; with The Emperor: both are Fire cards, but Strength is reversed.\n\nBecause Strength (reversed) is reversed, read what it adds as something still forming or held back. RESONATE's card notes link these two: Strength brings patient contact with feeling; The Emperor offers a dependable boundary. Together they ask for firmness that does not need domination.\n\nClarifier 2 was drawn because Clarifier 1 is also a Major Arcana card (Chas's teaching rule).",
+   "notes": "Clarifier 2 is also a Major Arcana card. Under the rule as taught, that would call for a further clarifier. This preview shows at most two clarifiers per card, so nothing further has been drawn; how to continue is a design decision awaiting Chas.",
+   "together": "4 · WHAT THEY MEAN TOGETHER\nTogether in Present\n\nRevision 2 · updated when Clarifier 2 was drawn. The original card and Clarifier 1 readings above are unchanged.\n\nTogether, Temperance (reversed), The Emperor and Strength (reversed) give Present a layered message, each card shifting the angle a little: excess, authority and self-doubt. All three cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.\n\nIn the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, Knight of Wands (reversed), which reinforces Temperance (both are Fire cards).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nRevision 1 · the reading before Clarifier 2\n\nTogether, Temperance (reversed) and The Emperor give Present a layered message, each card shifting the angle a little: excess and authority. Both cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · Temperance\n\nA practice of unforced attention with Temperance: Which small adjustment would make my current rhythm more sustainable?\n\nJungian interpretation · Temperance\n\nPsychological lens: Integration allows apparently opposing needs to inform one another. The aim is a living relationship between them rather than a perfect compromise reached once.",
+   "positionContext": "Position: Present — Temperance reversed. Here, excess, discord, impatience is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.",
+   "relation1": "The Emperor modifies Temperance (reversed).\n\nIn Present, the theme of authority and structure changes how excess and discord may be expressed, rather than strengthening or opposing it.\n\nRead this way because both are Fire cards, but Temperance is reversed.\n\nBecause The Emperor is upright, it may show a way through the difficulty shown by Temperance reversed.",
+   "relation2": "Strength (reversed) reinforces Temperance (reversed) and modifies The Emperor.\n\nIn Present, it adds a further angle: the theme of self-doubt and reactivity shifts how excess (Temperance) and authority (The Emperor) work together.\n\nRead this way because with Temperance: both are Fire cards; with The Emperor: both are Fire cards, but Strength is reversed.\n\nBecause Strength (reversed) is reversed, read what it adds as something still forming or held back. RESONATE's card notes link these two: Strength brings patient contact with feeling; The Emperor offers a dependable boundary. Together they ask for firmness that does not need domination.\n\nClarifier 2 was drawn because Clarifier 1 is also a Major Arcana card (Chas's teaching rule).",
+   "synthesisLead": "Together, Temperance (reversed), The Emperor and Strength (reversed) give Present a layered message, each card shifting the angle a little: excess, authority and self-doubt. All three cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.",
+   "synthesisWider": "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, Knight of Wands (reversed), which reinforces Temperance (both are Fire cards).",
+   "limit": true,
+   "pending": false
+  },
+  {
+   "n": 3,
+   "label": "Future",
+   "meaning": "a possible direction if current patterns continue, rather than a fixed prediction",
+   "base": {
+    "id": 33,
+    "name": "Knight of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "steps": [],
+   "original": "Original Card · Kn · Knight of Wands, reversed\n\nFuture\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nImpulsiveness\nFrustration\nInconsistency\n\nPosition: Future — Knight of Wands reversed. This suggests a possible development involving impulsiveness, frustration, inconsistency. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nAction may be outrunning judgement or enthusiasm may disappear when work becomes routine. Slow down enough to choose a commitment you will still honour after the excitement fades.\n\nLooking closer: A rider on a rearing horse carries a wand through a dry landscape.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Knight of Wands\n\nA practice of unforced attention with Knight of Wands: Where can I act boldly while still taking responsibility for the follow-through?\n\nJungian interpretation · Knight of Wands\n\nPsychological lens: The adventurous impulse develops through relating freedom to consequence rather than treating them as opposites.",
+   "positionContext": "Position: Future — Knight of Wands reversed. This suggests a possible development involving impulsiveness, frustration, inconsistency. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 6 revealed cards across this reading, including every clarifier. 5 cards came up reversed and are read through their reversed meaning.\n\nPAST\nThe Hierophant, reversed + Four of Cups, reversed\n\nThe original The Hierophant, reversed highlights dogma and conformity; Four of Cups, reversed introduces renewed interest and withdrawal. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The Hierophant, reversed (Taurus) meets Four of Cups, reversed (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT\nTemperance, reversed + The Emperor + Strength, reversed\n\nThe original Temperance, reversed highlights excess and discord; The Emperor introduces authority and structure; Strength, reversed introduces self-doubt and reactivity. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Temperance, reversed (Sagittarius) meets The Emperor (Aries · Mars) meets Strength, reversed (Leo). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFUTURE\nKnight of Wands, reversed\n\nThe foundation is impulsiveness and frustration; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Wands, reversed (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with The Hierophant, reversed in Past and moves toward Knight of Wands, reversed in Future.\n\nPresent · Temperance, reversed. Following The Hierophant, Temperance may draw your attention toward excess.\n\nFuture · Knight of Wands, reversed. Following Temperance, Knight of Wands may draw your attention toward impulsiveness.\n\nThe card-to-card movement is the heart of this reading: The Hierophant, reversed opens the question, and Knight of Wands, reversed shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, dogma, conformity, questioning, renewed interest form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Hierophant (5) · Four of Cups (4) · Temperance (14) · The Emperor (4) · Strength (8) · Knight of Wands (Knight). Their numbered cards sum to 35, reducing to 8. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 4. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPAST\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · V · The Hierophant, reversed\n\nPast\n\nCARD CORRESPONDENCE\nTaurus\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Taurus · Earth\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In The Hierophant, consider how this relates to tradition.\n\nDogma\nConformity\nQuestioning\n\nPosition: Past — The Hierophant reversed. This may describe how dogma, conformity, questioning shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nInherited rules may no longer fit your experience. Question a teaching without dismissing everything it offered; distinguish an honest search for meaning from obedience motivated by fear.\n\nLooking closer: A seated teacher, two students and crossed keys suggest initiation, shared knowledge and the structures through which a community passes on its values.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · IV · Four of Cups, reversed\n\nInterest may be returning, or withdrawal may be keeping a useful opening out of view. Re-engage gradually and test what feels nourishing rather than forcing enthusiasm.\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.\n\nFour of Cups (reversed) supports The Hierophant (reversed).\n\nIn Past, the theme of renewed interest and withdrawal can help dogma and conformity find a constructive outlet.\n\nRead this way because Earth and Water are friendly elements.\n\nWith both cards reversed, look at what is being held back or resisted. As a Minor Arcana card, Four of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Past\n\nRevision 1 · with Clarifier 1.\n\nTogether, The Hierophant (reversed) and Four of Cups (reversed) give Past a consistent message: dogma and renewed interest. The cards agree, but all of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting.\n\nIn the wider Past · Present · Future spread, Past opens the reading; its neighbour is Present, Temperance (reversed; clarified), which modifies The Hierophant (Earth and Fire are neutral to each other).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · The Hierophant\n\nA practice of unforced attention with The Hierophant: Which teaching supports my integrity, and which rule am I following only to belong?\n\nJungian interpretation · The Hierophant\n\nPsychological lens: The inner teacher develops when received wisdom is examined rather than simply repeated. Belonging need not require abandoning personal judgement.\n\nTao / Wu Wei · Four of Cups\n\nA practice of unforced attention with Four of Cups: What am I overlooking because it does not resemble the offer I expected?\n\nJungian interpretation · Four of Cups\n\nPsychological lens: Turning inward can clarify desire, but habitual detachment can also protect it from being tested.\n\nExplore The Hierophant\nPRESENT\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XIV · Temperance, reversed\n\nPresent\n\nCARD CORRESPONDENCE\nSagittarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Sagittarius · Fire\n\nNumber: 14\n\nFourteen explores integration through patient adjustment rather than a fixed midpoint. In Temperance, consider how this relates to integration.\n\nExcess\nDiscord\nImpatience\n\nPosition: Present — Temperance reversed. Here, excess, discord, impatience is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn extreme response or impatient mixture may be increasing strain. Simplify the demands, identify what is out of proportion, and rebuild a rhythm you can maintain.\n\nLooking closer: An angel pours between two cups with one foot on land and one in water. A path leads toward distant light, suggesting patient integration.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · IV · The Emperor\n\nThe Emperor is the capacity to create order that protects what matters. Upright, he represents boundaries, leadership, consistency and the willingness to make decisions that give a system strength. In a reading, this may describe your own need for structure or the influence of someone carrying strong leadership, authority or Aries-like qualities. In a Past position it can point to structures or authority that shaped the situation; in the Present, a need for clear boundaries or decisions; in the Future, greater stability that may come through deliberate organisation rather than prediction of a fixed outcome.\n\nAstrology: Aries · Mars · Fire\n\nNumber: 4\n\nFour is foundation: the square, the stable frame, the four directions. It brings containment, reliability and the challenge of balancing stability with flexibility.\n\nLooking closer: Notice the red robes and the firm stone throne. Determination is given form through limits, responsibility and practical structure.\n\nThe Emperor modifies Temperance (reversed).\n\nIn Present, the theme of authority and structure changes how excess and discord may be expressed, rather than strengthening or opposing it.\n\nRead this way because both are Fire cards, but Temperance is reversed.\n\nBecause The Emperor is upright, it may show a way through the difficulty shown by Temperance reversed.\n\n3 · CLARIFIER 2 · HOW IT DEVELOPS THE RELATIONSHIP BETWEEN BOTH\nClarifier 2 · VIII · Strength, reversed\n\nFear, fatigue or harsh self-judgement may make a situation feel unmanageable. Reduce the strain before testing your endurance again; courage can begin with asking for support.\n\nAstrology: Leo · Fire\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Strength, consider how this relates to courage.\n\nLooking closer: A woman calmly tends a lion beneath an infinity sign. The image joins instinct and awareness through trust rather than a display of force.\n\nStrength (reversed) reinforces Temperance (reversed) and modifies The Emperor.\n\nIn Present, it adds a further angle: the theme of self-doubt and reactivity shifts how excess (Temperance) and authority (The Emperor) work together.\n\nRead this way because with Temperance: both are Fire cards; with The Emperor: both are Fire cards, but Strength is reversed.\n\nBecause Strength (reversed) is reversed, read what it adds as something still forming or held back. RESONATE's card notes link these two: Strength brings patient contact with feeling; The Emperor offers a dependable boundary. Together they ask for firmness that does not need domination.\n\nClarifier 2 was drawn because Clarifier 1 is also a Major Arcana card (Chas's teaching rule).\n\nClarifier 2 is also a Major Arcana card. Under the rule as taught, that would call for a further clarifier. This preview shows at most two clarifiers per card, so nothing further has been drawn; how to continue is a design decision awaiting Chas.\n\n4 · WHAT THEY MEAN TOGETHER\nTogether in Present\n\nRevision 2 · updated when Clarifier 2 was drawn. The original card and Clarifier 1 readings above are unchanged.\n\nTogether, Temperance (reversed), The Emperor and Strength (reversed) give Present a layered message, each card shifting the angle a little: excess, authority and self-doubt. All three cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.\n\nIn the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, Knight of Wands (reversed), which reinforces Temperance (both are Fire cards).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nRevision 1 · the reading before Clarifier 2\n\nTogether, Temperance (reversed) and The Emperor give Present a layered message, each card shifting the angle a little: excess and authority. Both cards are Fire, putting the weight on energy, will and action. Notice which angle feels most true to your situation, and start there.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · Temperance\n\nA practice of unforced attention with Temperance: Which small adjustment would make my current rhythm more sustainable?\n\nJungian interpretation · Temperance\n\nPsychological lens: Integration allows apparently opposing needs to inform one another. The aim is a living relationship between them rather than a perfect compromise reached once.\n\nTao / Wu Wei · The Emperor\n\nWu Wei: good structure should support movement rather than fight it. The Emperor can ask where one clear boundary or decision would create enough stability for everything else to move more naturally.\n\nJungian interpretation · The Emperor\n\nJungian lens: Logos, Father and Wise Sovereign. The Emperor reflects the psyche's capacity for limits, responsibility and coherent order. In shadow, authority becomes inflexible, punitive or disconnected from feeling.\n\nTao / Wu Wei · Strength\n\nA practice of unforced attention with Strength: Where would compassionate firmness help more than trying to overpower my feelings?\n\nJungian interpretation · Strength\n\nPsychological lens: Instinct becomes less frightening when it is acknowledged. The task is to develop a relationship with anger, desire or fear instead of treating it as an enemy.\n\nExplore Temperance\nFUTURE\nOriginal Card · Kn · Knight of Wands, reversed\n\nFuture\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nImpulsiveness\nFrustration\nInconsistency\n\nPosition: Future — Knight of Wands reversed. This suggests a possible development involving impulsiveness, frustration, inconsistency. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nAction may be outrunning judgement or enthusiasm may disappear when work becomes routine. Slow down enough to choose a commitment you will still honour after the excitement fades.\n\nLooking closer: A rider on a rearing horse carries a wand through a dry landscape.\n\nTao / Wu Wei · Knight of Wands\n\nA practice of unforced attention with Knight of Wands: Where can I act boldly while still taking responsibility for the follow-through?\n\nJungian interpretation · Knight of Wands\n\nPsychological lens: The adventurous impulse develops through relating freedom to consequence rather than treating them as opposites.\n\nExplore Knight of Wands\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 6 revealed cards across this reading, including every clarifier. 5 cards came up reversed and are read through their reversed meaning.\n\nPAST\nThe Hierophant, reversed + Four of Cups, reversed\n\nThe original The Hierophant, reversed highlights dogma and conformity; Four of Cups, reversed introduces renewed interest and withdrawal. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The Hierophant, reversed (Taurus) meets Four of Cups, reversed (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT\nTemperance, reversed + The Emperor + Strength, reversed\n\nThe original Temperance, reversed highlights excess and discord; The Emperor introduces authority and structure; Strength, reversed introduces self-doubt and reactivity. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Temperance, reversed (Sagittarius) meets The Emperor (Aries · Mars) meets Strength, reversed (Leo). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFUTURE\nKnight of Wands, reversed\n\nThe foundation is impulsiveness and frustration; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Wands, reversed (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with The Hierophant, reversed in Past and moves toward Knight of Wands, reversed in Future.\n\nPresent · Temperance, reversed. Following The Hierophant, Temperance may draw your attention toward excess.\n\nFuture · Knight of Wands, reversed. Following Temperance, Knight of Wands may draw your attention toward impulsiveness.\n\nThe card-to-card movement is the heart of this reading: The Hierophant, reversed opens the question, and Knight of Wands, reversed shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, dogma, conformity, questioning, renewed interest form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Hierophant (5) · Four of Cups (4) · Temperance (14) · The Emperor (4) · Strength (8) · Knight of Wands (Knight). Their numbered cards sum to 35, reducing to 8. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 4. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Past · Present · Future."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Past: The Hierophant, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This may describe how dogma, conformity, questioning shaped the path to your current situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Inherited rules may no longer fit your experience."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present: Temperance, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, excess, discord, impatience is a lens for what is active now and how you can respond."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An extreme response or impatient mixture may be increasing strain."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Future: Knight of Wands, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "This suggests a possible development involving impulsiveness, frustration, inconsistency."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Action may be outrunning judgement or enthusiasm may disappear when work becomes routine."
+  },
+  {
+   "chapter": "c1",
+   "kind": "frame",
+   "text": "Now, your first clarifiers, card by card."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · Past: Four of Cups, reversed."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Interest may be returning, or withdrawal may be keeping a useful opening out of view."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Four of Cups (reversed) supports The Hierophant (reversed)."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Past, the theme of renewed interest and withdrawal can help dogma and conformity find a constructive outlet."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, The Hierophant (reversed) and Four of Cups (reversed) give Past a consistent message: dogma and renewed interest."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "The cards agree, but all of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In the wider Past · Present · Future spread, Past opens the reading; its neighbour is Present, Temperance (reversed; clarified), which modifies The Hierophant (Earth and Fire are neutral to each other)."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · Present: The Emperor."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "The Emperor is the capacity to create order that protects what matters."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "The Emperor modifies Temperance (reversed)."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Present, the theme of authority and structure changes how excess and discord may be expressed, rather than strengthening or opposing it."
+  },
+  {
+   "chapter": "c2",
+   "kind": "frame",
+   "text": "And your second clarifiers."
+  },
+  {
+   "chapter": "c2",
+   "kind": "label",
+   "text": "Clarifier 2 · Present: Strength, reversed."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "Fear, fatigue or harsh self-judgement may make a situation feel unmanageable."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "Strength (reversed) reinforces Temperance (reversed) and modifies The Emperor."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "In Present, it adds a further angle: the theme of self-doubt and reactivity shifts how excess (Temperance) and authority (The Emperor) work together."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "Together, Temperance (reversed), The Emperor and Strength (reversed) give Present a layered message, each card shifting the angle a little: excess, authority and self-doubt."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "All three cards are Fire, putting the weight on energy, will and action."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "Notice which angle feels most true to your situation, and start there."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, Knight of Wands (reversed), which reinforces Temperance (both are Fire cards)."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your Past · Present · Future.",
+  "I'll keep it short. The full reading stays below.",
+  "Let's go through your cards, one position at a time.",
+  "Past: The Hierophant, reversed.",
+  "This may describe how dogma, conformity, questioning shaped the path to your current situation.",
+  "Inherited rules may no longer fit your experience.",
+  "Present: Temperance, reversed.",
+  "Here, excess, discord, impatience is a lens for what is active now and how you can respond.",
+  "An extreme response or impatient mixture may be increasing strain.",
+  "Future: Knight of Wands, reversed.",
+  "This suggests a possible development involving impulsiveness, frustration, inconsistency.",
+  "Action may be outrunning judgement or enthusiasm may disappear when work becomes routine.",
+  "Now, your first clarifiers, card by card.",
+  "Clarifier 1 · Past: Four of Cups, reversed.",
+  "Interest may be returning, or withdrawal may be keeping a useful opening out of view.",
+  "Four of Cups (reversed) supports The Hierophant (reversed).",
+  "In Past, the theme of renewed interest and withdrawal can help dogma and conformity find a constructive outlet.",
+  "Together, The Hierophant (reversed) and Four of Cups (reversed) give Past a consistent message: dogma and renewed interest.",
+  "The cards agree, but all of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting.",
+  "In the wider Past · Present · Future spread, Past opens the reading; its neighbour is Present, Temperance (reversed; clarified), which modifies The Hierophant (Earth and Fire are neutral to each other).",
+  "Clarifier 1 · Present: The Emperor.",
+  "The Emperor is the capacity to create order that protects what matters.",
+  "The Emperor modifies Temperance (reversed).",
+  "In Present, the theme of authority and structure changes how excess and discord may be expressed, rather than strengthening or opposing it.",
+  "And your second clarifiers.",
+  "Clarifier 2 · Present: Strength, reversed.",
+  "Fear, fatigue or harsh self-judgement may make a situation feel unmanageable.",
+  "Strength (reversed) reinforces Temperance (reversed) and modifies The Emperor.",
+  "In Present, it adds a further angle: the theme of self-doubt and reactivity shifts how excess (Temperance) and authority (The Emperor) work together.",
+  "Together, Temperance (reversed), The Emperor and Strength (reversed) give Present a layered message, each card shifting the angle a little: excess, authority and self-doubt.",
+  "All three cards are Fire, putting the weight on energy, will and action.",
+  "Notice which angle feels most true to your situation, and start there.",
+  "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, Knight of Wands (reversed), which reinforces Temperance (both are Fire cards).",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}
