@@ -14,14 +14,34 @@ Fenton-Smith as a documented published method, because no source for that has be
 ## Where the two meet
 
 If Clarifier 2 is also a Major, the rule as taught would continue to a third clarifier, but the code stops
-at two. Until 7 Nov that stop was silent. How often it happens, derived by `audit/tools/limit-frequency.cjs`:
-- **For one Major card: 7.18%, exact.** Clarifier 1 is drawn from 77 unused cards (21 Majors), then
-  Clarifier 2 from 76 (20 Majors): 21/77 × 20/76 = 420/5852.
-- **For a Celtic Cross with every Major clarified: about 19.0% of readings** have at least one card at the
-  limit. This is an estimate: 1,000,000 seeded trials, seed 71107, 95% interval 18.88–19.03%. There is no
-  simple closed form, because the cards share one deck.
+at two. Until 7 Nov that stop was silent. How often it happens, derived by `audit/tools/limit-frequency.cjs`.
 
-(Earlier figures of "7.1%" and "18.9%" came from an unseeded quick simulation. They are replaced by the above.)
+**Assumptions (both figures):**
+- 78-card deck, 22 Majors (IDs 0–21).
+- Every card in a reading is distinct, and each clarifier is drawn uniformly at random from the cards not
+  yet in the reading. This is what `drawRemaining` does: Fisher–Yates over the unused cards.
+- Orientation (upright or reversed) plays no part in the rule.
+- Chas's teaching rule as implemented: a Major gets Clarifier 1; Clarifier 2 is drawn **only if Clarifier 1
+  is a Major**.
+
+**1. One Major card: 7.18%, exact.** Given a Major original card, 77 cards remain, 21 of them Majors.
+P(Clarifier 1 Major) = 21/77. Then 76 remain, 20 Majors: P(Clarifier 2 Major | Clarifier 1 Major) = 20/76.
+Product: 420/5852 = 7.18%. This holds for the first Major clarified in a reading. Later ones in the same
+reading face a slightly different deck.
+
+**2. Celtic Cross: about 19.0% of readings (estimate).** Probability that at least one card reaches the
+limit, under these extra assumptions:
+- every Major among the ten cards is clarified;
+- **no Minor card is clarified** (the seeker's optional choice is not modelled);
+- **cards do not all receive two clarifiers**: Clarifier 2 is drawn only where Clarifier 1 is a Major,
+  exactly as the rule says;
+- cards are clarified in position order, each finished before the next, as the main button does.
+
+1,000,000 seeded trials (mulberry32, seed 71107): 18.96%, 95% interval 18.88–19.03%. There is no simple
+closed form, because the ten cards and their clarifiers share one deck. If the seeker also clarifies Minor
+cards, more Majors leave the deck earlier and the figure changes. This estimate does not cover that case.
+
+(Earlier figures of "7.1%" and "18.9%" came from an unseeded quick simulation. They are withdrawn.)
 
 ## What this UAT build does (explicit, no change to the rule)
 

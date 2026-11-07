@@ -145,3 +145,4 @@ body:has(.mc-player) .mc-dock { display: none; }
 body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 84px; }
 .mc-float.is-updated { border-color: #f2dca8; box-shadow: 0 10px 26px rgba(0,0,0,.55), 0 0 22px rgba(242,220,168,.45); }
 .mc-updated { margin: 10px 0 0; color: #f2e4c2; font-size: 14px; }
+.mc-select-prompt { margin: 12px auto; max-width: 560px; padding: 10px 14px; border: 1px solid rgba(223,196,139,.6); border-radius: 10px; color: #f2e4c2; background: rgba(210,168,92,.08); font-size: 15px; text-align: center; }

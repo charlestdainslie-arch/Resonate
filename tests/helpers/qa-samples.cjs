@@ -75,4 +75,63 @@ const BOUNDARY = [
     ['The Magician', 'The Lovers', 'Death', 'The Moon', 'Judgement'], 'Celtic Cross of ten Majors: every position clarified, several Major-Major pairs, four at the two-clarifier limit'),
 ];
 
-module.exports = { SAMPLES: [...BASELINE, ...BOUNDARY], BASELINE, BOUNDARY, cards, SIZE };
+// ---- Si Aye's QA matrix (7 Nov 2026): the 16 baseline cases, where not already covered above. ----
+// Cards named in the matrix are used exactly. Where the matrix leaves a card unspecified (a clarifier "on
+// Present", or a whole spread described only as "all upright"), the card comes from a seeded shuffle of the
+// unused cards, stated in the sample as `seeded` with its seed and rule, so nothing is chosen by hand.
+const deckFor = (seed, exclude) => { const rng = mulberry32(seed); const d = cards.map(c => c.id).filter(id => !exclude.includes(id)); for (let i = d.length - 1; i > 0; i--) { const j = Math.floor(rng() * (i + 1)); [d[i], d[j]] = [d[j], d[i]]; } return { d, rng }; };
+function matrix(id, spread, baseSpec, opts) {
+  // baseSpec: [[name, reversed?]] or null for a seeded deal; opts: {seed, clarify:[{pos, c1?, firstMajor?}], allUpright, minReversed, note, seeded:[]}
+  const seeded = [...(opts.seeded || [])];
+  let base, reversed = [];
+  if (baseSpec) { base = baseSpec.map(([n]) => byName(n)); reversed = baseSpec.filter(([, r]) => r).map(([n]) => byName(n)); }
+  else {
+    let seed = opts.seed;
+    for (;; seed++) {
+      const { d, rng } = deckFor(seed, opts.exclude || []);
+      base = d.slice(0, SIZE[spread]);
+      if (opts.place) opts.place.forEach(([pos, n]) => { base.splice(pos, 0, byName(n)); base.length = SIZE[spread]; });
+      reversed = opts.allUpright ? [] : base.filter(() => rng() < 0.5);
+      if (opts.place) opts.place.forEach(([, n, r]) => { const k = byName(n); reversed = reversed.filter(x => x !== k); if (r) reversed.push(k); });
+      if (!opts.accept || opts.accept(base, reversed)) break;
+    }
+    seeded.push(`base cards: seeded deal, seed ${seed}${opts.accept ? ' (first seed from ' + opts.seed + ' meeting: ' + opts.acceptText + ')' : ''}${opts.allUpright ? ', all upright' : ''}`);
+  }
+  const c1 = base.map(() => null), c2 = base.map(() => null), steps = [];
+  const pool = deckFor(opts.seed + 1000, base).d;
+  const take = pred => { const i = pool.findIndex(x => !steps.some(s => s.id === x) && pred(x)); return pool.splice(i, 1)[0]; };
+  (opts.clarify || []).forEach(cl => {
+    if (cl.c1) c1[cl.pos] = byName(cl.c1);
+    else { c1[cl.pos] = take(x => !cl.firstMajor || major(x)); seeded.push(`Clarifier 1 at position ${cl.pos + 1}: seeded, seed ${opts.seed + 1000}${cl.firstMajor ? ', first unused Major' : ', next unused card'}`); }
+    steps.push({ pos: cl.pos, layer: 1, id: c1[cl.pos] });
+    if (major(c1[cl.pos]) && cl.c2 !== false) { c2[cl.pos] = cl.c2 ? byName(cl.c2) : take(() => true); if (!cl.c2) seeded.push(`Clarifier 2 at position ${cl.pos + 1}: seeded, next unused card (rule: Clarifier 1 is a Major)`); steps.push({ pos: cl.pos, layer: 2, id: c2[cl.pos] }); }
+  });
+  (opts.reverseClarifiers || []).forEach(n => reversed.push(byName(n)));
+  if (steps.length) seeded.push('clarifier orientation: upright (the matrix does not specify)');
+  return { id, kind: 'matrix', spread, mode: 'matrix', note: opts.note, seeded, base, reversed, steps, c1, c2 };
+}
+const MATRIX = [
+  matrix('OC-01', 'guidance', [['The Fool']], { seed: 7401, note: 'Fool upright, no clarifier (as dealt; the rule makes Clarifier 1 due)' }),
+  matrix('OC-02', 'guidance', [['Ten of Swords', true]], { seed: 7402, note: 'Ten of Swords reversed' }),
+  matrix('OC-03', 'guidance', [['The Tower']], { seed: 7403, clarify: [{ pos: 0, c1: 'The Star', c2: false }], note: 'Tower upright, Star upright clarifier (the matrix gives no Clarifier 2; the rule makes it due because The Star is a Major)' }),
+  matrix('TC-01', 'three', [['Ace of Pentacles'], ['Five of Cups'], ['Six of Wands']], { seed: 7404, note: 'Ace of Pentacles U / Five of Cups U / Six of Wands U' }),
+  matrix('TC-02', 'three', [['Eight of Cups', true], ['Nine of Wands'], ['Ten of Cups']], { seed: 7405, note: 'Eight of Cups R / Nine of Wands U / Ten of Cups U' }),
+  matrix('TC-03', 'three', [['The Lovers'], ['Two of Cups', true], ['The Star']], { seed: 7406, clarify: [{ pos: 1 }], note: 'Lovers U / Two of Cups R / Star U; clarifier on Present' }),
+  matrix('TC-04', 'three', [['Wheel of Fortune', true], ['Four of Pentacles'], ['Six of Pentacles', true]], { seed: 7407, clarify: [{ pos: 1, firstMajor: true }], note: 'Wheel of Fortune R / Four of Pentacles U / Six of Pentacles R; two-clarifier chain on Present (a chain needs a Major Clarifier 1)' }),
+  matrix('RC-01', 'relationship', [['Two of Cups'], ['The Hermit', true], ['The Lovers'], ['Five of Wands'], ['Ace of Cups']], { seed: 7408, note: 'Two of Cups U / Hermit R / Lovers U / Five of Wands U / Ace of Cups U' }),
+  matrix('RC-02', 'relationship', [['Queen of Cups', true], ['King of Swords'], ['Page of Wands'], ['Eight of Cups'], ['The Star']], { seed: 7409, clarify: [{ pos: 2 }], note: 'Queen of Cups R / King of Swords U / Page of Wands U / Eight of Cups U / Star U; clarifier on Connection' }),
+  matrix('RC-03', 'relationship', [['The Devil'], ['The Hierophant', true], ['Three of Cups'], ['Four of Cups'], ['Judgement']], { seed: 7410, note: 'Devil U / Hierophant R / Three of Cups U / Four of Cups U / Judgement U' }),
+  matrix('SC-02', 'seven', null, { seed: 7411, accept: (b, r) => b.filter(major).length === 2 && b.some(x => major(x) && r.includes(x)), acceptText: 'exactly two Majors, at least one reversed', clarifyFirstReversedMajor: true, note: 'Two Majors, reversed anchor, two-clarifier chain' }),
+  matrix('CC-01', 'celtic', null, { seed: 7412, allUpright: true, note: 'All upright, no clarifiers' }),
+  matrix('CC-02', 'celtic', null, { seed: 7513, accept: (b, r) => r.length >= 7, acceptText: 'at least 7 of 10 reversed', clarify: [{ pos: 3 }], note: 'Reversal-heavy, clarifier on Recent Past (the matrix says "Past"; the Celtic Cross position is "Recent Past")' }),
+  matrix('CC-04', 'celtic', null, { seed: 7414, exclude: [9, 71], place: [[0, 'The Hermit', true]], clarify: [{ pos: 0, c1: 'Eight of Pentacles' }], note: 'Hermit R + Eight of Pentacles U clarifier, full applicable chain (the matrix gives no position: placed at position 1, Present Situation; Eight of Pentacles is not a Major, so the chain ends at Clarifier 1)' }),
+];
+// SC-02: the chain is on the first reversed Major in the deal, Clarifier 1 the first unused Major, Clarifier 2 the next card.
+{
+  const s = MATRIX.find(m => m.id === 'SC-02');
+  const pos = s.base.findIndex(x => major(x) && s.reversed.includes(x));
+  const redo = matrix('SC-02', 'seven', s.base.map(id => [cards[id].name, s.reversed.includes(id)]), { seed: 7411, clarify: [{ pos, firstMajor: true }], seeded: s.seeded, note: s.note + ` (anchor: position ${pos + 1}, the first reversed Major)` });
+  MATRIX[MATRIX.indexOf(s)] = redo;
+}
+
+module.exports = { SAMPLES: [...BASELINE, ...BOUNDARY, ...MATRIX], BASELINE, BOUNDARY, MATRIX, cards, SIZE };

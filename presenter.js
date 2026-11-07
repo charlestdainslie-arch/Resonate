@@ -381,7 +381,9 @@
   // Both controls stay together in the dock throughout the reading. The dock hides while Max is open and
   // goes away when you leave the reading. (Without Clarify, as in the demo, ▶ Watch Max alone hides while
   // the top launcher is visible, as before.)
-  let floatTimer=0,dockTarget=-1;
+  // One dock at a time: a re-render tears down the previous dock's timer and observer. (Fixed 7 Nov: the old
+  // observer outlived its dock and, on its next callback, cleared the new dock's timer, freezing its label.)
+  let floatTimer=0,floatIO=null,dockTarget=-1;
   function focusedPosition(){
     const mid=innerHeight/2;
     let best=-1,dist=Infinity;
@@ -390,8 +392,14 @@
     document.querySelectorAll('.reading-meaning[data-position]').forEach(el=>consider(el,Number(el.dataset.position)));
     return best;
   }
+  function selectPrompt(){
+    document.getElementById('mcSelectPrompt')?.remove();
+    const spread=document.querySelector('.spread-scroll');
+    spread?.insertAdjacentHTML('beforebegin','<p class="mc-select-prompt" id="mcSelectPrompt" role="status">Choose the card to clarify: scroll to it, or to its reading, then tap ✦ Clarify. Only that card is clarified.</p>');
+    spread?.scrollIntoView({behavior:scrollMotion(),block:'start'});
+  }
   function floatWatch(){
-    clearInterval(floatTimer);
+    clearInterval(floatTimer);floatIO?.disconnect();floatIO=null;
     document.getElementById('mcDock')?.remove();
     const top=document.querySelector('.mc-launch');
     if(!top)return;
@@ -400,13 +408,18 @@
     document.body.classList.add('has-mc-dock');
     const dock=document.getElementById('mcDock'),btn=document.getElementById('mcFloat'),clar=document.getElementById('mcClarify');
     btn.addEventListener('click',()=>openPlayer());
-    clar?.addEventListener('click',()=>{if(dockTarget>=0&&clarifyStepFor(dockTarget))clarifyPosition(dockTarget);});
+    // BT-09 (QA matrix, 7 Nov): with no card in view, Clarify never guesses: it asks you to choose a card.
+    clar?.addEventListener('click',()=>{
+      if(dockTarget<0){selectPrompt();return;}
+      if(clarifyStepFor(dockTarget))clarifyPosition(dockTarget);
+    });
     let topVisible=true;
-    const io='IntersectionObserver' in window?new IntersectionObserver(e=>{topVisible=e[0].isIntersecting;update();}):null;
+    const io=floatIO='IntersectionObserver' in window?new IntersectionObserver(e=>{topVisible=e[0].isIntersecting;update();}):null;
     io?.observe(top);
+    let timer=0;
     let shown='';
     function update(){
-      if(state.view!=='draw'||!document.body.contains(top)){clearInterval(floatTimer);io?.disconnect();dock.remove();document.body.classList.remove('has-mc-dock');return;}
+      if(state.view!=='draw'||!document.body.contains(top)){clearInterval(timer);io?.disconnect();if(floatTimer===timer){dock.remove();document.body.classList.remove('has-mc-dock');}return;}
       const open=!!document.querySelector('.mc-player');
       dock.hidden=!(state.drawSettled&&!open);
       if(!clar)dock.hidden=dock.hidden||topVisible;
@@ -421,9 +434,15 @@
         if(!upd)document.querySelector('.mc-updated')?.remove();
       }
       if(!clar||dock.hidden)return;
-      const seen=focusedPosition();
-      if(seen>=0)dockTarget=seen;
-      if(dockTarget<0)dockTarget=Math.max(0,nextDueClarifier());
+      dockTarget=focusedPosition();
+      if(dockTarget<0){
+        if(shown==='select')return;
+        shown='select';
+        clar.disabled=false;clar.dataset.position='';clar.dataset.step='select';
+        document.getElementById('mcClarifyCard').textContent='choose a card';
+        clar.setAttribute('aria-label','Clarify: no card is in view. Choose a card first.');
+        return;
+      }
       const n=String(dockTarget+1).padStart(2,'0'),label=positionLabels()[dockTarget]||'Card';
       const step=clarifyStepFor(dockTarget);
       const count=readingLayerCards(dockTarget).length;
@@ -439,11 +458,11 @@
       document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step?`${n} · ${label}`:(atLimit?`${n} · 2-card limit`:`${n} · clarified ✓`);
       clar.setAttribute('aria-label',step==='first'?`Clarify card ${n}, ${label}: ${name}`:step==='second'?`Draw Clarifier 2 for card ${n}, ${label}: ${name}`:(atLimit?`Card ${n}, ${label}: two clarifiers, both Major Arcana; the two-card limit is reached`:`Card ${n}, ${label}, is fully clarified`));
     }
-    floatTimer=setInterval(update,250);
+    floatTimer=timer=setInterval(update,250);
     update();
   }
   // Leaving the reading removes the dock at once (the timer would also catch it within 250 ms).
-  if(typeof go==='function'){const presenterGo=go;go=function(){const out=presenterGo.apply(this,arguments);if(state.view!=='draw'){clearInterval(floatTimer);document.getElementById('mcDock')?.remove();document.body.classList.remove('has-mc-dock');}return out;};}
+  if(typeof go==='function'){const presenterGo=go;go=function(){const out=presenterGo.apply(this,arguments);if(state.view!=="draw"){clearInterval(floatTimer);floatIO?.disconnect();floatIO=null;document.getElementById("mcDock")?.remove();document.body.classList.remove('has-mc-dock');}return out;};}
   const presenterRenderDraw=renderDraw;
   renderDraw=function(){
     if(player&&player.sig&&player.sig!==readingSig())player.close();   // a clarifier was added: stop narrating the old reading

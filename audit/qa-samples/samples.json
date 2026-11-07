@@ -1149,5 +1149,551 @@
    20,
    72
   ]
+ },
+ {
+  "id": "OC-01",
+  "kind": "matrix",
+  "spread": "guidance",
+  "mode": "matrix",
+  "note": "Fool upright, no clarifier (as dealt; the rule makes Clarifier 1 due)",
+  "seeded": [],
+  "base": [
+   0
+  ],
+  "reversed": [],
+  "steps": [],
+  "c1": [
+   null
+  ],
+  "c2": [
+   null
+  ]
+ },
+ {
+  "id": "OC-02",
+  "kind": "matrix",
+  "spread": "guidance",
+  "mode": "matrix",
+  "note": "Ten of Swords reversed",
+  "seeded": [],
+  "base": [
+   59
+  ],
+  "reversed": [
+   59
+  ],
+  "steps": [],
+  "c1": [
+   null
+  ],
+  "c2": [
+   null
+  ]
+ },
+ {
+  "id": "OC-03",
+  "kind": "matrix",
+  "spread": "guidance",
+  "mode": "matrix",
+  "note": "Tower upright, Star upright clarifier (the matrix gives no Clarifier 2; the rule makes it due because The Star is a Major)",
+  "seeded": [
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   16
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 17
+   }
+  ],
+  "c1": [
+   17
+  ],
+  "c2": [
+   null
+  ]
+ },
+ {
+  "id": "TC-01",
+  "kind": "matrix",
+  "spread": "three",
+  "mode": "matrix",
+  "note": "Ace of Pentacles U / Five of Cups U / Six of Wands U",
+  "seeded": [],
+  "base": [
+   64,
+   40,
+   27
+  ],
+  "reversed": [],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "TC-02",
+  "kind": "matrix",
+  "spread": "three",
+  "mode": "matrix",
+  "note": "Eight of Cups R / Nine of Wands U / Ten of Cups U",
+  "seeded": [],
+  "base": [
+   43,
+   30,
+   45
+  ],
+  "reversed": [
+   43
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "TC-03",
+  "kind": "matrix",
+  "spread": "three",
+  "mode": "matrix",
+  "note": "Lovers U / Two of Cups R / Star U; clarifier on Present",
+  "seeded": [
+   "Clarifier 1 at position 2: seeded, seed 8406, next unused card",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   6,
+   37,
+   17
+  ],
+  "reversed": [
+   37
+  ],
+  "steps": [
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 63
+   }
+  ],
+  "c1": [
+   null,
+   63,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "TC-04",
+  "kind": "matrix",
+  "spread": "three",
+  "mode": "matrix",
+  "note": "Wheel of Fortune R / Four of Pentacles U / Six of Pentacles R; two-clarifier chain on Present (a chain needs a Major Clarifier 1)",
+  "seeded": [
+   "Clarifier 1 at position 2: seeded, seed 8407, first unused Major",
+   "Clarifier 2 at position 2: seeded, next unused card (rule: Clarifier 1 is a Major)",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   10,
+   67,
+   69
+  ],
+  "reversed": [
+   10,
+   69
+  ],
+  "steps": [
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 0
+   },
+   {
+    "pos": 1,
+    "layer": 2,
+    "id": 54
+   }
+  ],
+  "c1": [
+   null,
+   0,
+   null
+  ],
+  "c2": [
+   null,
+   54,
+   null
+  ]
+ },
+ {
+  "id": "RC-01",
+  "kind": "matrix",
+  "spread": "relationship",
+  "mode": "matrix",
+  "note": "Two of Cups U / Hermit R / Lovers U / Five of Wands U / Ace of Cups U",
+  "seeded": [],
+  "base": [
+   37,
+   9,
+   6,
+   26,
+   36
+  ],
+  "reversed": [
+   9
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "RC-02",
+  "kind": "matrix",
+  "spread": "relationship",
+  "mode": "matrix",
+  "note": "Queen of Cups R / King of Swords U / Page of Wands U / Eight of Cups U / Star U; clarifier on Connection",
+  "seeded": [
+   "Clarifier 1 at position 3: seeded, seed 8409, next unused card",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   48,
+   63,
+   32,
+   43,
+   17
+  ],
+  "reversed": [
+   48
+  ],
+  "steps": [
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 71
+   }
+  ],
+  "c1": [
+   null,
+   null,
+   71,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "RC-03",
+  "kind": "matrix",
+  "spread": "relationship",
+  "mode": "matrix",
+  "note": "Devil U / Hierophant R / Three of Cups U / Four of Cups U / Judgement U",
+  "seeded": [],
+  "base": [
+   15,
+   5,
+   38,
+   39,
+   20
+  ],
+  "reversed": [
+   5
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "SC-02",
+  "kind": "matrix",
+  "spread": "seven",
+  "mode": "matrix",
+  "note": "Two Majors, reversed anchor, two-clarifier chain (anchor: position 7, the first reversed Major)",
+  "seeded": [
+   "base cards: seeded deal, seed 7417 (first seed from 7411 meeting: exactly two Majors, at least one reversed)",
+   "Clarifier 1 at position 7: seeded, seed 8411, first unused Major",
+   "Clarifier 2 at position 7: seeded, next unused card (rule: Clarifier 1 is a Major)",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   56,
+   3,
+   37,
+   66,
+   29,
+   28,
+   14
+  ],
+  "reversed": [
+   56,
+   37,
+   66,
+   28,
+   14
+  ],
+  "steps": [
+   {
+    "pos": 6,
+    "layer": 1,
+    "id": 0
+   },
+   {
+    "pos": 6,
+    "layer": 2,
+    "id": 74
+   }
+  ],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   0
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   74
+  ]
+ },
+ {
+  "id": "CC-01",
+  "kind": "matrix",
+  "spread": "celtic",
+  "mode": "matrix",
+  "note": "All upright, no clarifiers",
+  "seeded": [
+   "base cards: seeded deal, seed 7412, all upright"
+  ],
+  "base": [
+   59,
+   65,
+   14,
+   52,
+   70,
+   4,
+   21,
+   27,
+   49,
+   64
+  ],
+  "reversed": [],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "CC-02",
+  "kind": "matrix",
+  "spread": "celtic",
+  "mode": "matrix",
+  "note": "Reversal-heavy, clarifier on Recent Past (the matrix says \"Past\"; the Celtic Cross position is \"Recent Past\")",
+  "seeded": [
+   "base cards: seeded deal, seed 7513 (first seed from 7513 meeting: at least 7 of 10 reversed)",
+   "Clarifier 1 at position 4: seeded, seed 8513, next unused card",
+   "Clarifier 2 at position 4: seeded, next unused card (rule: Clarifier 1 is a Major)",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   34,
+   57,
+   71,
+   59,
+   30,
+   44,
+   20,
+   55,
+   31,
+   43
+  ],
+  "reversed": [
+   34,
+   57,
+   71,
+   59,
+   44,
+   20,
+   55,
+   31
+  ],
+  "steps": [
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 13
+   },
+   {
+    "pos": 3,
+    "layer": 2,
+    "id": 17
+   }
+  ],
+  "c1": [
+   null,
+   null,
+   null,
+   13,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   17,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "CC-04",
+  "kind": "matrix",
+  "spread": "celtic",
+  "mode": "matrix",
+  "note": "Hermit R + Eight of Pentacles U clarifier, full applicable chain (the matrix gives no position: placed at position 1, Present Situation; Eight of Pentacles is not a Major, so the chain ends at Clarifier 1)",
+  "seeded": [
+   "base cards: seeded deal, seed 7414",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   9,
+   62,
+   18,
+   66,
+   33,
+   30,
+   13,
+   70,
+   8,
+   37
+  ],
+  "reversed": [
+   18,
+   30,
+   13,
+   8,
+   37,
+   9
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 71
+   }
+  ],
+  "c1": [
+   71,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
  }
 ]

@@ -4,15 +4,18 @@ Branch `claude/uat-clarify-per-card`. The commit SHA, the test run and the previ
 Issue #49 post for this handoff, and in `audit/builds/test-run-<sha>/`. No merge, no production change, no
 spending. "Author-run" means run by Claude, not independently reproduced.
 
-## 0. The case matrix: what I have vs what was accepted
+## 0. The case matrix
 
-Si Aye's directive accepts "16 baseline cases and 10 boundary cases". The cases I built and can execute are
-**15 baseline + 6 boundary = 21** (`audit/qa-samples/`). I have not received a 16 + 10 list, or the "six
-identified failure modes" Deep is to check. If they are Deep's, Chas needs to forward them. I will then:
-- map each one onto an existing sample, or
-- add it as a new sample with the same inputs and evidence format.
+Si Aye's 16 baseline + 10 boundary cases are in **`audit/MATRIX.md`**, mapped to what executes each one and
+with any difference from the matrix stated. New samples were added only where the existing 21 did not
+already cover a case: OC-01..03, TC-01..04, RC-01..03, SC-02, CC-01, CC-02, CC-04. SC-01 maps to S12, and
+CC-03 to B06. The boundary tests BT-01..10 are in `tests/boundary-matrix.browser.cjs`; BT-08 is
+`tests/shuffle-frozen.test.cjs`.
 
-Until then, the matrix has 21 rows and nothing is guessed. Rows that cannot be executed are marked BLOCKED.
+Where the matrix names a card, it is used exactly. Where it leaves one out (for example "clarifier on
+Present"), the card comes from a seeded shuffle of the unused cards, and the sample says so; nothing is
+picked by hand. Position-name differences ("Foundation" in a Seven-card reading, "Past" in a Celtic Cross,
+"Connection") are recorded against each case.
 
 ## 1. Preview access for Deep and Dev (decision for Chas)
 
@@ -27,8 +30,9 @@ changed it. Options that keep production protected and share no credentials:
 | C. Same Wi-Fi, for Dev's Samsung | With A running on a laptop, open `http://<laptop-IP>:8080/presenter-uat.html?qa=S01` on the phone. | Local network only. | None. Untested here: whether Android speech works over plain http on a local network. If it doesn't, use B. |
 | D. Add Deep and Dev to the Vercel team | Vercel team invite. | Gives them dashboard access, which is more than they need. | May need paid seats: Chas's decision. |
 
-I can create the option B link from here if Chas says so. I have not done it, because it is an access
-decision. Option A is enough for Deep's interpretation review.
+**Chas approved option B on 7 Nov.** The link is on the Issue #49 post. It is scoped to that one preview
+deployment, and production access is unchanged. Vercel says new share links expire after 23 hours, so it
+must be renewed for longer testing. Option A stays available to Deep.
 
 ## 2. Position definitions vs the implemented specification
 
@@ -41,6 +45,10 @@ only ones. `audit/POSITIONS.md` lists all 26 positions verbatim, with line numbe
 | Relationship (5) | 374ba57, 9 Sep 2026 | No external source recorded. |
 | Seven-card V (7) | fc6caba and 7151e34, 10 Sep 2026 | Commit message: "Apply Fenton-Smith timing to seven-card interpretations". No citation is held in the repo; the attribution is unverified. |
 | Celtic Cross (10) | 374ba57, 9 Sep 2026 | Standard Celtic Cross roles; no external source recorded. |
+
+User-facing provenance: no page, script or data file shown to users mentions Fenton-Smith (checked with
+`grep -ri fenton` over the app's .js, .html and .json files). The name appears only in internal audit and
+planning documents, as an unverified attribution.
 
 Conflicts between the definitions and what is implemented (flagged for Chas, not changed):
 - **Seven-card position 4, "You / Answer".** The definition says that for a question reading "this card gives
