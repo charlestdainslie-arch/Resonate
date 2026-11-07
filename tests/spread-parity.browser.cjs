@@ -154,8 +154,7 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
           }
 
           // ---------- clarifiers ----------
-          await page.locator('#primaryClarifierAction').click();
-          await page.locator('#primaryClarifierAction').click();
+          await require('./helpers/clarify-all.cjs')(page); // one card at a time (team directive, 7 Nov)
           await page.waitForFunction(() => [...document.querySelectorAll('.reading-card-front img,.position-clarifier img')].every(e => e.complete && e.naturalWidth > 0), null, { timeout: 15000 });
 
           await check('P5', async () => {

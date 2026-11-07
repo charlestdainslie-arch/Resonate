@@ -18,7 +18,7 @@
     card:'First, your card.',
     cards:'Let\'s go through your cards, one position at a time.',
     c1:'Now, your first clarifier.',
-    c1s:'Now, your first clarifiers, one for each position.',
+    c1s:'Now, your first clarifiers, card by card.',
     c2:'And your second clarifier.',
     c2s:'And your second clarifiers.',
     back:'Max Chasroom, back for the next part of your reading.',
@@ -88,9 +88,24 @@
         const r=isReversed(c)?'-r':'';
         const label=one?`Clarifier ${n}: ${cardName(c)}.`:`Clarifier ${n} · ${labels[i]}: ${cardName(c)}.`;
         add(chapter,'label',label,['p'+i,key],[{id:`label-clarifier-${n}`,text:`Clarifier ${n}${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
-        const block=blocks[i].querySelectorAll('.integrated-clarifier')[l];
+        const block=blocks[i].querySelector(`.integrated-clarifier[data-clarifier="${n}"]`)||blocks[i].querySelectorAll('.integrated-clarifier')[l];
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
         add(chapter,'quote',meaning,[key],[{id:`meaning-${c.id}${r}`,text:meaning}]);
+        // The integrated reading (7 Nov): how this clarifier relates to the card(s) before it, then, after the
+        // last clarifier drawn for this position, what they mean together. Quoted word for word from the page,
+        // so the captions are exactly what Max says. Rebuilt every time Max opens, so a newly drawn clarifier
+        // replaces the earlier synthesis rather than leaving an outdated one.
+        const rel=[block?.querySelector('.relation-lead'),block?.querySelector('.relation-meaning')].map(el=>norm(el?.textContent||'')).filter(Boolean);
+        const relShow=n===1?['p'+i,key]:['p'+i,`c${i}-1`,key];
+        rel.forEach((text,k)=>add(chapter,'quote',text,relShow,[{id:`rel-${spread}-${i}-${n}-${k}`,text}]));
+        const last=!layerCards.slice(l+1).some(layer=>layer[i]);
+        const together=blocks[i].querySelector('.combined-meaning');
+        if(last&&together){
+          const show=['p'+i,...layerCards.map((layer,m)=>layer[i]?`c${i}-${m+1}`:null).filter(Boolean)];
+          const lead=sentences(together.querySelector('.synthesis-lead')?.textContent||'');
+          const wider=sentences(together.querySelector('.synthesis-wider')?.textContent||'');
+          [...lead,...wider].filter((t,k,a)=>t&&a.indexOf(t)===k).forEach((text,k)=>add(chapter,'quote',text,show,[{id:`together-${spread}-${i}-${k}`,text}]));
+        }
       });
     });
 
@@ -351,29 +366,66 @@
     const journal=document.querySelector('.reading-journal');
     if(journal)journal.innerHTML='<div class="eyebrow">YOUR PERSONAL JOURNAL</div><p>Saving is turned off for the demonstration reading. Draw your own reading to save it.</p>';
   }
-  // Floating ▶ Watch Max (Samsung UAT, 6 Nov). The launcher sits at the top of the reading; on a phone,
-  // following a Celtic Cross reveal down the page leaves it far above the screen. Once every card is
-  // revealed this gold button stays at the bottom of the screen wherever you are, hiding while the top
-  // launcher is visible (no duplicate), while Max is open, and away from the reading.
-  let floatTimer=0;
+  // Floating dock: [✦ Clarify NN] [▶ Watch Max] (Samsung UAT 6 Nov; team directive 7 Nov 2026).
+  // The launcher sits at the top of the reading; on a phone, following a Celtic Cross down the page leaves it
+  // far above the screen. Once every card is revealed, the dock stays at the bottom of the screen wherever you
+  // are, so both controls are always one tap away. Clarify acts on one card only: the card you are looking at
+  // (the spread position or its written reading nearest the middle of the screen), and its label names that
+  // card. It draws that card's next clarifier under Chas's teaching rule, or shows that the card is complete.
+  // Both controls stay together in the dock throughout the reading. The dock hides while Max is open and
+  // goes away when you leave the reading. (Without Clarify, as in the demo, ▶ Watch Max alone hides while
+  // the top launcher is visible, as before.)
+  let floatTimer=0,dockTarget=-1;
+  function focusedPosition(){
+    const mid=innerHeight/2;
+    let best=-1,dist=Infinity;
+    const consider=(el,i)=>{const r=el.getBoundingClientRect();if(!r.height||r.bottom<0||r.top>innerHeight)return;const d=r.top<=mid&&r.bottom>=mid?0:Math.min(Math.abs(r.top-mid),Math.abs(r.bottom-mid));if(d<dist){dist=d;best=i;}};
+    document.querySelectorAll('.reading-position').forEach((el,i)=>consider(el,i));
+    document.querySelectorAll('.reading-meaning[data-position]').forEach(el=>consider(el,Number(el.dataset.position)));
+    return best;
+  }
   function floatWatch(){
     clearInterval(floatTimer);
-    document.getElementById('mcFloat')?.remove();
+    document.getElementById('mcDock')?.remove();
     const top=document.querySelector('.mc-launch');
     if(!top)return;
-    document.body.insertAdjacentHTML('beforeend','<button type="button" class="mc-float" id="mcFloat" hidden aria-label="Watch Max Chasroom present this reading"><span class="mc-float-screen" aria-hidden="true"></span>▶ Watch Max</button>');
-    const btn=document.getElementById('mcFloat');
+    const canClarify=typeof clarifyPosition==='function'&&!isDemo();
+    document.body.insertAdjacentHTML('beforeend',`<div class="mc-dock" id="mcDock" role="toolbar" aria-label="Reading controls" hidden>${canClarify?'<button type="button" class="mc-clarify" id="mcClarify"><span class="mc-clarify-k">✦ Clarify</span><span class="mc-clarify-v" id="mcClarifyCard"></span></button>':''}<button type="button" class="mc-float" id="mcFloat" aria-label="Watch Max Chasroom present this reading"><span class="mc-float-screen" aria-hidden="true"></span>▶ Watch Max</button></div>`);
+    document.body.classList.add('has-mc-dock');
+    const dock=document.getElementById('mcDock'),btn=document.getElementById('mcFloat'),clar=document.getElementById('mcClarify');
     btn.addEventListener('click',()=>openPlayer());
+    clar?.addEventListener('click',()=>{if(dockTarget>=0&&clarifyStepFor(dockTarget))clarifyPosition(dockTarget);});
     let topVisible=true;
     const io='IntersectionObserver' in window?new IntersectionObserver(e=>{topVisible=e[0].isIntersecting;update();}):null;
     io?.observe(top);
+    let shown='';
     function update(){
-      if(state.view!=='draw'||!document.body.contains(top)){clearInterval(floatTimer);io?.disconnect();btn.remove();return;}
-      btn.hidden=!(state.drawSettled&&!topVisible&&!document.querySelector('.mc-player'));
+      if(state.view!=='draw'||!document.body.contains(top)){clearInterval(floatTimer);io?.disconnect();dock.remove();document.body.classList.remove('has-mc-dock');return;}
+      const open=!!document.querySelector('.mc-player');
+      dock.hidden=!(state.drawSettled&&!open);
+      if(!clar)dock.hidden=dock.hidden||topVisible;
+      if(!clar||dock.hidden)return;
+      const seen=focusedPosition();
+      if(seen>=0)dockTarget=seen;
+      if(dockTarget<0)dockTarget=Math.max(0,nextDueClarifier());
+      const n=String(dockTarget+1).padStart(2,'0'),label=positionLabels()[dockTarget]||'Card';
+      const step=clarifyStepFor(dockTarget);
+      const count=readingLayerCards(dockTarget).length;
+      const key=dockTarget+'|'+step+'|'+count;
+      if(key===shown)return;
+      shown=key;
+      const name=cardName(byId(state.drawnCardIds[dockTarget]));
+      clar.disabled=!step;
+      clar.dataset.position=dockTarget;
+      clar.dataset.step=step||'done';
+      document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step?`${n} · ${label}`:`${n} · clarified ✓`;
+      clar.setAttribute('aria-label',step==='first'?`Clarify card ${n}, ${label}: ${name}`:step==='second'?`Draw Clarifier 2 for card ${n}, ${label}: ${name}`:`Card ${n}, ${label}, is fully clarified`);
     }
     floatTimer=setInterval(update,250);
     update();
   }
+  // Leaving the reading removes the dock at once (the timer would also catch it within 250 ms).
+  if(typeof go==='function'){const presenterGo=go;go=function(){const out=presenterGo.apply(this,arguments);if(state.view!=='draw'){clearInterval(floatTimer);document.getElementById('mcDock')?.remove();document.body.classList.remove('has-mc-dock');}return out;};}
   const presenterRenderDraw=renderDraw;
   renderDraw=function(){const outcome=presenterRenderDraw.apply(this,arguments);demoBanner();launcher();floatWatch();return outcome;};
 

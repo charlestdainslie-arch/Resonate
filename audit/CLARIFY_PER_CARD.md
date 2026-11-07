@@ -1,0 +1,72 @@
+# Clarify one card · integrated reading · Max (team directive, 7 Nov 2026)
+
+UAT branch `claude/uat-clarify-per-card`, built on `claude/uat-shuffle-deal` (approved shuffle). No merge,
+no production change, no spending. The approved shuffle (`deck-theatre.js`, `deck-theatre.css`) is unchanged.
+
+## 1. Clarify Card beside ▶ Watch Max
+
+- **Dock** (presenter-uat.html): `[✦ Clarify NN · Position] [▶ Watch Max]`, fixed at the bottom of the
+  screen once every card is revealed, everywhere in the reading (top, any card, the written reading).
+  Hidden while Max is open; removed when you leave the reading. The page ends with room below the last
+  content, so the dock never permanently covers text.
+- **Which card:** the card you are looking at: the spread position, or its written reading, nearest the
+  middle of the screen. The dock names it (for example `05 · Conscious Focus`).
+- **What it draws:** that card's next clarifier under Chas's teaching rule (unchanged): Clarifier 1 if it
+  has none (due for a Major, the seeker's choice for any other card); Clarifier 2 if Clarifier 1 is a Major.
+  When the card is complete the dock shows `05 · clarified ✓` and is disabled.
+- **One card only:** no control now clarifies the whole spread. The main button below the reading reads
+  `Draw First Clarifier for 01 · Present Situation`, and finishes that card before moving on. Each card also
+  has its own button under it (`✦ Draw Clarifier 1`, `✦ Draw Clarifier 2`, or `+ Clarify this card`).
+  (The no-argument functions `drawFirstLayerClarifiers()` / `drawNextClarifierLayer()` still exist for code
+  and older tests; nothing on screen calls them.)
+- **Layout:** original card above, Clarifier 1 below-left, Clarifier 2 below-right (as before; now checked
+  by test at 360, 412 and 1280 px: no overlaps, images loaded, labels on screen).
+
+## 2. Integrated interpretation (`clarifier-reading.js`)
+
+For a clarified card, the written reading now goes:
+
+1. **The original card in this position** (unchanged text).
+2. **How the first clarifier speaks to it:** "Strength reinforces The Emperor." plus what that means in
+   the position, why (elements, suit, number), and notes on orientation, Major/Minor, court cards, and
+   the cards' own written connection where RESONATE's data has one.
+3. **How the second clarifier connects to both:** "The Fool supports The Emperor and modifies Death." and
+   what that does to the first two (draws them together / questions both / sides with one).
+4. **What they mean together:** the cards as one message (consistent, mixed, tense or layered), the
+   shared element, and the position in the wider spread. Celtic Cross positions are read in pairs: 1 & 2,
+   3 & 5, 4 & 6, 7 & 8, 9 & 10. Other spreads use the neighbouring position.
+
+Recalculated on every render: adding Clarifier 2 rewrites steps 3 and 4; until then a note says a second
+clarifier is due and the reading will update.
+
+**Method and sources.** Relationships use the cards' elements (elemental dignities: same element
+reinforces; Fire–Air and Water–Earth friendly; Fire–Water and Air–Earth contrary; Fire–Earth and Air–Water
+neutral), suits, numbers, orientation and Major/Minor status, all from RESONATE's card data. When only one of
+two cards is reversed, an agreement of elements is read as a change of emphasis instead. This is labelled on
+the page as RESONATE's interpretive method, "not a quotation from a published source". No citation is
+given or invented. The card data's own provenance gaps (audit/sources) still apply and remain OPEN.
+
+## 3. Max Chasroom
+
+Max's script is rebuilt each time he opens, from the page's own text. For each clarifier he now also says
+the step 2 / step 3 lead and meaning, and after a card's last clarifier, its "together" lines and its place
+in the wider spread, word for word. A synthesis from before Clarifier 2 is never narrated (checked by
+test). Captions are the script lines. Play, Pause, Resume, Replay, Mute, captions and transcript unchanged.
+New lines have no recorded clip, so they use the temporary device voice fallback, as before. One frame line
+changed to fit one-card-at-a-time: "Now, your first clarifiers, card by card." (recording script updated).
+
+Voice: Chas's Samsung was muted during UAT; voice is not confirmed defective. Dev to retest on Android.
+
+## Tests
+
+New: `tests/clarifier-reading.test.cjs` (7), `tests/clarify-per-card.browser.cjs` (360, 412, 1280).
+Updated for one card at a time: teaching-rules, spread-parity, browser-uat, presenter, reduced-motion-headings,
+max-discoverability (the dock now stays at the top of the reading too), via `tests/helpers/clarify-all.cjs`.
+Results: `audit/builds/test-run-<sha>/` (author-run; not independently reproduced).
+
+## Not done / for Chas
+
+- Not tested on a real Samsung; Chromium emulation only.
+- index.html (no Max) has the per-card buttons and the one-card main button, not the dock.
+- Interpretation text is generated by rule; Deep's interpretation QA (one card + 2 clarifiers) is the check
+  on whether it reads well.

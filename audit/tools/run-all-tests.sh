@@ -19,7 +19,7 @@ run() { # name, command...
   local line=$(grep -E '^# (pass|fail) |[0-9]+/[0-9]+ passed|^PASS [0-9]+|passed|FAIL' "$OUT/$name.log" | tail -2 | tr '\n' ' ' | cut -c1-200)
   printf '%s\t%s\t%s\t%s\t%s\n' "$name" "$*" "$code" "$(( $(date +%s) - t0 ))" "$line" >> "$SUMMARY"
 }
-for f in app.js deck-engine.js data.js journal.js reading-stage.js astrology-prelude.js astrology-prelude-ui.js reading-pdf.js opening-dice.js reading-session.js navigation-a11y.js; do
+for f in app.js deck-engine.js data.js journal.js reading-stage.js astrology-prelude.js astrology-prelude-ui.js reading-pdf.js clarifier-reading.js opening-dice.js reading-session.js navigation-a11y.js; do
   run "syntax-$f" node --check "$f"
 done
 run unit-all node --test tests/*.test.cjs

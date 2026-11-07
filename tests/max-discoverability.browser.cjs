@@ -5,7 +5,8 @@
  *   - while cards are still revealing, the floating button is hidden
  *   - once revealed, at card 5 (top launcher off screen) the floating ▶ Watch Max is visible, on screen
  *     and the topmost element where it is tapped
- *   - at the top of the reading (launcher visible) the floating button hides (no duplicate)
+ *   - at the top of the reading the dock stays, with ✦ Clarify beside ▶ Watch Max (team directive, 7 Nov;
+ *     until then the floating button hid there to avoid a duplicate)
  *   - tapping it opens Max: captions change on Play, Pause shows Resume, Replay restarts at part 1,
  *     closing brings the button back; Max's script includes the clarifiers
  * Screenshots: test-results/max-discoverability-<width>-*.png
@@ -54,10 +55,11 @@ server.listen(0, '127.0.0.1', async () => {
       const box = await page.locator('#mcFloat').boundingBox();
       assert.ok(box.height >= 44 && box.x + box.width <= w && box.y + box.height <= h, 'thumb-sized and fully on screen: ' + JSON.stringify(box));
       await page.screenshot({ path: path.join(OUT, `max-discoverability-${w}-card5.png`) });
-      // Top of the reading: launcher visible, floating button hides.
+      // Top of the reading: since 7 Nov the dock stays, so ▶ Watch Max is always beside ✦ Clarify.
       await page.evaluate(() => document.getElementById('mcOpen').scrollIntoView({ block: 'center' }));
       await page.waitForTimeout(500);
-      assert.equal(await inView(page, '#mcFloat'), false, 'no duplicate while the top launcher is visible');
+      assert.equal(await inView(page, '#mcFloat'), true, 'dock stays at the top of the reading (team directive, 7 Nov)');
+      assert.equal(await inView(page, '#mcClarify'), true, 'Clarify beside it');
       // Clarifiers (Majors dealt first, so the rule applies), then back to card 5.
       for (let i = 0; i < 2; i++) {
         const has = await page.locator('#primaryClarifierAction').count();

@@ -227,3 +227,15 @@
 @media(prefers-reduced-motion:reduce){
  .opening-dice-values.is-rolling{animation:none}
 }
+
+/* Integrated clarifier reading (team directive, 7 Nov 2026): numbered steps, the relationship, the synthesis. */
+.draw-page .reading-meaning .reading-step{display:block;margin:0 0 6px;color:#c8a763;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.draw-page .reading-meaning .clarifier-relation{margin:14px 0 0;padding:12px 14px;border-radius:8px;background:rgba(210,168,92,.08)}
+.draw-page .reading-meaning .clarifier-relation p{margin:0 0 8px;line-height:1.65;text-align:left}
+.draw-page .reading-meaning .clarifier-relation p:last-child{margin-bottom:0}
+.draw-page .reading-meaning .relation-lead{color:#f4e6c4;font-weight:700}
+.draw-page .reading-meaning .relation-basis,.draw-page .reading-meaning .relation-rule{color:#bfb3a0;font-size:14px}
+.draw-page .reading-meaning .reading-pending{margin:16px 0 0;padding:10px 14px;border:1px dashed rgba(210,168,92,.55);border-radius:8px;color:#e9dcc0;font-size:15px}
+.draw-page .reading-meaning .combined-meaning p{text-align:left}
+.draw-page .reading-meaning .synthesis-close{font-style:italic}
+.draw-page .reading-meaning .reading-method{color:#a99d8a;font-size:13px;line-height:1.55}

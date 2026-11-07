@@ -57,8 +57,7 @@ function midWordBreaks(selector) {
       const shuffleMs = Date.now() - t;
       await page.locator('#stageDrawBtn').click();
       await page.waitForFunction(() => state.drawSettled === true);
-      await page.locator('#primaryClarifierAction').click();
-      await page.locator('#primaryClarifierAction').click();
+      await require('./helpers/clarify-all.cjs')(page); // one card at a time (team directive, 7 Nov)
       await page.locator('#backToReadingTop').click();
       if (motion === 'reduce') {
         await check('no smooth scroll under reduced motion', async () => assert.equal(await page.evaluate(() => window.__smooth), 0));

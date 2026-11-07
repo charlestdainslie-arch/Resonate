@@ -343,9 +343,10 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     await page.locator(`[data-spread="${spread}"]`).click();
     await page.locator('#stageDrawBtn').click();
     await page.waitForFunction(() => state.drawSettled === true, null, { timeout: 30000 });
-    for (let n = 0; n < clarifierLayers; n++) {
-      await page.locator('#primaryClarifierAction').click();
-      await page.waitForFunction(n => (n === 0 ? state.firstLayerClarifiers?.length : state.additionalClarifierLayers?.length), n);
+    // One card at a time since the team directive of 7 Nov: press until every card is clarified.
+    if (clarifierLayers) {
+      await require('./helpers/clarify-all.cjs')(page);
+      await page.waitForFunction(() => state.firstLayerClarifiers?.length && state.additionalClarifierLayers?.length);
     }
   };
   for (const spread of ['guidance', 'three', 'seven', 'relationship', 'celtic']) {
