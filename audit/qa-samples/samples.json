@@ -1,0 +1,1153 @@
+[
+ {
+  "id": "S01",
+  "kind": "baseline",
+  "spread": "guidance",
+  "seed": 7111,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   61
+  ],
+  "reversed": [
+   61
+  ],
+  "steps": [],
+  "c1": [
+   null
+  ],
+  "c2": [
+   null
+  ]
+ },
+ {
+  "id": "S02",
+  "kind": "baseline",
+  "spread": "guidance",
+  "seed": 7312,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   20
+  ],
+  "reversed": [
+   20,
+   67
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 67
+   }
+  ],
+  "c1": [
+   67
+  ],
+  "c2": [
+   null
+  ]
+ },
+ {
+  "id": "S03",
+  "kind": "baseline",
+  "spread": "guidance",
+  "seed": 7113,
+  "mode": "all",
+  "note": "rule clarifiers plus the seeker clarifying every other card",
+  "base": [
+   3
+  ],
+  "reversed": [
+   3,
+   17
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 17
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 1
+   }
+  ],
+  "c1": [
+   17
+  ],
+  "c2": [
+   1
+  ]
+ },
+ {
+  "id": "S04",
+  "kind": "baseline",
+  "spread": "three",
+  "seed": 7114,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   69,
+   14,
+   44
+  ],
+  "reversed": [
+   69
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S05",
+  "kind": "baseline",
+  "spread": "three",
+  "seed": 7115,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   5,
+   14,
+   33
+  ],
+  "reversed": [
+   5,
+   14,
+   33,
+   39,
+   8
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 39
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 4
+   },
+   {
+    "pos": 1,
+    "layer": 2,
+    "id": 8
+   }
+  ],
+  "c1": [
+   39,
+   4,
+   null
+  ],
+  "c2": [
+   null,
+   8,
+   null
+  ]
+ },
+ {
+  "id": "S06",
+  "kind": "baseline",
+  "spread": "three",
+  "seed": 7116,
+  "mode": "all",
+  "note": "rule clarifiers plus the seeker clarifying every other card",
+  "base": [
+   14,
+   26,
+   32
+  ],
+  "reversed": [
+   26,
+   33
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 33
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 69
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 71
+   }
+  ],
+  "c1": [
+   33,
+   69,
+   71
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S07",
+  "kind": "baseline",
+  "spread": "relationship",
+  "seed": 7117,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   46,
+   67,
+   61,
+   41,
+   13
+  ],
+  "reversed": [
+   61,
+   41
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S08",
+  "kind": "baseline",
+  "spread": "relationship",
+  "seed": 7118,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   64,
+   19,
+   55,
+   68,
+   75
+  ],
+  "reversed": [
+   19,
+   55,
+   68,
+   61
+  ],
+  "steps": [
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 61
+   }
+  ],
+  "c1": [
+   null,
+   61,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S09",
+  "kind": "baseline",
+  "spread": "relationship",
+  "seed": 7119,
+  "mode": "all",
+  "note": "rule clarifiers plus the seeker clarifying every other card",
+  "base": [
+   12,
+   37,
+   35,
+   27,
+   10
+  ],
+  "reversed": [
+   41,
+   31,
+   60,
+   67
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 41
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 26
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 31
+   },
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 17
+   },
+   {
+    "pos": 3,
+    "layer": 2,
+    "id": 60
+   },
+   {
+    "pos": 4,
+    "layer": 1,
+    "id": 67
+   }
+  ],
+  "c1": [
+   41,
+   26,
+   31,
+   17,
+   67
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   60,
+   null
+  ]
+ },
+ {
+  "id": "S10",
+  "kind": "baseline",
+  "spread": "seven",
+  "seed": 7120,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   64,
+   37,
+   12,
+   71,
+   7,
+   74,
+   32
+  ],
+  "reversed": [
+   64,
+   12,
+   71,
+   32
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S11",
+  "kind": "baseline",
+  "spread": "seven",
+  "seed": 7121,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   53,
+   62,
+   59,
+   48,
+   57,
+   35,
+   13
+  ],
+  "reversed": [
+   62,
+   57,
+   65
+  ],
+  "steps": [
+   {
+    "pos": 6,
+    "layer": 1,
+    "id": 65
+   }
+  ],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   65
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S12",
+  "kind": "baseline",
+  "spread": "seven",
+  "seed": 7122,
+  "mode": "all",
+  "note": "rule clarifiers plus the seeker clarifying every other card",
+  "base": [
+   14,
+   25,
+   12,
+   66,
+   63,
+   28,
+   8
+  ],
+  "reversed": [
+   14,
+   66,
+   63,
+   28,
+   73,
+   10,
+   11,
+   51,
+   60,
+   24,
+   31,
+   42
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 73
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 10
+   },
+   {
+    "pos": 1,
+    "layer": 2,
+    "id": 2
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 11
+   },
+   {
+    "pos": 2,
+    "layer": 2,
+    "id": 51
+   },
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 60
+   },
+   {
+    "pos": 4,
+    "layer": 1,
+    "id": 24
+   },
+   {
+    "pos": 5,
+    "layer": 1,
+    "id": 31
+   },
+   {
+    "pos": 6,
+    "layer": 1,
+    "id": 20
+   },
+   {
+    "pos": 6,
+    "layer": 2,
+    "id": 42
+   }
+  ],
+  "c1": [
+   73,
+   10,
+   11,
+   60,
+   24,
+   31,
+   20
+  ],
+  "c2": [
+   null,
+   2,
+   51,
+   null,
+   null,
+   null,
+   42
+  ]
+ },
+ {
+  "id": "S13",
+  "kind": "baseline",
+  "spread": "celtic",
+  "seed": 7123,
+  "mode": "none",
+  "note": "as dealt, before any clarifier",
+  "base": [
+   7,
+   59,
+   28,
+   47,
+   68,
+   46,
+   0,
+   17,
+   12,
+   56
+  ],
+  "reversed": [
+   7,
+   47,
+   56
+  ],
+  "steps": [],
+  "c1": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S14",
+  "kind": "baseline",
+  "spread": "celtic",
+  "seed": 7124,
+  "mode": "rule",
+  "note": "every clarifier the rule requires",
+  "base": [
+   45,
+   8,
+   65,
+   39,
+   20,
+   77,
+   35,
+   11,
+   57,
+   69
+  ],
+  "reversed": [
+   65,
+   39,
+   77,
+   33
+  ],
+  "steps": [
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 49
+   },
+   {
+    "pos": 4,
+    "layer": 1,
+    "id": 33
+   },
+   {
+    "pos": 7,
+    "layer": 1,
+    "id": 22
+   }
+  ],
+  "c1": [
+   null,
+   49,
+   null,
+   null,
+   33,
+   null,
+   null,
+   22,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "S15",
+  "kind": "baseline",
+  "spread": "celtic",
+  "seed": 7125,
+  "mode": "all",
+  "note": "rule clarifiers plus the seeker clarifying every other card",
+  "base": [
+   34,
+   43,
+   61,
+   31,
+   20,
+   55,
+   4,
+   22,
+   72,
+   38
+  ],
+  "reversed": [
+   34,
+   61,
+   55,
+   4,
+   72,
+   11,
+   58,
+   15,
+   68,
+   24,
+   40,
+   7
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 11
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 58
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 53
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 29
+   },
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 35
+   },
+   {
+    "pos": 4,
+    "layer": 1,
+    "id": 15
+   },
+   {
+    "pos": 4,
+    "layer": 2,
+    "id": 68
+   },
+   {
+    "pos": 5,
+    "layer": 1,
+    "id": 42
+   },
+   {
+    "pos": 6,
+    "layer": 1,
+    "id": 24
+   },
+   {
+    "pos": 7,
+    "layer": 1,
+    "id": 40
+   },
+   {
+    "pos": 8,
+    "layer": 1,
+    "id": 19
+   },
+   {
+    "pos": 8,
+    "layer": 2,
+    "id": 0
+   },
+   {
+    "pos": 9,
+    "layer": 1,
+    "id": 7
+   },
+   {
+    "pos": 9,
+    "layer": 2,
+    "id": 71
+   }
+  ],
+  "c1": [
+   11,
+   53,
+   29,
+   35,
+   15,
+   42,
+   24,
+   40,
+   19,
+   7
+  ],
+  "c2": [
+   58,
+   null,
+   null,
+   null,
+   68,
+   null,
+   null,
+   null,
+   0,
+   71
+  ]
+ },
+ {
+  "id": "B01",
+  "kind": "boundary",
+  "spread": "guidance",
+  "mode": "fixed",
+  "note": "Major, Major Clarifier 1, Major Clarifier 2: the two-clarifier limit is reached and stated",
+  "base": [
+   13
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 16
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 20
+   }
+  ],
+  "c1": [
+   16
+  ],
+  "c2": [
+   20
+  ]
+ },
+ {
+  "id": "B02",
+  "kind": "boundary",
+  "spread": "three",
+  "mode": "fixed",
+  "note": "no Major Arcana: nothing required; every card clarified by choice with Minor clarifiers, so no Clarifier 2",
+  "base": [
+   24,
+   51,
+   73
+  ],
+  "reversed": [
+   51
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 46
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 30
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 39
+   }
+  ],
+  "c1": [
+   46,
+   30,
+   39
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "B03",
+  "kind": "boundary",
+  "spread": "relationship",
+  "mode": "fixed",
+  "note": "Deep's case at position 1 (Minor chosen, Major Clarifier 1, so Clarifier 2 due); a required Major clarifier with a Minor",
+  "base": [
+   42,
+   48,
+   59,
+   15,
+   64
+  ],
+  "reversed": [
+   9,
+   59
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 9
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 71
+   },
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 28
+   }
+  ],
+  "c1": [
+   9,
+   null,
+   null,
+   28,
+   null
+  ],
+  "c2": [
+   71,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "B04",
+  "kind": "boundary",
+  "spread": "seven",
+  "mode": "fixed",
+  "note": "every card and clarifier reversed",
+  "base": [
+   18,
+   40,
+   61,
+   12,
+   27,
+   76,
+   7
+  ],
+  "reversed": [
+   18,
+   40,
+   61,
+   12,
+   27,
+   76,
+   7,
+   52,
+   17,
+   37,
+   22
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 52
+   },
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 17
+   },
+   {
+    "pos": 3,
+    "layer": 2,
+    "id": 37
+   },
+   {
+    "pos": 6,
+    "layer": 1,
+    "id": 22
+   }
+  ],
+  "c1": [
+   52,
+   null,
+   null,
+   17,
+   null,
+   null,
+   22
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   37,
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "B05",
+  "kind": "boundary",
+  "spread": "three",
+  "mode": "fixed",
+  "note": "Death with Eight of Cups (a written connection in the card data); same suit and element (Queen/King of Wands); number echo (Three of Cups / Three of Swords)",
+  "base": [
+   13,
+   34,
+   38
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 43
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 35
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 52
+   }
+  ],
+  "c1": [
+   43,
+   35,
+   52
+  ],
+  "c2": [
+   null,
+   null,
+   null
+  ]
+ },
+ {
+  "id": "B06",
+  "kind": "boundary",
+  "spread": "celtic",
+  "mode": "fixed",
+  "note": "Celtic Cross of ten Majors: every position clarified, several Major-Major pairs, four at the two-clarifier limit",
+  "base": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "reversed": [
+   1,
+   6,
+   13,
+   18,
+   20
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 10
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 11
+   },
+   {
+    "pos": 1,
+    "layer": 1,
+    "id": 12
+   },
+   {
+    "pos": 1,
+    "layer": 2,
+    "id": 36
+   },
+   {
+    "pos": 2,
+    "layer": 1,
+    "id": 13
+   },
+   {
+    "pos": 2,
+    "layer": 2,
+    "id": 14
+   },
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 15
+   },
+   {
+    "pos": 3,
+    "layer": 2,
+    "id": 23
+   },
+   {
+    "pos": 4,
+    "layer": 1,
+    "id": 16
+   },
+   {
+    "pos": 4,
+    "layer": 2,
+    "id": 17
+   },
+   {
+    "pos": 5,
+    "layer": 1,
+    "id": 74
+   },
+   {
+    "pos": 6,
+    "layer": 1,
+    "id": 18
+   },
+   {
+    "pos": 6,
+    "layer": 2,
+    "id": 54
+   },
+   {
+    "pos": 7,
+    "layer": 1,
+    "id": 41
+   },
+   {
+    "pos": 8,
+    "layer": 1,
+    "id": 19
+   },
+   {
+    "pos": 8,
+    "layer": 2,
+    "id": 20
+   },
+   {
+    "pos": 9,
+    "layer": 1,
+    "id": 21
+   },
+   {
+    "pos": 9,
+    "layer": 2,
+    "id": 72
+   }
+  ],
+  "c1": [
+   10,
+   12,
+   13,
+   15,
+   16,
+   74,
+   18,
+   41,
+   19,
+   21
+  ],
+  "c2": [
+   11,
+   36,
+   14,
+   23,
+   17,
+   null,
+   54,
+   null,
+   20,
+   72
+  ]
+ }
+]

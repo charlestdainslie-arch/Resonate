@@ -14,9 +14,14 @@ Fenton-Smith as a documented published method, because no source for that has be
 ## Where the two meet
 
 If Clarifier 2 is also a Major, the rule as taught would continue to a third clarifier, but the code stops
-at two. Until now that stop was silent. Measured by simulation (200,000 random Celtic Cross draws, unused
-cards only): for a Major card, both clarifiers are Majors **7.1%** of the time. **18.9%** of Celtic Cross
-readings have at least one such card if every Major is clarified.
+at two. Until 7 Nov that stop was silent. How often it happens, derived by `audit/tools/limit-frequency.cjs`:
+- **For one Major card: 7.18%, exact.** Clarifier 1 is drawn from 77 unused cards (21 Majors), then
+  Clarifier 2 from 76 (20 Majors): 21/77 × 20/76 = 420/5852.
+- **For a Celtic Cross with every Major clarified: about 19.0% of readings** have at least one card at the
+  limit. This is an estimate: 1,000,000 seeded trials, seed 71107, 95% interval 18.88–19.03%. There is no
+  simple closed form, because the cards share one deck.
+
+(Earlier figures of "7.1%" and "18.9%" came from an unseeded quick simulation. They are replaced by the above.)
 
 ## What this UAT build does (explicit, no change to the rule)
 

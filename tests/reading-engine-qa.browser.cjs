@@ -119,6 +119,16 @@ server.listen(0, '127.0.0.1', async () => {
     assert.ok(after.earlier && p1.synthesisLead.startsWith(after.earlier.split('. ')[0]), 'Revision 1 still readable');
   });
 
+  await check('preview link ?qa=B03 shows the same reading as the evidence (qa-loader.js)', async page => {
+    const b03 = BOUNDARY.find(s => s.id === 'B03');
+    const viaHelper = await renderSample(page, b03);
+    await page.goto(base + '/presenter-uat.html?qa=B03');
+    await page.waitForSelector('#qaBanner');
+    const viaLink = await page.evaluate(() => { document.querySelectorAll('.reading-meaning details').forEach(d => { d.open = true; }); return document.getElementById('readingInterpretation').innerText.replace(/\n{3,}/g, '\n\n').trim(); });
+    assert.equal(viaLink, viaHelper.pageText);
+    assert.match(await page.locator('#qaBanner').innerText(), /QA SAMPLE B03 · fixed cards for testing, not drawn for you/);
+  });
+
   await browser.close(); server.close();
   console.log(`\n${pass}/${pass + failures.length} passed${failures.length ? '\n' + failures.join('\n') : ''}`);
   process.exit(failures.length ? 1 : 0);

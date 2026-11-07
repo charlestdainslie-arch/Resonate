@@ -9,24 +9,9 @@ const AT = '2026-11-07T01:00:00.000Z';
 
 async function renderSample(page, sample) {
   const out = await page.evaluate(({ sample, AT }) => {
-    const queue = sample.steps.map(s => s.id);
-    const original = window.ResonateDeck;
-    window.ResonateDeck = { ...original, drawRemaining(ids, used, count) { const got = queue.splice(0, count); if (got.length !== count) throw new Error('sample queue empty'); got.forEach(id => { if (used.includes(id)) throw new Error('queued card already in reading: ' + id); }); return got; } };
-    state.spreadId = sample.spread; state.spreadSize = currentSpread().positions.length;
-    Object.assign(state, { drawnCardIds: [...sample.base], drawnAt: AT, view: 'draw', drawSettled: true, drawPhase: 'settled', journalId: null, journalSpread: null, readingReturn: null,
-      readingAstrology: null, readingStartedAt: null, openingDice: null, astrologyOff: true,
-      firstLayerClarifiers: [], clarifierReadingAt: null, additionalClarifierLayers: [], additionalClarifierReadingAt: null,
-      drawnOrientations: { readingAt: AT, reversed: [] } });
-    render();
-    const drew = [];
-    for (const s of sample.steps) {
-      const step = clarifyPosition(s.pos);
-      drew.push(step);
-      if (step !== (s.layer === 1 ? 'first' : 'second')) throw new Error(`${sample.id}: step for position ${s.pos + 1} drew "${step}", sample expects layer ${s.layer}`);
-    }
-    window.ResonateDeck = original;
-    state.drawnOrientations = { readingAt: AT, reversed: [...sample.reversed] };
-    renderDraw();
+    // The same loader the preview uses for ?qa=<ID> (qa-loader.js), so evidence and preview cannot differ.
+    if (window.ResonateQA.AT !== AT) throw new Error('reading time differs from qa-loader.js');
+    const drew = window.ResonateQA.load(sample);
     const name = id => cards.find(c => c.id === id).name;
     const labels = positionLabels(), descs = currentSpread().positions.map(p => p[1]);
     const second = (state.additionalClarifierLayers.find(l => l.number === 2)?.cards) || [];
