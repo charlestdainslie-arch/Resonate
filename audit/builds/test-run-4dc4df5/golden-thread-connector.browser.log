@@ -1,0 +1,29 @@
+PASS  1. mount creates one aria-hidden SVG and no cards
+PASS  2. 0 clarifiers: one next-segment only
+PASS  3. 1 clarifier: branch + next
+PASS  4. 2 clarifiers: two branches + next
+PASS  5. face-down clarifier 2 has no segment
+PASS  6. unrevealed next main has no segment
+PASS  7. P1-C: 0 and 2 revealed, 1 face down -> no segment reaches 2
+PASS  8. reversed main card still attaches
+PASS  9. P1-B: three parents, connectors land on correct children
+PASS  10. P1-A: new segment animates once, old segments do not restart, animations pruned
+PASS  11. reduced motion: no WAAPI animations on overlay
+PASS  12. state not mutated by mount/update/destroy
+PASS  13. rapid reveal taps keep one overlay
+PASS  14. destroy removes overlay and host class
+PASS  15. repeated mount/destroy leaves one overlay
+PASS  16. destroy is idempotent
+PASS  17. pagehide then pageshow(persisted) remounts overlay
+PASS  18. P2-C: new cards observed, released on destroy
+PASS  19. P2-A: geometry within 2px at 360/390/1280
+PASS  20. overlay does not capture pointers
+PASS  21. mid-flight destroy raises no page error
+PASS  22. no phantom main cards or clarifier slots
+PASS  23. P1-D demo: clarifier 2 stays face down until clarifier 1
+PASS  24. reveal(): thread flies and loops, then the APP turns the card; connector never flips it
+PASS  25. reveal() in reduced motion turns the card straight away, no flight
+PASS  26. reveal(): flight lands on the loop box and the loop starts right there (ringTarget inset)
+PASS  27. edges:nearest: side-by-side cards join edge to edge, flight arrives on the facing side
+
+27/27 passed

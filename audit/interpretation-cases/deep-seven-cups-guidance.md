@@ -7,7 +7,7 @@ engine's output for comparison. It is **not** evidence that the engine passes; D
 - Original: Seven of Cups (upright). Clarifier 1: The Hermit, reversed. Clarifier 2: Eight of Pentacles (upright).
 - Under Chas's teaching rule: Seven of Cups is a Minor card, so Clarifier 1 is the seeker's choice; The Hermit is a Major, so Clarifier 2 is due. Rule check: valid.
 - No other cards in this reading.
-- Rendered from presenter-uat.html at commit fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39; page errors: none.
+- Rendered from presenter-uat.html at commit 4dc4df5af4568490e7472090e51bb0600107a518; page errors: none.
 
 ## 1 · Original card
 1 · THE ORIGINAL CARD IN THIS POSITION

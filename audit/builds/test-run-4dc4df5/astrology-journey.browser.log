@@ -1,0 +1,50 @@
+PASS Pixel 7 A0 Form contents
+PASS Pixel 7 A1 Continue to tarot without astrology (top)
+PASS Pixel 7 A2 Calculate my sky (nothing entered)
+PASS Pixel 7 A3 Calculate my sky (sign and year)
+PASS Pixel 7 A4 Calculate my sky (bad year "68")
+PASS Pixel 7 A5 Continue to tarot without astrology (in error box)
+PASS Pixel 7 A6 Clear my details
+PASS Pixel 7 A7 Show an example
+PASS Pixel 7 A8 Spread button (nothing entered)
+PASS Pixel 7 A9 Spread button after a bad year
+PASS Pixel 7 A10 Fix my birth year (beside spreads)
+PASS Pixel 7 A11 Continue without astrology (beside spreads)
+PASS Pixel 7 A12 Spread button after changing details without calculating
+PASS Pixel 7 A13 Back to spreads (table) and Home (spreads)
+PASS Pixel 7 A14 Browser/phone Back from the table
+PASS Pixel 7 A15 Roll two dice after Calculate
+PASS 360px A0 Form contents
+PASS 360px A1 Continue to tarot without astrology (top)
+PASS 360px A2 Calculate my sky (nothing entered)
+PASS 360px A3 Calculate my sky (sign and year)
+PASS 360px A4 Calculate my sky (bad year "68")
+PASS 360px A5 Continue to tarot without astrology (in error box)
+PASS 360px A6 Clear my details
+PASS 360px A7 Show an example
+PASS 360px A8 Spread button (nothing entered)
+PASS 360px A9 Spread button after a bad year
+PASS 360px A10 Fix my birth year (beside spreads)
+PASS 360px A11 Continue without astrology (beside spreads)
+PASS 360px A12 Spread button after changing details without calculating
+PASS 360px A13 Back to spreads (table) and Home (spreads)
+PASS 360px A14 Browser/phone Back from the table
+PASS 360px A15 Roll two dice after Calculate
+PASS 1280px A0 Form contents
+PASS 1280px A1 Continue to tarot without astrology (top)
+PASS 1280px A2 Calculate my sky (nothing entered)
+PASS 1280px A3 Calculate my sky (sign and year)
+PASS 1280px A4 Calculate my sky (bad year "68")
+PASS 1280px A5 Continue to tarot without astrology (in error box)
+PASS 1280px A6 Clear my details
+PASS 1280px A7 Show an example
+PASS 1280px A8 Spread button (nothing entered)
+PASS 1280px A9 Spread button after a bad year
+PASS 1280px A10 Fix my birth year (beside spreads)
+PASS 1280px A11 Continue without astrology (beside spreads)
+PASS 1280px A12 Spread button after changing details without calculating
+PASS 1280px A13 Back to spreads (table) and Home (spreads)
+PASS 1280px A14 Browser/phone Back from the table
+PASS 1280px A15 Roll two dice after Calculate
+
+48/48 PASS

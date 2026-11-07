@@ -1,0 +1,604 @@
+TAP version 13
+# Subtest: second clarifier only after a Major first clarifier; once; spread intact
+ok 1 - second clarifier only after a Major first clarifier; once; spread intact
+  ---
+  duration_ms: 5.280927
+  type: 'test'
+  ...
+# Subtest: no second clarifier when no first clarifier is a Major
+ok 2 - no second clarifier when no first clarifier is a Major
+  ---
+  duration_ms: 0.619108
+  type: 'test'
+  ...
+# Subtest: additional layers are not drawn until first layer exists
+ok 3 - additional layers are not drawn until first layer exists
+  ---
+  duration_ms: 0.467983
+  type: 'test'
+  ...
+# Subtest: zodiac wrap and degree boundaries are correct
+ok 4 - zodiac wrap and degree boundaries are correct
+  ---
+  duration_ms: 0.817816
+  type: 'test'
+  ...
+# Subtest: Chinese new year is honoured rather than 1 January
+ok 5 - Chinese new year is honoured rather than 1 January
+  ---
+  duration_ms: 14.170461
+  type: 'test'
+  ...
+# Subtest: historical birthplace time zone changes the UTC instant
+ok 6 - historical birthplace time zone changes the UTC instant
+  ---
+  duration_ms: 4.027798
+  type: 'test'
+  ...
+# Subtest: quick Aries 1968 profile does not invent Moon or Rising
+ok 7 - quick Aries 1968 profile does not invent Moon or Rising
+  ---
+  duration_ms: 0.291634
+  type: 'test'
+  ...
+# Subtest: more input without time never fabricates Moon or Rising
+ok 8 - more input without time never fabricates Moon or Rising
+  ---
+  duration_ms: 0.39603
+  type: 'test'
+  ...
+# Subtest: invalid and contradictory birth fields are rejected
+ok 9 - invalid and contradictory birth fields are rejected
+  ---
+  duration_ms: 0.272105
+  type: 'test'
+  ...
+# Subtest: Rising chooses the eastern ecliptic/horizon intersection
+ok 10 - Rising chooses the eastern ecliptic/horizon intersection
+  ---
+  duration_ms: 2.263064
+  type: 'test'
+  ...
+# Subtest: sky snapshots take their exact requested time and preserve calculated aspects
+ok 11 - sky snapshots take their exact requested time and preserve calculated aspects
+  ---
+  duration_ms: 1.264549
+  type: 'test'
+  ...
+# Subtest: live astronomical library smoke test
+ok 12 - live astronomical library smoke test
+  ---
+  duration_ms: 36.9392
+  type: 'test'
+  ...
+# Subtest: DST gaps reject and repeated local times require an explicit occurrence
+ok 13 - DST gaps reject and repeated local times require an explicit occurrence
+  ---
+  duration_ms: 4.394858
+  type: 'test'
+  ...
+# Subtest: snapshot retains computed results and provenance but excludes raw birth information
+ok 14 - snapshot retains computed results and provenance but excludes raw birth information
+  ---
+  duration_ms: 3.559121
+  type: 'test'
+  ...
+# Subtest: astrology calculations never consume or seed draw randomness
+ok 15 - astrology calculations never consume or seed draw randomness
+  ---
+  duration_ms: 5.24317
+  type: 'test'
+  ...
+# Subtest: elemental relationships: same reinforces, friendly supports, contrary challenges, neutral modifies
+ok 16 - elemental relationships: same reinforces, friendly supports, contrary challenges, neutral modifies
+  ---
+  duration_ms: 0.885832
+  type: 'test'
+  ...
+# Subtest: one reversed card turns an agreement into a change of emphasis, and says so
+ok 17 - one reversed card turns an agreement into a change of emphasis, and says so
+  ---
+  duration_ms: 0.199668
+  type: 'test'
+  ...
+# Subtest: suit, number, arcana, court and written connections are noted
+ok 18 - suit, number, arcana, court and written connections are noted
+  ---
+  duration_ms: 0.345895
+  type: 'test'
+  ...
+# Subtest: step 2 names both cards and the position; step 3 relates Clarifier 2 to both
+ok 19 - step 2 names both cards and the position; step 3 relates Clarifier 2 to both
+  ---
+  duration_ms: 0.320423
+  type: 'test'
+  ...
+# Subtest: step 4 summarises the cards together and places the position in the Celtic Cross pairs
+ok 20 - step 4 summarises the cards together and places the position in the Celtic Cross pairs
+  ---
+  duration_ms: 0.60621
+  type: 'test'
+  ...
+# Subtest: every Major/Minor pairing produces text with no undefined or empty pieces
+ok 21 - every Major/Minor pairing produces text with no undefined or empty pieces
+  ---
+  duration_ms: 3.706324
+  type: 'test'
+  ...
+# Subtest: the method line makes no claim to a published source
+ok 22 - the method line makes no claim to a published source
+  ---
+  duration_ms: 0.141287
+  type: 'test'
+  ...
+# Subtest: an agreement among mostly reversed cards is read as a shared difficulty, not acted on with confidence (QA S15)
+ok 23 - an agreement among mostly reversed cards is read as a shared difficulty, not acted on with confidence (QA S15)
+  ---
+  duration_ms: 0.192931
+  type: 'test'
+  ...
+# Subtest: Major base needs a first clarifier; Minor base is optional
+ok 24 - Major base needs a first clarifier; Minor base is optional
+  ---
+  duration_ms: 1.090752
+  type: 'test'
+  ...
+# Subtest: second only after a Major first clarifier
+ok 25 - second only after a Major first clarifier
+  ---
+  duration_ms: 0.126319
+  type: 'test'
+  ...
+# Subtest: never more than two per position
+ok 26 - never more than two per position
+  ---
+  duration_ms: 0.122925
+  type: 'test'
+  ...
+# Subtest: validate catches a second after a Minor and repeats
+ok 27 - validate catches a second after a Minor and repeats
+  ---
+  duration_ms: 0.152932
+  type: 'test'
+  ...
+# Subtest: a Clarity card is due only when the original card and both clarifiers are Major
+ok 28 - a Clarity card is due only when the original card and both clarifiers are Major
+  ---
+  duration_ms: 1.199301
+  type: 'test'
+  ...
+# Subtest: validate: the Clarity card must be a Minor, only after three Majors, never repeated; clarifier limit unchanged
+ok 29 - validate: the Clarity card must be a Minor, only after three Majors, never repeated; clarifier limit unchanged
+  ---
+  duration_ms: 0.323972
+  type: 'test'
+  ...
+# Subtest: full deck requires exactly 78 distinct valid card IDs
+ok 30 - full deck requires exactly 78 distinct valid card IDs
+  ---
+  duration_ms: 0.952516
+  type: 'test'
+  ...
+# Subtest: shuffle does not mutate original deck or lose cards
+ok 31 - shuffle does not mutate original deck or lose cards
+  ---
+  duration_ms: 0.803653
+  type: 'test'
+  ...
+# Subtest: each clarifier layer uses an independent full deck with unique cards within layer
+ok 32 - each clarifier layer uses an independent full deck with unique cards within layer
+  ---
+  duration_ms: 0.440229
+  type: 'test'
+  ...
+# Subtest: invalid slot counts and bad random generator are rejected
+ok 33 - invalid slot counts and bad random generator are rejected
+  ---
+  duration_ms: 0.167102
+  type: 'test'
+  ...
+# Subtest: all 78 authored cards match canonical full tarot identities
+ok 34 - all 78 authored cards match canonical full tarot identities
+  ---
+  duration_ms: 3.009203
+  type: 'test'
+  ...
+# Subtest: development HTML loads the catalogue before app.js
+ok 35 - development HTML loads the catalogue before app.js
+  ---
+  duration_ms: 0.188313
+  type: 'test'
+  ...
+# Subtest: saving and editing retains original reading time, order and one entry
+ok 36 - saving and editing retains original reading time, order and one entry
+  ---
+  duration_ms: 15.286452
+  type: 'test'
+  ...
+# Subtest: a subsequent draw saves as a separate journal entry
+ok 37 - a subsequent draw saves as a separate journal entry
+  ---
+  duration_ms: 2.978917
+  type: 'test'
+  ...
+# Subtest: storage failure reports failure without pretending entry was saved
+ok 38 - storage failure reports failure without pretending entry was saved
+  ---
+  duration_ms: 1.101567
+  type: 'test'
+  ...
+# Subtest: full date includes weekday, written month, year, time and zone
+ok 39 - full date includes weekday, written month, year, time and zone
+  ---
+  duration_ms: 1.903655
+  type: 'test'
+  ...
+# Subtest: journal restores original dice, clarifier identities and date after another reading
+ok 40 - journal restores original dice, clarifier identities and date after another reading
+  ---
+  duration_ms: 1.409671
+  type: 'test'
+  ...
+# Subtest: legacy journal entries without dice do not borrow a later reading roll
+ok 41 - legacy journal entries without dice do not borrow a later reading roll
+  ---
+  duration_ms: 1.045392
+  type: 'test'
+  ...
+# Subtest: successful save without notes gives a tick on the single save button and adjacent confirmation
+ok 42 - successful save without notes gives a tick on the single save button and adjacent confirmation
+  ---
+  duration_ms: 1.117953
+  type: 'test'
+  ...
+# Subtest: failed save removes success ticks and shows the error beside the clicked primary action
+ok 43 - failed save removes success ticks and shows the error beside the clicked primary action
+  ---
+  duration_ms: 2.613313
+  type: 'test'
+  ...
+# Subtest: home hero actions share fixed matching width and height
+ok 44 - home hero actions share fixed matching width and height
+  ---
+  duration_ms: 0.784042
+  type: 'test'
+  ...
+# Subtest: one-card reading moves through two clarifier actions using one gold next step
+ok 45 - one-card reading moves through two clarifier actions using one gold next step
+  ---
+  duration_ms: 0.88624
+  type: 'test'
+  ...
+# Subtest: saved reading captures original and two clarifier layers
+ok 46 - saved reading captures original and two clarifier layers
+  ---
+  duration_ms: 0.187723
+  type: 'test'
+  ...
+# Subtest: saving gives explicit confirmation and preserves error feedback
+ok 47 - saving gives explicit confirmation and preserves error feedback
+  ---
+  duration_ms: 0.083719
+  type: 'test'
+  ...
+# Subtest: one-card clarification overlays have parent-card scale and no clipping
+ok 48 - one-card clarification overlays have parent-card scale and no clipping
+  ---
+  duration_ms: 1.011197
+  type: 'test'
+  ...
+# Subtest: two decimal dice yield digits 0–9
+ok 49 - two decimal dice yield digits 0–9
+  ---
+  duration_ms: 1.322395
+  type: 'test'
+  ...
+# Subtest: interpretation is personal reflection rather than deterministic prediction
+ok 50 - interpretation is personal reflection rather than deterministic prediction
+  ---
+  duration_ms: 0.245802
+  type: 'test'
+  ...
+# Subtest: invalid rolls are rejected
+ok 51 - invalid rolls are rejected
+  ---
+  duration_ms: 0.297154
+  type: 'test'
+  ...
+# Subtest: registry: 78 cards, IDs 0-77 unique, names unique, Majors are IDs 0-21
+ok 52 - registry: 78 cards, IDs 0-77 unique, names unique, Majors are IDs 0-21
+  ---
+  duration_ms: 0.858564
+  type: 'test'
+  ...
+# Subtest: every sample card ID resolves in the registry; no card twice in a reading; reversed cards are in the reading
+ok 53 - every sample card ID resolves in the registry; no card twice in a reading; reversed cards are in the reading
+  ---
+  duration_ms: 0.377496
+  type: 'test'
+  ...
+# Subtest: every sample obeys the rule and at least 15 baselines cover all five spreads
+ok 54 - every sample obeys the rule and at least 15 baselines cover all five spreads
+  ---
+  duration_ms: 0.750513
+  type: 'test'
+  ...
+# Subtest: the preview copy (audit/qa-samples/samples.json) matches the test samples exactly
+ok 55 - the preview copy (audit/qa-samples/samples.json) matches the test samples exactly
+  ---
+  duration_ms: 0.774951
+  type: 'test'
+  ...
+# Subtest: dice opening is optional and accessible
+ok 56 - dice opening is optional and accessible
+  ---
+  duration_ms: 0.620353
+  type: 'test'
+  ...
+# Subtest: journey reveal and interpretations match original position order
+ok 57 - journey reveal and interpretations match original position order
+  ---
+  duration_ms: 1.192848
+  type: 'test'
+  ...
+# Subtest: invalid reading is rejected
+ok 58 - invalid reading is rejected
+  ---
+  duration_ms: 0.271922
+  type: 'test'
+  ...
+# Subtest: reading session retains position order and unique base cards
+ok 59 - reading session retains position order and unique base cards
+  ---
+  duration_ms: 1.61106
+  type: 'test'
+  ...
+# Subtest: two independently shuffled clarifier layers preserve original spread
+ok 60 - two independently shuffled clarifier layers preserve original spread
+  ---
+  duration_ms: 1.449842
+  type: 'test'
+  ...
+# Subtest: selective clarifiers follow declared target positions and reject repeats
+ok 61 - selective clarifiers follow declared target positions and reject repeats
+  ---
+  duration_ms: 0.311162
+  type: 'test'
+  ...
+# Subtest: 78-card stage shuffle contains no duplicate cards
+ok 62 - 78-card stage shuffle contains no duplicate cards
+  ---
+  duration_ms: 3.09612
+  type: 'test'
+  ...
+# Subtest: sample-deck shuffle remains available for existing prototype
+ok 63 - sample-deck shuffle remains available for existing prototype
+  ---
+  duration_ms: 0.479035
+  type: 'test'
+  ...
+# Subtest: reading entry welcomes personal beliefs without requiring them
+ok 64 - reading entry welcomes personal beliefs without requiring them
+  ---
+  duration_ms: 0.727788
+  type: 'test'
+  ...
+# Subtest: reading welcome stylesheet is included in the development site
+ok 65 - reading welcome stylesheet is included in the development site
+  ---
+  duration_ms: 0.17226
+  type: 'test'
+  ...
+# Subtest: no runtime script hard-codes behavior:'smooth' outside the scrollMotion helper
+ok 66 - no runtime script hard-codes behavior:'smooth' outside the scrollMotion helper
+  ---
+  duration_ms: 5.356497
+  type: 'test'
+  ...
+# Subtest: scrollMotion helper returns auto when reduced motion is requested
+ok 67 - scrollMotion helper returns auto when reduced motion is requested
+  ---
+  duration_ms: 0.427178
+  type: 'test'
+  ...
+# Subtest: shuffle lock is skipped under reduced motion
+ok 68 - shuffle lock is skipped under reduced motion
+  ---
+  duration_ms: 0.168412
+  type: 'test'
+  ...
+# Subtest: heading labels do not use overflow-wrap:anywhere as the final rule
+ok 69 - heading labels do not use overflow-wrap:anywhere as the final rule
+  ---
+  duration_ms: 0.166664
+  type: 'test'
+  ...
+# Subtest: the live random source is crypto.getRandomValues, not Math.random
+ok 70 - the live random source is crypto.getRandomValues, not Math.random
+  ---
+  duration_ms: 2.936047
+  type: 'test'
+  ...
+# Subtest: secureRandom returns numbers in [0, 1) built from 53 bits
+ok 71 - secureRandom returns numbers in [0, 1) built from 53 bits
+  ---
+  duration_ms: 50.20436
+  type: 'test'
+  ...
+# Subtest: shuffle is still a permutation and still accepts an explicit source (for reproducible tests)
+ok 72 - shuffle is still a permutation and still accepts an explicit source (for reproducible tests)
+  ---
+  duration_ms: 0.951537
+  type: 'test'
+  ...
+# Subtest: first-card frequency over 78,000 shuffles stays within a chi-square bound (df 77, p ≈ 0.001: 122.1)
+ok 73 - first-card frequency over 78,000 shuffles stays within a chi-square bound (df 77, p ≈ 0.001: 122.1)
+  ---
+  duration_ms: 17985.495962
+  type: 'test'
+  ...
+# Subtest: BT-08 approved shuffle unchanged: deck-theatre.js
+ok 74 - BT-08 approved shuffle unchanged: deck-theatre.js
+  ---
+  duration_ms: 1.052189
+  type: 'test'
+  ...
+# Subtest: BT-08 approved shuffle unchanged: deck-theatre.css
+ok 75 - BT-08 approved shuffle unchanged: deck-theatre.css
+  ---
+  duration_ms: 0.180823
+  type: 'test'
+  ...
+# Subtest: BT-08 approved shuffle unchanged: deck-engine.js
+ok 76 - BT-08 approved shuffle unchanged: deck-engine.js
+  ---
+  duration_ms: 0.25731
+  type: 'test'
+  ...
+# Subtest: BT-08 approved shuffle unchanged: reading-stage.js
+ok 77 - BT-08 approved shuffle unchanged: reading-stage.js
+  ---
+  duration_ms: 0.145689
+  type: 'test'
+  ...
+# Subtest: canonical tarot catalogue is 22 major plus 56 minor with unique ids
+ok 78 - canonical tarot catalogue is 22 major plus 56 minor with unique ids
+  ---
+  duration_ms: 0.696807
+  type: 'test'
+  ...
+# Subtest: known anchor identities and card ranges remain stable
+ok 79 - known anchor identities and card ranges remain stable
+  ---
+  duration_ms: 0.093472
+  type: 'test'
+  ...
+# Subtest: layer drawing can use all 78 cards without repeats inside layer
+ok 80 - layer drawing can use all 78 cards without repeats inside layer
+  ---
+  duration_ms: 1.381903
+  type: 'test'
+  ...
+# Subtest: all five spread definitions have the correct numbers of positions
+ok 81 - all five spread definitions have the correct numbers of positions
+  ---
+  duration_ms: 2.262652
+  type: 'test'
+  ...
+# Subtest: every reading presents only one active clarifier next action
+ok 82 - every reading presents only one active clarifier next action
+  ---
+  duration_ms: 0.427284
+  type: 'test'
+  ...
+# Subtest: primary action is gold and return, journal and download are secondary
+ok 83 - primary action is gold and return, journal and download are secondary
+  ---
+  duration_ms: 0.182698
+  type: 'test'
+  ...
+# Subtest: spread selection maps clicked identifier into current spread state
+ok 84 - spread selection maps clicked identifier into current spread state
+  ---
+  duration_ms: 0.117613
+  type: 'test'
+  ...
+# Subtest: 78 live cards have canonical identities, complete meanings and 78 distinct bundled images
+ok 85 - 78 live cards have canonical identities, complete meanings and 78 distinct bundled images
+  ---
+  duration_ms: 24.344834
+  type: 'test'
+  ...
+# Subtest: 1000 one-card readings draw three different identities from the complete pool
+ok 86 - 1000 one-card readings draw three different identities from the complete pool
+  ---
+  duration_ms: 585.6733
+  type: 'test'
+  ...
+# Subtest: session permits two clarifiers and keeps all drawn cards unique
+ok 87 - session permits two clarifiers and keeps all drawn cards unique
+  ---
+  duration_ms: 2.107679
+  type: 'test'
+  ...
+# Subtest: live numerology uses tarot ranks rather than internal 0–77 identifiers
+ok 88 - live numerology uses tarot ranks rather than internal 0–77 identifiers
+  ---
+  duration_ms: 1.404157
+  type: 'test'
+  ...
+# Subtest: dice explain the first digit, second digit and combined number in that order
+ok 89 - dice explain the first digit, second digit and combined number in that order
+  ---
+  duration_ms: 0.143054
+  type: 'test'
+  ...
+# Subtest: PDF writer paginates long reflections, sanitises unsupported characters and embeds branding
+ok 90 - PDF writer paginates long reflections, sanitises unsupported characters and embeds branding
+  ---
+  duration_ms: 122.219337
+  type: 'test'
+  ...
+# Subtest: each card slot renders its own clarifier cards
+ok 91 - each card slot renders its own clarifier cards
+  ---
+  duration_ms: 0.926185
+  type: 'test'
+  ...
+# Subtest: reading synthesis includes base cards and drawn clarifiers
+ok 92 - reading synthesis includes base cards and drawn clarifiers
+  ---
+  duration_ms: 0.288736
+  type: 'test'
+  ...
+# Subtest: return navigation points to original spread without redraw
+ok 93 - return navigation points to original spread without redraw
+  ---
+  duration_ms: 0.139961
+  type: 'test'
+  ...
+# Subtest: completion actions go to journal or begin new reading
+ok 94 - completion actions go to journal or begin new reading
+  ---
+  duration_ms: 1.019194
+  type: 'test'
+  ...
+# Subtest: saved route is overridden by full journal viewer
+ok 95 - saved route is overridden by full journal viewer
+  ---
+  duration_ms: 0.174325
+  type: 'test'
+  ...
+# Subtest: only Major Arcana positions receive a first clarifier, all distinct and new to the reading
+ok 96 - only Major Arcana positions receive a first clarifier, all distinct and new to the reading
+  ---
+  duration_ms: 4.294029
+  type: 'test'
+  ...
+# Subtest: a Minor card can be clarified by the seeker’s choice, once
+ok 97 - a Minor card can be clarified by the seeker’s choice, once
+  ---
+  duration_ms: 1.453886
+  type: 'test'
+  ...
+# Subtest: a spread with no Major draws nothing until the seeker chooses
+ok 98 - a spread with no Major draws nothing until the seeker chooses
+  ---
+  duration_ms: 1.505788
+  type: 'test'
+  ...
+# Subtest: prototype deck still draws without crashing
+ok 99 - prototype deck still draws without crashing
+  ---
+  duration_ms: 0.593455
+  type: 'test'
+  ...
+1..99
+# tests 99
+# suites 0
+# pass 99
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 20049.324427

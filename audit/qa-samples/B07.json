@@ -1,0 +1,288 @@
+{
+ "sample": {
+  "id": "B07",
+  "kind": "boundary",
+  "spread": "guidance",
+  "mode": "fixed",
+  "note": "Option B: Major original, Major Clarifier 1, Major Clarifier 2, then the Clarity card (a Minor, given here so the case is fixed; live draws take it at random from the unused Minors)",
+  "base": [
+   13
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 16
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 20
+   },
+   {
+    "pos": 0,
+    "layer": 3,
+    "id": 40
+   }
+  ],
+  "c1": [
+   16
+  ],
+  "c2": [
+   20
+  ],
+  "clarity": [
+   40
+  ]
+ },
+ "commit": "4dc4df5af4568490e7472090e51bb0600107a518",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "One-card Guidance",
+ "drew": [
+  "first",
+  "second",
+  "clarity"
+ ],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Guidance",
+   "meaning": "the guidance you can put into practice today",
+   "base": {
+    "id": 13,
+    "name": "Death",
+    "arcana": "Major",
+    "element": "Water",
+    "reversed": false
+   },
+   "c1": {
+    "id": 16,
+    "name": "The Tower",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c2": {
+    "id": 20,
+    "name": "Judgement",
+    "arcana": "Major",
+    "element": "Fire",
+    "reversed": false
+   },
+   "clarity": {
+    "id": 40,
+    "name": "Five of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "clarityText": "4 · CLARITY CARD · WHERE THE THREE MAJOR CARDS LAND\nClarity card · Five of Cups\n\nGive a disappointment its proper weight without making it the whole picture. Grief and remaining support can coexist; acknowledge the loss, then notice who or what is still available.\n\nAstrology: Water · Cups · Water\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Cups, consider how this relates to grief.\n\nLooking closer: A cloaked figure looks at three spilled cups while two stand behind, with a bridge nearby.\n\nFive of Cups reinforces Death, and brings the three Major Arcana cards down to an everyday level.\n\nIn Guidance, after Death, The Tower and Judgement, the theme of grief and disappointment points to where this may show up day to day: feelings and relationships.\n\nRead this way because both are Water cards; drawn at random from the unused Minor Arcana, because the original card and both clarifiers are Major Arcana (Chas’s teaching rule, Option B).",
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · Clarifier 2 · how it develops the relationship between both",
+    "4 · Clarity card · where the three Major cards land",
+    "5 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XIII · Death\n\nGuidance\n\nCARD CORRESPONDENCE\nScorpio\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Scorpio · Water\n\nNumber: 13\n\nThirteen transforms a completed form so that another stage can begin. In Death, consider how this relates to transition.\n\nTransition\nRelease\nRenewal\n\nPosition: Guidance — Death. Your next step is to work consciously with transition, release, renewal. Choose one practical response you can try, then notice whether it helps.\n\nAn ending or change of form asks you to release what has completed its purpose. Make room to grieve and attend to what remains alive; this card speaks symbolically of transition, not a prediction of physical death.\n\nLooking closer: A skeletal rider passes people of different stations as the sun appears between towers. The scene links unavoidable change with the possibility of another beginning.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · XVI · The Tower\n\nA sudden change or unwelcome truth may expose a structure that could not hold. Attend first to immediate support and practical needs, then decide what deserves rebuilding on more honest foundations.\n\nAstrology: Mars · Fire\n\nNumber: 16\n\nSixteen breaks a familiar structure and exposes the foundations beneath it. In The Tower, consider how this relates to disruption.\n\nLooking closer: Lightning strikes a crowned tower and figures fall from it. The image shows the collapse of assumed security, without specifying a literal future event.\n\nThe Tower challenges Death.\n\nIn Guidance, the theme of disruption and revelation pushes against transition and release; ask what needs balancing before you act.\n\nRead this way because Water and Fire are contrary elements.",
+   "clar2": "3 · CLARIFIER 2 · HOW IT DEVELOPS THE RELATIONSHIP BETWEEN BOTH\nClarifier 2 · XX · Judgement\n\nAn honest review of the past can help you answer a new sense of purpose. Recognise what you have learned, make amends where possible, and choose the responsibility you are ready to accept now.\n\nAstrology: Fire · Fire\n\nNumber: 20\n\nTwenty reviews the journey and invites a more conscious response to its meaning. In Judgement, consider how this relates to awakening.\n\nLooking closer: Figures rise toward an angel sounding a trumpet. The image suggests a summons to awareness and renewal rather than a final verdict on a person.\n\nJudgement challenges Death and reinforces The Tower.\n\nIn Guidance, it sides with the first clarifier: the theme of awakening and review builds on disruption (The Tower), while asking what in transition (Death) needs to change.\n\nRead this way because with Death: Water and Fire are contrary elements; with The Tower: both are Fire cards.\n\nClarifier 2 was drawn because Clarifier 1 is also a Major Arcana card (Chas's teaching rule).",
+   "notes": "",
+   "together": "5 · WHAT THEY MEAN TOGETHER\nTogether in Guidance\n\nRevision 3 · updated when the Clarity card was drawn. The readings above are unchanged.\n\nTogether, Death, The Tower, Judgement and Five of Cups give Guidance a mixed message, with both agreement and friction: transition, disruption, awakening and grief. Two of the four cards are Water, putting the weight on feeling and relationships. Notice which card feels most true to your situation, and let it lead.\n\nThis is a perspective for reflection, not a fixed prediction.\n\nRevision 2 · the reading before the Clarity card\n\nTogether, Death, The Tower and Judgement give Guidance a message with real tension in it: transition, disruption and awakening. Two of the three cards are Fire, putting the weight on energy, will and action. Treat the friction as information: what would honour both sides?\n\nRevision 1 · the reading before Clarifier 2\n\nTogether, Death and The Tower give Guidance a message with real tension in it: transition and disruption. Treat the friction as information: what would honour both sides?\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · Death\n\nA practice of unforced attention with Death: What has finished its purpose, and how can I let it go with care?\n\nJungian interpretation · Death\n\nPsychological lens: Identity can resist endings even when circumstances have already changed. Mourning a former role makes space for a self that is no longer organised around it.",
+   "positionContext": "Position: Guidance — Death. Your next step is to work consciously with transition, release, renewal. Choose one practical response you can try, then notice whether it helps.",
+   "relation1": "The Tower challenges Death.\n\nIn Guidance, the theme of disruption and revelation pushes against transition and release; ask what needs balancing before you act.\n\nRead this way because Water and Fire are contrary elements.",
+   "relation2": "Judgement challenges Death and reinforces The Tower.\n\nIn Guidance, it sides with the first clarifier: the theme of awakening and review builds on disruption (The Tower), while asking what in transition (Death) needs to change.\n\nRead this way because with Death: Water and Fire are contrary elements; with The Tower: both are Fire cards.\n\nClarifier 2 was drawn because Clarifier 1 is also a Major Arcana card (Chas's teaching rule).",
+   "synthesisLead": "Together, Death, The Tower, Judgement and Five of Cups give Guidance a mixed message, with both agreement and friction: transition, disruption, awakening and grief. Two of the four cards are Water, putting the weight on feeling and relationships. Notice which card feels most true to your situation, and let it lead.",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "order": [
+  0
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier.\n\nGUIDANCE\nDeath + The Tower + Judgement\n\nThe original Death highlights transition and release; The Tower introduces disruption and revelation; Judgement introduces awakening and review. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Death (Scorpio) meets The Tower (Mars) meets Judgement (Fire). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, transition, release, renewal, disruption form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nDeath (13) · The Tower (16) · Judgement (20). Their numbered cards sum to 49, reducing to 4. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nGUIDANCE\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · XIII · Death\n\nGuidance\n\nCARD CORRESPONDENCE\nScorpio\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Scorpio · Water\n\nNumber: 13\n\nThirteen transforms a completed form so that another stage can begin. In Death, consider how this relates to transition.\n\nTransition\nRelease\nRenewal\n\nPosition: Guidance — Death. Your next step is to work consciously with transition, release, renewal. Choose one practical response you can try, then notice whether it helps.\n\nAn ending or change of form asks you to release what has completed its purpose. Make room to grieve and attend to what remains alive; this card speaks symbolically of transition, not a prediction of physical death.\n\nLooking closer: A skeletal rider passes people of different stations as the sun appears between towers. The scene links unavoidable change with the possibility of another beginning.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · XVI · The Tower\n\nA sudden change or unwelcome truth may expose a structure that could not hold. Attend first to immediate support and practical needs, then decide what deserves rebuilding on more honest foundations.\n\nAstrology: Mars · Fire\n\nNumber: 16\n\nSixteen breaks a familiar structure and exposes the foundations beneath it. In The Tower, consider how this relates to disruption.\n\nLooking closer: Lightning strikes a crowned tower and figures fall from it. The image shows the collapse of assumed security, without specifying a literal future event.\n\nThe Tower challenges Death.\n\nIn Guidance, the theme of disruption and revelation pushes against transition and release; ask what needs balancing before you act.\n\nRead this way because Water and Fire are contrary elements.\n\n3 · CLARIFIER 2 · HOW IT DEVELOPS THE RELATIONSHIP BETWEEN BOTH\nClarifier 2 · XX · Judgement\n\nAn honest review of the past can help you answer a new sense of purpose. Recognise what you have learned, make amends where possible, and choose the responsibility you are ready to accept now.\n\nAstrology: Fire · Fire\n\nNumber: 20\n\nTwenty reviews the journey and invites a more conscious response to its meaning. In Judgement, consider how this relates to awakening.\n\nLooking closer: Figures rise toward an angel sounding a trumpet. The image suggests a summons to awareness and renewal rather than a final verdict on a person.\n\nJudgement challenges Death and reinforces The Tower.\n\nIn Guidance, it sides with the first clarifier: the theme of awakening and review builds on disruption (The Tower), while asking what in transition (Death) needs to change.\n\nRead this way because with Death: Water and Fire are contrary elements; with The Tower: both are Fire cards.\n\nClarifier 2 was drawn because Clarifier 1 is also a Major Arcana card (Chas's teaching rule).\n\n4 · CLARITY CARD · WHERE THE THREE MAJOR CARDS LAND\nClarity card · Five of Cups\n\nGive a disappointment its proper weight without making it the whole picture. Grief and remaining support can coexist; acknowledge the loss, then notice who or what is still available.\n\nAstrology: Water · Cups · Water\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Cups, consider how this relates to grief.\n\nLooking closer: A cloaked figure looks at three spilled cups while two stand behind, with a bridge nearby.\n\nFive of Cups reinforces Death, and brings the three Major Arcana cards down to an everyday level.\n\nIn Guidance, after Death, The Tower and Judgement, the theme of grief and disappointment points to where this may show up day to day: feelings and relationships.\n\nRead this way because both are Water cards; drawn at random from the unused Minor Arcana, because the original card and both clarifiers are Major Arcana (Chas’s teaching rule, Option B).\n\n5 · WHAT THEY MEAN TOGETHER\nTogether in Guidance\n\nRevision 3 · updated when the Clarity card was drawn. The readings above are unchanged.\n\nTogether, Death, The Tower, Judgement and Five of Cups give Guidance a mixed message, with both agreement and friction: transition, disruption, awakening and grief. Two of the four cards are Water, putting the weight on feeling and relationships. Notice which card feels most true to your situation, and let it lead.\n\nThis is a perspective for reflection, not a fixed prediction.\n\nRevision 2 · the reading before the Clarity card\n\nTogether, Death, The Tower and Judgement give Guidance a message with real tension in it: transition, disruption and awakening. Two of the three cards are Fire, putting the weight on energy, will and action. Treat the friction as information: what would honour both sides?\n\nRevision 1 · the reading before Clarifier 2\n\nTogether, Death and The Tower give Guidance a message with real tension in it: transition and disruption. Treat the friction as information: what would honour both sides?\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · Death\n\nA practice of unforced attention with Death: What has finished its purpose, and how can I let it go with care?\n\nJungian interpretation · Death\n\nPsychological lens: Identity can resist endings even when circumstances have already changed. Mourning a former role makes space for a self that is no longer organised around it.\n\nTao / Wu Wei · The Tower\n\nA practice of unforced attention with The Tower: Which foundation needs honest attention before I build anything more on it?\n\nJungian interpretation · The Tower\n\nPsychological lens: A challenged belief can feel like a threat to identity. Grounding and support help the psyche revise its picture of the world without demanding instant meaning from disruption.\n\nTao / Wu Wei · Judgement\n\nA practice of unforced attention with Judgement: What is asking for my response now, and what from the past can I carry differently?\n\nJungian interpretation · Judgement\n\nPsychological lens: Revisiting the personal story can reveal possibilities that an older identity excluded. Integration includes accountability while allowing the self to develop beyond an earlier mistake.\n\nTao / Wu Wei · Five of Cups\n\nA practice of unforced attention with Five of Cups: What deserves mourning, and what support have I not yet turned toward?\n\nJungian interpretation · Five of Cups\n\nPsychological lens: Attention can become fixed on absence. Integration makes room for loss within a larger life.\n\nExplore Death\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier.\n\nGUIDANCE\nDeath + The Tower + Judgement\n\nThe original Death highlights transition and release; The Tower introduces disruption and revelation; Judgement introduces awakening and review. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are Death (Scorpio) meets The Tower (Mars) meets Judgement (Fire). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OVERALL INVITATION\n\nAcross these cards, transition, release, renewal, disruption form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nDeath (13) · The Tower (16) · Judgement (20). Their numbered cards sum to 49, reducing to 4. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your One-card Guidance."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "First, your card."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Death."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with transition, release, renewal."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An ending or change of form asks you to release what has completed its purpose."
+  },
+  {
+   "chapter": "c1",
+   "kind": "frame",
+   "text": "Now, your first clarifier."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1: The Tower."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "A sudden change or unwelcome truth may expose a structure that could not hold."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "The Tower challenges Death."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In Guidance, the theme of disruption and revelation pushes against transition and release; ask what needs balancing before you act."
+  },
+  {
+   "chapter": "c2",
+   "kind": "frame",
+   "text": "And your second clarifier."
+  },
+  {
+   "chapter": "c2",
+   "kind": "label",
+   "text": "Clarifier 2: Judgement."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "An honest review of the past can help you answer a new sense of purpose."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "Judgement challenges Death and reinforces The Tower."
+  },
+  {
+   "chapter": "c2",
+   "kind": "quote",
+   "text": "In Guidance, it sides with the first clarifier: the theme of awakening and review builds on disruption (The Tower), while asking what in transition (Death) needs to change."
+  },
+  {
+   "chapter": "c3",
+   "kind": "frame",
+   "text": "And your clarity card, from the Minor Arcana."
+  },
+  {
+   "chapter": "c3",
+   "kind": "label",
+   "text": "Clarity card: Five of Cups."
+  },
+  {
+   "chapter": "c3",
+   "kind": "quote",
+   "text": "Give a disappointment its proper weight without making it the whole picture."
+  },
+  {
+   "chapter": "c3",
+   "kind": "quote",
+   "text": "Five of Cups reinforces Death, and brings the three Major Arcana cards down to an everyday level."
+  },
+  {
+   "chapter": "c3",
+   "kind": "quote",
+   "text": "In Guidance, after Death, The Tower and Judgement, the theme of grief and disappointment points to where this may show up day to day: feelings and relationships."
+  },
+  {
+   "chapter": "c3",
+   "kind": "quote",
+   "text": "Together, Death, The Tower, Judgement and Five of Cups give Guidance a mixed message, with both agreement and friction: transition, disruption, awakening and grief."
+  },
+  {
+   "chapter": "c3",
+   "kind": "quote",
+   "text": "Two of the four cards are Water, putting the weight on feeling and relationships."
+  },
+  {
+   "chapter": "c3",
+   "kind": "quote",
+   "text": "Notice which card feels most true to your situation, and let it lead."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your One-card Guidance.",
+  "I'll keep it short. The full reading stays below.",
+  "First, your card.",
+  "Death.",
+  "Your next step is to work consciously with transition, release, renewal.",
+  "An ending or change of form asks you to release what has completed its purpose.",
+  "Now, your first clarifier.",
+  "Clarifier 1: The Tower.",
+  "A sudden change or unwelcome truth may expose a structure that could not hold.",
+  "The Tower challenges Death.",
+  "In Guidance, the theme of disruption and revelation pushes against transition and release; ask what needs balancing before you act.",
+  "And your second clarifier.",
+  "Clarifier 2: Judgement.",
+  "An honest review of the past can help you answer a new sense of purpose.",
+  "Judgement challenges Death and reinforces The Tower.",
+  "In Guidance, it sides with the first clarifier: the theme of awakening and review builds on disruption (The Tower), while asking what in transition (Death) needs to change.",
+  "And your clarity card, from the Minor Arcana.",
+  "Clarity card: Five of Cups.",
+  "Give a disappointment its proper weight without making it the whole picture.",
+  "Five of Cups reinforces Death, and brings the three Major Arcana cards down to an everyday level.",
+  "In Guidance, after Death, The Tower and Judgement, the theme of grief and disappointment points to where this may show up day to day: feelings and relationships.",
+  "Together, Death, The Tower, Judgement and Five of Cups give Guidance a mixed message, with both agreement and friction: transition, disruption, awakening and grief.",
+  "Two of the four cards are Water, putting the weight on feeling and relationships.",
+  "Notice which card feels most true to your situation, and let it lead.",
+  "Before I go, one question to carry with you.",
+  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
+  "Take what resonates, and leave the rest.",
+  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+ ]
+}

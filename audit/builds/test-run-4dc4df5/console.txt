@@ -1,0 +1,77 @@
+before: 0
+suite	command	exit	seconds	result_line
+syntax-app.js	node --check app.js	0	0	
+syntax-deck-engine.js	node --check deck-engine.js	0	0	
+syntax-data.js	node --check data.js	0	0	
+syntax-journal.js	node --check journal.js	0	0	
+syntax-reading-stage.js	node --check reading-stage.js	0	0	
+syntax-astrology-prelude.js	node --check astrology-prelude.js	0	0	
+syntax-astrology-prelude-ui.js	node --check astrology-prelude-ui.js	0	0	
+syntax-reading-pdf.js	node --check reading-pdf.js	0	0	
+syntax-clarifier-reading.js	node --check clarifier-reading.js	0	0	
+syntax-opening-dice.js	node --check opening-dice.js	0	0	
+syntax-reading-session.js	node --check reading-session.js	0	0	
+syntax-navigation-a11y.js	node --check navigation-a11y.js	0	0	
+unit-all	node --test tests/additional-clarifiers.test.cjs tests/astrology-prelude.test.cjs tests/clarifier-reading.test.cjs tests/clarifier-rules.test.cjs tests/clarity-card.test.cjs tests/deck-engine.test.cjs tests/integration-baseline.test.cjs tests/journal.test.cjs tests/landing-buttons.test.cjs tests/one-card-baseline.test.cjs tests/one-card-overlay.test.cjs tests/opening-dice.test.cjs tests/qa-samples.test.cjs tests/reading-dice-ui.test.cjs tests/reading-journey.test.cjs tests/reading-session.test.cjs tests/reading-stage-deck.test.cjs tests/reading-welcome.test.cjs tests/reduced-motion-static.test.cjs tests/secure-random.test.cjs tests/shuffle-frozen.test.cjs tests/tarot-catalogue.test.cjs tests/uat-navigation-sweep.test.cjs tests/uat-regressions.test.cjs tests/uat003-reading-flow.test.cjs tests/uat005-journal-actions.test.cjs tests/visible-clarifier.test.cjs	0	20	# pass 99 # fail 0 
+astrology-journey.browser	node tests/astrology-journey.browser.cjs	0	78	PASS 1280px A14 Browser/phone Back from the table PASS 1280px A15 Roll two dice after Calculate 
+boundary-matrix.browser	node tests/boundary-matrix.browser.cjs	0	14	9/9 passed 
+chas-voice.browser	node tests/chas-voice.browser.cjs	0	4	PASS 7 chas-voice checks (168 lines) 
+clarifier-slots.browser	node tests/clarifier-slots.browser.cjs	0	112	PASS 35 clarifier-slot cases: same size and place before and after the second clarifier (5 spreads, 5 widths) 
+clarify-per-card.browser	node tests/clarify-per-card.browser.cjs	0	154	3/3 passed 
+coverage-gaps.browser	node tests/coverage-gaps.browser.cjs	0	35	PASS 37 coverage-gap checks: Learn search/filter, card detail bookmark/tabs, reading cards, astrology expander, Journal reflection, shuffle parity 
+deck-theatre.browser	node tests/deck-theatre.browser.cjs	0	359	21/21 passed 
+golden-thread-avoid-cards.browser	node tests/golden-thread-avoid-cards.browser.cjs	0	27	30/30 passed 
+golden-thread-connector.browser	node tests/golden-thread-connector.browser.cjs	0	13	27/27 passed 
+max-discoverability.browser	node tests/max-discoverability.browser.cjs	0	89	2/2 passed 
+navigation-a11y.browser	node tests/navigation-a11y.browser.cjs	0	16	
+page-end-nav.browser	node tests/page-end-nav.browser.cjs	0	10	PASS 9 end-of-page navigation checks (reading and Journal, phone) 
+presenter.browser	node tests/presenter.browser.cjs	0	289	PASS 1280px: player fits without horizontal scroll and controls are tappable PASS 51 presenter checks (silent until Play, faithful narration, controls, demo labelling, 4 widths) 
+reading-engine-qa.browser	node tests/reading-engine-qa.browser.cjs	0	33	40/40 passed 
+reduced-motion-headings.browser	node tests/reduced-motion-headings.browser.cjs	0	373	
+reversed-clarifier-turn.browser	node tests/reversed-clarifier-turn.browser.cjs	0	44	4/4 passed 
+spread-layout-with-thread.browser	node tests/spread-layout-with-thread.browser.cjs	0	6	6/6 passed 
+spread-parity.browser	node tests/spread-parity.browser.cjs	0	305	
+teaching-rules.browser	node tests/teaching-rules.browser.cjs	0	22	PASS 1280px three-card: Majors get a first clarifier one card at a time, the Minor waits for the seeker PASS 10 teaching-rule checks 
+uat-round1.browser	node tests/uat-round1.browser.cjs	0	10	
+browser-uat	node tests/browser-uat.cjs	0	589	{"width":1920,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot
+exit 0
+after-tests: 0
+S01 1 positions 0 clarifiers  
+S02 1 positions 1 clarifiers  
+S03 1 positions 2 clarifiers  
+S04 3 positions 0 clarifiers  
+S05 3 positions 3 clarifiers  
+S06 3 positions 3 clarifiers  
+S07 5 positions 0 clarifiers  
+S08 5 positions 1 clarifiers  
+S09 5 positions 6 clarifiers  
+S10 7 positions 0 clarifiers  
+S11 7 positions 1 clarifiers  
+S12 7 positions 10 clarifiers  
+S13 10 positions 0 clarifiers  
+S14 10 positions 3 clarifiers  
+S15 10 positions 14 clarifiers  
+B01 1 positions 2 clarifiers  
+B02 3 positions 3 clarifiers  
+B03 5 positions 3 clarifiers  
+B04 7 positions 4 clarifiers  
+B05 3 positions 3 clarifiers  
+B06 10 positions 18 clarifiers  
+B07 1 positions 3 clarifiers  
+B08 7 positions 1 clarifiers  
+OC-01 1 positions 0 clarifiers  
+OC-02 1 positions 0 clarifiers  
+OC-03 1 positions 1 clarifiers  
+TC-01 3 positions 0 clarifiers  
+TC-02 3 positions 0 clarifiers  
+TC-03 3 positions 1 clarifiers  
+TC-04 3 positions 2 clarifiers  
+RC-01 5 positions 0 clarifiers  
+RC-02 5 positions 1 clarifiers  
+RC-03 5 positions 0 clarifiers  
+SC-02 7 positions 2 clarifiers  
+CC-01 10 positions 0 clarifiers  
+CC-02 10 positions 2 clarifiers  
+CC-04 10 positions 1 clarifiers  
+wrote /home/claude/case-4dc4df5.md 
+after-all: 0
