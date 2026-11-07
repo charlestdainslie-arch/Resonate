@@ -11,7 +11,7 @@ test('reading synthesis includes base cards and drawn clarifiers',()=>{
  assert.match(app,/function evolvingReading\(chosen,labels\)/);
  assert.match(app,/state\.firstLayerClarifiers\[i\]/);
  assert.match(app,/layer\.cards\[i\]/);
- assert.match(app,/\$\{chosen\.map\(\(card,i\)=>readingMeaning\(card,labels\[i\],i\)\)/);
+ assert.match(app,/\$\{readingOrder\(\)\.map\(i=>readingMeaning\(chosen\[i\],labels\[i\],i\)\)/); // reading order: Seven-card question readings take position 4 last (7 Nov)
  assert.match(app,/What these cards mean together/);
 });
 test('return navigation points to original spread without redraw',()=>{

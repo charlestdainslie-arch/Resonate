@@ -806,6 +806,9 @@
   ],
   "c2": [
    20
+  ],
+  "clarity": [
+   null
   ]
  },
  {
@@ -845,6 +848,11 @@
    39
   ],
   "c2": [
+   null,
+   null,
+   null
+  ],
+  "clarity": [
    null,
    null,
    null
@@ -893,6 +901,13 @@
   ],
   "c2": [
    71,
+   null,
+   null,
+   null,
+   null
+  ],
+  "clarity": [
+   null,
    null,
    null,
    null,
@@ -966,6 +981,15 @@
    null,
    null,
    null
+  ],
+  "clarity": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
   ]
  },
  {
@@ -1003,6 +1027,11 @@
    52
   ],
   "c2": [
+   null,
+   null,
+   null
+  ],
+  "clarity": [
    null,
    null,
    null
@@ -1148,7 +1177,110 @@
    null,
    20,
    72
+  ],
+  "clarity": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
   ]
+ },
+ {
+  "id": "B07",
+  "kind": "boundary",
+  "spread": "guidance",
+  "mode": "fixed",
+  "note": "Option B: Major original, Major Clarifier 1, Major Clarifier 2, then the Clarity card (a Minor, given here so the case is fixed; live draws take it at random from the unused Minors)",
+  "base": [
+   13
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 16
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 20
+   },
+   {
+    "pos": 0,
+    "layer": 3,
+    "id": 40
+   }
+  ],
+  "c1": [
+   16
+  ],
+  "c2": [
+   20
+  ],
+  "clarity": [
+   40
+  ]
+ },
+ {
+  "id": "B08",
+  "kind": "boundary",
+  "spread": "seven",
+  "mode": "fixed",
+  "note": "Seven-card question reading: position 4, You / Answer, read last",
+  "base": [
+   24,
+   3,
+   58,
+   9,
+   46,
+   65,
+   31
+  ],
+  "reversed": [
+   58
+  ],
+  "steps": [
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 39
+   }
+  ],
+  "c1": [
+   null,
+   null,
+   null,
+   39,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "clarity": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "question": true
  },
  {
   "id": "OC-01",

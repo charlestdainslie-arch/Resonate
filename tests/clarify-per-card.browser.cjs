@@ -136,9 +136,10 @@ server.listen(0, '127.0.0.1', async () => {
         await page.screenshot({ path: path.join(OUT, `clarify-per-card-${w}-clarified.png`) });
         d = await dockCheck(page);
         const bothMajor = await page.evaluate(i => [state.firstLayerClarifiers[i], state.additionalClarifierLayers.find(l => l.number === 2).cards[i]].every(id => cards.find(c => c.id === id).arcana === 'Major'), TARGET);
-        assert.match(d.label, bothMajor ? /05 · 2-card limit/ : /05 · clarified ✓/, 'dock shows card 05 complete');
-        assert.equal(await page.locator(`${art} .reading-limit`).count(), bothMajor ? 1 : 0, 'limit stated only when both clarifiers are Major');
-        assert.equal(await page.locator('#mcClarify').isDisabled(), true, 'nothing more to draw for card 5');
+        // Card 5 is a Major (majors-first), so with two Major clarifiers Option B makes a Clarity card due.
+        assert.match(d.label, bothMajor ? /05 · Clarity card/ : /05 · clarified ✓/, 'dock offers the Clarity card, or shows card 05 complete');
+        assert.equal(await page.locator(`${art} .reading-limit`).count(), bothMajor ? 1 : 0, 'Clarity card due stated only when both clarifiers are Major');
+        assert.equal(await page.locator('#mcClarify').isDisabled(), !bothMajor, 'Clarify stays available only for the Clarity card');
 
         // Reading recalculated: 4 steps, step 3 relates Clarifier 2 to both, together names all three.
         s = await steps();
@@ -184,6 +185,34 @@ server.listen(0, '127.0.0.1', async () => {
         await page.waitForFunction(() => /^Part 1 of/.test(document.getElementById('mcPart').textContent), null, { timeout: 5000 });
         await tap('#mcClose');
         await page.waitForSelector('.mc-player', { state: 'detached' });
+
+        // Option B: draw the Clarity card from the dock. It sits centred below Clarifiers 1 and 2, overlapping nothing.
+        if (bothMajor) {
+          await page.evaluate(i => document.querySelectorAll('.reading-position')[i].scrollIntoView({ block: 'center' }), TARGET);
+          await page.waitForTimeout(500);
+          await tap('#mcClarify');
+          await page.waitForFunction(i => readingClarity()[i] != null, TARGET, { timeout: 5000 });
+          await page.waitForTimeout(800);
+          const k = await page.evaluate(i => {
+            const pos = document.querySelectorAll('.reading-position')[i];
+            const r = el => { const b = el.getBoundingClientRect(); return { l: b.left, t: b.top, r: b.right, b: b.bottom }; };
+            const cl = [...pos.querySelectorAll('.position-clarifier img')].map(r), k = pos.querySelector('.position-clarity img');
+            const img = k && r(k); const label = pos.querySelector('.position-clarity strong');
+            return { cl, img, loaded: k && k.complete && k.naturalWidth > 0, labelIn: !!label && label.getBoundingClientRect().right <= innerWidth && label.getBoundingClientRect().left >= 0, minor: cards[readingClarity()[i]].arcana === 'Minor' };
+          }, TARGET);
+          const overlap = (x, y) => x.l < y.r - 1 && y.l < x.r - 1 && x.t < y.b - 1 && y.t < x.b - 1;
+          assert.ok(k.img && k.loaded && k.labelIn && k.minor, 'Clarity card shown, a Minor, label on screen');
+          assert.ok(k.img.t >= Math.max(k.cl[0].b, k.cl[1].b) - 1, 'below both clarifiers');
+          const mid = (k.cl[0].l + k.cl[1].r) / 2, kmid = (k.img.l + k.img.r) / 2;
+          assert.ok(Math.abs(kmid - mid) <= 12, 'centred under the pair: ' + (kmid - mid).toFixed(1));
+          assert.ok(!k.cl.some(c => overlap(c, k.img)), 'overlaps no clarifier');
+          await page.screenshot({ path: path.join(OUT, `clarify-per-card-${w}-clarity.png`) });
+          d = await dockCheck(page);
+          assert.match(d.label, /05 · clarified ✓/);
+          assert.equal(await page.locator('#mcClarify').isDisabled(), true, 'nothing more to draw for card 5');
+          assert.deepEqual((await steps()).map(t => t[0]), ['1', '2', '3', '4', '5'], 'five steps with the Clarity card');
+          assert.match(await page.locator(`${art} .reading-revision-tag`).innerText(), /Revision 3/);
+        }
 
         // Decision 5: adding a clarifier while Max is narrating stops him and offers Replay Updated Reading.
         const other = await page.evaluate(() => { const due = nextDueClarifier(); if (due >= 0) return due; return clarifierPlan().positions.findIndex(p => p.first == null); });

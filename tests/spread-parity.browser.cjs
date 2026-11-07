@@ -160,7 +160,7 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
           await check('P5', async () => {
             assert.equal(await page.locator('#primaryClarifierAction').count(), 0, 'a third clarifier action is still offered');
             await page.evaluate(() => drawNextClarifierLayer()); // a stray call must not add a third layer
-            assert.equal(await page.evaluate(() => 1 + state.additionalClarifierLayers.length), 2);
+            assert.equal(await page.evaluate(() => 1 + state.additionalClarifierLayers.filter(l => l.number <= 2).length), 2, 'two clarifier layers (layer 3 is the Clarity card, not a clarifier)');
             assert.equal(await page.locator('.position-clarifier').count(), expected.length * 2);
             assert.match(await page.locator('.reading-next-step .reading-help').innerText(), /two clarifiers are complete/i);
           });
@@ -171,8 +171,9 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
           await check('P1', async () => {
             assert.deepEqual(geo.positions.map(p => p.label.replace(/^\d+ · /, '')), expected, 'labels or order differ');
             assert.ok(geo.positions.every((p, i) => p.label.startsWith(String(i + 1).padStart(2, '0') + ' · ')), 'numbering');
-            const ids = await page.evaluate(() => [...state.drawnCardIds, ...state.firstLayerClarifiers, ...state.additionalClarifierLayers.flatMap(l => l.cards)]);
-            assert.equal(ids.length, expected.length * 3); assert.equal(new Set(ids).size, ids.length, 'repeated card identity in one reading');
+            const ids = await page.evaluate(() => [...state.drawnCardIds, ...state.firstLayerClarifiers, ...state.additionalClarifierLayers.filter(l => l.number <= 2).flatMap(l => l.cards)]);
+            const clarity = await page.evaluate(() => readingClarity().filter(x => x != null));
+            assert.equal(ids.length, expected.length * 3); assert.equal(new Set([...ids, ...clarity]).size, ids.length + clarity.length, 'repeated card identity in one reading');
             const P = geo.positions;
             if (geo.vw >= 1200 && spread === 'seven') { // V shape (from 1200px): tops descend to position 4 then rise
               const t = P.map(p => p.front.top);
@@ -232,7 +233,7 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
 
           await check('P7', async () => {
             const info = await page.evaluate(() => [...document.querySelectorAll('.reading-meaning')].map(m => ({
-              corr: m.querySelectorAll('.reading-card-correspondences').length,
+              corr: m.querySelectorAll('.reading-card-correspondences').length - m.querySelectorAll('.integrated-clarity .reading-card-correspondences').length,
               text: [...m.querySelectorAll('.reading-card-correspondences')].map(e => e.textContent),
               sky: m.querySelector('.reading-astrology')?.textContent || '',
             })));
@@ -252,10 +253,11 @@ const readingState = page => page.evaluate(() => JSON.stringify({ spread: state.
               meaning: m.querySelector('.original-card-explanation > p:not(.original-position-label):not(.position-context)')?.textContent.trim().length || 0,
               clarifiers: m.querySelectorAll('.integrated-clarifier').length, together: m.querySelectorAll('.combined-meaning').length,
               lenses: m.querySelectorAll('.reading-card-lenses').length,
+              clarity: m.querySelectorAll('.integrated-clarity').length,
             })));
             per.forEach((m, i) => {
               assert.ok(m.context > 40 && m.meaning > 40, `position ${i + 1} has an empty interpretation`);
-              assert.equal(m.clarifiers, 2, `position ${i + 1} clarifier narrative`); assert.equal(m.together, 1); assert.equal(m.lenses, 3);
+              assert.equal(m.clarifiers, 2, `position ${i + 1} clarifier narrative`); assert.equal(m.together, 1); assert.equal(m.lenses, 3 + m.clarity, 'lenses for the original, both clarifiers and any Clarity card');
             });
             const thread = await page.locator('.golden-card-reading').count();
             assert.ok(thread >= expected.length, 'Golden Thread misses positions');

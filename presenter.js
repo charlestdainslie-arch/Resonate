@@ -21,6 +21,8 @@
     c1s:'Now, your first clarifiers, card by card.',
     c2:'And your second clarifier.',
     c2s:'And your second clarifiers.',
+    k:'And your clarity card, from the Minor Arcana.',
+    ks:'And a clarity card, from the Minor Arcana, where three Major Arcana cards met.',
     back:'Max Chasroom, back for the next part of your reading.',
     ask:'Before I go, one question to carry with you.',
     close:'That\'s the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.'
@@ -65,7 +67,9 @@
     // Cards: the reading's own text for each position, from the same markup the page shows.
     frame('cards',one?'card':'cards');
     const blocks=ids.map((id,i)=>frag(readingMeaning(byId(id),labels[i],i)));
-    ids.forEach((id,i)=>{
+    // Positions in reading order: a Seven-card question reading takes position 4 last (approved 7 Nov 2026).
+    const order=typeof readingOrder==='function'?readingOrder():ids.map((_,i)=>i);
+    order.map(i=>[ids[i],i]).forEach(([id,i])=>{
       const card=byId(id),block=blocks[i],key='p'+i;
       // A reversed card has its own name, lens and meaning lines, so a recorded voice pack keeps them apart.
       const r=isReversed(card)?'-r':'',name={id:`name-${id}${r}`,text:`${cardName(card)}.`};
@@ -82,7 +86,7 @@
     layerCards.forEach((layer,l)=>{
       const n=l+1,chapter='c'+n;
       frame(chapter,one?'c'+n:'c'+n+'s',layer.map((_,i)=>`c${i}-${n}`));
-      layer.forEach((c,i)=>{
+      order.map(i=>[layer[i],i]).forEach(([c,i])=>{
         if(!c)return;
         const key=`c${i}-${n}`;
         const r=isReversed(c)?'-r':'';
@@ -98,7 +102,8 @@
         const rel=[block?.querySelector('.relation-lead'),block?.querySelector('.relation-meaning')].map(el=>norm(el?.textContent||'')).filter(Boolean);
         const relShow=n===1?['p'+i,key]:['p'+i,`c${i}-1`,key];
         rel.forEach((text,k)=>add(chapter,'quote',text,relShow,[{id:`rel-${spread}-${i}-${n}-${k}`,text}]));
-        const last=!layerCards.slice(l+1).some(layer=>layer[i]);
+        const clarityId=readingClarity()[i];
+        const last=!layerCards.slice(l+1).some(layer=>layer[i])&&clarityId==null;
         const together=blocks[i].querySelector('.combined-meaning');
         if(last&&together){
           const show=['p'+i,...layerCards.map((layer,m)=>layer[i]?`c${i}-${m+1}`:null).filter(Boolean)];
@@ -108,6 +113,27 @@
         }
       });
     });
+
+    // Clarity card (Option B, approved 7 Nov 2026): after a card whose original and both clarifiers are Major.
+    const clarity=readingClarity().map(id=>id==null?null:byId(id));
+    if(clarity.some(Boolean)){
+      frame('c3',one?'k':'ks');
+      order.map(i=>[clarity[i],i]).forEach(([c,i])=>{
+        if(!c)return;
+        const r=isReversed(c)?'-r':'',show=['p'+i,`c${i}-1`,`c${i}-2`];
+        add('c3','label',one?`Clarity card: ${cardName(c)}.`:`Clarity card · ${labels[i]}: ${cardName(c)}.`,show,[{id:'label-clarity',text:`Clarity card${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
+        const block=blocks[i].querySelector('.integrated-clarity');
+        const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
+        add('c3','quote',meaning,show,[{id:`meaning-${c.id}${r}`,text:meaning}]);
+        [block?.querySelector('.relation-lead'),block?.querySelector('.relation-meaning')].map(el=>norm(el?.textContent||'')).filter(Boolean).forEach((text,k)=>add('c3','quote',text,show,[{id:`rel-${spread}-${i}-3-${k}`,text}]));
+        const together=blocks[i].querySelector('.combined-meaning');
+        if(together){
+          const lead=sentences(together.querySelector('.synthesis-lead')?.textContent||'');
+          const wider=sentences(together.querySelector('.synthesis-wider')?.textContent||'');
+          [...lead,...wider].filter((t,k,a)=>t&&a.indexOf(t)===k).forEach((text,k)=>add('c3','quote',text,show,[{id:`together-${spread}-${i}-${k}`,text}]));
+        }
+      });
+    }
 
     // Close: the reading's own closing question and resonance line.
     const all=ids.flatMap((_,i)=>['p'+i,...layerCards.map((__,l)=>`c${i}-${l+1}`)]);
@@ -451,12 +477,12 @@
       shown=key;
       const name=cardName(byId(state.drawnCardIds[dockTarget]));
       const pair=layers().map(l=>l[dockTarget]);
-      const atLimit=!step&&pair.length===2&&pair.every(c=>c&&c.arcana==='Major');
+      const atLimit=!step&&pair.length===2&&pair.every(c=>c&&c.arcana==='Major')&&readingClarity()[dockTarget]==null;
       clar.disabled=!step;
       clar.dataset.position=dockTarget;
       clar.dataset.step=step||'done';
-      document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step?`${n} · ${label}`:(atLimit?`${n} · 2-card limit`:`${n} · clarified ✓`);
-      clar.setAttribute('aria-label',step==='first'?`Clarify card ${n}, ${label}: ${name}`:step==='second'?`Draw Clarifier 2 for card ${n}, ${label}: ${name}`:(atLimit?`Card ${n}, ${label}: two clarifiers, both Major Arcana; the two-card limit is reached`:`Card ${n}, ${label}, is fully clarified`));
+      document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step==='clarity'?`${n} · Clarity card`:step?`${n} · ${label}`:(atLimit?`${n} · 2-card limit`:`${n} · clarified ✓`);
+      clar.setAttribute('aria-label',step==='clarity'?`Draw a Clarity card for card ${n}, ${label}: ${name}`:step==='first'?`Clarify card ${n}, ${label}: ${name}`:step==='second'?`Draw Clarifier 2 for card ${n}, ${label}: ${name}`:(atLimit?`Card ${n}, ${label}: two clarifiers, both Major Arcana; the two-card limit is reached`:`Card ${n}, ${label}, is fully clarified`));
     }
     floatTimer=timer=setInterval(update,250);
     update();

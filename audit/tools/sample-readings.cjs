@@ -101,6 +101,9 @@ async function threadGeometry(page) {
       const seeded = () => ((s = (s * 1103515245 + 12345) % 2147483648) / 2147483648);
       const frames = () => ((f = (f * 1103515245 + 12345) % 2147483648) / 2147483648);
       Math.random = () => (inFrame ? frames() : seeded());
+      // Since 7 Nov 2026 live draws use crypto.getRandomValues; feed it from the same seeded stream so the
+      // samples still reproduce (each 32-bit value from one seeded number).
+      crypto.getRandomValues = arr => { for (let i = 0; i < arr.length; i++) arr[i] = Math.floor(seeded() * 4294967296) >>> 0; return arr; };
       const raf = window.requestAnimationFrame.bind(window);
       window.requestAnimationFrame = cb => raf(t => { inFrame++; try { return cb(t); } finally { inFrame--; } });
       const real = Date, t0 = real.now();

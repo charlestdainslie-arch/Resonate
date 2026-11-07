@@ -60,7 +60,7 @@ server.listen(0, '127.0.0.1', async () => {
   });
 
   await check('BT-02 a clarifier cannot itself be clarified (no recursion)', async page => {
-    await load(page, 'B01');
+    await load(page, 'B07');   // complete: two clarifiers and the Clarity card (Option B)
     const before = await snap(page);
     assert.equal(await page.locator('.position-clarifiers [data-clarify-position], .position-clarifier button').count(), 0, 'no clarify control on a clarifier');
     for (const el of await page.locator('.position-clarifier').all()) await el.tap({ force: true });
@@ -68,15 +68,31 @@ server.listen(0, '127.0.0.1', async () => {
     assert.equal(await page.evaluate(() => clarifyPosition(0)), '', 'the card is complete');
     assert.equal(await snap(page), before, 'no new cards');
     assert.equal(await page.locator('.position-clarifier').count(), 2, 'still two clarifiers');
+    await page.locator('.position-clarity').tap({ force: true });
+    await page.waitForTimeout(300);
+    assert.equal(await snap(page), before, 'tapping the Clarity card draws nothing either');
   });
 
-  await check('BT-03 two Major clarifiers: the limit is shown and flagged for Chas', async page => {
-    await load(page, 'B01');
-    assert.match(await page.locator('.reading-limit').innerText(), /Clarifier 2 is also a Major Arcana card[\s\S]*design decision awaiting Chas/);
+  await check('BT-03 two Major clarifiers: Option B (approved 7 Nov) offers one Clarity card from the Minor Arcana, then stops', async page => {
+    await load(page, 'B01');   // Death, The Tower, Judgement
+    assert.match(await page.locator('.reading-limit').innerText(), /a Clarity card is due: one card drawn at random from the unused Minor Arcana/);
     await page.evaluate(() => document.querySelector('.reading-position').scrollIntoView({ block: 'center' }));
     await page.waitForTimeout(500);
-    assert.match(await page.locator('#mcClarify').innerText(), /2-card limit/);
-    assert.equal(await page.locator('#mcClarify').isDisabled(), true);
+    assert.match(await page.locator('#mcClarify').innerText(), /Clarity card/);
+    await page.locator('#mcClarify').tap();
+    await page.waitForFunction(() => readingClarity()[0] != null, null, { timeout: 3000 });
+    const k = await page.evaluate(() => { const id = readingClarity()[0]; return { arcana: cards[id].arcana, inReading: [state.drawnCardIds[0], state.firstLayerClarifiers[0], readingSecondLayer()[0]].includes(id) }; });
+    assert.deepEqual(k, { arcana: 'Minor', inReading: false }, 'a Minor not already in the reading');
+    assert.equal(await page.locator('.position-clarifier').count(), 2, 'the two-clarifier limit stands');
+    assert.equal(await page.locator('.position-clarity').count(), 1);
+    assert.equal(await page.locator('.reading-limit').count(), 0, 'nothing more is due');
+    assert.match(await page.locator('.reading-revision-tag').innerText(), /Revision 3/);
+    assert.equal(await page.evaluate(() => clarifyPosition(0)), '', 'no further draws: the rule stops at the Clarity card');
+    await page.waitForTimeout(400);
+    assert.match(await page.locator('#mcClarify').innerText(), /clarified ✓/);
+    assert.deepEqual(await page.evaluate(() => ResonateClarifiers.validate([cards[state.drawnCardIds[0]]], state.firstLayerClarifiers, readingSecondLayer(), id => cards[id], readingClarity())), []);
+    const script = await page.evaluate(() => ResonatePresenter.buildScript());
+    assert.ok(script.some(l => l.chapter === 'c3' && /^Clarity card: /.test(l.text)), 'Max presents the Clarity card');
   });
 
   await check('BT-04 adding a clarifier during narration stops it at once and offers the update', async page => {

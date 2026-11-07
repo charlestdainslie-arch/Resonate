@@ -3,7 +3,8 @@
  * Checks, on presenter-uat.html, for 1/3/5/7/10-card spreads at 390 and 1280 px:
  *   - 78 cards in the deck on the table; empty outlines until dealt
  *   - integrity: dealt cards == top of the shuffled data deck == the reading's cards; no duplicates
- *   - the animation draws no randomness from Math.random (the shuffle itself makes exactly 77 calls)
+ *   - the animation draws no randomness from Math.random; the shuffle takes exactly 77 numbers from
+ *     crypto.getRandomValues (secure randomness for live draws, approved 7 Nov 2026) and none from Math.random
  *   - every flying card lands on its slot (within 1 px), slots dealt in position order
  *   - one deal per double tap; buttons locked while busy; Skip finishes quickly
  *   - reduced motion: no flights, immediate deal; leaving mid-deal commits nothing
@@ -28,6 +29,7 @@ async function openTable(browser, spread, width, opts = {}) {
   // Instrument: Math.random calls, commits, flight landings.
   await page.evaluate(() => {
     const real = Math.random; window.__rand = 0; Math.random = function () { window.__rand++; return real(); };
+    const gv = crypto.getRandomValues.bind(crypto); window.__crypto = 0; crypto.getRandomValues = function (a) { window.__crypto++; return gv(a); };
     const c = commitDraw; window.__commits = 0; commitDraw = function () { window.__commits++; window.__randAtCommit = window.__rand; return c.apply(this, arguments); };
     window.__landings = [];
     new MutationObserver(ms => ms.forEach(m => m.addedNodes.forEach(n => {
@@ -54,13 +56,13 @@ server.listen(0, '127.0.0.1', async () => {
       await page.locator('#shuffleCardsBtn').click();
       assert.equal(await page.locator('#stageDrawBtn').isDisabled(), true, 'deal locked while shuffling');
       await idle(page);
-      const randShuffle = await page.evaluate(() => window.__rand);
-      assert.equal(randShuffle, 77, 'shuffle used Math.random exactly 77 times (Fisher–Yates of 78); animation used none');
+      const randShuffle = await page.evaluate(() => ({ math: window.__rand, crypto: window.__crypto }));
+      assert.deepEqual(randShuffle, { math: 0, crypto: 77 }, 'shuffle took 77 secure numbers (Fisher–Yates of 78) and no Math.random; animation used none');
       const top = await page.evaluate(() => state.shuffledDeck.slice(0, state.spreadSize));
       await page.locator('#stageDrawBtn').click();
       await page.locator('#stageDrawBtn').click({ force: true, timeout: 1000 }).catch(() => {});   // double tap
       await page.waitForFunction(() => state.view === 'draw', null, { timeout: 30000 });
-      const r = await page.evaluate(() => ({ drawn: [...state.drawnCardIds], dealt: window.__resonateDealt, commits: window.__commits, randDeal: window.__randAtCommit - 77, landings: window.__landings }));
+      const r = await page.evaluate(() => ({ drawn: [...state.drawnCardIds], dealt: window.__resonateDealt, commits: window.__commits, randDeal: window.__randAtCommit, landings: window.__landings }));
       assert.deepEqual(r.dealt, top, 'dealt = top of the shuffled deck'); assert.deepEqual(r.drawn, top, 'reading = dealt cards');
       assert.equal(new Set(r.drawn).size, n, 'no duplicate card ids');
       assert.equal(r.commits, 1, 'one deal for a double tap');

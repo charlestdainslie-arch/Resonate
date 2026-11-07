@@ -51,6 +51,7 @@ function saveReadingReflection(text,status){
   const entry=readingEntry();
   entry.clarifierLayers=captureClarifierLayers();
   entry.reversed=journalReversed();
+  entry.questionReading=state.questionReading===state.drawnAt;
   if(entry.reflection!==text){entry.reflection=text;entry.updatedAt=new Date().toISOString();}
   return writeJournal(entry,status);
 }
@@ -114,7 +115,9 @@ function openJournalReading(id){
   state.drawnOrientations={readingAt:entry.readingAt,reversed:[...(entry.reversed||[])]}; // older entries: all upright
   state.readingAstrology=entry.astrology?JSON.parse(JSON.stringify(entry.astrology)):null;state.readingStartedAt=entry.astrology?.sky?.at||null;
   state.openingDice=entry.openingDice?[...entry.openingDice]:null;
-  const layers=(entry.clarifierLayers||[]).filter(layer=>layer.number<=2);
+  state.questionReading=entry.questionReading?entry.readingAt:null;
+  // Layers 1 and 2 are clarifiers; layer 3 is the Clarity card (Option B, 7 Nov 2026).
+  const layers=(entry.clarifierLayers||[]).filter(layer=>layer.number<=3);
   state.clarifierReadingAt=layers.some(l=>l.number===1)?entry.readingAt:null;
   state.firstLayerClarifiers=[...(layers.find(l=>l.number===1)?.cards||[])];
   state.additionalClarifierReadingAt=layers.some(l=>l.number>1)?entry.readingAt:null;

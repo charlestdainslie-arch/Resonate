@@ -116,11 +116,13 @@
 
   // Step 4: the cards together, and the position within the wider spread.
   // ctx: {pos, spreadId, spreadName, index, labels, baseCards:[card per position], clarified:[count per position]}
-  function synthesis(base, c1, c2, ctx, h) {
+  // clarity (optional): the Clarity card (Option B), drawn after three Major Arcana cards.
+  function synthesis(base, c1, c2, ctx, h, clarity) {
     const H = helpersOf(h);
-    const group = [base, c1, c2].filter(Boolean);
+    const group = [base, c1, c2, clarity].filter(Boolean);
     const kinds = [relation(base, c1, H).kind];
     if (c2) kinds.push(relation(base, c2, H).kind, relation(c1, c2, H).kind);
+    if (clarity) kinds.push(relation(base, clarity, H).kind);
     const harmony = kinds.filter(harmonious).length, tension = kinds.filter(k => k === 'challenge').length;
     let tone, guide;
     if (tension === 0 && harmony === kinds.length) { tone = 'a consistent message'; guide = 'Consider working with this theme with some confidence, while staying open to how it unfolds.'; }
@@ -138,8 +140,19 @@
     const counts = {};
     group.forEach(c => { if (c.element) counts[c.element] = (counts[c.element] || 0) + 1; });
     const top = Object.entries(counts).sort((x, y) => y[1] - x[1])[0];
-    const elementLine = top && top[1] >= 2 ? `${top[1] === group.length ? (group.length === 2 ? 'Both' : 'All three') + ' cards are' : 'Two of the three cards are'} ${top[0]}, putting the weight on ${ELEMENT_DOMAIN[top[0]]}.` : '';
+    const NUM = ['', 'One', 'Two', 'Three', 'Four'], num = ['', 'one', 'two', 'three', 'four'];
+    const elementLine = top && top[1] >= 2 ? `${top[1] === group.length ? (group.length === 2 ? 'Both' : 'All ' + num[group.length]) + ' cards are' : `${NUM[top[1]]} of the ${num[group.length]} cards are`} ${top[0]}, putting the weight on ${ELEMENT_DOMAIN[top[0]]}.` : '';
     return { lead, element: elementLine, guide, wider: wider(base, ctx, H) };
+  }
+
+  // Clarity card (Option B): after three Major Arcana cards, one Minor card at random from the unused Minors.
+  function clarityStep(base, c1, c2, cl, pos, h) {
+    const H = helpersOf(h), r = relation(base, cl, H);
+    const lead = `${H.name(cl)} ${r.verb} ${H.name(base)}, and brings the three Major Arcana cards down to an everyday level.`;
+    const domain = cl.suit ? SUIT_DOMAIN[cl.suit] : 'everyday life';
+    const meaning = `In ${pos}, after ${base.name}, ${c1.name} and ${c2.name}, the theme of ${theme(H, cl)} points to where this may show up day to day: ${domain}.`;
+    const notes = r.notes.filter(n => !/^As a Minor Arcana card/.test(n));
+    return { kind: r.kind, lead, meaning, basis: [...r.basis, 'drawn at random from the unused Minor Arcana, because the original card and both clarifiers are Major Arcana (Chas\u2019s teaching rule, Option B)'], notes, connection: r.connection };
   }
 
   function wider(base, ctx, H) {
@@ -161,5 +174,5 @@
 
   const METHOD = 'How this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.';
 
-  return { relation, firstStep, secondStep, synthesis, wider: (base, ctx, h) => wider(base, ctx, helpersOf(h)), METHOD, CELTIC_PAIRS };
+  return { relation, firstStep, secondStep, clarityStep, synthesis, wider: (base, ctx, h) => wider(base, ctx, helpersOf(h)), METHOD, CELTIC_PAIRS };
 });

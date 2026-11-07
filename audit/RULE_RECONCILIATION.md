@@ -1,5 +1,9 @@
 # Major Arcana clarifier rule vs the two-clarifier visual limit
 
+**Decided 7 Nov 2026: Chas approved design B (the Clarity card), drawn when the seeker taps.** Built on
+`claude/uat-option-b`; see `audit/DECISIONS_7NOV.md`. The frequencies below still describe how often the
+Clarity card is offered. The text that follows is the analysis as it stood before the decision.
+
 Si Aye, 7 Nov 2026, decision 7: "Paul's Major Arcana clarification rule must be reconciled with the
 two-clarifier visual limit. Do not truncate the rule or introduce unlimited recursion without an explicit
 design." In this repository the rule is labelled **Chas's teaching rule**; it is not attributed to Paul

@@ -43,11 +43,13 @@ function fixed(id, spread, names, clar, reversedNames, note) {
   // clar: [{pos, c1, c2?}] in press order; names resolved to IDs.
   const base = names.map(byName);
   const c1 = base.map(() => null), c2 = base.map(() => null), steps = [];
-  clar.forEach(({ pos, c1: a, c2: b }) => {
+  const clarity = base.map(() => null);
+  clar.forEach(({ pos, c1: a, c2: b, k }) => {
     c1[pos] = byName(a); steps.push({ pos, layer: 1, id: c1[pos] });
     if (b) { c2[pos] = byName(b); steps.push({ pos, layer: 2, id: c2[pos] }); }
+    if (k) { clarity[pos] = byName(k); steps.push({ pos, layer: 3, id: clarity[pos] }); }   // Clarity card (Option B)
   });
-  return { id, kind: 'boundary', spread, mode: 'fixed', note, base, reversed: reversedNames.map(byName), steps, c1, c2 };
+  return { id, kind: 'boundary', spread, mode: 'fixed', note, base, reversed: reversedNames.map(byName), steps, c1, c2, clarity };
 }
 
 const modes = ['none', 'rule', 'all'];
@@ -73,6 +75,8 @@ const BOUNDARY = [
   fixed('B06', 'celtic', ['The Fool', 'The Magician', 'The High Priestess', 'The Empress', 'The Emperor', 'The Hierophant', 'The Lovers', 'The Chariot', 'Strength', 'The Hermit'],
     [{ pos: 0, c1: 'Wheel of Fortune', c2: 'Justice' }, { pos: 1, c1: 'The Hanged Man', c2: 'Ace of Cups' }, { pos: 2, c1: 'Death', c2: 'Temperance' }, { pos: 3, c1: 'The Devil', c2: 'Two of Wands' }, { pos: 4, c1: 'The Tower', c2: 'The Star' }, { pos: 5, c1: 'Page of Pentacles' }, { pos: 6, c1: 'The Moon', c2: 'Five of Swords' }, { pos: 7, c1: 'Six of Cups' }, { pos: 8, c1: 'The Sun', c2: 'Judgement' }, { pos: 9, c1: 'The World', c2: 'Nine of Pentacles' }],
     ['The Magician', 'The Lovers', 'Death', 'The Moon', 'Judgement'], 'Celtic Cross of ten Majors: every position clarified, several Major-Major pairs, four at the two-clarifier limit'),
+  fixed('B07', 'guidance', ['Death'], [{ pos: 0, c1: 'The Tower', c2: 'Judgement', k: 'Five of Cups' }], [], 'Option B: Major original, Major Clarifier 1, Major Clarifier 2, then the Clarity card (a Minor, given here so the case is fixed; live draws take it at random from the unused Minors)'),
+  { ...fixed('B08', 'seven', ['Three of Wands', 'The Empress', 'Nine of Swords', 'The Hermit', 'Page of Cups', 'Two of Pentacles', 'Ten of Wands'], [{ pos: 3, c1: 'Four of Cups' }], ['Nine of Swords'], 'Seven-card question reading: position 4, You / Answer, read last'), question: true },
 ];
 
 // ---- Si Aye's QA matrix (7 Nov 2026): the 16 baseline cases, where not already covered above. ----

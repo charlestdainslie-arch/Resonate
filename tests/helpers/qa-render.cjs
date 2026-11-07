@@ -22,7 +22,8 @@ async function renderSample(page, sample) {
       const card = cid => cid == null ? null : { id: cid, name: name(cid), arcana: cards.find(c => c.id === cid).arcana, element: cards.find(c => c.id === cid).element, reversed: isReversed(cards.find(c => c.id === cid)) };
       return {
         n: i + 1, label: labels[i], meaning: descs[i],
-        base: card(id), c1: card(state.firstLayerClarifiers?.[i] ?? null), c2: card(second[i] ?? null),
+        base: card(id), c1: card(state.firstLayerClarifiers?.[i] ?? null), c2: card(second[i] ?? null), clarity: card(readingClarity()[i] ?? null),
+        clarityText: txt(art.querySelector('.integrated-clarity')),
         steps: [...art.querySelectorAll('.reading-step')].map(e => e.textContent.trim()),
         original: txt(art.querySelector('.original-card-explanation')),
         clar1: txt(art.querySelector('.integrated-clarifier[data-clarifier="1"]')),
@@ -40,6 +41,7 @@ async function renderSample(page, sample) {
     const valid = ResonateClarifiers.validate(state.drawnCardIds.map(id => cards.find(c => c.id === id)), state.firstLayerClarifiers, second, x => cards.find(c => c.id === x));
     return {
       spreadName: currentSpread().name, drew, valid, positions,
+      order: [...document.querySelectorAll('.reading-meaning[data-position]')].map(a => Number(a.dataset.position)),
       goldenThread: txt(document.querySelector('.reading-golden-thread')),
       pageText: txt(document.getElementById('readingInterpretation')),
       script: ResonatePresenter.buildScript().map(p => ({ chapter: p.chapter, kind: p.kind, text: p.text }))

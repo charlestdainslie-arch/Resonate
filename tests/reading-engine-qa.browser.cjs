@@ -62,10 +62,11 @@ server.listen(0, '127.0.0.1', async () => {
           const want = { 'Crossing Challenge': /The tension to explore is/, 'Recent Past': /shaped the path/, 'Near Future': /possible development/, 'Potential Outcome': /possible development/, 'Your Approach': /Your next step is/ }[p.label];
           if (want) assert.match(p.positionContext, want, `${where}: its own position lens`);
         }
-        const names = [p.base, p.c1, p.c2].filter(Boolean).map(c => c.name);
+        const names = [p.base, p.c1, p.c2, p.clarity].filter(Boolean).map(c => c.name);
         if (!p.c1) { assert.deepEqual(p.steps, [], `${where}: no steps without a clarifier`); assert.equal(p.together, ''); }
         else {
-          assert.deepEqual(p.steps.map(t => Number(t[0])), p.c2 ? [1, 2, 3, 4] : [1, 2, 3], `${where}: steps in order`);
+          assert.deepEqual(p.steps.map(t => Number(t[0])), p.clarity ? [1, 2, 3, 4, 5] : p.c2 ? [1, 2, 3, 4] : [1, 2, 3], `${where}: steps in order`);
+          if (p.clarity) { assert.equal(p.clarity.arcana, 'Minor', `${where}: the Clarity card is a Minor`); assert.ok(p.clarityText.includes(p.base.name), `${where}: the Clarity card's reading names the original`); }
           const lead1 = p.relation1.split('\n')[0];
           assert.ok(lead1.includes(p.c1.name) && lead1.includes(p.base.name), `${where}: step 2 names Clarifier 1 and the original: ${lead1}`);
           if (p.c2) { const lead2 = p.relation2.split('\n')[0]; assert.ok([p.c2, p.base, p.c1].every(c => lead2.includes(c.name)), `${where}: step 3 relates Clarifier 2 to both: ${lead2}`); }
@@ -76,12 +77,18 @@ server.listen(0, '127.0.0.1', async () => {
           } else if (r.positions.length > 1) assert.match(p.synthesisWider, /neighbour is /, `${where}: neighbouring position named`);
         }
         const bothMajor = !!(p.c1 && p.c2 && p.c1.arcana === 'Major' && p.c2.arcana === 'Major');
-        assert.equal(p.limit, bothMajor, `${where}: limit stated exactly when both clarifiers are Major`);
+        // Option B: with three Majors, a Clarity card is due (stated) until drawn; with a non-Major original the limit is stated.
+        assert.equal(p.limit, bothMajor && !p.clarity, `${where}: limit or Clarity card due stated exactly when both clarifiers are Major and no Clarity card yet`);
         assert.equal(p.pending, !!(p.c1 && p.c1.arcana === 'Major' && !p.c2), `${where}: Clarifier 2 due exactly when Clarifier 1 is Major and not yet drawn`);
       }
+      // Seven-card question reading (approved 7 Nov): position 4 last on the page and for Max; otherwise in order.
+      const wantOrder = s.question ? [0, 1, 2, 4, 5, 6, 3] : r.positions.map((_, i) => i);
+      assert.deepEqual(r.order, wantOrder, 'written reading order');
+      const maxOrder = r.script.filter(l => l.chapter === 'cards' && l.kind === 'label').map(l => r.positions.findIndex(p => l.text === (r.positions.length === 1 ? `${p.base.name}${p.base.reversed ? ', reversed' : ''}.` : `${p.label}: ${p.base.name}${p.base.reversed ? ', reversed' : ''}.`)));
+      assert.deepEqual(maxOrder, wantOrder, "Max's order");
       // Max: quotes from the page, every card named, transcript = script.
       r.script.filter(l => l.kind === 'quote').forEach(l => assert.ok(page1.includes(norm(l.text)), 'Max quotes the page: ' + l.text));
-      for (const p of r.positions) for (const c of [p.base, p.c1, p.c2].filter(Boolean)) assert.ok(r.script.some(l => l.kind === 'label' && l.text.includes(c.name)), `Max names ${c.name}`);
+      for (const p of r.positions) for (const c of [p.base, p.c1, p.c2, p.clarity].filter(Boolean)) assert.ok(r.script.some(l => l.kind === 'label' && l.text.includes(c.name)), `Max names ${c.name}`);
       assert.deepEqual(r.transcript, r.script.map(l => l.text), 'player transcript is the script');
       // Reproducible.
       await page.evaluate(() => go('home'));
@@ -91,9 +98,9 @@ server.listen(0, '127.0.0.1', async () => {
     });
   }
 
-  await check('boundary: a stray clarify on a finished card draws nothing (Minor Clarifier 1; two-Major limit)', async page => {
-    const b02 = BOUNDARY.find(s => s.id === 'B02'), b01 = BOUNDARY.find(s => s.id === 'B01');
-    for (const s of [b02, b01]) {
+  await check('boundary: a stray clarify on a finished card draws nothing (Minor Clarifier 1; Clarity card drawn)', async page => {
+    const b02 = BOUNDARY.find(s => s.id === 'B02'), b07 = BOUNDARY.find(s => s.id === 'B07');
+    for (const s of [b02, b07]) {
       await renderSample(page, s);
       const before = await page.evaluate(() => JSON.stringify([state.firstLayerClarifiers, state.additionalClarifierLayers]));
       const steps = await page.evaluate(n => Array.from({ length: n }, (_, i) => clarifyPosition(i)), s.base.length);

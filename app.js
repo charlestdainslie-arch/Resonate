@@ -125,7 +125,9 @@ function reversedIds(){ const o=state.drawnOrientations; return o&&o.readingAt==
 function isReversed(card){ return !!card&&reversedIds().includes(card.id); }
 function orientCards(ids){
   const reversed=reversedIds();
-  if(reversalsOn())ids.forEach(id=>{if(id!=null&&!reversed.includes(id)&&Math.random()<0.5)reversed.push(id);});
+  // Orientation uses the same secure source as the shuffle (approved 7 Nov 2026).
+  const random=typeof ResonateDeck!=='undefined'&&ResonateDeck.secureRandom?ResonateDeck.secureRandom:Math.random;
+  if(reversalsOn())ids.forEach(id=>{if(id!=null&&!reversed.includes(id)&&random()<0.5)reversed.push(id);});
   state.drawnOrientations={readingAt:state.drawnAt,reversed};
   return ids;
 }
@@ -289,6 +291,7 @@ function readingMeaning(card,label,index){
   const R=typeof ResonateClarifierReading!=='undefined'?ResonateClarifierReading:null;
   const H=clarifierReadingHelpers();
   const c1=actual.find(x=>x.number===1)?.card||null, c2=actual.find(x=>x.number===2)?.card||null;
+  const clarityId=readingClarity()[index], clarity=clarityId==null?null:cards.find(c=>c.id===clarityId)||null;
   let step=1;
   const stepLabel=text=>`<span class="reading-step">${++step} · ${text}</span>`;
   const relationHtml=({number,card:clarifier})=>{
@@ -304,26 +307,49 @@ function readingMeaning(card,label,index){
   // Two-clarifier limit vs the Major Arcana rule (Si Aye, 7 Nov, decision 7): when Clarifier 2 is also a Major,
   // the rule as taught would continue. Nothing more is drawn and nothing is hidden: the page says so, and how
   // to continue is an explicit design decision for Chas (audit/RULE_RECONCILIATION.md).
-  const limitNote=c1&&c2&&c1.arcana==='Major'&&c2.arcana==='Major'?`<p class="reading-limit" role="note">Clarifier 2 is also a Major Arcana card. Under the rule as taught, that would call for a further clarifier. This preview shows at most two clarifiers per card, so nothing further has been drawn; how to continue is a design decision awaiting Chas.</p>`:'';
+  // Option B (approved by Chas, 7 Nov 2026): when the original card and both clarifiers are Major Arcana, a
+  // Clarity card is offered, drawn at random from the unused Minor Arcana. The two-clarifier limit stands.
+  // When the original card is not a Major, Option B as approved does not apply: the limit is stated instead.
+  const bothMajor=c1&&c2&&c1.arcana==='Major'&&c2.arcana==='Major';
+  const limitNote=bothMajor&&spot&&spot.needsClarity?`<p class="reading-limit reading-clarity-due" role="note">The original card and both clarifiers are Major Arcana cards, so a Clarity card is due: one card drawn at random from the unused Minor Arcana, to show where this lands in everyday life (Chas's teaching rule). When it is drawn, this reading updates to include it.</p>`
+    :bothMajor&&card.arcana!=='Major'?`<p class="reading-limit" role="note">Clarifier 2 is also a Major Arcana card. The Clarity card applies only when the original card is a Major too, so nothing further is drawn here (at most two clarifiers per card).</p>`:'';
+  const clarityHtml=clarity&&R?(()=>{const st=R.clarityStep(card,c1,c2,clarity,focus,H);return `<div class="integrated-clarity" data-clarity="1">${stepLabel('Clarity card · where the three Major cards land')}<h3>Clarity card · ${cardName(clarity)}</h3><p>${cardMeaning(clarity)}</p>${readingCorrespondences(clarity)}${imageryInsight(clarity)}<div class="clarifier-relation" data-relation="${st.kind}"><p class="relation-lead">${st.lead}</p><p class="relation-meaning">${st.meaning}</p><p class="relation-basis">Read this way because ${st.basis.join('; ')}.</p>${relationNotes(st)}</div></div>`;})():'';
   let synthesis='';
   if(actual.length&&R&&c1){
     const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id));
     const clarified=chosen.map((_,i)=>readingLayerCards(i).length);
-    const s=R.synthesis(card,c1,c2,{pos:focus,index,spreadId:state.spreadId,spreadName:currentSpread().name,labels:positionLabels(),baseCards:chosen,clarified},H);
+    const ctx={pos:focus,index,spreadId:state.spreadId,spreadName:currentSpread().name,labels:positionLabels(),baseCards:chosen,clarified};
+    const s=R.synthesis(card,c1,c2,ctx,H,clarity);
+    const beforeClarity=clarity?R.synthesis(card,c1,c2,ctx,H):null;
     // Revisions are shown, not overwritten (decision 4): steps 1 and 2 never change once written; the
     // "together" reading is revised when Clarifier 2 arrives, and the earlier version stays readable.
     const earlier=c2?R.synthesis(card,c1,null,{pos:focus,index,spreadId:state.spreadId,spreadName:currentSpread().name,labels:positionLabels(),baseCards:chosen,clarified},H):null;
-    const revision=c2?`<p class="reading-revision-tag">Revision 2 · updated when Clarifier 2 was drawn. The original card and Clarifier 1 readings above are unchanged.</p>`:`<p class="reading-revision-tag">Revision 1 · with Clarifier 1.</p>`;
-    const earlierHtml=earlier?`<details class="reading-revision"><summary>Revision 1 · the reading before Clarifier 2</summary><p class="synthesis-earlier">${earlier.lead}${earlier.element?' '+earlier.element:''} ${earlier.guide}</p></details>`:'';
+    const revision=clarity?`<p class="reading-revision-tag">Revision 3 · updated when the Clarity card was drawn. The readings above are unchanged.</p>`:c2?`<p class="reading-revision-tag">Revision 2 · updated when Clarifier 2 was drawn. The original card and Clarifier 1 readings above are unchanged.</p>`:`<p class="reading-revision-tag">Revision 1 · with Clarifier 1.</p>`;
+    const said=x=>`${x.lead}${x.element?' '+x.element:''} ${x.guide}`;
+    const earlierHtml=(beforeClarity?`<details class="reading-revision"><summary>Revision 2 · the reading before the Clarity card</summary><p class="synthesis-earlier">${said(beforeClarity)}</p></details>`:'')+(earlier?`<details class="reading-revision"><summary>Revision 1 · the reading before Clarifier 2</summary><p class="synthesis-earlier">${said(earlier)}</p></details>`:'');
     synthesis=`<div class="combined-meaning">${stepLabel('What they mean together')}<h3>Together in ${focus}</h3>${revision}<p class="synthesis-lead">${s.lead}${s.element?' '+s.element:''} ${s.guide}</p>${s.wider?`<p class="synthesis-wider">${s.wider}</p>`:''}<p class="synthesis-close">This is a perspective for reflection, not a fixed prediction.</p>${earlierHtml}<p class="reading-method">${R.METHOD}</p></div>`;
   } else if(actual.length){
     const themes=[card,...actual.map(x=>x.card)].map(c=>cardKeywords(c).slice(0,2).join(' and ').toLowerCase());
     synthesis=`<div class="combined-meaning"><h3>What these cards mean together</h3><p><strong>${cardName(card)}</strong> provides the foundation of ${themes[0]}. ${actual.map(({card:c},k)=>`${cardName(c)} brings ${themes[k+1]} into the picture`).join('; ')}. In the <strong>${focus}</strong> position, consider how these themes interact: what might become possible when they are held together, and which practical response resonates with your situation? This is a perspective for reflection, not a fixed prediction.</p></div>`;
   }
   const firstLabel=actual.length&&R?`<span class="reading-step">1 · The original card in this position</span>`:'';
-  return `<article class="reading-meaning" data-position="${index}"><div class="reading-art" style="background-image:url('${whisperCardArt(card)}')" role="img" aria-label="Whisper-style artwork inspired by ${card.name}"></div><div class="reading-meaning-body"><div class="reading-meaning-head"><span>${focus}</span></div><div class="original-card-explanation">${firstLabel}<h3>Original Card · ${card.roman||card.id} · ${cardName(card)}</h3><p class="original-position-label">${focus}</p><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div>${readingCorrespondences(card)}<div class="keyword-row">${cardKeywords(card).slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p class="position-context">${positionContext(card,index)}</p><p>${cardMeaning(card)}</p>${imageryInsight(card)}</div>${connected}${pendingNote}${limitNote}${synthesis}${[card,...actual.map(x=>x.card)].map(existingReadingLenses).join('')}<button data-reading-detail="${card.id}" data-index="${index}">Explore ${card.name} ${icon('arrow',14)}</button></div></article>`;
+  return `<article class="reading-meaning" data-position="${index}"><div class="reading-art" style="background-image:url('${whisperCardArt(card)}')" role="img" aria-label="Whisper-style artwork inspired by ${card.name}"></div><div class="reading-meaning-body"><div class="reading-meaning-head"><span>${focus}</span></div><div class="original-card-explanation">${firstLabel}<h3>Original Card · ${card.roman||card.id} · ${cardName(card)}</h3><p class="original-position-label">${focus}</p><div class="reading-astrology"><div><span>CARD CORRESPONDENCE</span><strong>${card.astrology}</strong></div><div><span>SKY AT THIS READING</span><strong>${sky.text}</strong></div></div>${readingCorrespondences(card)}<div class="keyword-row">${cardKeywords(card).slice(0,3).map(k=>`<span>${k}</span>`).join('')}</div><p class="position-context">${positionContext(card,index)}</p><p>${cardMeaning(card)}</p>${imageryInsight(card)}</div>${connected}${clarityHtml}${pendingNote}${limitNote}${synthesis}${[card,...actual.map(x=>x.card),...(clarity?[clarity]:[])].map(existingReadingLenses).join('')}<button data-reading-detail="${card.id}" data-index="${index}">Explore ${card.name} ${icon('arrow',14)}</button></div></article>`;
 }
 
+// Seven-card V, question reading (approved by Chas, 7 Nov 2026): the position definition says "You / Answer"
+// (position 4) "gives the answer and is interpreted last" when the reading answers a specific question. The
+// seeker says so with the toggle on the reading; the written reading, the PDF and Max then take position 4
+// last. The cards stay where they were dealt. state.questionReading holds the reading time it applies to.
+function isQuestionReading(){ return state.spreadId==='seven'&&state.drawnCardIds?.length===7&&!!state.drawnAt&&state.questionReading===state.drawnAt; }
+function readingOrder(){
+  const order=(state.drawnCardIds||[]).map((_,i)=>i);
+  return isQuestionReading()?[0,1,2,4,5,6,3]:order;
+}
+function questionToggle(){
+  if(state.spreadId!=='seven'||state.drawnCardIds?.length!==7)return '';
+  const on=isQuestionReading();
+  return `<label class="question-reading-toggle"><input type="checkbox" id="questionReading"${on?' checked':''}> <span><strong>I'm asking a specific question</strong><small>${on?'Position 4, You / Answer, gives the answer, so it is read last below and by Max.':'Tick this if the reading answers one question: position 4, You / Answer, is then read last.'}</small></span></label>`;
+}
 function readingLayerCards(index){
   const results=[];
   if(state.clarifierReadingAt===state.drawnAt&&state.firstLayerClarifiers?.length)results.push(cards.find(c=>c.id===state.firstLayerClarifiers[index]));
@@ -388,14 +414,19 @@ function goldenThread(chosen){
 function readingSecondLayer(){
   return state.additionalClarifierReadingAt===state.drawnAt?((state.additionalClarifierLayers||[]).find(l=>l.number===2)?.cards||[]):[];
 }
+// The Clarity card (Option B) is kept as layer 3 of additionalClarifierLayers, so the Journal saves and restores it
+// with the clarifiers. It is not a clarifier: nothing that counts clarifiers reads layer 3.
+function readingClarity(){
+  return state.additionalClarifierReadingAt===state.drawnAt?((state.additionalClarifierLayers||[]).find(l=>l.number===3)?.cards||[]):[];
+}
 function clarifierPlan(){
   const base=state.drawnCardIds.map(id=>cards.find(c=>c.id===id));
   const first=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
-  return ResonateClarifiers.plan(base,first,readingSecondLayer(),id=>cards.find(c=>c.id===id));
+  return ResonateClarifiers.plan(base,first,readingSecondLayer(),id=>cards.find(c=>c.id===id),readingClarity());
 }
 function readingUsedIds(){
   const first=state.clarifierReadingAt===state.drawnAt?state.firstLayerClarifiers||[]:[];
-  return [...state.drawnCardIds,...first,...readingSecondLayer()].filter(id=>id!=null);
+  return [...state.drawnCardIds,...first,...readingSecondLayer(),...readingClarity()].filter(id=>id!=null);
 }
 // Draws count cards that are not already in this reading.
 function drawUnusedCards(count){
@@ -460,19 +491,35 @@ function clarifyStepFor(index){
   if(!spot)return '';
   if(spot.first==null)return 'first';
   if(spot.needsSecond)return 'second';
+  if(spot.needsClarity)return 'clarity';
   return '';
+}
+// Option B: one Clarity card, drawn uniformly at random from the Minor Arcana cards not yet in this reading
+// (no redrawing until a Minor appears; nothing chosen in advance).
+function drawClarityCard(position){
+  if(!clarifierPlan().positions[position]?.needsClarity)return;
+  const cardIds=cards.map(c=>c.id);
+  const unavailable=[...readingUsedIds(),...cards.filter(c=>c.arcana==='Major').map(c=>c.id)];
+  const [id]=orientCards(ResonateDeck.drawRemaining(cardIds,unavailable,1));
+  if(state.additionalClarifierReadingAt!==state.drawnAt){state.additionalClarifierLayers=[];state.additionalClarifierReadingAt=state.drawnAt;}
+  let layer=state.additionalClarifierLayers.find(l=>l.number===3);
+  if(!layer){layer={number:3,cards:state.drawnCardIds.map(()=>null)};state.additionalClarifierLayers.push(layer);}
+  layer.cards[position]=id;
+  renderDraw();
+  document.querySelectorAll('.reading-position')[position]?.scrollIntoView({behavior:scrollMotion(),block:'center'});
 }
 function clarifyPosition(index){
   const step=clarifyStepFor(index);
   if(step==='first')drawFirstLayerClarifiers(index);
   else if(step==='second')drawNextClarifierLayer(index);
+  else if(step==='clarity')drawClarityCard(index);
   return step;
 }
 // The first card, in spread order, that the rule is waiting on (a Major without Clarifier 1, or a Major
 // Clarifier 1 without Clarifier 2), or -1.
 function nextDueClarifier(){
   const plan=clarifierPlan();
-  const due=plan.positions.find(p=>p.needsFirst||p.needsSecond);
+  const due=plan.positions.find(p=>p.needsFirst||p.needsSecond||p.needsClarity);
   return due?due.index:-1;
 }
 function additionalClarifierView(labels){
@@ -501,7 +548,15 @@ function clarifierCardsForPosition(index){
     const card=cards.find(c=>c.id===layer.id);
     const turning=turn&&layer.number===2;
     return card?`<div class="position-clarifier${turning?' clarifier-turn':''}${isReversed(card)?' is-reversed':''}"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${cardName(card)}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer">${turning?'<span class="clarifier-back clarifier-back-cover" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span>':''}<strong>${card.roman||card.id} · ${cardName(card)}</strong></div>`:'';
-  }).join('')}${waiting}</div>${waiting?`<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}" aria-label="Draw Clarifier 2 for card ${index+1}">✦ Draw Clarifier 2</button>`:''}`;
+  }).join('')}${waiting}</div>${waiting?`<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}" aria-label="Draw Clarifier 2 for card ${index+1}">✦ Draw Clarifier 2</button>`:''}${clarityCardForPosition(index,spot)}`;
+}
+// Option B: the Clarity card sits centred below Clarifiers 1 and 2. Not a clarifier, so it has its own class
+// and is never counted with them.
+function clarityCardForPosition(index,spot){
+  const id=readingClarity()[index];
+  const card=id==null?null:cards.find(c=>c.id===id);
+  if(card)return `<div class="position-clarity${isReversed(card)?' is-reversed':''}" aria-label="Clarity card for position ${index+1}"><span class="clarifier-layer-label">CLARITY CARD</span><img src="${cardImage(card)}" alt="${cardName(card)}, clarity card" loading="eager" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${cardName(card)}</strong></div>`;
+  return spot&&spot.needsClarity?`<button type="button" class="ghost-button clarify-choice clarify-due clarity-due" data-clarify-position="${index}" aria-label="Draw a Clarity card for card ${index+1}: all three cards are Major Arcana">✦ Draw Clarity card</button>`:'';
 }
 // Text and label for the main clarifier button, from the rule.
 // The main button now clarifies one card at a time: the first card the rule is waiting on.
@@ -509,9 +564,10 @@ function clarifierNextStep(){
   const plan=clarifierPlan();
   const due=nextDueClarifier();
   const where=i=>state.drawnCardIds.length>1?` for ${String(i+1).padStart(2,'0')} · ${positionLabels()[i]||'Position'}`:'';
-  const left=plan.pendingFirst.length+plan.pendingSecond.length;
+  const left=plan.pendingFirst.length+plan.pendingSecond.length+plan.pendingClarity.length;
   const more=left>1?` ${left-1} more card${left===2?' is':'s are'} waiting; each is clarified on its own.`:'';
   if(due>=0&&plan.positions[due].needsFirst)return {action:'first',position:due,label:`Draw First Clarifier${where(due)}`,help:`${cardName(cards.find(c=>c.id===state.drawnCardIds[due]))} is a Major Arcana card, so it receives a clarifier.${more} You can also clarify any other card from the spread above.`};
+  if(due>=0&&plan.positions[due].needsClarity)return {action:'clarity',position:due,label:`Draw Clarity card${where(due)}`,help:`The original card and both clarifiers are Major Arcana cards, so a Clarity card is due: one Minor Arcana card, drawn at random.${more}`};
   if(due>=0)return {action:'second',position:due,label:`Draw Second Clarifier${where(due)}`,help:`Its first clarifier is itself a Major Arcana card, so it receives a second clarifier.${more}`};
   const any=readingUsedIds().length>state.drawnCardIds.length;
   const allTwo=any&&plan.positions.every(p=>p.count===0||p.count===2);
@@ -531,7 +587,7 @@ function evolvingReading(chosen,labels){
 function renderDraw(){
   const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${slotLabelHtml(labels[i]||'Position')}</span><button type="button" class="reading-card is-facedown${isReversed(card)?' is-reversed':''}" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${cardName(card)}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${cardName(card)}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${cardName(card)}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p><div class="reading-meanings">${chosen.map((card,i)=>readingMeaning(card,labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">${clarifierNextStep().help}</p><button type="button" class="gold-button" id="primaryClarifierAction">${clarifierNextStep().label} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${slotLabelHtml(labels[i]||'Position')}</span><button type="button" class="reading-card is-facedown${isReversed(card)?' is-reversed':''}" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${cardName(card)}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${cardName(card)}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${cardName(card)}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p>${questionToggle()}<div class="reading-meanings">${readingOrder().map(i=>readingMeaning(chosen[i],labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">${clarifierNextStep().help}</p><button type="button" class="gold-button" id="primaryClarifierAction">${clarifierNextStep().label} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
@@ -546,7 +602,9 @@ function renderDraw(){
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
   document.getElementById('downloadReading').onclick=downloadReading;
   const clarifyAction=document.getElementById('primaryClarifierAction');
-  if(clarifyAction)clarifyAction.onclick=()=>{const step=clarifierNextStep();if(step.action==='first'||step.action==='second')clarifyPosition(step.position);else document.getElementById('saveReadingJournal')?.click();};
+  const questionBox=document.getElementById('questionReading');
+  if(questionBox)questionBox.onchange=()=>{state.questionReading=questionBox.checked?state.drawnAt:null;renderDraw();document.getElementById('questionReading')?.scrollIntoView({block:'center'});};
+  if(clarifyAction)clarifyAction.onclick=()=>{const step=clarifierNextStep();if(step.action==='first'||step.action==='second'||step.action==='clarity')clarifyPosition(step.position);else document.getElementById('saveReadingJournal')?.click();};
   document.querySelectorAll('[data-clarify-position]').forEach(button=>button.onclick=()=>clarifyPosition(Number(button.dataset.clarifyPosition)));
   const backToReading=document.getElementById('backToReadingTop');
   if(backToReading)backToReading.onclick=()=>document.querySelector('.spread-scroll')?.scrollIntoView({block:'start',behavior:scrollMotion()});
@@ -560,7 +618,7 @@ async function downloadReading(){
     const entry=typeof activeJournal==='function'?activeJournal():null;
     const sections=[{title:readingTitle(),text:new Date(state.drawnAt).toLocaleString([], {dateStyle:'full',timeStyle:'long'})}];
     if(state.readingAstrology&&typeof ResonateAstrology!=='undefined')sections.push({title:'Astrology snapshot · preserved session moment',text:ResonateAstrology.report(state.readingAstrology)});
-    chosen.forEach((card,i)=>sections.push({title:positionLabels()[i]+' · '+cardName(card),text:textOf(readingMeaning(card,positionLabels()[i],i))}));
+    readingOrder().map(i=>[chosen[i],i]).forEach(([card,i])=>sections.push({title:positionLabels()[i]+' · '+cardName(card),text:textOf(readingMeaning(card,positionLabels()[i],i))}));
     sections.push({title:'The Golden Thread',text:textOf(goldenThread(chosen))});
     if(entry?.reflection)sections.push({title:'Your reflection',text:entry.reflection});
     for(const [index,note] of Object.entries(entry?.cardReflections||{}))if(note.text)sections.push({title:'Card reflection · '+positionLabels()[index],text:note.text});

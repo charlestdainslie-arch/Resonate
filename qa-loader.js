@@ -21,10 +21,12 @@
       render();
       const drew = sample.steps.map(s => {
         const step = clarifyPosition(s.pos);
-        if (step !== (s.layer === 1 ? 'first' : 'second')) throw new Error(`${sample.id}: position ${s.pos + 1} drew "${step}", sample expects Clarifier ${s.layer}`);
+        const want = s.layer === 1 ? 'first' : s.layer === 2 ? 'second' : 'clarity';
+        if (step !== want) throw new Error(`${sample.id}: position ${s.pos + 1} drew "${step}", sample expects ${want}`);
         return step;
       });
       state.drawnOrientations = { readingAt: AT, reversed: [...sample.reversed] };
+      state.questionReading = sample.question ? AT : null;   // Seven-card question reading (position 4 last)
       renderDraw();
       return drew;
     } finally { window.ResonateDeck = original; }

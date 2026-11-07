@@ -39,6 +39,7 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
   }
   const snapshot = p => p.evaluate(() => ({
     first: [...(state.firstLayerClarifiers || [])], second: [...((state.additionalClarifierLayers || []).find(l => l.number === 2)?.cards || [])],
+    clarity: [...((state.additionalClarifierLayers || []).find(l => l.number === 3)?.cards || [])],
     button: document.getElementById('primaryClarifierAction')?.textContent.trim() || null,
     help: document.querySelector('.reading-help')?.textContent.trim() || '',
     choices: [...document.querySelectorAll('[data-clarify-position]')].map(b => Number(b.dataset.clarifyPosition)),
@@ -46,13 +47,13 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     due: [...document.querySelectorAll('[data-clarify-position].clarify-due')].map(b => Number(b.dataset.clarifyPosition)),
     slots: [...document.querySelectorAll('.reading-position')].map(pos => pos.querySelectorAll('.position-clarifier').length),
     waiting: [...document.querySelectorAll('.reading-position')].map(pos => pos.querySelectorAll('.position-clarifier-slot').length),
-    valid: ResonateClarifiers.validate(state.drawnCardIds.map(id => cards.find(c => c.id === id)), state.firstLayerClarifiers, (state.additionalClarifierLayers || []).find(l => l.number === 2)?.cards || [], id => cards.find(c => c.id === id))
+    valid: ResonateClarifiers.validate(state.drawnCardIds.map(id => cards.find(c => c.id === id)), state.firstLayerClarifiers, (state.additionalClarifierLayers || []).find(l => l.number === 2)?.cards || [], id => cards.find(c => c.id === id), (state.additionalClarifierLayers || []).find(l => l.number === 3)?.cards || [])
   }));
 
   // Three cards: The Fool (Major), Four of Wands (Minor), The Magician (Major).
   const minor = await (async () => { const { ctx, p } = await reading(1280, 'three', [0], []); const id = await p.evaluate(() => cards.find(c => c.arcana !== 'Major').id); await ctx.close(); return id; })();
   const minors = await (async () => { const { ctx, p } = await reading(1280, 'three', [0], []); const ids = await p.evaluate(() => cards.filter(c => c.arcana !== 'Major').map(c => c.id)); await ctx.close(); return ids; })();
-  const [m1, m2, m3, m4, m5, m6] = minors;
+  const [m1, m2, m3, m4, m5, m6, k1, k2, k3, k4] = minors;
 
   // Since the team directive of 7 Nov 2026 the main button clarifies one card at a time: the first card,
   // in spread order, that the rule is waiting on, finishing that card (Clarifier 2 if Clarifier 1 is a
@@ -61,11 +62,11 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     const before = await snapshot(p);
     await p.locator('#primaryClarifierAction').click(); await p.waitForTimeout(200);
     const after = await snapshot(p);
-    const changed = after.first.map((id, i) => (id ?? null) !== (before.first[i] ?? null) || (after.second[i] ?? null) !== (before.second[i] ?? null) ? i : -1).filter(i => i >= 0);
+    const changed = after.first.map((id, i) => (id ?? null) !== (before.first[i] ?? null) || (after.second[i] ?? null) !== (before.second[i] ?? null) || (after.clarity[i] ?? null) !== (before.clarity[i] ?? null) ? i : -1).filter(i => i >= 0);
     assert.equal(changed.length, 1, 'one press, one card: ' + JSON.stringify(changed));
     return after;
   };
-  const pressUntilDone = async (p, max = 12) => { let s = await snapshot(p); for (let k = 0; k < max && s.button; k++) s = await press(p); return s; };
+  const pressUntilDone = async (p, max = 20) => { let s = await snapshot(p); for (let k = 0; k < max && s.button; k++) s = await press(p); return s; };
 
   for (const width of [390, 1280]) {
     await check(`${width}px three-card: Majors get a first clarifier one card at a time, the Minor waits for the seeker`, async () => {
@@ -101,24 +102,27 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     await ctx.close();
   });
 
-  await check('second clarifier only after a Major clarifier; never a third', async () => {
-    const { ctx, p } = await reading(390, 'three', [0, m1, 1], [2, 3, m2]);
+  await check('second clarifier only after a Major clarifier; never a third; three Majors earn one Clarity card (Option B)', async () => {
+    // Fool, Clarifier 1 High Priestess, Clarifier 2 Empress: all Major, so the Clarity card m2; then the Magician's Clarifier 1 m3.
+    const { ctx, p } = await reading(390, 'three', [0, m1, 1], [2, 3, m2, m3]);
     const s = await pressUntilDone(p);
     assert.deepEqual(s.second, [3, null, null]);
+    assert.deepEqual(s.clarity, [m2, null, null], 'one Clarity card, for the card with three Majors');
     assert.deepEqual(s.slots, [2, 0, 1]);
     assert.equal(s.button, null, 'main button gives way to the Journal save');
     assert.match(s.help, /complete/i);
     assert.deepEqual(s.valid, []);
-    // Both clarifiers Major: the two-card limit is stated, not silently applied (Si Aye, 7 Nov, decision 7).
-    assert.match(await p.locator('.reading-meaning[data-position="0"] .reading-limit').innerText(), /Clarifier 2 is also a Major Arcana card[\s\S]*design decision awaiting Chas/);
-    assert.equal(await p.locator('.reading-meaning[data-position="2"] .reading-limit').count(), 0);
+    assert.equal(await p.locator('.reading-meaning[data-position="0"] .integrated-clarity').count(), 1, 'the Clarity card is read');
+    assert.equal(await p.locator('.reading-limit').count(), 0, 'nothing more is due');
     await p.evaluate(() => { drawNextClarifierLayer(0); clarifyPosition(0); });
-    assert.deepEqual((await snapshot(p)).second, [3, null, null], 'a stray call adds nothing');
+    assert.deepEqual([(await snapshot(p)).second, (await snapshot(p)).clarity], [[3, null, null], [m2, null, null]], 'a stray call adds nothing');
     await ctx.close();
   });
 
   await check('seeker clarifies the Minor; a Major clarifier there earns a second', async () => {
-    const { ctx, p } = await reading(390, 'three', [0, m1, 1], [2, 5, 3, 6, m2]);
+    // Fool: 2, then (after the seeker's 5 on the Minor) 3 and a Clarity card k1; the Minor: 6 (a Major original is
+    // needed for a Clarity card, so none); the Magician: m2.
+    const { ctx, p } = await reading(390, 'three', [0, m1, 1], [2, 5, 3, k1, 6, m2]);
     await press(p);                                                                   // Fool: Clarifier 1 = 2
     await p.locator('[data-clarify-position="1"]').click(); await p.waitForTimeout(200); // seeker's choice: 5
     let s = await snapshot(p);
@@ -127,6 +131,8 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     s = await pressUntilDone(p);
     assert.deepEqual(s.first, [2, 5, m2]);
     assert.deepEqual(s.second, [3, 6, null], 'both Major clarifiers get a second, the Minor one does not');
+    assert.deepEqual(s.clarity, [k1, null, null], 'Clarity card only where the original is a Major too');
+    assert.match(await p.locator('.reading-meaning[data-position="1"] .reading-limit').innerText(), /applies only when the original card is a Major/);
     assert.deepEqual(s.valid, []);
     await ctx.close();
   });
@@ -145,7 +151,7 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
   });
 
   await check('saved to the Journal and reopened: same cards, same clarifiers, same empty slots', async () => {
-    const { ctx, p } = await reading(390, 'three', [0, m1, 1], [2, 3, m2]);
+    const { ctx, p } = await reading(390, 'three', [0, m1, 1], [2, 3, m2, m3]);
     await pressUntilDone(p);
     const before = await snapshot(p);
     await p.locator('#saveReadingJournal').click(); await p.waitForTimeout(300);
@@ -153,16 +159,17 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     await p.evaluate(() => go('home')); await p.waitForTimeout(200);
     await p.evaluate(id => openJournalReading(id), id); await p.waitForTimeout(400);
     const after = await snapshot(p);
-    assert.deepEqual([after.first, after.second, after.slots], [before.first, before.second, before.slots]);
+    assert.deepEqual([after.first, after.second, after.clarity, after.slots], [before.first, before.second, before.clarity, before.slots]);
+    assert.deepEqual(before.clarity, [m2, null, null], 'the Clarity card is saved and restored');
     assert.deepEqual(p.__errors, []);
     await ctx.close();
   });
 
   await check('PDF downloads and names every card and clarifier drawn', async () => {
-    const { ctx, p } = await reading(1280, 'three', [0, m1, 1], [2, 3, m2]);
+    const { ctx, p } = await reading(1280, 'three', [0, m1, 1], [2, 3, m2, m3]);
     await pressUntilDone(p);
     const text = await p.evaluate(() => document.getElementById('readingInterpretation').innerText);
-    const names = await p.evaluate(ids => ids.map(id => cards.find(c => c.id === id).name), [0, m1, 1, 2, m2, 3]);
+    const names = await p.evaluate(ids => ids.map(id => cards.find(c => c.id === id).name), [0, m1, 1, 2, m2, 3, m3]);
     names.forEach(n => assert.ok(text.includes(n), 'reading names ' + n));
     const [dl] = await Promise.all([p.waitForEvent('download', { timeout: 60000 }), p.locator('#downloadReading').click()]);
     const file = await dl.path();
@@ -187,11 +194,12 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
 
   await check('Celtic Cross at 360px: rule holds across ten positions, no repeats', async () => {
     const drawn = [0, m1, 1, m2, 2, m3, 3, m4, 4, m5];
-    // One card at a time: 01 (C1 5, C2 9), 03 (6, 10), 05 (a Minor: no second), 07 (7, 11), 09 (8, 12).
-    const { ctx, p } = await reading(360, 'celtic', drawn, [5, 9, 6, 10, m6, 7, 11, 8, 12]);
+    // One card at a time: 01 (5, 9, Clarity k1), 03 (6, 10, k2), 05 (a Minor: no second), 07 (7, 11, k3), 09 (8, 12, k4).
+    const { ctx, p } = await reading(360, 'celtic', drawn, [5, 9, k1, 6, 10, k2, m6, 7, 11, k3, 8, 12, k4]);
     const s = await pressUntilDone(p);
     assert.deepEqual(s.first.map(x => x != null), [true, false, true, false, true, false, true, false, true, false]);
     assert.equal(s.second.filter(x => x != null).length, 4, 'a second for each Major first clarifier (4 of 5)');
+    assert.deepEqual(s.clarity, [k1, null, k2, null, null, null, k3, null, k4, null], 'a Clarity card wherever three Majors met');
     assert.deepEqual(s.valid, []);
     assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), 'no side-scroll');
     await ctx.close();
