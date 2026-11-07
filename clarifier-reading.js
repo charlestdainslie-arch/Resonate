@@ -126,6 +126,7 @@
     if (tension === 0 && harmony === kinds.length) { tone = 'a consistent message'; guide = 'Consider working with this theme with some confidence, while staying open to how it unfolds.'; }
     else if (tension === 0 && harmony === 0) { tone = 'a layered message, each card shifting the angle a little'; guide = 'Notice which angle feels most true to your situation, and start there.'; }
     else if (tension > harmony) { tone = 'a message with real tension in it'; guide = 'Treat the friction as information: what would honour both sides?'; }
+    else if (tension === 0 && harmony * 2 < kinds.length) { tone = 'a layered message, each card shifting the angle a little'; guide = 'Notice which angle feels most true to your situation, and start there.'; }
     else if (tension === 0) { tone = 'a mostly consistent message'; guide = 'Let the shared theme lead, and notice where the other card shifts it.'; }
     else { tone = 'a mixed message, with both agreement and friction'; guide = 'Notice which card feels most true to your situation, and let it lead.'; }
     const themes = list(group.map(c => word(H, c)));

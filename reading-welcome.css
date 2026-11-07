@@ -239,3 +239,8 @@
 .draw-page .reading-meaning .combined-meaning p{text-align:left}
 .draw-page .reading-meaning .synthesis-close{font-style:italic}
 .draw-page .reading-meaning .reading-method{color:#a99d8a;font-size:13px;line-height:1.55}
+.draw-page .reading-meaning .reading-limit{margin:16px 0 0;padding:10px 14px;border:1px solid rgba(210,168,92,.55);border-radius:8px;color:#e9dcc0;font-size:15px;background:rgba(210,168,92,.06)}
+.draw-page .reading-meaning .reading-revision-tag{margin:-4px 0 10px;color:#c8a763;font-size:13px;letter-spacing:.03em}
+.draw-page .reading-meaning .reading-revision{margin:12px 0 0;padding:8px 12px;border-left:2px solid rgba(210,168,92,.45);background:rgba(0,0,0,.18)}
+.draw-page .reading-meaning .reading-revision summary{cursor:pointer;color:#dfc48b;font-size:14px;min-height:32px;display:list-item}
+.draw-page .reading-meaning .reading-revision p{margin:8px 0 2px;color:#cfc4b2;font-size:15px}

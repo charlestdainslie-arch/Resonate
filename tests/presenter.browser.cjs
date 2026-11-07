@@ -75,12 +75,12 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
       if (state.clarifierReadingAt === state.drawnAt && state.firstLayerClarifiers?.length) layers.push(state.firstLayerClarifiers);
       if (state.additionalClarifierReadingAt === state.drawnAt) (state.additionalClarifierLayers || []).filter(l => l.number === 2).forEach(l => layers.push(l.cards));
       return { title: readingTitle(), labels: positionLabels(), ids: state.drawnCardIds, names: state.drawnCardIds.map(name),
-        layers: layers.map(l => l.map(id => ({ id, name: name(id) }))) };
+        layers: layers.map(l => l.map(id => id == null ? null : ({ id, name: name(id) }))) };
     });
     const one = r.ids.length === 1;
     const allowed = new Set([`Tonight: your ${r.title}.`]);
     r.ids.forEach((id, i) => allowed.add(one ? `${r.names[i]}.` : `${r.labels[i]}: ${r.names[i]}.`));
-    r.layers.forEach((layer, l) => layer.forEach((c, i) => allowed.add(one ? `Clarifier ${l + 1}: ${c.name}.` : `Clarifier ${l + 1} · ${r.labels[i]}: ${c.name}.`)));
+    r.layers.forEach((layer, l) => layer.forEach((c, i) => c && allowed.add(one ? `Clarifier ${l + 1}: ${c.name}.` : `Clarifier ${l + 1} · ${r.labels[i]}: ${c.name}.`)));
     const labels = script.filter(l => l.kind === 'label').map(l => l.text);
     for (const line of script) {
       if (line.kind === 'frame') assert.ok(frames.includes(line.text), `${label}: unknown presenter line "${line.text}"`);
@@ -89,8 +89,11 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     }
     assert.deepEqual([...labels].sort(), [...allowed].sort(), `${label}: every position and clarifier is named once`);
     // Recordable clips: each depends on one card of this reading at most, and says only words from its caption.
-    const ids = [...r.ids, ...r.layers.flat().map(c => c.id)];
+    const ids = [...r.ids, ...r.layers.flat().filter(Boolean).map(c => c.id)];
     for (const line of script) for (const clip of line.clips) {
+      // Relationship and "together" lines (team directive, 7 Nov) depend on two or three cards and the
+      // position, so they cannot be pre-recorded: they are live lines, spoken by the temporary voice fallback.
+      if (/^(?:rel|together)-\w+-\d+-\d+(?:-\d+)?$/.test(clip.id)) { assert.ok(line.kind === 'quote' && line.text === clip.text, `${label}: live line ${clip.id} is one whole caption`); continue; }
       const m = clip.id.match(/^(?:frame-\w+|title-\w+|pos-\w+-\d+|label-clarifier-[12]|thread-(?:\d|resonance)|(?:lens-\w+-\d+|meaning|name)-(\d+)(?:-r)?)$/);
       assert.ok(m, `${label}: clip id "${clip.id}"`);
       if (m[1] !== undefined) assert.ok(ids.includes(Number(m[1])), `${label}: clip ${clip.id} belongs to this reading`);
@@ -357,7 +360,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
         await open(page);
         assert.equal(await page.locator('.mc-card').count(), r.ids.length, 'one card per position');
         assert.deepEqual(await page.locator('.mc-card > strong').allInnerTexts(), r.names);
-        assert.equal(await page.locator('.mc-clar').count(), r.layers.flat().length, 'every clarifier shown under its card');
+        assert.equal(await page.locator('.mc-clar').count(), r.layers.flat().filter(Boolean).length, 'every clarifier shown under its card');
         assert.match(await page.locator('.mc-provenance').innerText(), new RegExp(`^This reading · ${r.title.replace(/[·]/g, '.')} · .* · not saved yet$`));
         assert.equal(await page.evaluate(() => document.querySelector('.mc-player').scrollWidth > innerWidth), false, 'no sideways page scroll');
       });

@@ -232,10 +232,16 @@
   }
 
   let player=null;
+  // Decision 5 (Si Aye, 7 Nov): adding a clarifier stops Max's current narration and offers
+  // "Replay Updated Reading". heardSig is the reading as it stood when Max was last opened.
+  const readingSig=()=>JSON.stringify([state.drawnAt,layers().map(l=>l.map(c=>c?c.id:null))]);
+  let heardSig=null;
+  const updatedSinceHeard=()=>!!heardSig&&JSON.parse(heardSig)[0]===state.drawnAt&&heardSig!==readingSig();
   async function openPlayer(chapter){
     if(player)return;
     player={pending:true};
     const full=buildScript(),script=playlist(full,typeof chapter==='string'?chapter:null);
+    const sig=readingSig();heardSig=sig;
     let voice=await pickVoice(script);
     const pack=voice===packVoice?packVoice.pack:null;
     const opener=document.activeElement;
@@ -328,7 +334,7 @@
     $('mcClose').onclick=close;
     $('mcFull').onclick=()=>{close();document.getElementById('readingInterpretation')?.scrollIntoView({block:'start',behavior:scrollMotion()});};
     $('mcPlay').focus();
-    player={script,root,pack,get voice(){return muted?null:(voice?voice.id:null);},chapter:typeof chapter==='string'?chapter:null};
+    player={script,root,pack,sig,close,get voice(){return muted?null:(voice?voice.id:null);},chapter:typeof chapter==='string'?chapter:null};
     document.dispatchEvent(new CustomEvent('maxchasroom:open',{detail:{root,chapter:player.chapter}}));
   }
 
@@ -355,7 +361,7 @@
     const extra=[1,2].filter(n=>n<=drawn).map(n=>`<button type="button" class="ghost-button" data-mc-chapter="c${n}">▶ Hear Clarifier ${n}</button>`).join('');
     // At the top of the reading, straight under its heading, so it is seen without scrolling on a phone.
     const anchor=document.querySelector('.mc-demo-banner')||document.querySelector('.draw-stage h1');
-    (anchor||interpretation).insertAdjacentHTML(anchor?'afterend':'beforebegin',`<section class="mc-launch"><div class="eyebrow">MAX CHASROOM · PRESENTER PREVIEW</div><p>A short spoken walk through this reading. The full reading stays below.</p><button type="button" class="gold-button" id="mcOpen">▶ Watch Max Chasroom present this reading</button>${extra?`<div class="mc-launch-more">${extra}</div>`:''}</section>`);
+    (anchor||interpretation).insertAdjacentHTML(anchor?'afterend':'beforebegin',`<section class="mc-launch"><div class="eyebrow">MAX CHASROOM · PRESENTER PREVIEW</div><p>A short spoken walk through this reading. The full reading stays below.</p><button type="button" class="gold-button" id="mcOpen">${updatedSinceHeard()?'↻ Replay Updated Reading':'▶ Watch Max Chasroom present this reading'}</button>${updatedSinceHeard()?'<p class="mc-updated" role="status">Your reading has changed since Max presented it. Replay to hear the updated reading.</p>':''}${extra?`<div class="mc-launch-more">${extra}</div>`:''}</section>`);
     document.getElementById('mcOpen')?.addEventListener('click',()=>openPlayer());
     document.querySelectorAll('[data-mc-chapter]').forEach(b=>b.addEventListener('click',()=>openPlayer(b.dataset.mcChapter)));
   }
@@ -390,7 +396,7 @@
     const top=document.querySelector('.mc-launch');
     if(!top)return;
     const canClarify=typeof clarifyPosition==='function'&&!isDemo();
-    document.body.insertAdjacentHTML('beforeend',`<div class="mc-dock" id="mcDock" role="toolbar" aria-label="Reading controls" hidden>${canClarify?'<button type="button" class="mc-clarify" id="mcClarify"><span class="mc-clarify-k">✦ Clarify</span><span class="mc-clarify-v" id="mcClarifyCard"></span></button>':''}<button type="button" class="mc-float" id="mcFloat" aria-label="Watch Max Chasroom present this reading"><span class="mc-float-screen" aria-hidden="true"></span>▶ Watch Max</button></div>`);
+    document.body.insertAdjacentHTML('beforeend',`<div class="mc-dock" id="mcDock" role="toolbar" aria-label="Reading controls" hidden>${canClarify?'<button type="button" class="mc-clarify" id="mcClarify"><span class="mc-clarify-k">✦ Clarify</span><span class="mc-clarify-v" id="mcClarifyCard"></span></button>':''}${updatedSinceHeard()?'<button type="button" class="mc-float is-updated" id="mcFloat" aria-label="Replay the updated reading with Max Chasroom"><span class="mc-float-screen" aria-hidden="true"></span>↻ Replay Updated</button>':'<button type="button" class="mc-float" id="mcFloat" aria-label="Watch Max Chasroom present this reading"><span class="mc-float-screen" aria-hidden="true"></span>▶ Watch Max</button>'}</div>`);
     document.body.classList.add('has-mc-dock');
     const dock=document.getElementById('mcDock'),btn=document.getElementById('mcFloat'),clar=document.getElementById('mcClarify');
     btn.addEventListener('click',()=>openPlayer());
@@ -404,6 +410,16 @@
       const open=!!document.querySelector('.mc-player');
       dock.hidden=!(state.drawSettled&&!open);
       if(!clar)dock.hidden=dock.hidden||topVisible;
+      // Watch Max ↔ Replay Updated Reading follows whether the reading has changed since Max last presented it.
+      const upd=updatedSinceHeard();
+      if(btn.classList.contains('is-updated')!==upd){
+        btn.classList.toggle('is-updated',upd);
+        btn.innerHTML=`<span class="mc-float-screen" aria-hidden="true"></span>${upd?'↻ Replay Updated':'▶ Watch Max'}`;
+        btn.setAttribute('aria-label',upd?'Replay the updated reading with Max Chasroom':'Watch Max Chasroom present this reading');
+        const top=document.getElementById('mcOpen');
+        if(top)top.textContent=upd?'↻ Replay Updated Reading':'▶ Watch Max Chasroom present this reading';
+        if(!upd)document.querySelector('.mc-updated')?.remove();
+      }
       if(!clar||dock.hidden)return;
       const seen=focusedPosition();
       if(seen>=0)dockTarget=seen;
@@ -415,11 +431,13 @@
       if(key===shown)return;
       shown=key;
       const name=cardName(byId(state.drawnCardIds[dockTarget]));
+      const pair=layers().map(l=>l[dockTarget]);
+      const atLimit=!step&&pair.length===2&&pair.every(c=>c&&c.arcana==='Major');
       clar.disabled=!step;
       clar.dataset.position=dockTarget;
       clar.dataset.step=step||'done';
-      document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step?`${n} · ${label}`:`${n} · clarified ✓`;
-      clar.setAttribute('aria-label',step==='first'?`Clarify card ${n}, ${label}: ${name}`:step==='second'?`Draw Clarifier 2 for card ${n}, ${label}: ${name}`:`Card ${n}, ${label}, is fully clarified`);
+      document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step?`${n} · ${label}`:(atLimit?`${n} · 2-card limit`:`${n} · clarified ✓`);
+      clar.setAttribute('aria-label',step==='first'?`Clarify card ${n}, ${label}: ${name}`:step==='second'?`Draw Clarifier 2 for card ${n}, ${label}: ${name}`:(atLimit?`Card ${n}, ${label}: two clarifiers, both Major Arcana; the two-card limit is reached`:`Card ${n}, ${label}, is fully clarified`));
     }
     floatTimer=setInterval(update,250);
     update();
@@ -427,7 +445,11 @@
   // Leaving the reading removes the dock at once (the timer would also catch it within 250 ms).
   if(typeof go==='function'){const presenterGo=go;go=function(){const out=presenterGo.apply(this,arguments);if(state.view!=='draw'){clearInterval(floatTimer);document.getElementById('mcDock')?.remove();document.body.classList.remove('has-mc-dock');}return out;};}
   const presenterRenderDraw=renderDraw;
-  renderDraw=function(){const outcome=presenterRenderDraw.apply(this,arguments);demoBanner();launcher();floatWatch();return outcome;};
+  renderDraw=function(){
+    if(player&&player.sig&&player.sig!==readingSig())player.close();   // a clarifier was added: stop narrating the old reading
+    if(heardSig&&JSON.parse(heardSig)[0]!==state.drawnAt)heardSig=null; // a new reading starts fresh
+    const outcome=presenterRenderDraw.apply(this,arguments);demoBanner();launcher();floatWatch();return outcome;
+  };
 
   function loadDemo(){
     Object.assign(state,{spreadId:DEMO.spreadId,spreadSize:1,drawnCardIds:[DEMO.base],drawnAt:DEMO.at,journalId:null,journalSpread:null,readingReturn:null,

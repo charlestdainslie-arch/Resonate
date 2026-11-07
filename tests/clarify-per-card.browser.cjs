@@ -91,7 +91,10 @@ server.listen(0, '127.0.0.1', async () => {
       const steps = () => page.$$eval(`${art} .reading-step`, els => els.map(e => e.textContent.trim()));
       let s = await steps();
       assert.deepEqual(s.map(t => t[0]), ['1', '2', '3'], 'steps after Clarifier 1: ' + s.join(' | '));
-      assert.match(s[1], /first clarifier/i); assert.match(s[2], /together/i);
+      assert.match(s[1], /Clarifier 1 · how it modifies the original card/i); assert.match(s[2], /together/i);
+      assert.match(await page.locator(`${art} .reading-revision-tag`).innerText(), /Revision 1/);
+      const original1 = await page.locator(`${art} .original-card-explanation`).innerText();
+      const step2Before = await page.locator(`${art} .integrated-clarifier[data-clarifier="1"]`).innerText();
       const lead1 = await page.locator(`${art} .integrated-clarifier[data-clarifier="1"] .relation-lead`).innerText();
       assert.ok(lead1.includes(c1.name) && lead1.includes(baseCard.name), 'step 2 names both cards: ' + lead1);
       const together1 = await page.locator(`${art} .synthesis-lead`).innerText();
@@ -131,13 +134,21 @@ server.listen(0, '127.0.0.1', async () => {
         assert.ok(!overlap(a.img, b.img) && !overlap(a.img, g.main) && !overlap(b.img, g.main), 'no overlapping cards');
         for (const c of g.cl) assert.ok(c.loaded && c.label.l >= 0 && c.label.r <= g.vw && c.label.w > 0, 'image loaded and label on screen');
         await page.screenshot({ path: path.join(OUT, `clarify-per-card-${w}-clarified.png`) });
-        d = await dockCheck(page); assert.match(d.label, /05 · clarified ✓/, 'dock shows card 05 complete');
+        d = await dockCheck(page);
+        const bothMajor = await page.evaluate(i => [state.firstLayerClarifiers[i], state.additionalClarifierLayers.find(l => l.number === 2).cards[i]].every(id => cards.find(c => c.id === id).arcana === 'Major'), TARGET);
+        assert.match(d.label, bothMajor ? /05 · 2-card limit/ : /05 · clarified ✓/, 'dock shows card 05 complete');
+        assert.equal(await page.locator(`${art} .reading-limit`).count(), bothMajor ? 1 : 0, 'limit stated only when both clarifiers are Major');
         assert.equal(await page.locator('#mcClarify').isDisabled(), true, 'nothing more to draw for card 5');
 
         // Reading recalculated: 4 steps, step 3 relates Clarifier 2 to both, together names all three.
         s = await steps();
         assert.deepEqual(s.map(t => t[0]), ['1', '2', '3', '4'], 'four steps: ' + s.join(' | '));
-        assert.match(s[2], /second clarifier connects to both/i);
+        assert.match(s[2], /Clarifier 2 · how it develops the relationship between both/i);
+        // Decision 4: the original and Clarifier 1 readings are kept as they were; the revision is shown.
+        assert.equal(await page.locator(`${art} .original-card-explanation`).innerText(), original1, 'original card reading unchanged');
+        assert.equal(await page.locator(`${art} .integrated-clarifier[data-clarifier="1"]`).innerText(), step2Before, 'Clarifier 1 reading unchanged');
+        assert.match(await page.locator(`${art} .reading-revision-tag`).innerText(), /Revision 2/);
+        assert.ok((await page.locator(`${art} details.reading-revision .synthesis-earlier`).evaluate(e => e.textContent)).includes(together1.split(/(?<=[.?!])\s+(?=[A-Z])/)[0]), 'Revision 1 text still readable');
         const lead2 = await page.locator(`${art} .integrated-clarifier[data-clarifier="2"] .relation-lead`).innerText();
         assert.ok(lead2.includes(c2) && lead2.includes(baseCard.name) && lead2.includes(c1.name), 'step 3 relates Clarifier 2 to both: ' + lead2);
         const together2 = await page.locator(`${art} .synthesis-lead`).innerText();
@@ -173,6 +184,29 @@ server.listen(0, '127.0.0.1', async () => {
         await page.waitForFunction(() => /^Part 1 of/.test(document.getElementById('mcPart').textContent), null, { timeout: 5000 });
         await tap('#mcClose');
         await page.waitForSelector('.mc-player', { state: 'detached' });
+
+        // Decision 5: adding a clarifier while Max is narrating stops him and offers Replay Updated Reading.
+        const other = await page.evaluate(() => { const due = nextDueClarifier(); if (due >= 0) return due; return clarifierPlan().positions.findIndex(p => p.first == null); });
+        if (other >= 0) {
+          await tap('#mcFloat');
+          await page.waitForSelector('.mc-player');
+          await tap('#mcSound'); await tap('#mcPlay');
+          await page.waitForTimeout(400);
+          await page.evaluate(i => clarifyPosition(i), other);   // stands in for a tap that adds a clarifier
+          await page.waitForSelector('.mc-player', { state: 'detached', timeout: 3000 });
+          await page.waitForTimeout(400);
+          assert.match(await page.locator('#mcFloat').innerText(), /Replay Updated/, 'dock offers Replay Updated');
+          assert.match(await page.locator('#mcOpen').innerText(), /Replay Updated Reading/, 'top launcher offers Replay Updated Reading');
+          await tap('#mcFloat');
+          await page.waitForSelector('.mc-player');
+          const fresh = await page.evaluate(() => [...document.querySelectorAll('.mc-transcript li')].map(li => li.textContent));
+          const added = await page.evaluate(i => { const first = state.firstLayerClarifiers[i], second = (state.additionalClarifierLayers.find(l => l.number === 2)?.cards || [])[i]; const c = cards.find(x => x.id === (second ?? first)); return `${second != null ? 'Clarifier 2' : 'Clarifier 1'} · ${positionLabels()[i]}: ${cardName(c)}.`; }, other);
+          assert.ok(fresh.includes(added), 'the replay includes the newly added clarifier: ' + added);
+          await tap('#mcClose');
+          await page.waitForSelector('.mc-player', { state: 'detached' });
+          await page.waitForTimeout(400);
+          assert.match(await page.locator('#mcFloat').innerText(), /Watch Max/, 'back to Watch Max once the update is heard');
+        }
       }
 
       // End of the page clears the dock.

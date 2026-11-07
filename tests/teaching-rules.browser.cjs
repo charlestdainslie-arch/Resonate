@@ -109,6 +109,9 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     assert.equal(s.button, null, 'main button gives way to the Journal save');
     assert.match(s.help, /complete/i);
     assert.deepEqual(s.valid, []);
+    // Both clarifiers Major: the two-card limit is stated, not silently applied (Si Aye, 7 Nov, decision 7).
+    assert.match(await p.locator('.reading-meaning[data-position="0"] .reading-limit').innerText(), /Clarifier 2 is also a Major Arcana card[\s\S]*design decision awaiting Chas/);
+    assert.equal(await p.locator('.reading-meaning[data-position="2"] .reading-limit').count(), 0);
     await p.evaluate(() => { drawNextClarifierLayer(0); clarifyPosition(0); });
     assert.deepEqual((await snapshot(p)).second, [3, null, null], 'a stray call adds nothing');
     await ctx.close();

@@ -143,3 +143,5 @@ body:has(.mc-player) .chas-voice{display:none}
 @keyframes mc-float-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 body:has(.mc-player) .mc-dock { display: none; }
 body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 84px; }
+.mc-float.is-updated { border-color: #f2dca8; box-shadow: 0 10px 26px rgba(0,0,0,.55), 0 0 22px rgba(242,220,168,.45); }
+.mc-updated { margin: 10px 0 0; color: #f2e4c2; font-size: 14px; }

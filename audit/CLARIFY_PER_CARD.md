@@ -57,6 +57,25 @@ changed to fit one-card-at-a-time: "Now, your first clarifiers, card by card." (
 
 Voice: Chas's Samsung was muted during UAT; voice is not confirmed defective. Dev to retest on Android.
 
+## Si Aye's PM decisions (7 Nov) — how this build meets them
+
+1. Celtic Cross layout and positional meanings: unchanged.
+2. Clarify beside Watch Max on Samsung: the dock (above).
+3. The original card is the anchor. Step headings now read "Clarifier 1 · how it modifies the original card"
+   and "Clarifier 2 · how it develops the relationship between both".
+4. Revisions shown, not overwritten. Steps 1 and 2 never change once written (checked by test). The
+   "together" reading is tagged "Revision 1 · with Clarifier 1"; when Clarifier 2 arrives it becomes
+   "Revision 2" and Revision 1 stays readable in an expandable "the reading before Clarifier 2".
+5. Adding a clarifier while Max is presenting stops him (speech cancelled, player closed). The dock button
+   becomes "↻ Replay Updated" and the top button "↻ Replay Updated Reading" until Max is opened again.
+   Checked by test.
+6. Chas is the voice acceptance authority. Nothing here claims voice acceptance.
+7. Rule vs two-clarifier limit: made explicit, not changed. See `audit/RULE_RECONCILIATION.md` (designs A–D
+   for Chas; this build is A, stated on the page).
+8. Deep's case (Seven of Cups / The Hermit reversed / Eight of Pentacles): engine output in
+   `audit/interpretation-cases/`, made by `audit/tools/interpretation-case.cjs`. This is an input for Deep's
+   check, not evidence of a pass.
+
 ## Tests
 
 New: `tests/clarifier-reading.test.cjs` (7), `tests/clarify-per-card.browser.cjs` (360, 412, 1280).
