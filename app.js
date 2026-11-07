@@ -74,9 +74,11 @@ function positionContext(card,index,upright=!isReversed(card)){
     lens=sevenLenses[index];
   }
   else if(/Past|past/.test(role)) lens=`This may describe how ${theme} shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.`;
-  else if(/Future|future|direction|outcome/.test(role)) lens=`This suggests a possible development involving ${theme}. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.`;
+  // Case-insensitive (QA 7 Nov): "Potential Outcome" and "Your Approach" in the Celtic Cross missed these
+  // lenses because the labels are capitalised, and fell through to the generic "Here, … is a lens" line.
+  else if(/future|direction|outcome/i.test(role)) lens=`This suggests a possible development involving ${theme}. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.`;
   else if(/challenge|Challenge/.test(role)) lens=`The tension to explore is ${theme}. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.`;
-  else if(/Guidance|guidance|approach/.test(role)) lens=`Your next step is to work consciously with ${theme}. Choose one practical response you can try, then notice whether it helps.`;
+  else if(/guidance|approach/i.test(role)) lens=`Your next step is to work consciously with ${theme}. Choose one practical response you can try, then notice whether it helps.`;
   else if(/^The Other Person$/i.test(role)) lens=`Consider whether your perception of the other person is coloured by ${theme}. Check that impression through conversation rather than treating the card as access to their thoughts.`;
   else if(/^The Connection$/i.test(role)) lens=`Between you, ${theme} may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.`;
   else lens=`Here, ${theme} is a lens for ${position[1]}. Identify one concrete example in your situation and consider how it shapes your response.`;

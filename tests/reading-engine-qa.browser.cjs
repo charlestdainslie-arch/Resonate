@@ -57,6 +57,11 @@ server.listen(0, '127.0.0.1', async () => {
       for (const p of r.positions) {
         const where = `position ${p.n} (${p.label})`;
         assert.ok(p.positionContext.startsWith(`Position: ${p.label} — `), `${where}: lens names its own position`);
+        // Q2b: every Celtic Cross role that has its own lens gets it.
+        if (s.spread === 'celtic') {
+          const want = { 'Crossing Challenge': /The tension to explore is/, 'Recent Past': /shaped the path/, 'Near Future': /possible development/, 'Potential Outcome': /possible development/, 'Your Approach': /Your next step is/ }[p.label];
+          if (want) assert.match(p.positionContext, want, `${where}: its own position lens`);
+        }
         const names = [p.base, p.c1, p.c2].filter(Boolean).map(c => c.name);
         if (!p.c1) { assert.deepEqual(p.steps, [], `${where}: no steps without a clarifier`); assert.equal(p.together, ''); }
         else {
