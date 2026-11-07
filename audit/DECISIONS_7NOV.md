@@ -32,9 +32,8 @@ the **Clarity card**. Built on UAT branch `claude/uat-option-b`. No merge, no pr
   - `plan()` gains `needsClarity` and `pendingClarity`;
   - `validate()` rejects a Clarity card without three Majors, a Major Clarity card, or a repeated card.
 
-**Open question for Chas:** a **Minor** original card with two Major clarifiers. Option B as approved needs
-a Major original, so no Clarity card is offered; the page says the limit applies. Should Option B also cover
-this case? (It is where the rule would continue too.)
+**Settled (Si Aye, 7 Nov, with Chas's approval):** Option B stays exactly as implemented. A **Minor** original
+card with two Major clarifiers does **not** get a Clarity card; the page states the two-clarifier limit.
 
 ## 2. Seven-card question readings: position 4 last
 
