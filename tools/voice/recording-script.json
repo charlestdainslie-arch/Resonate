@@ -1028,5 +1028,25 @@
   "n": 206,
   "id": "label-clarity",
   "text": "Clarity card,"
+ },
+ {
+  "n": 207,
+  "id": "frame-first",
+  "text": "That's the first layer of your reading."
+ },
+ {
+  "n": 208,
+  "id": "frame-sofar",
+  "text": "That's your reading so far."
+ },
+ {
+  "n": 209,
+  "id": "frame-invite",
+  "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+ },
+ {
+  "n": 210,
+  "id": "frame-final",
+  "text": "Here is your whole spread, brought together."
  }
 ]

@@ -24,6 +24,11 @@
     k:'And your clarity card, from the Minor Arcana.',
     ks:'And a clarity card, from the Minor Arcana, where three Major Arcana cards met.',
     back:'Max Chasroom, back for the next part of your reading.',
+    // Narration lifecycle (Chas, Samsung UAT, 8 Nov 2026): until the seeker finishes, Max invites, never signs off.
+    first:'That\'s the first layer of your reading.',
+    sofar:'That\'s your reading so far.',
+    invite:'If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading.',
+    final:'Here is your whole spread, brought together.',
     ask:'Before I go, one question to carry with you.',
     close:'That\'s the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.'
   };
@@ -50,7 +55,7 @@
   // Slot keys: 'p<i>' for the card in position i, 'c<i>-<n>' for clarifier n of position i.
   // Clips split each caption into lines that depend on one card or one position at most, so they can be
   // recorded ahead of time (tools/voice).
-  function buildScript(){
+  function buildScript(opts={finished:readingFinished()}){
     const ids=state.drawnCardIds,labels=positionLabels(),spread=state.spreadId,one=ids.length===1;
     const layerCards=layers();
     const script=[];
@@ -135,22 +140,43 @@
       });
     }
 
-    // Close: the reading's own closing question and resonance line.
+    // Ending (narration lifecycle, 8 Nov 2026). Until the seeker taps Finish reading, Max ends by inviting
+    // clarification ('invite'), never by signing off. After Finish: the whole spread together ('final'), then the
+    // closing question, "Take what resonates, and leave the rest." and the sign-off ('close'), once.
     const all=ids.flatMap((_,i)=>['p'+i,...layerCards.map((__,l)=>`c${i}-${l+1}`)]);
+    if(!opts.finished){
+      frame('invite',layerCards.length||readingClarity().some(x=>x!=null)?'sofar':'first',all);
+      frame('invite','invite',all);
+      return script;
+    }
     const thread=frag(goldenThread(ids.map(byId)));
     const invitation=sentences(thread.querySelector('.golden-thread-summary p')?.textContent||'');
     const ask=invitation.findIndex(t=>/^Which part speaks/.test(t));
+    frame('final','final',all);
+    const pattern=(ask>0?invitation.slice(0,ask):invitation.filter(t=>/^Across these cards/.test(t))).join(' ');
+    add('final','quote',pattern,all,[{id:'thread-pattern',text:pattern}]);
     if(ask>=0){frame('close','ask',all);add('close','quote',invitation.slice(ask).join(' '),all,invitation.slice(ask).map((text,i)=>({id:`thread-${i}`,text})));}
     const resonance=norm(thread.querySelector('.golden-thread-resonance')?.textContent||'');
     add('close','quote',resonance,all,[{id:'thread-resonance',text:resonance}]);
     frame('close','close',all);
     return script;
   }
-  // What a launcher plays: the whole reading, or one clarifier chapter followed by the close.
+  // What a launcher plays: the whole reading, or one clarifier chapter followed by the ending (the invitation,
+  // or, once the reading is finished, the final synthesis and the close).
+  const ENDING=['invite','final','close'];
   function playlist(script,chapter){
     if(!chapter)return script;
     const back={chapter:'intro',kind:'frame',text:FRAME.back,show:[],clips:[{id:'frame-back',text:FRAME.back}]};
-    return [back,...script.filter(p=>p.chapter===chapter||p.chapter==='close')];
+    return [back,...script.filter(p=>p.chapter===chapter||ENDING.includes(p.chapter))];
+  }
+  // The new part of the reading after one card was clarified inside Max: that card's new clarifier (or Clarity
+  // card) with how it relates to the original, the updated "together", then the invitation again.
+  function deltaFor(full,position,step){
+    const chapter=step==='first'?'c1':step==='second'?'c2':'c3';
+    const mine=p=>p.chapter===chapter&&p.show.some(k=>k==='p'+position||k.startsWith(`c${position}-`));
+    const key=chapter==='c3'?'k':chapter;
+    const lead={chapter,kind:'frame',text:FRAME[key],show:[],clips:[{id:'frame-'+key,text:FRAME[key]}]};
+    return [lead,...full.filter(mine),...full.filter(p=>p.chapter==='invite')];
   }
 
   // Pre-recorded voice (voice/chas/manifest.json), used only when every clip a script needs is there.
@@ -252,21 +278,32 @@
     const img=(c,cls)=>`<img class="${[cls,isReversed(c)?'is-reversed':''].filter(Boolean).join(' ')}" src="${cardImage(c)}" alt="${escapeHtml(cardName(c))}" referrerpolicy="no-referrer">`;
     return `<ol class="mc-cards${state.drawnCardIds.length>3?' is-wide':''}" aria-label="Cards in this reading">${state.drawnCardIds.map((id,i)=>{
       const c=byId(id);
-      const clar=layerCards.map((layer,l)=>layer[i]?`<li class="mc-clar" data-slot="c${i}-${l+1}">${img(layer[i],'')}<span>Clarifier ${l+1}</span><strong>${escapeHtml(cardName(layer[i]))}</strong></li>`:'').join('');
+      const kId=typeof readingClarity==='function'?readingClarity()[i]:null;
+      const clar=layerCards.map((layer,l)=>layer[i]?`<li class="mc-clar" data-slot="c${i}-${l+1}">${img(layer[i],'')}<span>Clarifier ${l+1}</span><strong>${escapeHtml(cardName(layer[i]))}</strong></li>`:'').join('')
+        +(kId!=null?`<li class="mc-clar mc-clarity" data-slot="k${i}">${img(byId(kId),'')}<span>Clarity card</span><strong>${escapeHtml(cardName(byId(kId)))}</strong></li>`:'');
       return `<li class="mc-card" data-slot="p${i}">${img(c,'mc-main')}<span>${escapeHtml(labels[i]||'Position')}</span><strong>${escapeHtml(cardName(c))}</strong>${clar?`<ol class="mc-clars">${clar}</ol>`:''}</li>`;
     }).join('')}</ol>`;
   }
 
-  let player=null;
+  let player=null,clarifyingInPlayer=false;
+  // The clarify bar inside Max (Chas, Samsung UAT, 8 Nov 2026): always at the bottom of Max's screen, so the
+  // seeker never leaves the narration to clarify. Pick an original card; one button does what the rule allows.
+  function clarifyBar(){
+    const labels=positionLabels(),n=state.drawnCardIds.length,canClarify=typeof clarifyPosition==='function'&&!isDemo();
+    const chips=n>1?`<div class="mc-pick" role="radiogroup" aria-label="Choose the card to clarify">${state.drawnCardIds.map((id,i)=>`<button type="button" role="radio" aria-checked="false" data-pick="${i}"><b>${String(i+1).padStart(2,'0')}</b><small>${escapeHtml(labels[i]||'')}</small></button>`).join('')}</div>`:'';
+    return `<div class="mc-clarify-bar" id="mcClarifyBar" role="group" aria-label="Clarify a card or finish the reading">${canClarify?chips:''}<p class="mc-pick-note" id="mcPickNote" aria-live="polite"></p><div class="mc-bar-actions">${canClarify?'<button type="button" class="gold-button" id="mcClarifyGo">✦ Clarify this card</button>':''}<button type="button" class="ghost-button" id="mcFinish">Finish reading</button></div></div>`;
+  }
   // Decision 5 (Si Aye, 7 Nov): adding a clarifier stops Max's current narration and offers
   // "Replay Updated Reading". heardSig is the reading as it stood when Max was last opened.
-  const readingSig=()=>JSON.stringify([state.drawnAt,layers().map(l=>l.map(c=>c?c.id:null))]);
+  const readingSig=()=>JSON.stringify([state.drawnAt,layers().map(l=>l.map(c=>c?c.id:null)),typeof readingClarity==='function'?readingClarity():[]]);
+  // The reading is finished when the seeker taps Finish reading; adding a card afterwards reopens it.
+  const readingFinished=()=>!!state.maxFinishedSig&&state.maxFinishedSig===readingSig();
   let heardSig=null;
   const updatedSinceHeard=()=>!!heardSig&&JSON.parse(heardSig)[0]===state.drawnAt&&heardSig!==readingSig();
   async function openPlayer(chapter){
     if(player)return;
     player={pending:true};
-    const full=buildScript(),script=playlist(full,typeof chapter==='string'?chapter:null);
+    let full=buildScript(),script=playlist(full,typeof chapter==='string'?chapter:null);
     const sig=readingSig();heardSig=sig;
     let voice=await pickVoice(script);
     const pack=voice===packVoice?packVoice.pack:null;
@@ -291,6 +328,7 @@
         <p class="mc-voice" id="mcVoice"></p>
         <details class="mc-transcript"><summary>Transcript</summary><ol>${script.map(p=>`<li class="mc-kind-${p.kind}">${escapeHtml(p.text)}</li>`).join('')}</ol></details>
         <button type="button" class="mc-full" id="mcFull">Read the full reading ↓</button>
+        ${clarifyBar()}
       </div></div>`);
     const root=document.querySelector('.mc-player');
     const $=id=>root.querySelector('#'+id);
@@ -314,6 +352,10 @@
       document.dispatchEvent(new CustomEvent('maxchasroom:show',{detail:{root,index:i,show:part.show}}));
       $('mcCaption').innerHTML=`<p class="mc-kind-${part.kind}">${escapeHtml(part.text)}</p>`;
       $('mcPart').textContent=`Part ${i+1} of ${script.length}`;
+      if(picked==null)updateBar();
+      // Keep Max's words above the clarify bar while he speaks (Samsung-sized screens).
+      const cap=$('mcCaption').getBoundingClientRect(),bar=$('mcClarifyBar')?.getBoundingClientRect();
+      if(bar&&cap.bottom>bar.top-4)root.scrollBy({top:cap.bottom-bar.top+12,behavior:motion()});
       $('mcBar').style.width=`${(i+1)/script.length*100}%`;
       let focus=null;
       root.querySelectorAll('[data-slot]').forEach(el=>{const on=part.show.includes(el.dataset.slot);el.classList.toggle('is-active',on);el.classList.toggle('is-dim',part.show.length>0&&!on);if(on&&!focus)focus=el;});
@@ -340,12 +382,74 @@
         fail:async()=>{if(mine!==token)return;voice=await pickVoice(script);voiceNote();if(mine===token&&playing)playPart(i);}
       });
     }
-    function finish(){playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';$('mcCaption').innerHTML='<p>That was the short version. The full reading is waiting below.</p>';root.classList.add('is-finished');}
+    function finish(){
+      playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';root.classList.add('is-finished');
+      $('mcCaption').innerHTML=readingFinished()?'<p>Your reading is complete. Every word is waiting below, and in your PDF.</p>':'<p>Choose a card below and tap Clarify, or tap Finish reading when you are done.</p>';
+      updateBar();
+    }
     function setPlaying(on){
       playing=on;root.classList.toggle('is-playing',on);root.classList.remove('is-finished');
       $('mcPlay').textContent=on?'❚❚ Pause':'▶ Resume';
       if(on)playPart(index<0?0:index,voice===packVoice&&!muted&&index>=0?clip:0);else stopSound();
     }
+    // Replace what Max is about to say (after a card is clarified here, or Finish reading): stop at once, so no
+    // stale line or caption carries on, then play the new part from its start.
+    function load(next){
+      stopSound();playing=false;script=next;index=-1;clip=0;
+      root.querySelector('.mc-transcript ol').innerHTML=script.map(p=>`<li class="mc-kind-${p.kind}">${escapeHtml(p.text)}</li>`).join('');
+      $('mcPart').textContent=`Part 0 of ${script.length}`;$('mcBar').style.width='0%';
+      const strip=root.querySelector('.mc-cards');if(strip)strip.outerHTML=cardStrip();
+      if(player&&!player.pending)player.script=script;
+      pickVoice(script).then(v=>{voice=v;voiceNote();});
+      setPlaying(true);
+    }
+    // The in-player clarify bar: pick an original card, then one action for it under Chas's teaching rule.
+    let picked=null;   // null: follow the card Max is talking about; a number once the seeker picks one
+    const pickedIndex=()=>{
+      if(picked!=null)return picked;
+      const part=index>=0?script[index]:null;
+      const fromShow=part?.show?.map(k=>/^p(\d+)$/.exec(k)).find(Boolean);
+      if(fromShow)return Number(fromShow[1]);
+      const due=typeof nextDueClarifier==='function'?nextDueClarifier():-1;
+      return due>=0?due:0;
+    };
+    function updateBar(){
+      const bar=$('mcClarifyBar');if(!bar)return;
+      const i=pickedIndex(),step=clarifyStepFor(i),labels=positionLabels();
+      bar.querySelectorAll('[data-pick]').forEach(b=>{const on=Number(b.dataset.pick)===i;b.setAttribute('aria-checked',String(on));b.classList.toggle('is-picked',on);const st=clarifyStepFor(Number(b.dataset.pick));b.dataset.state=st?(clarifierPlan().positions[Number(b.dataset.pick)].mayChooseFirst?'optional':'due'):'done';});
+      const go=$('mcClarifyGo'),name=cardName(byId(state.drawnCardIds[i])),where=state.drawnCardIds.length>1?`${String(i+1).padStart(2,'0')} · ${labels[i]}: `:'';
+      $('mcFinish').textContent=readingFinished()?'Reading finished ✓':'Finish reading';
+      $('mcFinish').disabled=readingFinished();
+      if(!go){$('mcPickNote').textContent='';return;}
+      go.disabled=!step;go.dataset.step=step||'done';
+      go.textContent=step==='first'?'✦ Clarify this card':step==='second'?'✦ Add second clarifier':step==='clarity'?'✦ Draw Clarity card':'Card complete ✓';
+      const spot=clarifierPlan().positions[i];
+      $('mcPickNote').textContent=where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?' — its first clarifier is a Major, so a second is due.':step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
+      root.querySelectorAll('.mc-card').forEach((el,k)=>el.classList.toggle('is-picked',k===i));
+      const strip=root.querySelector('.mc-cards'),card=root.querySelectorAll('.mc-card')[i];
+      if(strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()}),260);
+    }
+    root.addEventListener('click',e=>{
+      const pick=e.target.closest('[data-pick]');
+      if(pick){picked=Number(pick.dataset.pick);updateBar();const card=root.querySelectorAll('.mc-card')[picked];const strip=root.querySelector('.mc-cards');if(card&&strip&&strip.scrollWidth>strip.clientWidth)strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()});}
+    });
+    $('mcClarifyGo')?.addEventListener('click',()=>{
+      const i=pickedIndex(),step=clarifyStepFor(i);
+      if(!step)return;
+      clarifyingInPlayer=true;
+      try{clarifyPosition(i);}finally{clarifyingInPlayer=false;}
+      full=buildScript();heardSig=readingSig();if(player)player.sig=heardSig;
+      picked=i;
+      load(deltaFor(full,i,step));
+      updateBar();
+    });
+    $('mcFinish')?.addEventListener('click',()=>{
+      if(readingFinished())return;
+      state.maxFinishedSig=readingSig();
+      full=buildScript();
+      load(full.filter(p=>p.chapter==='final'||p.chapter==='close'));
+      updateBar();
+    });
     $('mcPlay').onclick=()=>setPlaying(!playing);
     $('mcReplay').onclick=()=>{index=0;clip=0;root.scrollTo?.({top:0});root.querySelector('.mc-cards')?.scrollTo?.({left:0});setPlaying(true);};
     $('mcSound').onclick=()=>{muted=!muted;$('mcSound').textContent=muted?'🔊 Unmute':'🔇 Mute';$('mcSound').setAttribute('aria-pressed',String(!muted));voiceNote();if(playing)playPart(index);};
@@ -361,6 +465,7 @@
     $('mcFull').onclick=()=>{close();document.getElementById('readingInterpretation')?.scrollIntoView({block:'start',behavior:scrollMotion()});};
     $('mcPlay').focus();
     player={script,root,pack,sig,close,get voice(){return muted?null:(voice?voice.id:null);},chapter:typeof chapter==='string'?chapter:null};
+    updateBar();
     document.dispatchEvent(new CustomEvent('maxchasroom:open',{detail:{root,chapter:player.chapter}}));
   }
 
@@ -491,7 +596,7 @@
   if(typeof go==='function'){const presenterGo=go;go=function(){const out=presenterGo.apply(this,arguments);if(state.view!=="draw"){clearInterval(floatTimer);floatIO?.disconnect();floatIO=null;document.getElementById("mcDock")?.remove();document.body.classList.remove('has-mc-dock');}return out;};}
   const presenterRenderDraw=renderDraw;
   renderDraw=function(){
-    if(player&&player.sig&&player.sig!==readingSig())player.close();   // a clarifier was added: stop narrating the old reading
+    if(player&&player.sig&&player.sig!==readingSig()&&!clarifyingInPlayer)player.close();   // a card was added outside Max: stop narrating the old reading
     if(heardSig&&JSON.parse(heardSig)[0]!==state.drawnAt)heardSig=null; // a new reading starts fresh
     const outcome=presenterRenderDraw.apply(this,arguments);demoBanner();launcher();floatWatch();return outcome;
   };

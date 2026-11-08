@@ -64,7 +64,13 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     return page.evaluate(() => window.__pdf.map(s => s.text).join('\n'));
   };
   const faithful = async (page, label) => {
-    const script = await page.evaluate(() => ResonatePresenter.buildScript());
+    // Narration lifecycle (8 Nov 2026): until the seeker taps Finish reading, Max ends with an invitation and
+    // never signs off; the finished script carries the closing once. Faithfulness is checked on the finished one.
+    const unfinished = await page.evaluate(() => ResonatePresenter.buildScript({ finished: false }));
+    assert.ok(!unfinished.some(l => /Before I go|Take what resonates|signing off/.test(l.text)), `${label}: no sign-off before the reading is finished`);
+    assert.match(unfinished[unfinished.length - 1].text, /tap Finish reading/, `${label}: ends with the invitation`);
+    const script = await page.evaluate(() => ResonatePresenter.buildScript({ finished: true }));
+    for (const re of [/Before I go/, /Take what resonates/, /signing off/]) assert.equal(script.filter(l => re.test(l.text)).length, 1, `${label}: ${re.source} once in the finished script`);
     const frames = await page.evaluate(() => Object.values(ResonatePresenter.FRAME));
     const shown = norm(await page.locator('#readingInterpretation').innerText());
     const pdf = norm(await pdfText(page));
@@ -95,7 +101,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     for (const line of script) for (const clip of line.clips) {
       // Relationship and "together" lines (team directive, 7 Nov) depend on two or three cards and the
       // position, so they cannot be pre-recorded: they are live lines, spoken by the temporary voice fallback.
-      if (/^(?:rel|together)-\w+-\d+-\d+(?:-\d+)?$/.test(clip.id)) { assert.ok(line.kind === 'quote' && line.text === clip.text, `${label}: live line ${clip.id} is one whole caption`); continue; }
+      if (/^(?:(?:rel|together)-\w+-\d+-\d+(?:-\d+)?|thread-pattern)$/.test(clip.id)) { assert.ok(line.kind === 'quote' && line.text === clip.text, `${label}: live line ${clip.id} is one whole caption`); continue; }
       const m = clip.id.match(/^(?:frame-\w+|title-\w+|pos-\w+-\d+|label-clarifier-[12]|label-clarity|thread-(?:\d|resonance)|(?:lens-\w+-\d+|meaning|name)-(\d+)(?:-r)?)$/);
       assert.ok(m, `${label}: clip id "${clip.id}"`);
       if (m[1] !== undefined) assert.ok(ids.includes(Number(m[1])), `${label}: clip ${clip.id} belongs to this reading`);
@@ -104,7 +110,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     }
     assert.ok(script.some(l => l.kind === 'quote' && /Take what resonates/.test(l.text)), `${label}: the reading's closing line is included`);
     const words = t => t.split(' ').length;
-    assert.ok(words(script.map(l => l.text).join(' ')) < words(shown) * 0.35, `${label}: narration is a short version of the reading`);
+    assert.ok(words(unfinished.map(l => l.text).join(' ')) < words(shown) * 0.35, `${label}: narration is a short version of the reading`);
     return { script, r };
   };
 
@@ -322,7 +328,7 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
     assert.equal(played[at], played[at - 1], 'resumes with the clip that was paused');
   });
   await check('recorded voice with a missing line falls back to the device voice', async page => {
-    await withVoicePack(page, ['frame-close']);
+    await withVoicePack(page, ['frame-invite']);
     await page.goto(PAGE);
     await open(page);
     assert.match(await page.locator('#mcVoice').innerText(), /Synthetic temporary voice — not Chas\. Your device's built-in speech/);
@@ -362,7 +368,8 @@ const norm = s => s.replace(/\s+/g, ' ').trim();
         await open(page);
         assert.equal(await page.locator('.mc-card').count(), r.ids.length, 'one card per position');
         assert.deepEqual(await page.locator('.mc-card > strong').allInnerTexts(), r.names);
-        assert.equal(await page.locator('.mc-clar').count(), r.layers.flat().filter(Boolean).length, 'every clarifier shown under its card');
+        assert.equal(await page.locator('.mc-clar:not(.mc-clarity)').count(), r.layers.flat().filter(Boolean).length, 'every clarifier shown under its card');
+        assert.equal(await page.locator('.mc-clarity').count(), (r.clarity || []).filter(Boolean).length, 'every Clarity card shown under its card');
         assert.match(await page.locator('.mc-provenance').innerText(), new RegExp(`^This reading · ${r.title.replace(/[·]/g, '.')} · .* · not saved yet$`));
         assert.equal(await page.evaluate(() => document.querySelector('.mc-player').scrollWidth > innerWidth), false, 'no sideways page scroll');
       });

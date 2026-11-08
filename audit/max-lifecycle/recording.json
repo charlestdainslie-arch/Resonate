@@ -1,0 +1,28 @@
+{
+ "file": "max-clarify-in-player-412.mp4",
+ "viewport": "412x915",
+ "sample": {
+  "id": "DEMO-CC",
+  "spread": "celtic",
+  "base": [
+   0,
+   41,
+   45,
+   50,
+   55,
+   60,
+   65,
+   70,
+   75,
+   30
+  ],
+  "reversed": [],
+  "steps": [],
+  "queue": [
+   5,
+   9,
+   44
+  ]
+ },
+ "errors": []
+}
