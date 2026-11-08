@@ -150,12 +150,12 @@
       return script;
     }
     const thread=frag(goldenThread(ids.map(byId)));
-    const invitation=sentences(thread.querySelector('.golden-thread-summary p')?.textContent||'');
-    const ask=invitation.findIndex(t=>/^Which part speaks/.test(t));
+    // The Overall Invitation is two parts on the page: the pattern across the spread, and the question to carry.
+    const pattern=norm(thread.querySelector('.golden-thread-pattern')?.textContent||'');
+    const askLines=sentences(thread.querySelector('.golden-thread-ask')?.textContent||'');
     frame('final','final',all);
-    const pattern=(ask>0?invitation.slice(0,ask):invitation.filter(t=>/^Across these cards/.test(t))).join(' ');
     add('final','quote',pattern,all,[{id:'thread-pattern',text:pattern}]);
-    if(ask>=0){frame('close','ask',all);add('close','quote',invitation.slice(ask).join(' '),all,invitation.slice(ask).map((text,i)=>({id:`thread-${i}`,text})));}
+    if(askLines.length){frame('close','ask',all);add('close','quote',askLines.join(' '),all,askLines.map((text,i)=>({id:`thread-${i}`,text})));}
     const resonance=norm(thread.querySelector('.golden-thread-resonance')?.textContent||'');
     add('close','quote',resonance,all,[{id:'thread-resonance',text:resonance}]);
     frame('close','close',all);

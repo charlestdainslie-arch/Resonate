@@ -1283,6 +1283,38 @@
   "question": true
  },
  {
+  "id": "B09",
+  "kind": "boundary",
+  "spread": "guidance",
+  "mode": "fixed",
+  "note": "Minor original with two Major clarifiers (Deep, 9 Nov): Option B does not apply (Si Aye / Chas, 7 Nov), so no Clarity card is offered and the two-clarifier limit is stated",
+  "base": [
+   51
+  ],
+  "reversed": [],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 16
+   },
+   {
+    "pos": 0,
+    "layer": 2,
+    "id": 20
+   }
+  ],
+  "c1": [
+   16
+  ],
+  "c2": [
+   20
+  ],
+  "clarity": [
+   null
+  ]
+ },
+ {
   "id": "OC-01",
   "kind": "matrix",
   "spread": "guidance",

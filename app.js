@@ -366,29 +366,37 @@ function numerologyForReading(chosen){
   const repeat=[...new Set(numbers)].filter(n=>numbers.filter(value=>value===n).length>1);
   return `<section class="reading-number-thread"><h3>Numbers through your reading</h3><p>${all.map((c,i)=>`${i?' · ':''}<strong>${c.name} (${c.number===null?c.rank:c.number})</strong>`).join('')}. ${numbers.length?`Their numbered cards sum to <strong>${sum}</strong>, reducing to <strong>${reduction(sum)}</strong>.`:'Court cards are read by rank rather than assigned an invented tarot number.'} ${numeric}</p>${repeat.length?`<p>Repeated tarot numbers: ${repeat.join(', ')}. Notice whether the cards express a shared theme through different suits.</p>`:''}<p>These numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.</p></section>`;
 }
-// The card-to-card thread from the production reading (main @ 8d12cc6), restored alongside the current
-// Golden Thread (Chas, 31 Oct: "both", Issue #10 F1). Bridges use each card's own connections text; the two
-// generic fallbacks use Deep's softer wording (PR #42 proposals P1, P2) so they suggest rather than predict.
+// The card-to-card thread (restored 31 Oct, Chas: "both", Issue #10 F1), reworked after Deep's QA (9 Nov 2026):
+// each step says how a card relates to the one before it, from the two cards as drawn (element relation and
+// orientation, clarifier-reading.js). The card data's written connections are quoted only when both cards are
+// upright, because they are written for the upright pair. No stock "next step in the Major Arcana sequence".
 function cardToCardThread(chosen){
   if(chosen.length<2)return '';
-  const labels=positionLabels();
+  const labels=positionLabels(),H=clarifierReadingHelpers(),R=typeof ResonateClarifierReading!=='undefined'?ResonateClarifierReading:null;
+  const named=c=>isReversed(c)?`${c.name} (reversed)`:c.name;
+  const word=c=>(cardKeywords(c)[0]||'its theme').toLowerCase();
   const first=chosen[0],last=chosen[chosen.length-1];
   const opening=`The reading begins with ${cardName(first)} in ${labels[0]||'the opening position'} and moves toward ${cardName(last)} in ${labels[chosen.length-1]||'the final position'}.`;
+  const turns=[];
   const bridges=chosen.slice(1).map((card,k)=>{
     const previous=chosen[k],index=k+1;
-    const direct=(previous.connections||[]).find(connection=>normalise(connection.card)===normalise(card.name));
-    const reverse=(card.connections||[]).find(connection=>normalise(connection.card)===normalise(previous.name));
-    const keyword=(cardKeywords(card)[0]||'its theme').toLowerCase();
-    let bridge;
-    if(direct)bridge=`Read after ${previous.name}, this develops the thread: ${direct.meaning}`;
-    else if(reverse)bridge=`Read after ${previous.name}, this develops the thread: ${reverse.meaning}`;
-    else if(previous.arcana==='Major'&&card.arcana==='Major'&&previous.id+1===card.id)bridge=`As the next step in the Major Arcana sequence after ${previous.name}, ${card.name} invites that earlier impulse toward ${keyword}.`;
-    else bridge=`Following ${previous.name}, ${card.name} may draw your attention toward ${keyword}.`;
+    const upright=!isReversed(previous)&&!isReversed(card);
+    const written=upright?((previous.connections||[]).find(x=>normalise(x.card)===normalise(card.name))||(card.connections||[]).find(x=>normalise(x.card)===normalise(previous.name))):null;
+    const kind=R?R.relation(previous,card,H).kind:'modify';
+    if(kind==='challenge')turns.push(labels[index]);
+    const wp=word(previous),wc=word(card);
+    let bridge=kind==='reinforce'?`${named(card)} continues what ${named(previous)} began, carrying ${wp} on as ${wc}.`
+      :kind==='support'?`After ${named(previous)}, ${named(card)} gives ${wp} somewhere to go, turning it toward ${wc}.`
+      :kind==='challenge'?`${named(card)} turns against ${named(previous)}, setting ${wc} against ${wp}: a turning point in the reading.`
+      :`After ${named(previous)}, ${named(card)} shifts the thread from ${wp} toward ${wc}.`;
+    if(isReversed(card)&&!isReversed(previous))bridge+=' Reversed, it shows that next step held back or turned inward.';
+    else if(!isReversed(card)&&isReversed(previous))bridge+=` Upright, it offers a way through the difficulty in ${named(previous)}.`;
+    if(written)bridge+=` RESONATE's card notes link these two: ${written.meaning}`;
     return `<p class="golden-card-bridge"><strong>${labels[index]||'Next'} · ${cardName(card)}.</strong> ${bridge}</p>`;
   }).join('');
-  const movement=`The card-to-card movement is the heart of this reading: ${cardName(first)} opens the question, and ${cardName(last)} shows where that pattern may be heading if the present choices continue.`;
-  const resonance='Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.';
-  return `<div class="card-to-card-thread"><div class="eyebrow">FROM CARD TO CARD</div><p class="golden-thread-opening">${opening}</p>${bridges}<p class="golden-thread-connection">${movement}</p><p class="card-to-card-close">${resonance}</p></div>`;
+  const movement=turns.length?`From ${word(first)} to ${word(last)}, the reading turns ${turns.length===1?'once':`${turns.length} times`}, at ${turns.join(', ').replace(/, ([^,]*)$/,' and $1')}: those are the places where a card pushes against the one before it, and where choice matters most.`
+    :`From ${word(first)} to ${word(last)}, each card builds on the one before it without a sharp turn, so the reading moves as one current.`;
+  return `<div class="card-to-card-thread"><div class="eyebrow">FROM CARD TO CARD</div><p class="golden-thread-opening">${opening}</p>${bridges}<p class="golden-thread-connection">${movement}</p></div>`;
 }
 // Every card revealed for a position: its clarifiers, then its Clarity card (Option B) if one was drawn.
 // (Deep's QA, 8 Nov 2026: the Golden Thread left the Clarity card out of the whole-spread synthesis.)
@@ -397,25 +405,52 @@ function revealedWith(i){
   const clarity=k==null?null:cards.find(c=>c.id===k);
   return [...readingLayerCards(i),...(clarity?[clarity]:[])];
 }
+// The Golden Thread (reworked after Deep's QA, 9 Nov 2026): for each position, what its cards amount to (the
+// same proposition as its "Together", or the card's position lens when it stands alone), then the card-to-card
+// movement, then the Overall Invitation drawn from the whole spread: a theme from every card, where the weight
+// of the elements falls, where the reading is in tension, and a question from the card the reading ends on.
 function goldenThread(chosen){
   if(!chosen.length)return '';
-  const labels=positionLabels();
-  const groups=chosen.map((base,i)=>{
-    const others=revealedWith(i);
-    const clarityId=typeof readingClarity==='function'?readingClarity()[i]:null;
-    const all=[base,...others];
+  const labels=positionLabels(),H=clarifierReadingHelpers(),R=typeof ResonateClarifierReading!=='undefined'?ResonateClarifierReading:null;
+  const second=readingSecondLayer();
+  const read=chosen.map((base,i)=>{
+    const c1=readingLayerCards(i)[0]||null;
+    const c2Id=second[i],c2=c2Id==null||!c1?null:cards.find(c=>c.id===c2Id)||null;
+    const k=readingClarity()[i],clarity=k==null?null:cards.find(c=>c.id===k)||null;
+    if(!R||!c1)return {base,i,text:positionContext(base,i),tension:false};
+    const s=R.synthesis(base,c1,c2,{pos:labels[i]||'this position',index:i,spreadId:state.spreadId,spreadName:currentSpread().name,labels,baseCards:chosen,clarified:[]},H,clarity);
+    return {base,i,text:s.proposition,tension:s.tension};
+  });
+  const groups=readingOrder().map(i=>{
+    const base=chosen[i],all=[base,...revealedWith(i)];
     const repeats=all.filter((c,j)=>all.findIndex(p=>p.id===c.id)!==j);
-    const tone=all.map(c=>`${cardName(c)} (${c.astrology||'its symbolic correspondence'})`).join(' meets ');
-    const pair=c=>cardKeywords(c).slice(0,2).join(' and ').toLowerCase();
-    const connections=others.length?`The original ${cardName(base)} highlights ${pair(base)}; ${others.map(c=>`${c.id===clarityId?'the Clarity card, ':''}${cardName(c)}, introduces ${pair(c)}`.replace(/^([^,]+), introduces/,'$1 introduces')).join('; ')}. Consider whether these energies support one another or ask for balance.`:`The foundation is ${pair(base)}; clarifiers can deepen this interpretation.`;
-    return `<article class="golden-card-reading"><div class="golden-card-heading"><span>${labels[i]||'Guidance'}</span><strong>${all.map(cardName).join(' + ')}</strong></div><p>${connections}</p><p>The astrological correspondences in dialogue are ${tone}. These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.</p>${repeats.length?`<p><strong>Repeated card:</strong> ${[...new Set(repeats.map(c=>c.name))].join(', ')} returns in this reading. Rather than a new message, its reappearance amplifies and asks you to revisit its original theme.</p>`:''}</article>`;
+    return `<article class="golden-card-reading"><div class="golden-card-heading"><span>${labels[i]||'Guidance'}</span><strong>${all.map(cardName).join(' + ')}</strong></div><p>${read[i].text}</p>${repeats.length?`<p><strong>Repeated card:</strong> ${[...new Set(repeats.map(c=>c.name))].join(', ')} returns in this reading. Rather than a new message, its reappearance amplifies and asks you to revisit its original theme.</p>`:''}</article>`;
   }).join('');
   const all=chosen.flatMap((c,i)=>[c,...revealedWith(i)]);
-  const hasClarity=typeof readingClarity==='function'&&readingClarity().some(x=>x!=null);
-  const distinct=[...new Set(all.flatMap(cardKeywords))].slice(0,4);
+  const hasClarity=readingClarity().some(x=>x!=null);
+  // A theme from every card in turn, position by position (each position's original first, then its clarifiers
+  // and Clarity card), so no card is crowded out by the first one's keywords. Up to six, or one per position.
+  const limit=Math.max(6,chosen.length),stacks=chosen.map((c,i)=>[c,...revealedWith(i)]),distinct=[];
+  for(let layer=0;distinct.length<limit&&stacks.some(st=>st.length>layer);layer++)
+    for(const st of stacks){
+      if(distinct.length>=limit||!st[layer])continue;
+      const k=cardKeywords(st[layer]).map(x=>x.toLowerCase()).find(x=>!distinct.includes(x));
+      if(k)distinct.push(k);
+    }
+  const and=a=>a.length>1?`${a.slice(0,-1).join(', ')} and ${a[a.length-1]}`:a.join('');
+  const ELEMENT_DOMAIN={Fire:'energy, will and action',Water:'feeling and relationships',Air:'thought and communication',Earth:'the body, work and material things'};
+  const counts={};all.forEach(c=>{if(c.element)counts[c.element]=(counts[c.element]||0)+1;});
+  const [topEl,topN]=Object.entries(counts).sort((x,y)=>y[1]-x[1])[0]||[];
+  const weight=all.length<2?'':topN*2>all.length?`${topN===all.length?'Every card is':`${topN} of the ${all.length} cards are`} ${topEl}, so most of this plays out in ${ELEMENT_DOMAIN[topEl]}.`:'No single element dominates, so the reading reaches across several areas of life at once.';
+  const tense=read.filter(r=>r.tension).map(r=>labels[r.i]);
+  const tension=tense.length?`The reading is most in tension at ${and(tense)}, where the cards in a position pull against each other; that is where your choices count most.`:'';
   const reversedCount=all.filter(isReversed).length;
+  const held=reversedCount*2>all.length?'More than half the cards are reversed, so much of this is held back, delayed or turned inward: begin with what is blocking it.':'';
+  const lastI=readingOrder()[readingOrder().length-1],ender=chosen[lastI];
+  const pattern=[`The themes running through the spread are ${and(distinct)}.`,weight,tension,held].filter(Boolean).join(' ');
+  const ask=ender.journalPrompt?`A question to carry, from ${cardName(ender)}${chosen.length>1?` in ${labels[lastI]}`:''}: ${ender.journalPrompt}`:'Which part speaks to your present circumstances, and what choice might help you respond?';
   const reversedNote=reversedCount?` ${reversedCount===all.length?'Every card':reversedCount===1?'One card':`${reversedCount} cards`} came up reversed and ${reversedCount===1?'is':'are'} read through ${reversedCount===1?'its':'their'} reversed meaning.`:'';
-  return `<div class="golden-thread-reading"><p class="golden-thread-opening">The Golden Thread follows ${all.length} revealed card${all.length===1?'':'s'} across this reading, including every clarifier${hasClarity?' and Clarity card':''}.${reversedNote}</p>${groups}${cardToCardThread(chosen)}<div class="golden-thread-summary"><span>THE OVERALL INVITATION</span><p>${distinct.length?`Across these cards, ${distinct.join(', ').toLowerCase()} form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond?`:'Use the shared themes as a prompt for reflection and choice.'} This is a perspective, not a fixed prediction.</p></div>${numerologyForReading(chosen)}<p class="golden-thread-resonance">Take what resonates, and leave the rest.</p></div>`;
+  return `<div class="golden-thread-reading"><p class="golden-thread-opening">The Golden Thread follows ${all.length} revealed card${all.length===1?'':'s'} across this reading, including every clarifier${hasClarity?' and Clarity card':''}.${reversedNote}</p>${groups}${cardToCardThread(chosen)}<div class="golden-thread-summary"><span>THE OVERALL INVITATION</span><p class="golden-thread-pattern">${pattern}</p><p class="golden-thread-ask">${ask} This is a perspective, not a fixed prediction.</p></div>${numerologyForReading(chosen)}<p class="golden-thread-resonance">Take what resonates, and leave the rest.</p></div>`;
 }
 // Clarifiers follow Chas's teaching rule (Issue #13, clarifier-rules.js): a Major Arcana card gets a
 // first clarifier; a second only if that clarifier is also a Major; any other card may be clarified by

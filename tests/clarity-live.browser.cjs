@@ -99,7 +99,13 @@ server.listen(0, '127.0.0.1', async () => {
     assert.equal(r.all, 4);
   });
 
-  if (fs.existsSync(path.join(LIVE_DIR, 'live-samples.json'))) {
+  // The recorded draws pin the reading text of the app code they were recorded on. Replayed only when this
+  // checkout's app files are identical to that commit (audit/ and tests/ aside); otherwise said so and skipped.
+  const recordedOn = fs.existsSync(path.join(LIVE_DIR, 'clarity-live.json')) ? JSON.parse(fs.readFileSync(path.join(LIVE_DIR, 'clarity-live.json'), 'utf8')).appCommit : null;
+  let sameApp = false;
+  try { sameApp = !!recordedOn && require('child_process').execFileSync('git', ['diff', '--name-only', recordedOn, '--', '.', ':!audit', ':!tests', ':!test-results'], { cwd: ROOT, encoding: 'utf8' }).trim() === ''; } catch (e) { sameApp = false; }
+  if (recordedOn && !sameApp) console.log(`SKIP  REPLAY recorded evidence was recorded on app ${recordedOn.slice(0, 7)}; this app code differs, so the recorded text does not apply (re-record with audit/tools/clarity-live-record.cjs)`);
+  else if (fs.existsSync(path.join(LIVE_DIR, 'live-samples.json'))) {
     const recorded = JSON.parse(fs.readFileSync(path.join(LIVE_DIR, 'clarity-live.json'), 'utf8'));
     for (const s of JSON.parse(fs.readFileSync(path.join(LIVE_DIR, 'live-samples.json'), 'utf8'))) {
       await check(`REPLAY-${s.liveOf} recorded evidence draw replays to the recorded reading and Golden Thread`, async page => {

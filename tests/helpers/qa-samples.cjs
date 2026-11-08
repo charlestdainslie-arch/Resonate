@@ -77,6 +77,7 @@ const BOUNDARY = [
     ['The Magician', 'The Lovers', 'Death', 'The Moon', 'Judgement'], 'Celtic Cross of ten Majors: every position clarified, several Major-Major pairs, four at the two-clarifier limit'),
   fixed('B07', 'guidance', ['Death'], [{ pos: 0, c1: 'The Tower', c2: 'Judgement', k: 'Five of Cups' }], [], 'Option B: Major original, Major Clarifier 1, Major Clarifier 2, then the Clarity card (a Minor, given here so the case is fixed; live draws take it at random from the unused Minors)'),
   { ...fixed('B08', 'seven', ['Three of Wands', 'The Empress', 'Nine of Swords', 'The Hermit', 'Page of Cups', 'Two of Pentacles', 'Ten of Wands'], [{ pos: 3, c1: 'Four of Cups' }], ['Nine of Swords'], 'Seven-card question reading: position 4, You / Answer, read last'), question: true },
+  fixed('B09', 'guidance', ['Two of Swords'], [{ pos: 0, c1: 'The Tower', c2: 'Judgement' }], [], 'Minor original with two Major clarifiers (Deep, 9 Nov): Option B does not apply (Si Aye / Chas, 7 Nov), so no Clarity card is offered and the two-clarifier limit is stated'),
 ];
 
 // ---- Si Aye's QA matrix (7 Nov 2026): the 16 baseline cases, where not already covered above. ----

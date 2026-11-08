@@ -71,7 +71,9 @@
     if (b.arcana === 'Major' && a.arcana !== 'Major') notes.push(`As a Major Arcana card, ${b.name} suggests a larger life theme behind this everyday situation.`);
     else if (b.arcana !== 'Major' && a.arcana === 'Major') notes.push(`As a Minor Arcana card, ${b.name} brings the Major theme down to a practical, everyday expression${b.suit ? ` in ${SUIT_DOMAIN[b.suit]}` : ''}.`);
     if (b.arcana !== 'Major' && b.number === null && b.rank) notes.push(`As a court card (${b.rank}), ${b.name} may describe a person involved, or a way of behaving you could adopt.`);
-    const written = (a.connections || []).find(c => norm(c.card) === norm(b.name)) || (b.connections || []).find(c => norm(c.card) === norm(a.name));
+    // The card data's written connections describe the two cards upright, so they are quoted only then
+    // (Deep's QA, 9 Nov 2026: a reversed card was read with its upright connection).
+    const written = ra || rb ? null : (a.connections || []).find(c => norm(c.card) === norm(b.name)) || (b.connections || []).find(c => norm(c.card) === norm(a.name));
     return { kind, verb: VERB[kind], basis, notes, connection: written ? written.meaning : '' };
   }
 
@@ -114,35 +116,105 @@
     return { kinds: [toBase.kind, toFirst.kind], lead, meaning, basis, notes, connection: toBase.connection || toFirst.connection };
   }
 
-  // Step 4: the cards together, and the position within the wider spread.
+  // What a position asks of its cards (from the position's name): the proposition is framed through it.
+  function roleOf(pos) {
+    const p = lower(pos);
+    if (/approach/.test(p)) return 'approach';
+    if (/guidance|advice/.test(p)) return 'act';
+    if (/challenge|crossing|obstacle/.test(p)) return 'obstacle';
+    if (/hope|fear|conscious focus/.test(p)) return 'hope';
+    if (/future|outcome/.test(p)) return 'ahead';
+    if (/past|foundation|root/.test(p)) return 'root';
+    return 'now';
+  }
+
+  // How the cards in one position line up (kinds: relation of each card to the cards before it).
+  function patternOf(base, c1, c2, H) {
+    const k1 = relation(base, c1, H).kind;
+    if (!c2) return { shape: harmonious(k1) ? 'allied' : k1 === 'challenge' ? 'opposed' : 'reshaped', k1 };
+    const kb2 = relation(base, c2, H).kind, k12 = relation(c1, c2, H).kind;
+    let shape;
+    if (harmonious(k1) && harmonious(kb2) && harmonious(k12)) shape = 'allied';
+    else if (kb2 === 'challenge' && k12 === 'challenge') shape = 'questioned';
+    else if (harmonious(kb2) && !harmonious(k12)) shape = 'withBase';
+    else if (harmonious(k12) && !harmonious(kb2)) shape = 'withFirst';
+    else if (k1 === 'challenge' || kb2 === 'challenge' || k12 === 'challenge') shape = 'opposed';
+    else shape = 'reshaped';
+    return { shape, k1, kb2, k12 };
+  }
+
+  // Step 4: what the cards mean together, as one proposition (Si Aye / Deep, 9 Nov 2026): the original card
+  // sets the theme; Clarifier 1 supports, challenges or changes it; Clarifier 2 takes a side or reshapes the
+  // relationship; the Clarity card grounds the three Majors in everyday life; then what the combined pattern
+  // suggests for this position, and how the reversals change it. Built only from the cards' own data
+  // (orientation keywords, element relations, suit, written prompt); nothing predicts beyond the cards.
   // ctx: {pos, spreadId, spreadName, index, labels, baseCards:[card per position], clarified:[count per position]}
   // clarity (optional): the Clarity card (Option B), drawn after three Major Arcana cards.
   function synthesis(base, c1, c2, ctx, h, clarity) {
-    const H = helpersOf(h);
+    const H = helpersOf(h), pos = ctx.pos, role = roleOf(pos);
     const group = [base, c1, c2, clarity].filter(Boolean);
-    const kinds = [relation(base, c1, H).kind];
-    if (c2) kinds.push(relation(base, c2, H).kind, relation(c1, c2, H).kind);
-    if (clarity) kinds.push(relation(base, clarity, H).kind);
-    const harmony = kinds.filter(harmonious).length, tension = kinds.filter(k => k === 'challenge').length;
-    let tone, guide;
-    if (tension === 0 && harmony === kinds.length) { tone = 'a consistent message'; guide = 'Consider working with this theme with some confidence, while staying open to how it unfolds.'; }
-    else if (tension === 0 && harmony === 0) { tone = 'a layered message, each card shifting the angle a little'; guide = 'Notice which angle feels most true to your situation, and start there.'; }
-    else if (tension > harmony) { tone = 'a message with real tension in it'; guide = 'Treat the friction as information: what would honour both sides?'; }
-    else if (tension === 0 && harmony * 2 < kinds.length) { tone = 'a layered message, each card shifting the angle a little'; guide = 'Notice which angle feels most true to your situation, and start there.'; }
-    else if (tension === 0) { tone = 'a mostly consistent message'; guide = 'Let the shared theme lead, and notice where the other card shifts it.'; }
-    else { tone = 'a mixed message, with both agreement and friction'; guide = 'Notice which card feels most true to your situation, and let it lead.'; }
-    // QA 7 Nov (sample S15): three reversed cards in agreement were told to "work with this theme with some
-    // confidence". When most of the cards are reversed, an agreement is read as a shared difficulty.
-    const reversedCount = group.filter(c => H.reversed(c)).length;
-    if (reversedCount * 2 > group.length && tension === 0 && harmony * 2 >= kinds.length) guide = `The cards agree, but ${reversedCount === group.length ? 'all' : 'most'} of them are reversed: read the shared theme as something blocked, delayed or turned inward, and look at that before acting.`;
-    const themes = list(group.map(c => word(H, c)));
-    const lead = `Together, ${list(group.map(H.name))} give ${ctx.pos} ${tone}: ${themes}.`;
+    const W = c => word(H, c), N = c => H.name(c);
+    const P = patternOf(base, c1, c2, H);
+    // How the cards build the reading, card by card.
+    const steps = [];
+    steps.push(`${N(base)} sets the theme in ${pos}: ${theme(H, base)}.`);
+    const k1 = P.k1;
+    steps.push(k1 === 'reinforce' ? `${N(c1)} says the same thing more strongly, so this is not a passing mood but the main fact here.`
+      : k1 === 'support' ? `${N(c1)} gives it somewhere to go, putting ${W(base)} to use through ${W(c1)}.`
+      : k1 === 'challenge' ? `${N(c1)} pushes back, setting ${W(c1)} against ${W(base)}; that friction is part of the message.`
+      : `${N(c1)} changes its emphasis, bringing ${W(c1)} into ${W(base)}.`);
+    if (c2) steps.push(P.shape === 'allied' ? `${N(c2)} brings them together: through ${W(c2)}, ${W(base)} and ${W(c1)} point the same way.`
+      : P.shape === 'questioned' ? `${N(c2)} unsettles both, putting ${W(base)} and ${W(c1)} alike to the test of ${W(c2)}.`
+      : P.shape === 'withBase' ? `${N(c2)} sides with ${base.name}, pulling the reading back to ${W(base)} through ${W(c2)} and tempering ${W(c1)}.`
+      : P.shape === 'withFirst' ? `${N(c2)} sides with ${c1.name}, carrying ${W(c1)} forward through ${W(c2)} and asking what in ${W(base)} has to change.`
+      : `${N(c2)} adds a further angle, so that ${W(c2)} shapes how ${W(base)} and ${W(c1)} work together.`);
+    const domain = clarity ? (clarity.suit ? SUIT_DOMAIN[clarity.suit] : 'everyday life') : '';
+    if (clarity) steps.push(`${N(clarity)} grounds all three in ${domain}: in everyday terms, this is likely to show up as ${theme(H, clarity)}.`);
+    // The combined pattern, as one phrase.
+    const others = [c1, c2].filter(Boolean);
+    // QA 7 Nov (S15): cards that agree but are mostly reversed share a difficulty; they do not "back" anything.
+    const heldBack = group.filter(c => H.reversed(c)).length * 2 > group.length;
+    const shapes = {
+      allied: () => heldBack ? `a shared difficulty around ${W(base)}, echoed by ${list(others.map(W))}` : `${W(base)}, with real momentum behind it from ${list(others.map(W))}`,
+      opposed: () => c2 ? `a pull between ${W(base)} on one side and ${W(c1)} and ${W(c2)} on the other, not yet settled` : `a pull between ${W(base)} and ${W(c1)}`,
+      withBase: () => `${W(base)} holding its ground against ${W(c1)}, with ${W(c2)} on its side`,
+      withFirst: () => `${W(base)} giving way to ${W(c1)}, with ${W(c2)} pushing that change on`,
+      questioned: () => `${W(base)} and ${W(c1)} both called into question by ${W(c2)}`,
+      reshaped: () => `${W(base)}, expressed through ${list(others.map(W))}`
+    };
+    const shapePhrase = shapes[P.shape]() + (clarity ? `, landing day to day as ${W(clarity)}` : '');
+    const frame = {
+      act: `As guidance, the cards point to ${shapePhrase}.`,
+      approach: `The stance the cards describe here is ${shapePhrase}.`,
+      obstacle: `The obstacle here is ${shapePhrase}.`,
+      hope: `Your hopes and fears here gather around ${shapePhrase}.`,
+      ahead: `If the present course continues, this points toward ${shapePhrase}; it is a direction, not a fixed outcome.`,
+      root: `What shaped this situation was ${shapePhrase}.`,
+      now: `What is active now is ${shapePhrase}.`
+    }[role];
+    const lead = W(base), first = W(c1);
+    const actionText = {
+      allied: () => ({ act: `Lean into ${lead}: the cards back it.`, obstacle: `Because the cards agree, the obstacle is the strength of ${lead} itself; ask whether it needs tempering.`, hope: `The cards agree, so ask honestly whether this is what you want or what you fear.`, ahead: `The cards agree, so this direction is well supported.`, root: `Notice how strongly that is still shaping the present.`, now: `This is the clearest current in this part of the reading.` }),
+      opposed: () => ({ act: `Before acting, decide how much room ${lead} and ${first} each get; forcing one over the other is unlikely to settle it.`, obstacle: `Working through it means holding ${lead} and ${first} together rather than choosing one too soon.`, hope: `Part of this may be hope and part fear; the friction shows which is which.`, ahead: `Which side prevails is still open, and your choices count here.`, root: `That unresolved pull may still be live.`, now: `How you respond to this tension matters now.` }),
+      withBase: () => ({ act: `Stay with ${lead}, and let ${first} inform it rather than lead.`, obstacle: `The way through is to keep hold of ${lead} while taking ${first} seriously.`, hope: `What you hope for sits closest to ${lead}; ${first} is the doubt beside it.`, ahead: `What is likely to hold, if you keep to it, is ${lead}.`, root: `The root that held was ${lead}.`, now: `The ground you stand on is still ${lead}.` }),
+      withFirst: () => ({ act: `Be ready to let ${first} lead; ${lead} is where the change is needed.`, obstacle: `The way through is to let ${first} change how you hold ${lead}.`, hope: `The pull is toward ${first}; ask whether that is hope or fear speaking.`, ahead: `The change toward ${first} is likely to continue.`, root: `That change toward ${first} is part of how you got here.`, now: `The change toward ${first} is already under way.` }),
+      questioned: () => ({ act: `Pause and re-examine both before committing.`, obstacle: `Neither ${lead} nor ${first} can be taken for granted here.`, hope: `Both the hope and the fear deserve a second look.`, ahead: `The outcome depends on what that re-examination brings.`, root: `What once seemed settled was being questioned.`, now: `Neither should be taken for granted right now.` }),
+      reshaped: () => ({ act: `Work with ${lead} by way of ${first}.`, obstacle: `The obstacle eases when ${lead} is approached through ${first}.`, hope: `Your hopes and fears take the shape of ${first}.`, ahead: `Watch for ${lead} arriving in the form of ${first}.`, root: `${first.charAt(0).toUpperCase() + first.slice(1)} was the form ${lead} took, and it may still colour how you see things.`, now: `So the question is less whether ${lead} is present than how ${first} lets it show.` })
+    }[P.shape]()[role === 'approach' ? 'act' : role];
+    const action = heldBack && P.shape === 'allied' ? '' : actionText;
+    // How the reversals change it.
+    const rev = group.filter(c => H.reversed(c)), up = group.filter(c => !H.reversed(c));
+    let reversal = '';
+    if (rev.length && rev.length * 2 > group.length) reversal = `With ${rev.length === group.length ? 'every card' : 'most of these cards'} reversed, this is more held back or resisted than openly expressed; start with what is blocking it.`;
+    else if (H.reversed(base)) reversal = `With ${base.name} reversed, the theme itself is under strain, and ${list(up.map(c => c.name))} show${up.length === 1 ? 's' : ''} where it can be steadied.`;
+    else if (rev.length) reversal = `${list(rev.map(c => c.name))} ${rev.length === 1 ? 'is' : 'are'} reversed, so ${rev.length === 1 ? 'its' : 'their'} part in this is weaker, delayed or turned inward.`;
     const counts = {};
     group.forEach(c => { if (c.element) counts[c.element] = (counts[c.element] || 0) + 1; });
-    const top = Object.entries(counts).sort((x, y) => y[1] - x[1])[0];
-    const NUM = ['', 'One', 'Two', 'Three', 'Four'], num = ['', 'one', 'two', 'three', 'four'];
-    const elementLine = top && top[1] >= 2 ? `${top[1] === group.length ? (group.length === 2 ? 'Both' : 'All ' + num[group.length]) + ' cards are' : `${NUM[top[1]]} of the ${num[group.length]} cards are`} ${top[0]}, putting the weight on ${ELEMENT_DOMAIN[top[0]]}.` : '';
-    return { lead, element: elementLine, guide, wider: wider(base, ctx, H) };
+    const only = Object.keys(counts).length === 1 && group.length > 1 ? Object.keys(counts)[0] : '';
+    const elementLine = only ? `Every card here is ${only}, so this plays out mainly in ${ELEMENT_DOMAIN[only]}.` : '';
+    const tension = P.shape === 'opposed' || P.shape === 'questioned' || (c2 && (P.shape === 'withBase' || P.shape === 'withFirst'));
+    return { lead: `${steps.join(' ')} ${frame}`, element: elementLine, guide: [action, reversal].filter(Boolean).join(' '),
+      proposition: [frame, reversal].filter(Boolean).join(' '), shape: P.shape, role, tension, wider: wider(base, ctx, H) };
   }
 
   // Clarity card (Option B): after three Major Arcana cards, one Minor card at random from the unused Minors.
@@ -174,5 +246,5 @@
 
   const METHOD = 'How this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.';
 
-  return { relation, firstStep, secondStep, clarityStep, synthesis, wider: (base, ctx, h) => wider(base, ctx, helpersOf(h)), METHOD, CELTIC_PAIRS };
+  return { relation, roleOf, firstStep, secondStep, clarityStep, synthesis, wider: (base, ctx, h) => wider(base, ctx, helpersOf(h)), METHOD, CELTIC_PAIRS };
 });

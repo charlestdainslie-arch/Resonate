@@ -58,15 +58,20 @@ test('step 4 summarises the cards together and places the position in the Celtic
   const h = helpers();
   const base = ['Ten of Cups', 'Three of Swords', 'Queen of Pentacles', 'Five of Wands', 'The Tower', 'Ace of Cups', 'Knight of Swords', 'The Star', 'Six of Cups', 'The World'].map(by);
   const s = R.synthesis(by('The Tower'), by('Strength'), by('The Emperor'), { pos: 'Conscious Focus', index: 4, spreadId: 'celtic', labels: CELTIC, baseCards: base }, h);
-  assert.match(s.lead, /^Together, The Tower, Strength and The Emperor give Conscious Focus a consistent message/);
-  assert.match(s.element, /All three cards are Fire/);
+  // 9 Nov 2026 (Deep / Si Aye): one proposition, built card by card, not a keyword list.
+  assert.match(s.lead, /^The Tower sets the theme in Conscious Focus: disruption and revelation\. Strength says the same thing more strongly/);
+  assert.match(s.lead, /The Emperor brings them together/);
+  assert.match(s.lead, /Your hopes and fears here gather around disruption, with real momentum behind it from courage and authority\./);
+  assert.equal(s.shape, 'allied'); assert.equal(s.role, 'hope');
+  assert.match(s.element, /Every card here is Fire, so this plays out mainly in energy, will and action/);
   assert.match(s.wider, /read with Foundation, Queen of Pentacles: together they show what lies beneath and what you consciously aim for/);
   for (const [a, b] of [[0, 1], [2, 4], [3, 5], [6, 7], [8, 9]]) {
     assert.match(R.wider(base[a], { pos: CELTIC[a], index: a, spreadId: 'celtic', labels: CELTIC, baseCards: base }, h), new RegExp(`read with ${CELTIC[b]}, ${base[b].name}`));
     assert.match(R.wider(base[b], { pos: CELTIC[b], index: b, spreadId: 'celtic', labels: CELTIC, baseCards: base }, h), new RegExp(`read with ${CELTIC[a]}, ${base[a].name}`));
   }
   const tension = R.synthesis(by('The Tower'), by('Death'), by('The Moon'), { pos: 'X', index: 0, spreadId: 'three', labels: ['X', 'Y', 'Z'], baseCards: [by('The Tower'), by('Ace of Cups'), by('Ace of Swords')] }, h);
-  assert.match(tension.lead, /tension/);
+  assert.match(tension.lead, /Death pushes back, setting transition against disruption/);
+  assert.equal(tension.tension, true);
   assert.match(tension.wider, /neighbour is Y, Ace of Cups/);
 });
 
@@ -88,7 +93,9 @@ test('an agreement among mostly reversed cards is read as a shared difficulty, n
   const h = helpers(['Queen of Wands', 'Justice', 'Nine of Swords']);
   const s = R.synthesis(by('Queen of Wands'), by('Justice'), by('Nine of Swords'), { pos: 'Present Situation', index: 0, spreadId: 'guidance', labels: ['P'], baseCards: [by('Queen of Wands')] }, h);
   assert.doesNotMatch(s.guide, /confidence/);
-  assert.match(s.guide, /all of them are reversed/);
+  assert.match(s.guide, /With every card reversed, this is more held back or resisted than openly expressed/);
+  assert.match(s.lead, /a shared difficulty around/);
+  assert.doesNotMatch(s.lead + s.guide, /momentum|back it|Lean into/);
   const w = R.wider(by('Two of Cups'), { pos: 'Present Situation', index: 0, spreadId: 'celtic', labels: CELTIC, baseCards: ['Two of Cups', 'Queen of Wands', 'Ace of Cups', 'Ace of Swords', 'Ace of Wands', 'Ace of Pentacles', 'Two of Wands', 'Two of Swords', 'Two of Pentacles', 'Three of Cups'].map(by), clarified: [0, 1] }, h);
   assert.match(w, /Crossing Challenge, Queen of Wands \(reversed; clarified\)/);
 });
