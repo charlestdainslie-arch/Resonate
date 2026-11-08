@@ -66,7 +66,7 @@ server.listen(0, '127.0.0.1', async () => {
         if (!p.c1) { assert.deepEqual(p.steps, [], `${where}: no steps without a clarifier`); assert.equal(p.together, ''); }
         else {
           assert.deepEqual(p.steps.map(t => Number(t[0])), p.clarity ? [1, 2, 3, 4, 5] : p.c2 ? [1, 2, 3, 4] : [1, 2, 3], `${where}: steps in order`);
-          if (p.clarity) { assert.equal(p.clarity.arcana, 'Minor', `${where}: the Clarity card is a Minor`); assert.ok(p.clarityText.includes(p.base.name), `${where}: the Clarity card's reading names the original`); }
+          if (p.clarity) { assert.ok(r.goldenThread.includes(p.clarity.name), `${where}: the Golden Thread includes the Clarity card (Deep's QA, 8 Nov)`); assert.equal(p.clarity.arcana, 'Minor', `${where}: the Clarity card is a Minor`); assert.ok(p.clarityText.includes(p.base.name), `${where}: the Clarity card's reading names the original`); }
           const lead1 = p.relation1.split('\n')[0];
           assert.ok(lead1.includes(p.c1.name) && lead1.includes(p.base.name), `${where}: step 2 names Clarifier 1 and the original: ${lead1}`);
           if (p.c2) { const lead2 = p.relation2.split('\n')[0]; assert.ok([p.c2, p.base, p.c1].every(c => lead2.includes(c.name)), `${where}: step 3 relates Clarifier 2 to both: ${lead2}`); }

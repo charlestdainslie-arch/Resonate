@@ -357,7 +357,7 @@ function readingLayerCards(index){
   return results.filter(Boolean);
 }
 function numerologyForReading(chosen){
-  const all=chosen.flatMap((base,i)=>[base,...readingLayerCards(i)]);
+  const all=chosen.flatMap((base,i)=>[base,...revealedWith(i)]);
   const numbers=all.map(c=>c.number).filter(n=>Number.isInteger(n));
   const sum=numbers.reduce((a,b)=>a+b,0);
   const reduction=n=>{while(n>9)n=String(n).split('').reduce((a,b)=>a+Number(b),0);return n};
@@ -390,23 +390,32 @@ function cardToCardThread(chosen){
   const resonance='Keep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.';
   return `<div class="card-to-card-thread"><div class="eyebrow">FROM CARD TO CARD</div><p class="golden-thread-opening">${opening}</p>${bridges}<p class="golden-thread-connection">${movement}</p><p class="card-to-card-close">${resonance}</p></div>`;
 }
+// Every card revealed for a position: its clarifiers, then its Clarity card (Option B) if one was drawn.
+// (Deep's QA, 8 Nov 2026: the Golden Thread left the Clarity card out of the whole-spread synthesis.)
+function revealedWith(i){
+  const k=typeof readingClarity==='function'?readingClarity()[i]:null;
+  const clarity=k==null?null:cards.find(c=>c.id===k);
+  return [...readingLayerCards(i),...(clarity?[clarity]:[])];
+}
 function goldenThread(chosen){
   if(!chosen.length)return '';
   const labels=positionLabels();
   const groups=chosen.map((base,i)=>{
-    const others=readingLayerCards(i);
+    const others=revealedWith(i);
+    const clarityId=typeof readingClarity==='function'?readingClarity()[i]:null;
     const all=[base,...others];
     const repeats=all.filter((c,j)=>all.findIndex(p=>p.id===c.id)!==j);
     const tone=all.map(c=>`${cardName(c)} (${c.astrology||'its symbolic correspondence'})`).join(' meets ');
     const pair=c=>cardKeywords(c).slice(0,2).join(' and ').toLowerCase();
-    const connections=others.length?`The original ${cardName(base)} highlights ${pair(base)}; ${others.map(c=>`${cardName(c)} introduces ${pair(c)}`).join('; ')}. Consider whether these energies support one another or ask for balance.`:`The foundation is ${pair(base)}; clarifiers can deepen this interpretation.`;
+    const connections=others.length?`The original ${cardName(base)} highlights ${pair(base)}; ${others.map(c=>`${c.id===clarityId?'the Clarity card, ':''}${cardName(c)}, introduces ${pair(c)}`.replace(/^([^,]+), introduces/,'$1 introduces')).join('; ')}. Consider whether these energies support one another or ask for balance.`:`The foundation is ${pair(base)}; clarifiers can deepen this interpretation.`;
     return `<article class="golden-card-reading"><div class="golden-card-heading"><span>${labels[i]||'Guidance'}</span><strong>${all.map(cardName).join(' + ')}</strong></div><p>${connections}</p><p>The astrological correspondences in dialogue are ${tone}. These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.</p>${repeats.length?`<p><strong>Repeated card:</strong> ${[...new Set(repeats.map(c=>c.name))].join(', ')} returns in this reading. Rather than a new message, its reappearance amplifies and asks you to revisit its original theme.</p>`:''}</article>`;
   }).join('');
-  const all=chosen.flatMap((c,i)=>[c,...readingLayerCards(i)]);
+  const all=chosen.flatMap((c,i)=>[c,...revealedWith(i)]);
+  const hasClarity=typeof readingClarity==='function'&&readingClarity().some(x=>x!=null);
   const distinct=[...new Set(all.flatMap(cardKeywords))].slice(0,4);
   const reversedCount=all.filter(isReversed).length;
   const reversedNote=reversedCount?` ${reversedCount===all.length?'Every card':reversedCount===1?'One card':`${reversedCount} cards`} came up reversed and ${reversedCount===1?'is':'are'} read through ${reversedCount===1?'its':'their'} reversed meaning.`:'';
-  return `<div class="golden-thread-reading"><p class="golden-thread-opening">The Golden Thread follows ${all.length} revealed card${all.length===1?'':'s'} across this reading, including every clarifier.${reversedNote}</p>${groups}${cardToCardThread(chosen)}<div class="golden-thread-summary"><span>THE OVERALL INVITATION</span><p>${distinct.length?`Across these cards, ${distinct.join(', ').toLowerCase()} form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond?`:'Use the shared themes as a prompt for reflection and choice.'} This is a perspective, not a fixed prediction.</p></div>${numerologyForReading(chosen)}<p class="golden-thread-resonance">Take what resonates, and leave the rest.</p></div>`;
+  return `<div class="golden-thread-reading"><p class="golden-thread-opening">The Golden Thread follows ${all.length} revealed card${all.length===1?'':'s'} across this reading, including every clarifier${hasClarity?' and Clarity card':''}.${reversedNote}</p>${groups}${cardToCardThread(chosen)}<div class="golden-thread-summary"><span>THE OVERALL INVITATION</span><p>${distinct.length?`Across these cards, ${distinct.join(', ').toLowerCase()} form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond?`:'Use the shared themes as a prompt for reflection and choice.'} This is a perspective, not a fixed prediction.</p></div>${numerologyForReading(chosen)}<p class="golden-thread-resonance">Take what resonates, and leave the rest.</p></div>`;
 }
 // Clarifiers follow Chas's teaching rule (Issue #13, clarifier-rules.js): a Major Arcana card gets a
 // first clarifier; a second only if that clarifier is also a Major; any other card may be clarified by

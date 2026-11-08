@@ -126,6 +126,11 @@ const MATRIX = [
   matrix('RC-02', 'relationship', [['Queen of Cups', true], ['King of Swords'], ['Page of Wands'], ['Eight of Cups'], ['The Star']], { seed: 7409, clarify: [{ pos: 2 }], note: 'Queen of Cups R / King of Swords U / Page of Wands U / Eight of Cups U / Star U; clarifier on Connection' }),
   matrix('RC-03', 'relationship', [['The Devil'], ['The Hierophant', true], ['Three of Cups'], ['Four of Cups'], ['Judgement']], { seed: 7410, note: 'Devil U / Hierophant R / Three of Cups U / Four of Cups U / Judgement U' }),
   matrix('SC-02', 'seven', null, { seed: 7411, accept: (b, r) => b.filter(major).length === 2 && b.some(x => major(x) && r.includes(x)), acceptText: 'exactly two Majors, at least one reversed', clarifyFirstReversedMajor: true, note: 'Two Majors, reversed anchor, two-clarifier chain' }),
+  // SC-01 corrected (Deep's QA, 8 Nov 2026): the matrix's "clarifier on Foundation" names a Celtic Cross position
+  // ("the deeper roots beneath the situation"); the Seven-card V has none. Proposed replacement position: 1,
+  // "Past · 18–24 Months" (the experiences and influences the situation grew from). The original SC-01 → S12
+  // mapping and Deep's BLOCKED finding are kept on record (audit/DEEP_RECHECK.md).
+  matrix('SC-01A', 'seven', null, { seed: 7415, accept: (b, r) => r.length >= 2 && b.length - r.length >= 2, acceptText: 'at least two reversed and two upright', clarify: [{ pos: 0 }], note: 'Seven-card V, mixed orientations, a clarifier on position 1 (Past · 18–24 Months), the proposed equivalent of "Foundation"' }),
   matrix('CC-01', 'celtic', null, { seed: 7412, allUpright: true, note: 'All upright, no clarifiers' }),
   matrix('CC-02', 'celtic', null, { seed: 7513, accept: (b, r) => r.length >= 7, acceptText: 'at least 7 of 10 reversed', clarify: [{ pos: 3 }], note: 'Reversal-heavy, clarifier on Recent Past (the matrix says "Past"; the Celtic Cross position is "Recent Past")' }),
   matrix('CC-04', 'celtic', null, { seed: 7414, exclude: [9, 71], place: [[0, 'The Hermit', true]], clarify: [{ pos: 0, c1: 'Eight of Pentacles' }], note: 'Hermit R + Eight of Pentacles U clarifier, full applicable chain (the matrix gives no position: placed at position 1, Present Situation; Eight of Pentacles is not a Major, so the chain ends at Clarifier 1)' }),

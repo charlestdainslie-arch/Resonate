@@ -1648,6 +1648,56 @@
   ]
  },
  {
+  "id": "SC-01A",
+  "kind": "matrix",
+  "spread": "seven",
+  "mode": "matrix",
+  "note": "Seven-card V, mixed orientations, a clarifier on position 1 (Past · 18–24 Months), the proposed equivalent of \"Foundation\"",
+  "seeded": [
+   "base cards: seeded deal, seed 7415 (first seed from 7415 meeting: at least two reversed and two upright)",
+   "Clarifier 1 at position 1: seeded, seed 8415, next unused card",
+   "clarifier orientation: upright (the matrix does not specify)"
+  ],
+  "base": [
+   2,
+   23,
+   50,
+   65,
+   72,
+   68,
+   47
+  ],
+  "reversed": [
+   23,
+   72
+  ],
+  "steps": [
+   {
+    "pos": 0,
+    "layer": 1,
+    "id": 66
+   }
+  ],
+  "c1": [
+   66,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ]
+ },
+ {
   "id": "CC-01",
   "kind": "matrix",
   "spread": "celtic",
