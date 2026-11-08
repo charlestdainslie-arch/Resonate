@@ -167,8 +167,12 @@ server.listen(0, '127.0.0.1', async () => {
         assert.ok(texts.includes(lead2), 'Max says step 3');
         const firstTogether = (await page.evaluate(t => t.split(/(?<=[.?!])\s+(?=[A-Z])/)[0], together2));
         assert.ok(texts.includes(firstTogether), 'Max says the new synthesis');
-        const oldFirst = await page.evaluate(t => t.split(/(?<=[.?!])\s+(?=[A-Z])/)[0], together1);
-        assert.ok(!texts.includes(oldFirst), 'no outdated synthesis in Max');
+        // The original card's opening sentence ("X sets the theme in ...") rightly stays the same across revisions
+        // (9 Nov 2026 synthesis); every sentence that belonged only to the earlier "together" must be gone from Max.
+        const split = t => t.split(/(?<=[.?!])\s+(?=[A-Z])/);
+        const oldOnly = split(together1).filter(x => !split(together2).includes(x));
+        assert.ok(oldOnly.length > 0, 'the earlier synthesis differs from the new one');
+        oldOnly.forEach(x => assert.ok(!texts.includes(x), 'no outdated synthesis in Max: ' + x));
         const pageText = await page.locator(art).innerText();
         script.filter(p => p.kind === 'quote' && p.chapter !== 'close' && p.show.includes('p' + TARGET)).forEach(p => assert.ok(pageText.replace(/\s+/g, ' ').includes(p.text), 'quoted from the page: ' + p.text));
         await tap('#mcFloat');
