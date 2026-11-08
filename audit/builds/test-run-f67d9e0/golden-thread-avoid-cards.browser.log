@@ -1,0 +1,32 @@
+PASS  guidance @360 heavy: 3 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  guidance @360 plain: 1 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  guidance @390 heavy: 3 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  guidance @390 plain: 1 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  guidance @1280 heavy: 3 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  guidance @1280 plain: 1 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  three @360 heavy: 9 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  three @360 plain: 3 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  three @390 heavy: 9 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  three @390 plain: 3 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  three @1280 heavy: 9 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  three @1280 plain: 3 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  relationship @360 heavy: 15 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  relationship @360 plain: 5 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  relationship @390 heavy: 15 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  relationship @390 plain: 5 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  relationship @1280 heavy: 15 strands; over other pictures before 0 → after 0; text px before 2 → after 0
+PASS  relationship @1280 plain: 5 strands; over other pictures before 1 → after 0; text px before 0 → after 0
+PASS  seven @360 heavy: 21 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  seven @360 plain: 7 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  seven @390 heavy: 21 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  seven @390 plain: 7 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  seven @1280 heavy: 21 strands; over other pictures before 3 → after 0; text px before 0 → after 0
+PASS  seven @1280 plain: 7 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  celtic @360 heavy: 30 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  celtic @360 plain: 10 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  celtic @390 heavy: 30 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  celtic @390 plain: 10 strands; over other pictures before 0 → after 0; text px before 0 → after 0
+PASS  celtic @1280 heavy: 30 strands; over other pictures before 7 → after 0; text px before 282 → after 160
+PASS  celtic @1280 plain: 10 strands; over other pictures before 2 → after 0; text px before 240 → after 120
+
+30/30 passed

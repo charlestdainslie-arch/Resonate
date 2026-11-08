@@ -1,0 +1,9 @@
+file                 reference    candidate    result
+(deck-engine.js reference: the approved secure-randomness version, 7 Nov 2026)
+deck-theatre.js      d303fb248ce5 d303fb248ce5 IDENTICAL
+deck-theatre.css     58a12f49cab0 58a12f49cab0 IDENTICAL
+deck-engine.js       08e42e6a2fd5 08e42e6a2fd5 IDENTICAL
+reading-stage.js     ab12ec3f70c2 ab12ec3f70c2 IDENTICAL
+reference 73da97de95c8ef790d552cb695021412050b5473
+candidate f67d9e060dfa57565798cd59e04b20d59c79f7db
+shuffle-identity exit 0

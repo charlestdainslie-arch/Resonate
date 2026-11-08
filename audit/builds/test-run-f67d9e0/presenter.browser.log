@@ -1,0 +1,54 @@
+PASS production index.html has no presenter
+PASS demo opens labelled synthetic, cannot be saved, and stays silent until Play
+PASS demo: cards shown in the spread's order with the right names
+PASS demo narration quotes only the reading (page and PDF)
+PASS card 0 with 0 clarifier(s): narration quotes only the reading
+PASS card 4 with 1 clarifier(s): narration quotes only the reading
+PASS card 21 with 2 clarifier(s): narration quotes only the reading
+PASS card 77 with 2 clarifier(s): narration quotes only the reading
+PASS card 40 with 2 clarifier(s): narration quotes only the reading
+PASS card 12 with 1 clarifier(s): narration quotes only the reading
+PASS a reading reopened from the Journal is presented with its saved cards
+PASS Play speaks each caption with the on-device voice and finishes
+PASS Pause holds the caption and stops speech; Resume carries on
+PASS a line the phone silently drops does not leave Max stuck (Android cancel bug)
+PASS Replay after the end plays everything again from the top
+PASS Hide words shrinks the caption box; buttons say what they do
+PASS Replay goes back to the start
+PASS Sound off: no speech, captions keep time; Captions off hides the text
+PASS cards light up as they are discussed
+PASS Escape and Close stop the presenter and return focus
+PASS recorded voice: every clip plays in order, and device speech is never used
+PASS recorded voice: Pause stops the clip and Resume carries on from it
+PASS recorded voice with a missing line falls back to the device voice
+PASS no on-device voice: captions only, said plainly
+PASS guidance, 0 clarifier layers: every position narrated from the reading's own text
+PASS guidance, 2 clarifier layers: every position narrated from the reading's own text
+PASS three, 0 clarifier layers: every position narrated from the reading's own text
+PASS three, 2 clarifier layers: every position narrated from the reading's own text
+PASS seven, 0 clarifier layers: every position narrated from the reading's own text
+PASS seven, 2 clarifier layers: every position narrated from the reading's own text
+PASS relationship, 0 clarifier layers: every position narrated from the reading's own text
+PASS relationship, 2 clarifier layers: every position narrated from the reading's own text
+PASS celtic, 0 clarifier layers: every position narrated from the reading's own text
+PASS celtic, 2 clarifier layers: every position narrated from the reading's own text
+PASS Hear Clarifier 2 plays only that clarifier and the close
+PASS a reading with no clarifiers offers no clarifier buttons
+PASS wide spread: the strip follows the card being discussed
+PASS transcript is there but closed by default
+PASS 360px: player fits without horizontal scroll and controls are tappable
+PASS 390px: player fits without horizontal scroll and controls are tappable
+PASS 768px: player fits without horizontal scroll and controls are tappable
+PASS 1280px: player fits without horizontal scroll and controls are tappable
+PASS voice label: device speech is called a synthetic temporary voice, not Chas, before Play
+PASS a listed voice that never speaks: Max says so and finishes on captions
+PASS an engine error drops device speech for captions at once
+PASS a registered voice (stand-in for Chas's consented clone) replaces the temporary voice with no other change
+PASS switching away from the page pauses Max and stops speech
+PASS Samsung-style voice names (en_AU, zh_HK_#Hans): Max picks English and speaks with a standard language tag
+PASS ?voices lists the device voices and says which Max would use, speaking nothing
+  guidance: 27 parts spoken and captioned
+PASS guidance with 2 clarifier layers: Max speaks every part with the device voice, captions in step, to the end
+  celtic: 174 parts spoken and captioned
+PASS celtic with 2 clarifier layers: Max speaks every part with the device voice, captions in step, to the end
+PASS 51 presenter checks (silent until Play, faithful narration, controls, demo labelling, 4 widths)

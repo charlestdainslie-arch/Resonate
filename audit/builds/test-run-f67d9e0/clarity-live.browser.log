@@ -1,0 +1,6 @@
+PASS  LIVE-B06 seeker taps Clarity at positions 1, 3, 5, 9; reading, Golden Thread (32 cards) and Max take in all four
+PASS  LIVE-B01 seeker taps Clarify in Max's bar; reading, Golden Thread and Max take in all four
+PASS  REPLAY-B06 recorded evidence draw replays to the recorded reading and Golden Thread
+PASS  REPLAY-B01 recorded evidence draw replays to the recorded reading and Golden Thread
+
+4 passed, 0 failed

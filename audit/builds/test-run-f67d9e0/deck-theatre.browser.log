@@ -1,0 +1,23 @@
+PASS  guidance (1) @390: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  guidance (1) @1280: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  three (3) @390: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  three (3) @1280: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  relationship (5) @390: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  relationship (5) @1280: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  seven (7) @390: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  seven (7) @1280: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  celtic (10) @390: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  celtic (10) @1280: shuffle + deal, integrity and landing  max landing error 0.00 px
+PASS  reduced motion: no flights, immediate deal, same integrity
+PASS  Skip finishes the shuffle and the deal quickly, same integrity  shuffle skip 105 ms, deal skip 181 ms
+PASS  leaving the table mid-deal commits nothing and leaves no theatre
+PASS  Android 360x800: rotate to landscape mid-shuffle and mid-deal; still the right cards on the right slots
+PASS  Android 360x800: rapid taps give one shuffle and one deal
+PASS  Android 360x800: reset — leave mid-shuffle, come back, shuffle and draw normally
+PASS  Android 412x915: rotate to landscape mid-shuffle and mid-deal; still the right cards on the right slots
+PASS  Android 412x915: rapid taps give one shuffle and one deal
+PASS  Android 412x915: reset — leave mid-shuffle, come back, shuffle and draw normally
+PASS  Skip pressed repeatedly and between phases never leaves the table busy
+PASS  frame timing, shuffle + deal, Celtic Cross @390 with 4x CPU slowdown (reported)  {"frames":762,"median":16.7,"p95":33.4,"over50":5}
+
+21/21 passed

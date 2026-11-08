@@ -1,0 +1,38 @@
+suite	command	exit	seconds	result_line
+syntax-app.js	node --check app.js	0	0	
+syntax-deck-engine.js	node --check deck-engine.js	0	0	
+syntax-data.js	node --check data.js	0	0	
+syntax-journal.js	node --check journal.js	0	0	
+syntax-reading-stage.js	node --check reading-stage.js	0	0	
+syntax-astrology-prelude.js	node --check astrology-prelude.js	0	0	
+syntax-astrology-prelude-ui.js	node --check astrology-prelude-ui.js	0	0	
+syntax-reading-pdf.js	node --check reading-pdf.js	0	0	
+syntax-clarifier-reading.js	node --check clarifier-reading.js	0	0	
+syntax-opening-dice.js	node --check opening-dice.js	0	1	
+syntax-reading-session.js	node --check reading-session.js	0	0	
+syntax-navigation-a11y.js	node --check navigation-a11y.js	0	0	
+unit-all	node --test tests/additional-clarifiers.test.cjs tests/astrology-prelude.test.cjs tests/clarifier-reading.test.cjs tests/clarifier-rules.test.cjs tests/clarity-card.test.cjs tests/deck-engine.test.cjs tests/integration-baseline.test.cjs tests/journal.test.cjs tests/landing-buttons.test.cjs tests/one-card-baseline.test.cjs tests/one-card-overlay.test.cjs tests/opening-dice.test.cjs tests/qa-samples.test.cjs tests/reading-dice-ui.test.cjs tests/reading-journey.test.cjs tests/reading-session.test.cjs tests/reading-stage-deck.test.cjs tests/reading-welcome.test.cjs tests/reduced-motion-static.test.cjs tests/secure-random.test.cjs tests/shuffle-frozen.test.cjs tests/tarot-catalogue.test.cjs tests/uat-navigation-sweep.test.cjs tests/uat-regressions.test.cjs tests/uat003-reading-flow.test.cjs tests/uat005-journal-actions.test.cjs tests/visible-clarifier.test.cjs	0	20	# pass 99 # fail 0 
+astrology-journey.browser	node tests/astrology-journey.browser.cjs	0	79	PASS 1280px A14 Browser/phone Back from the table PASS 1280px A15 Roll two dice after Calculate 
+boundary-matrix.browser	node tests/boundary-matrix.browser.cjs	0	14	9/9 passed 
+chas-voice.browser	node tests/chas-voice.browser.cjs	0	5	PASS 7 chas-voice checks (168 lines) 
+clarifier-slots.browser	node tests/clarifier-slots.browser.cjs	0	116	PASS 35 clarifier-slot cases: same size and place before and after the second clarifier (5 spreads, 5 widths) 
+clarify-per-card.browser	node tests/clarify-per-card.browser.cjs	0	159	3/3 passed 
+clarity-live.browser	node tests/clarity-live.browser.cjs	0	34	4 passed, 0 failed 
+coverage-gaps.browser	node tests/coverage-gaps.browser.cjs	0	36	PASS 37 coverage-gap checks: Learn search/filter, card detail bookmark/tabs, reading cards, astrology expander, Journal reflection, shuffle parity 
+deck-theatre.browser	node tests/deck-theatre.browser.cjs	0	362	21/21 passed 
+golden-thread-avoid-cards.browser	node tests/golden-thread-avoid-cards.browser.cjs	0	29	30/30 passed 
+golden-thread-connector.browser	node tests/golden-thread-connector.browser.cjs	0	14	27/27 passed 
+max-discoverability.browser	node tests/max-discoverability.browser.cjs	0	90	2/2 passed 
+max-lifecycle.browser	node tests/max-lifecycle.browser.cjs	0	163	14/14 passed 
+max-mobile-layout.browser	node tests/max-mobile-layout.browser.cjs	0	74	18/18 passed 
+navigation-a11y.browser	node tests/navigation-a11y.browser.cjs	0	17	
+page-end-nav.browser	node tests/page-end-nav.browser.cjs	0	12	PASS 9 end-of-page navigation checks (reading and Journal, phone) 
+presenter.browser	node tests/presenter.browser.cjs	0	279	PASS 1280px: player fits without horizontal scroll and controls are tappable PASS 51 presenter checks (silent until Play, faithful narration, controls, demo labelling, 4 widths) 
+reading-engine-qa.browser	node tests/reading-engine-qa.browser.cjs	0	41	41/41 passed 
+reduced-motion-headings.browser	node tests/reduced-motion-headings.browser.cjs	0	385	
+reversed-clarifier-turn.browser	node tests/reversed-clarifier-turn.browser.cjs	0	44	4/4 passed 
+spread-layout-with-thread.browser	node tests/spread-layout-with-thread.browser.cjs	0	6	6/6 passed 
+spread-parity.browser	node tests/spread-parity.browser.cjs	0	316	
+teaching-rules.browser	node tests/teaching-rules.browser.cjs	0	22	PASS 1280px three-card: Majors get a first clarifier one card at a time, the Minor waits for the seeker PASS 10 teaching-rule checks 
+uat-round1.browser	node tests/uat-round1.browser.cjs	0	10	
+browser-uat	node tests/browser-uat.cjs	0	603	{"width":1920,"height":900,"motion":"no-preference","passed":["home fits; equal CTA dimensions; hero has no collisions","optional astrology profile, example isolation, year error and pre-dice snapshot
