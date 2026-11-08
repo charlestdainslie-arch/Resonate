@@ -1,0 +1,16 @@
+PASS  guidance 360x800 (S01) card 1: first
+PASS  three 360x800 (S04) card 2: first → second
+PASS  relationship 360x800 (S07) card 5: first
+PASS  seven 360x800 (S10) card 3: first
+PASS  celtic 360x800 (S13) card 1: first → second
+PASS  guidance 360x800 (CHAIN) card 1: first → second → clarity
+PASS  celtic 360x800 (CHAIN-CC) card 1: first → second → clarity
+PASS  guidance 412x915 (S01) card 1: first
+PASS  three 412x915 (S04) card 2: first → second
+PASS  relationship 412x915 (S07) card 5: first
+PASS  seven 412x915 (S10) card 3: first
+PASS  celtic 412x915 (S13) card 1: first
+PASS  guidance 412x915 (CHAIN) card 1: first → second → clarity
+PASS  celtic 412x915 (CHAIN-CC) card 1: first → second → clarity
+
+14/14 passed

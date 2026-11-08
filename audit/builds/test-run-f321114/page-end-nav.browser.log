@@ -1,0 +1,10 @@
+PASS guidance: reading ends with back to top, new reading and Home
+PASS three: reading ends with back to top, new reading and Home
+PASS relationship: reading ends with back to top, new reading and Home
+PASS seven: reading ends with back to top, new reading and Home
+PASS celtic: reading ends with back to top, new reading and Home
+PASS reading: Home
+PASS Journal ends with back to the current reading, new reading and Home
+PASS Journal with no reading this visit offers only new reading and Home
+PASS a reading reopened from the Journal ends with the same three
+PASS 9 end-of-page navigation checks (reading and Journal, phone)
