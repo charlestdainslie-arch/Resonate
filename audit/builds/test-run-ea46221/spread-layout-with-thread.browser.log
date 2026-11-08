@@ -1,0 +1,8 @@
+PASS  presenter-uat.html · celtic: every position in its intended place (thread overlay mounted)
+PASS  presenter-uat.html · relationship: every position in its intended place (thread overlay mounted)
+PASS  presenter-uat.html · seven: every position in its intended place (thread overlay mounted)
+PASS  index.html · celtic: every position in its intended place
+PASS  index.html · relationship: every position in its intended place
+PASS  index.html · seven: every position in its intended place
+
+6/6 passed

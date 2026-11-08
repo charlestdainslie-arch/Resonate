@@ -1,0 +1,8 @@
+PASS panel offers "Load my voice"; nothing is loaded or deployed by default
+PASS loading the folder keeps 168 lines on this device
+PASS still loaded after reloading the page (this browser only)
+PASS a three-card reading: recorded clips where they exist, device voice for the rest, honest note
+PASS Stop mid-reading silences both voices
+PASS Forget my voice removes it from this browser
+PASS no page errors
+PASS 7 chas-voice checks (168 lines)
