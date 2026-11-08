@@ -64,4 +64,20 @@ The handoff files are written from `b661280`. Interpretation verdicts stay UNKNO
 
 `audit/tools/deep-handoff.cjs` did not accept sample IDs with a letter suffix ("SC-01A"), so its first SC-01 output at `b661280` was empty. The pattern was widened (audit tool only, no app change) and the handoff regenerated.
 
+## Correction, 8 Nov (second round): CC-03 evidence regenerated with the live taps
+
+**Deep's second verdict:** 19 PASS, 1 FAIL (CC-03). **Si Aye's check of `handoff-b661280/CC-03.md` at `e45e8c4`:** the file does have a Golden Thread section, but it shows 28 revealed cards and no completed Clarity draws. The four live Clarity cards reported above do not appear in it.
+
+**Si Aye is right.** `audit/tools/deep-handoff.cjs` rendered the B06 sample as recorded, which is the reading *before* any Clarity tap. The live taps were made only in `clarity-verify.cjs`, and their results were never fed back into the handoff file. BT-03.md had the same gap for B01 and B06. This was an evidence defect, not an app defect: the application code is unchanged (still `b661280`). The `e45e8c4` versions of CC-03.md and BT-03.md stay in git history, superseded.
+
+**What was done, at `b661280`:**
+
+1. `audit/tools/clarity-live-record.cjs` runs the real seeker taps on a phone viewport with the app's own secure draw, nothing stubbed. For B06 it taps "✦ Draw Clarity card" on the page at positions 1, 3, 5 and 9, then opens Max, plays to the end, taps Finish reading and plays the close. For B01 it taps Clarify in Max's bar, then Finish. It records each Clarity card and its orientation (both drawn live), the full reversed list, the page before and after, the Golden Thread, Max's script, and every line handed to the speech engine. It writes the recorded draw as replayable samples **B06-LIVE** and **B01-LIVE** (`audit/deep-recheck/live/live-samples.json`), replays them in a fresh page and checks the replay is identical (page text, Golden Thread and Max script: all identical). Report: `audit/deep-recheck/live/clarity-live.json`.
+2. `deep-handoff.cjs` now accepts these recorded draws. **CC-03.md** shows B06-LIVE first (all four Clarity cards, the draw record with orientations, the revised interpretation for positions 1, 3, 5 and 9 with the Clarity step and "Together" naming all four cards, a Golden Thread of **32 revealed cards** naming each Clarity card, Max's script, and the lines Max spoke on the live run). Then comes B06 as recorded before the taps, for comparison (28 cards). **BT-03.md** gets the same for B01-LIVE and B06-LIVE.
+3. The live draw recorded for the handoff (B06): position 1 **Seven of Swords** (upright), 3 **Six of Swords** (upright), 5 **Queen of Cups** (reversed), 9 **Seven of Wands** (upright). B01: **Two of Swords** (upright). All are Minors and none was already in the reading. Each run draws different cards (secure randomness). The recorded draw is what the handoff shows, and the replay test pins it.
+4. New browser test `tests/clarity-live.browser.cjs`. It repeats the live taps with fresh draws and checks: the card is a Minor not already in the reading, there are no duplicates, "Together" names all four cards, the Golden Thread follows 32 (B06) or 4 (B01) cards and names every Clarity card, Max speaks every Clarity card, and Max does not sign off before Finish and closes exactly once after it. It then replays the recorded B06-LIVE and B01-LIVE draws to exactly the recorded reading and Golden Thread. Logs: `audit/builds/test-run-<evidence sha>/`.
+5. `tests/helpers/qa-render.cjs`: the rule check now includes the Clarity card (`validate(..., readingClarity())`), so a Clarity card that broke Option B would be reported. Test helper only.
+
+No application file differs from `b661280` (deep-handoff refuses to run otherwise).
+
 No merge. No production change. No spending.

@@ -19,6 +19,11 @@ if (drift) throw new Error('app files differ from ' + SHA + ':\n' + drift);
 const FULL = execFileSync('git', ['rev-parse', SHA], { cwd: ROOT, encoding: 'utf8' }).trim();
 const { SAMPLES, cards } = require(path.join(ROOT, 'tests/helpers/qa-samples.cjs'));
 const MATRIX = require(path.join(ROOT, 'tests/helpers/qa-matrix.cjs'));
+// LIVE_SAMPLES (optional): live-samples.json from audit/tools/clarity-live-record.cjs. Each <ID>-LIVE sample is the
+// recorded draw after the seeker's real Clarity taps; it is shown before the sample it was recorded from, and the
+// lines Max spoke on that run (LIVE_REPORT, clarity-live.json) are added to it.
+const LIVE = process.env.LIVE_SAMPLES ? JSON.parse(fs.readFileSync(process.env.LIVE_SAMPLES, 'utf8')) : [];
+const LIVE_RUN = process.env.LIVE_REPORT ? JSON.parse(fs.readFileSync(process.env.LIVE_REPORT, 'utf8')) : { cases: [] };
 const { renderSample, AT } = require(path.join(ROOT, 'tests/helpers/qa-render.cjs'));
 const T = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.jpg': 'image/jpeg', '.png': 'image/png', '.json': 'application/json' };
 const server = http.createServer((q, r) => { const f = path.join(ROOT, decodeURIComponent(q.url.split('?')[0])); if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { r.writeHead(404); return r.end(); } r.setHeader('Content-Type', T[path.extname(f)] || 'application/octet-stream'); fs.createReadStream(f).pipe(r); });
@@ -54,9 +59,10 @@ server.listen(0, '127.0.0.1', async () => {
   for (const row of MATRIX.filter(m => m.deep)) {
     const ids = row.sample.split(', ').filter(s => /^[A-Z]{1,2}\d{2}$|^[A-Z]{2}-\d{2}[A-Z]?$/.test(s));
     if (row.id === 'BT-06') ids.push('BT-06');
+    for (const l of LIVE) { const k = ids.indexOf(l.liveOf); if (k >= 0) ids.splice(k, 0, l.id); }
     const entries = [];
     for (const sid of ids) {
-      const sample = INLINE[sid] || SAMPLES.find(s => s.id === sid);
+      const sample = INLINE[sid] || LIVE.find(s => s.id === sid) || SAMPLES.find(s => s.id === sid);
       if (!sample) { entries.push({ sid, missing: true }); continue; }
       const page = await (await browser.newContext({ viewport: { width: 412, height: 915 } })).newPage();
       const errors = []; page.on('pageerror', e => errors.push(e.message));
@@ -73,9 +79,11 @@ server.listen(0, '127.0.0.1', async () => {
       ...Object.entries(RUBRIC).map(([k, v]) => `- **${k}:** ${v}`), '',
       ...entries.flatMap(({ sid, sample, r, errors, missing }) => missing ? [`## Sample ${sid}: NOT FOUND`, ''] : [
         `## Sample ${sid}${sample.note ? ` — ${sample.note}` : ''}`, '',
+        ...(LIVE.some(l => l.liveOf === sid) ? [`> This is the recorded draw **before** the seeker's Clarity taps. The same draw after the taps is sample ${sid}-LIVE above.`, ''] : []),
         `- Spread: **${r.spreadName}** (\`${sample.spread}\`); ${r.positions.length} position(s). Question: ${sample.question ? 'Seven-card question reading flag ON (position 4 read last). The app records no question text.' : 'none (the app records no question text; question-reading flag off).'}`,
         `- Base card IDs (position order): [${sample.base.join(', ')}]; reversed IDs: [${sample.reversed.join(', ') || 'none'}].`,
         `- Clarifier sequence, in press order (position · layer = ID; layer 3 = Clarity card): ${sample.steps.map(s => `${s.pos + 1}·${s.layer}=${s.id}`).join(', ') || 'none'}. The app drew each with its own clarifyPosition(): ${r.drew.join(', ') || 'none'}.`,
+        sample.live ? `- ${sample.live}.` : '',
         sample.seeded && sample.seeded.length ? `- Not named in the matrix, so drawn from a stated seeded shuffle: ${sample.seeded.join('; ')}.` : '',
         `- Rule check (clarifier-rules.js validate): ${r.valid.length ? 'VIOLATIONS ' + JSON.stringify(r.valid) : 'valid'}. Page errors: ${errors.length ? errors.join('; ') : 'none'}. Written order of positions: ${r.order.map(i => i + 1).join(', ')}.`, '',
         '### Draw record', '', '| # | Position | Position meaning | Original | Clarifier 1 | Clarifier 2 | Clarity card | Neighbours |', '|---|---|---|---|---|---|---|---|',
@@ -85,6 +93,7 @@ server.listen(0, '127.0.0.1', async () => {
         '### Golden Thread (whole spread)', '', quote(r.goldenThread), '',
         '### Max: narration when opened, before Finish reading (captions are these lines)', '', ...r.script.map((l, k) => `${k + 1}. [${l.chapter} · ${l.kind}] ${l.text}`), '',
         '### Max: narration after Finish reading', '', ...r.scriptFinished.map((l, k) => `${k + 1}. [${l.chapter} · ${l.kind}] ${l.text}`), '',
+        ...(() => { const run = sample.liveOf && LIVE_RUN.cases.find(c => c.sample === sample.liveOf); if (!run) return []; const ls = (h, a) => a.length ? [h, '', ...a.map((l, k) => `${k + 1}. ${l}`), ''] : []; return ['### Max on the live run (the words sent to the speech engine on the phone run that drew these cards; a transcript, not audio)', '', `Seeker taps: ${run.taps.map(t => `position ${t.position} via ${t.via} ("${t.buttonLabel}") drew ID ${t.drew}`).join('; ')}. Afterwards the Finish button read "${run.maxSpoken.finishButtonAfter}".`, '', ...ls("**Spoken when the seeker tapped Clarify inside Max**", run.maxSpoken.clarifyInMax), ...ls('**Spoken when the seeker played Max to the end, before Finish reading**', run.maxSpoken.playedBeforeFinish), ...ls('**Spoken after the seeker tapped Finish reading**', run.maxSpoken.afterFinish)]; })(),
         'Clarifying inside Max narrates the same lines for the new card (its chapter, for that position) followed by the invitation; they are a subset of the script above (tests/max-lifecycle.browser.cjs).', '',
         '### Card data each card was read from (data.js; provenance OPEN, see audit/sources/DATASET_NOTES.md)', '',
         ...[...new Set([...sample.base, ...sample.steps.map(s => s.id)])].map(cardData).flatMap(c => [`- **${c.name}** (ID ${c.id}; ${c.arcana}${c.suit ? ', ' + c.suit : ''}; number ${c.number ?? '—'}${c.rank ? ', ' + c.rank : ''}; element ${c.element}; astrology ${c.astrology})`, `  - Upright keywords: ${c.uprightKeywords.join(', ')}. Upright: ${c.upright}`, `  - Reversed keywords: ${c.reversedKeywords.join(', ')}. Reversed: ${c.reversed}`]), '']),

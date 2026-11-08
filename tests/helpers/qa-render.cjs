@@ -38,7 +38,7 @@ async function renderSample(page, sample) {
         limit: !!art.querySelector('.reading-limit'), pending: !!art.querySelector('.reading-pending')
       };
     });
-    const valid = ResonateClarifiers.validate(state.drawnCardIds.map(id => cards.find(c => c.id === id)), state.firstLayerClarifiers, second, x => cards.find(c => c.id === x));
+    const valid = ResonateClarifiers.validate(state.drawnCardIds.map(id => cards.find(c => c.id === id)), state.firstLayerClarifiers, second, x => cards.find(c => c.id === x), readingClarity());
     return {
       spreadName: currentSpread().name, drew, valid, positions,
       order: [...document.querySelectorAll('.reading-meaning[data-position]')].map(a => Number(a.dataset.position)),
