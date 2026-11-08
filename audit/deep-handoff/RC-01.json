@@ -1,0 +1,592 @@
+{
+ "case": "RC-01",
+ "matrix": "Two of Cups U / Hermit R / Lovers U / Five of Wands U / Ace of Cups U.",
+ "notes": "Implemented position names: You, The Other Person, The Connection, Relationship Challenge, Shared Guidance.",
+ "appCommit": "f321114def71f3c7239f5b498c610135d02516c8",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "rubric": {
+  "orientation": "Each card is read with the meaning for its orientation (upright or reversed text from the card data below), and a reversed card is not merely the negation of its upright meaning.",
+  "position": "The position lens names this position and reads the card through the position’s defined meaning (see the table), without drifting in time or role.",
+  "neighbours": "The \"wider spread\" line relates the card to its pair partner (Celtic Cross) or neighbour (other spreads) without inventing a connection the data does not support.",
+  "clarifier1": "Clarifier 1 is read as modifying the original card (\"how it modifies the original card\"), naming both, not as a separate definition.",
+  "clarifier2": "Clarifier 2 develops the relationship between both earlier cards, naming all three.",
+  "synthesis": "\"Together\" is a synthesis of the cards, not a list; revisions are shown (Revision 1 kept readable when Clarifier 2 arrives; Revision 2 when the Clarity card arrives).",
+  "clarity": "Option B (approved 7 Nov): a Clarity card appears only when the original and both clarifiers are Major, is a Minor not already in the reading, and is read as grounding the three Major cards; a Minor original with two Major clarifiers gets none and the limit is stated.",
+  "max": "Max’s lines are the reading’s own words (quoted), in reading order; before Finish he invites and does not sign off; after Finish the closing comes once.",
+  "failure": "Deep’s six failure modes: templating, positional drift, reverse-as-opposite, parallel clarification, concatenation instead of synthesis, numerical/symbolic overreach."
+ },
+ "samples": [
+  {
+   "id": "RC-01",
+   "input": {
+    "id": "RC-01",
+    "kind": "matrix",
+    "spread": "relationship",
+    "mode": "matrix",
+    "note": "Two of Cups U / Hermit R / Lovers U / Five of Wands U / Ace of Cups U",
+    "seeded": [],
+    "base": [
+     37,
+     9,
+     6,
+     26,
+     36
+    ],
+    "reversed": [
+     9
+    ],
+    "steps": [],
+    "c1": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "c2": [
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   "errors": [],
+   "output": {
+    "spreadName": "Relationship",
+    "drew": [],
+    "valid": [],
+    "positions": [
+     {
+      "n": 1,
+      "label": "You",
+      "meaning": "your own feelings, needs and contribution to the relationship",
+      "base": {
+       "id": 37,
+       "name": "Two of Cups",
+       "arcana": "Minor",
+       "element": "Water",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · II · Two of Cups\n\nYou\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Cups, consider how this relates to mutuality.\n\nMutuality\nConnection\nAgreement\n\nPosition: You — Two of Cups. Here, mutuality, connection, agreement is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.\n\nA connection can deepen through reciprocal attention and honest exchange. Ask what each person is offering freely and make the agreement explicit instead of relying on an imagined harmony.\n\nLooking closer: Two people exchange cups beneath a winged lion and entwined staff.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Two of Cups\n\nA practice of unforced attention with Two of Cups: What would a more reciprocal exchange look like here?\n\nJungian interpretation · Two of Cups\n\nPsychological lens: Meeting another person requires recognising both connection and separateness.",
+      "positionContext": "Position: You — Two of Cups. Here, mutuality, connection, agreement is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 2,
+      "label": "The Other Person",
+      "meaning": "your perception of the other person; use this for reflection, not as proof of their private thoughts",
+      "base": {
+       "id": 9,
+       "name": "The Hermit",
+       "arcana": "Major",
+       "element": "Earth",
+       "reversed": true
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · IX · The Hermit, reversed\n\nThe Other Person\n\nCARD CORRESPONDENCE\nVirgo\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Virgo · Earth\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In The Hermit, consider how this relates to reflection.\n\nIsolation\nWithdrawal\nAvoidance\n\nPosition: The Other Person — The Hermit reversed. Consider whether your perception of the other person is coloured by isolation, withdrawal, avoidance. Check that impression through conversation rather than treating the card as access to their thoughts.\n\nReflection may have become a way to postpone contact or action. Ask whether solitude is restoring your perspective or protecting you from the conversation you need to have.\n\nLooking closer: A cloaked figure holds a lantern on a mountain. The small light offers enough illumination for the next step, rather than a complete map.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · The Hermit\n\nA practice of unforced attention with The Hermit: What do I hear in quiet, and when does quiet become a hiding place?\n\nJungian interpretation · The Hermit\n\nPsychological lens: Inner guidance develops through reflective distance. Returning from solitude with something useful is as important as withdrawing to find it.",
+      "positionContext": "Position: The Other Person — The Hermit reversed. Consider whether your perception of the other person is coloured by isolation, withdrawal, avoidance. Check that impression through conversation rather than treating the card as access to their thoughts.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 3,
+      "label": "The Connection",
+      "meaning": "the dynamic created between you",
+      "base": {
+       "id": 6,
+       "name": "The Lovers",
+       "arcana": "Major",
+       "element": "Air",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · VI · The Lovers\n\nThe Connection\n\nCARD CORRESPONDENCE\nGemini\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Gemini · Air\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In The Lovers, consider how this relates to alignment.\n\nAlignment\nPartnership\nChoice\n\nPosition: The Connection — The Lovers. Between you, alignment, partnership, choice may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.\n\nA meaningful relationship or choice asks you to act in line with your values. Mutual openness matters more than an ideal image of harmony; choose the commitments you can honestly sustain.\n\nLooking closer: Two figures beneath an angel stand before distinct trees. Their openness connects relationship with conscience, vulnerability and a freely made choice.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · The Lovers\n\nA practice of unforced attention with The Lovers: What choice would bring my relationships and my values into closer agreement?\n\nJungian interpretation · The Lovers\n\nPsychological lens: Relationship brings disowned needs and desires into view. Integration asks for conscious choice rather than expecting another person to complete the self.",
+      "positionContext": "Position: The Connection — The Lovers. Between you, alignment, partnership, choice may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 4,
+      "label": "Relationship Challenge",
+      "meaning": "a tension or unmet need to explore together",
+      "base": {
+       "id": 26,
+       "name": "Five of Wands",
+       "arcana": "Minor",
+       "element": "Fire",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · V · Five of Wands\n\nRelationship Challenge\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Wands, consider how this relates to competition.\n\nCompetition\nFriction\nPractice\n\nPosition: Relationship Challenge — Five of Wands. The tension to explore is competition, friction, practice. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nDifferent aims or styles are colliding. Treat manageable disagreement as information: clarify the shared task and make room for fair challenge without turning every difference into a personal contest.\n\nLooking closer: Five figures raise wands in different directions without a clear common formation.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Five of Wands\n\nA practice of unforced attention with Five of Wands: What shared aim would make this disagreement more useful?\n\nJungian interpretation · Five of Wands\n\nPsychological lens: Rivalry can expose a need for recognition that is easier to work with once named.",
+      "positionContext": "Position: Relationship Challenge — Five of Wands. The tension to explore is competition, friction, practice. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 5,
+      "label": "Shared Guidance",
+      "meaning": "a constructive next step for mutual understanding",
+      "base": {
+       "id": 36,
+       "name": "Ace of Cups",
+       "arcana": "Minor",
+       "element": "Water",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · I · Ace of Cups\n\nShared Guidance\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Cups, consider how this relates to openness.\n\nOpenness\nCompassion\nNew Feeling\n\nPosition: Shared Guidance — Ace of Cups. Your next step is to work consciously with openness, compassion, new feeling. Choose one practical response you can try, then notice whether it helps.\n\nA new feeling or opportunity for connection asks for receptivity. Offer care without demanding an immediate outcome, and notice what replenishes your capacity to give as well as receive.\n\nLooking closer: A hand presents an overflowing cup above water, with a dove descending toward it.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Ace of Cups\n\nA practice of unforced attention with Ace of Cups: Where am I ready to receive care rather than only offer it?\n\nJungian interpretation · Ace of Cups\n\nPsychological lens: Emotional openness needs a vessel: boundaries allow feeling to be experienced without being overwhelmed.",
+      "positionContext": "Position: Shared Guidance — Ace of Cups. Your next step is to work consciously with openness, compassion, new feeling. Choose one practical response you can try, then notice whether it helps.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     }
+    ],
+    "order": [
+     0,
+     1,
+     2,
+     3,
+     4
+    ],
+    "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 5 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nYOU\nTwo of Cups\n\nThe foundation is mutuality and connection; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OTHER PERSON\nThe Hermit, reversed\n\nThe foundation is isolation and withdrawal; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Hermit, reversed (Virgo). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE CONNECTION\nThe Lovers\n\nThe foundation is alignment and partnership; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Lovers (Gemini). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRELATIONSHIP CHALLENGE\nFive of Wands\n\nThe foundation is competition and friction; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Five of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSHARED GUIDANCE\nAce of Cups\n\nThe foundation is openness and compassion; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Two of Cups in You and moves toward Ace of Cups in Shared Guidance.\n\nThe Other Person · The Hermit, reversed. Following Two of Cups, The Hermit may draw your attention toward isolation.\n\nThe Connection · The Lovers. Following The Hermit, The Lovers may draw your attention toward alignment.\n\nRelationship Challenge · Five of Wands. Following The Lovers, Five of Wands may draw your attention toward competition.\n\nShared Guidance · Ace of Cups. Following Five of Wands, Ace of Cups may draw your attention toward openness.\n\nThe card-to-card movement is the heart of this reading: Two of Cups opens the question, and Ace of Cups shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, mutuality, connection, agreement, isolation form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTwo of Cups (2) · The Hermit (9) · The Lovers (6) · Five of Wands (5) · Ace of Cups (1). Their numbered cards sum to 23, reducing to 5. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nYOU\nOriginal Card · II · Two of Cups\n\nYou\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Cups, consider how this relates to mutuality.\n\nMutuality\nConnection\nAgreement\n\nPosition: You — Two of Cups. Here, mutuality, connection, agreement is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.\n\nA connection can deepen through reciprocal attention and honest exchange. Ask what each person is offering freely and make the agreement explicit instead of relying on an imagined harmony.\n\nLooking closer: Two people exchange cups beneath a winged lion and entwined staff.\n\nTao / Wu Wei · Two of Cups\n\nA practice of unforced attention with Two of Cups: What would a more reciprocal exchange look like here?\n\nJungian interpretation · Two of Cups\n\nPsychological lens: Meeting another person requires recognising both connection and separateness.\n\nExplore Two of Cups\nTHE OTHER PERSON\nOriginal Card · IX · The Hermit, reversed\n\nThe Other Person\n\nCARD CORRESPONDENCE\nVirgo\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Virgo · Earth\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In The Hermit, consider how this relates to reflection.\n\nIsolation\nWithdrawal\nAvoidance\n\nPosition: The Other Person — The Hermit reversed. Consider whether your perception of the other person is coloured by isolation, withdrawal, avoidance. Check that impression through conversation rather than treating the card as access to their thoughts.\n\nReflection may have become a way to postpone contact or action. Ask whether solitude is restoring your perspective or protecting you from the conversation you need to have.\n\nLooking closer: A cloaked figure holds a lantern on a mountain. The small light offers enough illumination for the next step, rather than a complete map.\n\nTao / Wu Wei · The Hermit\n\nA practice of unforced attention with The Hermit: What do I hear in quiet, and when does quiet become a hiding place?\n\nJungian interpretation · The Hermit\n\nPsychological lens: Inner guidance develops through reflective distance. Returning from solitude with something useful is as important as withdrawing to find it.\n\nExplore The Hermit\nTHE CONNECTION\nOriginal Card · VI · The Lovers\n\nThe Connection\n\nCARD CORRESPONDENCE\nGemini\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Gemini · Air\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In The Lovers, consider how this relates to alignment.\n\nAlignment\nPartnership\nChoice\n\nPosition: The Connection — The Lovers. Between you, alignment, partnership, choice may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.\n\nA meaningful relationship or choice asks you to act in line with your values. Mutual openness matters more than an ideal image of harmony; choose the commitments you can honestly sustain.\n\nLooking closer: Two figures beneath an angel stand before distinct trees. Their openness connects relationship with conscience, vulnerability and a freely made choice.\n\nTao / Wu Wei · The Lovers\n\nA practice of unforced attention with The Lovers: What choice would bring my relationships and my values into closer agreement?\n\nJungian interpretation · The Lovers\n\nPsychological lens: Relationship brings disowned needs and desires into view. Integration asks for conscious choice rather than expecting another person to complete the self.\n\nExplore The Lovers\nRELATIONSHIP CHALLENGE\nOriginal Card · V · Five of Wands\n\nRelationship Challenge\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Wands, consider how this relates to competition.\n\nCompetition\nFriction\nPractice\n\nPosition: Relationship Challenge — Five of Wands. The tension to explore is competition, friction, practice. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nDifferent aims or styles are colliding. Treat manageable disagreement as information: clarify the shared task and make room for fair challenge without turning every difference into a personal contest.\n\nLooking closer: Five figures raise wands in different directions without a clear common formation.\n\nTao / Wu Wei · Five of Wands\n\nA practice of unforced attention with Five of Wands: What shared aim would make this disagreement more useful?\n\nJungian interpretation · Five of Wands\n\nPsychological lens: Rivalry can expose a need for recognition that is easier to work with once named.\n\nExplore Five of Wands\nSHARED GUIDANCE\nOriginal Card · I · Ace of Cups\n\nShared Guidance\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Cups, consider how this relates to openness.\n\nOpenness\nCompassion\nNew Feeling\n\nPosition: Shared Guidance — Ace of Cups. Your next step is to work consciously with openness, compassion, new feeling. Choose one practical response you can try, then notice whether it helps.\n\nA new feeling or opportunity for connection asks for receptivity. Offer care without demanding an immediate outcome, and notice what replenishes your capacity to give as well as receive.\n\nLooking closer: A hand presents an overflowing cup above water, with a dove descending toward it.\n\nTao / Wu Wei · Ace of Cups\n\nA practice of unforced attention with Ace of Cups: Where am I ready to receive care rather than only offer it?\n\nJungian interpretation · Ace of Cups\n\nPsychological lens: Emotional openness needs a vessel: boundaries allow feeling to be experienced without being overwhelmed.\n\nExplore Ace of Cups\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 5 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nYOU\nTwo of Cups\n\nThe foundation is mutuality and connection; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OTHER PERSON\nThe Hermit, reversed\n\nThe foundation is isolation and withdrawal; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Hermit, reversed (Virgo). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE CONNECTION\nThe Lovers\n\nThe foundation is alignment and partnership; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Lovers (Gemini). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRELATIONSHIP CHALLENGE\nFive of Wands\n\nThe foundation is competition and friction; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Five of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSHARED GUIDANCE\nAce of Cups\n\nThe foundation is openness and compassion; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Two of Cups in You and moves toward Ace of Cups in Shared Guidance.\n\nThe Other Person · The Hermit, reversed. Following Two of Cups, The Hermit may draw your attention toward isolation.\n\nThe Connection · The Lovers. Following The Hermit, The Lovers may draw your attention toward alignment.\n\nRelationship Challenge · Five of Wands. Following The Lovers, Five of Wands may draw your attention toward competition.\n\nShared Guidance · Ace of Cups. Following Five of Wands, Ace of Cups may draw your attention toward openness.\n\nThe card-to-card movement is the heart of this reading: Two of Cups opens the question, and Ace of Cups shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, mutuality, connection, agreement, isolation form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nTwo of Cups (2) · The Hermit (9) · The Lovers (6) · Five of Wands (5) · Ace of Cups (1). Their numbered cards sum to 23, reducing to 5. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "script": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Relationship."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "You: Two of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Here, mutuality, connection, agreement is a lens for your own feelings, needs and contribution to the relationship."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A connection can deepen through reciprocal attention and honest exchange."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "The Other Person: The Hermit, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Consider whether your perception of the other person is coloured by isolation, withdrawal, avoidance."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Reflection may have become a way to postpone contact or action."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "The Connection: The Lovers."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Between you, alignment, partnership, choice may describe a shared pattern."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A meaningful relationship or choice asks you to act in line with your values."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Relationship Challenge: Five of Wands."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "The tension to explore is competition, friction, practice."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Different aims or styles are colliding."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Shared Guidance: Ace of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Your next step is to work consciously with openness, compassion, new feeling."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A new feeling or opportunity for connection asks for receptivity."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "That's the first layer of your reading."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+     }
+    ],
+    "scriptFinished": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Relationship."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "You: Two of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Here, mutuality, connection, agreement is a lens for your own feelings, needs and contribution to the relationship."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A connection can deepen through reciprocal attention and honest exchange."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "The Other Person: The Hermit, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Consider whether your perception of the other person is coloured by isolation, withdrawal, avoidance."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Reflection may have become a way to postpone contact or action."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "The Connection: The Lovers."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Between you, alignment, partnership, choice may describe a shared pattern."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A meaningful relationship or choice asks you to act in line with your values."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Relationship Challenge: Five of Wands."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "The tension to explore is competition, friction, practice."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Different aims or styles are colliding."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Shared Guidance: Ace of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Your next step is to work consciously with openness, compassion, new feeling."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A new feeling or opportunity for connection asks for receptivity."
+     },
+     {
+      "chapter": "final",
+      "kind": "frame",
+      "text": "Here is your whole spread, brought together."
+     },
+     {
+      "chapter": "final",
+      "kind": "quote",
+      "text": "Across these cards, mutuality, connection, agreement, isolation form the central pattern."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "Before I go, one question to carry with you."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Take what resonates, and leave the rest."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+     }
+    ],
+    "transcript": [
+     "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+     "Tonight: your Relationship.",
+     "I'll keep it short. The full reading stays below.",
+     "Let's go through your cards, one position at a time.",
+     "You: Two of Cups.",
+     "Here, mutuality, connection, agreement is a lens for your own feelings, needs and contribution to the relationship.",
+     "A connection can deepen through reciprocal attention and honest exchange.",
+     "The Other Person: The Hermit, reversed.",
+     "Consider whether your perception of the other person is coloured by isolation, withdrawal, avoidance.",
+     "Reflection may have become a way to postpone contact or action.",
+     "The Connection: The Lovers.",
+     "Between you, alignment, partnership, choice may describe a shared pattern.",
+     "A meaningful relationship or choice asks you to act in line with your values.",
+     "Relationship Challenge: Five of Wands.",
+     "The tension to explore is competition, friction, practice.",
+     "Different aims or styles are colliding.",
+     "Shared Guidance: Ace of Cups.",
+     "Your next step is to work consciously with openness, compassion, new feeling.",
+     "A new feeling or opportunity for connection asks for receptivity.",
+     "That's the first layer of your reading.",
+     "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+    ]
+   },
+   "cardData": [
+    {
+     "id": 37,
+     "name": "Two of Cups",
+     "arcana": "Minor",
+     "suit": "Cups",
+     "number": 2,
+     "rank": "Two",
+     "element": "Water",
+     "astrology": "Water · Cups",
+     "uprightKeywords": [
+      "Mutuality",
+      "Connection",
+      "Agreement"
+     ],
+     "reversedKeywords": [
+      "Imbalance",
+      "Disconnection",
+      "Broken Trust"
+     ],
+     "upright": "A connection can deepen through reciprocal attention and honest exchange. Ask what each person is offering freely and make the agreement explicit instead of relying on an imagined harmony.",
+     "reversed": "A relationship or agreement may be unequal or out of tune. Name the difference and assess whether repair is mutual rather than assuming one person can restore the connection alone."
+    },
+    {
+     "id": 9,
+     "name": "The Hermit",
+     "arcana": "Major",
+     "suit": null,
+     "number": 9,
+     "rank": null,
+     "element": "Earth",
+     "astrology": "Virgo",
+     "uprightKeywords": [
+      "Reflection",
+      "Discernment",
+      "Inner Guidance"
+     ],
+     "reversedKeywords": [
+      "Isolation",
+      "Withdrawal",
+      "Avoidance"
+     ],
+     "upright": "Step back from competing voices long enough to recognise your own understanding. Solitude, study or a trusted guide can help you identify the next honest step without needing the whole path illuminated.",
+     "reversed": "Reflection may have become a way to postpone contact or action. Ask whether solitude is restoring your perspective or protecting you from the conversation you need to have."
+    },
+    {
+     "id": 6,
+     "name": "The Lovers",
+     "arcana": "Major",
+     "suit": null,
+     "number": 6,
+     "rank": null,
+     "element": "Air",
+     "astrology": "Gemini",
+     "uprightKeywords": [
+      "Alignment",
+      "Partnership",
+      "Choice"
+     ],
+     "reversedKeywords": [
+      "Misalignment",
+      "Division",
+      "Compromise"
+     ],
+     "upright": "A meaningful relationship or choice asks you to act in line with your values. Mutual openness matters more than an ideal image of harmony; choose the commitments you can honestly sustain.",
+     "reversed": "Attraction, duty and personal values may be pulling in different directions. Name the disagreement before promising unity, and avoid sacrificing your voice merely to keep a connection intact."
+    },
+    {
+     "id": 26,
+     "name": "Five of Wands",
+     "arcana": "Minor",
+     "suit": "Wands",
+     "number": 5,
+     "rank": "Five",
+     "element": "Fire",
+     "astrology": "Fire · Wands",
+     "uprightKeywords": [
+      "Competition",
+      "Friction",
+      "Practice"
+     ],
+     "reversedKeywords": [
+      "Avoided Conflict",
+      "Escalation",
+      "Coordination"
+     ],
+     "upright": "Different aims or styles are colliding. Treat manageable disagreement as information: clarify the shared task and make room for fair challenge without turning every difference into a personal contest.",
+     "reversed": "Conflict may be simmering beneath politeness or becoming a contest with no useful goal. Set clearer rules and decide which disagreements deserve your energy."
+    },
+    {
+     "id": 36,
+     "name": "Ace of Cups",
+     "arcana": "Minor",
+     "suit": "Cups",
+     "number": 1,
+     "rank": "Ace",
+     "element": "Water",
+     "astrology": "Water · Cups",
+     "uprightKeywords": [
+      "Openness",
+      "Compassion",
+      "New Feeling"
+     ],
+     "reversedKeywords": [
+      "Emotional Block",
+      "Depletion",
+      "Inward Care"
+     ],
+     "upright": "A new feeling or opportunity for connection asks for receptivity. Offer care without demanding an immediate outcome, and notice what replenishes your capacity to give as well as receive.",
+     "reversed": "Feelings may be held back or your capacity to care may be depleted. Create a little room to feel privately before expecting yourself to offer more."
+    }
+   ]
+  }
+ ]
+}

@@ -33,7 +33,7 @@
    null
   ]
  },
- "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "commit": "f321114def71f3c7239f5b498c610135d02516c8",
  "readingAt": "2026-11-07T01:00:00.000Z",
  "errors": [],
  "spreadName": "Relationship",
@@ -53,6 +53,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · Pg · Page of Cups\n\nYou\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: Page\n\nPage is a court role, not a numbered pip card: a learner’s curiosity and an emerging practical relationship to the suit. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nSensitivity\nCreative Curiosity\nEmotional Discovery\n\nPosition: You — Page of Cups. Here, sensitivity, creative curiosity, emotional discovery is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn unexpected feeling or creative idea deserves a curious response. Express it simply and listen with care; a tentative beginning does not need to become a promise before it has been understood.\n\nLooking closer: A young figure studies a fish emerging from a cup beside the sea.",
    "clar1": "",
@@ -81,6 +83,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · IV · Four of Pentacles\n\nThe Other Person\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Pentacles, consider how this relates to security.\n\nSecurity\nConservation\nBoundaries\n\nPosition: The Other Person — Four of Pentacles. Consider whether your perception of the other person is coloured by security, conservation, boundaries. Check that impression through conversation rather than treating the card as access to their thoughts.\n\nProtecting resources can create a useful foundation. Check whether your boundaries serve genuine security or whether the effort to hold everything tightly is reducing your freedom to use what you have.\n\nLooking closer: A seated figure grips a pentacle, balances one on the head and rests feet on two more.",
    "clar1": "",
@@ -109,6 +113,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · Kn · Knight of Swords, reversed\n\nThe Connection\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nRecklessness\nArgument\nTunnel Vision\n\nPosition: The Connection — Knight of Swords reversed. Between you, recklessness, argument, tunnel vision may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.\n\nUrgency may be narrowing your judgement or making a conversation unnecessarily combative. Pause long enough to ask whether speed is helping the purpose you claim to serve.\n\nLooking closer: A rider charges forward with a raised sword under a turbulent sky.",
    "clar1": "",
@@ -137,6 +143,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · VI · Six of Cups, reversed\n\nRelationship Challenge\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Cups, consider how this relates to memory.\n\nIdealised Past\nGrowing Beyond\nOld Patterns\n\nPosition: Relationship Challenge — Six of Cups reversed. The tension to explore is idealised past, growing beyond, old patterns. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nNostalgia may be editing the past or an old role may no longer fit. Keep what was nourishing without asking the present to recreate an earlier chapter exactly.\n\nLooking closer: A child offers a flower-filled cup to another figure in a sheltered courtyard.",
    "clar1": "",
@@ -165,6 +173,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · XIII · Death\n\nShared Guidance\n\nCARD CORRESPONDENCE\nScorpio\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Scorpio · Water\n\nNumber: 13\n\nThirteen transforms a completed form so that another stage can begin. In Death, consider how this relates to transition.\n\nTransition\nRelease\nRenewal\n\nPosition: Shared Guidance — Death. Your next step is to work consciously with transition, release, renewal. Choose one practical response you can try, then notice whether it helps.\n\nAn ending or change of form asks you to release what has completed its purpose. Make room to grieve and attend to what remains alive; this card speaks symbolically of transition, not a prediction of physical death.\n\nLooking closer: A skeletal rider passes people of different stations as the sun appears between towers. The scene links unavoidable change with the possibility of another beginning.",
    "clar1": "",
@@ -180,6 +190,13 @@
    "limit": false,
    "pending": false
   }
+ ],
+ "order": [
+  0,
+  1,
+  2,
+  3,
+  4
  ],
  "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 5 revealed cards across this reading, including every clarifier. 2 cards came up reversed and are read through their reversed meaning.\n\nYOU\nPage of Cups\n\nThe foundation is sensitivity and creative curiosity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Page of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OTHER PERSON\nFour of Pentacles\n\nThe foundation is security and conservation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Four of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE CONNECTION\nKnight of Swords, reversed\n\nThe foundation is recklessness and argument; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRELATIONSHIP CHALLENGE\nSix of Cups, reversed\n\nThe foundation is idealised past and growing beyond; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Cups, reversed (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSHARED GUIDANCE\nDeath\n\nThe foundation is transition and release; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Death (Scorpio). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Page of Cups in You and moves toward Death in Shared Guidance.\n\nThe Other Person · Four of Pentacles. Following Page of Cups, Four of Pentacles may draw your attention toward security.\n\nThe Connection · Knight of Swords, reversed. Following Four of Pentacles, Knight of Swords may draw your attention toward recklessness.\n\nRelationship Challenge · Six of Cups, reversed. Following Knight of Swords, Six of Cups may draw your attention toward idealised past.\n\nShared Guidance · Death. Following Six of Cups, Death may draw your attention toward transition.\n\nThe card-to-card movement is the heart of this reading: Page of Cups opens the question, and Death shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, sensitivity, creative curiosity, emotional discovery, security form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nPage of Cups (Page) · Four of Pentacles (4) · Knight of Swords (Knight) · Six of Cups (6) · Death (13). Their numbered cards sum to 23, reducing to 5. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
  "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nYOU\nOriginal Card · Pg · Page of Cups\n\nYou\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: Page\n\nPage is a court role, not a numbered pip card: a learner’s curiosity and an emerging practical relationship to the suit. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nSensitivity\nCreative Curiosity\nEmotional Discovery\n\nPosition: You — Page of Cups. Here, sensitivity, creative curiosity, emotional discovery is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.\n\nAn unexpected feeling or creative idea deserves a curious response. Express it simply and listen with care; a tentative beginning does not need to become a promise before it has been understood.\n\nLooking closer: A young figure studies a fish emerging from a cup beside the sea.\n\nTao / Wu Wei · Page of Cups\n\nA practice of unforced attention with Page of Cups: What surprising feeling or idea could I meet with curiosity?\n\nJungian interpretation · Page of Cups\n\nPsychological lens: Imagination often arrives in an awkward or surprising form before it becomes something the conscious self can explain.\n\nExplore Page of Cups\nTHE OTHER PERSON\nOriginal Card · IV · Four of Pentacles\n\nThe Other Person\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Pentacles, consider how this relates to security.\n\nSecurity\nConservation\nBoundaries\n\nPosition: The Other Person — Four of Pentacles. Consider whether your perception of the other person is coloured by security, conservation, boundaries. Check that impression through conversation rather than treating the card as access to their thoughts.\n\nProtecting resources can create a useful foundation. Check whether your boundaries serve genuine security or whether the effort to hold everything tightly is reducing your freedom to use what you have.\n\nLooking closer: A seated figure grips a pentacle, balances one on the head and rests feet on two more.\n\nTao / Wu Wei · Four of Pentacles\n\nA practice of unforced attention with Four of Pentacles: What am I protecting, and what is the cost of holding it so tightly?\n\nJungian interpretation · Four of Pentacles\n\nPsychological lens: Material control can become a stand-in for inner safety. Recognising that link allows more deliberate boundaries.\n\nExplore Four of Pentacles\nTHE CONNECTION\nOriginal Card · Kn · Knight of Swords, reversed\n\nThe Connection\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nRecklessness\nArgument\nTunnel Vision\n\nPosition: The Connection — Knight of Swords reversed. Between you, recklessness, argument, tunnel vision may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.\n\nUrgency may be narrowing your judgement or making a conversation unnecessarily combative. Pause long enough to ask whether speed is helping the purpose you claim to serve.\n\nLooking closer: A rider charges forward with a raised sword under a turbulent sky.\n\nTao / Wu Wei · Knight of Swords\n\nA practice of unforced attention with Knight of Swords: Where do I need decisiveness, and where am I confusing urgency with certainty?\n\nJungian interpretation · Knight of Swords\n\nPsychological lens: The wish to cut through difficulty can become rigid when thought loses contact with feeling and circumstance.\n\nExplore Knight of Swords\nRELATIONSHIP CHALLENGE\nOriginal Card · VI · Six of Cups, reversed\n\nRelationship Challenge\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In Six of Cups, consider how this relates to memory.\n\nIdealised Past\nGrowing Beyond\nOld Patterns\n\nPosition: Relationship Challenge — Six of Cups reversed. The tension to explore is idealised past, growing beyond, old patterns. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nNostalgia may be editing the past or an old role may no longer fit. Keep what was nourishing without asking the present to recreate an earlier chapter exactly.\n\nLooking closer: A child offers a flower-filled cup to another figure in a sheltered courtyard.\n\nTao / Wu Wei · Six of Cups\n\nA practice of unforced attention with Six of Cups: What from my past nourishes me now, and what can remain in the past?\n\nJungian interpretation · Six of Cups\n\nPsychological lens: Earlier experiences shape expectations of care. Revisiting them consciously can loosen automatic repetition.\n\nExplore Six of Cups\nSHARED GUIDANCE\nOriginal Card · XIII · Death\n\nShared Guidance\n\nCARD CORRESPONDENCE\nScorpio\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Scorpio · Water\n\nNumber: 13\n\nThirteen transforms a completed form so that another stage can begin. In Death, consider how this relates to transition.\n\nTransition\nRelease\nRenewal\n\nPosition: Shared Guidance — Death. Your next step is to work consciously with transition, release, renewal. Choose one practical response you can try, then notice whether it helps.\n\nAn ending or change of form asks you to release what has completed its purpose. Make room to grieve and attend to what remains alive; this card speaks symbolically of transition, not a prediction of physical death.\n\nLooking closer: A skeletal rider passes people of different stations as the sun appears between towers. The scene links unavoidable change with the possibility of another beginning.\n\nTao / Wu Wei · Death\n\nA practice of unforced attention with Death: What has finished its purpose, and how can I let it go with care?\n\nJungian interpretation · Death\n\nPsychological lens: Identity can resist endings even when circumstances have already changed. Mourning a former role makes space for a self that is no longer organised around it.\n\nExplore Death\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 5 revealed cards across this reading, including every clarifier. 2 cards came up reversed and are read through their reversed meaning.\n\nYOU\nPage of Cups\n\nThe foundation is sensitivity and creative curiosity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Page of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OTHER PERSON\nFour of Pentacles\n\nThe foundation is security and conservation; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Four of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE CONNECTION\nKnight of Swords, reversed\n\nThe foundation is recklessness and argument; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRELATIONSHIP CHALLENGE\nSix of Cups, reversed\n\nThe foundation is idealised past and growing beyond; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Six of Cups, reversed (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSHARED GUIDANCE\nDeath\n\nThe foundation is transition and release; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Death (Scorpio). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Page of Cups in You and moves toward Death in Shared Guidance.\n\nThe Other Person · Four of Pentacles. Following Page of Cups, Four of Pentacles may draw your attention toward security.\n\nThe Connection · Knight of Swords, reversed. Following Four of Pentacles, Knight of Swords may draw your attention toward recklessness.\n\nRelationship Challenge · Six of Cups, reversed. Following Knight of Swords, Six of Cups may draw your attention toward idealised past.\n\nShared Guidance · Death. Following Six of Cups, Death may draw your attention toward transition.\n\nThe card-to-card movement is the heart of this reading: Page of Cups opens the question, and Death shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, sensitivity, creative curiosity, emotional discovery, security form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nPage of Cups (Page) · Four of Pentacles (4) · Knight of Swords (Knight) · Six of Cups (6) · Death (13). Their numbered cards sum to 23, reducing to 5. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
@@ -280,6 +297,123 @@
    "text": "An ending or change of form asks you to release what has completed its purpose."
   },
   {
+   "chapter": "invite",
+   "kind": "frame",
+   "text": "That's the first layer of your reading."
+  },
+  {
+   "chapter": "invite",
+   "kind": "frame",
+   "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+  }
+ ],
+ "scriptFinished": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Relationship."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "You: Page of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, sensitivity, creative curiosity, emotional discovery is a lens for your own feelings, needs and contribution to the relationship."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An unexpected feeling or creative idea deserves a curious response."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "The Other Person: Four of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Consider whether your perception of the other person is coloured by security, conservation, boundaries."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Protecting resources can create a useful foundation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "The Connection: Knight of Swords, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Between you, recklessness, argument, tunnel vision may describe a shared pattern."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Urgency may be narrowing your judgement or making a conversation unnecessarily combative."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Relationship Challenge: Six of Cups, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The tension to explore is idealised past, growing beyond, old patterns."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Nostalgia may be editing the past or an old role may no longer fit."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Shared Guidance: Death."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with transition, release, renewal."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An ending or change of form asks you to release what has completed its purpose."
+  },
+  {
+   "chapter": "final",
+   "kind": "frame",
+   "text": "Here is your whole spread, brought together."
+  },
+  {
+   "chapter": "final",
+   "kind": "quote",
+   "text": "Across these cards, sensitivity, creative curiosity, emotional discovery, security form the central pattern."
+  },
+  {
    "chapter": "close",
    "kind": "frame",
    "text": "Before I go, one question to carry with you."
@@ -320,9 +454,7 @@
   "Shared Guidance: Death.",
   "Your next step is to work consciously with transition, release, renewal.",
   "An ending or change of form asks you to release what has completed its purpose.",
-  "Before I go, one question to carry with you.",
-  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
-  "Take what resonates, and leave the rest.",
-  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  "That's the first layer of your reading.",
+  "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
  ]
 }

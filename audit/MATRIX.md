@@ -1,6 +1,6 @@
 # QA matrix: 16 baseline + 10 boundary (Si Aye, 7 Nov 2026)
 
-Commit **fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39**. Automated results come from the unedited logs in `audit/builds/test-run-fc3eb8c/`, read by `audit/tools/qa-matrix.cjs`. Preview: https://resonate-mypl1e2cv-charlestdainslie-6956.vercel.app/presenter-uat.html (add `?qa=<sample>`).
+Commit **f321114def71f3c7239f5b498c610135d02516c8**. Automated results come from the unedited logs in `audit/builds/test-run-f321114/`, read by `audit/tools/qa-matrix.cjs`. Preview: https://resonate-o3l4cdxhm-charlestdainslie-6956.vercel.app/presenter-uat.html (add `?qa=<sample>`).
 
 Columns: **Automated** = Claude's scripted checks only (structure, rule, state, narration lifecycle with a stand-in speech engine). It is not interpretive QA and not audio QA. **Interpretation (Deep)** and **Samsung audio (Dev)** stay BLOCKED until they record a result with evidence; "n/a" means the case does not ask for that check.
 
@@ -21,10 +21,11 @@ Columns: **Automated** = Claude's scripted checks only (structure, rule, state, 
 | CC-01 | All upright, no clarifiers. | [CC-01](qa-samples/CC-01.md) | Cards not given: seeded deal, all upright. Majors in it show Clarifier 1 as due. | PASS | BLOCKED: awaiting Deep | BLOCKED: awaiting Dev |
 | CC-02 | Reversal-heavy, clarifier on Past. | [CC-02](qa-samples/CC-02.md) | Celtic Cross has no "Past": the position is "Recent Past" (4). Cards not given: first seeded deal with at least 7 of 10 reversed; clarifier seeded. | PASS | BLOCKED: awaiting Deep | BLOCKED: awaiting Dev |
 | CC-03 | Major-heavy, two Major clarifiers and rule boundary. | [B06](qa-samples/B06.md) | Mapped to existing B06: ten Majors, 8 Clarifier 2s, 4 positions at the two-clarifier limit. | PASS | BLOCKED: awaiting Deep | BLOCKED: awaiting Dev |
+| SC-Q | (added 7 Nov) Seven-card question reading: position 4 read last. | [B08](qa-samples/B08.md) | Approved by Chas on 7 Nov. Not one of the original 16; listed so the new behaviour has a row. | PASS | BLOCKED: awaiting Deep | BLOCKED: awaiting Dev |
 | CC-04 | Hermit R + Eight of Pentacles U clarifier, full applicable chain. | [CC-04](qa-samples/CC-04.md) | Position not given: placed at 1 (Present Situation); other nine cards seeded. Eight of Pentacles is not a Major, so the applicable chain ends at Clarifier 1. | PASS | BLOCKED: awaiting Deep | BLOCKED: awaiting Dev |
 | BT-01 | C2 without C1 must be refused. | [OC-02](qa-samples/OC-02.md) |  | PASS | n/a | n/a |
-| BT-02 | Attempt to clarify a clarifier must not trigger recursive clarification. | [B01](qa-samples/B01.md) |  | PASS | n/a | n/a |
-| BT-03 | Two Major clarifiers: demonstrate the implemented limit and flag any conflict with Chas's approved rule. | [B01](qa-samples/B01.md), [B06](qa-samples/B06.md) | Conflict flagged for Chas: audit/RULE_RECONCILIATION.md. | PASS | BLOCKED: awaiting Deep | n/a |
+| BT-02 | Attempt to clarify a clarifier must not trigger recursive clarification. | [B07](qa-samples/B07.md) |  | PASS | n/a | n/a |
+| BT-03 | Two Major clarifiers: demonstrate the implemented limit and flag any conflict with Chas's approved rule. | [B01](qa-samples/B01.md), [B07](qa-samples/B07.md), [B06](qa-samples/B06.md) | Resolved by Chas on 7 Nov: Option B. With a Major original and two Major clarifiers, one Clarity card is drawn at random from the unused Minor Arcana, then the rule stops. With a Minor original and two Major clarifiers, Option B as approved does not apply and the two-clarifier limit is stated (open question for Chas, audit/RULE_RECONCILIATION.md). | PASS | BLOCKED: awaiting Deep | n/a |
 | BT-04 | Add clarifier during Max narration: stop stale playback immediately and offer updated narration. | [S14](qa-samples/S14.md) |  | PASS | n/a | BLOCKED: awaiting Dev |
 | BT-05 | Reversed anchor + reversed clarifier: both reflected explicitly in interpretation. | [B04](qa-samples/B04.md) |  | PASS | BLOCKED: awaiting Deep | n/a |
 | BT-06 | Contradictory clarifier: retain Stage 1 and visibly revise interpretation. | inline: The Tower, Clarifier 1 Death, Clarifier 2 The Star |  | PASS | BLOCKED: awaiting Deep | n/a |
@@ -33,7 +34,7 @@ Columns: **Automated** = Claude's scripted checks only (structure, rule, state, 
 | BT-09 | Clarify without card selection: explicit selection prompt. | [S13](qa-samples/S13.md) | Built 7 Nov: the dock reads "choose a card" when no card is in view, and tapping it prompts instead of guessing. | PASS | n/a | BLOCKED: awaiting Dev |
 | BT-10 | Pause narration, add clarifier, resume: no stale audio or captions. | [S14](qa-samples/S14.md) |  | PASS | n/a | BLOCKED: awaiting Dev |
 
-Totals: automated 26 PASS, 0 FAIL, 0 NOT RUN of 26. Interpretation: 19 BLOCKED. Samsung audio: 19 BLOCKED.
+Totals: automated 27 PASS, 0 FAIL, 0 NOT RUN of 27. Interpretation: 20 BLOCKED. Samsung audio: 20 BLOCKED.
 
 ## Deep's six failure modes: where to look
 

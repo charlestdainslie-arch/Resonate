@@ -1,0 +1,708 @@
+{
+ "sample": {
+  "id": "B08",
+  "kind": "boundary",
+  "spread": "seven",
+  "mode": "fixed",
+  "note": "Seven-card question reading: position 4, You / Answer, read last",
+  "base": [
+   24,
+   3,
+   58,
+   9,
+   46,
+   65,
+   31
+  ],
+  "reversed": [
+   58
+  ],
+  "steps": [
+   {
+    "pos": 3,
+    "layer": 1,
+    "id": 39
+   }
+  ],
+  "c1": [
+   null,
+   null,
+   null,
+   39,
+   null,
+   null,
+   null
+  ],
+  "c2": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "clarity": [
+   null,
+   null,
+   null,
+   null,
+   null,
+   null,
+   null
+  ],
+  "question": true
+ },
+ "commit": "f321114def71f3c7239f5b498c610135d02516c8",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "errors": [],
+ "spreadName": "Seven-card V Reading",
+ "drew": [
+  "first"
+ ],
+ "valid": [],
+ "positions": [
+  {
+   "n": 1,
+   "label": "Past · 18–24 Months",
+   "meaning": "your experiences and influences from approximately the previous 18 to 24 months",
+   "base": {
+    "id": 24,
+    "name": "Three of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [],
+   "original": "Original Card · III · Three of Wands\n\nPast · 18–24 Months\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Wands, consider how this relates to expansion.\n\nExpansion\nForesight\nCooperation\n\nPosition: Past · 18–24 Months — Three of Wands. Looking across the previous 18 to 24 months, expansion, foresight, cooperation may show an experience or influence that helped shape the present situation.\n\nEarly efforts are reaching beyond their starting point. Watch for feedback, coordinate with others and prepare for what growth will require rather than treating the first success as the whole journey.\n\nLooking closer: A figure watches ships from a height with three planted wands nearby.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Three of Wands\n\nA practice of unforced attention with Three of Wands: What support will I need if this project grows beyond me?\n\nJungian interpretation · Three of Wands\n\nPsychological lens: Confidence matures when the wish to expand includes the capacity to wait and respond.",
+   "positionContext": "Position: Past · 18–24 Months — Three of Wands. Looking across the previous 18 to 24 months, expansion, foresight, cooperation may show an experience or influence that helped shape the present situation.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 2,
+   "label": "Present Time",
+   "meaning": "your present circumstances, including the period immediately surrounding today",
+   "base": {
+    "id": 3,
+    "name": "The Empress",
+    "arcana": "Major",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [],
+   "original": "Original Card · III · The Empress\n\nPresent Time\n\nCARD CORRESPONDENCE\nVenus\nSKY AT THIS READING\nVenus is at 23° 51′ Libra\n\nAstrology: Venus · Earth\n\nNumber: 3\n\nThree is emergence: a third point created from the relationship between two. It is expression, growth, creativity and the first sense of form becoming fertile.\n\nAbundance\nSensual Pleasure\nNurture\n\nPosition: Present Time — The Empress. In the period immediately surrounding today, steady care that gives a relationship, project or part of yourself room to grow may describe what is active for you now.\n\nThe Empress represents life that grows when it is nourished. Upright, she speaks to creativity, embodiment, pleasure, care and the practical conditions that allow something living to flourish. In a reading, this may describe a relationship, project, home, creative impulse or part of yourself asking for genuine nourishment. In a Past position it can show what helped something grow; in the Present, what needs care now; in the Future, growth that may become possible when the right conditions are tended.\n\nLooking closer: Notice the warm yellow landscape and the green growth around the seated figure. Creativity is supported by attention and balance; growth needs both space and care.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · The Empress\n\nWu Wei: growth cannot always be hurried. The Empress may ask what would happen if you created the right conditions, offered steady care, and allowed life to do some of the growing for you.\n\nJungian interpretation · The Empress\n\nJungian lens: the Great Mother and generative Anima. The Empress represents the psyche's capacity to nourish, contain and create. In shadow, care can become engulfing or self-sacrificing.",
+   "positionContext": "Position: Present Time — The Empress. In the period immediately surrounding today, steady care that gives a relationship, project or part of yourself room to grow may describe what is active for you now.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 3,
+   "label": "Near Future · 3 Months",
+   "meaning": "what may develop over approximately the next three months if the present course continues",
+   "base": {
+    "id": 58,
+    "name": "Nine of Swords",
+    "arcana": "Minor",
+    "element": "Air",
+    "reversed": true
+   },
+   "c1": null,
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [],
+   "original": "Original Card · IX · Nine of Swords, reversed\n\nNear Future · 3 Months\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Swords, consider how this relates to worry.\n\nSupport\nEasing Anxiety\nHidden Distress\n\nPosition: Near Future · 3 Months — Nine of Swords reversed. Over approximately the next three months, support, easing anxiety, hidden distress may show what develops if the present course continues; it is a direction, not a fixed prediction.\n\nA burden may be easing, or you may be hiding how difficult things feel. Reach for support and judge progress in manageable steps rather than expecting distress to disappear immediately.\n\nLooking closer: A figure sits upright in bed with hands over the face beneath nine swords.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Nine of Swords\n\nA practice of unforced attention with Nine of Swords: What fear needs compassionate attention rather than another round of private argument?\n\nJungian interpretation · Nine of Swords\n\nPsychological lens: Thought can intensify distress when it tries to solve uncertainty by rehearsing every possible threat.",
+   "positionContext": "Position: Near Future · 3 Months — Nine of Swords reversed. Over approximately the next three months, support, easing anxiety, hidden distress may show what develops if the present course continues; it is a direction, not a fixed prediction.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 4,
+   "label": "You / Answer",
+   "meaning": "your current state in a general reading; for a specific question, this card gives the answer and is interpreted last",
+   "base": {
+    "id": 9,
+    "name": "The Hermit",
+    "arcana": "Major",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": {
+    "id": 39,
+    "name": "Four of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [
+    "1 · The original card in this position",
+    "2 · Clarifier 1 · how it modifies the original card",
+    "3 · What they mean together"
+   ],
+   "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · IX · The Hermit\n\nYou / Answer\n\nCARD CORRESPONDENCE\nVirgo\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Virgo · Earth\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In The Hermit, consider how this relates to reflection.\n\nReflection\nDiscernment\nInner Guidance\n\nPosition: You / Answer — The Hermit. In a general reading, reflection, discernment, inner guidance may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.\n\nStep back from competing voices long enough to recognise your own understanding. Solitude, study or a trusted guide can help you identify the next honest step without needing the whole path illuminated.\n\nLooking closer: A cloaked figure holds a lantern on a mountain. The small light offers enough illumination for the next step, rather than a complete map.",
+   "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · IV · Four of Cups\n\nA pause in interest may be asking you to examine what you actually want. Rest from automatic choices, while remaining willing to notice an offer that differs from your expectations.\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.\n\nFour of Cups supports The Hermit.\n\nIn You / Answer, the theme of contemplation and reassessment can help reflection and discernment find a constructive outlet.\n\nRead this way because Earth and Water are friendly elements.\n\nAs a Minor Arcana card, Four of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships.",
+   "clar2": "",
+   "notes": "",
+   "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in You / Answer\n\nRevision 1 · with Clarifier 1.\n\nTogether, The Hermit and Four of Cups give You / Answer a consistent message: reflection and contemplation. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nIn the wider Seven-card V Reading spread, You / Answer sits within the reading; its neighbour is Surrounding Energies, Page of Cups, which supports The Hermit (Earth and Water are friendly elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+   "lenses": "Tao / Wu Wei · The Hermit\n\nA practice of unforced attention with The Hermit: What do I hear in quiet, and when does quiet become a hiding place?\n\nJungian interpretation · The Hermit\n\nPsychological lens: Inner guidance develops through reflective distance. Returning from solitude with something useful is as important as withdrawing to find it.",
+   "positionContext": "Position: You / Answer — The Hermit. In a general reading, reflection, discernment, inner guidance may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.",
+   "relation1": "Four of Cups supports The Hermit.\n\nIn You / Answer, the theme of contemplation and reassessment can help reflection and discernment find a constructive outlet.\n\nRead this way because Earth and Water are friendly elements.\n\nAs a Minor Arcana card, Four of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships.",
+   "relation2": "",
+   "synthesisLead": "Together, The Hermit and Four of Cups give You / Answer a consistent message: reflection and contemplation. Consider working with this theme with some confidence, while staying open to how it unfolds.",
+   "synthesisWider": "In the wider Seven-card V Reading spread, You / Answer sits within the reading; its neighbour is Surrounding Energies, Page of Cups, which supports The Hermit (Earth and Water are friendly elements).",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 5,
+   "label": "Surrounding Energies",
+   "meaning": "the people, home, work and other circumstances influencing you or the question at present",
+   "base": {
+    "id": 46,
+    "name": "Page of Cups",
+    "arcana": "Minor",
+    "element": "Water",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [],
+   "original": "Original Card · Pg · Page of Cups\n\nSurrounding Energies\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: Page\n\nPage is a court role, not a numbered pip card: a learner’s curiosity and an emerging practical relationship to the suit. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nSensitivity\nCreative Curiosity\nEmotional Discovery\n\nPosition: Surrounding Energies — Page of Cups. In your surroundings, sensitivity, creative curiosity, emotional discovery may be expressed through people, home, work or other circumstances influencing the situation now.\n\nAn unexpected feeling or creative idea deserves a curious response. Express it simply and listen with care; a tentative beginning does not need to become a promise before it has been understood.\n\nLooking closer: A young figure studies a fish emerging from a cup beside the sea.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Page of Cups\n\nA practice of unforced attention with Page of Cups: What surprising feeling or idea could I meet with curiosity?\n\nJungian interpretation · Page of Cups\n\nPsychological lens: Imagination often arrives in an awkward or surprising form before it becomes something the conscious self can explain.",
+   "positionContext": "Position: Surrounding Energies — Page of Cups. In your surroundings, sensitivity, creative curiosity, emotional discovery may be expressed through people, home, work or other circumstances influencing the situation now.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 6,
+   "label": "Hopes, Fears & Attitude",
+   "meaning": "the hopes, fears and attitude you bring to the situation or specific question",
+   "base": {
+    "id": 65,
+    "name": "Two of Pentacles",
+    "arcana": "Minor",
+    "element": "Earth",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [],
+   "original": "Original Card · II · Two of Pentacles\n\nHopes, Fears & Attitude\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nAdaptability\nBalance\nPriorities\n\nPosition: Hopes, Fears & Attitude — Two of Pentacles. Adaptability, balance, priorities may colour your hopes, fears and attitude toward the situation or question.\n\nSeveral demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.",
+   "positionContext": "Position: Hopes, Fears & Attitude — Two of Pentacles. Adaptability, balance, priorities may colour your hopes, fears and attitude toward the situation or question.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  },
+  {
+   "n": 7,
+   "label": "Outcome · Next 18–24 Months",
+   "meaning": "the longer-term outcome of present circumstances over approximately the next 18 to 24 months; in a question reading, the likely outcome of that question",
+   "base": {
+    "id": 31,
+    "name": "Ten of Wands",
+    "arcana": "Minor",
+    "element": "Fire",
+    "reversed": false
+   },
+   "c1": null,
+   "c2": null,
+   "clarity": null,
+   "clarityText": "",
+   "steps": [],
+   "original": "Original Card · X · Ten of Wands\n\nOutcome · Next 18–24 Months\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Wands, consider how this relates to responsibility.\n\nResponsibility\nBurden\nLimits\n\nPosition: Outcome · Next 18–24 Months — Ten of Wands. Across approximately the next 18 to 24 months, responsibility, burden, limits may describe the likely outcome if present circumstances continue, while leaving room for choice and change.\n\nA worthwhile commitment may have grown into an excessive load. Review what is truly yours, divide the work and protect the conditions that allow you to finish without losing yourself to the task.\n\nLooking closer: A figure carries ten wands that obscure the view of the town ahead.",
+   "clar1": "",
+   "clar2": "",
+   "notes": "",
+   "together": "",
+   "lenses": "Tao / Wu Wei · Ten of Wands\n\nA practice of unforced attention with Ten of Wands: Which responsibility could I share, simplify or put down?\n\nJungian interpretation · Ten of Wands\n\nPsychological lens: Worth can become tangled with being indispensable. Releasing a task may challenge that identity while making life more sustainable.",
+   "positionContext": "Position: Outcome · Next 18–24 Months — Ten of Wands. Across approximately the next 18 to 24 months, responsibility, burden, limits may describe the likely outcome if present circumstances continue, while leaving room for choice and change.",
+   "relation1": "",
+   "relation2": "",
+   "synthesisLead": "",
+   "synthesisWider": "",
+   "limit": false,
+   "pending": false
+  }
+ ],
+ "order": [
+  0,
+  1,
+  2,
+  4,
+  5,
+  6,
+  3
+ ],
+ "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 8 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST · 18–24 MONTHS\nThree of Wands\n\nThe foundation is expansion and foresight; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Three of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT TIME\nThe Empress\n\nThe foundation is abundance and sensual pleasure; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Empress (Venus). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE · 3 MONTHS\nNine of Swords, reversed\n\nThe foundation is support and easing anxiety; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Nine of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOU / ANSWER\nThe Hermit + Four of Cups\n\nThe original The Hermit highlights reflection and discernment; Four of Cups introduces contemplation and reassessment. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The Hermit (Virgo) meets Four of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING ENERGIES\nPage of Cups\n\nThe foundation is sensitivity and creative curiosity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Page of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES, FEARS & ATTITUDE\nTwo of Pentacles\n\nThe foundation is adaptability and balance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nOUTCOME · NEXT 18–24 MONTHS\nTen of Wands\n\nThe foundation is responsibility and burden; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Three of Wands in Past · 18–24 Months and moves toward Ten of Wands in Outcome · Next 18–24 Months.\n\nPresent Time · The Empress. Following Three of Wands, The Empress may draw your attention toward abundance.\n\nNear Future · 3 Months · Nine of Swords, reversed. Following The Empress, Nine of Swords may draw your attention toward support.\n\nYou / Answer · The Hermit. Following Nine of Swords, The Hermit may draw your attention toward reflection.\n\nSurrounding Energies · Page of Cups. Following The Hermit, Page of Cups may draw your attention toward sensitivity.\n\nHopes, Fears & Attitude · Two of Pentacles. Following Page of Cups, Two of Pentacles may draw your attention toward adaptability.\n\nOutcome · Next 18–24 Months · Ten of Wands. Following Two of Pentacles, Ten of Wands may draw your attention toward responsibility.\n\nThe card-to-card movement is the heart of this reading: Three of Wands opens the question, and Ten of Wands shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, expansion, foresight, cooperation, abundance form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThree of Wands (3) · The Empress (3) · Nine of Swords (9) · The Hermit (9) · Four of Cups (4) · Page of Cups (Page) · Two of Pentacles (2) · Ten of Wands (10). Their numbered cards sum to 40, reducing to 4. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 3, 9. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nI'm asking a specific question\nPosition 4, You / Answer, gives the answer, so it is read last below and by Max.\nPAST · 18–24 MONTHS\nOriginal Card · III · Three of Wands\n\nPast · 18–24 Months\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Wands, consider how this relates to expansion.\n\nExpansion\nForesight\nCooperation\n\nPosition: Past · 18–24 Months — Three of Wands. Looking across the previous 18 to 24 months, expansion, foresight, cooperation may show an experience or influence that helped shape the present situation.\n\nEarly efforts are reaching beyond their starting point. Watch for feedback, coordinate with others and prepare for what growth will require rather than treating the first success as the whole journey.\n\nLooking closer: A figure watches ships from a height with three planted wands nearby.\n\nTao / Wu Wei · Three of Wands\n\nA practice of unforced attention with Three of Wands: What support will I need if this project grows beyond me?\n\nJungian interpretation · Three of Wands\n\nPsychological lens: Confidence matures when the wish to expand includes the capacity to wait and respond.\n\nExplore Three of Wands\nPRESENT TIME\nOriginal Card · III · The Empress\n\nPresent Time\n\nCARD CORRESPONDENCE\nVenus\nSKY AT THIS READING\nVenus is at 23° 51′ Libra\n\nAstrology: Venus · Earth\n\nNumber: 3\n\nThree is emergence: a third point created from the relationship between two. It is expression, growth, creativity and the first sense of form becoming fertile.\n\nAbundance\nSensual Pleasure\nNurture\n\nPosition: Present Time — The Empress. In the period immediately surrounding today, steady care that gives a relationship, project or part of yourself room to grow may describe what is active for you now.\n\nThe Empress represents life that grows when it is nourished. Upright, she speaks to creativity, embodiment, pleasure, care and the practical conditions that allow something living to flourish. In a reading, this may describe a relationship, project, home, creative impulse or part of yourself asking for genuine nourishment. In a Past position it can show what helped something grow; in the Present, what needs care now; in the Future, growth that may become possible when the right conditions are tended.\n\nLooking closer: Notice the warm yellow landscape and the green growth around the seated figure. Creativity is supported by attention and balance; growth needs both space and care.\n\nTao / Wu Wei · The Empress\n\nWu Wei: growth cannot always be hurried. The Empress may ask what would happen if you created the right conditions, offered steady care, and allowed life to do some of the growing for you.\n\nJungian interpretation · The Empress\n\nJungian lens: the Great Mother and generative Anima. The Empress represents the psyche's capacity to nourish, contain and create. In shadow, care can become engulfing or self-sacrificing.\n\nExplore The Empress\nNEAR FUTURE · 3 MONTHS\nOriginal Card · IX · Nine of Swords, reversed\n\nNear Future · 3 Months\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Swords, consider how this relates to worry.\n\nSupport\nEasing Anxiety\nHidden Distress\n\nPosition: Near Future · 3 Months — Nine of Swords reversed. Over approximately the next three months, support, easing anxiety, hidden distress may show what develops if the present course continues; it is a direction, not a fixed prediction.\n\nA burden may be easing, or you may be hiding how difficult things feel. Reach for support and judge progress in manageable steps rather than expecting distress to disappear immediately.\n\nLooking closer: A figure sits upright in bed with hands over the face beneath nine swords.\n\nTao / Wu Wei · Nine of Swords\n\nA practice of unforced attention with Nine of Swords: What fear needs compassionate attention rather than another round of private argument?\n\nJungian interpretation · Nine of Swords\n\nPsychological lens: Thought can intensify distress when it tries to solve uncertainty by rehearsing every possible threat.\n\nExplore Nine of Swords\nSURROUNDING ENERGIES\nOriginal Card · Pg · Page of Cups\n\nSurrounding Energies\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: Page\n\nPage is a court role, not a numbered pip card: a learner’s curiosity and an emerging practical relationship to the suit. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nSensitivity\nCreative Curiosity\nEmotional Discovery\n\nPosition: Surrounding Energies — Page of Cups. In your surroundings, sensitivity, creative curiosity, emotional discovery may be expressed through people, home, work or other circumstances influencing the situation now.\n\nAn unexpected feeling or creative idea deserves a curious response. Express it simply and listen with care; a tentative beginning does not need to become a promise before it has been understood.\n\nLooking closer: A young figure studies a fish emerging from a cup beside the sea.\n\nTao / Wu Wei · Page of Cups\n\nA practice of unforced attention with Page of Cups: What surprising feeling or idea could I meet with curiosity?\n\nJungian interpretation · Page of Cups\n\nPsychological lens: Imagination often arrives in an awkward or surprising form before it becomes something the conscious self can explain.\n\nExplore Page of Cups\nHOPES, FEARS & ATTITUDE\nOriginal Card · II · Two of Pentacles\n\nHopes, Fears & Attitude\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nAdaptability\nBalance\nPriorities\n\nPosition: Hopes, Fears & Attitude — Two of Pentacles. Adaptability, balance, priorities may colour your hopes, fears and attitude toward the situation or question.\n\nSeveral demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.\n\nTao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.\n\nExplore Two of Pentacles\nOUTCOME · NEXT 18–24 MONTHS\nOriginal Card · X · Ten of Wands\n\nOutcome · Next 18–24 Months\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Wands, consider how this relates to responsibility.\n\nResponsibility\nBurden\nLimits\n\nPosition: Outcome · Next 18–24 Months — Ten of Wands. Across approximately the next 18 to 24 months, responsibility, burden, limits may describe the likely outcome if present circumstances continue, while leaving room for choice and change.\n\nA worthwhile commitment may have grown into an excessive load. Review what is truly yours, divide the work and protect the conditions that allow you to finish without losing yourself to the task.\n\nLooking closer: A figure carries ten wands that obscure the view of the town ahead.\n\nTao / Wu Wei · Ten of Wands\n\nA practice of unforced attention with Ten of Wands: Which responsibility could I share, simplify or put down?\n\nJungian interpretation · Ten of Wands\n\nPsychological lens: Worth can become tangled with being indispensable. Releasing a task may challenge that identity while making life more sustainable.\n\nExplore Ten of Wands\nYOU / ANSWER\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · IX · The Hermit\n\nYou / Answer\n\nCARD CORRESPONDENCE\nVirgo\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Virgo · Earth\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In The Hermit, consider how this relates to reflection.\n\nReflection\nDiscernment\nInner Guidance\n\nPosition: You / Answer — The Hermit. In a general reading, reflection, discernment, inner guidance may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.\n\nStep back from competing voices long enough to recognise your own understanding. Solitude, study or a trusted guide can help you identify the next honest step without needing the whole path illuminated.\n\nLooking closer: A cloaked figure holds a lantern on a mountain. The small light offers enough illumination for the next step, rather than a complete map.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · IV · Four of Cups\n\nA pause in interest may be asking you to examine what you actually want. Rest from automatic choices, while remaining willing to notice an offer that differs from your expectations.\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.\n\nFour of Cups supports The Hermit.\n\nIn You / Answer, the theme of contemplation and reassessment can help reflection and discernment find a constructive outlet.\n\nRead this way because Earth and Water are friendly elements.\n\nAs a Minor Arcana card, Four of Cups brings the Major theme down to a practical, everyday expression in feelings and relationships.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in You / Answer\n\nRevision 1 · with Clarifier 1.\n\nTogether, The Hermit and Four of Cups give You / Answer a consistent message: reflection and contemplation. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nIn the wider Seven-card V Reading spread, You / Answer sits within the reading; its neighbour is Surrounding Energies, Page of Cups, which supports The Hermit (Earth and Water are friendly elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · The Hermit\n\nA practice of unforced attention with The Hermit: What do I hear in quiet, and when does quiet become a hiding place?\n\nJungian interpretation · The Hermit\n\nPsychological lens: Inner guidance develops through reflective distance. Returning from solitude with something useful is as important as withdrawing to find it.\n\nTao / Wu Wei · Four of Cups\n\nA practice of unforced attention with Four of Cups: What am I overlooking because it does not resemble the offer I expected?\n\nJungian interpretation · Four of Cups\n\nPsychological lens: Turning inward can clarify desire, but habitual detachment can also protect it from being tested.\n\nExplore The Hermit\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 8 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST · 18–24 MONTHS\nThree of Wands\n\nThe foundation is expansion and foresight; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Three of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT TIME\nThe Empress\n\nThe foundation is abundance and sensual pleasure; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Empress (Venus). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE · 3 MONTHS\nNine of Swords, reversed\n\nThe foundation is support and easing anxiety; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Nine of Swords, reversed (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOU / ANSWER\nThe Hermit + Four of Cups\n\nThe original The Hermit highlights reflection and discernment; Four of Cups introduces contemplation and reassessment. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The Hermit (Virgo) meets Four of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING ENERGIES\nPage of Cups\n\nThe foundation is sensitivity and creative curiosity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Page of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES, FEARS & ATTITUDE\nTwo of Pentacles\n\nThe foundation is adaptability and balance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nOUTCOME · NEXT 18–24 MONTHS\nTen of Wands\n\nThe foundation is responsibility and burden; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ten of Wands (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with Three of Wands in Past · 18–24 Months and moves toward Ten of Wands in Outcome · Next 18–24 Months.\n\nPresent Time · The Empress. Following Three of Wands, The Empress may draw your attention toward abundance.\n\nNear Future · 3 Months · Nine of Swords, reversed. Following The Empress, Nine of Swords may draw your attention toward support.\n\nYou / Answer · The Hermit. Following Nine of Swords, The Hermit may draw your attention toward reflection.\n\nSurrounding Energies · Page of Cups. Following The Hermit, Page of Cups may draw your attention toward sensitivity.\n\nHopes, Fears & Attitude · Two of Pentacles. Following Page of Cups, Two of Pentacles may draw your attention toward adaptability.\n\nOutcome · Next 18–24 Months · Ten of Wands. Following Two of Pentacles, Ten of Wands may draw your attention toward responsibility.\n\nThe card-to-card movement is the heart of this reading: Three of Wands opens the question, and Ten of Wands shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, expansion, foresight, cooperation, abundance form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThree of Wands (3) · The Empress (3) · Nine of Swords (9) · The Hermit (9) · Four of Cups (4) · Page of Cups (Page) · Two of Pentacles (2) · Ten of Wands (10). Their numbered cards sum to 40, reducing to 4. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 3, 9. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+ "script": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Seven-card V Reading."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Past · 18–24 Months: Three of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Looking across the previous 18 to 24 months, expansion, foresight, cooperation may show an experience or influence that helped shape the present situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Early efforts are reaching beyond their starting point."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present Time: The Empress."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "In the period immediately surrounding today, steady care that gives a relationship, project or part of yourself room to grow may describe what is active for you now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The Empress represents life that grows when it is nourished."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Near Future · 3 Months: Nine of Swords, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Over approximately the next three months, support, easing anxiety, hidden distress may show what develops if the present course continues; it is a direction, not a fixed prediction."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A burden may be easing, or you may be hiding how difficult things feel."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Surrounding Energies: Page of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "In your surroundings, sensitivity, creative curiosity, emotional discovery may be expressed through people, home, work or other circumstances influencing the situation now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An unexpected feeling or creative idea deserves a curious response."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Hopes, Fears & Attitude: Two of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Adaptability, balance, priorities may colour your hopes, fears and attitude toward the situation or question."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Several demands may need an adaptable rhythm."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Outcome · Next 18–24 Months: Ten of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Across approximately the next 18 to 24 months, responsibility, burden, limits may describe the likely outcome if present circumstances continue, while leaving room for choice and change."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A worthwhile commitment may have grown into an excessive load."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "You / Answer: The Hermit."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "In a general reading, reflection, discernment, inner guidance may describe where you stand now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Step back from competing voices long enough to recognise your own understanding."
+  },
+  {
+   "chapter": "c1",
+   "kind": "frame",
+   "text": "Now, your first clarifiers, card by card."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · You / Answer: Four of Cups."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "A pause in interest may be asking you to examine what you actually want."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Four of Cups supports The Hermit."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In You / Answer, the theme of contemplation and reassessment can help reflection and discernment find a constructive outlet."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, The Hermit and Four of Cups give You / Answer a consistent message: reflection and contemplation."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Consider working with this theme with some confidence, while staying open to how it unfolds."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In the wider Seven-card V Reading spread, You / Answer sits within the reading; its neighbour is Surrounding Energies, Page of Cups, which supports The Hermit (Earth and Water are friendly elements)."
+  },
+  {
+   "chapter": "invite",
+   "kind": "frame",
+   "text": "That's your reading so far."
+  },
+  {
+   "chapter": "invite",
+   "kind": "frame",
+   "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+  }
+ ],
+ "scriptFinished": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Seven-card V Reading."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Past · 18–24 Months: Three of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Looking across the previous 18 to 24 months, expansion, foresight, cooperation may show an experience or influence that helped shape the present situation."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Early efforts are reaching beyond their starting point."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Present Time: The Empress."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "In the period immediately surrounding today, steady care that gives a relationship, project or part of yourself room to grow may describe what is active for you now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The Empress represents life that grows when it is nourished."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Near Future · 3 Months: Nine of Swords, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Over approximately the next three months, support, easing anxiety, hidden distress may show what develops if the present course continues; it is a direction, not a fixed prediction."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A burden may be easing, or you may be hiding how difficult things feel."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Surrounding Energies: Page of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "In your surroundings, sensitivity, creative curiosity, emotional discovery may be expressed through people, home, work or other circumstances influencing the situation now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An unexpected feeling or creative idea deserves a curious response."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Hopes, Fears & Attitude: Two of Pentacles."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Adaptability, balance, priorities may colour your hopes, fears and attitude toward the situation or question."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Several demands may need an adaptable rhythm."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Outcome · Next 18–24 Months: Ten of Wands."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Across approximately the next 18 to 24 months, responsibility, burden, limits may describe the likely outcome if present circumstances continue, while leaving room for choice and change."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A worthwhile commitment may have grown into an excessive load."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "You / Answer: The Hermit."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "In a general reading, reflection, discernment, inner guidance may describe where you stand now."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Step back from competing voices long enough to recognise your own understanding."
+  },
+  {
+   "chapter": "c1",
+   "kind": "frame",
+   "text": "Now, your first clarifiers, card by card."
+  },
+  {
+   "chapter": "c1",
+   "kind": "label",
+   "text": "Clarifier 1 · You / Answer: Four of Cups."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "A pause in interest may be asking you to examine what you actually want."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Four of Cups supports The Hermit."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In You / Answer, the theme of contemplation and reassessment can help reflection and discernment find a constructive outlet."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Together, The Hermit and Four of Cups give You / Answer a consistent message: reflection and contemplation."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "Consider working with this theme with some confidence, while staying open to how it unfolds."
+  },
+  {
+   "chapter": "c1",
+   "kind": "quote",
+   "text": "In the wider Seven-card V Reading spread, You / Answer sits within the reading; its neighbour is Surrounding Energies, Page of Cups, which supports The Hermit (Earth and Water are friendly elements)."
+  },
+  {
+   "chapter": "final",
+   "kind": "frame",
+   "text": "Here is your whole spread, brought together."
+  },
+  {
+   "chapter": "final",
+   "kind": "quote",
+   "text": "Across these cards, expansion, foresight, cooperation, abundance form the central pattern."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "Before I go, one question to carry with you."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+  },
+  {
+   "chapter": "close",
+   "kind": "quote",
+   "text": "Take what resonates, and leave the rest."
+  },
+  {
+   "chapter": "close",
+   "kind": "frame",
+   "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  }
+ ],
+ "transcript": [
+  "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+  "Tonight: your Seven-card V Reading.",
+  "I'll keep it short. The full reading stays below.",
+  "Let's go through your cards, one position at a time.",
+  "Past · 18–24 Months: Three of Wands.",
+  "Looking across the previous 18 to 24 months, expansion, foresight, cooperation may show an experience or influence that helped shape the present situation.",
+  "Early efforts are reaching beyond their starting point.",
+  "Present Time: The Empress.",
+  "In the period immediately surrounding today, steady care that gives a relationship, project or part of yourself room to grow may describe what is active for you now.",
+  "The Empress represents life that grows when it is nourished.",
+  "Near Future · 3 Months: Nine of Swords, reversed.",
+  "Over approximately the next three months, support, easing anxiety, hidden distress may show what develops if the present course continues; it is a direction, not a fixed prediction.",
+  "A burden may be easing, or you may be hiding how difficult things feel.",
+  "Surrounding Energies: Page of Cups.",
+  "In your surroundings, sensitivity, creative curiosity, emotional discovery may be expressed through people, home, work or other circumstances influencing the situation now.",
+  "An unexpected feeling or creative idea deserves a curious response.",
+  "Hopes, Fears & Attitude: Two of Pentacles.",
+  "Adaptability, balance, priorities may colour your hopes, fears and attitude toward the situation or question.",
+  "Several demands may need an adaptable rhythm.",
+  "Outcome · Next 18–24 Months: Ten of Wands.",
+  "Across approximately the next 18 to 24 months, responsibility, burden, limits may describe the likely outcome if present circumstances continue, while leaving room for choice and change.",
+  "A worthwhile commitment may have grown into an excessive load.",
+  "You / Answer: The Hermit.",
+  "In a general reading, reflection, discernment, inner guidance may describe where you stand now.",
+  "Step back from competing voices long enough to recognise your own understanding.",
+  "Now, your first clarifiers, card by card.",
+  "Clarifier 1 · You / Answer: Four of Cups.",
+  "A pause in interest may be asking you to examine what you actually want.",
+  "Four of Cups supports The Hermit.",
+  "In You / Answer, the theme of contemplation and reassessment can help reflection and discernment find a constructive outlet.",
+  "Together, The Hermit and Four of Cups give You / Answer a consistent message: reflection and contemplation.",
+  "Consider working with this theme with some confidence, while staying open to how it unfolds.",
+  "In the wider Seven-card V Reading spread, You / Answer sits within the reading; its neighbour is Surrounding Energies, Page of Cups, which supports The Hermit (Earth and Water are friendly elements).",
+  "That's your reading so far.",
+  "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+ ]
+}

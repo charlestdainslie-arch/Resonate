@@ -32,7 +32,7 @@
    null
   ]
  },
- "commit": "fc3eb8c83e6c0321060afa7d0c06c0eeeb159c39",
+ "commit": "f321114def71f3c7239f5b498c610135d02516c8",
  "readingAt": "2026-11-07T01:00:00.000Z",
  "errors": [],
  "spreadName": "Relationship",
@@ -52,6 +52,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · XV · The Devil\n\nYou\n\nCARD CORRESPONDENCE\nCapricorn\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Capricorn · Earth\n\nNumber: 15\n\nFifteen asks how desire and attachment shape the use of personal power. In The Devil, consider how this relates to attachment.\n\nAttachment\nAwareness\nReclaiming Choice\n\nPosition: You — The Devil. Here, attachment, awareness, reclaiming choice is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.\n\nA habit, agreement or desire may be narrowing your sense of choice. Look honestly at its rewards and costs, especially where shame keeps it hidden; begin with one boundary you can actually keep.\n\nLooking closer: Two figures stand beneath a horned figure with loose chains around their necks. The scene asks what binds them and what room for movement remains.",
    "clar1": "",
@@ -80,6 +82,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · V · The Hierophant, reversed\n\nThe Other Person\n\nCARD CORRESPONDENCE\nTaurus\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Taurus · Earth\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In The Hierophant, consider how this relates to tradition.\n\nDogma\nConformity\nQuestioning\n\nPosition: The Other Person — The Hierophant reversed. Consider whether your perception of the other person is coloured by dogma, conformity, questioning. Check that impression through conversation rather than treating the card as access to their thoughts.\n\nInherited rules may no longer fit your experience. Question a teaching without dismissing everything it offered; distinguish an honest search for meaning from obedience motivated by fear.\n\nLooking closer: A seated teacher, two students and crossed keys suggest initiation, shared knowledge and the structures through which a community passes on its values.",
    "clar1": "",
@@ -108,6 +112,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · III · Three of Cups\n\nThe Connection\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Cups, consider how this relates to friendship.\n\nFriendship\nCommunity\nCelebration\n\nPosition: The Connection — Three of Cups. Between you, friendship, community, celebration may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.\n\nFriendship and shared joy can nourish a situation that has become too solitary. Make room for mutual support and celebrate together without overlooking anyone doing unseen work.\n\nLooking closer: Three figures raise cups in a circle among fruit and harvest produce.",
    "clar1": "",
@@ -136,6 +142,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · IV · Four of Cups\n\nRelationship Challenge\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nContemplation\nReassessment\nDisengagement\n\nPosition: Relationship Challenge — Four of Cups. The tension to explore is contemplation, reassessment, disengagement. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nA pause in interest may be asking you to examine what you actually want. Rest from automatic choices, while remaining willing to notice an offer that differs from your expectations.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.",
    "clar1": "",
@@ -164,6 +172,8 @@
    },
    "c1": null,
    "c2": null,
+   "clarity": null,
+   "clarityText": "",
    "steps": [],
    "original": "Original Card · XX · Judgement\n\nShared Guidance\n\nCARD CORRESPONDENCE\nFire\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Fire\n\nNumber: 20\n\nTwenty reviews the journey and invites a more conscious response to its meaning. In Judgement, consider how this relates to awakening.\n\nAwakening\nReview\nRenewed Purpose\n\nPosition: Shared Guidance — Judgement. Your next step is to work consciously with awakening, review, renewed purpose. Choose one practical response you can try, then notice whether it helps.\n\nAn honest review of the past can help you answer a new sense of purpose. Recognise what you have learned, make amends where possible, and choose the responsibility you are ready to accept now.\n\nLooking closer: Figures rise toward an angel sounding a trumpet. The image suggests a summons to awareness and renewal rather than a final verdict on a person.",
    "clar1": "",
@@ -179,6 +189,13 @@
    "limit": false,
    "pending": false
   }
+ ],
+ "order": [
+  0,
+  1,
+  2,
+  3,
+  4
  ],
  "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 5 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nYOU\nThe Devil\n\nThe foundation is attachment and awareness; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Devil (Capricorn). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OTHER PERSON\nThe Hierophant, reversed\n\nThe foundation is dogma and conformity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Hierophant, reversed (Taurus). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE CONNECTION\nThree of Cups\n\nThe foundation is friendship and community; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Three of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRELATIONSHIP CHALLENGE\nFour of Cups\n\nThe foundation is contemplation and reassessment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Four of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSHARED GUIDANCE\nJudgement\n\nThe foundation is awakening and review; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Judgement (Fire). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with The Devil in You and moves toward Judgement in Shared Guidance.\n\nThe Other Person · The Hierophant, reversed. Following The Devil, The Hierophant may draw your attention toward dogma.\n\nThe Connection · Three of Cups. Following The Hierophant, Three of Cups may draw your attention toward friendship.\n\nRelationship Challenge · Four of Cups. Following Three of Cups, Four of Cups may draw your attention toward contemplation.\n\nShared Guidance · Judgement. Following Four of Cups, Judgement may draw your attention toward awakening.\n\nThe card-to-card movement is the heart of this reading: The Devil opens the question, and Judgement shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, attachment, awareness, reclaiming choice, dogma form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Devil (15) · The Hierophant (5) · Three of Cups (3) · Four of Cups (4) · Judgement (20). Their numbered cards sum to 47, reducing to 2. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
  "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nYOU\nOriginal Card · XV · The Devil\n\nYou\n\nCARD CORRESPONDENCE\nCapricorn\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Capricorn · Earth\n\nNumber: 15\n\nFifteen asks how desire and attachment shape the use of personal power. In The Devil, consider how this relates to attachment.\n\nAttachment\nAwareness\nReclaiming Choice\n\nPosition: You — The Devil. Here, attachment, awareness, reclaiming choice is a lens for your own feelings, needs and contribution to the relationship. Identify one concrete example in your situation and consider how it shapes your response.\n\nA habit, agreement or desire may be narrowing your sense of choice. Look honestly at its rewards and costs, especially where shame keeps it hidden; begin with one boundary you can actually keep.\n\nLooking closer: Two figures stand beneath a horned figure with loose chains around their necks. The scene asks what binds them and what room for movement remains.\n\nTao / Wu Wei · The Devil\n\nA practice of unforced attention with The Devil: What am I calling unavoidable that may contain a choice I have not yet used?\n\nJungian interpretation · The Devil\n\nPsychological lens: Shadow material becomes more powerful when denied. Bringing desire, dependence or shame into awareness can restore responsibility without turning the self into an enemy.\n\nExplore The Devil\nTHE OTHER PERSON\nOriginal Card · V · The Hierophant, reversed\n\nThe Other Person\n\nCARD CORRESPONDENCE\nTaurus\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Taurus · Earth\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In The Hierophant, consider how this relates to tradition.\n\nDogma\nConformity\nQuestioning\n\nPosition: The Other Person — The Hierophant reversed. Consider whether your perception of the other person is coloured by dogma, conformity, questioning. Check that impression through conversation rather than treating the card as access to their thoughts.\n\nInherited rules may no longer fit your experience. Question a teaching without dismissing everything it offered; distinguish an honest search for meaning from obedience motivated by fear.\n\nLooking closer: A seated teacher, two students and crossed keys suggest initiation, shared knowledge and the structures through which a community passes on its values.\n\nTao / Wu Wei · The Hierophant\n\nA practice of unforced attention with The Hierophant: Which teaching supports my integrity, and which rule am I following only to belong?\n\nJungian interpretation · The Hierophant\n\nPsychological lens: The inner teacher develops when received wisdom is examined rather than simply repeated. Belonging need not require abandoning personal judgement.\n\nExplore The Hierophant\nTHE CONNECTION\nOriginal Card · III · Three of Cups\n\nThe Connection\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Cups, consider how this relates to friendship.\n\nFriendship\nCommunity\nCelebration\n\nPosition: The Connection — Three of Cups. Between you, friendship, community, celebration may describe a shared pattern. Notice how each person's response strengthens or softens that dynamic.\n\nFriendship and shared joy can nourish a situation that has become too solitary. Make room for mutual support and celebrate together without overlooking anyone doing unseen work.\n\nLooking closer: Three figures raise cups in a circle among fruit and harvest produce.\n\nTao / Wu Wei · Three of Cups\n\nA practice of unforced attention with Three of Cups: Which relationships leave room for everyone to be supported?\n\nJungian interpretation · Three of Cups\n\nPsychological lens: The wish to belong can be met through shared participation rather than performance for the group.\n\nExplore Three of Cups\nRELATIONSHIP CHALLENGE\nOriginal Card · IV · Four of Cups\n\nRelationship Challenge\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 4\n\nFour creates structure and stability while asking how much flexibility it allows. In Four of Cups, consider how this relates to contemplation.\n\nContemplation\nReassessment\nDisengagement\n\nPosition: Relationship Challenge — Four of Cups. The tension to explore is contemplation, reassessment, disengagement. Ask where this pattern becomes difficult and what small adjustment would help you meet it differently.\n\nA pause in interest may be asking you to examine what you actually want. Rest from automatic choices, while remaining willing to notice an offer that differs from your expectations.\n\nLooking closer: A seated figure faces three cups while a fourth is offered from a cloud.\n\nTao / Wu Wei · Four of Cups\n\nA practice of unforced attention with Four of Cups: What am I overlooking because it does not resemble the offer I expected?\n\nJungian interpretation · Four of Cups\n\nPsychological lens: Turning inward can clarify desire, but habitual detachment can also protect it from being tested.\n\nExplore Four of Cups\nSHARED GUIDANCE\nOriginal Card · XX · Judgement\n\nShared Guidance\n\nCARD CORRESPONDENCE\nFire\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Fire\n\nNumber: 20\n\nTwenty reviews the journey and invites a more conscious response to its meaning. In Judgement, consider how this relates to awakening.\n\nAwakening\nReview\nRenewed Purpose\n\nPosition: Shared Guidance — Judgement. Your next step is to work consciously with awakening, review, renewed purpose. Choose one practical response you can try, then notice whether it helps.\n\nAn honest review of the past can help you answer a new sense of purpose. Recognise what you have learned, make amends where possible, and choose the responsibility you are ready to accept now.\n\nLooking closer: Figures rise toward an angel sounding a trumpet. The image suggests a summons to awareness and renewal rather than a final verdict on a person.\n\nTao / Wu Wei · Judgement\n\nA practice of unforced attention with Judgement: What is asking for my response now, and what from the past can I carry differently?\n\nJungian interpretation · Judgement\n\nPsychological lens: Revisiting the personal story can reveal possibilities that an older identity excluded. Integration includes accountability while allowing the self to develop beyond an earlier mistake.\n\nExplore Judgement\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 5 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nYOU\nThe Devil\n\nThe foundation is attachment and awareness; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Devil (Capricorn). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE OTHER PERSON\nThe Hierophant, reversed\n\nThe foundation is dogma and conformity; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are The Hierophant, reversed (Taurus). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nTHE CONNECTION\nThree of Cups\n\nThe foundation is friendship and community; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Three of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nRELATIONSHIP CHALLENGE\nFour of Cups\n\nThe foundation is contemplation and reassessment; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Four of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSHARED GUIDANCE\nJudgement\n\nThe foundation is awakening and review; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Judgement (Fire). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with The Devil in You and moves toward Judgement in Shared Guidance.\n\nThe Other Person · The Hierophant, reversed. Following The Devil, The Hierophant may draw your attention toward dogma.\n\nThe Connection · Three of Cups. Following The Hierophant, Three of Cups may draw your attention toward friendship.\n\nRelationship Challenge · Four of Cups. Following Three of Cups, Four of Cups may draw your attention toward contemplation.\n\nShared Guidance · Judgement. Following Four of Cups, Judgement may draw your attention toward awakening.\n\nThe card-to-card movement is the heart of this reading: The Devil opens the question, and Judgement shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, attachment, awareness, reclaiming choice, dogma form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Devil (15) · The Hierophant (5) · Three of Cups (3) · Four of Cups (4) · Judgement (20). Their numbered cards sum to 47, reducing to 2. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
@@ -279,6 +296,123 @@
    "text": "An honest review of the past can help you answer a new sense of purpose."
   },
   {
+   "chapter": "invite",
+   "kind": "frame",
+   "text": "That's the first layer of your reading."
+  },
+  {
+   "chapter": "invite",
+   "kind": "frame",
+   "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+  }
+ ],
+ "scriptFinished": [
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+  },
+  {
+   "chapter": "intro",
+   "kind": "label",
+   "text": "Tonight: your Relationship."
+  },
+  {
+   "chapter": "intro",
+   "kind": "frame",
+   "text": "I'll keep it short. The full reading stays below."
+  },
+  {
+   "chapter": "cards",
+   "kind": "frame",
+   "text": "Let's go through your cards, one position at a time."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "You: The Devil."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Here, attachment, awareness, reclaiming choice is a lens for your own feelings, needs and contribution to the relationship."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A habit, agreement or desire may be narrowing your sense of choice."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "The Other Person: The Hierophant, reversed."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Consider whether your perception of the other person is coloured by dogma, conformity, questioning."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Inherited rules may no longer fit your experience."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "The Connection: Three of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Between you, friendship, community, celebration may describe a shared pattern."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Friendship and shared joy can nourish a situation that has become too solitary."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Relationship Challenge: Four of Cups."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "The tension to explore is contemplation, reassessment, disengagement."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "A pause in interest may be asking you to examine what you actually want."
+  },
+  {
+   "chapter": "cards",
+   "kind": "label",
+   "text": "Shared Guidance: Judgement."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "Your next step is to work consciously with awakening, review, renewed purpose."
+  },
+  {
+   "chapter": "cards",
+   "kind": "quote",
+   "text": "An honest review of the past can help you answer a new sense of purpose."
+  },
+  {
+   "chapter": "final",
+   "kind": "frame",
+   "text": "Here is your whole spread, brought together."
+  },
+  {
+   "chapter": "final",
+   "kind": "quote",
+   "text": "Across these cards, attachment, awareness, reclaiming choice, dogma form the central pattern."
+  },
+  {
    "chapter": "close",
    "kind": "frame",
    "text": "Before I go, one question to carry with you."
@@ -319,9 +453,7 @@
   "Shared Guidance: Judgement.",
   "Your next step is to work consciously with awakening, review, renewed purpose.",
   "An honest review of the past can help you answer a new sense of purpose.",
-  "Before I go, one question to carry with you.",
-  "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.",
-  "Take what resonates, and leave the rest.",
-  "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+  "That's the first layer of your reading.",
+  "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
  ]
 }

@@ -44,7 +44,10 @@ async function renderSample(page, sample) {
       order: [...document.querySelectorAll('.reading-meaning[data-position]')].map(a => Number(a.dataset.position)),
       goldenThread: txt(document.querySelector('.reading-golden-thread')),
       pageText: txt(document.getElementById('readingInterpretation')),
-      script: ResonatePresenter.buildScript().map(p => ({ chapter: p.chapter, kind: p.kind, text: p.text }))
+      script: ResonatePresenter.buildScript().map(p => ({ chapter: p.chapter, kind: p.kind, text: p.text })),
+      // What Max says after the seeker taps Finish reading (narration lifecycle, 8 Nov 2026). On code before
+      // f321114, buildScript has no lifecycle and this equals script.
+      scriptFinished: ResonatePresenter.buildScript({ finished: true }).map(p => ({ chapter: p.chapter, kind: p.kind, text: p.text }))
     };
   }, { sample, AT });
   // Max's on-screen transcript, as the player shows it.
