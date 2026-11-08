@@ -1,0 +1,171 @@
+{
+ "appCommit": "282cd1457ec94e8436f81b3867799f45dfcad110",
+ "cases": [
+  {
+   "id": "OC-01",
+   "samples": [
+    "OC-01"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "OC-02",
+   "samples": [
+    "OC-02"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "OC-03",
+   "samples": [
+    "OC-03"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "TC-01",
+   "samples": [
+    "TC-01"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "TC-02",
+   "samples": [
+    "TC-02"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "TC-03",
+   "samples": [
+    "TC-03"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "TC-04",
+   "samples": [
+    "TC-04"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "RC-01",
+   "samples": [
+    "RC-01"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "RC-02",
+   "samples": [
+    "RC-02"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "RC-03",
+   "samples": [
+    "RC-03"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "SC-01",
+   "samples": [
+    "SC-01A"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "SC-02",
+   "samples": [
+    "SC-02"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "CC-01",
+   "samples": [
+    "CC-01"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "CC-02",
+   "samples": [
+    "CC-02"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "CC-03",
+   "samples": [
+    "B06-LIVE",
+    "B06"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "SC-Q",
+   "samples": [
+    "B08"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "CC-04",
+   "samples": [
+    "CC-04"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "BT-03",
+   "samples": [
+    "B01-LIVE",
+    "B01",
+    "B07",
+    "B06-LIVE",
+    "B06",
+    "B09"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "BT-05",
+   "samples": [
+    "B04"
+   ],
+   "errors": [],
+   "missing": []
+  },
+  {
+   "id": "BT-06",
+   "samples": [
+    "BT-06"
+   ],
+   "errors": [],
+   "missing": []
+  }
+ ]
+}

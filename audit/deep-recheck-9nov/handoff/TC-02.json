@@ -1,0 +1,414 @@
+{
+ "case": "TC-02",
+ "matrix": "Eight of Cups R / Nine of Wands U / Ten of Cups U.",
+ "notes": "",
+ "appCommit": "282cd1457ec94e8436f81b3867799f45dfcad110",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "rubric": {
+  "orientation": "Each card is read with the meaning for its orientation (upright or reversed text from the card data below), and a reversed card is not merely the negation of its upright meaning.",
+  "position": "The position lens names this position and reads the card through the position’s defined meaning (see the table), without drifting in time or role.",
+  "neighbours": "The \"wider spread\" line relates the card to its pair partner (Celtic Cross) or neighbour (other spreads) without inventing a connection the data does not support.",
+  "clarifier1": "Clarifier 1 is read as modifying the original card (\"how it modifies the original card\"), naming both, not as a separate definition.",
+  "clarifier2": "Clarifier 2 develops the relationship between both earlier cards, naming all three.",
+  "synthesis": "\"Together\" is a synthesis of the cards, not a list; revisions are shown (Revision 1 kept readable when Clarifier 2 arrives; Revision 2 when the Clarity card arrives).",
+  "clarity": "Option B (approved 7 Nov): a Clarity card appears only when the original and both clarifiers are Major, is a Minor not already in the reading, and is read as grounding the three Major cards; a Minor original with two Major clarifiers gets none and the limit is stated.",
+  "max": "Max’s lines are the reading’s own words (quoted), in reading order; before Finish he invites and does not sign off; after Finish the closing comes once.",
+  "failure": "Deep’s six failure modes: templating, positional drift, reverse-as-opposite, parallel clarification, concatenation instead of synthesis, numerical/symbolic overreach."
+ },
+ "samples": [
+  {
+   "id": "TC-02",
+   "input": {
+    "id": "TC-02",
+    "kind": "matrix",
+    "spread": "three",
+    "mode": "matrix",
+    "note": "Eight of Cups R / Nine of Wands U / Ten of Cups U",
+    "seeded": [],
+    "base": [
+     43,
+     30,
+     45
+    ],
+    "reversed": [
+     43
+    ],
+    "steps": [],
+    "c1": [
+     null,
+     null,
+     null
+    ],
+    "c2": [
+     null,
+     null,
+     null
+    ]
+   },
+   "errors": [],
+   "output": {
+    "spreadName": "Past · Present · Future",
+    "drew": [],
+    "valid": [],
+    "positions": [
+     {
+      "n": 1,
+      "label": "Past",
+      "meaning": "the experiences and patterns that brought you here",
+      "base": {
+       "id": 43,
+       "name": "Eight of Cups",
+       "arcana": "Minor",
+       "element": "Water",
+       "reversed": true
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · VIII · Eight of Cups, reversed\n\nPast\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Eight of Cups, consider how this relates to departure.\n\nFear of Leaving\nReturn\nAimless Seeking\n\nPosition: Past — Eight of Cups reversed. This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nYou may be unsure whether to stay, return or leave. Distinguish avoidance of difficulty from an honest recognition that a chapter has ended.\n\nLooking closer: A figure walks away from stacked cups toward mountains beneath a moon.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Eight of Cups\n\nA practice of unforced attention with Eight of Cups: What am I seeking that this situation no longer provides?\n\nJungian interpretation · Eight of Cups\n\nPsychological lens: Separating from a familiar emotional arrangement can be part of developing a more truthful life.",
+      "positionContext": "Position: Past — Eight of Cups reversed. This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 2,
+      "label": "Present",
+      "meaning": "what is active now and how you can respond",
+      "base": {
+       "id": 30,
+       "name": "Nine of Wands",
+       "arcana": "Minor",
+       "element": "Fire",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · IX · Nine of Wands\n\nPresent\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Wands, consider how this relates to resilience.\n\nResilience\nVigilance\nEndurance\n\nPosition: Present — Nine of Wands. Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nExperience has made you alert, and the task may need one more measured effort. Protect your limits, use what you have learned and accept support rather than proving you can withstand everything alone.\n\nLooking closer: A bandaged figure stands watch before a row of eight wands while holding a ninth.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Nine of Wands\n\nA practice of unforced attention with Nine of Wands: What would protect my energy while allowing me to stay engaged?\n\nJungian interpretation · Nine of Wands\n\nPsychological lens: A protective response learned through difficulty may need updating when the present is safer than the past.",
+      "positionContext": "Position: Present — Nine of Wands. Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 3,
+      "label": "Future",
+      "meaning": "a possible direction if current patterns continue, rather than a fixed prediction",
+      "base": {
+       "id": 45,
+       "name": "Ten of Cups",
+       "arcana": "Minor",
+       "element": "Water",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · X · Ten of Cups\n\nFuture\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Cups, consider how this relates to emotional fulfilment.\n\nEmotional Fulfilment\nShared Values\nBelonging\n\nPosition: Future — Ten of Cups. This suggests a possible development involving emotional fulfilment, shared values, belonging. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nShared care can create a strong sense of belonging. Notice the daily choices behind a happy picture and make room for different needs within the relationship or chosen community.\n\nLooking closer: A family raises its arms beneath a rainbow of cups beside a home and landscape.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Ten of Cups\n\nA practice of unforced attention with Ten of Cups: Which daily acts make our idea of belonging real?\n\nJungian interpretation · Ten of Cups\n\nPsychological lens: An image of a happy life becomes more humane when it can include ordinary frustration and difference.",
+      "positionContext": "Position: Future — Ten of Cups. This suggests a possible development involving emotional fulfilment, shared values, belonging. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     }
+    ],
+    "order": [
+     0,
+     1,
+     2
+    ],
+    "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST\nEight of Cups, reversed\n\nPosition: Past — Eight of Cups reversed. This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nPRESENT\nNine of Wands\n\nPosition: Present — Nine of Wands. Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nFUTURE\nTen of Cups\n\nPosition: Future — Ten of Cups. This suggests a possible development involving emotional fulfilment, shared values, belonging. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nFROM CARD TO CARD\n\nThe reading begins with Eight of Cups, reversed in Past and moves toward Ten of Cups in Future.\n\nPresent · Nine of Wands. Nine of Wands turns against Eight of Cups (reversed), setting resilience against fear of leaving: a turning point in the reading. Upright, it offers a way through the difficulty in Eight of Cups (reversed).\n\nFuture · Ten of Cups. Ten of Cups turns against Nine of Wands, setting emotional fulfilment against resilience: a turning point in the reading.\n\nFrom fear of leaving to emotional fulfilment, the reading turns 2 times, at Present and Future: those are the places where a card pushes against the one before it, and where choice matters most.\n\nTHE OVERALL INVITATION\n\nThe themes running through the spread are fear of leaving, resilience and emotional fulfilment. 2 of the 3 cards are Water, so most of this plays out in feeling and relationships.\n\nA question to carry, from Ten of Cups in Future: Which daily acts make our idea of belonging real? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nEight of Cups (8) · Nine of Wands (9) · Ten of Cups (10). Their numbered cards sum to 27, reducing to 9. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPAST\nOriginal Card · VIII · Eight of Cups, reversed\n\nPast\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 8\n\nEight develops power through practice, organisation or repeated engagement. In Eight of Cups, consider how this relates to departure.\n\nFear of Leaving\nReturn\nAimless Seeking\n\nPosition: Past — Eight of Cups reversed. This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nYou may be unsure whether to stay, return or leave. Distinguish avoidance of difficulty from an honest recognition that a chapter has ended.\n\nLooking closer: A figure walks away from stacked cups toward mountains beneath a moon.\n\nTao / Wu Wei · Eight of Cups\n\nA practice of unforced attention with Eight of Cups: What am I seeking that this situation no longer provides?\n\nJungian interpretation · Eight of Cups\n\nPsychological lens: Separating from a familiar emotional arrangement can be part of developing a more truthful life.\n\nExplore Eight of Cups\nPRESENT\nOriginal Card · IX · Nine of Wands\n\nPresent\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Wands, consider how this relates to resilience.\n\nResilience\nVigilance\nEndurance\n\nPosition: Present — Nine of Wands. Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nExperience has made you alert, and the task may need one more measured effort. Protect your limits, use what you have learned and accept support rather than proving you can withstand everything alone.\n\nLooking closer: A bandaged figure stands watch before a row of eight wands while holding a ninth.\n\nTao / Wu Wei · Nine of Wands\n\nA practice of unforced attention with Nine of Wands: What would protect my energy while allowing me to stay engaged?\n\nJungian interpretation · Nine of Wands\n\nPsychological lens: A protective response learned through difficulty may need updating when the present is safer than the past.\n\nExplore Nine of Wands\nFUTURE\nOriginal Card · X · Ten of Cups\n\nFuture\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 10\n\nTen completes a cycle and carries its consequences into another beginning. In Ten of Cups, consider how this relates to emotional fulfilment.\n\nEmotional Fulfilment\nShared Values\nBelonging\n\nPosition: Future — Ten of Cups. This suggests a possible development involving emotional fulfilment, shared values, belonging. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nShared care can create a strong sense of belonging. Notice the daily choices behind a happy picture and make room for different needs within the relationship or chosen community.\n\nLooking closer: A family raises its arms beneath a rainbow of cups beside a home and landscape.\n\nTao / Wu Wei · Ten of Cups\n\nA practice of unforced attention with Ten of Cups: Which daily acts make our idea of belonging real?\n\nJungian interpretation · Ten of Cups\n\nPsychological lens: An image of a happy life becomes more humane when it can include ordinary frustration and difference.\n\nExplore Ten of Cups\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 3 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST\nEight of Cups, reversed\n\nPosition: Past — Eight of Cups reversed. This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nPRESENT\nNine of Wands\n\nPosition: Present — Nine of Wands. Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nFUTURE\nTen of Cups\n\nPosition: Future — Ten of Cups. This suggests a possible development involving emotional fulfilment, shared values, belonging. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nFROM CARD TO CARD\n\nThe reading begins with Eight of Cups, reversed in Past and moves toward Ten of Cups in Future.\n\nPresent · Nine of Wands. Nine of Wands turns against Eight of Cups (reversed), setting resilience against fear of leaving: a turning point in the reading. Upright, it offers a way through the difficulty in Eight of Cups (reversed).\n\nFuture · Ten of Cups. Ten of Cups turns against Nine of Wands, setting emotional fulfilment against resilience: a turning point in the reading.\n\nFrom fear of leaving to emotional fulfilment, the reading turns 2 times, at Present and Future: those are the places where a card pushes against the one before it, and where choice matters most.\n\nTHE OVERALL INVITATION\n\nThe themes running through the spread are fear of leaving, resilience and emotional fulfilment. 2 of the 3 cards are Water, so most of this plays out in feeling and relationships.\n\nA question to carry, from Ten of Cups in Future: Which daily acts make our idea of belonging real? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nEight of Cups (8) · Nine of Wands (9) · Ten of Cups (10). Their numbered cards sum to 27, reducing to 9. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "script": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Past · Present · Future."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Past: Eight of Cups, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "You may be unsure whether to stay, return or leave."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Present: Nine of Wands."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Experience has made you alert, and the task may need one more measured effort."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Future: Ten of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This suggests a possible development involving emotional fulfilment, shared values, belonging."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Shared care can create a strong sense of belonging."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "That's the first layer of your reading."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+     }
+    ],
+    "scriptFinished": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Past · Present · Future."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Past: Eight of Cups, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "You may be unsure whether to stay, return or leave."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Present: Nine of Wands."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Experience has made you alert, and the task may need one more measured effort."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Future: Ten of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This suggests a possible development involving emotional fulfilment, shared values, belonging."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Shared care can create a strong sense of belonging."
+     },
+     {
+      "chapter": "final",
+      "kind": "frame",
+      "text": "Here is your whole spread, brought together."
+     },
+     {
+      "chapter": "final",
+      "kind": "quote",
+      "text": "The themes running through the spread are fear of leaving, resilience and emotional fulfilment. 2 of the 3 cards are Water, so most of this plays out in feeling and relationships."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "Before I go, one question to carry with you."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "A question to carry, from Ten of Cups in Future: Which daily acts make our idea of belonging real? This is a perspective, not a fixed prediction."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Take what resonates, and leave the rest."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+     }
+    ],
+    "transcript": [
+     "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+     "Tonight: your Past · Present · Future.",
+     "I'll keep it short. The full reading stays below.",
+     "Let's go through your cards, one position at a time.",
+     "Past: Eight of Cups, reversed.",
+     "This may describe how fear of leaving, return, aimless seeking shaped the path to your current situation.",
+     "You may be unsure whether to stay, return or leave.",
+     "Present: Nine of Wands.",
+     "Here, resilience, vigilance, endurance is a lens for what is active now and how you can respond.",
+     "Experience has made you alert, and the task may need one more measured effort.",
+     "Future: Ten of Cups.",
+     "This suggests a possible development involving emotional fulfilment, shared values, belonging.",
+     "Shared care can create a strong sense of belonging.",
+     "That's the first layer of your reading.",
+     "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+    ]
+   },
+   "cardData": [
+    {
+     "id": 43,
+     "name": "Eight of Cups",
+     "arcana": "Minor",
+     "suit": "Cups",
+     "number": 8,
+     "rank": "Eight",
+     "element": "Water",
+     "astrology": "Water · Cups",
+     "uprightKeywords": [
+      "Departure",
+      "Searching",
+      "Honest Release"
+     ],
+     "reversedKeywords": [
+      "Fear of Leaving",
+      "Return",
+      "Aimless Seeking"
+     ],
+     "upright": "Something may be intact on the surface yet no longer meaningful enough to sustain you. Consider what is missing, then leave or renegotiate consciously rather than abandoning the situation without understanding why.",
+     "reversed": "You may be unsure whether to stay, return or leave. Distinguish avoidance of difficulty from an honest recognition that a chapter has ended."
+    },
+    {
+     "id": 30,
+     "name": "Nine of Wands",
+     "arcana": "Minor",
+     "suit": "Wands",
+     "number": 9,
+     "rank": "Nine",
+     "element": "Fire",
+     "astrology": "Fire · Wands",
+     "uprightKeywords": [
+      "Resilience",
+      "Vigilance",
+      "Endurance"
+     ],
+     "reversedKeywords": [
+      "Fatigue",
+      "Guardedness",
+      "Strained Limits"
+     ],
+     "upright": "Experience has made you alert, and the task may need one more measured effort. Protect your limits, use what you have learned and accept support rather than proving you can withstand everything alone.",
+     "reversed": "Past strain may be turning caution into constant expectation of another blow. Rest and reassess the actual situation before committing to further defence."
+    },
+    {
+     "id": 45,
+     "name": "Ten of Cups",
+     "arcana": "Minor",
+     "suit": "Cups",
+     "number": 10,
+     "rank": "Ten",
+     "element": "Water",
+     "astrology": "Water · Cups",
+     "uprightKeywords": [
+      "Emotional Fulfilment",
+      "Shared Values",
+      "Belonging"
+     ],
+     "reversedKeywords": [
+      "Strained Ideal",
+      "Disharmony",
+      "Different Needs"
+     ],
+     "upright": "Shared care can create a strong sense of belonging. Notice the daily choices behind a happy picture and make room for different needs within the relationship or chosen community.",
+     "reversed": "The ideal of harmony may be hiding real differences. Speak about needs and expectations without treating disagreement as proof that the whole connection has failed."
+    }
+   ]
+  }
+ ]
+}

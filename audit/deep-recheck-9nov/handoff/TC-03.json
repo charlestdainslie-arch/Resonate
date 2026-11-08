@@ -1,0 +1,578 @@
+{
+ "case": "TC-03",
+ "matrix": "Lovers U / Two of Cups R / Star U; clarifier on Present.",
+ "notes": "Clarifier card not given: seeded draw (stated in the sample). Lovers and Star are Majors: their own rule clarifiers are not drawn (the matrix does not ask for them) and show as due.",
+ "appCommit": "282cd1457ec94e8436f81b3867799f45dfcad110",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "rubric": {
+  "orientation": "Each card is read with the meaning for its orientation (upright or reversed text from the card data below), and a reversed card is not merely the negation of its upright meaning.",
+  "position": "The position lens names this position and reads the card through the position’s defined meaning (see the table), without drifting in time or role.",
+  "neighbours": "The \"wider spread\" line relates the card to its pair partner (Celtic Cross) or neighbour (other spreads) without inventing a connection the data does not support.",
+  "clarifier1": "Clarifier 1 is read as modifying the original card (\"how it modifies the original card\"), naming both, not as a separate definition.",
+  "clarifier2": "Clarifier 2 develops the relationship between both earlier cards, naming all three.",
+  "synthesis": "\"Together\" is a synthesis of the cards, not a list; revisions are shown (Revision 1 kept readable when Clarifier 2 arrives; Revision 2 when the Clarity card arrives).",
+  "clarity": "Option B (approved 7 Nov): a Clarity card appears only when the original and both clarifiers are Major, is a Minor not already in the reading, and is read as grounding the three Major cards; a Minor original with two Major clarifiers gets none and the limit is stated.",
+  "max": "Max’s lines are the reading’s own words (quoted), in reading order; before Finish he invites and does not sign off; after Finish the closing comes once.",
+  "failure": "Deep’s six failure modes: templating, positional drift, reverse-as-opposite, parallel clarification, concatenation instead of synthesis, numerical/symbolic overreach."
+ },
+ "samples": [
+  {
+   "id": "TC-03",
+   "input": {
+    "id": "TC-03",
+    "kind": "matrix",
+    "spread": "three",
+    "mode": "matrix",
+    "note": "Lovers U / Two of Cups R / Star U; clarifier on Present",
+    "seeded": [
+     "Clarifier 1 at position 2: seeded, seed 8406, next unused card",
+     "clarifier orientation: upright (the matrix does not specify)"
+    ],
+    "base": [
+     6,
+     37,
+     17
+    ],
+    "reversed": [
+     37
+    ],
+    "steps": [
+     {
+      "pos": 1,
+      "layer": 1,
+      "id": 63
+     }
+    ],
+    "c1": [
+     null,
+     63,
+     null
+    ],
+    "c2": [
+     null,
+     null,
+     null
+    ]
+   },
+   "errors": [],
+   "output": {
+    "spreadName": "Past · Present · Future",
+    "drew": [
+     "first"
+    ],
+    "valid": [],
+    "positions": [
+     {
+      "n": 1,
+      "label": "Past",
+      "meaning": "the experiences and patterns that brought you here",
+      "base": {
+       "id": 6,
+       "name": "The Lovers",
+       "arcana": "Major",
+       "element": "Air",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · VI · The Lovers\n\nPast\n\nCARD CORRESPONDENCE\nGemini\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Gemini · Air\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In The Lovers, consider how this relates to alignment.\n\nAlignment\nPartnership\nChoice\n\nPosition: Past — The Lovers. This may describe how alignment, partnership, choice shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nA meaningful relationship or choice asks you to act in line with your values. Mutual openness matters more than an ideal image of harmony; choose the commitments you can honestly sustain.\n\nLooking closer: Two figures beneath an angel stand before distinct trees. Their openness connects relationship with conscience, vulnerability and a freely made choice.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · The Lovers\n\nA practice of unforced attention with The Lovers: What choice would bring my relationships and my values into closer agreement?\n\nJungian interpretation · The Lovers\n\nPsychological lens: Relationship brings disowned needs and desires into view. Integration asks for conscious choice rather than expecting another person to complete the self.",
+      "positionContext": "Position: Past — The Lovers. This may describe how alignment, partnership, choice shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 2,
+      "label": "Present",
+      "meaning": "what is active now and how you can respond",
+      "base": {
+       "id": 37,
+       "name": "Two of Cups",
+       "arcana": "Minor",
+       "element": "Water",
+       "reversed": true
+      },
+      "c1": {
+       "id": 63,
+       "name": "King of Swords",
+       "arcana": "Minor",
+       "element": "Air",
+       "reversed": false
+      },
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [
+       "1 · The original card in this position",
+       "2 · Clarifier 1 · how it modifies the original card",
+       "3 · What they mean together"
+      ],
+      "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · II · Two of Cups, reversed\n\nPresent\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Cups, consider how this relates to mutuality.\n\nImbalance\nDisconnection\nBroken Trust\n\nPosition: Present — Two of Cups reversed. Here, imbalance, disconnection, broken trust is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nA relationship or agreement may be unequal or out of tune. Name the difference and assess whether repair is mutual rather than assuming one person can restore the connection alone.\n\nLooking closer: Two people exchange cups beneath a winged lion and entwined staff.",
+      "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · K · King of Swords\n\nBring clear standards and careful reasoning to a decision. Explain the principles you are using, consider relevant evidence and make room for the human effects of a technically correct answer.\n\nAstrology: Air · Swords · Air\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nLooking closer: A king faces forward holding an upright sword, with butterflies and clouds around his throne.\n\nKing of Swords modifies Two of Cups (reversed).\n\nIn Present, the theme of reason and integrity changes how imbalance and disconnection may be expressed, rather than strengthening or opposing it.\n\nRead this way because Water and Air are neutral to each other.\n\nBecause King of Swords is upright, it may show a way through the difficulty shown by Two of Cups reversed. As a court card (King), King of Swords may describe a person involved, or a way of behaving you could adopt.",
+      "clar2": "",
+      "notes": "",
+      "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Present\n\nRevision 1 · with Clarifier 1.\n\nTwo of Cups (reversed) sets the theme in Present: imbalance and disconnection. King of Swords changes its emphasis, bringing reason into imbalance. What is active now is imbalance, expressed through reason. So the question is less whether imbalance is present than how reason lets it show. With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied.\n\nIn the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, The Star, which modifies Two of Cups (Water and Air are neutral to each other).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+      "lenses": "Tao / Wu Wei · Two of Cups\n\nA practice of unforced attention with Two of Cups: What would a more reciprocal exchange look like here?\n\nJungian interpretation · Two of Cups\n\nPsychological lens: Meeting another person requires recognising both connection and separateness.",
+      "positionContext": "Position: Present — Two of Cups reversed. Here, imbalance, disconnection, broken trust is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.",
+      "relation1": "King of Swords modifies Two of Cups (reversed).\n\nIn Present, the theme of reason and integrity changes how imbalance and disconnection may be expressed, rather than strengthening or opposing it.\n\nRead this way because Water and Air are neutral to each other.\n\nBecause King of Swords is upright, it may show a way through the difficulty shown by Two of Cups reversed. As a court card (King), King of Swords may describe a person involved, or a way of behaving you could adopt.",
+      "relation2": "",
+      "synthesisLead": "Two of Cups (reversed) sets the theme in Present: imbalance and disconnection. King of Swords changes its emphasis, bringing reason into imbalance. What is active now is imbalance, expressed through reason. So the question is less whether imbalance is present than how reason lets it show. With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied.",
+      "synthesisWider": "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, The Star, which modifies Two of Cups (Water and Air are neutral to each other).",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 3,
+      "label": "Future",
+      "meaning": "a possible direction if current patterns continue, rather than a fixed prediction",
+      "base": {
+       "id": 17,
+       "name": "The Star",
+       "arcana": "Major",
+       "element": "Air",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · XVII · The Star\n\nFuture\n\nCARD CORRESPONDENCE\nAquarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Aquarius · Air\n\nNumber: 17\n\nSeventeen opens a relationship with hope after the disruption of a former certainty. In The Star, consider how this relates to hope.\n\nHope\nRenewal\nOpenness\n\nPosition: Future — The Star. This suggests a possible development involving hope, renewal, openness. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nAfter strain, a quieter sense of possibility can return. Replenish what has been depleted and give a modest hope some daily attention; renewal does not require pretending that the difficulty never happened.\n\nLooking closer: A kneeling figure pours water onto land and into a pool beneath a large star. Generosity and replenishment connect inner life with the wider world.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · The Star\n\nA practice of unforced attention with The Star: What small practice helps me feel replenished and able to hope again?\n\nJungian interpretation · The Star\n\nPsychological lens: Trust can return gradually after disillusionment. Letting the self be seen without armour may restore connection more effectively than constructing a new ideal image.",
+      "positionContext": "Position: Future — The Star. This suggests a possible development involving hope, renewal, openness. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     }
+    ],
+    "order": [
+     0,
+     1,
+     2
+    ],
+    "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 4 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST\nThe Lovers\n\nPosition: Past — The Lovers. This may describe how alignment, partnership, choice shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nPRESENT\nTwo of Cups, reversed + King of Swords\n\nWhat is active now is imbalance, expressed through reason. With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied.\n\nFUTURE\nThe Star\n\nPosition: Future — The Star. This suggests a possible development involving hope, renewal, openness. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nFROM CARD TO CARD\n\nThe reading begins with The Lovers in Past and moves toward The Star in Future.\n\nPresent · Two of Cups, reversed. After The Lovers, Two of Cups (reversed) shifts the thread from alignment toward imbalance. Reversed, it shows that next step held back or turned inward.\n\nFuture · The Star. After Two of Cups (reversed), The Star shifts the thread from imbalance toward hope. Upright, it offers a way through the difficulty in Two of Cups (reversed).\n\nFrom alignment to hope, each card builds on the one before it without a sharp turn, so the reading moves as one current.\n\nTHE OVERALL INVITATION\n\nThe themes running through the spread are alignment, imbalance, hope and reason. 3 of the 4 cards are Air, so most of this plays out in thought and communication.\n\nA question to carry, from The Star in Future: What small practice helps me feel replenished and able to hope again? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Lovers (6) · Two of Cups (2) · King of Swords (King) · The Star (17). Their numbered cards sum to 25, reducing to 7. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nPAST\nOriginal Card · VI · The Lovers\n\nPast\n\nCARD CORRESPONDENCE\nGemini\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Gemini · Air\n\nNumber: 6\n\nSix explores adjustment, relationship and a more workable harmony. In The Lovers, consider how this relates to alignment.\n\nAlignment\nPartnership\nChoice\n\nPosition: Past — The Lovers. This may describe how alignment, partnership, choice shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nA meaningful relationship or choice asks you to act in line with your values. Mutual openness matters more than an ideal image of harmony; choose the commitments you can honestly sustain.\n\nLooking closer: Two figures beneath an angel stand before distinct trees. Their openness connects relationship with conscience, vulnerability and a freely made choice.\n\nTao / Wu Wei · The Lovers\n\nA practice of unforced attention with The Lovers: What choice would bring my relationships and my values into closer agreement?\n\nJungian interpretation · The Lovers\n\nPsychological lens: Relationship brings disowned needs and desires into view. Integration asks for conscious choice rather than expecting another person to complete the self.\n\nExplore The Lovers\nPRESENT\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · II · Two of Cups, reversed\n\nPresent\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Cups, consider how this relates to mutuality.\n\nImbalance\nDisconnection\nBroken Trust\n\nPosition: Present — Two of Cups reversed. Here, imbalance, disconnection, broken trust is a lens for what is active now and how you can respond. Identify one concrete example in your situation and consider how it shapes your response.\n\nA relationship or agreement may be unequal or out of tune. Name the difference and assess whether repair is mutual rather than assuming one person can restore the connection alone.\n\nLooking closer: Two people exchange cups beneath a winged lion and entwined staff.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · K · King of Swords\n\nBring clear standards and careful reasoning to a decision. Explain the principles you are using, consider relevant evidence and make room for the human effects of a technically correct answer.\n\nAstrology: Air · Swords · Air\n\nCourt rank: King\n\nKing is a court role, not a numbered pip card: a directing, accountable expression of the suit’s qualities. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nLooking closer: A king faces forward holding an upright sword, with butterflies and clouds around his throne.\n\nKing of Swords modifies Two of Cups (reversed).\n\nIn Present, the theme of reason and integrity changes how imbalance and disconnection may be expressed, rather than strengthening or opposing it.\n\nRead this way because Water and Air are neutral to each other.\n\nBecause King of Swords is upright, it may show a way through the difficulty shown by Two of Cups reversed. As a court card (King), King of Swords may describe a person involved, or a way of behaving you could adopt.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Present\n\nRevision 1 · with Clarifier 1.\n\nTwo of Cups (reversed) sets the theme in Present: imbalance and disconnection. King of Swords changes its emphasis, bringing reason into imbalance. What is active now is imbalance, expressed through reason. So the question is less whether imbalance is present than how reason lets it show. With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied.\n\nIn the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, The Star, which modifies Two of Cups (Water and Air are neutral to each other).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · Two of Cups\n\nA practice of unforced attention with Two of Cups: What would a more reciprocal exchange look like here?\n\nJungian interpretation · Two of Cups\n\nPsychological lens: Meeting another person requires recognising both connection and separateness.\n\nTao / Wu Wei · King of Swords\n\nA practice of unforced attention with King of Swords: Would I accept this reasoning if it were applied fairly to everyone involved?\n\nJungian interpretation · King of Swords\n\nPsychological lens: Intellectual authority becomes trustworthy when it can recognise its limits and remain accountable to lived experience.\n\nExplore Two of Cups\nFUTURE\nOriginal Card · XVII · The Star\n\nFuture\n\nCARD CORRESPONDENCE\nAquarius\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Aquarius · Air\n\nNumber: 17\n\nSeventeen opens a relationship with hope after the disruption of a former certainty. In The Star, consider how this relates to hope.\n\nHope\nRenewal\nOpenness\n\nPosition: Future — The Star. This suggests a possible development involving hope, renewal, openness. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nAfter strain, a quieter sense of possibility can return. Replenish what has been depleted and give a modest hope some daily attention; renewal does not require pretending that the difficulty never happened.\n\nLooking closer: A kneeling figure pours water onto land and into a pool beneath a large star. Generosity and replenishment connect inner life with the wider world.\n\nTao / Wu Wei · The Star\n\nA practice of unforced attention with The Star: What small practice helps me feel replenished and able to hope again?\n\nJungian interpretation · The Star\n\nPsychological lens: Trust can return gradually after disillusionment. Letting the self be seen without armour may restore connection more effectively than constructing a new ideal image.\n\nExplore The Star\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 4 revealed cards across this reading, including every clarifier. One card came up reversed and is read through its reversed meaning.\n\nPAST\nThe Lovers\n\nPosition: Past — The Lovers. This may describe how alignment, partnership, choice shaped the path to your current situation. Consider what you want to carry forward and what belongs to an earlier chapter.\n\nPRESENT\nTwo of Cups, reversed + King of Swords\n\nWhat is active now is imbalance, expressed through reason. With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied.\n\nFUTURE\nThe Star\n\nPosition: Future — The Star. This suggests a possible development involving hope, renewal, openness. Notice which present choices encourage that direction and which could change it; this is a possibility, not a fixed result.\n\nFROM CARD TO CARD\n\nThe reading begins with The Lovers in Past and moves toward The Star in Future.\n\nPresent · Two of Cups, reversed. After The Lovers, Two of Cups (reversed) shifts the thread from alignment toward imbalance. Reversed, it shows that next step held back or turned inward.\n\nFuture · The Star. After Two of Cups (reversed), The Star shifts the thread from imbalance toward hope. Upright, it offers a way through the difficulty in Two of Cups (reversed).\n\nFrom alignment to hope, each card builds on the one before it without a sharp turn, so the reading moves as one current.\n\nTHE OVERALL INVITATION\n\nThe themes running through the spread are alignment, imbalance, hope and reason. 3 of the 4 cards are Air, so most of this plays out in thought and communication.\n\nA question to carry, from The Star in Future: What small practice helps me feel replenished and able to hope again? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Lovers (6) · Two of Cups (2) · King of Swords (King) · The Star (17). Their numbered cards sum to 25, reducing to 7. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "script": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Past · Present · Future."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Past: The Lovers."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This may describe how alignment, partnership, choice shaped the path to your current situation."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A meaningful relationship or choice asks you to act in line with your values."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Present: Two of Cups, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Here, imbalance, disconnection, broken trust is a lens for what is active now and how you can respond."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A relationship or agreement may be unequal or out of tune."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Future: The Star."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This suggests a possible development involving hope, renewal, openness."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "After strain, a quieter sense of possibility can return."
+     },
+     {
+      "chapter": "c1",
+      "kind": "frame",
+      "text": "Now, your first clarifiers, card by card."
+     },
+     {
+      "chapter": "c1",
+      "kind": "label",
+      "text": "Clarifier 1 · Present: King of Swords."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Bring clear standards and careful reasoning to a decision."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "King of Swords modifies Two of Cups (reversed)."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In Present, the theme of reason and integrity changes how imbalance and disconnection may be expressed, rather than strengthening or opposing it."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Two of Cups (reversed) sets the theme in Present: imbalance and disconnection."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "King of Swords changes its emphasis, bringing reason into imbalance."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "What is active now is imbalance, expressed through reason."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "So the question is less whether imbalance is present than how reason lets it show."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, The Star, which modifies Two of Cups (Water and Air are neutral to each other)."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "That's your reading so far."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+     }
+    ],
+    "scriptFinished": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Past · Present · Future."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Past: The Lovers."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This may describe how alignment, partnership, choice shaped the path to your current situation."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A meaningful relationship or choice asks you to act in line with your values."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Present: Two of Cups, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Here, imbalance, disconnection, broken trust is a lens for what is active now and how you can respond."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A relationship or agreement may be unequal or out of tune."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Future: The Star."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "This suggests a possible development involving hope, renewal, openness."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "After strain, a quieter sense of possibility can return."
+     },
+     {
+      "chapter": "c1",
+      "kind": "frame",
+      "text": "Now, your first clarifiers, card by card."
+     },
+     {
+      "chapter": "c1",
+      "kind": "label",
+      "text": "Clarifier 1 · Present: King of Swords."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Bring clear standards and careful reasoning to a decision."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "King of Swords modifies Two of Cups (reversed)."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In Present, the theme of reason and integrity changes how imbalance and disconnection may be expressed, rather than strengthening or opposing it."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Two of Cups (reversed) sets the theme in Present: imbalance and disconnection."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "King of Swords changes its emphasis, bringing reason into imbalance."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "What is active now is imbalance, expressed through reason."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "So the question is less whether imbalance is present than how reason lets it show."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, The Star, which modifies Two of Cups (Water and Air are neutral to each other)."
+     },
+     {
+      "chapter": "final",
+      "kind": "frame",
+      "text": "Here is your whole spread, brought together."
+     },
+     {
+      "chapter": "final",
+      "kind": "quote",
+      "text": "The themes running through the spread are alignment, imbalance, hope and reason. 3 of the 4 cards are Air, so most of this plays out in thought and communication."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "Before I go, one question to carry with you."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "A question to carry, from The Star in Future: What small practice helps me feel replenished and able to hope again? This is a perspective, not a fixed prediction."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Take what resonates, and leave the rest."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+     }
+    ],
+    "transcript": [
+     "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+     "Tonight: your Past · Present · Future.",
+     "I'll keep it short. The full reading stays below.",
+     "Let's go through your cards, one position at a time.",
+     "Past: The Lovers.",
+     "This may describe how alignment, partnership, choice shaped the path to your current situation.",
+     "A meaningful relationship or choice asks you to act in line with your values.",
+     "Present: Two of Cups, reversed.",
+     "Here, imbalance, disconnection, broken trust is a lens for what is active now and how you can respond.",
+     "A relationship or agreement may be unequal or out of tune.",
+     "Future: The Star.",
+     "This suggests a possible development involving hope, renewal, openness.",
+     "After strain, a quieter sense of possibility can return.",
+     "Now, your first clarifiers, card by card.",
+     "Clarifier 1 · Present: King of Swords.",
+     "Bring clear standards and careful reasoning to a decision.",
+     "King of Swords modifies Two of Cups (reversed).",
+     "In Present, the theme of reason and integrity changes how imbalance and disconnection may be expressed, rather than strengthening or opposing it.",
+     "Two of Cups (reversed) sets the theme in Present: imbalance and disconnection.",
+     "King of Swords changes its emphasis, bringing reason into imbalance.",
+     "What is active now is imbalance, expressed through reason.",
+     "So the question is less whether imbalance is present than how reason lets it show.",
+     "With Two of Cups reversed, the theme itself is under strain, and King of Swords shows where it can be steadied.",
+     "In the wider Past · Present · Future spread, Present sits within the reading; its neighbour is Future, The Star, which modifies Two of Cups (Water and Air are neutral to each other).",
+     "That's your reading so far.",
+     "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+    ]
+   },
+   "cardData": [
+    {
+     "id": 6,
+     "name": "The Lovers",
+     "arcana": "Major",
+     "suit": null,
+     "number": 6,
+     "rank": null,
+     "element": "Air",
+     "astrology": "Gemini",
+     "uprightKeywords": [
+      "Alignment",
+      "Partnership",
+      "Choice"
+     ],
+     "reversedKeywords": [
+      "Misalignment",
+      "Division",
+      "Compromise"
+     ],
+     "upright": "A meaningful relationship or choice asks you to act in line with your values. Mutual openness matters more than an ideal image of harmony; choose the commitments you can honestly sustain.",
+     "reversed": "Attraction, duty and personal values may be pulling in different directions. Name the disagreement before promising unity, and avoid sacrificing your voice merely to keep a connection intact."
+    },
+    {
+     "id": 37,
+     "name": "Two of Cups",
+     "arcana": "Minor",
+     "suit": "Cups",
+     "number": 2,
+     "rank": "Two",
+     "element": "Water",
+     "astrology": "Water · Cups",
+     "uprightKeywords": [
+      "Mutuality",
+      "Connection",
+      "Agreement"
+     ],
+     "reversedKeywords": [
+      "Imbalance",
+      "Disconnection",
+      "Broken Trust"
+     ],
+     "upright": "A connection can deepen through reciprocal attention and honest exchange. Ask what each person is offering freely and make the agreement explicit instead of relying on an imagined harmony.",
+     "reversed": "A relationship or agreement may be unequal or out of tune. Name the difference and assess whether repair is mutual rather than assuming one person can restore the connection alone."
+    },
+    {
+     "id": 17,
+     "name": "The Star",
+     "arcana": "Major",
+     "suit": null,
+     "number": 17,
+     "rank": null,
+     "element": "Air",
+     "astrology": "Aquarius",
+     "uprightKeywords": [
+      "Hope",
+      "Renewal",
+      "Openness"
+     ],
+     "reversedKeywords": [
+      "Discouragement",
+      "Disconnection",
+      "Depletion"
+     ],
+     "upright": "After strain, a quieter sense of possibility can return. Replenish what has been depleted and give a modest hope some daily attention; renewal does not require pretending that the difficulty never happened.",
+     "reversed": "Hope may feel remote because you are tired or comparing your recovery with an ideal. Seek a reliable source of nourishment and notice small signs of connection before demanding confidence."
+    },
+    {
+     "id": 63,
+     "name": "King of Swords",
+     "arcana": "Minor",
+     "suit": "Swords",
+     "number": null,
+     "rank": "King",
+     "element": "Air",
+     "astrology": "Air · Swords",
+     "uprightKeywords": [
+      "Reason",
+      "Integrity",
+      "Clear Standards"
+     ],
+     "reversedKeywords": [
+      "Rigidity",
+      "Manipulation",
+      "Cold Authority"
+     ],
+     "upright": "Bring clear standards and careful reasoning to a decision. Explain the principles you are using, consider relevant evidence and make room for the human effects of a technically correct answer.",
+     "reversed": "Reason may be used selectively to justify control or conceal feeling. Test your standards for consistency and invite scrutiny of the assumptions behind the conclusion."
+    }
+   ]
+  }
+ ]
+}

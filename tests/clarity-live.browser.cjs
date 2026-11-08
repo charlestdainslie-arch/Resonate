@@ -16,7 +16,8 @@ const ROOT = path.resolve(__dirname, '..');
 const T = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.jpg': 'image/jpeg', '.png': 'image/png', '.json': 'application/json' };
 const server = http.createServer((q, r) => { const f = path.join(ROOT, decodeURIComponent(q.url.split('?')[0])); if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { r.writeHead(404); return r.end(); } r.setHeader('Content-Type', T[path.extname(f)] || 'application/octet-stream'); fs.createReadStream(f).pipe(r); });
 const { renderSample } = require('./helpers/qa-render.cjs');
-const LIVE_DIR = path.join(ROOT, 'audit', 'deep-recheck', 'live');
+// The latest recorded evidence (9 Nov 2026, on the corrected engine), else the 8 Nov recording.
+const LIVE_DIR = [path.join(ROOT, 'audit', 'deep-recheck-9nov', 'live'), path.join(ROOT, 'audit', 'deep-recheck', 'live')].find(d => fs.existsSync(path.join(d, 'clarity-live.json')));
 const fakeSpeech = () => {
   const voices = [{ name: 'Device voice', lang: 'en-GB', localService: true }]; window.__spoken = []; let t = null;
   Object.defineProperty(window, 'speechSynthesis', { value: { getVoices: () => voices, addEventListener() {}, removeEventListener() {}, speak(u) { window.__spoken.push(u.text); t = setTimeout(() => u.onend && u.onend(), 5); }, cancel() { clearTimeout(t); }, pause() {}, resume() {}, speaking: false }, configurable: true });
@@ -116,7 +117,7 @@ server.listen(0, '127.0.0.1', async () => {
         assert.equal(r.pageText, want.pageTextAfter);
       });
     }
-  } else { console.log('FAIL  REPLAY recorded evidence missing:', LIVE_DIR); failures.push('REPLAY'); }
+  } else { console.log('FAIL  REPLAY recorded evidence missing'); failures.push('REPLAY'); }
 
   console.log(`\n${pass} passed, ${failures.length} failed`);
   await browser.close(); server.close();

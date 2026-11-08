@@ -1,0 +1,58 @@
+[
+ {
+  "id": "B06-LIVE",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 10,
+  "threadChanged": true
+ },
+ {
+  "id": "B01-LIVE",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 1,
+  "threadChanged": true
+ },
+ {
+  "id": "B07",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 1,
+  "threadChanged": true
+ },
+ {
+  "id": "B09",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 1,
+  "threadChanged": true
+ },
+ {
+  "id": "CC-04",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 1,
+  "threadChanged": true
+ },
+ {
+  "id": "SC-02",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 1,
+  "threadChanged": true
+ },
+ {
+  "id": "B03",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 2,
+  "threadChanged": true
+ },
+ {
+  "id": "B04",
+  "before": "b661280f07649e2b9cb824b298fcb5af167040f2",
+  "after": "282cd1457ec94e8436f81b3867799f45dfcad110",
+  "togetherChanged": 3,
+  "threadChanged": true
+ }
+]

@@ -1,0 +1,234 @@
+{
+ "case": "OC-01",
+ "matrix": "Fool upright, no clarifier.",
+ "notes": "The Fool is a Major, so the rule makes Clarifier 1 due; shown as the reading before it is drawn.",
+ "appCommit": "282cd1457ec94e8436f81b3867799f45dfcad110",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "rubric": {
+  "orientation": "Each card is read with the meaning for its orientation (upright or reversed text from the card data below), and a reversed card is not merely the negation of its upright meaning.",
+  "position": "The position lens names this position and reads the card through the position’s defined meaning (see the table), without drifting in time or role.",
+  "neighbours": "The \"wider spread\" line relates the card to its pair partner (Celtic Cross) or neighbour (other spreads) without inventing a connection the data does not support.",
+  "clarifier1": "Clarifier 1 is read as modifying the original card (\"how it modifies the original card\"), naming both, not as a separate definition.",
+  "clarifier2": "Clarifier 2 develops the relationship between both earlier cards, naming all three.",
+  "synthesis": "\"Together\" is a synthesis of the cards, not a list; revisions are shown (Revision 1 kept readable when Clarifier 2 arrives; Revision 2 when the Clarity card arrives).",
+  "clarity": "Option B (approved 7 Nov): a Clarity card appears only when the original and both clarifiers are Major, is a Minor not already in the reading, and is read as grounding the three Major cards; a Minor original with two Major clarifiers gets none and the limit is stated.",
+  "max": "Max’s lines are the reading’s own words (quoted), in reading order; before Finish he invites and does not sign off; after Finish the closing comes once.",
+  "failure": "Deep’s six failure modes: templating, positional drift, reverse-as-opposite, parallel clarification, concatenation instead of synthesis, numerical/symbolic overreach."
+ },
+ "samples": [
+  {
+   "id": "OC-01",
+   "input": {
+    "id": "OC-01",
+    "kind": "matrix",
+    "spread": "guidance",
+    "mode": "matrix",
+    "note": "Fool upright, no clarifier (as dealt; the rule makes Clarifier 1 due)",
+    "seeded": [],
+    "base": [
+     0
+    ],
+    "reversed": [],
+    "steps": [],
+    "c1": [
+     null
+    ],
+    "c2": [
+     null
+    ]
+   },
+   "errors": [],
+   "output": {
+    "spreadName": "One-card Guidance",
+    "drew": [],
+    "valid": [],
+    "positions": [
+     {
+      "n": 1,
+      "label": "Guidance",
+      "meaning": "the guidance you can put into practice today",
+      "base": {
+       "id": 0,
+       "name": "The Fool",
+       "arcana": "Major",
+       "element": "Air",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · 0 · The Fool\n\nGuidance\n\nCARD CORRESPONDENCE\nUranus\nSKY AT THIS READING\nUranus is at 4° 26′ Gemini\n\nAstrology: Uranus · Air\n\nNumber: 0\n\nZero is pure potential: the circle before the first mark, the unformed field from which every number emerges. In a reading it can amplify openness, uncertainty and the possibility of beginning again.\n\nNew Beginnings\nInnocence\nTrust\n\nPosition: Guidance — The Fool. Your next step is to work consciously with a willingness to begin before every answer is known. Choose one practical response you can try, then notice whether it helps.\n\nThe Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first. Upright, it favours a fresh beginning approached with alertness rather than fear. In a reading, this may describe a new chapter, an unfamiliar choice, or the feeling that life is asking you to move before every detail is known. In a Past position it can reflect the leap that brought you here; in the Present, a threshold you are standing at now; in the Future, an emerging possibility rather than a guaranteed event.\n\nLooking closer: Notice the white rose and the bright sky. The rose invites sincerity of intention while the bright sky suggests room to think clearly before stepping ahead.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · The Fool\n\nWu Wei: notice where the next step may need openness rather than force. Moving with life does not mean moving blindly; it can mean staying responsive enough to recognise the path as it appears.\n\nJungian interpretation · The Fool\n\nJungian lens: the Puer Aeternus and Innocent. The Fool represents the part of the psyche that has not yet been over-defined by convention. At its best this is imagination and trust; in shadow it can avoid responsibility or experience.",
+      "positionContext": "Position: Guidance — The Fool. Your next step is to work consciously with a willingness to begin before every answer is known. Choose one practical response you can try, then notice whether it helps.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     }
+    ],
+    "order": [
+     0
+    ],
+    "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 1 revealed card across this reading, including every clarifier.\n\nGUIDANCE\nThe Fool\n\nPosition: Guidance — The Fool. Your next step is to work consciously with a willingness to begin before every answer is known. Choose one practical response you can try, then notice whether it helps.\n\nTHE OVERALL INVITATION\n\nThe themes running through the spread are new beginnings.\n\nA question to carry, from The Fool: Where in my life am I being invited to begin before I feel completely ready? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Fool (0). Their numbered cards sum to 0, reducing to 0. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nGUIDANCE\nOriginal Card · 0 · The Fool\n\nGuidance\n\nCARD CORRESPONDENCE\nUranus\nSKY AT THIS READING\nUranus is at 4° 26′ Gemini\n\nAstrology: Uranus · Air\n\nNumber: 0\n\nZero is pure potential: the circle before the first mark, the unformed field from which every number emerges. In a reading it can amplify openness, uncertainty and the possibility of beginning again.\n\nNew Beginnings\nInnocence\nTrust\n\nPosition: Guidance — The Fool. Your next step is to work consciously with a willingness to begin before every answer is known. Choose one practical response you can try, then notice whether it helps.\n\nThe Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first. Upright, it favours a fresh beginning approached with alertness rather than fear. In a reading, this may describe a new chapter, an unfamiliar choice, or the feeling that life is asking you to move before every detail is known. In a Past position it can reflect the leap that brought you here; in the Present, a threshold you are standing at now; in the Future, an emerging possibility rather than a guaranteed event.\n\nLooking closer: Notice the white rose and the bright sky. The rose invites sincerity of intention while the bright sky suggests room to think clearly before stepping ahead.\n\nTao / Wu Wei · The Fool\n\nWu Wei: notice where the next step may need openness rather than force. Moving with life does not mean moving blindly; it can mean staying responsive enough to recognise the path as it appears.\n\nJungian interpretation · The Fool\n\nJungian lens: the Puer Aeternus and Innocent. The Fool represents the part of the psyche that has not yet been over-defined by convention. At its best this is imagination and trust; in shadow it can avoid responsibility or experience.\n\nExplore The Fool\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 1 revealed card across this reading, including every clarifier.\n\nGUIDANCE\nThe Fool\n\nPosition: Guidance — The Fool. Your next step is to work consciously with a willingness to begin before every answer is known. Choose one practical response you can try, then notice whether it helps.\n\nTHE OVERALL INVITATION\n\nThe themes running through the spread are new beginnings.\n\nA question to carry, from The Fool: Where in my life am I being invited to begin before I feel completely ready? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe Fool (0). Their numbered cards sum to 0, reducing to 0. No opening dice were rolled for this reading.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "script": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your One-card Guidance."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "First, your card."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "The Fool."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Your next step is to work consciously with a willingness to begin before every answer is known."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "That's the first layer of your reading."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+     }
+    ],
+    "scriptFinished": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your One-card Guidance."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "First, your card."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "The Fool."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Your next step is to work consciously with a willingness to begin before every answer is known."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first."
+     },
+     {
+      "chapter": "final",
+      "kind": "frame",
+      "text": "Here is your whole spread, brought together."
+     },
+     {
+      "chapter": "final",
+      "kind": "quote",
+      "text": "The themes running through the spread are new beginnings."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "Before I go, one question to carry with you."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "A question to carry, from The Fool: Where in my life am I being invited to begin before I feel completely ready? This is a perspective, not a fixed prediction."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Take what resonates, and leave the rest."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+     }
+    ],
+    "transcript": [
+     "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+     "Tonight: your One-card Guidance.",
+     "I'll keep it short. The full reading stays below.",
+     "First, your card.",
+     "The Fool.",
+     "Your next step is to work consciously with a willingness to begin before every answer is known.",
+     "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first.",
+     "That's the first layer of your reading.",
+     "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+    ]
+   },
+   "cardData": [
+    {
+     "id": 0,
+     "name": "The Fool",
+     "arcana": "Major",
+     "suit": null,
+     "number": 0,
+     "rank": null,
+     "element": "Air",
+     "astrology": "Uranus",
+     "uprightKeywords": [
+      "New Beginnings",
+      "Innocence",
+      "Trust"
+     ],
+     "reversedKeywords": [
+      "Recklessness",
+      "Hesitation",
+      "Naivety"
+     ],
+     "upright": "The Fool is the moment before experience hardens into certainty: openness, curiosity and the courage to move without needing every answer first. Upright, it favours a fresh beginning approached with alertness rather than fear. In a reading, this may describe a new chapter, an unfamiliar choice, or the feeling that life is asking you to move before every detail is known. In a Past position it can reflect the leap that brought you here; in the Present, a threshold you are standing at now; in the Future, an emerging possibility rather than a guaranteed event.",
+     "reversed": "Reversed, the same openness can become either careless risk or fear disguised as caution. The question is not simply whether to leap, but whether you are seeing the ground clearly enough to choose freely. Depending on its position and surrounding cards, this may point to hesitation after an earlier risk, or invite a little more preparation before moving forward."
+    }
+   ]
+  }
+ ]
+}
