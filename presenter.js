@@ -313,10 +313,16 @@
       <div class="mc-frame">
         <header class="mc-head"><h2 id="mcTitle">MAX CHASROOM <span>· RESONATE</span></h2><button type="button" class="mc-close" id="mcClose" aria-label="Close the presenter">✕</button></header>
         <p class="mc-provenance">${escapeHtml(provenance()+what)}</p>
+        <div class="mc-body">
         <div class="mc-stage">
           <div class="mc-screen" aria-hidden="true">${avatarSvg()}<span class="mc-tag">TEMPORARY PRESENTER · NOT CHAS'S LIKENESS</span></div>
           ${cardStrip()}
         </div>
+        <p class="mc-voice" id="mcVoice"></p>
+        <details class="mc-transcript"><summary>Transcript</summary><ol>${script.map(p=>`<li class="mc-kind-${p.kind}">${escapeHtml(p.text)}</li>`).join('')}</ol></details>
+        <button type="button" class="mc-full" id="mcFull">Read the full reading ↓</button>
+        </div>
+        <div class="mc-panel">
         <div class="mc-caption" id="mcCaption" aria-live="polite"><p>Press Play when you're ready. Nothing plays until you do.</p></div>
         <div class="mc-progress"><span id="mcPart">Part 0 of ${script.length}</span><div class="mc-bar"><i id="mcBar"></i></div></div>
         <div class="mc-controls">
@@ -325,10 +331,8 @@
           <button type="button" class="ghost-button" id="mcSound" aria-pressed="true">🔇 Mute</button>
           <button type="button" class="ghost-button" id="mcCaptions" aria-pressed="true">Hide words</button>
         </div>
-        <p class="mc-voice" id="mcVoice"></p>
-        <details class="mc-transcript"><summary>Transcript</summary><ol>${script.map(p=>`<li class="mc-kind-${p.kind}">${escapeHtml(p.text)}</li>`).join('')}</ol></details>
-        <button type="button" class="mc-full" id="mcFull">Read the full reading ↓</button>
         ${clarifyBar()}
+        </div>
       </div></div>`);
     const root=document.querySelector('.mc-player');
     const $=id=>root.querySelector('#'+id);
@@ -353,9 +357,8 @@
       $('mcCaption').innerHTML=`<p class="mc-kind-${part.kind}">${escapeHtml(part.text)}</p>`;
       $('mcPart').textContent=`Part ${i+1} of ${script.length}`;
       if(picked==null)updateBar();
-      // Keep Max's words above the clarify bar while he speaks (Samsung-sized screens).
-      const cap=$('mcCaption').getBoundingClientRect(),bar=$('mcClarifyBar')?.getBoundingClientRect();
-      if(bar&&cap.bottom>bar.top-4)root.scrollBy({top:cap.bottom-bar.top+12,behavior:motion()});
+      // (8 Nov, P2) On phones the caption, controls and clarify bar share a fixed panel, so nothing covers the
+      // caption and no scrolling is needed to keep it in view.
       $('mcBar').style.width=`${(i+1)/script.length*100}%`;
       let focus=null;
       root.querySelectorAll('[data-slot]').forEach(el=>{const on=part.show.includes(el.dataset.slot);el.classList.toggle('is-active',on);el.classList.toggle('is-dim',part.show.length>0&&!on);if(on&&!focus)focus=el;});
@@ -427,7 +430,9 @@
       $('mcPickNote').textContent=where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?' — its first clarifier is a Major, so a second is due.':step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
       root.querySelectorAll('.mc-card').forEach((el,k)=>el.classList.toggle('is-picked',k===i));
       const strip=root.querySelector('.mc-cards'),card=root.querySelectorAll('.mc-card')[i];
-      if(strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()}),260);
+      // Only follow a card once Max is speaking or the seeker has picked one: on opening, the strip starts at
+      // card 1 (8 Nov, P2: the first card must be fully visible without sideways scrolling).
+      if((picked!=null||index>=0)&&strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()}),260);
     }
     root.addEventListener('click',e=>{
       const pick=e.target.closest('[data-pick]');
