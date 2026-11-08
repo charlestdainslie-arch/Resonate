@@ -183,7 +183,9 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     assert.match(t, /FROM CARD TO CARD/i);
     assert.match(t, /The reading begins with The Fool/);
     assert.equal(await p.locator('.card-to-card-thread .golden-card-bridge').count(), 2);
-    assert.match(t, /Keep the part that speaks to your lived situation/);
+    // 9 Nov 2026 (Deep / Si Aye): the closing names the reading's movement, not a generic line.
+    assert.match(t, /From new beginnings to [a-z ]+, the reading (turns|moves|builds)|each card builds on the one before it/);
+    assert.doesNotMatch(t, /Keep the part that speaks to your lived situation|next step in the Major Arcana sequence/);
     assert.equal(await p.locator('.card-to-card-thread .golden-thread-resonance').count(), 0, 'Max reads the Golden Thread’s own closing line, not this one');
     assert.doesNotMatch(t, /turns that earlier impulse|shifts the emphasis/, 'Deep’s softer wording only');
     await ctx.close();
