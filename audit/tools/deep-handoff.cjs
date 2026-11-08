@@ -52,7 +52,7 @@ server.listen(0, '127.0.0.1', async () => {
   const browser = await chromium.launch();
   const index = [];
   for (const row of MATRIX.filter(m => m.deep)) {
-    const ids = row.sample.split(', ').filter(s => /^[A-Z]{1,2}\d{2}$|^[A-Z]{2}-\d{2}$/.test(s));
+    const ids = row.sample.split(', ').filter(s => /^[A-Z]{1,2}\d{2}$|^[A-Z]{2}-\d{2}[A-Z]?$/.test(s));
     if (row.id === 'BT-06') ids.push('BT-06');
     const entries = [];
     for (const sid of ids) {

@@ -1,0 +1,903 @@
+{
+ "case": "SC-01",
+ "matrix": "Mixed orientations, clarifier on Foundation.",
+ "notes": "CORRECTED 8 Nov after Deep's BLOCKED finding: the Seven-card V has no \"Foundation\" (a Celtic Cross position, \"the deeper roots beneath the situation\"). Proposed criterion: mixed orientations, one clarifier on position 1, Past · 18–24 Months (the experiences and influences the situation grew from). Executed by new sample SC-01A. The original mapping (S12, every position clarified) and Deep's BLOCKED verdict stay on record in audit/DEEP_RECHECK.md. Si Aye / Deep to confirm the replacement position.",
+ "appCommit": "b661280f07649e2b9cb824b298fcb5af167040f2",
+ "readingAt": "2026-11-07T01:00:00.000Z",
+ "rubric": {
+  "orientation": "Each card is read with the meaning for its orientation (upright or reversed text from the card data below), and a reversed card is not merely the negation of its upright meaning.",
+  "position": "The position lens names this position and reads the card through the position’s defined meaning (see the table), without drifting in time or role.",
+  "neighbours": "The \"wider spread\" line relates the card to its pair partner (Celtic Cross) or neighbour (other spreads) without inventing a connection the data does not support.",
+  "clarifier1": "Clarifier 1 is read as modifying the original card (\"how it modifies the original card\"), naming both, not as a separate definition.",
+  "clarifier2": "Clarifier 2 develops the relationship between both earlier cards, naming all three.",
+  "synthesis": "\"Together\" is a synthesis of the cards, not a list; revisions are shown (Revision 1 kept readable when Clarifier 2 arrives; Revision 2 when the Clarity card arrives).",
+  "clarity": "Option B (approved 7 Nov): a Clarity card appears only when the original and both clarifiers are Major, is a Minor not already in the reading, and is read as grounding the three Major cards; a Minor original with two Major clarifiers gets none and the limit is stated.",
+  "max": "Max’s lines are the reading’s own words (quoted), in reading order; before Finish he invites and does not sign off; after Finish the closing comes once.",
+  "failure": "Deep’s six failure modes: templating, positional drift, reverse-as-opposite, parallel clarification, concatenation instead of synthesis, numerical/symbolic overreach."
+ },
+ "samples": [
+  {
+   "id": "SC-01A",
+   "input": {
+    "id": "SC-01A",
+    "kind": "matrix",
+    "spread": "seven",
+    "mode": "matrix",
+    "note": "Seven-card V, mixed orientations, a clarifier on position 1 (Past · 18–24 Months), the proposed equivalent of \"Foundation\"",
+    "seeded": [
+     "base cards: seeded deal, seed 7415 (first seed from 7415 meeting: at least two reversed and two upright)",
+     "Clarifier 1 at position 1: seeded, seed 8415, next unused card",
+     "clarifier orientation: upright (the matrix does not specify)"
+    ],
+    "base": [
+     2,
+     23,
+     50,
+     65,
+     72,
+     68,
+     47
+    ],
+    "reversed": [
+     23,
+     72
+    ],
+    "steps": [
+     {
+      "pos": 0,
+      "layer": 1,
+      "id": 66
+     }
+    ],
+    "c1": [
+     66,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "c2": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   },
+   "errors": [],
+   "output": {
+    "spreadName": "Seven-card V Reading",
+    "drew": [
+     "first"
+    ],
+    "valid": [],
+    "positions": [
+     {
+      "n": 1,
+      "label": "Past · 18–24 Months",
+      "meaning": "your experiences and influences from approximately the previous 18 to 24 months",
+      "base": {
+       "id": 2,
+       "name": "The High Priestess",
+       "arcana": "Major",
+       "element": "Water",
+       "reversed": false
+      },
+      "c1": {
+       "id": 66,
+       "name": "Three of Pentacles",
+       "arcana": "Minor",
+       "element": "Earth",
+       "reversed": false
+      },
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [
+       "1 · The original card in this position",
+       "2 · Clarifier 1 · how it modifies the original card",
+       "3 · What they mean together"
+      ],
+      "original": "1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · II · The High Priestess\n\nPast · 18–24 Months\n\nCARD CORRESPONDENCE\nThe Moon\nSKY AT THIS READING\nMoon is at 18° 30′ Libra\n\nAstrology: The Moon · Water\n\nNumber: 2\n\nTwo introduces polarity and relationship: self and other, conscious and unconscious, seen and unseen. Wisdom emerges through holding tension rather than collapsing it too quickly.\n\nIntuition\nSacred Mystery\nStillness\n\nPosition: Past · 18–24 Months — The High Priestess. Looking across the previous 18 to 24 months, patient listening to intuition while allowing missing information to emerge may show an experience or influence that helped shape the present situation.\n\nThe High Priestess asks for receptivity rather than force. Upright, she points to intuition, silence, pattern recognition and information that becomes visible only when the mind stops trying to dominate the answer. In a reading, this may suggest that not everything needs to be decided immediately. In a Past position it can point to something sensed before it was understood; in the Present, an invitation to listen beneath the noise; in the Future, information or understanding that may unfold gradually rather than arrive all at once.\n\nLooking closer: Notice the blue garment and contrasting pillars. Reflection and deeper understanding sit between opposing possibilities, inviting patience with uncertainty.",
+      "clar1": "2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · III · Three of Pentacles\n\nA shared task benefits from distinct skills and practical feedback. Clarify roles, respect the knowledge each person brings and let the quality of the work grow through cooperation.\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Pentacles, consider how this relates to craft.\n\nLooking closer: A craftsperson discusses a building with two figures who hold a plan.\n\nThree of Pentacles supports The High Priestess.\n\nIn Past · 18–24 Months, the theme of craft and collaboration can help intuition and sacred mystery find a constructive outlet.\n\nRead this way because Water and Earth are friendly elements.\n\nAs a Minor Arcana card, Three of Pentacles brings the Major theme down to a practical, everyday expression in work, money, body and the material world.",
+      "clar2": "",
+      "notes": "",
+      "together": "3 · WHAT THEY MEAN TOGETHER\nTogether in Past · 18–24 Months\n\nRevision 1 · with Clarifier 1.\n\nTogether, The High Priestess and Three of Pentacles give Past · 18–24 Months a consistent message: intuition and craft. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nIn the wider Seven-card V Reading spread, Past · 18–24 Months opens the reading; its neighbour is Present Time, Two of Wands (reversed), which challenges The High Priestess (Water and Fire are contrary elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.",
+      "lenses": "Tao / Wu Wei · The High Priestess\n\nWu Wei: this card can be an invitation to stop pulling at the answer. Stillness is not passivity when it allows what is already forming to become clear in its own time.\n\nJungian interpretation · The High Priestess\n\nJungian lens: the Anima and threshold to the unconscious. The High Priestess reflects symbolic intelligence, dream material and the psyche's capacity to know before it can fully explain.",
+      "positionContext": "Position: Past · 18–24 Months — The High Priestess. Looking across the previous 18 to 24 months, patient listening to intuition while allowing missing information to emerge may show an experience or influence that helped shape the present situation.",
+      "relation1": "Three of Pentacles supports The High Priestess.\n\nIn Past · 18–24 Months, the theme of craft and collaboration can help intuition and sacred mystery find a constructive outlet.\n\nRead this way because Water and Earth are friendly elements.\n\nAs a Minor Arcana card, Three of Pentacles brings the Major theme down to a practical, everyday expression in work, money, body and the material world.",
+      "relation2": "",
+      "synthesisLead": "Together, The High Priestess and Three of Pentacles give Past · 18–24 Months a consistent message: intuition and craft. Consider working with this theme with some confidence, while staying open to how it unfolds.",
+      "synthesisWider": "In the wider Seven-card V Reading spread, Past · 18–24 Months opens the reading; its neighbour is Present Time, Two of Wands (reversed), which challenges The High Priestess (Water and Fire are contrary elements).",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 2,
+      "label": "Present Time",
+      "meaning": "your present circumstances, including the period immediately surrounding today",
+      "base": {
+       "id": 23,
+       "name": "Two of Wands",
+       "arcana": "Minor",
+       "element": "Fire",
+       "reversed": true
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · II · Two of Wands, reversed\n\nPresent Time\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Wands, consider how this relates to planning.\n\nFear of Expansion\nIndecision\nSmall Horizons\n\nPosition: Present Time — Two of Wands reversed. In the period immediately surrounding today, fear of expansion, indecision, small horizons may describe what is active for you now.\n\nYou may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty. Name the risk you can accept and the information you still need.\n\nLooking closer: A figure holds a globe between two wands while surveying distant land and sea.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Two of Wands\n\nA practice of unforced attention with Two of Wands: Which possibility am I ready to plan for rather than only imagine?\n\nJungian interpretation · Two of Wands\n\nPsychological lens: A larger imagined life can guide development when it remains in dialogue with present reality.",
+      "positionContext": "Position: Present Time — Two of Wands reversed. In the period immediately surrounding today, fear of expansion, indecision, small horizons may describe what is active for you now.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 3,
+      "label": "Near Future · 3 Months",
+      "meaning": "what may develop over approximately the next three months if the present course continues",
+      "base": {
+       "id": 50,
+       "name": "Ace of Swords",
+       "arcana": "Minor",
+       "element": "Air",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · I · Ace of Swords\n\nNear Future · 3 Months\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Swords, consider how this relates to clarity.\n\nClarity\nTruth\nDecision\n\nPosition: Near Future · 3 Months — Ace of Swords. Over approximately the next three months, clarity, truth, decision may show what develops if the present course continues; it is a direction, not a fixed prediction.\n\nA clear distinction or honest conversation can cut through confusion. Check your evidence, name the central issue and use the insight constructively rather than turning being right into the only goal.\n\nLooking closer: A hand raises a crowned sword above mountains, joining clear thought with responsibility.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Ace of Swords\n\nA practice of unforced attention with Ace of Swords: What needs to be stated clearly, and how can I say it responsibly?\n\nJungian interpretation · Ace of Swords\n\nPsychological lens: Insight can separate a tangled problem into workable parts, provided certainty remains open to correction.",
+      "positionContext": "Position: Near Future · 3 Months — Ace of Swords. Over approximately the next three months, clarity, truth, decision may show what develops if the present course continues; it is a direction, not a fixed prediction.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 4,
+      "label": "You / Answer",
+      "meaning": "your current state in a general reading; for a specific question, this card gives the answer and is interpreted last",
+      "base": {
+       "id": 65,
+       "name": "Two of Pentacles",
+       "arcana": "Minor",
+       "element": "Earth",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · II · Two of Pentacles\n\nYou / Answer\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nAdaptability\nBalance\nPriorities\n\nPosition: You / Answer — Two of Pentacles. In a general reading, adaptability, balance, priorities may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.\n\nSeveral demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.",
+      "positionContext": "Position: You / Answer — Two of Pentacles. In a general reading, adaptability, balance, priorities may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 5,
+      "label": "Surrounding Energies",
+      "meaning": "the people, home, work and other circumstances influencing you or the question at present",
+      "base": {
+       "id": 72,
+       "name": "Nine of Pentacles",
+       "arcana": "Minor",
+       "element": "Earth",
+       "reversed": true
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · IX · Nine of Pentacles, reversed\n\nSurrounding Energies\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Pentacles, consider how this relates to independence.\n\nDependence\nOverwork\nUneasy Success\n\nPosition: Surrounding Energies — Nine of Pentacles reversed. In your surroundings, dependence, overwork, uneasy success may be expressed through people, home, work or other circumstances influencing the situation now.\n\nSuccess may feel insecure, isolating or too costly to maintain. Reassess the standard you are trying to sustain and the support you need to enjoy what you have built.\n\nLooking closer: A figure stands in a cultivated garden with a falcon and nine pentacles among the vines.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Nine of Pentacles\n\nA practice of unforced attention with Nine of Pentacles: How can I enjoy what I have built without making achievement my only source of worth?\n\nJungian interpretation · Nine of Pentacles\n\nPsychological lens: Autonomy includes the freedom to receive pleasure and connection, not just the ability to function alone.",
+      "positionContext": "Position: Surrounding Energies — Nine of Pentacles reversed. In your surroundings, dependence, overwork, uneasy success may be expressed through people, home, work or other circumstances influencing the situation now.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 6,
+      "label": "Hopes, Fears & Attitude",
+      "meaning": "the hopes, fears and attitude you bring to the situation or specific question",
+      "base": {
+       "id": 68,
+       "name": "Five of Pentacles",
+       "arcana": "Minor",
+       "element": "Earth",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · V · Five of Pentacles\n\nHopes, Fears & Attitude\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Pentacles, consider how this relates to hardship.\n\nHardship\nExclusion\nNeed for Support\n\nPosition: Hopes, Fears & Attitude — Five of Pentacles. Hardship, exclusion, need for support may colour your hopes, fears and attitude toward the situation or question.\n\nA period of practical or emotional hardship may be making you feel outside the circle of support. Name the need and investigate available help rather than assuming you must manage it unseen.\n\nLooking closer: Two figures pass through snow beneath an illuminated window bearing five pentacles.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Five of Pentacles\n\nA practice of unforced attention with Five of Pentacles: What help could I ask for instead of assuming I have to cope alone?\n\nJungian interpretation · Five of Pentacles\n\nPsychological lens: Feeling excluded can make support difficult to recognise or receive. Need does not erase dignity or belonging.",
+      "positionContext": "Position: Hopes, Fears & Attitude — Five of Pentacles. Hardship, exclusion, need for support may colour your hopes, fears and attitude toward the situation or question.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     },
+     {
+      "n": 7,
+      "label": "Outcome · Next 18–24 Months",
+      "meaning": "the longer-term outcome of present circumstances over approximately the next 18 to 24 months; in a question reading, the likely outcome of that question",
+      "base": {
+       "id": 47,
+       "name": "Knight of Cups",
+       "arcana": "Minor",
+       "element": "Water",
+       "reversed": false
+      },
+      "c1": null,
+      "c2": null,
+      "clarity": null,
+      "clarityText": "",
+      "steps": [],
+      "original": "Original Card · Kn · Knight of Cups\n\nOutcome · Next 18–24 Months\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nInvitation\nRomance\nCreative Pursuit\n\nPosition: Outcome · Next 18–24 Months — Knight of Cups. Across approximately the next 18 to 24 months, invitation, romance, creative pursuit may describe the likely outcome if present circumstances continue, while leaving room for choice and change.\n\nFollow a meaningful feeling with a clear and considerate gesture. An invitation, proposal or creative pursuit becomes trustworthy when its emotional promise is matched by realistic action.\n\nLooking closer: A rider calmly carries a cup toward a river on a white horse.",
+      "clar1": "",
+      "clar2": "",
+      "notes": "",
+      "together": "",
+      "lenses": "Tao / Wu Wei · Knight of Cups\n\nA practice of unforced attention with Knight of Cups: How can I turn a feeling into an honest, achievable gesture?\n\nJungian interpretation · Knight of Cups\n\nPsychological lens: The romantic imagination can guide action while still needing contact with another person’s actual response.",
+      "positionContext": "Position: Outcome · Next 18–24 Months — Knight of Cups. Across approximately the next 18 to 24 months, invitation, romance, creative pursuit may describe the likely outcome if present circumstances continue, while leaving room for choice and change.",
+      "relation1": "",
+      "relation2": "",
+      "synthesisLead": "",
+      "synthesisWider": "",
+      "limit": false,
+      "pending": false
+     }
+    ],
+    "order": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6
+    ],
+    "goldenThread": "THE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 8 revealed cards across this reading, including every clarifier. 2 cards came up reversed and are read through their reversed meaning.\n\nPAST · 18–24 MONTHS\nThe High Priestess + Three of Pentacles\n\nThe original The High Priestess highlights intuition and sacred mystery; Three of Pentacles introduces craft and collaboration. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The High Priestess (The Moon) meets Three of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT TIME\nTwo of Wands, reversed\n\nThe foundation is fear of expansion and indecision; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Wands, reversed (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE · 3 MONTHS\nAce of Swords\n\nThe foundation is clarity and truth; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOU / ANSWER\nTwo of Pentacles\n\nThe foundation is adaptability and balance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING ENERGIES\nNine of Pentacles, reversed\n\nThe foundation is dependence and overwork; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Nine of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES, FEARS & ATTITUDE\nFive of Pentacles\n\nThe foundation is hardship and exclusion; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Five of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nOUTCOME · NEXT 18–24 MONTHS\nKnight of Cups\n\nThe foundation is invitation and romance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with The High Priestess in Past · 18–24 Months and moves toward Knight of Cups in Outcome · Next 18–24 Months.\n\nPresent Time · Two of Wands, reversed. Following The High Priestess, Two of Wands may draw your attention toward fear of expansion.\n\nNear Future · 3 Months · Ace of Swords. Following Two of Wands, Ace of Swords may draw your attention toward clarity.\n\nYou / Answer · Two of Pentacles. Following Ace of Swords, Two of Pentacles may draw your attention toward adaptability.\n\nSurrounding Energies · Nine of Pentacles, reversed. Following Two of Pentacles, Nine of Pentacles may draw your attention toward dependence.\n\nHopes, Fears & Attitude · Five of Pentacles. Following Nine of Pentacles, Five of Pentacles may draw your attention toward hardship.\n\nOutcome · Next 18–24 Months · Knight of Cups. Following Five of Pentacles, Knight of Cups may draw your attention toward invitation.\n\nThe card-to-card movement is the heart of this reading: The High Priestess opens the question, and Knight of Cups shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, intuition, sacred mystery, stillness, craft form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe High Priestess (2) · Three of Pentacles (3) · Two of Wands (2) · Ace of Swords (1) · Two of Pentacles (2) · Nine of Pentacles (9) · Five of Pentacles (5) · Knight of Cups (Knight). Their numbered cards sum to 24, reducing to 6. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 2. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "pageText": "YOUR READING\nWhat each position is saying\n\nPlanetary positions calculated for Nov 7, 2026, 12:00 PM.\n\nI'm asking a specific question\nTick this if the reading answers one question: position 4, You / Answer, is then read last.\nPAST · 18–24 MONTHS\n1 · THE ORIGINAL CARD IN THIS POSITION\nOriginal Card · II · The High Priestess\n\nPast · 18–24 Months\n\nCARD CORRESPONDENCE\nThe Moon\nSKY AT THIS READING\nMoon is at 18° 30′ Libra\n\nAstrology: The Moon · Water\n\nNumber: 2\n\nTwo introduces polarity and relationship: self and other, conscious and unconscious, seen and unseen. Wisdom emerges through holding tension rather than collapsing it too quickly.\n\nIntuition\nSacred Mystery\nStillness\n\nPosition: Past · 18–24 Months — The High Priestess. Looking across the previous 18 to 24 months, patient listening to intuition while allowing missing information to emerge may show an experience or influence that helped shape the present situation.\n\nThe High Priestess asks for receptivity rather than force. Upright, she points to intuition, silence, pattern recognition and information that becomes visible only when the mind stops trying to dominate the answer. In a reading, this may suggest that not everything needs to be decided immediately. In a Past position it can point to something sensed before it was understood; in the Present, an invitation to listen beneath the noise; in the Future, information or understanding that may unfold gradually rather than arrive all at once.\n\nLooking closer: Notice the blue garment and contrasting pillars. Reflection and deeper understanding sit between opposing possibilities, inviting patience with uncertainty.\n\n2 · CLARIFIER 1 · HOW IT MODIFIES THE ORIGINAL CARD\nClarifier 1 · III · Three of Pentacles\n\nA shared task benefits from distinct skills and practical feedback. Clarify roles, respect the knowledge each person brings and let the quality of the work grow through cooperation.\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 3\n\nThree develops expression, growth and the effects of working together. In Three of Pentacles, consider how this relates to craft.\n\nLooking closer: A craftsperson discusses a building with two figures who hold a plan.\n\nThree of Pentacles supports The High Priestess.\n\nIn Past · 18–24 Months, the theme of craft and collaboration can help intuition and sacred mystery find a constructive outlet.\n\nRead this way because Water and Earth are friendly elements.\n\nAs a Minor Arcana card, Three of Pentacles brings the Major theme down to a practical, everyday expression in work, money, body and the material world.\n\n3 · WHAT THEY MEAN TOGETHER\nTogether in Past · 18–24 Months\n\nRevision 1 · with Clarifier 1.\n\nTogether, The High Priestess and Three of Pentacles give Past · 18–24 Months a consistent message: intuition and craft. Consider working with this theme with some confidence, while staying open to how it unfolds.\n\nIn the wider Seven-card V Reading spread, Past · 18–24 Months opens the reading; its neighbour is Present Time, Two of Wands (reversed), which challenges The High Priestess (Water and Fire are contrary elements).\n\nThis is a perspective for reflection, not a fixed prediction.\n\nHow this was read: each relationship comes from the cards’ elements (using elemental dignities, a long-standing tarot convention), suits, numbers, orientation and Major or Minor status, from RESONATE’s card data. It is RESONATE’s interpretive method, not a quotation from a published source.\n\nTao / Wu Wei · The High Priestess\n\nWu Wei: this card can be an invitation to stop pulling at the answer. Stillness is not passivity when it allows what is already forming to become clear in its own time.\n\nJungian interpretation · The High Priestess\n\nJungian lens: the Anima and threshold to the unconscious. The High Priestess reflects symbolic intelligence, dream material and the psyche's capacity to know before it can fully explain.\n\nTao / Wu Wei · Three of Pentacles\n\nA practice of unforced attention with Three of Pentacles: Whose knowledge would improve this work if I made room for it?\n\nJungian interpretation · Three of Pentacles\n\nPsychological lens: Competence can grow through recognition of interdependence rather than an insistence on self-sufficiency.\n\nExplore The High Priestess\nPRESENT TIME\nOriginal Card · II · Two of Wands, reversed\n\nPresent Time\n\nCARD CORRESPONDENCE\nFire · Wands\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Fire · Wands · Fire\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Wands, consider how this relates to planning.\n\nFear of Expansion\nIndecision\nSmall Horizons\n\nPosition: Present Time — Two of Wands reversed. In the period immediately surrounding today, fear of expansion, indecision, small horizons may describe what is active for you now.\n\nYou may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty. Name the risk you can accept and the information you still need.\n\nLooking closer: A figure holds a globe between two wands while surveying distant land and sea.\n\nTao / Wu Wei · Two of Wands\n\nA practice of unforced attention with Two of Wands: Which possibility am I ready to plan for rather than only imagine?\n\nJungian interpretation · Two of Wands\n\nPsychological lens: A larger imagined life can guide development when it remains in dialogue with present reality.\n\nExplore Two of Wands\nNEAR FUTURE · 3 MONTHS\nOriginal Card · I · Ace of Swords\n\nNear Future · 3 Months\n\nCARD CORRESPONDENCE\nAir · Swords\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Air · Swords · Air\n\nNumber: 1\n\nOne begins a cycle with a seed, focus or initial act. In Ace of Swords, consider how this relates to clarity.\n\nClarity\nTruth\nDecision\n\nPosition: Near Future · 3 Months — Ace of Swords. Over approximately the next three months, clarity, truth, decision may show what develops if the present course continues; it is a direction, not a fixed prediction.\n\nA clear distinction or honest conversation can cut through confusion. Check your evidence, name the central issue and use the insight constructively rather than turning being right into the only goal.\n\nLooking closer: A hand raises a crowned sword above mountains, joining clear thought with responsibility.\n\nTao / Wu Wei · Ace of Swords\n\nA practice of unforced attention with Ace of Swords: What needs to be stated clearly, and how can I say it responsibly?\n\nJungian interpretation · Ace of Swords\n\nPsychological lens: Insight can separate a tangled problem into workable parts, provided certainty remains open to correction.\n\nExplore Ace of Swords\nYOU / ANSWER\nOriginal Card · II · Two of Pentacles\n\nYou / Answer\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 2\n\nTwo brings relationship, polarity and the need to consider another position. In Two of Pentacles, consider how this relates to adaptability.\n\nAdaptability\nBalance\nPriorities\n\nPosition: You / Answer — Two of Pentacles. In a general reading, adaptability, balance, priorities may describe where you stand now. If you asked a specific question, return to this card last and consider what answer it suggests for you.\n\nSeveral demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.\n\nLooking closer: A figure handles two pentacles linked by a loop while ships rise and fall on waves.\n\nTao / Wu Wei · Two of Pentacles\n\nA practice of unforced attention with Two of Pentacles: Which priority needs protecting while I adapt to everything else?\n\nJungian interpretation · Two of Pentacles\n\nPsychological lens: Flexibility supports the self when it remains a choice rather than a permanent response to overload.\n\nExplore Two of Pentacles\nSURROUNDING ENERGIES\nOriginal Card · IX · Nine of Pentacles, reversed\n\nSurrounding Energies\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 9\n\nNine draws experience toward maturity while asking what is still needed. In Nine of Pentacles, consider how this relates to independence.\n\nDependence\nOverwork\nUneasy Success\n\nPosition: Surrounding Energies — Nine of Pentacles reversed. In your surroundings, dependence, overwork, uneasy success may be expressed through people, home, work or other circumstances influencing the situation now.\n\nSuccess may feel insecure, isolating or too costly to maintain. Reassess the standard you are trying to sustain and the support you need to enjoy what you have built.\n\nLooking closer: A figure stands in a cultivated garden with a falcon and nine pentacles among the vines.\n\nTao / Wu Wei · Nine of Pentacles\n\nA practice of unforced attention with Nine of Pentacles: How can I enjoy what I have built without making achievement my only source of worth?\n\nJungian interpretation · Nine of Pentacles\n\nPsychological lens: Autonomy includes the freedom to receive pleasure and connection, not just the ability to function alone.\n\nExplore Nine of Pentacles\nHOPES, FEARS & ATTITUDE\nOriginal Card · V · Five of Pentacles\n\nHopes, Fears & Attitude\n\nCARD CORRESPONDENCE\nEarth · Pentacles\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Earth · Pentacles · Earth\n\nNumber: 5\n\nFive disrupts an established pattern and invites a response to change. In Five of Pentacles, consider how this relates to hardship.\n\nHardship\nExclusion\nNeed for Support\n\nPosition: Hopes, Fears & Attitude — Five of Pentacles. Hardship, exclusion, need for support may colour your hopes, fears and attitude toward the situation or question.\n\nA period of practical or emotional hardship may be making you feel outside the circle of support. Name the need and investigate available help rather than assuming you must manage it unseen.\n\nLooking closer: Two figures pass through snow beneath an illuminated window bearing five pentacles.\n\nTao / Wu Wei · Five of Pentacles\n\nA practice of unforced attention with Five of Pentacles: What help could I ask for instead of assuming I have to cope alone?\n\nJungian interpretation · Five of Pentacles\n\nPsychological lens: Feeling excluded can make support difficult to recognise or receive. Need does not erase dignity or belonging.\n\nExplore Five of Pentacles\nOUTCOME · NEXT 18–24 MONTHS\nOriginal Card · Kn · Knight of Cups\n\nOutcome · Next 18–24 Months\n\nCARD CORRESPONDENCE\nWater · Cups\nSKY AT THIS READING\nNo planetary placement assigned\n\nAstrology: Water · Cups · Water\n\nCourt rank: Knight\n\nKnight is a court role, not a numbered pip card: an active way of pursuing the suit’s concerns, with both gifts and excesses. It can describe an approach or quality in anyone, without prescribing age or gender.\n\nInvitation\nRomance\nCreative Pursuit\n\nPosition: Outcome · Next 18–24 Months — Knight of Cups. Across approximately the next 18 to 24 months, invitation, romance, creative pursuit may describe the likely outcome if present circumstances continue, while leaving room for choice and change.\n\nFollow a meaningful feeling with a clear and considerate gesture. An invitation, proposal or creative pursuit becomes trustworthy when its emotional promise is matched by realistic action.\n\nLooking closer: A rider calmly carries a cup toward a river on a white horse.\n\nTao / Wu Wei · Knight of Cups\n\nA practice of unforced attention with Knight of Cups: How can I turn a feeling into an honest, achievable gesture?\n\nJungian interpretation · Knight of Cups\n\nPsychological lens: The romantic imagination can guide action while still needing contact with another person’s actual response.\n\nExplore Knight of Cups\nTHE GOLDEN THREAD\nRead the spread as a whole\n\nThe Golden Thread follows 8 revealed cards across this reading, including every clarifier. 2 cards came up reversed and are read through their reversed meaning.\n\nPAST · 18–24 MONTHS\nThe High Priestess + Three of Pentacles\n\nThe original The High Priestess highlights intuition and sacred mystery; Three of Pentacles introduces craft and collaboration. Consider whether these energies support one another or ask for balance.\n\nThe astrological correspondences in dialogue are The High Priestess (The Moon) meets Three of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nPRESENT TIME\nTwo of Wands, reversed\n\nThe foundation is fear of expansion and indecision; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Wands, reversed (Fire · Wands). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nNEAR FUTURE · 3 MONTHS\nAce of Swords\n\nThe foundation is clarity and truth; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Ace of Swords (Air · Swords). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nYOU / ANSWER\nTwo of Pentacles\n\nThe foundation is adaptability and balance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Two of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nSURROUNDING ENERGIES\nNine of Pentacles, reversed\n\nThe foundation is dependence and overwork; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Nine of Pentacles, reversed (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nHOPES, FEARS & ATTITUDE\nFive of Pentacles\n\nThe foundation is hardship and exclusion; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Five of Pentacles (Earth · Pentacles). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nOUTCOME · NEXT 18–24 MONTHS\nKnight of Cups\n\nThe foundation is invitation and romance; clarifiers can deepen this interpretation.\n\nThe astrological correspondences in dialogue are Knight of Cups (Water · Cups). These may suggest qualities in yourself, a situation, or another person's influence; they do not establish someone's zodiac sign.\n\nFROM CARD TO CARD\n\nThe reading begins with The High Priestess in Past · 18–24 Months and moves toward Knight of Cups in Outcome · Next 18–24 Months.\n\nPresent Time · Two of Wands, reversed. Following The High Priestess, Two of Wands may draw your attention toward fear of expansion.\n\nNear Future · 3 Months · Ace of Swords. Following Two of Wands, Ace of Swords may draw your attention toward clarity.\n\nYou / Answer · Two of Pentacles. Following Ace of Swords, Two of Pentacles may draw your attention toward adaptability.\n\nSurrounding Energies · Nine of Pentacles, reversed. Following Two of Pentacles, Nine of Pentacles may draw your attention toward dependence.\n\nHopes, Fears & Attitude · Five of Pentacles. Following Nine of Pentacles, Five of Pentacles may draw your attention toward hardship.\n\nOutcome · Next 18–24 Months · Knight of Cups. Following Five of Pentacles, Knight of Cups may draw your attention toward invitation.\n\nThe card-to-card movement is the heart of this reading: The High Priestess opens the question, and Knight of Cups shows where that pattern may be heading if the present choices continue.\n\nKeep the part that speaks to your lived situation, and use the cards as a prompt for reflection and choice.\n\nTHE OVERALL INVITATION\n\nAcross these cards, intuition, sacred mystery, stillness, craft form the central pattern. Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction.\n\nNumbers through your reading\n\nThe High Priestess (2) · Three of Pentacles (3) · Two of Wands (2) · Ace of Swords (1) · Two of Pentacles (2) · Nine of Pentacles (9) · Five of Pentacles (5) · Knight of Cups (Knight). Their numbered cards sum to 24, reducing to 6. No opening dice were rolled for this reading.\n\nRepeated tarot numbers: 2. Notice whether the cards express a shared theme through different suits.\n\nThese numbers are symbolic prompts, not guarantees. Notice whether any patterns resonate with numbers personally meaningful to you.\n\nTake what resonates, and leave the rest.",
+    "script": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Seven-card V Reading."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Past · 18–24 Months: The High Priestess."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Looking across the previous 18 to 24 months, patient listening to intuition while allowing missing information to emerge may show an experience or influence that helped shape the present situation."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "The High Priestess asks for receptivity rather than force."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Present Time: Two of Wands, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "In the period immediately surrounding today, fear of expansion, indecision, small horizons may describe what is active for you now."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Near Future · 3 Months: Ace of Swords."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Over approximately the next three months, clarity, truth, decision may show what develops if the present course continues; it is a direction, not a fixed prediction."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A clear distinction or honest conversation can cut through confusion."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "You / Answer: Two of Pentacles."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "In a general reading, adaptability, balance, priorities may describe where you stand now."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Several demands may need an adaptable rhythm."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Surrounding Energies: Nine of Pentacles, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "In your surroundings, dependence, overwork, uneasy success may be expressed through people, home, work or other circumstances influencing the situation now."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Success may feel insecure, isolating or too costly to maintain."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Hopes, Fears & Attitude: Five of Pentacles."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Hardship, exclusion, need for support may colour your hopes, fears and attitude toward the situation or question."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A period of practical or emotional hardship may be making you feel outside the circle of support."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Outcome · Next 18–24 Months: Knight of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Across approximately the next 18 to 24 months, invitation, romance, creative pursuit may describe the likely outcome if present circumstances continue, while leaving room for choice and change."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Follow a meaningful feeling with a clear and considerate gesture."
+     },
+     {
+      "chapter": "c1",
+      "kind": "frame",
+      "text": "Now, your first clarifiers, card by card."
+     },
+     {
+      "chapter": "c1",
+      "kind": "label",
+      "text": "Clarifier 1 · Past · 18–24 Months: Three of Pentacles."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "A shared task benefits from distinct skills and practical feedback."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Three of Pentacles supports The High Priestess."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In Past · 18–24 Months, the theme of craft and collaboration can help intuition and sacred mystery find a constructive outlet."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Together, The High Priestess and Three of Pentacles give Past · 18–24 Months a consistent message: intuition and craft."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Consider working with this theme with some confidence, while staying open to how it unfolds."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In the wider Seven-card V Reading spread, Past · 18–24 Months opens the reading; its neighbour is Present Time, Two of Wands (reversed), which challenges The High Priestess (Water and Fire are contrary elements)."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "That's your reading so far."
+     },
+     {
+      "chapter": "invite",
+      "kind": "frame",
+      "text": "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+     }
+    ],
+    "scriptFinished": [
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions."
+     },
+     {
+      "chapter": "intro",
+      "kind": "label",
+      "text": "Tonight: your Seven-card V Reading."
+     },
+     {
+      "chapter": "intro",
+      "kind": "frame",
+      "text": "I'll keep it short. The full reading stays below."
+     },
+     {
+      "chapter": "cards",
+      "kind": "frame",
+      "text": "Let's go through your cards, one position at a time."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Past · 18–24 Months: The High Priestess."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Looking across the previous 18 to 24 months, patient listening to intuition while allowing missing information to emerge may show an experience or influence that helped shape the present situation."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "The High Priestess asks for receptivity rather than force."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Present Time: Two of Wands, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "In the period immediately surrounding today, fear of expansion, indecision, small horizons may describe what is active for you now."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Near Future · 3 Months: Ace of Swords."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Over approximately the next three months, clarity, truth, decision may show what develops if the present course continues; it is a direction, not a fixed prediction."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A clear distinction or honest conversation can cut through confusion."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "You / Answer: Two of Pentacles."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "In a general reading, adaptability, balance, priorities may describe where you stand now."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Several demands may need an adaptable rhythm."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Surrounding Energies: Nine of Pentacles, reversed."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "In your surroundings, dependence, overwork, uneasy success may be expressed through people, home, work or other circumstances influencing the situation now."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Success may feel insecure, isolating or too costly to maintain."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Hopes, Fears & Attitude: Five of Pentacles."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Hardship, exclusion, need for support may colour your hopes, fears and attitude toward the situation or question."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "A period of practical or emotional hardship may be making you feel outside the circle of support."
+     },
+     {
+      "chapter": "cards",
+      "kind": "label",
+      "text": "Outcome · Next 18–24 Months: Knight of Cups."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Across approximately the next 18 to 24 months, invitation, romance, creative pursuit may describe the likely outcome if present circumstances continue, while leaving room for choice and change."
+     },
+     {
+      "chapter": "cards",
+      "kind": "quote",
+      "text": "Follow a meaningful feeling with a clear and considerate gesture."
+     },
+     {
+      "chapter": "c1",
+      "kind": "frame",
+      "text": "Now, your first clarifiers, card by card."
+     },
+     {
+      "chapter": "c1",
+      "kind": "label",
+      "text": "Clarifier 1 · Past · 18–24 Months: Three of Pentacles."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "A shared task benefits from distinct skills and practical feedback."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Three of Pentacles supports The High Priestess."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In Past · 18–24 Months, the theme of craft and collaboration can help intuition and sacred mystery find a constructive outlet."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Together, The High Priestess and Three of Pentacles give Past · 18–24 Months a consistent message: intuition and craft."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "Consider working with this theme with some confidence, while staying open to how it unfolds."
+     },
+     {
+      "chapter": "c1",
+      "kind": "quote",
+      "text": "In the wider Seven-card V Reading spread, Past · 18–24 Months opens the reading; its neighbour is Present Time, Two of Wands (reversed), which challenges The High Priestess (Water and Fire are contrary elements)."
+     },
+     {
+      "chapter": "final",
+      "kind": "frame",
+      "text": "Here is your whole spread, brought together."
+     },
+     {
+      "chapter": "final",
+      "kind": "quote",
+      "text": "Across these cards, intuition, sacred mystery, stillness, craft form the central pattern."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "Before I go, one question to carry with you."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Which part speaks to your present circumstances, and what choice might help you respond? This is a perspective, not a fixed prediction."
+     },
+     {
+      "chapter": "close",
+      "kind": "quote",
+      "text": "Take what resonates, and leave the rest."
+     },
+     {
+      "chapter": "close",
+      "kind": "frame",
+      "text": "That's the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off."
+     }
+    ],
+    "transcript": [
+     "Good evening. Max Chasroom here, a deliberately synthetic presenter, assembled from pixels and good intentions.",
+     "Tonight: your Seven-card V Reading.",
+     "I'll keep it short. The full reading stays below.",
+     "Let's go through your cards, one position at a time.",
+     "Past · 18–24 Months: The High Priestess.",
+     "Looking across the previous 18 to 24 months, patient listening to intuition while allowing missing information to emerge may show an experience or influence that helped shape the present situation.",
+     "The High Priestess asks for receptivity rather than force.",
+     "Present Time: Two of Wands, reversed.",
+     "In the period immediately surrounding today, fear of expansion, indecision, small horizons may describe what is active for you now.",
+     "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty.",
+     "Near Future · 3 Months: Ace of Swords.",
+     "Over approximately the next three months, clarity, truth, decision may show what develops if the present course continues; it is a direction, not a fixed prediction.",
+     "A clear distinction or honest conversation can cut through confusion.",
+     "You / Answer: Two of Pentacles.",
+     "In a general reading, adaptability, balance, priorities may describe where you stand now.",
+     "Several demands may need an adaptable rhythm.",
+     "Surrounding Energies: Nine of Pentacles, reversed.",
+     "In your surroundings, dependence, overwork, uneasy success may be expressed through people, home, work or other circumstances influencing the situation now.",
+     "Success may feel insecure, isolating or too costly to maintain.",
+     "Hopes, Fears & Attitude: Five of Pentacles.",
+     "Hardship, exclusion, need for support may colour your hopes, fears and attitude toward the situation or question.",
+     "A period of practical or emotional hardship may be making you feel outside the circle of support.",
+     "Outcome · Next 18–24 Months: Knight of Cups.",
+     "Across approximately the next 18 to 24 months, invitation, romance, creative pursuit may describe the likely outcome if present circumstances continue, while leaving room for choice and change.",
+     "Follow a meaningful feeling with a clear and considerate gesture.",
+     "Now, your first clarifiers, card by card.",
+     "Clarifier 1 · Past · 18–24 Months: Three of Pentacles.",
+     "A shared task benefits from distinct skills and practical feedback.",
+     "Three of Pentacles supports The High Priestess.",
+     "In Past · 18–24 Months, the theme of craft and collaboration can help intuition and sacred mystery find a constructive outlet.",
+     "Together, The High Priestess and Three of Pentacles give Past · 18–24 Months a consistent message: intuition and craft.",
+     "Consider working with this theme with some confidence, while staying open to how it unfolds.",
+     "In the wider Seven-card V Reading spread, Past · 18–24 Months opens the reading; its neighbour is Present Time, Two of Wands (reversed), which challenges The High Priestess (Water and Fire are contrary elements).",
+     "That's your reading so far.",
+     "If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading."
+    ]
+   },
+   "cardData": [
+    {
+     "id": 2,
+     "name": "The High Priestess",
+     "arcana": "Major",
+     "suit": null,
+     "number": 2,
+     "rank": null,
+     "element": "Water",
+     "astrology": "The Moon",
+     "uprightKeywords": [
+      "Intuition",
+      "Sacred Mystery",
+      "Stillness"
+     ],
+     "reversedKeywords": [
+      "Disconnection",
+      "Hidden Motives",
+      "Inner Noise"
+     ],
+     "upright": "The High Priestess asks for receptivity rather than force. Upright, she points to intuition, silence, pattern recognition and information that becomes visible only when the mind stops trying to dominate the answer. In a reading, this may suggest that not everything needs to be decided immediately. In a Past position it can point to something sensed before it was understood; in the Present, an invitation to listen beneath the noise; in the Future, information or understanding that may unfold gradually rather than arrive all at once.",
+     "reversed": "Reversed, the inner signal may be obscured by anxiety, projection or secrecy. It can also suggest that something known inwardly is being ignored because it is inconvenient to the conscious story. Rather than assuming deception, look to the position and surrounding cards for whether the issue is external uncertainty or difficulty trusting your own perception."
+    },
+    {
+     "id": 23,
+     "name": "Two of Wands",
+     "arcana": "Minor",
+     "suit": "Wands",
+     "number": 2,
+     "rank": "Two",
+     "element": "Fire",
+     "astrology": "Fire · Wands",
+     "uprightKeywords": [
+      "Planning",
+      "Possibility",
+      "Perspective"
+     ],
+     "reversedKeywords": [
+      "Fear of Expansion",
+      "Indecision",
+      "Small Horizons"
+     ],
+     "upright": "You have an initial foothold and can now consider a wider horizon. Compare the real demands of possible paths and make a plan that allows ambition to meet your circumstances.",
+     "reversed": "You may be holding possibilities without choosing, or shrinking a wish to avoid uncertainty. Name the risk you can accept and the information you still need."
+    },
+    {
+     "id": 50,
+     "name": "Ace of Swords",
+     "arcana": "Minor",
+     "suit": "Swords",
+     "number": 1,
+     "rank": "Ace",
+     "element": "Air",
+     "astrology": "Air · Swords",
+     "uprightKeywords": [
+      "Clarity",
+      "Truth",
+      "Decision"
+     ],
+     "reversedKeywords": [
+      "Confusion",
+      "Harshness",
+      "Unclear Thinking"
+     ],
+     "upright": "A clear distinction or honest conversation can cut through confusion. Check your evidence, name the central issue and use the insight constructively rather than turning being right into the only goal.",
+     "reversed": "An idea may be incomplete or language may be sharper than the situation requires. Revisit the facts and clarify your intention before delivering a judgement."
+    },
+    {
+     "id": 65,
+     "name": "Two of Pentacles",
+     "arcana": "Minor",
+     "suit": "Pentacles",
+     "number": 2,
+     "rank": "Two",
+     "element": "Earth",
+     "astrology": "Earth · Pentacles",
+     "uprightKeywords": [
+      "Adaptability",
+      "Balance",
+      "Priorities"
+     ],
+     "reversedKeywords": [
+      "Overcommitment",
+      "Disorganisation",
+      "Strain"
+     ],
+     "upright": "Several demands may need an adaptable rhythm. Keep the essentials visible and revise your priorities as circumstances change; balance can involve movement rather than holding everything perfectly still.",
+     "reversed": "Too many demands may be exceeding your capacity. Simplify commitments and choose what can wait rather than relying on constant adjustment to make an impossible load sustainable."
+    },
+    {
+     "id": 72,
+     "name": "Nine of Pentacles",
+     "arcana": "Minor",
+     "suit": "Pentacles",
+     "number": 9,
+     "rank": "Nine",
+     "element": "Earth",
+     "astrology": "Earth · Pentacles",
+     "uprightKeywords": [
+      "Independence",
+      "Enjoyment",
+      "Self-Respect"
+     ],
+     "reversedKeywords": [
+      "Dependence",
+      "Overwork",
+      "Uneasy Success"
+     ],
+     "upright": "Recognise the independence or comfort that patient work has made possible. Enjoy it deliberately and maintain the boundaries and relationships that help your life feel chosen rather than merely productive.",
+     "reversed": "Success may feel insecure, isolating or too costly to maintain. Reassess the standard you are trying to sustain and the support you need to enjoy what you have built."
+    },
+    {
+     "id": 68,
+     "name": "Five of Pentacles",
+     "arcana": "Minor",
+     "suit": "Pentacles",
+     "number": 5,
+     "rank": "Five",
+     "element": "Earth",
+     "astrology": "Earth · Pentacles",
+     "uprightKeywords": [
+      "Hardship",
+      "Exclusion",
+      "Need for Support"
+     ],
+     "reversedKeywords": [
+      "Help",
+      "Recovery",
+      "Lingering Scarcity"
+     ],
+     "upright": "A period of practical or emotional hardship may be making you feel outside the circle of support. Name the need and investigate available help rather than assuming you must manage it unseen.",
+     "reversed": "Support or recovery may be becoming available, though a sense of exclusion can persist. Accept a specific offer and let renewed stability develop gradually."
+    },
+    {
+     "id": 47,
+     "name": "Knight of Cups",
+     "arcana": "Minor",
+     "suit": "Cups",
+     "number": null,
+     "rank": "Knight",
+     "element": "Water",
+     "astrology": "Water · Cups",
+     "uprightKeywords": [
+      "Invitation",
+      "Romance",
+      "Creative Pursuit"
+     ],
+     "reversedKeywords": [
+      "Idealisation",
+      "Moodiness",
+      "Unkept Promise"
+     ],
+     "upright": "Follow a meaningful feeling with a clear and considerate gesture. An invitation, proposal or creative pursuit becomes trustworthy when its emotional promise is matched by realistic action.",
+     "reversed": "An appealing image may be outrunning commitment. Check whether words and actions agree, and let disappointment inform your judgement without closing your capacity for feeling."
+    },
+    {
+     "id": 66,
+     "name": "Three of Pentacles",
+     "arcana": "Minor",
+     "suit": "Pentacles",
+     "number": 3,
+     "rank": "Three",
+     "element": "Earth",
+     "astrology": "Earth · Pentacles",
+     "uprightKeywords": [
+      "Craft",
+      "Collaboration",
+      "Learning"
+     ],
+     "reversedKeywords": [
+      "Poor Coordination",
+      "Undervalued Work",
+      "Skill Gaps"
+     ],
+     "upright": "A shared task benefits from distinct skills and practical feedback. Clarify roles, respect the knowledge each person brings and let the quality of the work grow through cooperation.",
+     "reversed": "The work may be suffering from unclear roles or dismissed expertise. Agree on a common standard and address a specific skill or communication gap before assigning blame."
+    }
+   ]
+  }
+ ]
+}
