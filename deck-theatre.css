@@ -33,3 +33,18 @@
   40%{filter:drop-shadow(0 0 14px rgba(232,196,120,.55)) drop-shadow(0 12px 20px rgba(0,0,0,.35))}
   100%{filter:drop-shadow(0 0 0 rgba(232,196,120,0)) drop-shadow(0 12px 20px rgba(0,0,0,.35))}}
 @media (prefers-reduced-motion:reduce){.stage-board.dt-ready .stage-position.dt-dealt .stage-card{animation:none}}
+/* Shuffle and Draw either side of the deck at the top of the table (Chas, laptop UAT, 9 Nov). The button to
+   press next is gold and glows: Shuffle first, then Draw Cards once the deck is shuffled. */
+.dt-row{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:clamp(10px,3vw,28px);width:100%;max-width:720px;margin:0 auto}
+.dt-row .dt-spot{width:calc(var(--dt-w,58px) + 40px);margin:-4px 0 2px}
+.dt-row>button{margin:0;min-height:48px;height:auto;padding:10px 14px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-weight:700;font-size:15px;line-height:1.2;white-space:normal;text-align:center;
+  background:#111113;color:#d9cdb4;border:1px solid rgba(201,169,106,.45);box-shadow:none;transition:background .25s,color .25s,box-shadow .25s,border-color .25s}
+.dt-row>#shuffleCardsBtn{justify-self:end;width:min(100%,190px)}
+.dt-row>#stageDrawBtn{justify-self:start;width:min(100%,190px)}
+.dt-row>button.dt-next{background:linear-gradient(#dfc48b,#bd9858);color:#15120d;border-color:rgba(255,226,160,.8);
+  box-shadow:0 0 0 2px rgba(223,196,139,.25),0 0 22px rgba(223,196,139,.45);animation:dt-next-glow 2.2s ease-in-out infinite}
+.dt-row>button:disabled{opacity:.6;animation:none}
+@keyframes dt-next-glow{0%,100%{box-shadow:0 0 0 2px rgba(223,196,139,.22),0 0 14px rgba(223,196,139,.3)}50%{box-shadow:0 0 0 3px rgba(223,196,139,.4),0 0 28px rgba(223,196,139,.6)}}
+@media (prefers-reduced-motion:reduce){.dt-row>button.dt-next{animation:none}}
+@media (max-width:600px){.dt-row{gap:8px}.dt-row>button{font-size:14px;padding:8px 10px;min-height:46px}.dt-row .dt-spot{width:calc(var(--dt-w,58px) + 24px)}}

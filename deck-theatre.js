@@ -63,7 +63,20 @@
     spot.className = 'dt-spot';
     spot.setAttribute('aria-hidden', 'true');
     var heading = table.querySelector('.stage-heading');
-    heading.parentNode.insertBefore(spot, heading.nextSibling);
+    // Shuffle and Draw sit either side of the deck at the top of the table (Chas, laptop UAT, 9 Nov): they
+    // were below the spread, off the foot of a laptop window. The buttons keep their ids and handlers.
+    var row = document.createElement('div');
+    row.className = 'dt-row';
+    heading.parentNode.insertBefore(row, heading.nextSibling);
+    row.appendChild(spot);
+    var sb = document.getElementById('shuffleCardsBtn'), db = document.getElementById('stageDrawBtn');
+    if (sb && db) {
+      var acts = sb.parentNode;
+      row.insertBefore(sb, spot);
+      row.appendChild(db);
+      if (acts && acts.classList.contains('stage-actions') && !acts.children.length) acts.remove();
+      table.classList.add('dt-has-row');
+    }
     board.classList.add('dt-ready');
     board.querySelectorAll(':scope > .stage-position').forEach(function (p) { p.classList.add('dt-await'); });
 
@@ -88,6 +101,7 @@
     var shuffleBtn = document.getElementById('shuffleCardsBtn'), dealBtn = document.getElementById('stageDrawBtn');
     if (dealBtn) dealBtn.onclick = deal;           // label stays "Draw Cards": separate Shuffle and Draw
     if (shuffleBtn) shuffleBtn.onclick = shuffle;
+    nextUp(state.shuffleCount > 0 ? 'draw' : 'shuffle');
     var status = document.getElementById('shuffleStatus');
     if (status) status.textContent = 'The full deck of 78 is on the table. Shuffle if it feels right, then draw when you are ready.';
     toRest(true);
@@ -224,9 +238,17 @@
     cancelAll();
   }
 
+  // The button to press next is highlighted: Shuffle first, then, once the deck is shuffled, Draw Cards.
+  // Drawing without shuffling stays allowed ("Shuffle if it feels right").
+  function nextUp(which) {
+    var sb = document.getElementById('shuffleCardsBtn'), db = document.getElementById('stageDrawBtn');
+    if (sb) sb.classList.toggle('dt-next', which === 'shuffle');
+    if (db) db.classList.toggle('dt-next', which === 'draw');
+  }
   async function shuffle() {
     if (busy || !theatre) return;
     try { await shuffleSeq(); } catch (e) { console.error('Deck theatre shuffle', e); if (theatre) { theatre.classList.remove('is-active', 'is-shuffling'); setBusy(false, 'Deck shuffled. Draw when you are ready.'); toRest(true); } }
+    if (theatre && state.shuffleCount > 0) nextUp('draw');
   }
   async function shuffleSeq() {
     var t = token;
