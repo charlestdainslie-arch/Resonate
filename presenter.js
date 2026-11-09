@@ -362,12 +362,18 @@
     const stripTo=(strip,card)=>{
       if(!strip||!card||strip.scrollWidth<=strip.clientWidth)return;
       const cards=[...strip.querySelectorAll(':scope > .mc-card')];
-      if(!cards.includes(card)){strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()});return;}
+      if(!cards.includes(card)){const r=card.getBoundingClientRect(),s=strip.getBoundingClientRect();strip.scrollTo({left:strip.scrollLeft+r.left-s.left-(strip.clientWidth-r.width)/2,behavior:motion()});return;}
       const pad=parseFloat(getComputedStyle(strip).scrollPaddingLeft)||parseFloat(getComputedStyle(strip).paddingLeft)||0;
-      const starts=cards.map(c=>Math.max(0,c.offsetLeft-pad));
-      const centred=card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2;
+      // Each card's place in the strip, measured from the strip itself: offsetLeft is measured from the nearest
+      // positioned box, which was not the strip once Max redrew it after a clarifier, so card 01 was taken to be
+      // about 500px along and the strip scrolled to cards 04-07 while Max talked about card 01 (9 Nov UAT, laptop).
+      const s0=strip.getBoundingClientRect().left-strip.scrollLeft;
+      const at=c=>c.getBoundingClientRect().left-s0;
+      const starts=cards.map(c=>Math.max(0,at(c)-pad));
+      const x=at(card),cw=card.getBoundingClientRect().width;
+      const centred=x-(strip.clientWidth-cw)/2;
       let left=0;for(const s of starts)if(s<=centred)left=s;
-      if(card.offsetLeft+card.offsetWidth+pad>left+strip.clientWidth)left=Math.max(0,card.offsetLeft-pad);
+      if(x+cw+pad>left+strip.clientWidth)left=Math.max(0,x-pad);
       strip.scrollTo({left:Math.min(left,strip.scrollWidth-strip.clientWidth),behavior:motion()});
     };
     function show(i){

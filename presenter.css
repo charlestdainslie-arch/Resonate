@@ -255,3 +255,6 @@ body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 8
   .mc-caption { min-height: 4.6em; padding: 10px 14px; }
   .mc-caption p { font-size: 17px; }
 }
+/* The strip is the box its cards are placed in, also after Max redraws it when a card is clarified (it had this
+   only while the Golden Thread had marked it, 9 Nov). */
+.mc-cards { position: relative; }
