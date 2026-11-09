@@ -125,7 +125,9 @@
       frame('c3',one?'k':'ks');
       order.map(i=>[clarity[i],i]).forEach(([c,i])=>{
         if(!c)return;
-        const r=isReversed(c)?'-r':'',show=['p'+i,`c${i}-1`,`c${i}-2`];
+        // The Clarity card itself is shown too ("k"+i), so it is lit and followed like a clarifier (9 Nov UAT:
+        // it was left out, so Max talked about it while Clarifier 2 was lit and in view).
+        const r=isReversed(c)?'-r':'',show=['p'+i,`c${i}-1`,`c${i}-2`,'k'+i];
         add('c3','label',one?`Clarity card: ${cardName(c)}.`:`Clarity card · ${labels[i]}: ${cardName(c)}.`,show,[{id:'label-clarity',text:`Clarity card${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
         const block=blocks[i].querySelector('.integrated-clarity');
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
@@ -388,15 +390,15 @@
       $('mcBar').style.width=`${(i+1)/script.length*100}%`;
       let focus=null;
       root.querySelectorAll('[data-slot]').forEach(el=>{const on=part.show.includes(el.dataset.slot);el.classList.toggle('is-active',on);el.classList.toggle('is-dim',part.show.length>0&&!on);if(on&&!focus)focus=el;});
-      // Keep the card being discussed in view on a wide spread, sideways only.
+      // Keep the card being discussed in view on a wide spread, sideways: whenever everything a line shows is
+      // one card and its pile. (It used to follow only lines showing at most two things, so the second
+      // clarifier and the Clarity card, which show three or four, were not followed: 9 Nov UAT, laptop.)
       const strip=root.querySelector('.mc-cards');
-      if(focus&&strip&&strip.scrollWidth>strip.clientWidth&&part.show.length<=2){
-        stripTo(strip,focus.closest('.mc-card')||focus);
-      }
-      // Up and down too: when Max talks about a clarifier low in a pile, bring it into view; when he moves on
-      // to a card, bring its top back (9 Nov UAT, laptop: a Clarity card at the foot of a pile was out of view).
       const on=[...root.querySelectorAll('[data-slot]')].filter(el=>part.show.includes(el.dataset.slot));
       const card=on.length&&new Set(on.map(el=>el.closest('.mc-card'))).size===1?on[0].closest('.mc-card'):null;
+      if(card&&strip&&strip.scrollWidth>strip.clientWidth)stripTo(strip,card);
+      // Up and down too: when Max talks about a clarifier low in a pile, bring it into view; when he moves on
+      // to a card, bring its top back (9 Nov UAT, laptop: a Clarity card at the foot of a pile was out of view).
       const low=card?(on.filter(el=>el.classList.contains('mc-clar')).pop()||card.querySelector('.mc-main')):null;
       if(low)setTimeout(()=>keepInView(low.querySelector('img')||low),280);
     }
