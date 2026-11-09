@@ -1,0 +1,24 @@
+/* RESONATE · One-card reading laid out like every other spread (Chas, laptop UAT, 9 Nov 2026).
+   The full reading for a One-card Guidance had its clarifiers flanking the original card (Clarifier 1 left,
+   Clarifier 2 right, on the card's row; reading-welcome.css, spread-parity.css). Every other spread shows the
+   original card with its clarifiers below it, side by side, and the Clarity card centred under them. This file
+   gives the One-card reading that same layout. Loaded last, so it overrides the flanking rules; selectors
+   repeat a class where they must outrank them. */
+.draw-page .spread-board.spread-1 .reading-position.reading-position{
+  grid-template-columns:minmax(0,1fr);justify-items:center;row-gap:10px;
+}
+.draw-page .spread-board.spread-1 .reading-position .slot-label.slot-label{grid-column:1;grid-row:auto}
+.draw-page .spread-board.spread-1 .reading-position .reading-card.reading-card{grid-column:1;grid-row:auto;width:min(100%,190px)}
+/* The original's "ORIGINAL CARD" label and name sit under the card (uat-fixes.css): the clarifier row starts
+   below them. */
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers.position-clarifiers{
+  display:flex;flex-direction:row;justify-content:center;align-items:flex-start;gap:8px;
+  grid-column:1;grid-row:auto;width:min(100%,210px);margin:58px auto 0;position:static;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers .position-clarifier.position-clarifier,
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers .position-clarifier-slot.position-clarifier-slot{
+  flex:1 1 0;width:0;min-width:0;max-width:110px;grid-column:auto;grid-row:auto;
+}
+.draw-page .spread-board.spread-1 .reading-position .position-clarity.position-clarity,
+.draw-page .spread-board.spread-1 .reading-position .clarity-due.clarity-due{grid-column:1;grid-row:auto}
+.draw-page .spread-board.spread-1 .reading-position .clarify-choice.clarify-choice{grid-column:1;grid-row:auto}
