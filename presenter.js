@@ -435,10 +435,19 @@
     }
     function finish(){
       playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';root.classList.add('is-finished');
-      // A card just clarified as far as the rule allows: let go of it, so the bar moves on to the next card due.
-      if(picked!=null&&!clarifyStepFor(picked))picked=null;
-      $('mcCaption').innerHTML=readingFinished()?'<p>Your reading is complete. Every word is waiting below, and in your PDF.</p>':'<p>Choose a card below and tap Clarify, or tap Finish reading when you are done.</p>';
+      // Let go of the card just clarified, so the bar moves on to the next card in the walk (layer by layer).
+      picked=null;
+      $('mcCaption').innerHTML=readingFinished()?'<p>Your reading is complete. Every word is waiting below, and in your PDF.</p>':`<p>${escapeHtml(walkPrompt())}</p>`;
       updateBar();
+    }
+    // What the caption says between narrations: which layer of clarifiers we are in and which card is next,
+    // so it agrees with the bar below it (9 Nov UAT, laptop).
+    function walkPrompt(){
+      const next=nextInWalk();
+      if(!next)return 'Every card has had its turn. You can still choose a card below to clarify it, or tap Finish reading when you are done.';
+      const n=String(next.k+1).padStart(2,'0'),label=positionLabels()[next.k]||'';
+      const back=next.step!=='first'&&walkOrder()[0]===next.k?', back to the first card':'';
+      return `${LAYER_NAME[next.step]}${back}: card ${n}${label?' · '+label:''} is next. Tap Clarify, Next card → to pass it, or Finish reading when you are done.`;
     }
     function setPlaying(on){
       playing=on;root.classList.toggle('is-playing',on);root.classList.remove('is-finished');
@@ -477,10 +486,24 @@
       // After the reading, clarifying goes through the cards in order, 01, 02, 03… (Chas, laptop UAT, 9 Nov:
       // it used to jump to the first card due, so card 03 came before cards 01 and 02). Each card that can still
       // be clarified gets its turn, due or optional; Next card → passes over one.
-      const next=walkOrder().find(k=>!skipped.has(k)&&clarifyStepFor(k));
-      return next!=null?next:0;
+      // Layer by layer (Chas, laptop UAT, 9 Nov): every card's first clarifier, card by card; only then back
+      // to card 01 for the second clarifiers; then the Clarity cards. A card whose first clarifier is a Major
+      // waits for the second layer, rather than taking its second clarifier straight away.
+      const next=nextInWalk();
+      return next?next.k:0;
     };
     const walkOrder=()=>typeof readingOrder==='function'?readingOrder():state.drawnCardIds.map((_,k)=>k);
+    const LAYERS=['first','second','clarity'];
+    // The next card to offer: the first card, in reading order, of the earliest layer that still has one.
+    // skipped holds "layer:card" for cards passed over with Next card → in that layer.
+    function nextInWalk(except){
+      for(const step of LAYERS){
+        const k=walkOrder().find(k=>k!==except&&!skipped.has(step+':'+k)&&clarifyStepFor(k)===step);
+        if(k!=null)return {k,step};
+      }
+      return null;
+    }
+    const LAYER_NAME={first:'First clarifiers',second:'Second clarifiers',clarity:'Clarity cards'};
     function updateBar(){
       const bar=$('mcClarifyBar');if(!bar)return;
       const i=pickedIndex(),step=clarifyStepFor(i),labels=positionLabels();
@@ -492,10 +515,13 @@
       go.disabled=!step;go.dataset.step=step||'done';
       // Next card → once the reading has been heard, while another card can still be clarified after this one.
       const nx=$('mcNext');
-      if(nx)nx.hidden=!(heardCards&&walkOrder().some(k=>k!==i&&!skipped.has(k)&&clarifyStepFor(k)));
+      if(nx)nx.hidden=!(heardCards&&nextInWalk(i));
       go.textContent=step==='first'?'✦ Clarify this card':step==='second'?'✦ Add second clarifier':step==='clarity'?'✦ Draw Clarity card':'Card complete ✓';
       const spot=clarifierPlan().positions[i];
-      $('mcPickNote').textContent=where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?' — its first clarifier is a Major, so a second is due.':step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
+      // The note starts with the layer, so it agrees with the caption and the button (Add second clarifier only
+      // in the second layer).
+      const walkNext=heardCards?nextInWalk():null;
+      $('mcPickNote').textContent=(walkNext&&walkNext.k===i&&step?LAYER_NAME[step].replace(/s$/,'')+' · ':'')+where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?' — its first clarifier is a Major, so a second is due.':step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
       root.querySelectorAll('.mc-card').forEach((el,k)=>el.classList.toggle('is-picked',k===i));
       const strip=root.querySelector('.mc-cards'),card=root.querySelectorAll('.mc-card')[i];
       // Only follow a card once Max is speaking or the seeker has picked one: on opening, the strip starts at
@@ -508,7 +534,8 @@
       if(pick){picked=Number(pick.dataset.pick);updateBar();const card=root.querySelectorAll('.mc-card')[picked];const strip=root.querySelector('.mc-cards');stripTo(strip,card);}
     });
     $('mcNext')?.addEventListener('click',()=>{
-      skipped.add(pickedIndex());picked=null;updateBar();
+      const i=pickedIndex();skipped.add(clarifyStepFor(i)+':'+i);picked=null;updateBar();
+      if(root.classList.contains('is-finished'))$('mcCaption').innerHTML=`<p>${escapeHtml(walkPrompt())}</p>`;
     });
     $('mcClarifyGo')?.addEventListener('click',()=>{
       const i=pickedIndex(),step=clarifyStepFor(i);
