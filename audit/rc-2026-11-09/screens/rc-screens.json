@@ -1,0 +1,185 @@
+{
+ "appCommit": "282cd1457ec94e8436f81b3867799f45dfcad110",
+ "cases": [
+  {
+   "spread": "one-card",
+   "sample": "B01",
+   "width": 360,
+   "height": 780,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 2,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Draw Clarity card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "one-card",
+   "sample": "B01",
+   "width": 412,
+   "height": 915,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 2,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Draw Clarity card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "three-card",
+   "sample": "TC-04",
+   "width": 360,
+   "height": 780,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 2,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Clarify this card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "three-card",
+   "sample": "TC-04",
+   "width": 412,
+   "height": 915,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 2,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Clarify this card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "relationship",
+   "sample": "RC-02",
+   "width": 360,
+   "height": 780,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 1,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Clarify this card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "relationship",
+   "sample": "RC-02",
+   "width": 412,
+   "height": 915,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 1,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Clarify this card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "seven-card",
+   "sample": "SC-01A",
+   "width": 360,
+   "height": 780,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 1,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "Card complete ✓",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "seven-card",
+   "sample": "SC-01A",
+   "width": 412,
+   "height": 915,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 1,
+   "clarifierCards": 1,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "Card complete ✓",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "celtic-cross",
+   "sample": "B06",
+   "width": 360,
+   "height": 780,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 10,
+   "clarifierCards": 18,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Draw Clarity card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  },
+  {
+   "spread": "celtic-cross",
+   "sample": "B06",
+   "width": 412,
+   "height": 915,
+   "horizontalScroll": false,
+   "cardsOutsideWidth": 0,
+   "clarifierSlotsWithCards": 10,
+   "clarifierCards": 18,
+   "max": {
+    "clarifyVisible": true,
+    "finishVisible": true,
+    "playVisible": true,
+    "clarifyLabel": "✦ Draw Clarity card",
+    "horizontalScroll": false
+   },
+   "errors": []
+  }
+ ]
+}
