@@ -507,8 +507,9 @@ function firstLayerClarifierView(labels){
 // No argument: every position waiting for a second clarifier. With an index: that position only.
 function drawNextClarifierLayer(position){
   if(state.clarifierReadingAt!==state.drawnAt || !state.firstLayerClarifiers?.length)return;
-  const pending=clarifierPlan().pendingSecond;
-  const targets=Number.isInteger(position)?pending.filter(i=>i===position):pending;
+  const plan=clarifierPlan(),pending=plan.pendingSecond;
+  // One card: a second that is due, or chosen after a Minor first clarifier. The whole spread: only those due.
+  const targets=Number.isInteger(position)?[...pending,...plan.optionalSecond].filter(i=>i===position):pending;
   if(!targets.length)return;
   if(state.additionalClarifierReadingAt!==state.drawnAt||!(state.additionalClarifierLayers||[]).some(l=>l.number===2)){
     state.additionalClarifierLayers=[{number:2,cards:state.drawnCardIds.map(()=>null)}];
@@ -534,7 +535,7 @@ function clarifyStepFor(index){
   const spot=clarifierPlan().positions[index];
   if(!spot)return '';
   if(spot.first==null)return 'first';
-  if(spot.needsSecond)return 'second';
+  if(spot.needsSecond||spot.mayChooseSecond)return 'second';
   if(spot.needsClarity)return 'clarity';
   return '';
 }
@@ -592,7 +593,7 @@ function clarifierCardsForPosition(index){
     const card=cards.find(c=>c.id===layer.id);
     const turning=turn&&layer.number===2;
     return card?`<div class="position-clarifier${turning?' clarifier-turn':''}${isReversed(card)?' is-reversed':''}"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${cardName(card)}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer">${turning?'<span class="clarifier-back clarifier-back-cover" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span>':''}<strong>${card.roman||card.id} · ${cardName(card)}</strong></div>`:'';
-  }).join('')}${waiting}</div>${waiting?`<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}" aria-label="Draw Clarifier 2 for card ${index+1}">✦ Draw Clarifier 2</button>`:''}${clarityCardForPosition(index,spot)}`;
+  }).join('')}${waiting}</div>${waiting?`<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}" aria-label="Draw Clarifier 2 for card ${index+1}">✦ Draw Clarifier 2</button>`:''}${!waiting&&layers.length===1&&spot&&spot.mayChooseSecond?`<button type="button" class="ghost-button clarify-choice" data-clarify-position="${index}" aria-label="Add a second clarifier to card ${index+1} (optional)">+ Add second clarifier</button>`:''}${clarityCardForPosition(index,spot)}`;
 }
 // Option B: the Clarity card sits centred below Clarifiers 1 and 2. Not a clarifier, so it has its own class
 // and is never counted with them.

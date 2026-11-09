@@ -1,7 +1,9 @@
 /* RESONATE · clarifier rules (Chas's teaching rule, approved in Issue #13, 25 Oct 2026).
    - A Major Arcana card in the spread receives a first clarifier.
-   - A second clarifier is drawn only when the first clarifier is itself a Major Arcana card.
-   - Any other card may be clarified by the seeker's own choice (one tap), under the same rule for a second.
+   - A second clarifier is due when the first clarifier is itself a Major Arcana card.
+   - Any other card may be clarified by the seeker's own choice (one tap). Likewise, when the first clarifier is
+     a Minor, the seeker may choose a second (Chas, laptop UAT, 9 Nov 2026: the second layer offers every card,
+     as the first does; due after a Major, the seeker's choice after a Minor).
    - Never more than two clarifiers for a position, and no card appears twice in one reading.
    - Clarity card (Option B, approved by Chas on 7 Nov 2026): when the original card, Clarifier 1 and Clarifier 2
      are all Major Arcana, the seeker may draw one Clarity card, at random from the unused Minor Arcana. It is not
@@ -34,8 +36,10 @@
         needsFirst: c1 == null && isMajor(base),
         // Seeker's choice: any other card may be clarified once.
         mayChooseFirst: c1 == null && !isMajor(base),
-        // Rule 2: a second only when the first clarifier is a Major.
+        // Rule 2: a second is due when the first clarifier is a Major.
         needsSecond: c1 != null && c2 == null && isMajor(c1Card),
+        // Seeker's choice: after a Minor first clarifier, a second may be chosen (9 Nov 2026).
+        mayChooseSecond: c1 != null && c2 == null && !isMajor(c1Card),
         clarity: cl,
         // Option B: original, Clarifier 1 and Clarifier 2 all Major, and no Clarity card yet.
         needsClarity: allMajor && cl == null,
@@ -47,7 +51,8 @@
       pendingFirst: positions.filter(p => p.needsFirst).map(p => p.index),
       pendingSecond: positions.filter(p => p.needsSecond).map(p => p.index),
       pendingClarity: positions.filter(p => p.needsClarity).map(p => p.index),
-      optional: positions.filter(p => p.mayChooseFirst).map(p => p.index)
+      optional: positions.filter(p => p.mayChooseFirst).map(p => p.index),
+      optionalSecond: positions.filter(p => p.mayChooseSecond).map(p => p.index)
     };
   }
 
@@ -60,7 +65,6 @@
       const c1 = first[i] == null ? null : first[i];
       const c2 = second[i] == null ? null : second[i];
       if (c2 != null && c1 == null) problems.push(`position ${i + 1}: second clarifier without a first`);
-      if (c2 != null && !isMajor(byId(c1))) problems.push(`position ${i + 1}: second clarifier after a non-Major first clarifier`);
       const cl = clarity[i] == null ? null : clarity[i];
       if (cl != null && !(isMajor(base) && isMajor(byId(c1)) && c2 != null && isMajor(byId(c2)))) problems.push(`position ${i + 1}: Clarity card without three Major Arcana cards`);
       if (cl != null && isMajor(byId(cl))) problems.push(`position ${i + 1}: Clarity card must be a Minor Arcana card`);

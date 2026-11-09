@@ -86,7 +86,7 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
       assert.match(s.button, /^Draw First Clarifier for 03 · /);
       s = await press(p);
       assert.deepEqual([s.first, s.second], [[2, null, m3], [m2, null, null]]);
-      assert.equal(s.button, null, 'a Minor Clarifier 1 earns no second; the Journal save takes over');
+      assert.equal(s.button, null, 'a Minor Clarifier 1: no second is due (one may be chosen); the Journal save takes over');
       assert.deepEqual(s.valid, []);
       assert.deepEqual(p.__errors, []);
       await ctx.close();
@@ -146,7 +146,7 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
     await p.locator('[data-clarify-position="2"]').click(); await p.waitForTimeout(200);
     const t = await snapshot(p);
     assert.deepEqual(t.first, [null, null, m4]);
-    assert.deepEqual(t.waiting, [0, 0, 0], 'a Minor clarifier earns no second');
+    assert.deepEqual(t.waiting, [0, 0, 0], 'a Minor clarifier: no second is due, so no waiting slot');
     await ctx.close();
   });
 
@@ -196,7 +196,7 @@ function serve() { return new Promise(r => { const s = http.createServer((req, r
 
   await check('Celtic Cross at 360px: rule holds across ten positions, no repeats', async () => {
     const drawn = [0, m1, 1, m2, 2, m3, 3, m4, 4, m5];
-    // One card at a time: 01 (5, 9, Clarity k1), 03 (6, 10, k2), 05 (a Minor: no second), 07 (7, 11, k3), 09 (8, 12, k4).
+    // One card at a time: 01 (5, 9, Clarity k1), 03 (6, 10, k2), 05 (a Minor: no second due), 07 (7, 11, k3), 09 (8, 12, k4).
     const { ctx, p } = await reading(360, 'celtic', drawn, [5, 9, k1, 6, 10, k2, m6, 7, 11, k3, 8, 12, k4]);
     const s = await pressUntilDone(p);
     assert.deepEqual(s.first.map(x => x != null), [true, false, true, false, true, false, true, false, true, false]);

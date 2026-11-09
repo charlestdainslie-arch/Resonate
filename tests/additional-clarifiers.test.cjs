@@ -1,4 +1,6 @@
-// Second clarifiers only where the first clarifier is itself a Major Arcana card (Issue #13).
+// Second clarifiers: due where the first clarifier is itself a Major Arcana card (Issue #13); after a Minor
+// first clarifier, only when the seeker chooses that card (9 Nov 2026). Drawing for the whole spread draws only
+// those due.
 const test=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
@@ -13,8 +15,18 @@ function fixture(first){
  let renders=0;
  const ctx=vm.createContext({state,cards:Array.from({length:78},(_,id)=>({id,name:'Card '+id,upright:'Meaning',arcana:id<22?'Major':'Minor'})),Math,ResonateDeck:require('../deck-engine.js'),ResonateClarifiers:require('../clarifier-rules.js'),orientCards:ids=>ids,renderDraw(){renders++},reducedMotion(){return true},scrollMotion(){return 'auto'},document:{querySelector(){return {scrollIntoView(){}}},getElementById(){return {scrollIntoView(){}}}}});
  vm.runInContext(code,ctx);
- return {ctx,state,draw:()=>vm.runInContext('drawNextClarifierLayer()',ctx),renders:()=>renders};
+ return {ctx,state,draw:()=>vm.runInContext('drawNextClarifierLayer()',ctx),drawAt:i=>vm.runInContext(`drawNextClarifierLayer(${i})`,ctx),renders:()=>renders};
 }
+test('a chosen second clarifier after a Minor first clarifier, for that card only',()=>{
+ const f=fixture([5,40,null]);
+ f.drawAt(1);
+ const second=f.state.additionalClarifierLayers[0];
+ assert.notEqual(second.cards[1],null,'the chosen card gets a second');
+ assert.equal(second.cards[0],null,'other cards are not drawn');
+ assert.ok(![1,30,3,5,40].includes(second.cards[1]),'second clarifier is new to the reading');
+ f.drawAt(2);
+ assert.equal(second.cards[2],null,'no first clarifier, no second');
+});
 test('second clarifier only after a Major first clarifier; once; spread intact',()=>{
  const f=fixture([5,40,null]);
  f.draw();f.draw();f.draw();
