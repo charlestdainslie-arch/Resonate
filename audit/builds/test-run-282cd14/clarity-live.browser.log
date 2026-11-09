@@ -1,0 +1,5 @@
+PASS  LIVE-B06 seeker taps Clarity at positions 1, 3, 5, 9; reading, Golden Thread (32 cards) and Max take in all four
+PASS  LIVE-B01 seeker taps Clarify in Max's bar; reading, Golden Thread and Max take in all four
+SKIP  REPLAY recorded evidence was recorded on app b661280; this app code differs, so the recorded text does not apply (re-record with audit/tools/clarity-live-record.cjs)
+
+2 passed, 0 failed
