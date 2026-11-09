@@ -173,7 +173,9 @@
   // card) with how it relates to the original, the updated "together", then the invitation again.
   function deltaFor(full,position,step){
     const chapter=step==='first'?'c1':step==='second'?'c2':'c3';
-    const mine=p=>p.chapter===chapter&&p.show.some(k=>k==='p'+position||k.startsWith(`c${position}-`));
+    // The layer's own opening line ("Now, your first clarifiers, card by card.") belongs to the whole reading;
+    // here the lead line says it, so it is left out (it was said twice in a row, 9 Nov UAT, laptop).
+    const mine=p=>p.chapter===chapter&&p.kind!=='frame'&&p.show.some(k=>k==='p'+position||k.startsWith(`c${position}-`));
     const key=chapter==='c3'?'k':chapter;
     const lead={chapter,kind:'frame',text:FRAME[key],show:[],clips:[{id:'frame-'+key,text:FRAME[key]}]};
     return [lead,...full.filter(mine),...full.filter(p=>p.chapter==='invite')];
@@ -291,7 +293,7 @@
   function clarifyBar(){
     const labels=positionLabels(),n=state.drawnCardIds.length,canClarify=typeof clarifyPosition==='function'&&!isDemo();
     const chips=n>1?`<div class="mc-pick" role="radiogroup" aria-label="Choose the card to clarify">${state.drawnCardIds.map((id,i)=>`<button type="button" role="radio" aria-checked="false" data-pick="${i}"><b>${String(i+1).padStart(2,'0')}</b><small>${escapeHtml(labels[i]||'')}</small></button>`).join('')}</div>`:'';
-    return `<div class="mc-clarify-bar" id="mcClarifyBar" role="group" aria-label="Clarify a card or finish the reading">${canClarify?chips:''}<p class="mc-pick-note" id="mcPickNote" aria-live="polite"></p><div class="mc-bar-actions">${canClarify?'<button type="button" class="gold-button" id="mcClarifyGo">✦ Clarify this card</button>':''}<button type="button" class="ghost-button" id="mcFinish">Finish reading</button></div></div>`;
+    return `<div class="mc-clarify-bar" id="mcClarifyBar" role="group" aria-label="Clarify a card or finish the reading">${canClarify?chips:''}<p class="mc-pick-note" id="mcPickNote" aria-live="polite"></p><div class="mc-bar-actions">${canClarify?'<button type="button" class="gold-button" id="mcClarifyGo">✦ Clarify this card</button><button type="button" class="ghost-button" id="mcNext" hidden>Next card →</button>':''}<button type="button" class="ghost-button" id="mcFinish">Finish reading</button></div></div>`;
   }
   // Decision 5 (Si Aye, 7 Nov): adding a clarifier stops Max's current narration and offers
   // "Replay Updated Reading". heardSig is the reading as it stood when Max was last opened.
@@ -385,6 +387,23 @@
       if(focus&&strip&&strip.scrollWidth>strip.clientWidth&&part.show.length<=2){
         stripTo(strip,focus.closest('.mc-card')||focus);
       }
+      // Up and down too: when Max talks about a clarifier low in a pile, bring it into view; when he moves on
+      // to a card, bring its top back (9 Nov UAT, laptop: a Clarity card at the foot of a pile was out of view).
+      const on=[...root.querySelectorAll('[data-slot]')].filter(el=>part.show.includes(el.dataset.slot));
+      const card=on.length&&new Set(on.map(el=>el.closest('.mc-card'))).size===1?on[0].closest('.mc-card'):null;
+      const low=card?(on.filter(el=>el.classList.contains('mc-clar')).pop()||card.querySelector('.mc-main')):null;
+      if(low)setTimeout(()=>keepInView(low.querySelector('img')||low),280);
+    }
+    // Scrolls the nearest container that scrolls up and down (not the sideways strip) just enough to show el.
+    function keepInView(el){
+      let box=el.parentElement;
+      while(box&&box!==document.body){const oy=getComputedStyle(box).overflowY;if(!box.classList.contains('mc-cards')&&(oy==='auto'||oy==='scroll')&&box.scrollHeight>box.clientHeight+1)break;box=box.parentElement;}
+      if(!box||box===document.body)return;
+      const r=el.getBoundingClientRect(),b=box.getBoundingClientRect(),pad=8;
+      let by=0;
+      if(r.top<b.top+pad)by=r.top-b.top-pad;
+      else if(r.bottom>b.bottom-pad)by=Math.min(r.bottom-b.bottom+pad,r.top-b.top-pad);
+      if(by)box.scrollBy({top:by,behavior:motion()});
     }
     const captionTime=i=>Math.min(12000,Math.max(2600,script[i].text.split(' ').length*400));
     // from: the clip to start at, so Resume carries on where Pause stopped in a recorded line.
@@ -428,6 +447,7 @@
     }
     // The in-player clarify bar: pick an original card, then one action for it under Chas's teaching rule.
     let picked=null;   // null: follow the card Max is talking about; a number once the seeker picks one
+    const skipped=new Set();   // cards passed over with Next card →
     const pickedIndex=()=>{
       if(picked!=null)return picked;
       const part=index>=0?script[index]:null;
@@ -439,9 +459,13 @@
       // Before Max has read the cards, start at card 01: opening on the first card due a clarifier (card 02
       // when it is a Major) looked as if the reading began at card 02 (9 Nov UAT, laptop).
       if(!heardCards)return 0;
-      const due=typeof nextDueClarifier==='function'?nextDueClarifier():-1;
-      return due>=0?due:0;
+      // After the reading, clarifying goes through the cards in order, 01, 02, 03… (Chas, laptop UAT, 9 Nov:
+      // it used to jump to the first card due, so card 03 came before cards 01 and 02). Each card that can still
+      // be clarified gets its turn, due or optional; Next card → passes over one.
+      const next=walkOrder().find(k=>!skipped.has(k)&&clarifyStepFor(k));
+      return next!=null?next:0;
     };
+    const walkOrder=()=>typeof readingOrder==='function'?readingOrder():state.drawnCardIds.map((_,k)=>k);
     function updateBar(){
       const bar=$('mcClarifyBar');if(!bar)return;
       const i=pickedIndex(),step=clarifyStepFor(i),labels=positionLabels();
@@ -451,6 +475,9 @@
       $('mcFinish').disabled=readingFinished();
       if(!go){$('mcPickNote').textContent='';return;}
       go.disabled=!step;go.dataset.step=step||'done';
+      // Next card → once the reading has been heard, while another card can still be clarified after this one.
+      const nx=$('mcNext');
+      if(nx)nx.hidden=!(heardCards&&walkOrder().some(k=>k!==i&&!skipped.has(k)&&clarifyStepFor(k)));
       go.textContent=step==='first'?'✦ Clarify this card':step==='second'?'✦ Add second clarifier':step==='clarity'?'✦ Draw Clarity card':'Card complete ✓';
       const spot=clarifierPlan().positions[i];
       $('mcPickNote').textContent=where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?' — its first clarifier is a Major, so a second is due.':step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
@@ -464,6 +491,9 @@
     root.addEventListener('click',e=>{
       const pick=e.target.closest('[data-pick]');
       if(pick){picked=Number(pick.dataset.pick);updateBar();const card=root.querySelectorAll('.mc-card')[picked];const strip=root.querySelector('.mc-cards');stripTo(strip,card);}
+    });
+    $('mcNext')?.addEventListener('click',()=>{
+      skipped.add(pickedIndex());picked=null;updateBar();
     });
     $('mcClarifyGo')?.addEventListener('click',()=>{
       const i=pickedIndex(),step=clarifyStepFor(i);
