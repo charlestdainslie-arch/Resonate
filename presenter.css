@@ -205,3 +205,28 @@ body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 8
      max-height cropped the artwork, since the width stayed at 100%). Proportions stay 0.58. */
   .mc-cards:not(.is-wide) .mc-card img { max-height: none; width: min(100%, calc(30vh * 0.58)); }
 }
+
+/* Solitaire pile (Chas, laptop UAT, 9 Nov): a position's clarifiers are laid on its original card, each one a
+   step lower than the card beneath, like a solitaire column. The top band of every card underneath stays in
+   view with a small label naming it, and the newest card lies fully on top. Replaces the small row of
+   clarifiers below the card (Clarifier 1 left, Clarifier 2 right, Clarity card centred).
+   Each clarifier follows the card before it and is pulled back up over it by a card's height less one step.
+   cqw is the pile's width, which is the card's width; a card is 1/0.58 of its width tall; a step is 38% of
+   the width, about a fifth of the card's height. */
+.mc-card > .mc-main { order: 0; }
+.mc-card > .mc-clars { order: 1; container-type: inline-size; display: block; width: 100%; margin: -4px 0 0; padding: 0; }
+.mc-card > span { order: 2; }
+.mc-card > strong { order: 3; }
+.mc-clars > .mc-clar, .mc-clars > .mc-clarity { display: block; position: relative; width: 100%; margin: calc(38cqw - 100cqw / 0.58) 0 0; padding: 0; }
+.mc-clars > .mc-clar > img { display: block; width: 100%; box-shadow: 0 -6px 12px rgba(0,0,0,.6); }
+.mc-clars > .mc-clar > span, .mc-clars > .mc-clar > strong { position: absolute; left: 1px; right: 1px; z-index: 1; display: block; max-width: none; padding: 0 4px; background: rgba(8,8,10,.86); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mc-clars > .mc-clar > span { top: 1px; height: 12px; line-height: 12px; border-radius: 7px 7px 0 0; }
+.mc-clars > .mc-clar > strong { top: 13px; height: 13px; line-height: 13px; font-size: 9px; }
+/* A card in the pile is never see-through: dim it by darkening instead, so the card beneath does not show through. */
+.mc-clars > .mc-clar.is-dim { opacity: 1; }
+.mc-clars > .mc-clar.is-dim > img { filter: brightness(.42); }
+@media (max-width: 640px) {
+  /* Up to three cards: the picture is narrowed to keep it short, so the pile takes the picture's width. */
+  .mc-cards:not(.is-wide) .mc-card > .mc-clars { width: min(100%, calc(30vh * 0.58)); }
+  .mc-cards:not(.is-wide) .mc-clars > .mc-clar > img { width: 100%; }
+}
