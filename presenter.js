@@ -400,9 +400,12 @@
       while(box&&box!==document.body){const oy=getComputedStyle(box).overflowY;if(!box.classList.contains('mc-cards')&&(oy==='auto'||oy==='scroll')&&box.scrollHeight>box.clientHeight+1)break;box=box.parentElement;}
       if(!box||box===document.body)return;
       const r=el.getBoundingClientRect(),b=box.getBoundingClientRect(),pad=8;
+      // On a laptop the controls panel is pinned over the foot of the scrolling area: what lies under it is out of view.
+      const panel=root.querySelector('.mc-panel');
+      const bottom=panel&&box.contains(panel)&&getComputedStyle(panel).position==='sticky'?Math.min(b.bottom,panel.getBoundingClientRect().top):b.bottom;
       let by=0;
       if(r.top<b.top+pad)by=r.top-b.top-pad;
-      else if(r.bottom>b.bottom-pad)by=Math.min(r.bottom-b.bottom+pad,r.top-b.top-pad);
+      else if(r.bottom>bottom-pad)by=Math.min(r.bottom-bottom+pad,r.top-b.top-pad);
       if(by)box.scrollBy({top:by,behavior:motion()});
     }
     const captionTime=i=>Math.min(12000,Math.max(2600,script[i].text.split(' ').length*400));

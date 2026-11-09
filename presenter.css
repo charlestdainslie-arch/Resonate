@@ -237,3 +237,21 @@ body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 8
 /* Next card → beside Clarify, once the reading has been heard (three buttons in the bar). */
 #mcNext[hidden] { display: none; }
 .mc-bar-actions:has(> #mcNext:not([hidden])) { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); }
+
+/* Laptop and desktop (9 Nov UAT, laptop window about 990 x 660): Max's screen and card were taller than the
+   window, so the Play row sat behind the pinned clarify bar and only Clarify could be seen without scrolling.
+   As on phones, the caption, progress, controls and clarify bar are now one panel pinned to the bottom, so Play
+   and Clarify are always in view together; the stage scrolls above it if it must. */
+@media (min-width: 641px) {
+  .mc-panel { order: 2; display: flex; flex-direction: column; gap: 8px; position: sticky; bottom: 0; z-index: 3; margin: 0 -16px -28px; padding: 8px 16px max(10px, env(safe-area-inset-bottom)); background: linear-gradient(180deg, rgba(5,5,6,.94), #050506 24px); border-top: 1px solid rgba(201,169,106,.45); }
+  .mc-panel > .mc-clarify-bar { position: static; margin: 0; padding: 0; background: none; border-top: 0; }
+}
+/* On a short window, Max's screen and a spread of up to three cards shrink to the room left above the panel
+   (about 440px goes on the header and the panel), so nothing starts hidden behind it. */
+@media (min-width: 641px) and (max-height: 900px) {
+  .mc-frame { gap: 8px; padding-top: 10px; }
+  .mc-screen { aspect-ratio: auto; height: clamp(140px, calc(100vh - 440px), 420px); }
+  .mc-cards:not(.is-wide) .mc-card img, .mc-cards:not(.is-wide) .mc-card > .mc-clars { width: min(100%, calc(clamp(140px, 100vh - 440px, 420px) * 0.58)); }
+  .mc-caption { min-height: 4.6em; padding: 10px 14px; }
+  .mc-caption p { font-size: 17px; }
+}
