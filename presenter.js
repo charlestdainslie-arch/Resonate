@@ -95,8 +95,13 @@
         if(!c)return;
         const key=`c${i}-${n}`;
         const r=isReversed(c)?'-r':'';
-        const label=one?`Clarifier ${n}: ${cardName(c)}.`:`Clarifier ${n} · ${labels[i]}: ${cardName(c)}.`;
-        add(chapter,'label',label,['p'+i,key],[{id:`label-clarifier-${n}`,text:`Clarifier ${n}${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
+        // Each clarifier is introduced by the card it clarifies: "Past, Ace of Cups: first clarifier, Eight of
+        // Swords." On a spread every card's first clarifier used to be "Clarifier 1 · Past: …", which sounded
+        // like a count and did not say which card it belonged to (Chas, laptop UAT, 9 Nov). New clip ids, so a
+        // recording of the old words never plays under the new caption.
+        const nth=n===1?'first':'second',base=byId(ids[i]),rb=isReversed(base)?'-r':'';
+        const label=one?`${cardName(base)}: ${nth} clarifier, ${cardName(c)}.`:`${labels[i]}, ${cardName(base)}: ${nth} clarifier, ${cardName(c)}.`;
+        add(chapter,'label',label,['p'+i,key],[...(one?[]:[{id:`pos-${spread}-${i}-comma`,text:spoken(labels[i]||'Position')+','}]),{id:`name-${base.id}${rb}-colon`,text:`${cardName(base)}:`},{id:`label-${nth}-clarifier`,text:`${nth} clarifier,`},{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
         const block=blocks[i].querySelector(`.integrated-clarifier[data-clarifier="${n}"]`)||blocks[i].querySelectorAll('.integrated-clarifier')[l];
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
         add(chapter,'quote',meaning,[key],[{id:`meaning-${c.id}${r}`,text:meaning}]);
@@ -128,7 +133,9 @@
         // The Clarity card itself is shown too ("k"+i), so it is lit and followed like a clarifier (9 Nov UAT:
         // it was left out, so Max talked about it while Clarifier 2 was lit and in view).
         const r=isReversed(c)?'-r':'',show=['p'+i,`c${i}-1`,`c${i}-2`,'k'+i];
-        add('c3','label',one?`Clarity card: ${cardName(c)}.`:`Clarity card · ${labels[i]}: ${cardName(c)}.`,show,[{id:'label-clarity',text:`Clarity card${one?':':','}`},...(one?[]:[pos(i)]),{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
+        // Introduced like the clarifiers: "Past, Ace of Cups: Clarity card, Three of Wands." (9 Nov UAT).
+        const base=byId(ids[i]),rb=isReversed(base)?'-r':'';
+        add('c3','label',one?`${cardName(base)}: Clarity card, ${cardName(c)}.`:`${labels[i]}, ${cardName(base)}: Clarity card, ${cardName(c)}.`,show,[...(one?[]:[{id:`pos-${spread}-${i}-comma`,text:spoken(labels[i]||'Position')+','}]),{id:`name-${base.id}${rb}-colon`,text:`${cardName(base)}:`},{id:'label-clarity-card',text:'Clarity card,'},{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
         const block=blocks[i].querySelector('.integrated-clarity');
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
         add('c3','quote',meaning,show,[{id:`meaning-${c.id}${r}`,text:meaning}]);
