@@ -436,7 +436,7 @@
     function finish(){
       playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';root.classList.add('is-finished');
       // Let go of the card just clarified, so the bar moves on to the next card in the walk (layer by layer).
-      picked=null;
+      picked=null;inDelta=false;
       $('mcCaption').innerHTML=readingFinished()?'<p>Your reading is complete. Every word is waiting below, and in your PDF.</p>':`<p>${escapeHtml(walkPrompt())}</p>`;
       updateBar();
     }
@@ -469,8 +469,10 @@
     let picked=null;   // null: follow the card Max is talking about; a number once the seeker picks one
     const skipped=new Set();   // cards passed over with Next card →
     let lastOwn=0;             // the card Max last talked about on its own
+    let inDelta=false;         // Max is talking about a clarifier just drawn here (until that part ends)
     const pickedIndex=()=>{
       if(picked!=null)return picked;
+      if(inDelta){const nx=nextInWalk();return nx?nx.k:lastOwn;}
       const part=index>=0?script[index]:null;
       // Follow the card Max is talking about only when the part is about one card. The ending ("So far…",
       // the invitation) shows the whole spread: that used to pick card 01 every time, so after the last card
@@ -507,7 +509,7 @@
     function updateBar(){
       const bar=$('mcClarifyBar');if(!bar)return;
       const i=pickedIndex(),step=clarifyStepFor(i),labels=positionLabels();
-      bar.querySelectorAll('[data-pick]').forEach(b=>{const on=Number(b.dataset.pick)===i;b.setAttribute('aria-checked',String(on));b.classList.toggle('is-picked',on);const st=clarifyStepFor(Number(b.dataset.pick));b.dataset.state=st?(clarifierPlan().positions[Number(b.dataset.pick)].mayChooseFirst?'optional':'due'):'done';});
+      bar.querySelectorAll('[data-pick]').forEach(b=>{const on=Number(b.dataset.pick)===i;b.setAttribute('aria-checked',String(on));b.classList.toggle('is-picked',on);const st=clarifyStepFor(Number(b.dataset.pick));const sp=clarifierPlan().positions[Number(b.dataset.pick)];b.dataset.state=st?((st==='first'&&sp.mayChooseFirst)||(st==='second'&&sp.mayChooseSecond)?'optional':'due'):'done';});
       const go=$('mcClarifyGo'),name=cardName(byId(state.drawnCardIds[i])),where=state.drawnCardIds.length>1?`${String(i+1).padStart(2,'0')} · ${labels[i]}: `:'';
       $('mcFinish').textContent=readingFinished()?'Reading finished ✓':'Finish reading';
       $('mcFinish').disabled=readingFinished();
@@ -521,13 +523,15 @@
       // The note starts with the layer, so it agrees with the caption and the button (Add second clarifier only
       // in the second layer).
       const walkNext=heardCards?nextInWalk():null;
-      $('mcPickNote').textContent=(walkNext&&walkNext.k===i&&step?LAYER_NAME[step].replace(/s$/,'')+' · ':'')+where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?' — its first clarifier is a Major, so a second is due.':step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
+      $('mcPickNote').textContent=(walkNext&&walkNext.k===i&&step?LAYER_NAME[step].replace(/s$/,'')+' · ':'')+where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?(spot.needsSecond?' — its first clarifier is a Major, so a second is due.':' — you may add a second clarifier if you wish.'):step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
       root.querySelectorAll('.mc-card').forEach((el,k)=>el.classList.toggle('is-picked',k===i));
       const strip=root.querySelector('.mc-cards'),card=root.querySelectorAll('.mc-card')[i];
       // Only follow a card once Max is speaking or the seeker has picked one: on opening, the strip starts at
       // card 1 (8 Nov, P2: the first card must be fully visible without sideways scrolling).
       // Once the narration ends, go back to the card to clarify next, even from the far end of the strip.
-      if((picked!=null||index>=0||root.classList.contains('is-finished'))&&strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>stripTo(strip,card),260);
+      // While Max is talking about a clarifier the strip stays on that card (show() keeps it there), not on the
+      // next card the bar offers.
+      if(!(inDelta&&index>=0)&&(picked!=null||index>=0||root.classList.contains('is-finished'))&&strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>stripTo(strip,card),260);
     }
     root.addEventListener('click',e=>{
       const pick=e.target.closest('[data-pick]');
@@ -543,7 +547,10 @@
       clarifyingInPlayer=true;
       try{clarifyPosition(i);}finally{clarifyingInPlayer=false;}
       full=buildScript();heardSig=readingSig();if(player)player.sig=heardSig;
-      picked=i;
+      // While Max talks about this clarifier, the bar already shows the next card in the walk, the same in every
+      // layer (9 Nov UAT: during a first clarifier it offered that card's second clarifier, before the second
+      // layer; during a second clarifier it showed "Card complete" greyed out).
+      picked=null;inDelta=true;
       load(deltaFor(full,i,step));
       updateBar();
     });
