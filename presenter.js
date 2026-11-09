@@ -350,6 +350,20 @@
     voiceNote();window.speechSynthesis?.addEventListener?.('voiceschanged',onVoices);
     const stopSound=()=>{clearTimeout(timer);token++;window.MaxVoice.providers().forEach(p=>{try{p.stop();}catch{}});root.classList.remove('is-talking');};
     const motion=()=>window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth';
+    // Brings a card into the wide strip without leaving a cut-off card at its left edge, beside Max (9 Nov UAT,
+    // laptop: centring the card being discussed left the card before it half hidden). The strip starts on a
+    // whole card, as far along as keeps the target near the centre and fully in view.
+    const stripTo=(strip,card)=>{
+      if(!strip||!card||strip.scrollWidth<=strip.clientWidth)return;
+      const cards=[...strip.querySelectorAll(':scope > .mc-card')];
+      if(!cards.includes(card)){strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()});return;}
+      const pad=parseFloat(getComputedStyle(strip).scrollPaddingLeft)||parseFloat(getComputedStyle(strip).paddingLeft)||0;
+      const starts=cards.map(c=>Math.max(0,c.offsetLeft-pad));
+      const centred=card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2;
+      let left=0;for(const s of starts)if(s<=centred)left=s;
+      if(card.offsetLeft+card.offsetWidth+pad>left+strip.clientWidth)left=Math.max(0,card.offsetLeft-pad);
+      strip.scrollTo({left:Math.min(left,strip.scrollWidth-strip.clientWidth),behavior:motion()});
+    };
     function show(i){
       const part=script[i];
       // Lets the Golden Thread (max-golden-thread.js) follow the card being discussed.
@@ -365,8 +379,7 @@
       // Keep the card being discussed in view on a wide spread, sideways only.
       const strip=root.querySelector('.mc-cards');
       if(focus&&strip&&strip.scrollWidth>strip.clientWidth&&part.show.length<=2){
-        const target=(focus.closest('.mc-card')||focus);
-        strip.scrollTo({left:target.offsetLeft-(strip.clientWidth-target.offsetWidth)/2,behavior:motion()});
+        stripTo(strip,focus.closest('.mc-card')||focus);
       }
     }
     const captionTime=i=>Math.min(12000,Math.max(2600,script[i].text.split(' ').length*400));
@@ -387,6 +400,8 @@
     }
     function finish(){
       playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';root.classList.add('is-finished');
+      // A card just clarified as far as the rule allows: let go of it, so the bar moves on to the next card due.
+      if(picked!=null&&!clarifyStepFor(picked))picked=null;
       $('mcCaption').innerHTML=readingFinished()?'<p>Your reading is complete. Every word is waiting below, and in your PDF.</p>':'<p>Choose a card below and tap Clarify, or tap Finish reading when you are done.</p>';
       updateBar();
     }
@@ -411,8 +426,11 @@
     const pickedIndex=()=>{
       if(picked!=null)return picked;
       const part=index>=0?script[index]:null;
-      const fromShow=part?.show?.map(k=>/^p(\d+)$/.exec(k)).find(Boolean);
-      if(fromShow)return Number(fromShow[1]);
+      // Follow the card Max is talking about only when the part is about one card. The ending ("So far…",
+      // the invitation) shows the whole spread: that used to pick card 01 every time, so after the last card
+      // of the first layer Max never went back to the card whose clarifier is due (9 Nov UAT, laptop).
+      const own=(part?.show||[]).map(k=>/^p(\d+)$/.exec(k)).filter(Boolean);
+      if(own.length===1)return Number(own[0][1]);
       const due=typeof nextDueClarifier==='function'?nextDueClarifier():-1;
       return due>=0?due:0;
     };
@@ -432,11 +450,12 @@
       const strip=root.querySelector('.mc-cards'),card=root.querySelectorAll('.mc-card')[i];
       // Only follow a card once Max is speaking or the seeker has picked one: on opening, the strip starts at
       // card 1 (8 Nov, P2: the first card must be fully visible without sideways scrolling).
-      if((picked!=null||index>=0)&&strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()}),260);
+      // Once the narration ends, go back to the card to clarify next, even from the far end of the strip.
+      if((picked!=null||index>=0||root.classList.contains('is-finished'))&&strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>stripTo(strip,card),260);
     }
     root.addEventListener('click',e=>{
       const pick=e.target.closest('[data-pick]');
-      if(pick){picked=Number(pick.dataset.pick);updateBar();const card=root.querySelectorAll('.mc-card')[picked];const strip=root.querySelector('.mc-cards');if(card&&strip&&strip.scrollWidth>strip.clientWidth)strip.scrollTo({left:card.offsetLeft-(strip.clientWidth-card.offsetWidth)/2,behavior:motion()});}
+      if(pick){picked=Number(pick.dataset.pick);updateBar();const card=root.querySelectorAll('.mc-card')[picked];const strip=root.querySelector('.mc-cards');stripTo(strip,card);}
     });
     $('mcClarifyGo')?.addEventListener('click',()=>{
       const i=pickedIndex(),step=clarifyStepFor(i);
