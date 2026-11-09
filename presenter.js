@@ -436,6 +436,9 @@
       // of the first layer Max never went back to the card whose clarifier is due (9 Nov UAT, laptop).
       const own=(part?.show||[]).map(k=>/^p(\d+)$/.exec(k)).filter(Boolean);
       if(own.length===1)return Number(own[0][1]);
+      // Before Max has read the cards, start at card 01: opening on the first card due a clarifier (card 02
+      // when it is a Major) looked as if the reading began at card 02 (9 Nov UAT, laptop).
+      if(!heardCards)return 0;
       const due=typeof nextDueClarifier==='function'?nextDueClarifier():-1;
       return due>=0?due:0;
     };
