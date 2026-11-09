@@ -448,17 +448,21 @@
     // The in-player clarify bar: pick an original card, then one action for it under Chas's teaching rule.
     let picked=null;   // null: follow the card Max is talking about; a number once the seeker picks one
     const skipped=new Set();   // cards passed over with Next card →
+    let lastOwn=0;             // the card Max last talked about on its own
     const pickedIndex=()=>{
       if(picked!=null)return picked;
       const part=index>=0?script[index]:null;
       // Follow the card Max is talking about only when the part is about one card. The ending ("So far…",
       // the invitation) shows the whole spread: that used to pick card 01 every time, so after the last card
       // of the first layer Max never went back to the card whose clarifier is due (9 Nov UAT, laptop).
-      const own=(part?.show||[]).map(k=>/^p(\d+)$/.exec(k)).filter(Boolean);
-      if(own.length===1)return Number(own[0][1]);
-      // Before Max has read the cards, start at card 01: opening on the first card due a clarifier (card 02
-      // when it is a Major) looked as if the reading began at card 02 (9 Nov UAT, laptop).
-      if(!heardCards)return 0;
+      // A part is about one card when everything it shows (the card, its clarifiers, its Clarity card) belongs
+      // to that card: a layer's opening line shows only clarifiers ("c6-1"), and used to send the bar back to
+      // card 01 between them (Seven-card, 9 Nov).
+      const own=new Set((part?.show||[]).map(k=>/^(?:p|k)(\d+)$|^c(\d+)-/.exec(k)).filter(Boolean).map(m=>Number(m[1]??m[2])));
+      if(own.size===1){lastOwn=[...own][0];return lastOwn;}
+      // Before Max has read the cards, stay on the card he was last on, from card 01: opening on the first card
+      // due a clarifier (card 02 when it is a Major) looked as if the reading began at card 02 (9 Nov UAT, laptop).
+      if(!heardCards)return lastOwn;
       // After the reading, clarifying goes through the cards in order, 01, 02, 03… (Chas, laptop UAT, 9 Nov:
       // it used to jump to the first card due, so card 03 came before cards 01 and 02). Each card that can still
       // be clarified gets its turn, due or optional; Next card → passes over one.
@@ -516,7 +520,7 @@
       updateBar();
     });
     $('mcPlay').onclick=()=>setPlaying(!playing);
-    $('mcReplay').onclick=()=>{index=0;clip=0;root.scrollTo?.({top:0});root.querySelector('.mc-cards')?.scrollTo?.({left:0});setPlaying(true);};
+    $('mcReplay').onclick=()=>{index=0;clip=0;lastOwn=0;root.scrollTo?.({top:0});root.querySelector('.mc-cards')?.scrollTo?.({left:0});setPlaying(true);};
     $('mcSound').onclick=()=>{muted=!muted;$('mcSound').textContent=muted?'🔊 Unmute':'🔇 Mute';$('mcSound').setAttribute('aria-pressed',String(!muted));voiceNote();if(playing)playPart(index);};
     $('mcCaptions').onclick=()=>{captions=!captions;root.classList.toggle('captions-off',!captions);$('mcCaptions').textContent=captions?'Hide words':'Show words';$('mcCaptions').setAttribute('aria-pressed',String(captions));};
     // Leaving the page or switching away pauses Max: nothing carries on speaking in the background.
