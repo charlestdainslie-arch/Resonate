@@ -337,6 +337,10 @@
     const root=document.querySelector('.mc-player');
     const $=id=>root.querySelector('#'+id);
     let index=-1,playing=false,muted=false,captions=true,timer=null,token=0,clip=0;
+    // Has the seeker heard Max read the cards? True once he reaches the ending of the reading (the "So far…"
+    // and the invitation come only after every card), or when Max opens on one clarifier chapter, which
+    // follows a reading already heard.
+    let heardCards=typeof chapter==='string';
     const voiceNote=()=>{
       let note;
       if(muted)note='Sound is off. Captions keep time on their own.';
@@ -388,6 +392,7 @@
       stopSound();index=i;clip=from;
       if(i>=script.length){finish();return;}
       show(i);root.classList.add('is-talking');
+      if(ENDING.includes(script[i].chapter))heardCards=true;
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
       const v=!muted&&voice;
       if(!v){timer=setTimeout(next,captionTime(i));return;}
@@ -471,7 +476,10 @@
       if(readingFinished())return;
       state.maxFinishedSig=readingSig();
       full=buildScript();
-      load(full.filter(p=>p.chapter==='final'||p.chapter==='close'));
+      // Finish reading used to jump straight to the ending even when Max had not read a single card, so
+      // the seeker heard "Before I go…" and no reading (9 Nov UAT, laptop). If the cards have not been
+      // heard yet, Max reads the whole reading first, then the ending.
+      load(heardCards?full.filter(p=>p.chapter==='final'||p.chapter==='close'):full);
       updateBar();
     });
     $('mcPlay').onclick=()=>setPlaying(!playing);
