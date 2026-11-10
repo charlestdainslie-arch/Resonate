@@ -28,6 +28,8 @@
     first:'That\'s the first layer of your reading.',
     sofar:'That\'s your reading so far.',
     invite:'If a card calls for more, choose it below and tap Clarify. When you have finished, tap Finish reading.',
+    // Said once the last card in the walk has had its turn, before the ending (Chas, laptop UAT, 10 Nov 2026).
+    complete:'That\'s the full reading for you today.',
     final:'Here is your whole spread, brought together.',
     ask:'Before I go, one question to carry with you.',
     close:'That\'s the short version. Every word of the full reading is below, and in your PDF. Max Chasroom, signing off.'
@@ -180,13 +182,19 @@
   }
   // The new part of the reading after one card was clarified inside Max: that card's new clarifier (or Clarity
   // card) with how it relates to the original, the updated "together", then the invitation again.
-  function deltaFor(full,position,step){
+  // done: this was the last card in the walk, so the invitation is replaced by "That's the full reading for you
+  // today." and the ending (final synthesis, the question, "Take what resonates, and leave the rest.", sign-off).
+  function deltaFor(full,position,step,done){
     const chapter=step==='first'?'c1':step==='second'?'c2':'c3';
     // The layer's own opening line ("Now, your first clarifiers, card by card.") belongs to the whole reading;
     // here the lead line says it, so it is left out (it was said twice in a row, 9 Nov UAT, laptop).
     const mine=p=>p.chapter===chapter&&p.kind!=='frame'&&p.show.some(k=>k==='p'+position||k.startsWith(`c${position}-`));
     const key=chapter==='c3'?'k':chapter;
     const lead={chapter,kind:'frame',text:FRAME[key],show:[],clips:[{id:'frame-'+key,text:FRAME[key]}]};
+    if(done){
+      const complete={chapter:'final',kind:'frame',text:FRAME.complete,show:[],clips:[{id:'frame-complete',text:FRAME.complete}]};
+      return [lead,...full.filter(mine),complete,...full.filter(p=>p.chapter==='final'||p.chapter==='close')];
+    }
     return [lead,...full.filter(mine),...full.filter(p=>p.chapter==='invite')];
   }
 
@@ -558,7 +566,11 @@
       // layer (9 Nov UAT: during a first clarifier it offered that card's second clarifier, before the second
       // layer; during a second clarifier it showed "Card complete" greyed out).
       picked=null;inDelta=true;
-      load(deltaFor(full,i,step));
+      // The last card in the walk: Max closes the reading himself, and it counts as finished, as if the seeker
+      // had tapped Finish reading (Chas, laptop UAT, 10 Nov).
+      const done=heardCards&&!nextInWalk();
+      if(done){state.maxFinishedSig=readingSig();full=buildScript();}
+      load(deltaFor(full,i,step,done));
       updateBar();
     });
     $('mcFinish')?.addEventListener('click',()=>{
@@ -673,7 +685,11 @@
     function update(){
       if(state.view!=='draw'||!document.body.contains(top)){clearInterval(timer);io?.disconnect();if(floatTimer===timer){dock.remove();document.body.classList.remove('has-mc-dock');}return;}
       const open=!!document.querySelector('.mc-player');
-      dock.hidden=!(state.drawSettled&&!open);
+      // A finished reading needs neither: Clarify and Watch Max no longer float over the foot of the page
+      // (Chas, laptop UAT, 10 Nov). Adding a card reopens the reading, and they come back.
+      const finished=readingFinished();
+      dock.hidden=!(state.drawSettled&&!open&&!finished);
+      document.body.classList.toggle('has-mc-dock',!finished);
       if(!clar)dock.hidden=dock.hidden||topVisible;
       // Watch Max ↔ Replay Updated Reading follows whether the reading has changed since Max last presented it.
       const upd=updatedSinceHeard();
