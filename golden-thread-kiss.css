@@ -24,6 +24,9 @@
 /* Chas, 10 Nov: Clarifier 2 stays hidden until it is actually drawn (no "Not drawn yet" card back).
    The glowing "Draw Clarifier 2" button still says one is due; when it is drawn, the light kisses it. */
 .draw-page .position-clarifier-slot { display: none; }
+/* With the waiting card hidden, a lone Clarifier 1 must keep the usual half width
+   (teaching-rules.css sizes it only when there is no waiting card), or it grows to full size. */
+.draw-page .spread-board:not(.spread-1) .reading-position .position-clarifiers[data-clarifier-count="1"]:has(.position-clarifier-slot) .position-clarifier:nth-child(n) { flex: 0 0 calc(50% - 4px); width: calc(50% - 4px); }
 
 /* Demo label, small and out of the way, so nobody mistakes this page for the live app. */
 .gtk-demo-badge {
