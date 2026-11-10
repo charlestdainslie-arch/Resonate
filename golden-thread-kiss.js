@@ -332,39 +332,134 @@
     if (!li) return null;
     return li.querySelector(':scope > img.mc-main') || li.querySelector(':scope > img') || li;
   }
-  function maxVisit(slot) {
+  // The light flies to an element's centre, kisses it, then hovers where hoverAt() says.
+  // Each new kiss cancels one still under way, so the light always heads for the latest thing.
+  function kissEl(el, hoverAt, delay) {
+    if (reduced() || !el) return;
     var seq = ++maxSeq, live = function () { return seq === maxSeq && !!maxRoot; };
-    var pic = maxPicture(slot);
-    if (!pic) return;
     ensureCanvas();
     if (!light || !light.visible) {
-      var c0 = centreOf(pic);
+      var c0 = centreOf(el);
       light = { x: c0.x - 70, y: sy() - 30, vx: 0.1, vy: 0.25, glow: 0, alpha: 1, visible: true };
     }
     light.alpha = 1; light.visible = true;
     startLoop();
-    // Max's strip scrolls itself to the card; give it a moment so the light heads for where the card lands.
-    wait(320).then(function () {
+    wait(delay || 0).then(function () {
       if (!live()) return;
-      return flyTo(function () { return centreOf(pic); }, live);
+      return flyTo(function () { return centreOf(el); }, live);
     }).then(function () {
       if (!live()) return;
-      var c = centreOf(pic);
+      var c = centreOf(el);
       blooms.push({ x: c.x, y: c.y, t0: performance.now() });
       emit(c.x, c.y, 22, 9, 0.045);
       light.glow = 1;
-      pic.classList.remove('gtk-kissed'); void pic.offsetWidth; pic.classList.add('gtk-kissed');
+      el.classList.remove('gtk-kissed'); void el.offsetWidth; el.classList.add('gtk-kissed');
       return wait(HOLD);
     }).then(function () {
       if (!live()) return;
       light.glow = 0;
-      // Lift off the picture and hover just above it, so the card is clear while Max speaks.
-      return flyTo(function () { var r = pic.getBoundingClientRect(); return { x: r.left + r.width / 2 + sx(), y: r.top - 14 + sy() }; }, live);
+      return flyTo(function () { return hoverAt(el); }, live);
     });
   }
+  function maxVisit(slot) {
+    // Max's strip scrolls itself to the card; give it a moment so the light heads for where the card lands.
+    // After the kiss it lifts and hovers just above the card, so the picture is clear while Max speaks.
+    kissEl(maxPicture(slot), function (pic) { var r = pic.getBoundingClientRect(); return { x: r.left + r.width / 2 + sx(), y: r.top - 14 + sy() }; }, 320);
+  }
+
+  // ---------- Max's transcript in headed boxes (Chas, 11 Nov) ----------
+  // The transcript was one long list of every line: "a wall of words". Here it is grouped instead: a heading
+  // for each part of the reading (Welcome, Your cards, First clarifiers, Second clarifiers, Clarity cards,
+  // Bringing it together), and inside each part one box per card, headed by its card line, holding only the
+  // lines about that card. Max's own list stays in the page, hidden, and the boxes are rebuilt whenever Max
+  // rebuilds it (after a clarifier is drawn). As the reader scrolls the boxes into view, the light flies
+  // down through the reading and kisses each box's heading, as it does the cards.
+  var CHAPTERS = { intro: 'Welcome', cards: 'Your cards', c1: 'First clarifiers', c2: 'Second clarifiers', c3: 'Clarity cards', end: 'Bringing it together' };
+  var txObserver = null, txMutation = null, txKissed = null;
+  function chapterOfLabel(t) {
+    if (/^Tonight:/.test(t)) return 'intro';
+    if (/: first clarifier,/i.test(t)) return 'c1';
+    if (/: second clarifier,/i.test(t)) return 'c2';
+    if (/: Clarity card,/i.test(t)) return 'c3';
+    return 'cards';
+  }
+  function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
+  // "Past: Ace of Cups." -> "Past · Ace of Cups"; "Past, Ace of Cups: first clarifier, Eight of Swords." -> "Past, Ace of Cups · first clarifier, Eight of Swords"
+  function heading(t) { return t.replace(/\.$/, '').replace(/:\s*/, ' · '); }
+  function buildTranscript(root) {
+    var det = root.querySelector('.mc-transcript'), ol = det && det.querySelector(':scope > ol');
+    if (!ol) return;
+    var items = Array.prototype.slice.call(ol.children).map(function (li) {
+      var m = /mc-kind-(\w+)/.exec(li.className);
+      return { kind: m ? m[1] : 'quote', text: li.textContent };
+    });
+    var parts = [], cur = null, box = null, pending = [];
+    function part(key) { if (!cur || cur.key !== key) { cur = { key: key, lead: [], boxes: [] }; parts.push(cur); } box = null; return cur; }
+    items.forEach(function (it) {
+      if (it.kind === 'label') {
+        var key = chapterOfLabel(it.text);
+        if (key === 'intro') { var ip = part('intro'); ip.lead = ip.lead.concat(pending, [it.text]); pending = []; return; }
+        var p = part(key);
+        if (pending.length) { p.lead = p.lead.concat(pending); pending = []; }
+        box = { head: heading(it.text), lines: [] };
+        p.boxes.push(box);
+      } else if (it.kind === 'frame') {
+        box = null;                          // a frame closes the card box it follows
+        pending.push(it.text);
+      } else if (box) {
+        box.lines.push(it.text);
+      } else {
+        pending.push(it.text);
+      }
+    });
+    if (pending.length) {
+      // Lines before any card are the welcome; lines after the last card bring the reading together.
+      if (!parts.length) parts.push({ key: 'intro', lead: pending, boxes: [] });
+      else { var e = part('end'); e.boxes.push({ head: null, lines: pending }); }
+    }
+    var html = parts.map(function (p) {
+      return '<section class="gtk-tx-part"><h3 class="gtk-tx-title">' + esc(CHAPTERS[p.key] || '') + '</h3>' +
+        (p.lead.length ? '<p class="gtk-tx-lead">' + p.lead.map(esc).join(' ') + '</p>' : '') +
+        p.boxes.map(function (b) {
+          return '<article class="gtk-tx-box">' + (b.head ? '<h4 class="gtk-tx-head">' + esc(b.head) + '</h4>' : '') +
+            b.lines.map(function (l) { return '<p>' + esc(l) + '</p>'; }).join('') + '</article>';
+        }).join('') + '</section>';
+    }).join('');
+    var wrap = det.querySelector(':scope > .gtk-tx');
+    if (!wrap) { wrap = document.createElement('div'); wrap.className = 'gtk-tx'; det.appendChild(wrap); }
+    wrap.innerHTML = html;
+    det.classList.add('gtk-boxed');
+    watchBoxes(root, wrap);
+  }
+  // The light visits each heading as it comes into view, once each, in the order the reader reaches them.
+  function watchBoxes(root, wrap) {
+    if (txObserver) txObserver.disconnect();
+    txKissed = new WeakSet();
+    if (reduced() || !window.IntersectionObserver) return;
+    txObserver = new IntersectionObserver(function (entries) {
+      var det = root.querySelector('.mc-transcript');
+      if (!det || !det.open) return;
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || txKissed.has(en.target)) return;
+        txKissed.add(en.target);
+        var t = en.target.querySelector('.gtk-tx-head') || en.target;
+        kissEl(t, function (h) { var r = h.getBoundingClientRect(); return { x: r.left - 10 + sx(), y: r.top + r.height / 2 + sy() }; }, 0);
+      });
+    }, { root: root, threshold: 0.55 });
+    Array.prototype.slice.call(wrap.querySelectorAll('.gtk-tx-box, .gtk-tx-title')).forEach(function (b) { txObserver.observe(b); });
+  }
+  function setupTranscript(root) {
+    buildTranscript(root);
+    var ol = root.querySelector('.mc-transcript > ol');
+    if (txMutation) txMutation.disconnect();
+    if (ol && window.MutationObserver) { txMutation = new MutationObserver(function () { buildTranscript(root); }); txMutation.observe(ol, { childList: true }); }
+    var det = root.querySelector('.mc-transcript');
+    if (det) det.addEventListener('toggle', function () { if (det.open) { var w = det.querySelector('.gtk-tx'); if (w) watchBoxes(root, w); } });
+  }
+
   document.addEventListener('maxchasroom:open', function (e) {
-    if (reduced()) return;
     maxRoot = e.detail.root; maxKissed = {}; maxSeq++;
+    setupTranscript(maxRoot);
   });
   document.addEventListener('maxchasroom:show', function (e) {
     if (reduced() || !maxRoot || e.detail.root !== maxRoot) return;
@@ -376,11 +471,13 @@
   });
   document.addEventListener('maxchasroom:close', function () {
     maxSeq++; maxRoot = null; maxKissed = {};
+    if (txObserver) { txObserver.disconnect(); txObserver = null; }
+    if (txMutation) { txMutation.disconnect(); txMutation = null; }
     if (light) {
       var fade = function () { if (!light || maxRoot) return; light.alpha -= 0.06; if (light.alpha > 0) setTimeout(fade, 30); else { light.alpha = 0; light.visible = false; } };
       fade();
     }
   });
 
-  window.__gtKiss = { version: 'tinkerbell-2-max', dust: function () { return dust.length; } };
+  window.__gtKiss = { version: 'tinkerbell-3-transcript', dust: function () { return dust.length; } };
 })();
