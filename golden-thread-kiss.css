@@ -1,0 +1,34 @@
+/* RESONATE · Golden Thread "Tinkerbell" DEMO (golden-thread-kiss.html only). */
+
+/* The light and its dust fly IN FRONT of the cards, and never take a tap. */
+.gtk-canvas { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; }
+
+/* The card warms where the light kissed it, then settles. */
+.draw-page .reading-card.gtk-kissed .reading-card-front img { animation: gtk-warm 2.6s ease-out both; }
+.draw-page .position-clarifier.gtk-kissed img { animation: gtk-warm 2.4s ease-out both; }
+@keyframes gtk-warm {
+  0%   { box-shadow: 0 0 0 0 rgba(241, 207, 134, 0); }
+  25%  { box-shadow: 0 0 24px 3px rgba(241, 207, 134, .5); }
+  100% { box-shadow: 0 0 10px 0 rgba(241, 207, 134, .1); }
+}
+
+/* A new clarifier waits face down until the light reaches it. */
+.draw-page .position-clarifier.gtk-pending { position: relative; }
+.draw-page .position-clarifier .gtk-cover {
+  position: absolute; inset: 0; z-index: 2;
+  display: grid; place-items: center; align-content: center; gap: 4px;
+  border-radius: 8px; border: 1px solid rgba(201, 169, 106, .45);
+  background: radial-gradient(circle at 50% 38%, rgba(201, 169, 106, .14), transparent 40%), linear-gradient(145deg, #19181a, #09090b);
+}
+
+/* Demo label, small and out of the way, so nobody mistakes this page for the live app. */
+.gtk-demo-badge {
+  position: fixed; right: 10px; bottom: 10px; z-index: 50;
+  padding: 4px 9px; border-radius: 999px; font: 600 10px/1.2 system-ui, sans-serif; letter-spacing: .06em;
+  color: #f0d394; background: rgba(12, 11, 11, .86); border: 1px solid rgba(201, 169, 106, .45); pointer-events: none; opacity: .85;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gtk-canvas { display: none; }
+  .draw-page .reading-card.gtk-kissed .reading-card-front img, .draw-page .position-clarifier.gtk-kissed img { animation: none; }
+}
