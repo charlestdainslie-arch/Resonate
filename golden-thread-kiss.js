@@ -131,6 +131,8 @@
 
   // ---------- flight ----------
   var flying = 0;
+  // A flight is still wanted: page flights carry the page token; Max's carry a check of their own.
+  function alive(mine) { return typeof mine === 'function' ? mine() : mine === token; }
   // Steer the light to a live target (page coordinates), with a wandering sway that settles as it arrives.
   function flyTo(getTarget, mine) {
     flying++;
@@ -138,7 +140,7 @@
     return new Promise(function (done) {
       var prev = performance.now();
       function step(now) {
-        if (mine !== token) { flying--; return done(); }
+        if (!alive(mine)) { flying--; return done(); }
         var dt = Math.min(40, now - prev); prev = now; wanderT += dt;
         var tg = getTarget(), dx = tg.x - light.x, dy = tg.y - light.y, dist = Math.hypot(dx, dy);
         if (dist < 1.5 && Math.hypot(light.vx, light.vy) < 0.05) {
@@ -318,5 +320,67 @@
     return result;
   };
 
-  window.__gtKiss = { version: 'tinkerbell-1', dust: function () { return dust.length; } };
+  // ---------- Max Chasroom (Chas, 11 Nov: "add it to Max") ----------
+  // As Max talks about a card, the light flies to the centre of that card on his strip and kisses it,
+  // then lifts to rest just above it until he moves on. The strip's cards are already face up: the light
+  // never turns or hides a card here. A new line cancels a flight still under way, so the light keeps
+  // pace with Max rather than queueing behind him. Closing Max lets the light fade.
+  var maxSeq = 0, maxRoot = null, maxKissed = {};
+  function maxPicture(slot) {
+    if (!maxRoot) return null;
+    var li = maxRoot.querySelector('[data-slot="' + slot + '"]');
+    if (!li) return null;
+    return li.querySelector(':scope > img.mc-main') || li.querySelector(':scope > img') || li;
+  }
+  function maxVisit(slot) {
+    var seq = ++maxSeq, live = function () { return seq === maxSeq && !!maxRoot; };
+    var pic = maxPicture(slot);
+    if (!pic) return;
+    ensureCanvas();
+    if (!light || !light.visible) {
+      var c0 = centreOf(pic);
+      light = { x: c0.x - 70, y: sy() - 30, vx: 0.1, vy: 0.25, glow: 0, alpha: 1, visible: true };
+    }
+    light.alpha = 1; light.visible = true;
+    startLoop();
+    // Max's strip scrolls itself to the card; give it a moment so the light heads for where the card lands.
+    wait(320).then(function () {
+      if (!live()) return;
+      return flyTo(function () { return centreOf(pic); }, live);
+    }).then(function () {
+      if (!live()) return;
+      var c = centreOf(pic);
+      blooms.push({ x: c.x, y: c.y, t0: performance.now() });
+      emit(c.x, c.y, 22, 9, 0.045);
+      light.glow = 1;
+      pic.classList.remove('gtk-kissed'); void pic.offsetWidth; pic.classList.add('gtk-kissed');
+      return wait(HOLD);
+    }).then(function () {
+      if (!live()) return;
+      light.glow = 0;
+      // Lift off the picture and hover just above it, so the card is clear while Max speaks.
+      return flyTo(function () { var r = pic.getBoundingClientRect(); return { x: r.left + r.width / 2 + sx(), y: r.top - 14 + sy() }; }, live);
+    });
+  }
+  document.addEventListener('maxchasroom:open', function (e) {
+    if (reduced()) return;
+    maxRoot = e.detail.root; maxKissed = {}; maxSeq++;
+  });
+  document.addEventListener('maxchasroom:show', function (e) {
+    if (reduced() || !maxRoot || e.detail.root !== maxRoot) return;
+    if (e.detail.index === 0) maxKissed = {};          // Play again / Replay starts over
+    var fresh = (e.detail.show || []).filter(function (slot) { return /^(p\d+|c\d+-\d+|k\d+)$/.test(slot) && !maxKissed[slot]; });
+    if (!fresh.length) return;
+    fresh.forEach(function (slot) { maxKissed[slot] = true; });
+    maxVisit(fresh[fresh.length - 1]);                   // the most specific: a clarifier over its card
+  });
+  document.addEventListener('maxchasroom:close', function () {
+    maxSeq++; maxRoot = null; maxKissed = {};
+    if (light) {
+      var fade = function () { if (!light || maxRoot) return; light.alpha -= 0.06; if (light.alpha > 0) setTimeout(fade, 30); else { light.alpha = 0; light.visible = false; } };
+      fade();
+    }
+  });
+
+  window.__gtKiss = { version: 'tinkerbell-2-max', dust: function () { return dust.length; } };
 })();
