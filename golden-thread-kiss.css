@@ -21,6 +21,10 @@
   background: radial-gradient(circle at 50% 38%, rgba(201, 169, 106, .14), transparent 40%), linear-gradient(145deg, #19181a, #09090b);
 }
 
+/* Chas, 10 Nov: Clarifier 2 stays hidden until it is actually drawn (no "Not drawn yet" card back).
+   The glowing "Draw Clarifier 2" button still says one is due; when it is drawn, the light kisses it. */
+.draw-page .position-clarifier-slot { display: none; }
+
 /* Demo label, small and out of the way, so nobody mistakes this page for the live app. */
 .gtk-demo-badge {
   position: fixed; right: 10px; bottom: 10px; z-index: 50;
