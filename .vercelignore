@@ -1,0 +1,27 @@
+# What stays OFF the public site (resonatetarot.app). The public site is the app: index.html and the
+# files it loads. Team docs, tests, tools, demos and Max (presenter-uat.html) stay in the repo only.
+# Added 12 Nov 2026 on Chas's "go" for the release.
+
+# Team records, tests, tooling
+/audit/
+/tests/
+/tools/
+/.github/
+/.venv/
+/*.md
+/README.txt
+
+# Max (private for now) and the files only Max or the QA loader use
+/presenter-uat.html
+/presenter.js
+/presenter.css
+/chas-voice.js
+/max-golden-thread.js
+/max-golden-thread.css
+/qa-loader.js
+
+# Demo pages and unused experiments
+/golden-thread-kiss.html
+/golden-thread-connector/
+/golden-thread-live.js
+/golden-thread-live.css
