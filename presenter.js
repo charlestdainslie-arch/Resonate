@@ -448,7 +448,9 @@
       stopSound();index=i;clip=from;
       if(i>=script.length){finish();return;}
       show(i);root.classList.add('is-talking');
-      if(ENDING.includes(script[i].chapter)){heardCards=true;state.maxHeardAt=state.drawnAt;}
+      // The cards count as heard once Max moves past them, into the clarifiers or the ending (Chas, 11 Nov: Clarify
+      // becomes available at the end of the first spread of cards, not after the clarifiers too).
+      if(script[i].chapter!=='intro'&&script[i].chapter!=='cards'){const was=heardCards;heardCards=true;state.maxHeardAt=state.drawnAt;if(!was)updateBar();}
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
       const v=!muted&&voice;
       if(!v){timer=setTimeout(next,captionTime(i));return;}
@@ -532,6 +534,17 @@
       return null;
     }
     const LAYER_NAME={first:'First clarifiers',second:'Second clarifiers',clarity:'Clarity cards'};
+    // Clarify in layers (Chas, Relationship UAT, 11 Nov): nothing until Max has read every card; a second clarifier
+    // only once every card has had its first-clarifier turn (drawn, or passed over with Next card →, the approved
+    // skip); a Clarity card only once every card has had its second-clarifier turn. Returns why, or ''.
+    function layerLock(step){
+      if(!step)return '';
+      if(!heardCards)return 'Max reads every card first; then you can clarify.';
+      const left=layer=>walkOrder().some(k=>!skipped.has(layer+':'+k)&&clarifyStepFor(k)===layer);
+      if(step==='second'&&left('first'))return 'Second clarifiers come once every card has had its first clarifier.';
+      if(step==='clarity'&&(left('first')||left('second')))return 'Clarity cards come once every card has had its clarifiers.';
+      return '';
+    }
     function updateBar(){
       const bar=$('mcClarifyBar');if(!bar)return;
       const i=pickedIndex(),step=clarifyStepFor(i),labels=positionLabels();
@@ -540,7 +553,8 @@
       $('mcFinish').textContent=readingFinished()?'Reading finished ✓':'Finish reading';
       $('mcFinish').disabled=readingFinished();
       if(!go){$('mcPickNote').textContent='';return;}
-      go.disabled=!step;go.dataset.step=step||'done';
+      const lock=layerLock(step);
+      go.disabled=!step||!!lock;go.dataset.step=step||'done';go.title=lock;
       // Next card → once the reading has been heard, while another card can still be clarified after this one.
       const nx=$('mcNext');
       if(nx)nx.hidden=!(heardCards&&nextInWalk(i));
@@ -549,7 +563,7 @@
       // The note starts with the layer, so it agrees with the caption and the button (Add second clarifier only
       // in the second layer).
       const walkNext=heardCards?nextInWalk():null;
-      $('mcPickNote').textContent=(walkNext&&walkNext.k===i&&step?LAYER_NAME[step].replace(/s$/,'')+' · ':'')+where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?(spot.needsSecond?' — its first clarifier is a Major, so a second is due.':' — you may add a second clarifier if you wish.'):step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
+      if(lock){$('mcPickNote').textContent=lock;}else $('mcPickNote').textContent=(walkNext&&walkNext.k===i&&step?LAYER_NAME[step].replace(/s$/,'')+' · ':'')+where+name+(step==='first'?(spot.needsFirst?' is a Major Arcana card: a clarifier is due.':' — you may clarify it if you wish.'):step==='second'?(spot.needsSecond?' — its first clarifier is a Major, so a second is due.':' — you may add a second clarifier if you wish.'):step==='clarity'?' — three Major Arcana cards: a Clarity card is due.':' — fully clarified.');
       root.querySelectorAll('.mc-card').forEach((el,k)=>el.classList.toggle('is-picked',k===i));
       const strip=root.querySelector('.mc-cards'),card=root.querySelectorAll('.mc-card')[i];
       // Only follow a card once Max is speaking or the seeker has picked one: on opening, the strip starts at
@@ -569,7 +583,7 @@
     });
     $('mcClarifyGo')?.addEventListener('click',()=>{
       const i=pickedIndex(),step=clarifyStepFor(i);
-      if(!step)return;
+      if(!step||layerLock(step))return;
       clarifyingInPlayer=true;
       try{clarifyPosition(i,true);}finally{clarifyingInPlayer=false;}   // Max walks the layers himself
       full=buildScript();heardSig=readingSig();if(player)player.sig=heardSig;
