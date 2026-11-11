@@ -365,7 +365,9 @@
     // Has the seeker heard Max read the cards? True once he reaches the ending of the reading (the "So far…"
     // and the invitation come only after every card), or when Max opens on one clarifier chapter, which
     // follows a reading already heard.
-    let heardCards=typeof chapter==='string';
+    // Remembered for this reading across openings (11 Nov UAT): Max heard all the cards, was closed and opened
+    // again, and Finish reading started the whole reading from the welcome.
+    let heardCards=typeof chapter==='string'||(!!state.drawnAt&&state.maxHeardAt===state.drawnAt);
     const voiceNote=()=>{
       let note;
       if(muted)note='Sound is off. Captions keep time on their own.';
@@ -443,7 +445,7 @@
       stopSound();index=i;clip=from;
       if(i>=script.length){finish();return;}
       show(i);root.classList.add('is-talking');
-      if(ENDING.includes(script[i].chapter))heardCards=true;
+      if(ENDING.includes(script[i].chapter)){heardCards=true;state.maxHeardAt=state.drawnAt;}
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
       const v=!muted&&voice;
       if(!v){timer=setTimeout(next,captionTime(i));return;}
