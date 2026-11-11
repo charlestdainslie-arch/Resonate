@@ -343,7 +343,7 @@
     var d = document.createElement('details');
     d.className = 'gtk-more' + (cls ? ' ' + cls : '');
     d.innerHTML = '<summary>' + label + '</summary>';
-    parent.insertBefore(d, nodes[0]);
+    parent.appendChild(d);                 // after the meaning, so the main path reads first
     nodes.forEach(function (n) { d.appendChild(n); });
     return d;
   }
