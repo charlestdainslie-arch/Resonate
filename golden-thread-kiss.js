@@ -256,6 +256,7 @@
     if (status) status.textContent = 'Your spread is ready. Follow the reading below, or tap a card to go deeper.';
     var interpretation = document.getElementById('readingInterpretation');
     if (interpretation) interpretation.classList.remove('waiting');
+    if (typeof clarifyReady === 'function') clarifyReady();   // the clarify buttons held during the deal
   }
   function clarifiersOf(pos) { return Array.prototype.slice.call(pos.querySelectorAll('.position-clarifier, .position-clarity')); }   // the Clarity card too (11 Nov)
   function coverClarifier(c) {

@@ -571,7 +571,7 @@
       const i=pickedIndex(),step=clarifyStepFor(i);
       if(!step)return;
       clarifyingInPlayer=true;
-      try{clarifyPosition(i);}finally{clarifyingInPlayer=false;}
+      try{clarifyPosition(i,true);}finally{clarifyingInPlayer=false;}   // Max walks the layers himself
       full=buildScript();heardSig=readingSig();if(player)player.sig=heardSig;
       // While Max talks about this clarifier, the bar already shows the next card in the walk, the same in every
       // layer (9 Nov UAT: during a first clarifier it offered that card's second clarifier, before the second
@@ -691,7 +691,8 @@
     // BT-09 (QA matrix, 7 Nov): with no card in view, Clarify never guesses: it asks you to choose a card.
     clar?.addEventListener('click',()=>{
       if(dockTarget<0){selectPrompt();return;}
-      if(clarifyStepFor(dockTarget))clarifyPosition(dockTarget);
+      const st=clarifyStepFor(dockTarget);
+      if(st&&(typeof clarifyLayerOpen!=='function'||clarifyLayerOpen(st)))clarifyPosition(dockTarget);
     });
     let topVisible=true;
     const io=floatIO='IntersectionObserver' in window?new IntersectionObserver(e=>{topVisible=e[0].isIntersecting;update();}):null;
@@ -730,13 +731,14 @@
       const n=String(dockTarget+1).padStart(2,'0'),label=positionLabels()[dockTarget]||'Card';
       const step=clarifyStepFor(dockTarget);
       const count=readingLayerCards(dockTarget).length;
-      const key=dockTarget+'|'+step+'|'+count;
+      const open=!step||typeof clarifyLayerOpen!=='function'||clarifyLayerOpen(step);   // greyed until the layer before is complete
+      const key=dockTarget+'|'+step+'|'+count+'|'+open;
       if(key===shown)return;
       shown=key;
       const name=cardName(byId(state.drawnCardIds[dockTarget]));
       const pair=layers().map(l=>l[dockTarget]);
       const atLimit=!step&&pair.length===2&&pair.every(c=>c&&c.arcana==='Major')&&readingClarity()[dockTarget]==null;
-      clar.disabled=!step;
+      clar.disabled=!step||!open;
       clar.dataset.position=dockTarget;
       clar.dataset.step=step||'done';
       document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step==='clarity'?`${n} · Clarity card`:step?`${n} · ${label}`:(atLimit?`${n} · 2-card limit`:`${n} · clarified ✓`);

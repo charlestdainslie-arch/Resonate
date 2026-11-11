@@ -568,8 +568,34 @@ function drawClarityCard(position){
   renderDraw();
   document.querySelectorAll('.reading-position')[position]?.scrollIntoView({behavior:scrollMotion(),block:'center'});
 }
-function clarifyPosition(index){
+// Clarifiers come in layers (Chas, 11 Nov UAT): nothing until the cards are dealt; every first clarifier that is due
+// before any second; every second that is due before a Clarity card. On the reading page a button for a later layer
+// stays greyed out until the layer before it is complete. Max's player walks the layers itself (and lets the seeker
+// skip a due card, 10 Nov), so it passes anyLayer.
+function clarifyLayerOpen(step){
+  if(!state.drawSettled)return false;
+  const plan=clarifierPlan();
+  if(step==='second')return !plan.pendingFirst.length;
+  if(step==='clarity')return !plan.pendingFirst.length&&!plan.pendingSecond.length;
+  return !!step;
+}
+function clarifyLock(step){
+  if(clarifyLayerOpen(step))return '';
+  const why=!state.drawSettled?'Available once your cards are dealt.':step==='clarity'?'Available once every due clarifier has been drawn.':'Available once every due first clarifier has been drawn.';
+  return ` disabled aria-disabled="true" data-layer-lock="${step}" title="${why}"`;
+}
+// When the deal settles, the buttons it held back are offered (those still waiting on a layer stay greyed).
+function clarifyReady(){
+  document.querySelectorAll('[data-layer-lock]').forEach(b=>{
+    const i=Number(b.dataset.clarifyPosition);
+    const step=Number.isInteger(i)&&b.dataset.clarifyPosition!==undefined?clarifyStepFor(i):b.dataset.layerLock;
+    if(!clarifyLayerOpen(step))return;
+    b.disabled=false;b.removeAttribute('aria-disabled');b.removeAttribute('data-layer-lock');b.removeAttribute('title');
+  });
+}
+function clarifyPosition(index,anyLayer){
   const step=clarifyStepFor(index);
+  if(!anyLayer&&!clarifyLayerOpen(step))return '';
   if(step==='first')drawFirstLayerClarifiers(index);
   else if(step==='second')drawNextClarifierLayer(index);
   else if(step==='clarity')drawClarityCard(index);
@@ -579,8 +605,13 @@ function clarifyPosition(index){
 // Clarifier 1 without Clarifier 2), or -1.
 function nextDueClarifier(){
   const plan=clarifierPlan();
-  const due=plan.positions.find(p=>p.needsFirst||p.needsSecond||p.needsClarity);
-  return due?due.index:-1;
+  const order=typeof readingOrder==='function'?readingOrder():plan.positions.map(p=>p.index);
+  // Layer by layer (Chas, 11 Nov UAT): every due first clarifier, then every due second, then any Clarity card.
+  for(const need of ['needsFirst','needsSecond','needsClarity']){
+    const i=order.find(k=>plan.positions[k]&&plan.positions[k][need]);
+    if(i!==undefined)return i;
+  }
+  return -1;
 }
 function additionalClarifierView(labels){
   if(state.additionalClarifierReadingAt!==state.drawnAt)return '';
@@ -599,8 +630,8 @@ function clarifierCardsForPosition(index){
   if(second!=null)layers.push({number:2,id:second});
   const spot=typeof ResonateClarifiers!=='undefined'?clarifierPlan().positions[index]:null;
   if(!layers.length){
-    if(spot&&spot.needsFirst)return `<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}" aria-label="Draw Clarifier 1 for card ${index+1}, a Major Arcana card">✦ Draw Clarifier 1</button>`;
-    return spot&&spot.mayChooseFirst?`<button type="button" class="ghost-button clarify-choice" data-clarify-position="${index}" aria-label="Clarify card ${index+1} (optional)">+ Clarify this card</button>`:'';
+    if(spot&&spot.needsFirst)return `<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}"${clarifyLock('first')} aria-label="Draw Clarifier 1 for card ${index+1}, a Major Arcana card">✦ Draw Clarifier 1</button>`;
+    return spot&&spot.mayChooseFirst?`<button type="button" class="ghost-button clarify-choice" data-clarify-position="${index}"${clarifyLock('first')} aria-label="Clarify card ${index+1} (optional)">+ Clarify this card</button>`:'';
   }
   const turn=clarifierTurnPending&&!reducedMotion();
   const waiting=layers.length===1&&spot&&spot.needsSecond?`<div class="position-clarifier-slot" role="img" aria-label="Clarifier 2, not drawn yet"><span class="clarifier-back" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span><span class="clarifier-layer-label">CLARIFIER 2</span><strong>Not drawn yet</strong></div>`:'';
@@ -608,7 +639,7 @@ function clarifierCardsForPosition(index){
     const card=cards.find(c=>c.id===layer.id);
     const turning=turn&&layer.number===2;
     return card?`<div class="position-clarifier${turning?' clarifier-turn':''}${isReversed(card)?' is-reversed':''}"><span class="clarifier-layer-label">CLARIFIER ${layer.number}</span><img src="${cardImage(card)}" alt="${cardName(card)}, clarifier layer ${layer.number}" loading="eager" referrerpolicy="no-referrer">${turning?'<span class="clarifier-back clarifier-back-cover" aria-hidden="true"><span class="back-mark">R</span><small>RESONATE</small></span>':''}<strong>${card.roman||card.id} · ${cardName(card)}</strong></div>`:'';
-  }).join('')}${waiting}</div>${waiting?`<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}" aria-label="Draw Clarifier 2 for card ${index+1}">✦ Draw Clarifier 2</button>`:''}${!waiting&&layers.length===1&&spot&&spot.mayChooseSecond?`<button type="button" class="ghost-button clarify-choice" data-clarify-position="${index}" aria-label="Add a second clarifier to card ${index+1} (optional)">+ Add second clarifier</button>`:''}${clarityCardForPosition(index,spot)}`;
+  }).join('')}${waiting}</div>${waiting?`<button type="button" class="ghost-button clarify-choice clarify-due" data-clarify-position="${index}"${clarifyLock('second')} aria-label="Draw Clarifier 2 for card ${index+1}">✦ Draw Clarifier 2</button>`:''}${!waiting&&layers.length===1&&spot&&spot.mayChooseSecond?`<button type="button" class="ghost-button clarify-choice" data-clarify-position="${index}"${clarifyLock('second')} aria-label="Add a second clarifier to card ${index+1} (optional)">+ Add second clarifier</button>`:''}${clarityCardForPosition(index,spot)}`;
 }
 // Option B: the Clarity card sits centred below Clarifiers 1 and 2. Not a clarifier, so it has its own class
 // and is never counted with them.
@@ -616,7 +647,7 @@ function clarityCardForPosition(index,spot){
   const id=readingClarity()[index];
   const card=id==null?null:cards.find(c=>c.id===id);
   if(card)return `<div class="position-clarity${isReversed(card)?' is-reversed':''}" aria-label="Clarity card for position ${index+1}"><span class="clarifier-layer-label">CLARITY CARD</span><img src="${cardImage(card)}" alt="${cardName(card)}, clarity card" loading="eager" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${cardName(card)}</strong></div>`;
-  return spot&&spot.needsClarity?`<button type="button" class="ghost-button clarify-choice clarify-due clarity-due" data-clarify-position="${index}" aria-label="Draw a Clarity card for card ${index+1}: all three cards are Major Arcana">✦ Draw Clarity card</button>`:'';
+  return spot&&spot.needsClarity?`<button type="button" class="ghost-button clarify-choice clarify-due clarity-due" data-clarify-position="${index}"${clarifyLock('clarity')} aria-label="Draw a Clarity card for card ${index+1}: all three cards are Major Arcana">✦ Draw Clarity card</button>`:'';
 }
 // Text and label for the main clarifier button, from the rule.
 // The main button now clarifies one card at a time: the first card the rule is waiting on.
@@ -648,7 +679,7 @@ function renderDraw(){
   const dealing=!state.drawSettled;   // before the render changes it: observers need the value it started with
   const labels=positionLabels();
   const chosen=state.drawnCardIds.map(id=>cards.find(c=>c.id===id)).filter(Boolean);
-  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${slotLabelHtml(labels[i]||'Position')}</span><button type="button" class="reading-card is-facedown${isReversed(card)?' is-reversed':''}" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${cardName(card)}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${cardName(card)}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${cardName(card)}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p>${questionToggle()}<div class="reading-meanings">${readingOrder().map(i=>readingMeaning(chosen[i],labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">${clarifierNextStep().help}</p><button type="button" class="gold-button" id="primaryClarifierAction">${clarifierNextStep().label} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
+  shell(`${backButton('Back to spreads','reading')}<section class="draw-stage multi"><div class="eyebrow">${icon('spark',15)} ${readingTitle()} · ${state.spreadSize} CARDS</div><h1>Let the cards come to you.</h1>${sampleDeckNotice()}<p class="draw-instruction" id="drawStatus">Drawing your cards…</p><div class="spread-scroll" role="region" aria-label="Card spread" tabindex="0"><div class="spread-board spread-${state.spreadSize} layout-${state.spreadId}">${chosen.map((card,i)=>`<div class="reading-position"><span class="slot-label">${String(i+1).padStart(2,'0')} · ${slotLabelHtml(labels[i]||'Position')}</span><button type="button" class="reading-card is-facedown${isReversed(card)?' is-reversed':''}" data-reading-card="${card.id}" data-index="${i}" aria-label="${i+1}. ${labels[i]} — ${cardName(card)}"><div class="reading-card-inner"><div class="reading-card-back"><div class="back-mark">R</div><small>RESONATE</small></div><div class="reading-card-front"><img src="${cardImage(card)}" alt="${cardName(card)}" referrerpolicy="no-referrer"><strong>${card.roman||card.id} · ${cardName(card)}</strong></div></div></button>${clarifierCardsForPosition(i)}</div>`).join('')}</div></div><section class="reading-interpretation" id="readingInterpretation"><div class="eyebrow">YOUR READING</div><h2>What each position is saying</h2><p class="reading-time">Planetary positions calculated for ${new Date(state.drawnAt||Date.now()).toLocaleString([], {dateStyle:'medium',timeStyle:'short'})}.</p>${questionToggle()}<div class="reading-meanings">${readingOrder().map(i=>readingMeaning(chosen[i],labels[i],i)).join('')}</div>${atmosphericArt("assets/landing-saved.jpg","Whisper atmosphere — reflecting on the whole spread")}<div class="reading-golden-thread"><div class="eyebrow">THE GOLDEN THREAD</div><h2>Read the spread as a whole</h2>${goldenThread(chosen)}</div></section><div class="reading-next-step" aria-label="Continue your reading"><p class="reading-help">${clarifierNextStep().help}</p><button type="button" class="gold-button" id="primaryClarifierAction"${(()=>{const a=clarifierNextStep().action;return a==='save'?(state.drawSettled?'':` disabled aria-disabled="true" data-layer-lock="save" title="Available once your cards are dealt."`):clarifyLock(a);})()}>${clarifierNextStep().label} →</button></div><div class="draw-actions" id="drawActions"><button type="button" class="ghost-button" id="backToReadingTop">↑ Back to the spread &amp; clarifiers</button><button type="button" class="ghost-button" data-go="saved">${icon('saved',16)} View My Journal</button><button type="button" class="ghost-button" data-go="reading">${icon('spark',16)} Start a New Reading</button><button type="button" class="ghost-button" id="downloadReading">${icon('download',16)} Download Reading PDF</button></div><p class="reading-help">Return to your spread to explore clarifiers, or open your journal to revisit what you saved.</p></section>`, 'draw-page');
   bindBack();
   const cardsEls=[...document.querySelectorAll('.reading-card')]; const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const interpretation=document.getElementById('readingInterpretation');
@@ -657,7 +688,7 @@ function renderDraw(){
     const status=document.getElementById('drawStatus'); if(status) status.textContent='Your spread is ready. Follow the reading below, or tap a card to go deeper.';
   } else {
     if(interpretation) interpretation.classList.add('waiting');
-    cardsEls.forEach((el,i)=>drawTimers.push(setTimeout(()=>{el.classList.remove('is-facedown');el.classList.add('revealed'); if(i===cardsEls.length-1){state.drawSettled=true;state.drawPhase='settled';const status=document.getElementById('drawStatus');if(status)status.textContent='Your spread is ready. Follow the reading below, or tap a card to go deeper.'; if(interpretation&&document.body.contains(interpretation)) interpretation.classList.remove('waiting');}}, reduced?0:420+i*430)));
+    cardsEls.forEach((el,i)=>drawTimers.push(setTimeout(()=>{el.classList.remove('is-facedown');el.classList.add('revealed'); if(i===cardsEls.length-1){state.drawSettled=true;state.drawPhase='settled';const status=document.getElementById('drawStatus');if(status)status.textContent='Your spread is ready. Follow the reading below, or tap a card to go deeper.'; if(interpretation&&document.body.contains(interpretation)) interpretation.classList.remove('waiting');clarifyReady();}}, reduced?0:420+i*430)));
   }
   cardsEls.forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingCard),'draw',Number(el.dataset.index)));
   document.querySelectorAll('[data-reading-detail]').forEach(el=>el.onclick=()=>openCard(Number(el.dataset.readingDetail),'draw',Number(el.dataset.index)));
