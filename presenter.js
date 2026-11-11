@@ -64,6 +64,9 @@
     const add=(chapter,kind,text,show,clips)=>{if(text)script.push({chapter,kind,text,show,clips:clips||[{id:'',text}]});};
     const frame=(chapter,key,show=[])=>add(chapter,'frame',FRAME[key],show,[{id:'frame-'+key,text:FRAME[key]}]);
     const spoken=label=>label.replace(/ · /g,', ');
+    // "Here is your second clarifier for the Past, ..." (Chas, 11 Nov UAT). No "the" before a position that
+    // already has one, or that is the seeker ("You", "You / Answer").
+    const forPos=label=>(/^(the |you\b)/i.test(label)?'':'the ')+spoken(label);
     const pos=i=>({id:`pos-${spread}-${i}`,text:spoken(labels[i]||'Position')+':'});
 
     frame('intro','open');
@@ -97,13 +100,15 @@
         if(!c)return;
         const key=`c${i}-${n}`;
         const r=isReversed(c)?'-r':'';
-        // Each clarifier is introduced by the card it clarifies: "Past, Ace of Cups: first clarifier, Eight of
+        // Each clarifier is introduced by the card it clarifies (was "Past, Ace of Cups: first clarifier, Eight of
         // Swords." On a spread every card's first clarifier used to be "Clarifier 1 · Past: …", which sounded
         // like a count and did not say which card it belonged to (Chas, laptop UAT, 9 Nov). New clip ids, so a
         // recording of the old words never plays under the new caption.
         const nth=n===1?'first':'second',base=byId(ids[i]),rb=isReversed(base)?'-r':'';
-        const label=one?`${cardName(base)}: ${nth} clarifier, ${cardName(c)}.`:`${labels[i]}, ${cardName(base)}: ${nth} clarifier, ${cardName(c)}.`;
-        add(chapter,'label',label,['p'+i,key],[...(one?[]:[{id:`pos-${spread}-${i}-comma`,text:spoken(labels[i]||'Position')+','}]),{id:`name-${base.id}${rb}-colon`,text:`${cardName(base)}:`},{id:`label-${nth}-clarifier`,text:`${nth} clarifier,`},{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
+        // 11 Nov UAT: "Here is your second clarifier for the Past, Ace of Cups: Eight of Swords." New clip ids again.
+        const here=`Here is your ${nth} clarifier for`,where=one?'':forPos(labels[i]||'Position')+', ';
+        const label=`${here} ${where}${cardName(base)}: ${cardName(c)}.`;
+        add(chapter,'label',label,['p'+i,key],[{id:`here-${nth}-clarifier-for`,text:here},...(one?[]:[{id:`pos-${spread}-${i}-for`,text:where.trim()}]),{id:`name-${base.id}${rb}-colon`,text:`${cardName(base)}:`},{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
         const block=blocks[i].querySelector(`.integrated-clarifier[data-clarifier="${n}"]`)||blocks[i].querySelectorAll('.integrated-clarifier')[l];
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
         add(chapter,'quote',meaning,[key],[{id:`meaning-${c.id}${r}`,text:meaning}]);
@@ -137,7 +142,8 @@
         const r=isReversed(c)?'-r':'',show=['p'+i,`c${i}-1`,`c${i}-2`,'k'+i];
         // Introduced like the clarifiers: "Past, Ace of Cups: Clarity card, Three of Wands." (9 Nov UAT).
         const base=byId(ids[i]),rb=isReversed(base)?'-r':'';
-        add('c3','label',one?`${cardName(base)}: Clarity card, ${cardName(c)}.`:`${labels[i]}, ${cardName(base)}: Clarity card, ${cardName(c)}.`,show,[...(one?[]:[{id:`pos-${spread}-${i}-comma`,text:spoken(labels[i]||'Position')+','}]),{id:`name-${base.id}${rb}-colon`,text:`${cardName(base)}:`},{id:'label-clarity-card',text:'Clarity card,'},{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
+        const hereK='Here is your Clarity card for',whereK=one?'':forPos(labels[i]||'Position')+', ';
+        add('c3','label',`${hereK} ${whereK}${cardName(base)}: ${cardName(c)}.`,show,[{id:'here-clarity-card-for',text:hereK},...(one?[]:[{id:`pos-${spread}-${i}-for`,text:whereK.trim()}]),{id:`name-${base.id}${rb}-colon`,text:`${cardName(base)}:`},{id:`name-${c.id}${r}`,text:`${cardName(c)}.`}]);
         const block=blocks[i].querySelector('.integrated-clarity');
         const meaning=sentences(block?.querySelector(':scope > p')?.textContent||'')[0];
         add('c3','quote',meaning,show,[{id:`meaning-${c.id}${r}`,text:meaning}]);
@@ -580,7 +586,12 @@
       // Finish reading used to jump straight to the ending even when Max had not read a single card, so
       // the seeker heard "Before I go…" and no reading (9 Nov UAT, laptop). If the cards have not been
       // heard yet, Max reads the whole reading first, then the ending.
-      load(heardCards?full.filter(p=>p.chapter==='final'||p.chapter==='close'):full);
+      // 11 Nov UAT: pressed part-way through, it started the whole reading again from the welcome. Now Max carries
+      // on from the line he is on (or the start, if he has not begun), reads what is left, then the ending.
+      const ending=full.filter(p=>p.chapter==='final'||p.chapter==='close');
+      const cur=index>=0&&index<script.length?script[index]:null;
+      const at=cur&&!ENDING.includes(cur.chapter)?full.findIndex(p=>p.chapter===cur.chapter&&p.text===cur.text):-1;
+      load(heardCards?ending:at>0?full.slice(at):full);
       updateBar();
     });
     $('mcPlay').onclick=()=>setPlaying(!playing);

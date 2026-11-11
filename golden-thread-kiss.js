@@ -515,14 +515,14 @@
   var txObserver = null, txMutation = null, txKissed = null;
   function chapterOfLabel(t) {
     if (/^Tonight:/.test(t)) return 'intro';
-    if (/: first clarifier,/i.test(t)) return 'c1';
-    if (/: second clarifier,/i.test(t)) return 'c2';
-    if (/: Clarity card,/i.test(t)) return 'c3';
+    if (/first clarifier/i.test(t)) return 'c1';
+    if (/second clarifier/i.test(t)) return 'c2';
+    if (/Clarity card/i.test(t)) return 'c3';
     return 'cards';
   }
   function esc(t) { var d = document.createElement('div'); d.textContent = t; return d.innerHTML; }
   // "Past: Ace of Cups." -> "Past · Ace of Cups"; "Past, Ace of Cups: first clarifier, Eight of Swords." -> "Past, Ace of Cups · first clarifier, Eight of Swords"
-  function heading(t) { return t.replace(/\.$/, '').replace(/:\s*/, ' · '); }
+  function heading(t) { t = t.replace(/\.$/, '').replace(/^Here is your /i, '').replace(/:\s*/, ' · '); return t.charAt(0).toUpperCase() + t.slice(1); }
   function buildTranscript(root) {
     var det = root.querySelector('.mc-transcript'), ol = det && det.querySelector(':scope > ol');
     if (!ol) return;
