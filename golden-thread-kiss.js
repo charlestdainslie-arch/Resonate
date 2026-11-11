@@ -18,11 +18,12 @@
   // Loaded twice (a cached copy beside a new one, or a page that includes it twice): the second copy does nothing.
   // Claimed before any listener is added, so there is never a second set of listeners (Chas, 11 Nov review of H).
   if (window.ResonateKiss) return;
-  var api = window.ResonateKiss = { version: 'tinkerbell-6-seam' };
+  var api = window.ResonateKiss = { version: 'tinkerbell-7-arrive' };
 
   var MAX_SPEED = 0.62;   // px per ms at full flight
   var HOLD = 480;         // ms the light rests on a card's centre (the kiss)
   var AFTER = 220;        // ms after the card turns before it moves on
+  var ARRIVE = 6;         // px: close enough to the centre to count as there
   var MAX_DUST = 260;      // Deep, K §5: looks the same on a phone at half the cost
   // How long the light rests on each kind of card, and waits after it turns, in ms (Deep, K P1): a clarifier is a
   // smaller arrival than the card it clarifies.
@@ -169,7 +170,10 @@
         if (!alive(mine)) { flying--; return done(); }
         var dt = Math.min(40, now - prev); prev = now; wanderT += dt;
         var tg = getTarget(), dx = tg.x - light.x, dy = tg.y - light.y, dist = Math.hypot(dx, dy);
-        if (dist < 1.5 && Math.hypot(light.vx, light.vy) < 0.05) {
+        // Arrived once within 6 px, then placed exactly on the target. It used to wait until it was within 1.5 px and
+        // nearly still, which took about a second more per card, crawling where nobody could see it (pace check,
+        // 11 Nov: a Celtic Cross deal goes from about 30 s to about 19 s on a phone, with speed and rests unchanged).
+        if (dist < ARRIVE) {
           light.x = tg.x; light.y = tg.y; light.vx = light.vy = 0; flying--; return done();
         }
         // Arrive: full speed far away, easing in over the last 140 px.
