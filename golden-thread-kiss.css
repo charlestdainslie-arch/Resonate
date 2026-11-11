@@ -1,4 +1,5 @@
-/* RESONATE · Golden Thread "Tinkerbell" DEMO (golden-thread-kiss.html only). */
+/* RESONATE · Golden Thread "Tinkerbell" light, calm reading layout and boxed transcript (approved by Chas, 11 Nov).
+   Loaded by index.html, presenter-uat.html and the demo page golden-thread-kiss.html. */
 
 /* The light and its dust fly IN FRONT of the cards, and never take a tap. */
 .gtk-canvas { position: fixed; left: 0; top: 0; z-index: 1001; pointer-events: none; }  /* above Max's player (z-index 1000) */

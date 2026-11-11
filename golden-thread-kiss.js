@@ -1,4 +1,4 @@
-/* RESONATE · Golden Thread "Tinkerbell" DEMO (golden-thread-kiss.html only; the live app does not load this).
+/* RESONATE · Golden Thread "Tinkerbell" light (approved by Chas, 11 Nov; first built as a demo, golden-thread-kiss.html).
    Chas, 10 Nov: a moving golden light, like Tinkerbell, trailing delicate golden dust IN FRONT of
    the cards. It floats freely, kisses the CENTRE of each card as it is revealed, then moves on.
    The trail follows the light's movement and fades; there is no permanent line joining cards.
@@ -10,7 +10,7 @@
      turns, and it drifts on to the next card. After the last card it rises and fades away.
    - Newly drawn clarifiers are visited the same way, in reading order.
    - Reduced motion: no flight and no dust; the cards turn at once.
-   Loaded after app.js, reading-stage.js and deck-theatre.js. It wraps shell() and renderDraw()
+   Loaded by index.html and presenter-uat.html (and the demo page), after app.js, reading-stage.js and deck-theatre.js. It wraps shell() and renderDraw()
    and changes nothing in those files. */
 (function () {
   'use strict';
@@ -19,7 +19,13 @@
   var MAX_SPEED = 0.62;   // px per ms at full flight
   var HOLD = 480;         // ms the light rests on a card's centre (the kiss)
   var AFTER = 220;        // ms after the card turns before it moves on
-  var MAX_DUST = 520;
+  var MAX_DUST = 260;      // Deep, K §5: looks the same on a phone at half the cost
+  // How long the light rests on each kind of card, and waits after it turns, in ms (Deep, K P1): a clarifier is a
+  // smaller arrival than the card it clarifies.
+  var DWELL = { main: [480, 220], clarifier: [260, 140], clarity: [300, 160] };
+  var DWELL_BUDGET = 7000;  // all the resting in one deal; more stops share it (Deep, K P2)
+  var speedMul = 1;         // a long spread flies a little quicker (Deep, K P2)
+  var shownAt = {};         // readings whose deal has already played this visit (Deep, K P4)
 
   var token = 0;
   var dealingNow = false;   // true while the light deals the cards or visits new clarifiers
@@ -56,6 +62,21 @@
   }
   window.addEventListener('resize', size);
 
+  // The light's halo and the kiss bloom never change shape, only size and alpha: drawn once, then stamped
+  // (Deep, K §5: no gradient built every frame).
+  var sprites = {};
+  function sprite(name, stops) {
+    if (sprites[name]) return sprites[name];
+    var c = document.createElement('canvas'), R = 64; c.width = c.height = R * 2;
+    var g = c.getContext('2d'), gr = g.createRadialGradient(R, R, 0, R, R, R);
+    stops.forEach(function (st) { gr.addColorStop(st[0], st[1]); });
+    g.fillStyle = gr; g.fillRect(0, 0, R * 2, R * 2);
+    return (sprites[name] = c);
+  }
+  function stamp(img, x, y, r, alpha) { ctx.globalAlpha = Math.max(0, Math.min(1, alpha)); ctx.drawImage(img, x - r, y - r, r * 2, r * 2); ctx.globalAlpha = 1; }
+  var HALO = [[0, 'rgba(255,250,236,0.95)'], [.18, 'rgba(250,224,160,0.6)'], [.5, 'rgba(225,186,110,0.18)'], [1, 'rgba(201,169,106,0)']];
+  var BLOOM = [[0, 'rgba(255,246,220,1)'], [.35, 'rgba(241,207,134,0.45)'], [1, 'rgba(201,169,106,0)']];
+
   function startLoop() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
 
   function emit(x, y, n, spread, speed) {
@@ -79,44 +100,42 @@
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
     ctx.globalCompositeOperation = 'lighter';
 
-    // Dust: drifts, sinks a little, twinkles and fades.
+    // Dust: drifts, sinks a little, twinkles and fades. Two colours, so the fill is set twice a frame,
+    // not once per speck (Deep, K §5).
     for (var i = dust.length - 1; i >= 0; i--) {
       var p = dust[i];
       p.life += dt;
       if (p.life >= p.max) { dust.splice(i, 1); continue; }
       p.vx *= 0.985; p.vy = p.vy * 0.985 + 0.00012 * dt;
       p.x += p.vx * dt; p.y += p.vy * dt;
-      var k = p.life / p.max, fade = k < .12 ? k / .12 : 1 - (k - .12) / .88;
-      var tw = 0.65 + 0.35 * Math.sin(p.tw + p.life * 0.018);
-      var al = Math.max(0, fade * tw);
-      var X = p.x - ox, Y = p.y - oy;
-      if (X < -10 || Y < -10 || X > window.innerWidth + 10 || Y > window.innerHeight + 10) continue;
-      ctx.fillStyle = p.hue > .7 ? 'rgba(255,248,226,' + al + ')' : 'rgba(243,212,143,' + (al * .9) + ')';
-      ctx.beginPath(); ctx.arc(X, Y, p.r * (1 - k * .4), 0, 6.283); ctx.fill();
     }
+    for (var pass = 0; pass < 2; pass++) {
+      ctx.fillStyle = pass ? 'rgb(255,248,226)' : 'rgb(243,212,143)';
+      for (var q = 0; q < dust.length; q++) {
+        var d = dust[q];
+        if ((d.hue > .7 ? 1 : 0) !== pass) continue;
+        var X = d.x - ox, Y = d.y - oy;
+        if (X < -10 || Y < -10 || X > window.innerWidth + 10 || Y > window.innerHeight + 10) continue;
+        var k = d.life / d.max, fade = k < .12 ? k / .12 : 1 - (k - .12) / .88;
+        ctx.globalAlpha = Math.max(0, fade * (0.65 + 0.35 * Math.sin(d.tw + d.life * 0.018))) * (pass ? 1 : .9);
+        ctx.beginPath(); ctx.arc(X, Y, d.r * (1 - k * .4), 0, 6.283); ctx.fill();
+      }
+    }
+    ctx.globalAlpha = 1;
 
     // Kiss blooms: a soft swell of light on the card's centre.
     for (var j = blooms.length - 1; j >= 0; j--) {
       var b = blooms[j], t = (now - b.t0) / 1500;
       if (t >= 1) { blooms.splice(j, 1); continue; }
       var rad = 18 + 46 * Math.sin(Math.min(1, t * 1.6) * 1.57), a2 = (t < .25 ? t / .25 : 1 - (t - .25) / .75) * .55;
-      var g = ctx.createRadialGradient(b.x - ox, b.y - oy, 0, b.x - ox, b.y - oy, rad);
-      g.addColorStop(0, 'rgba(255,246,220,' + a2 + ')');
-      g.addColorStop(.35, 'rgba(241,207,134,' + (a2 * .45) + ')');
-      g.addColorStop(1, 'rgba(201,169,106,0)');
-      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(b.x - ox, b.y - oy, rad, 0, 6.283); ctx.fill();
+      stamp(sprite('bloom', BLOOM), b.x - ox, b.y - oy, rad, a2);
     }
 
     // The light itself: a bright core in a soft, breathing halo.
     if (light && light.alpha > 0.01) {
       var lx = light.x - ox, ly = light.y - oy, breathe = 1 + 0.12 * Math.sin(now * 0.006) + light.glow * 0.6;
       var A = light.alpha;
-      var h = ctx.createRadialGradient(lx, ly, 0, lx, ly, 22 * breathe);
-      h.addColorStop(0, 'rgba(255,250,236,' + (0.95 * A) + ')');
-      h.addColorStop(.18, 'rgba(250,224,160,' + (0.6 * A) + ')');
-      h.addColorStop(.5, 'rgba(225,186,110,' + (0.18 * A) + ')');
-      h.addColorStop(1, 'rgba(201,169,106,0)');
-      ctx.fillStyle = h; ctx.beginPath(); ctx.arc(lx, ly, 22 * breathe, 0, 6.283); ctx.fill();
+      stamp(sprite('halo', HALO), lx, ly, 22 * breathe, A);
       ctx.fillStyle = 'rgba(255,255,248,' + A + ')';
       ctx.beginPath(); ctx.arc(lx, ly, 2.2, 0, 6.283); ctx.fill();
       // Two faint crossing glints, like a star's points.
@@ -148,7 +167,7 @@
           light.x = tg.x; light.y = tg.y; light.vx = light.vy = 0; flying--; return done();
         }
         // Arrive: full speed far away, easing in over the last 140 px.
-        var want = MAX_SPEED * Math.min(1, dist / 140);
+        var want = MAX_SPEED * speedMul * Math.min(1, dist / 140);
         var ux = dx / (dist || 1), uy = dy / (dist || 1);
         // Wander: a slow sideways sway, strongest mid-flight.
         var sway = Math.sin(wanderT * 0.0032) * 0.55 + Math.sin(wanderT * 0.0011 + 1.3) * 0.45;
@@ -171,28 +190,30 @@
     return { x: r.left + r.width / 2 + sx(), y: r.top + r.height / 2 + sy() };
   }
   // On a phone the next card is often below the fold: bring it into view first.
-  function follow(el) {
+  function follow(el, live) {
+    if (live && !live()) return wait(0);
     var r = el.getBoundingClientRect(), vh = window.innerHeight;
     if (r.top >= 40 && r.bottom <= vh - 20) return wait(0);
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return wait(600);
+    return wait(450);
   }
 
-  function visit(el, turn, mine) {
-    return follow(el).then(function () {
-      if (mine !== token) return;
-      return flyTo(function () { return centreOf(el); }, mine);
+  function visit(el, turn, live, kind, scale) {
+    var dw = DWELL[kind] || DWELL.main, rest = dw[0] * scale, after = dw[1] * scale;
+    return follow(el, live).then(function () {
+      if (!live()) return;
+      return flyTo(function () { return centreOf(el); }, live);
     }).then(function () {
-      if (mine !== token) return;
+      if (!live()) return;
       var c = centreOf(el);
       blooms.push({ x: c.x, y: c.y, t0: performance.now() });
-      emit(c.x, c.y, 26, 10, 0.05);
+      emit(c.x, c.y, kind === 'main' ? 22 : 14, 10, 0.05);
       light.glow = 1;
       el.classList.add('gtk-kissed');
-      return wait(HOLD * 0.55).then(function () {
-        if (mine !== token) return;
+      return wait(rest * 0.55).then(function () {
+        if (!live()) return;
         turn();
-        return wait(HOLD * 0.45 + AFTER);
+        return wait(rest * 0.45 + after);
       }).then(function () { if (light) light.glow = 0; });
     });
   }
@@ -251,34 +272,60 @@
     var cardsEls = Array.prototype.slice.call(b.querySelectorAll('.reading-card'));
     var positions = Array.prototype.slice.call(b.querySelectorAll(':scope > .reading-position'));
     var visits = [];
+    function add(el, kind, fn) {
+      var v = { el: el, kind: kind, done: false };
+      v.turn = function () { if (v.done) return; v.done = true; fn(); };
+      visits.push(v);
+    }
     if (dealing) {
       var ord = order(cardsEls.length);
       ord.forEach(function (idx, n) {
         var card = cardsEls[idx];
-        visits.push({ el: card, turn: function () {
+        add(card, 'main', function () {
           card.classList.remove('is-facedown'); card.classList.add('revealed');
           if (n === ord.length - 1) settleDraw();
-        } });
+        });
       });
     }
     order(positions.length).forEach(function (i) {
       clarifiersOf(positions[i]).forEach(function (c) {
         if (fresh.indexOf(c) < 0) return;
         coverClarifier(c);
-        visits.push({ el: c, turn: function () { turnClarifier(c); } });
+        add(c, c.classList.contains('position-clarity') ? 'clarity' : 'clarifier', function () { turnClarifier(c); });
       });
     });
     if (!visits.length) return;
 
+    // Pace (Deep, K P1-P2): all the resting shares one budget, and a long spread flies a little quicker.
+    var total = visits.reduce(function (n, v) { var d = DWELL[v.kind]; return n + d[0] + d[1]; }, 0);
+    var scale = Math.max(0.45, Math.min(1, DWELL_BUDGET / total));
+    speedMul = visits.length > 8 ? 1.35 : visits.length > 4 ? 1.15 : 1;
+
+    // Any tap, scroll or key settles everything at once: every card turned, the light gone (Deep, K P3 and §6:
+    // the page never holds the reader's screen while they are trying to use it).
+    var cancelled = false;
+    var live = function () { return !cancelled && mine === token; };
+    var evs = ['pointerdown', 'wheel', 'touchstart', 'keydown'];
+    function off() { evs.forEach(function (e) { window.removeEventListener(e, finishAll, true); }); }
+    function finishAll() {
+      if (cancelled) return;
+      cancelled = true; off();
+      if (mine === token) visits.forEach(function (v) { v.turn(); });
+      if (light) { light.visible = false; light.alpha = 0; }
+      dealingNow = false; speedMul = 1;
+    }
+    evs.forEach(function (e) { window.addEventListener(e, finishAll, { capture: true, passive: true }); });
+
     dealingNow = true; maxSeq++;
     var go = function () {
-      if (mine !== token) { dealingNow = false; return; }
+      if (!live()) { off(); dealingNow = false; return; }
       enter(visits[0].el);
       return visits.reduce(function (chain, v) {
-        return chain.then(function () { if (mine === token) return visit(v.el, v.turn, mine); });
-      }, Promise.resolve()).then(function () { if (mine === token) return leave(mine); }).then(function () { dealingNow = false; }, function () { dealingNow = false; });
+        return chain.then(function () { if (live()) return visit(v.el, v.turn, live, v.kind, scale); });
+      }, Promise.resolve()).then(function () { if (live()) return leave(live); }).then(done, done);
     };
-    follow(visits[0].el).then(go);
+    function done() { off(); dealingNow = false; speedMul = 1; }
+    follow(visits[0].el, live).then(go);
   }
 
   var baseShell = shell;
@@ -312,7 +359,10 @@
 
     try { tidyReading(); } catch (err) { if (window.console) console.warn('gtk route', err); }
     if (dealing && typeof clearDrawTimers === 'function') clearDrawTimers();
-    if (reduced()) {
+    // The full deal plays once per reading; coming back to it shows it dealt (Deep, K P4).
+    var again = dealing && state.drawnAt && shownAt[state.drawnAt];
+    if (dealing && state.drawnAt) shownAt[state.drawnAt] = true;
+    if (reduced() || again) {
       if (dealing) {
         Array.prototype.slice.call(b.querySelectorAll('.reading-card')).forEach(function (c) { c.classList.remove('is-facedown'); c.classList.add('revealed'); });
         settleDraw();
@@ -616,5 +666,5 @@
     }
   });
 
-  window.__gtKiss = { version: 'tinkerbell-4-route', dust: function () { return dust.length; } };
+  window.__gtKiss = { version: 'tinkerbell-5-live', dust: function () { return dust.length; } };
 })();
