@@ -48,11 +48,12 @@ state.spreadId = 'guidance';
 state.readingIndex = null;
 function currentSpread(){ return spreads[state.spreadId] || spreads.guidance; }
 // Each reading's PDF gets its own name, from its spread and the moment it was drawn, so saving a new reading
-// never offers to overwrite the last one (Chas, 11 Nov UAT). e.g. resonate-past-present-future-2026-11-11-0942.pdf
+// never offers to overwrite the last one (Chas, 11 Nov UAT). Seconds too, so two readings drawn in the same minute
+// differ (Deep, T1, 11 Nov). e.g. resonate-past-present-future-2026-11-11-094215.pdf
 function readingPdfName(){
   const d=new Date(state.drawnAt||Date.now()),p=n=>String(n).padStart(2,'0');
   const spread=String(readingTitle()).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'reading';
-  return `resonate-${spread}-${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}.pdf`;
+  return `resonate-${spread}-${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}${p(d.getSeconds())}.pdf`;
 }
 function positionLabels(){ return currentSpread().positions.map(position=>position[0]); }
 function positionContext(card,index,upright=!isReversed(card)){

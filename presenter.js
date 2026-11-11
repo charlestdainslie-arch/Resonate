@@ -66,7 +66,8 @@
     const spoken=label=>label.replace(/ · /g,', ');
     // "Here is your second clarifier for the Past, ..." (Chas, 11 Nov UAT). No "the" before a position that
     // already has one, or that is the seeker ("You", "You / Answer").
-    const forPos=label=>(/^(the |you\b)/i.test(label)?'':'the ')+spoken(label);
+    // "You / Answer" is said "You, Answer": a slash is not speakable (Deep, T2, 11 Nov).
+    const forPos=label=>(/^(the |you\b)/i.test(label)?'':'the ')+spoken(label).replace(/ \/ /g,', ');
     const pos=i=>({id:`pos-${spread}-${i}`,text:spoken(labels[i]||'Position')+':'});
 
     frame('intro','open');
@@ -94,6 +95,8 @@
 
     // Clarifiers: one chapter per layer, each card's first meaning line as written in its position.
     layerCards.forEach((layer,l)=>{
+      // A layer with no card drawn says nothing, so its opening line never stands alone (Deep, T3, 11 Nov).
+      if(!layer.some(Boolean))return;
       const n=l+1,chapter='c'+n;
       frame(chapter,one?'c'+n:'c'+n+'s',layer.map((_,i)=>`c${i}-${n}`));
       order.map(i=>[layer[i],i]).forEach(([c,i])=>{
