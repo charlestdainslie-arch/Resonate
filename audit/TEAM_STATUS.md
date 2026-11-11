@@ -1,7 +1,20 @@
 # RESONATE — team status board
 
 **One page for Chas, Si Aye, Deep and Claude.** Updated by Claude when work lands. If it is not in the repository, it
-did not happen. Last updated: 11 November 2026, branch `claude/uat-thread-fixes` at `70021e0`.
+did not happen. Last updated: 11 November 2026, evening checkpoint (Chas rebooting). Test branch
+`claude/uat-thread-fixes`; app code last changed at `70021e0`; this board at the checkpoint commit.
+
+## Checkpoint, 11 Nov evening: where we stopped
+- **Domain:** `resonatetarot.app` bought with Vercel Pro and linked to the project (apex → `www`). It is **public now**
+  and serves the **old** production build (`main` @ `8d12cc6`, late September). None of today's work is on it.
+- **Next step, waiting on Chas's "go":** release today's approved work to the domain:
+  1. add a `.vercelignore` so the public site carries only the app (no `audit/`, `tests/`, `tools/`, project notes,
+     demo page, or `presenter-uat.html`; Max stays private for now);
+  2. check it on a preview (features work; private paths 404);
+  3. pull request into `main`, merge only on Chas's final OK → Vercel deploys to `resonatetarot.app`.
+- **Chas to do:** confirm the ICANN contact verification for the domain shows as complete (email of 11 Nov, 15-day limit);
+  check the CommBank card alert in the app (likely the Vercel charges); optionally approve Vercel's Slack integration permissions.
+- **Deep:** setting up headless Chrome; tips in its inbox. Next from Deep: browser checks, Deliverable C.
 
 ## How we work
 - **Chas** decides. Tests on Samsung and laptop. Only Chas closes a decision.
