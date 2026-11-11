@@ -50,6 +50,62 @@
 .gtk-tx-box p { margin: 0; font-size: 15px; line-height: 1.6; color: #efe8dc; }
 .gtk-tx-box p + p { margin-top: 8px; }
 
+/* ---------- The written reading as a calm route (Chas, 11 Nov) ---------- */
+/* One column, one part at a time. */
+.gtk-route .reading-meanings { grid-template-columns: minmax(0, 1fr) !important; max-width: 760px; margin-left: auto; margin-right: auto; gap: 34px; }
+.gtk-route .reading-meaning { scroll-margin-top: 84px; }
+.gtk-route .reading-golden-thread { max-width: 760px; margin-left: auto; margin-right: auto; scroll-margin-top: 84px; }
+
+/* The map of the reading. */
+.gtk-map { max-width: 760px; margin: 14px auto 26px; padding: 14px 16px; border-radius: 14px; border: 1px solid rgba(201,169,106,.3); background: rgba(201,169,106,.05); }
+.gtk-map-lead { margin: 0 0 10px; font-size: 14px; line-height: 1.5; color: #c9bda8; }
+.gtk-map ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.gtk-map button {
+  width: 100%; display: grid; grid-template-columns: 30px minmax(0, auto) 1fr; align-items: baseline; gap: 10px;
+  padding: 9px 10px; border-radius: 10px; border: 1px solid transparent; background: none; color: inherit; text-align: left; cursor: pointer; font: inherit;
+}
+.gtk-map button:hover, .gtk-map button:focus-visible { border-color: rgba(201,169,106,.45); background: rgba(201,169,106,.06); }
+.gtk-map-n { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; border: 1px solid rgba(201,169,106,.6); color: #f0d394; font: 600 12px/1 system-ui, sans-serif; }
+.gtk-map-name { font: 650 15px/1.3 Georgia, serif; color: #f2d79a; white-space: nowrap; }
+.gtk-map-card { font-size: 13px; color: #a99d89; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Part headings. */
+.gtk-part-tag { display: block; margin-bottom: 4px; font: 600 11px/1.2 system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #a99d89; }
+.gtk-route-thread > .eyebrow .gtk-part-tag { display: inline; margin: 0 8px 0 0; }
+.gtk-route-head.gtk-kissed, .gtk-route .gtk-step > h3.gtk-kissed, .gtk-route-thread > h2.gtk-kissed, .golden-card-heading.gtk-kissed { animation: gtk-text-warm 2.2s ease-out both; }
+
+/* Each step in its own quiet box. */
+.gtk-route .gtk-step {
+  margin-top: 14px; padding: 14px 16px 15px; border-radius: 12px;
+  border: 1px solid rgba(201,169,106,.24); background: linear-gradient(160deg, rgba(201,169,106,.055), rgba(255,255,255,.012));
+}
+.gtk-route .gtk-step-together { border-color: rgba(201,169,106,.45); background: linear-gradient(160deg, rgba(201,169,106,.1), rgba(255,255,255,.02)); }
+.gtk-route .gtk-step > h3 { margin-top: 4px; }
+.gtk-route .gtk-step p { line-height: 1.62; }
+.gtk-route .gtk-hide { display: none; }
+
+/* Supporting detail, folded away. */
+.gtk-more { margin-top: 10px; border-top: 1px solid rgba(201,169,106,.16); padding-top: 6px; }
+.gtk-more > summary { min-height: 40px; display: flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; font: 600 13px/1.3 system-ui, sans-serif; color: #d9b874; }
+.gtk-more > summary::-webkit-details-marker { display: none; }
+.gtk-more > summary::before { content: "+"; display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(201,169,106,.5); font-size: 13px; line-height: 1; }
+.gtk-more[open] > summary::before { content: "–"; }
+.gtk-more > :not(summary) { opacity: .92; }
+.gtk-lenses { margin-top: 16px; padding: 4px 16px 8px; border-radius: 12px; border: 1px solid rgba(201,169,106,.18); border-top: 1px solid rgba(201,169,106,.18); }
+
+/* "Next" at the foot of each part. */
+.gtk-next {
+  display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 18px; min-height: 46px;
+  border-radius: 999px; border: 1px solid rgba(201,169,106,.5); background: rgba(201,169,106,.06); color: #f0d394; font: 600 14px/1.2 system-ui, sans-serif; cursor: pointer;
+}
+.gtk-next:hover, .gtk-next:focus-visible { background: rgba(201,169,106,.14); }
+
+@media (max-width: 600px) {
+  .gtk-map button { grid-template-columns: 28px 1fr; }
+  .gtk-map-card { grid-column: 2; white-space: normal; }
+  .gtk-route .gtk-step { padding: 12px 13px 13px; }
+}
+
 /* Demo label, small and out of the way, so nobody mistakes this page for the live app. */
 .gtk-demo-badge {
   position: fixed; right: 10px; bottom: 10px; z-index: 50;

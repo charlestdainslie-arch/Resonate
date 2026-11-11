@@ -22,6 +22,7 @@
   var MAX_DUST = 520;
 
   var token = 0;
+  var dealingNow = false;   // true while the light deals the cards or visits new clarifiers
   var seen = { drawnAt: null, clar: {} };
   var canvas = null, ctx = null, dpr = 1, raf = 0;
   var light = null;       // { x, y, vx, vy, glow, alpha, visible }
@@ -269,12 +270,13 @@
     });
     if (!visits.length) return;
 
+    dealingNow = true; maxSeq++;
     var go = function () {
-      if (mine !== token) return;
+      if (mine !== token) { dealingNow = false; return; }
       enter(visits[0].el);
       return visits.reduce(function (chain, v) {
         return chain.then(function () { if (mine === token) return visit(v.el, v.turn, mine); });
-      }, Promise.resolve()).then(function () { if (mine === token) return leave(mine); });
+      }, Promise.resolve()).then(function () { if (mine === token) return leave(mine); }).then(function () { dealingNow = false; }, function () { dealingNow = false; });
     };
     follow(visits[0].el).then(go);
   }
@@ -283,6 +285,8 @@
   window.shell = function () {
     token++;
     if (light) { light.visible = false; light.alpha = 0; }
+    if (routeObserver) { routeObserver.disconnect(); routeObserver = null; }
+    dealingNow = false;
     return baseShell.apply(this, arguments);
   };
 
@@ -306,6 +310,7 @@
       });
     });
 
+    try { tidyReading(); } catch (err) { if (window.console) console.warn('gtk route', err); }
     if (dealing && typeof clearDrawTimers === 'function') clearDrawTimers();
     if (reduced()) {
       if (dealing) {
@@ -319,6 +324,137 @@
     }); });
     return result;
   };
+
+  // ---------- The written reading as a calm, signposted route (Chas, 11 Nov) ----------
+  // "A wall of words": positions sat side by side in narrow columns, each about 1,000 words, with the detail
+  // (correspondences, why a card was read that way, revisions, method, lenses) in the same flow as the meaning.
+  // Here, without changing a word of it:
+  //  - one column, one part at a time: "Part 1 of 4 · Past" ... "Part 4 of 4 · The Golden Thread";
+  //  - a short map of the parts at the top, each one a tap away;
+  //  - each step (the card, Clarifier 1, Clarifier 2, Clarity, Together) in its own quiet box;
+  //  - the supporting detail folded under "More about this card", "Why it is read this way",
+  //    "How this was read" and "Deeper lenses", so the main path is the meaning itself;
+  //  - a "Next" link at the foot of each part;
+  //  - the light kisses each part's heading and each step's heading as the reader reaches it.
+  // The PDF and Max are built from the reading's own text, not this layout, so neither changes.
+  function fold(parent, nodes, label, cls) {
+    nodes = nodes.filter(Boolean);
+    if (!nodes.length) return null;
+    var d = document.createElement('details');
+    d.className = 'gtk-more' + (cls ? ' ' + cls : '');
+    d.innerHTML = '<summary>' + label + '</summary>';
+    parent.insertBefore(d, nodes[0]);
+    nodes.forEach(function (n) { d.appendChild(n); });
+    return d;
+  }
+  function q(el, sel) { return Array.prototype.slice.call(el.querySelectorAll(sel)); }
+  function partId(i) { return 'gtk-part-' + i; }
+
+  function tidyReading() {
+    var ri = document.getElementById('readingInterpretation');
+    if (!ri || ri.classList.contains('gtk-route')) return;
+    var list = ri.querySelector('.reading-meanings');
+    var arts = list ? q(list, ':scope > .reading-meaning') : [];
+    if (!arts.length) return;
+    ri.classList.add('gtk-route');
+    var gt = ri.querySelector('.reading-golden-thread');
+    var total = arts.length + (gt ? 1 : 0);
+    var map = [];
+
+    arts.forEach(function (a, n) {
+      var head = a.querySelector('.reading-meaning-head');
+      var name = head ? head.textContent.trim() : 'Position ' + (n + 1);
+      var h3 = a.querySelector('.original-card-explanation h3');
+      var card = h3 ? h3.textContent.replace(/^Original Card · [^·]+ · /, '').trim() : '';
+      a.id = partId(n);
+      if (head) {
+        var tag = document.createElement('span');
+        tag.className = 'gtk-part-tag';
+        tag.textContent = 'Part ' + (n + 1) + ' of ' + total;
+        head.insertBefore(tag, head.firstChild);
+        head.classList.add('gtk-route-head');
+      }
+      map.push({ id: partId(n), n: n + 1, name: name, card: card });
+
+      // Each step in its own box, with its supporting detail folded away.
+      var orig = a.querySelector('.original-card-explanation');
+      if (orig) {
+        orig.classList.add('gtk-step');
+        fold(orig, [orig.querySelector('.reading-astrology'), orig.querySelector('.reading-card-correspondences'), orig.querySelector('.symbolism-insight')], 'More about this card');
+        var pl = orig.querySelector('.original-position-label'); if (pl) pl.classList.add('gtk-hide');
+      }
+      q(a, '.integrated-clarifier, .integrated-clarity').forEach(function (s) {
+        s.classList.add('gtk-step');
+        var rel = s.querySelector('.clarifier-relation');
+        if (rel) fold(rel, q(rel, ':scope > .relation-basis, :scope > .relation-notes, :scope > .relation-rule'), 'Why it is read this way');
+        fold(s, [s.querySelector(':scope > .reading-card-correspondences'), s.querySelector(':scope > .symbolism-insight')], 'More about this card');
+      });
+      var together = a.querySelector('.combined-meaning');
+      if (together) {
+        together.classList.add('gtk-step', 'gtk-step-together');
+        fold(together, q(together, ':scope > .reading-revision-tag, :scope > details.reading-revision, :scope > .reading-method'), 'How this was read');
+      }
+      var lenses = q(a, ':scope .reading-meaning-body > .reading-card-lenses');
+      if (lenses.length) fold(lenses[0].parentNode, lenses, 'Deeper lenses · Tao, Wu Wei and Jungian', 'gtk-lenses');
+    });
+
+    if (gt) {
+      gt.id = partId(arts.length);
+      gt.classList.add('gtk-route-thread');
+      var eb = gt.querySelector(':scope > .eyebrow');
+      if (eb) eb.innerHTML = '<span class="gtk-part-tag">Part ' + total + ' of ' + total + '</span> The Golden Thread';
+      q(gt, '.golden-card-reading, .card-to-card-thread, .golden-thread-summary').forEach(function (b) { b.classList.add('gtk-step'); });
+      var nums = gt.querySelector('.reading-number-thread');
+      if (nums) {
+        var nh = nums.querySelector('h3'); if (nh) nh.remove();
+        fold(nums.parentNode, [nums], 'Numbers through your reading');
+      }
+      map.push({ id: partId(arts.length), n: total, name: 'The Golden Thread', card: 'the reading as a whole' });
+    }
+
+    // "Next" at the foot of each part.
+    map.forEach(function (m, k) {
+      var next = map[k + 1], el = document.getElementById(m.id);
+      if (!next || !el) return;
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'gtk-next';
+      b.innerHTML = 'Next · Part ' + next.n + ' · ' + esc(next.name) + ' <span aria-hidden="true">↓</span>';
+      b.addEventListener('click', function () { var t = document.getElementById(next.id); if (t) t.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); });
+      var body = el.querySelector('.reading-meaning-body') || el;
+      body.appendChild(b);
+    });
+
+    // The map of the reading, under "What each position is saying".
+    var h2 = ri.querySelector(':scope > h2');
+    var nav = document.createElement('nav');
+    nav.className = 'gtk-map';
+    nav.setAttribute('aria-label', 'Parts of your reading');
+    nav.innerHTML = '<p class="gtk-map-lead">Your reading in ' + total + ' parts. Read them in order, or tap one to go straight there.</p><ol>' +
+      map.map(function (m) { return '<li><button type="button" data-gtk-go="' + m.id + '"><span class="gtk-map-n">' + m.n + '</span><span class="gtk-map-name">' + esc(m.name) + '</span><span class="gtk-map-card">' + esc(m.card) + '</span></button></li>'; }).join('') + '</ol>';
+    if (h2) h2.insertAdjacentElement('afterend', nav); else ri.insertBefore(nav, ri.firstChild);
+    q(nav, '[data-gtk-go]').forEach(function (b) {
+      b.addEventListener('click', function () { var t = document.getElementById(b.getAttribute('data-gtk-go')); if (t) t.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' }); });
+    });
+
+    watchRoute(ri);
+  }
+
+  // The light reads with you: each part heading and step heading, once, as it comes into view.
+  var routeObserver = null;
+  function watchRoute(ri) {
+    if (routeObserver) routeObserver.disconnect();
+    if (reduced() || !window.IntersectionObserver) return;
+    var seenEls = new WeakSet();
+    routeObserver = new IntersectionObserver(function (entries) {
+      if (!state.drawSettled || dealingNow || maxRoot) return;
+      entries.forEach(function (en) {
+        if (!en.isIntersecting || seenEls.has(en.target)) return;
+        seenEls.add(en.target);
+        kissEl(en.target, function (h) { var r = h.getBoundingClientRect(); return { x: r.left - 12 + sx(), y: r.top + r.height / 2 + sy() }; }, 0, 'page');
+      });
+    }, { threshold: 0.9, rootMargin: '0px 0px -25% 0px' });
+    q(ri, '.gtk-route-head, .gtk-step > h3, .gtk-route-thread > h2, .golden-card-heading').forEach(function (h) { routeObserver.observe(h); });
+  }
 
   // ---------- Max Chasroom (Chas, 11 Nov: "add it to Max") ----------
   // As Max talks about a card, the light flies to the centre of that card on his strip and kisses it,
@@ -334,9 +470,10 @@
   }
   // The light flies to an element's centre, kisses it, then hovers where hoverAt() says.
   // Each new kiss cancels one still under way, so the light always heads for the latest thing.
-  function kissEl(el, hoverAt, delay) {
+  function kissEl(el, hoverAt, delay, scope) {
     if (reduced() || !el) return;
-    var seq = ++maxSeq, live = function () { return seq === maxSeq && !!maxRoot; };
+    var page = scope === 'page';
+    var seq = ++maxSeq, live = function () { return seq === maxSeq && (page ? !maxRoot && !dealingNow : !!maxRoot); };
     ensureCanvas();
     if (!light || !light.visible) {
       var c0 = centreOf(el);
@@ -479,5 +616,5 @@
     }
   });
 
-  window.__gtKiss = { version: 'tinkerbell-3-transcript', dust: function () { return dust.length; } };
+  window.__gtKiss = { version: 'tinkerbell-4-route', dust: function () { return dust.length; } };
 })();
