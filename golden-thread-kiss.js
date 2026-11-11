@@ -32,8 +32,9 @@
   var shownAt = {};         // readings whose deal has already played this visit (Deep, K P4)
 
   var token = 0;
-  var dealingNow = false;
-  var activeOff = null;     // removes the running deal's tap/scroll/key listeners   // true while the light deals the cards or visits new clarifiers
+  var dealingNow = false;   // true while the light deals the cards or visits new clarifiers
+  var activeOff = null;     // removes the running deal's tap/scroll/key listeners
+  var activeFinish = null;  // turns every card the running deal has not reached yet
   var seen = { drawnAt: null, clar: {} };
   var canvas = null, ctx = null, dpr = 1, raf = 0;
   var light = null;       // { x, y, vx, vy, glow, alpha, visible }
@@ -314,9 +315,10 @@
     function off() { evs.forEach(function (e) { window.removeEventListener(e, finishAll, true); }); if (activeOff === off) activeOff = null; }
     if (activeOff) activeOff();
     activeOff = off;
+    activeFinish = finishAll;
     function finishAll() {
       if (cancelled) return;
-      cancelled = true; off();
+      cancelled = true; off(); if (activeFinish === finishAll) activeFinish = null;
       if (mine === token) visits.forEach(function (v) { v.turn(); });
       if (light) { light.visible = false; light.alpha = 0; }
       dealingNow = false; speedMul = 1;
@@ -331,7 +333,7 @@
         return chain.then(function () { if (live()) return visit(v.el, v.turn, live, v.kind, scale); });
       }, Promise.resolve()).then(function () { if (live()) return leave(live); }).then(done, done);
     };
-    function done() { off(); dealingNow = false; speedMul = 1; }
+    function done() { off(); if (activeFinish === finishAll) activeFinish = null; dealingNow = false; speedMul = 1; }
     follow(visits[0].el, live).then(go);
   }
 
@@ -685,6 +687,8 @@
     document.removeEventListener('maxchasroom:show', onMaxShow);
     document.removeEventListener('maxchasroom:close', onMaxClose);
     window.removeEventListener('resize', size);
+    // A deal under way is finished first, so no card is left face down (the app's own reveal timer was cleared).
+    if (activeFinish) activeFinish();
     if (activeOff) activeOff();
     if (raf) { cancelAnimationFrame(raf); raf = 0; }
     if (routeObserver) { routeObserver.disconnect(); routeObserver = null; }
