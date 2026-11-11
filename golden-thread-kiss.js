@@ -10,11 +10,15 @@
      turns, and it drifts on to the next card. After the last card it rises and fades away.
    - Newly drawn clarifiers are visited the same way, in reading order.
    - Reduced motion: no flight and no dust; the cards turn at once.
-   Loaded by index.html and presenter-uat.html (and the demo page), after app.js, reading-stage.js and deck-theatre.js. It wraps shell() and renderDraw()
-   and changes nothing in those files. */
+   Loaded by index.html and presenter-uat.html (and the demo page), after app.js, reading-stage.js and deck-theatre.js.
+   It listens for app.js's 'resonate:shell' and 'resonate:draw-rendered' events and wraps nothing (Deep, H, 11 Nov).
+   window.ResonateKiss.destroy() removes every listener, observer and animation, and the canvas. */
 (function () {
   'use strict';
-  if (typeof renderDraw !== 'function' || typeof shell !== 'function') return;
+  // Loaded twice (a cached copy beside a new one, or a page that includes it twice): the second copy does nothing.
+  // Claimed before any listener is added, so there is never a second set of listeners (Chas, 11 Nov review of H).
+  if (window.ResonateKiss) return;
+  var api = window.ResonateKiss = { version: 'tinkerbell-6-seam' };
 
   var MAX_SPEED = 0.62;   // px per ms at full flight
   var HOLD = 480;         // ms the light rests on a card's centre (the kiss)
@@ -28,7 +32,8 @@
   var shownAt = {};         // readings whose deal has already played this visit (Deep, K P4)
 
   var token = 0;
-  var dealingNow = false;   // true while the light deals the cards or visits new clarifiers
+  var dealingNow = false;
+  var activeOff = null;     // removes the running deal's tap/scroll/key listeners   // true while the light deals the cards or visits new clarifiers
   var seen = { drawnAt: null, clar: {} };
   var canvas = null, ctx = null, dpr = 1, raf = 0;
   var light = null;       // { x, y, vx, vy, glow, alpha, visible }
@@ -306,7 +311,9 @@
     var cancelled = false;
     var live = function () { return !cancelled && mine === token; };
     var evs = ['pointerdown', 'wheel', 'touchstart', 'keydown'];
-    function off() { evs.forEach(function (e) { window.removeEventListener(e, finishAll, true); }); }
+    function off() { evs.forEach(function (e) { window.removeEventListener(e, finishAll, true); }); if (activeOff === off) activeOff = null; }
+    if (activeOff) activeOff();
+    activeOff = off;
     function finishAll() {
       if (cancelled) return;
       cancelled = true; off();
@@ -328,22 +335,20 @@
     follow(visits[0].el, live).then(go);
   }
 
-  var baseShell = shell;
-  window.shell = function () {
+  // ---- The seam: listen, never wrap (Deep, H, 11 Nov) ----
+  function onShell() {
     token++;
     if (light) { light.visible = false; light.alpha = 0; }
     if (routeObserver) { routeObserver.disconnect(); routeObserver = null; }
     dealingNow = false;
-    return baseShell.apply(this, arguments);
-  };
+  }
 
-  var baseRenderDraw = renderDraw;
-  window.renderDraw = function () {
-    var dealing = !state.drawSettled;
-    var result = baseRenderDraw.apply(this, arguments);
+  function onDrawRendered(e) {
+    var dealing = !!(e && e.detail && e.detail.dealing);
+    // Read here, not earlier: renderDraw() calls shell(), which bumps the token, before this event fires (Deep, H §5).
     var mine = token;
     var b = board();
-    if (!b) return result;
+    if (!b) return;
 
     // Which clarifiers are new since this reading was last shown.
     if (seen.drawnAt !== state.drawnAt) seen = { drawnAt: state.drawnAt, clar: {} };
@@ -367,13 +372,15 @@
         Array.prototype.slice.call(b.querySelectorAll('.reading-card')).forEach(function (c) { c.classList.remove('is-facedown'); c.classList.add('revealed'); });
         settleDraw();
       }
-      return result;
+      return;
     }
     requestAnimationFrame(function () { requestAnimationFrame(function () {
       if (mine === token && (dealing || fresh.length)) run(b, dealing, fresh, mine);
     }); });
-    return result;
-  };
+  }
+
+  document.addEventListener('resonate:shell', onShell);
+  document.addEventListener('resonate:draw-rendered', onDrawRendered);
 
   // ---------- The written reading as a calm, signposted route (Chas, 11 Nov) ----------
   // "A wall of words": positions sat side by side in narrow columns, each about 1,000 words, with the detail
@@ -644,19 +651,19 @@
     if (det) det.addEventListener('toggle', function () { if (det.open) { var w = det.querySelector('.gtk-tx'); if (w) watchBoxes(root, w); } });
   }
 
-  document.addEventListener('maxchasroom:open', function (e) {
+  function onMaxOpen(e) {
     maxRoot = e.detail.root; maxKissed = {}; maxSeq++;
     setupTranscript(maxRoot);
-  });
-  document.addEventListener('maxchasroom:show', function (e) {
+  }
+  function onMaxShow(e) {
     if (reduced() || !maxRoot || e.detail.root !== maxRoot) return;
     if (e.detail.index === 0) maxKissed = {};          // Play again / Replay starts over
     var fresh = (e.detail.show || []).filter(function (slot) { return /^(p\d+|c\d+-\d+|k\d+)$/.test(slot) && !maxKissed[slot]; });
     if (!fresh.length) return;
     fresh.forEach(function (slot) { maxKissed[slot] = true; });
     maxVisit(fresh[fresh.length - 1]);                   // the most specific: a clarifier over its card
-  });
-  document.addEventListener('maxchasroom:close', function () {
+  }
+  function onMaxClose() {
     maxSeq++; maxRoot = null; maxKissed = {};
     if (txObserver) { txObserver.disconnect(); txObserver = null; }
     if (txMutation) { txMutation.disconnect(); txMutation = null; }
@@ -664,7 +671,32 @@
       var fade = function () { if (!light || maxRoot) return; light.alpha -= 0.06; if (light.alpha > 0) setTimeout(fade, 30); else { light.alpha = 0; light.visible = false; } };
       fade();
     }
-  });
+  }
+  document.addEventListener('maxchasroom:open', onMaxOpen);
+  document.addEventListener('maxchasroom:show', onMaxShow);
+  document.addEventListener('maxchasroom:close', onMaxClose);
 
-  window.__gtKiss = { version: 'tinkerbell-5-live', dust: function () { return dust.length; } };
+  // Teardown (Deep, H §4d): every listener, observer and animation, and the canvas. Flights and timed steps
+  // still in the air see the bumped token and sequence and stop at their next check.
+  function destroy() {
+    document.removeEventListener('resonate:shell', onShell);
+    document.removeEventListener('resonate:draw-rendered', onDrawRendered);
+    document.removeEventListener('maxchasroom:open', onMaxOpen);
+    document.removeEventListener('maxchasroom:show', onMaxShow);
+    document.removeEventListener('maxchasroom:close', onMaxClose);
+    window.removeEventListener('resize', size);
+    if (activeOff) activeOff();
+    if (raf) { cancelAnimationFrame(raf); raf = 0; }
+    if (routeObserver) { routeObserver.disconnect(); routeObserver = null; }
+    if (txObserver) { txObserver.disconnect(); txObserver = null; }
+    if (txMutation) { txMutation.disconnect(); txMutation = null; }
+    token++; maxSeq++; maxRoot = null; dealingNow = false; flying = 0; speedMul = 1;
+    if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    canvas = null; ctx = null; light = null; dust.length = 0; blooms.length = 0;
+    if (window.ResonateKiss === api) delete window.ResonateKiss;
+    if (window.__gtKiss === api) delete window.__gtKiss;
+  }
+  api.dust = function () { return dust.length; };
+  api.destroy = destroy;
+  window.__gtKiss = api;   // the name earlier checks and notes used
 })();
