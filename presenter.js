@@ -731,14 +731,14 @@
       const n=String(dockTarget+1).padStart(2,'0'),label=positionLabels()[dockTarget]||'Card';
       const step=clarifyStepFor(dockTarget);
       const count=readingLayerCards(dockTarget).length;
-      const open=!step||typeof clarifyLayerOpen!=='function'||clarifyLayerOpen(step);   // greyed until the layer before is complete
-      const key=dockTarget+'|'+step+'|'+count+'|'+open;
+      const layerOpen=!step||typeof clarifyLayerOpen!=='function'||clarifyLayerOpen(step);   // greyed until the layer before is complete
+      const key=dockTarget+'|'+step+'|'+count+'|'+layerOpen;
       if(key===shown)return;
       shown=key;
       const name=cardName(byId(state.drawnCardIds[dockTarget]));
       const pair=layers().map(l=>l[dockTarget]);
       const atLimit=!step&&pair.length===2&&pair.every(c=>c&&c.arcana==='Major')&&readingClarity()[dockTarget]==null;
-      clar.disabled=!step||!open;
+      clar.disabled=!step||!layerOpen;
       clar.dataset.position=dockTarget;
       clar.dataset.step=step||'done';
       document.getElementById('mcClarifyCard').textContent=step==='second'?`${n} · Clarifier 2`:step==='clarity'?`${n} · Clarity card`:step?`${n} · ${label}`:(atLimit?`${n} · 2-card limit`:`${n} · clarified ✓`);
