@@ -47,6 +47,13 @@ const spreads = {
 state.spreadId = 'guidance';
 state.readingIndex = null;
 function currentSpread(){ return spreads[state.spreadId] || spreads.guidance; }
+// Each reading's PDF gets its own name, from its spread and the moment it was drawn, so saving a new reading
+// never offers to overwrite the last one (Chas, 11 Nov UAT). e.g. resonate-past-present-future-2026-11-11-0942.pdf
+function readingPdfName(){
+  const d=new Date(state.drawnAt||Date.now()),p=n=>String(n).padStart(2,'0');
+  const spread=String(readingTitle()).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')||'reading';
+  return `resonate-${spread}-${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}.pdf`;
+}
 function positionLabels(){ return currentSpread().positions.map(position=>position[0]); }
 function positionContext(card,index,upright=!isReversed(card)){
   const position=currentSpread().positions[index];
@@ -669,7 +676,7 @@ async function downloadReading(){
     for(const [index,note] of Object.entries(entry?.cardReflections||{}))if(note.text)sections.push({title:'Card reflection · '+positionLabels()[index],text:note.text});
     const bytes=await ResonatePDF.create(sections,new Date(state.drawnAt).getFullYear(),state.readingAstrology&&typeof ResonateAstrology!=='undefined'?ResonateAstrology.snapshot(state.readingAstrology):null);
     const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
-    const link=document.createElement('a');link.href=url;link.download='resonate-tarot-reading.pdf';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+    const link=document.createElement('a');link.href=url;link.download=readingPdfName();link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }catch(error){if(button)button.textContent='PDF failed — try again';console.error('PDF export failed',error);return;}
   finally{if(button)button.disabled=false;}
   if(button)button.textContent='Download Reading PDF';
