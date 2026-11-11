@@ -18,7 +18,7 @@
   // Loaded twice (a cached copy beside a new one, or a page that includes it twice): the second copy does nothing.
   // Claimed before any listener is added, so there is never a second set of listeners (Chas, 11 Nov review of H).
   if (window.ResonateKiss) return;
-  var api = window.ResonateKiss = { version: 'tinkerbell-7-arrive' };
+  var api = window.ResonateKiss = { version: 'tinkerbell-8-follow' };
 
   var MAX_SPEED = 0.62;   // px per ms at full flight
   var HOLD = 480;         // ms the light rests on a card's centre (the kiss)
@@ -205,7 +205,9 @@
     var r = el.getBoundingClientRect(), vh = window.innerHeight;
     if (r.top >= 40 && r.bottom <= vh - 20) return wait(0);
     el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    return wait(450);
+    // The light tracks the card in page coordinates, so it can set off while the page is still scrolling: a short
+    // pause to let the scroll begin, not the whole scroll (pace check, 11 Nov: about 3 s off a phone Celtic Cross).
+    return wait(150);
   }
 
   function visit(el, turn, live, kind, scale) {
