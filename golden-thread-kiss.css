@@ -14,8 +14,9 @@
 }
 
 /* A new clarifier waits face down until the light reaches it. */
-.draw-page .position-clarifier.gtk-pending { position: relative; }
-.draw-page .position-clarifier .gtk-cover {
+.draw-page .position-clarifier.gtk-pending, .draw-page .position-clarity.gtk-pending { position: relative; }
+.draw-page .position-clarity.gtk-kissed img { animation: gtk-warm 2.4s ease-out both; }
+.draw-page .position-clarifier .gtk-cover, .draw-page .position-clarity .gtk-cover {
   position: absolute; inset: 0; z-index: 2;
   display: grid; place-items: center; align-content: center; gap: 4px;
   border-radius: 8px; border: 1px solid rgba(201, 169, 106, .45);

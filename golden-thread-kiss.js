@@ -224,7 +224,7 @@
     var interpretation = document.getElementById('readingInterpretation');
     if (interpretation) interpretation.classList.remove('waiting');
   }
-  function clarifiersOf(pos) { return Array.prototype.slice.call(pos.querySelectorAll('.position-clarifier')); }
+  function clarifiersOf(pos) { return Array.prototype.slice.call(pos.querySelectorAll('.position-clarifier, .position-clarity')); }   // the Clarity card too (11 Nov)
   function coverClarifier(c) {
     c.classList.remove('clarifier-turn');
     Array.prototype.slice.call(c.querySelectorAll('.clarifier-back-cover')).forEach(function (x) { x.remove(); });
