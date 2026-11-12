@@ -4,6 +4,14 @@
 did not happen. Last updated: 11 November 2026, evening checkpoint (Chas rebooting). Test branch
 `claude/uat-thread-fixes`; app code last changed at `70021e0`; this board at the checkpoint commit.
 
+## Released, 12 Nov
+- **Live on `resonatetarot.app`:** PR #52 merged on Chas's "merge it" (12 Nov); `main` = `7d9ca91`, production
+  deployment READY. Everything in "Passed UAT" below is now in production.
+- `.vercelignore` keeps `audit/`, `tests/`, `tools/`, notes, demo pages and Max (`presenter-uat.html`) off the
+  public site; checked live (all 404) and on the preview.
+- Checked on the preview: home page and a Past-Present-Future reading. Still worth a tap on Chas's Samsung:
+  One-card, Seven-card V, Relationship, Celtic Cross.
+
 ## Checkpoint, 11 Nov evening: where we stopped
 - **Domain:** `resonatetarot.app` bought with Vercel Pro and linked to the project (apex → `www`). It is **public now**
   and serves the **old** production build (`main` @ `8d12cc6`, late September). None of today's work is on it.
