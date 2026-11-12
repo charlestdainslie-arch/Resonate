@@ -68,4 +68,4 @@ did not happen. Last updated: 11 November 2026, evening checkpoint (Chas rebooti
 | Requirements logged in Slack, not built: journal 30-day expiry, cancellation keeps paid access, privacy/RLS, real d10 | Chas to prioritise | logged |
 
 ## Deep's files collected
-`audit/deep/`: A, B, G, K, M, R, S, V (10 Nov); T, H, P (11 Nov).
+`audit/deep/`: A, B, G, K, M, R, S, V (10 Nov); T, H, P (11 Nov); D, E, F (12 Nov: release path check, release PASS, 390 px clipping not reproduced in phone emulation).
