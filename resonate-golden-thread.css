@@ -1,0 +1,15 @@
+/* Golden Thread weave (preview only). The layer sits behind the section's text: isolation keeps the
+   negative z-index inside the section, above its own background. Text colour and opacity never change. */
+.gt-host{position:relative;isolation:isolate}
+.gt-layer{position:absolute;inset:0;z-index:-1;pointer-events:none;overflow:hidden;border-radius:inherit}
+.gt-layer *{pointer-events:none}
+.gt-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.gt-halo{opacity:.16}
+.gt-core{opacity:.9}
+.gt-knot{fill:#edc979;transition:r .35s ease}
+.gt-bloom{fill:rgba(237,201,121,.22)}
+/* Each paragraph the thread reaches gets a brief warm edge. Borders and shadow only, never the text. */
+.golden-card-reading,.golden-thread-summary{transition:border-color .6s ease,box-shadow .6s ease}
+.golden-card-reading.gt-lit{border-color:rgba(237,201,121,.55);box-shadow:-3px 0 14px -6px rgba(237,201,121,.45)}
+.golden-thread-summary.gt-lit{border-color:rgba(237,201,121,.7);box-shadow:0 0 22px -8px rgba(237,201,121,.5)}
+@media(prefers-reduced-motion:reduce){.gt-layer{display:none}.golden-card-reading,.golden-thread-summary{transition:none}.gt-lit{box-shadow:none}}
