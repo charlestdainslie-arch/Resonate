@@ -1,6 +1,6 @@
 # M2 and issue #53: independent QA sign-off (14 Nov 2026)
 
-**Source:** Deep, `outbox/2026-11-14-M2-DEEP-verdict.md` (Deep's outbox; not yet collected into `audit/deep/`).
+**Source:** Deep, `audit/deep/2026-11-14-M2-DEEP-verdict.md` (collected 14 Nov on Chas's "collect").
 **Evidence:** `inbox/2026-11-14-M2-evidence/`, 108 files (49 JSON, 58 PNG, 1 Markdown). Claude recounted and the
 numbers match Deep's.
 **SHAs tested:**
