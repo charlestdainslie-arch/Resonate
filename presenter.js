@@ -448,9 +448,12 @@
       stopSound();index=i;clip=from;
       if(i>=script.length){finish();return;}
       show(i);root.classList.add('is-talking');
-      // The cards count as heard once Max moves past them, into the clarifiers or the ending (Chas, 11 Nov: Clarify
-      // becomes available at the end of the first spread of cards, not after the clarifiers too).
-      if(script[i].chapter!=='intro'&&script[i].chapter!=='cards'){const was=heardCards;heardCards=true;state.maxHeardAt=state.drawnAt;if(!was)updateBar();}
+      // The cards count as heard once Max moves past them into the clarifiers (Chas, 11 Nov: Clarify becomes available
+      // at the end of the first spread of cards, not after the clarifiers too), or into the closing chapters.
+      // Not at the invitation ("So far…", "you may clarify…"): Clarify stays greyed until the first pass has
+      // finished, so the seeker hears the whole first layer, then Max goes back to card 01 (Chas, Samsung UAT, 14 Nov,
+      // issue #53). finish() lifts the lock.
+      if(!['intro','cards','invite'].includes(script[i].chapter))heardAll();
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
       const v=!muted&&voice;
       if(!v){timer=setTimeout(next,captionTime(i));return;}
@@ -461,7 +464,11 @@
         fail:async()=>{if(mine!==token)return;voice=await pickVoice(script);voiceNote();if(mine===token&&playing)playPart(i);}
       });
     }
+    // Remembered for this reading (state.maxHeardAt), so Clarify stays available on Replay and when Max is reopened.
+    function heardAll(){const was=heardCards;heardCards=true;state.maxHeardAt=state.drawnAt;if(!was)updateBar();}
     function finish(){
+      // The first pass has ended: the cards are heard. Set before updateBar() below, which then offers card 01.
+      heardCards=true;state.maxHeardAt=state.drawnAt;
       playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';root.classList.add('is-finished');
       // Let go of the card just clarified, so the bar moves on to the next card in the walk (layer by layer).
       picked=null;inDelta=false;

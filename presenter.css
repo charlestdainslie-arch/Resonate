@@ -141,8 +141,8 @@ body:has(.mc-player) .chas-voice{display:none}
 .mc-clarify { flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; padding: 6px 16px; min-width: 0; max-width: 62%; }
 .mc-clarify-k { font-size: 15px; white-space: nowrap; }
 .mc-clarify-v { font-size: 12px; font-weight: 600; letter-spacing: .03em; color: #f2e4c2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
-.mc-clarify:disabled { cursor: default; opacity: .78; border-color: rgba(223,196,139,.4); box-shadow: 0 10px 26px rgba(0,0,0,.5); }
-.mc-clarify:disabled .mc-clarify-k { color: #bda977; }
+.mc-clarify:disabled { cursor: not-allowed; opacity: 1; background: #1d1c1b; border-color: #4a4741; box-shadow: 0 10px 26px rgba(0,0,0,.5); }
+.mc-clarify:disabled .mc-clarify-k, .mc-clarify:disabled .mc-clarify-v { color: #8f897f; }
 .mc-float:focus-visible, .mc-clarify:focus-visible { outline: 2px solid #f2dca8; outline-offset: 3px; }
 .mc-float-screen { width: 26px; height: 20px; border-radius: 4px; border: 1px solid rgba(223,196,139,.7);
   background: repeating-linear-gradient(0deg, rgba(255,214,140,.10) 0 1px, transparent 1px 3px), radial-gradient(circle at 50% 45%, rgba(255,200,110,.55), rgba(40,28,10,.9) 70%);
@@ -170,6 +170,9 @@ body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 8
 .mc-bar-actions button { min-height: 46px; margin: 0; padding: 6px 10px; font-size: 16px; }
 .mc-bar-actions button:only-child { grid-column: 1 / -1; }
 .mc-bar-actions button:disabled { opacity: .6; }
+/* Greyed out means grey (Chas, Samsung UAT, 14 Nov, issue #53): a gold button at 60% still read as gold on the
+   Samsung. Clarify while Max reads the first layer, and whenever a layer is not open yet. */
+.mc-bar-actions .gold-button:disabled { opacity: 1; background: #2c2b29; color: #8f897f; box-shadow: inset 0 0 0 1px #4a4741; filter: none; cursor: not-allowed; }
 .mc-card.is-picked > .mc-main { outline: 2px solid #f2dca8; outline-offset: 3px; }
 /* The card group: original above, Clarifier 1 below-left, Clarifier 2 below-right, Clarity card centred below. */
 .mc-clars .mc-clar:nth-child(1) { grid-column: 1; }
