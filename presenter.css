@@ -141,6 +141,9 @@ body:has(.mc-player) .chas-voice{display:none}
 .mc-clarify { flex-direction: column; justify-content: center; align-items: flex-start; gap: 3px; padding: 6px 16px; min-width: 0; max-width: 62%; }
 .mc-clarify-k { font-size: 15px; white-space: nowrap; }
 .mc-clarify-v { font-size: 12px; font-weight: 600; letter-spacing: .03em; color: #f2e4c2; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+/* The card's name wraps instead of being cut (M2 recheck, 14 Nov 2026: at 360 px, 10 of 25 position names were cut,
+   e.g. "07 · Outcome · Next 18–24 Months" to "07 · Outcome · Ne…"). Two short lines fit within the dock's room. */
+.mc-clarify-v { white-space: normal; overflow: visible; text-overflow: clip; line-height: 1.2; overflow-wrap: anywhere; }
 .mc-clarify:disabled { cursor: not-allowed; opacity: 1; background: #1d1c1b; border-color: #4a4741; box-shadow: 0 10px 26px rgba(0,0,0,.5); }
 .mc-clarify:disabled .mc-clarify-k, .mc-clarify:disabled .mc-clarify-v { color: #8f897f; }
 .mc-float:focus-visible, .mc-clarify:focus-visible { outline: 2px solid #f2dca8; outline-offset: 3px; }

@@ -22,3 +22,13 @@
 .draw-page .spread-board.spread-1 .reading-position .position-clarity.position-clarity,
 .draw-page .spread-board.spread-1 .reading-position .clarity-due.clarity-due{grid-column:1;grid-row:auto}
 .draw-page .spread-board.spread-1 .reading-position .clarify-choice.clarify-choice{grid-column:1;grid-row:auto}
+/* Before any clarifier is drawn, "✦ Draw Clarifier 1" comes straight after the card, so it needs the same room
+   under the card as the clarifier row above, or the card's name sits on the button (M2 recheck, 14 Nov 2026:
+   One-card at 390 px, "XVIII · The Moon" over "Draw Clarifier 1", 31 px overlap). */
+.draw-page .spread-board.spread-1 .reading-position .reading-card + .clarify-choice.clarify-choice{margin-top:var(--under-card-room)}
+/* The room under the card follows the caption's own size: "ORIGINAL CARD" (1.6 × label size) and a card name of up
+   to two lines (2.6 × name size), after the row gap. On phones that is under 58 px, so the approved 58 px stays; on a
+   laptop a two-line name ("XXI · The World, reversed", 16 px) reached 4-8 px into the clarifier row and the Draw
+   Clarifier 1 button at 1440 px (M2 recheck, 14 Nov 2026). */
+.draw-page .spread-board.spread-1 .reading-position{--under-card-room:max(58px, calc(10px + 1.6 * var(--reading-label-size) + 2.6 * clamp(12px,1.4vw,16px)))}
+.draw-page .spread-board.spread-1 .reading-position .position-clarifiers.position-clarifiers{margin-top:var(--under-card-room)}

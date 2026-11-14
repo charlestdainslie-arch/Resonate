@@ -332,6 +332,10 @@
     if(player)return;
     player={pending:true};
     let full=buildScript(),script=playlist(full,typeof chapter==='string'?chapter:null);
+    // One clarifier chapter before Max has read the cards: Clarify stays greyed, so leave out the line that
+    // invites a tap on it ("…choose it below and tap Clarify"). The recorded words are unchanged; the line is
+    // simply not played here (Deep's #53 review, 14 Nov).
+    if(typeof chapter==='string'&&!(state.drawnAt&&state.maxHeardAt===state.drawnAt))script=script.filter(p=>!(p.chapter==='invite'&&p.text===FRAME.invite));
     const sig=readingSig();heardSig=sig;
     let voice=await pickVoice(script);
     const pack=voice===packVoice?packVoice.pack:null;
@@ -370,7 +374,12 @@
     // follows a reading already heard.
     // Remembered for this reading across openings (11 Nov UAT): Max heard all the cards, was closed and opened
     // again, and Finish reading started the whole reading from the welcome.
-    let heardCards=typeof chapter==='string'||(!!state.drawnAt&&state.maxHeardAt===state.drawnAt);
+    // Opening on one clarifier chapter no longer counts as heard by itself (Deep's #53 review, team directive 14 Nov):
+    // a clarifier can be drawn on the reading page before Max has read a single card. Only a completed first
+    // reading by Max unlocks Clarify, and that is what state.maxHeardAt records.
+    let heardCards=!!state.drawnAt&&state.maxHeardAt===state.drawnAt;
+    // Is this narration Max's reading of the cards (the first pass), rather than one clarifier chapter or a delta?
+    const firstPass=()=>script.some(p=>p.chapter==='cards');
     const voiceNote=()=>{
       let note;
       if(muted)note='Sound is off. Captions keep time on their own.';
@@ -450,10 +459,13 @@
       show(i);root.classList.add('is-talking');
       // The cards count as heard once Max moves past them into the clarifiers (Chas, 11 Nov: Clarify becomes available
       // at the end of the first spread of cards, not after the clarifiers too), or into the closing chapters.
-      // Not at the invitation ("So far…", "you may clarify…"): Clarify stays greyed until the first pass has
-      // finished, so the seeker hears the whole first layer, then Max goes back to card 01 (Chas, Samsung UAT, 14 Nov,
-      // issue #53). finish() lifts the lock.
-      if(!['intro','cards','invite'].includes(script[i].chapter))heardAll();
+      // Not at "So far…": Clarify stays greyed through the whole first layer (Chas, Samsung UAT, 14 Nov, issue #53).
+      // It lights, on card 01, at the invitation itself ("…choose it below and tap Clarify"), so the words and the
+      // button agree (Deep's #53 review: the line used to invite a tap on a greyed button). The wording is a
+      // recorded clip (frame-invite), so the timing moves, not the words.
+      // Only in Max's reading of the cards: a lone clarifier chapter is not the first pass.
+      const ch=script[i].chapter;
+      if(firstPass()&&(!['intro','cards','invite'].includes(ch)||(ch==='invite'&&script[i].text===FRAME.invite)))heardAll();
       const mine=token,next=()=>{if(mine===token&&playing)playPart(i+1);};
       const v=!muted&&voice;
       if(!v){timer=setTimeout(next,captionTime(i));return;}
@@ -467,8 +479,9 @@
     // Remembered for this reading (state.maxHeardAt), so Clarify stays available on Replay and when Max is reopened.
     function heardAll(){const was=heardCards;heardCards=true;state.maxHeardAt=state.drawnAt;if(!was)updateBar();}
     function finish(){
-      // The first pass has ended: the cards are heard. Set before updateBar() below, which then offers card 01.
-      heardCards=true;state.maxHeardAt=state.drawnAt;
+      // Max's reading of the cards has ended: the cards are heard. Set before updateBar() below, which then offers
+      // card 01. Not after a lone clarifier chapter, which does not read the cards.
+      if(firstPass()){heardCards=true;state.maxHeardAt=state.drawnAt;}
       playing=false;stopSound();index=-1;$('mcPlay').textContent='▶ Play again';root.classList.add('is-finished');
       // Let go of the card just clarified, so the bar moves on to the next card in the walk (layer by layer).
       picked=null;inDelta=false;
@@ -617,7 +630,8 @@
       const ending=full.filter(p=>p.chapter==='final'||p.chapter==='close');
       const cur=index>=0&&index<script.length?script[index]:null;
       const at=cur&&!ENDING.includes(cur.chapter)?full.findIndex(p=>p.chapter===cur.chapter&&p.text===cur.text):-1;
-      load(heardCards?ending:at>0?full.slice(at):full);
+      // From a lone clarifier chapter the cards were never read: read the whole reading, not just what follows.
+      load(heardCards?ending:at>0&&firstPass()?full.slice(at):full);
       updateBar();
     });
     $('mcPlay').onclick=()=>setPlaying(!playing);
