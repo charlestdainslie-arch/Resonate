@@ -12,13 +12,13 @@
 /README.txt
 
 # Max (private for now) and the files only Max or the QA loader use
-/presenter-uat.html
-/presenter.js
-/presenter.css
-/chas-voice.js
-/max-golden-thread.js
-/max-golden-thread.css
-/qa-loader.js
+# /presenter-uat.html   (preview branch only: Max deploys for UAT)
+# /presenter.js
+# /presenter.css
+# /chas-voice.js
+# /max-golden-thread.js
+# /max-golden-thread.css
+# /qa-loader.js
 
 # Demo pages and unused experiments
 /golden-thread-kiss.html
