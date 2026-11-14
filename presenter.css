@@ -165,6 +165,9 @@ body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 8
 .mc-pick button { flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; min-width: 54px; max-width: 96px; min-height: 44px; padding: 3px 8px; border-radius: 10px; border: 1px solid rgba(201,169,106,.45); background: #0d0c0a; color: #e9dcc0; font: inherit; cursor: pointer; }
 .mc-pick button b { font-size: 14px; letter-spacing: .04em; }
 .mc-pick button small { font-size: 10px; line-height: 1.15; color: #bfb3a0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+/* The position name wraps instead of being cut (M2 recheck v3, 14 Nov 2026: at 360 px Celtic Cross, "Crossing
+   Challenge", "Surrounding Influences" and "Potential Outcome" ended in "…"). */
+.mc-pick button small { white-space: normal; overflow: visible; text-overflow: clip; text-align: center; overflow-wrap: anywhere; }
 .mc-pick button[data-state="due"] b::after { content: " •"; color: #f2c46b; }
 .mc-pick button[data-state="done"] b::after { content: " ✓"; color: #9fc49a; }
 .mc-pick button.is-picked { border-color: #f2dca8; background: #2a2214; box-shadow: 0 0 0 1px #f2dca8 inset; }

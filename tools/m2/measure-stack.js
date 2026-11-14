@@ -21,7 +21,11 @@
 //     edge       control cut by the viewport
 //     covered    control under something else
 //     endCovers  at the foot of the page, the last controls of the reading covered by a fixed control
+//   player.* Max's player, opened for the scan: transcript, headings, strong text, #mcCaption, card-strip names,
+//            #mcPart; edge, text cut, covered buttons (v3, 14 Nov)
 //   full     (expectFull) clarifiers still due, or fewer than two clarifiers per position (D7)
+// Lists are complete (not capped); defects = the sum of every list; defectsBy splits it by group. meta records the
+// SHA (pass opt.sha), viewport, spread and clarifier state.
 // Fonts are settled before measuring (D6). positions counts .reading-position only (D10).
 window.__m2 = {
   sleep: ms => new Promise(r => setTimeout(r, ms)),
@@ -65,13 +69,22 @@ window.__m2 = {
   name(e) { const b = e.closest('.reading-position'); const all = [...document.querySelectorAll('.reading-position')]; return (e.id ? '#' + e.id : e.tagName.toLowerCase() + ([...e.classList][0] ? '.' + [...e.classList][0] : '')) + (b ? ':' + (all.indexOf(b) + 1) : ''); },
   // The box that clips e: e itself if it clips its own content (self=true), then every ancestor that clips,
   // intersected; the viewport clips left/right (not top/bottom: the page scrolls).
+  // Inside a container that scrolls sideways (Max's card strip, the card chips), anything past the screen edge can be
+  // scrolled to, so the viewport's left/right edge is not a cut there.
+  inXScroller(e) { for (let a = e.parentElement; a && a !== document.documentElement; a = a.parentElement) { const ox = getComputedStyle(a).overflowX; if ((ox === 'auto' || ox === 'scroll') && a.scrollWidth > a.clientWidth + 1) return a; } return null; },
   clipBox(e, self) {
-    let box = { l: 0, r: document.documentElement.clientWidth, t: -Infinity, b: Infinity };
+    const xs = this.inXScroller(e);
+    let box = { l: xs ? -Infinity : 0, r: xs ? Infinity : document.documentElement.clientWidth, t: -Infinity, b: Infinity };
+    // Once a scroll container lies between e and an outer box that hides overflow, that outer box no longer cuts e in
+    // that direction: scrolling brings e inside the scroller, which sits inside the outer box (Max's full-screen
+    // player around its sideways card strip and its scrolling body).
+    let pastX = false, pastY = false;
     for (let a = self ? e : e.parentElement; a && a !== document.documentElement; a = a.parentElement) {
       const cs = getComputedStyle(a); const ox = cs.overflowX !== 'visible', oy = cs.overflowY !== 'visible';
       if (!ox && !oy) continue;
       // A scroll container clips, but its content can be scrolled to: count only overflow: hidden/clip here.
-      const hx = ox && /hidden|clip/.test(cs.overflowX), hy = oy && /hidden|clip/.test(cs.overflowY);
+      const hx = ox && !pastX && /hidden|clip/.test(cs.overflowX), hy = oy && !pastY && /hidden|clip/.test(cs.overflowY);
+      if (a !== e) { if (/auto|scroll/.test(cs.overflowX)) pastX = true; if (/auto|scroll/.test(cs.overflowY)) pastY = true; }
       if (!hx && !hy) continue;
       const r = a.getBoundingClientRect();
       if (hx) { box.l = Math.max(box.l, r.left); box.r = Math.min(box.r, r.right); }
@@ -104,11 +117,15 @@ window.__m2 = {
     // dock's fade-in at opacity 0). Endless ones (glows, the light) cannot finish and are left alone.
     for (const a of document.getAnimations()) { try { if (a.effect?.getComputedTiming().iterations !== Infinity) a.finish(); } catch (e) {} }
     await this.sleep(300);
-    const vw = document.documentElement.clientWidth, cap = a => a.slice(0, 12);
+    // Every list is complete (no cap), and defects is the sum of every list, so the count matches what is listed.
+    const vw = document.documentElement.clientWidth;
     const board = document.querySelector('.spread-board'), page = document.querySelector('.draw-page') || document.body;
-    const out = { vw, rootOverflowX: getComputedStyle(document.documentElement).overflowX + '/' + getComputedStyle(document.body).overflowX,
+    const out = { meta: { sha: opt.sha || null, viewport: `${innerWidth}x${innerHeight}`, clientWidth: vw, spread: typeof state !== 'undefined' ? state.spreadId : null,
+        clarifierState: opt.expectFull ? 'every clarifier drawn' : (opt.state || 'as dealt'), at: new Date().toISOString() },
+      rootOverflowX: getComputedStyle(document.documentElement).overflowX + '/' + getComputedStyle(document.body).overflowX,
       scrollW: document.documentElement.scrollWidth,   // D3: summary only; the edge lists are the detector
-      board: { edge: [], clipped: [], text: [], overlap: [], covered: [] }, page: { edge: [], text: [] }, fixed: { edge: [], covered: [], endCovers: [] }, full: [] };
+      board: { edge: [], clipped: [], text: [], overlap: [], covered: [] }, page: { edge: [], text: [] }, fixed: { edge: [], covered: [], endCovers: [], dockLabels: [] },
+      player: { checked: 0, edge: [], text: [], covered: [], opened: false }, full: [] };
     // Board
     const items = [...board.querySelectorAll('.reading-card, .position-clarifier, .position-clarity, .slot-label, .clarifier-layer-label, .reading-position strong, [data-clarify-position], .reading-position small')].filter(e => this.visible(e));
     for (const e of items) {
@@ -160,27 +177,53 @@ window.__m2 = {
     // The dock names whichever card is in view, so a single snapshot shows one label. Try every position name
     // of this spread (and the other dock texts) in it, and check each is shown whole and the dock still fits.
     const v = document.getElementById('mcClarifyCard'), dockBtn = document.getElementById('mcClarify');
-    out.dockLabels = [];
+    out.dockTextsTried = 0;
     if (v && dockBtn && this.visible(dockBtn)) {
       const keep = v.textContent, texts = positionLabels().map((l, i) => `${String(i + 1).padStart(2, '0')} · ${l}`).concat(['07 · Clarifier 2', '07 · Clarity card', '07 · 2-card limit', '07 · clarified ✓', 'choose a card']);
       for (const t of texts) {
-        v.textContent = t; const c = this.textCut(v), r = dockBtn.getBoundingClientRect();
-        if (c || r.top < 0 || r.bottom > innerHeight + 0.5 || r.right > vw + 0.5) out.dockLabels.push(`"${t}" ${c || 'dock off-screen'}`);
+        v.textContent = t; out.dockTextsTried++; const c = this.textCut(v), r = dockBtn.getBoundingClientRect();
+        if (c || r.top < 0 || r.bottom > innerHeight + 0.5 || r.right > vw + 0.5) out.fixed.dockLabels.push(`"${t}" ${c || 'dock off-screen'}`);
       }
       v.textContent = keep;
     }
-    out.fixed.dockLabels = out.dockLabels;
-    // Completeness (D7)
+    // Max's player (.mc-player): transcript lines, headings, strong text, the caption (#mcCaption), the card strip's
+    // names and "Part n of N" (#mcPart). Opened for the scan and closed again; opening does not mark the reading heard.
+    if (opt.player !== false && window.ResonatePresenter?.openPlayer && !document.querySelector('.mc-player')) {
+      await window.ResonatePresenter.openPlayer(); await this.sleep(700);
+      for (const a of document.getAnimations()) { try { if (a.effect?.getComputedTiming().iterations !== Infinity) a.finish(); } catch (e) {} }
+      await this.sleep(200);
+      const root = document.querySelector('.mc-player');
+      if (root) {
+        out.player.opened = true;
+        // The transcript is a fold, closed by default: open every fold as a seeker would, so its lines are measured.
+        const folds = [...root.querySelectorAll('details:not([open])')]; folds.forEach(d => d.open = true); out.player.foldsOpened = folds.length; await this.sleep(200);
+        const sel = '.mc-transcript li, .mc-transcript p, h1, h2, h3, h4, strong, #mcCaption, #mcCaption p, #mcPart, .mc-card *, .mc-pick button *, #mcPickNote, button';
+        const els = [...new Set([...root.querySelectorAll(sel)])].filter(e => this.visible(e) && (this.hasText(e) || e.matches('button')));
+        out.player.checked = els.length;
+        out.player.required = Object.fromEntries(['#mcCaption', '#mcPart'].map(s => [s, !!root.querySelector(s) && this.visible(root.querySelector(s))]).concat([['transcript lines', root.querySelectorAll('.mc-transcript li').length], ['card-strip names', [...root.querySelectorAll('.mc-card *')].filter(e => this.hasText(e)).length]]));
+        for (const e of els) {
+          const r = e.getBoundingClientRect();
+          if (r.width && !this.inXScroller(e) && (r.left < -0.5 || r.right > vw + 0.5)) out.player.edge.push(this.name(e) + ` [${r.left | 0},${r.right | 0}] "${e.textContent.trim().slice(0, 30)}"`);
+          if (this.hasText(e)) { const c = this.textCut(e); if (c) out.player.text.push(this.name(e) + ` ${c} "${e.textContent.trim().slice(0, 30)}"`); }
+          // Buttons are brought into view first (the player's own scroll and the sideways strips), then must be topmost.
+          if (e.matches('button')) { e.scrollIntoView({ block: 'center', inline: 'nearest' }); await this.sleep(60); const t = await this.topmost(e, false); if (!t.ok) out.player.covered.push(this.name(e) + ` under ${t.by} "${e.textContent.trim().slice(0, 30)}"`); }
+        }
+        if (!out.player.required['#mcCaption'] || !out.player.required['#mcPart']) out.player.edge.push('caption or Part n of N not on screen');
+        window.ResonatePresenter.player?.close(); await this.sleep(300);
+      }
+    }
+    // Completeness (D7). No sentinel: a missing check is reported as such, never as a position.
     out.positions = board.querySelectorAll('.reading-position').length;   // D10
     out.clarifiers = board.querySelectorAll('.position-clarifier').length;
     out.clarity = board.querySelectorAll('.position-clarity').length;
     if (opt.expectFull) {
-      const due = typeof nextDueClarifier === 'function' ? nextDueClarifier() : -2;
-      if (due !== -1) out.full.push('clarifier still due at position ' + (due + 1));
+      if (typeof nextDueClarifier !== 'function') out.full.push('cannot check: nextDueClarifier() is not available on this page');
+      else { const due = nextDueClarifier(); if (due >= 0) out.full.push('clarifier still due at position ' + (due + 1)); }
       if (out.clarifiers < 2 * out.positions) out.full.push(`${out.clarifiers} clarifiers for ${out.positions} positions (expected ${2 * out.positions})`);
     }
-    for (const g of ['board', 'page', 'fixed']) for (const k in out[g]) out[g][k] = cap(out[g][k]);
-    out.defects = ['board', 'page', 'fixed'].reduce((n, g) => n + Object.values(out[g]).reduce((m, a) => m + a.length, 0), 0) + out.full.length;
+    const lists = g => Object.values(out[g]).filter(Array.isArray);
+    out.defectsBy = Object.fromEntries(['board', 'page', 'fixed', 'player'].map(g => [g, lists(g).reduce((m, a) => m + a.length, 0)]).concat([['full', out.full.length]]));
+    out.defects = Object.values(out.defectsBy).reduce((a, b) => a + b, 0);
     return out;
   }
 };
