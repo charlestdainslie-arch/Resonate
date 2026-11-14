@@ -1,5 +1,8 @@
 # M2 — Card stack baseline at the approved demo (14 Nov 2026)
 
+> **Superseded by `M2_RECHECK_14NOV.md`.** Deep's review (D1–D10) showed this detector could not see fixed controls,
+> captions or truncated text. The hardened detector found three real defects that this 40/40 missed. Kept as a record.
+
 **Owner:** Claude. **Independent QA:** Deep — PENDING. **Build measured:** working tree of
 `claude/sprint-14nov-stack`. Its app code is identical to the approved demo `2a2b4e5` / `approved/living-demo-12nov`
 (see `M1_RECONCILIATION_14NOV.md`). No app code changed.
