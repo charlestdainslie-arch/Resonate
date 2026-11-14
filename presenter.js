@@ -592,6 +592,10 @@
       // While Max is talking about a clarifier the strip stays on that card (show() keeps it there), not on the
       // next card the bar offers.
       if(!(inDelta&&index>=0)&&(picked!=null||index>=0||root.classList.contains('is-finished'))&&strip&&card&&strip.scrollWidth>strip.clientWidth)setTimeout(()=>stripTo(strip,card),260);
+      // Tell the Golden Thread which card the bar is on, whenever the strip follows it (and on narrow strips that do
+      // not scroll), so the light goes with it: at the end of the first pass, back to card 01 (Chas, 14 Nov, M3-F1).
+      // Not while Max talks about a clarifier just drawn: the light stays on that clarifier.
+      if(!(inDelta&&index>=0)&&(picked!=null||index>=0||root.classList.contains('is-finished')))document.dispatchEvent(new CustomEvent('maxchasroom:focus',{detail:{root,slot:'p'+i}}));
     }
     root.addEventListener('click',e=>{
       const pick=e.target.closest('[data-pick]');

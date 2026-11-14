@@ -527,7 +527,7 @@
   // then lifts to rest just above it until he moves on. The strip's cards are already face up: the light
   // never turns or hides a card here. A new line cancels a flight still under way, so the light keeps
   // pace with Max rather than queueing behind him. Closing Max lets the light fade.
-  var maxSeq = 0, maxRoot = null, maxKissed = {};
+  var maxSeq = 0, maxRoot = null, maxKissed = {}, maxAt = null;   // maxAt: the slot the light last went to in Max
   function maxPicture(slot) {
     if (!maxRoot) return null;
     var li = maxRoot.querySelector('[data-slot="' + slot + '"]');
@@ -661,7 +661,7 @@
   }
 
   function onMaxOpen(e) {
-    maxRoot = e.detail.root; maxKissed = {}; maxSeq++;
+    maxRoot = e.detail.root; maxKissed = {}; maxAt = null; maxSeq++;
     setupTranscript(maxRoot);
   }
   function onMaxShow(e) {
@@ -670,10 +670,22 @@
     var fresh = (e.detail.show || []).filter(function (slot) { return /^(p\d+|c\d+-\d+|k\d+)$/.test(slot) && !maxKissed[slot]; });
     if (!fresh.length) return;
     fresh.forEach(function (slot) { maxKissed[slot] = true; });
-    maxVisit(fresh[fresh.length - 1]);                   // the most specific: a clarifier over its card
+    maxAt = fresh[fresh.length - 1];
+    maxVisit(maxAt);                                     // the most specific: a clarifier over its card
+  }
+  // The card Max's bar is on (presenter.js 'maxchasroom:focus'). When it moves to another card without Max naming
+  // it (at the end of the first pass the bar and strip go back to card 01, Chas #53), the light goes there too,
+  // instead of being left over whichever card slid under it (Chas, 14 Nov, M3-F1). A card counts as the same as
+  // its own clarifiers and Clarity card, so the light is never pulled off a clarifier back to its card.
+  var cardOf = function (slot) { var m = /^(?:p|k)(\d+)$|^c(\d+)-/.exec(slot || ''); return m ? (m[1] || m[2]) : null; };
+  function onMaxFocus(e) {
+    if (reduced() || !maxRoot || e.detail.root !== maxRoot || !maxAt) return;
+    if (cardOf(e.detail.slot) === cardOf(maxAt)) return;
+    maxAt = e.detail.slot;
+    maxVisit(maxAt);
   }
   function onMaxClose() {
-    maxSeq++; maxRoot = null; maxKissed = {};
+    maxSeq++; maxRoot = null; maxKissed = {}; maxAt = null;
     if (txObserver) { txObserver.disconnect(); txObserver = null; }
     if (txMutation) { txMutation.disconnect(); txMutation = null; }
     if (light) {
@@ -684,6 +696,7 @@
   document.addEventListener('maxchasroom:open', onMaxOpen);
   document.addEventListener('maxchasroom:show', onMaxShow);
   document.addEventListener('maxchasroom:close', onMaxClose);
+  document.addEventListener('maxchasroom:focus', onMaxFocus);
 
   // Teardown (Deep, H §4d): every listener, observer and animation, and the canvas. Flights and timed steps
   // still in the air see the bumped token and sequence and stop at their next check.
@@ -693,6 +706,7 @@
     document.removeEventListener('maxchasroom:open', onMaxOpen);
     document.removeEventListener('maxchasroom:show', onMaxShow);
     document.removeEventListener('maxchasroom:close', onMaxClose);
+    document.removeEventListener('maxchasroom:focus', onMaxFocus);
     window.removeEventListener('resize', size);
     // A deal under way is finished first, so no card is left face down (the app's own reveal timer was cleared).
     if (activeFinish) activeFinish();
