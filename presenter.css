@@ -235,6 +235,15 @@ body.has-mc-dock .page.draw-page::after { content: ""; display: block; height: 8
 /* A card in the pile is never see-through: dim it by darkening instead, so the card beneath does not show through. */
 .mc-clars > .mc-clar.is-dim { opacity: 1; }
 .mc-clars > .mc-clar.is-dim > img { filter: brightness(.42); }
+/* Names shown in full (Chas, 14 Nov 2026, after the M2 evidence run: "Temperance, reversed", "The High Priestess,
+   reversed" and others were cut with "…" in the pile on phones). The label and name now sit in the card's flow,
+   over the top 26 px of its picture as before, and the name may wrap. A one-line name keeps the approved 30cqw
+   step exactly; a two-line name lowers the cards above it by one line (13 px), so the whole name stays in view. */
+.mc-clars > .mc-clar, .mc-clars > .mc-clarity { display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+.mc-clars > .mc-clar > span, .mc-clars > .mc-clar > strong { position: relative; top: auto; left: auto; right: auto; margin: 0 1px; }
+.mc-clars > .mc-clar > span { order: 0; margin-top: 1px; }
+.mc-clars > .mc-clar > strong { order: 1; height: auto; min-height: 13px; white-space: normal; overflow: visible; text-overflow: clip; overflow-wrap: anywhere; border-radius: 0 0 4px 4px; }
+.mc-clars > .mc-clar > img { order: 2; margin-top: -26px; }
 @media (max-width: 640px) {
   /* Up to three cards: the picture is narrowed to keep it short, so the pile takes the picture's width. */
   .mc-cards:not(.is-wide) .mc-card > .mc-clars { width: min(100%, calc(30vh * 0.58)); }
