@@ -47,6 +47,25 @@ later (at `finish()` rather than at the invitation). This was not run on `2a2b4e
 
 Claude recommends (a).
 
+### M3-F1 fixed (Chas chose (a), 14 Nov)
+- `presenter.js` sends `maxchasroom:focus {slot}` whenever Max's bar settles on a card. This is skipped while Max talks
+  about a clarifier just drawn.
+- `golden-thread-kiss.js` (v21) flies the light to that card unless it is already on it or on one of its
+  clarifiers. The light is therefore never pulled off a clarifier back to its card.
+- **Check (Past-Present-Future, 390):** at the end of the first pass, card 01 is selected and the light is over card
+  01, at (79, 211). Before the fix it was over card 03.
+- Pace unchanged: the light reached the cards in 866, 636 and 610 ms.
+
+## Defect M3-F2 (open): after Clarify in Max, the light can go off-screen
+- **Observed:** while Max narrated a clarifier he had just drawn, the light sat at page y ≈ 1590 with the page
+  scrolled to 0. That is below a 844 px screen, so it was invisible for the whole narration.
+- **Likely cause:** Clarify re-renders the reading page behind Max (`renderDraw` → `shell`), and that page's
+  scroll jumps. The light works in page coordinates, while Max's cards sit in a fixed overlay, so a scroll change
+  behind Max displaces it.
+- **Not fixed.** It was seen only with the browser pane hidden (timer-driven frames), which also slows the light,
+  so it needs a trace with the pane visible before a fix. A first attempt (light stays with its card each frame) was
+  reverted: it rested on a wrong theory and was not verified.
+
 ## Not yet covered
 - Relationship spread.
 - 1440 width.
